@@ -28,8 +28,9 @@ of unchanged ledger has identical CSV hash; late changes alter the source finger
 Agent failure, cancellation, interruption and active runs all remain in the denominator.
 Multi-edit accepted drafts count once; pending excluded from decided-only rate.
 
-Tableau XML parsed/connection checked. Desktop render/refresh is not executed because
-the Mac is locked. AC05/06 therefore remain partially verified; owner UAT and release
+Tableau Desktop 2026.2.3 opened the repaired XML and resolved the CSV.
+Thirty marks rendered; refresh could not be verified and label/title layout needs work.
+See dashboard/README.md for the executed observation and edition restriction. AC05/06 therefore remain partially verified; owner UAT and release
 acceptance are not implied by the automated tests. Existing CFPB data analysis is
 separate and untouched. Work-queue aging/commitment breach dimensions can extend this
 first view later; current report covers Agent/proposal/contact-plan operational facts.

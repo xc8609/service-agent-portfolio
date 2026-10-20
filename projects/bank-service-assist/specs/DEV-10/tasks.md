@@ -16,4 +16,4 @@ Forecast: S05A | Release: B1 | Estimate: Dev 3, BA 1, QA 0.5 person-days. Provis
 - [ ] Implement and record DEV-10-T06: export and refresh workbook.
 - [ ] Record runtime defects, re-test and owner UAT/release review; do not mark Done from artifact validation.
 
-T05/T06: automated data/XML portion passed; Desktop rendering/refresh pending.
+T05/T06: automated data/XML portion passed; Desktop open verified after XML repair; refresh/layout acceptance pending.

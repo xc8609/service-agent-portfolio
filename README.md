@@ -11,8 +11,8 @@ and agent engineering.
 referrals, specialist findings, verified manual feedback, bounded contact plans,
 overdue/objection handling, and a persisted offline evidence assistant. React +
 FastAPI + PostgreSQL; all operational records are synthetic. Live models remain
-disabled and unqualified. SQL exports reconcile with source records; Tableau desktop
-validation and human benefit measurement remain pending.
+disabled and unqualified. SQL exports reconcile with source records; Tableau Desktop opens the workbook; refresh/layout acceptance and human benefit
+measurement remain pending.
 
 ## Repository map
 

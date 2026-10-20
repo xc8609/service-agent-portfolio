@@ -21,7 +21,7 @@ flowchart LR
     SQL --> TWB[Tableau workbook candidate]
 ```
 
-Live model qualification and Tableau Desktop visual validation remain pending.
+Live model qualification and Tableau refresh/layout acceptance remain pending.
 The model receives a scoped DTO and read/draft tool schemas, never database access
 or an approval tool. Trusted commands enforce current authority and source versions.
 
