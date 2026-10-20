@@ -51,6 +51,8 @@ def test_pair_progress_owners_due_dates_and_canonical_contract(environment):
     work = {w["kind"]: w for w in case["work_items"]}
     assert work["specialist_investigation"]["assignee_name"] == "Demo specialist Alex"
     assert work["customer_feedback"]["assignee_name"] is None
+    assert work["customer_feedback"]["due_at"] is None
+    assert work["customer_feedback"]["original_due_at"] is None
     assert datetime.fromisoformat(
         work["specialist_investigation"]["original_due_at"]
     ) == datetime.fromisoformat("2026-10-21T14:00:00+00:00")

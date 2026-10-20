@@ -33,7 +33,9 @@ current status using the newest ingestion timestamp or a late occurrence.
 
 Read linked specialist, feedback, re-review and complaint tasks independently.
 Show assigned staff or explicitly Unassigned, plus accountable queue; retain the
-original due date alongside any current due date. Inactive owners/queues are
+original due date alongside any current due date. A feedback task awaiting a
+published result has no first-callback due date yet; show Not recorded rather
+than borrowing the investigation deadline. Inactive owners/queues are
 labelled, not silently reassigned. Pending required actions appear as evidence
 gaps. Only published customer explanations and decided customer-safe commitments
 are projected; pending/rejected commitments, reasons and private notes are omitted.

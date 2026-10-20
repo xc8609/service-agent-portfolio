@@ -142,8 +142,10 @@ def seed_cases(conn):
                 "queue_id": uid(queue),
                 "assignee_id": uid(assignee) if assignee else None,
                 "status": status,
-                "due_at": base + timedelta(days=2),
-                "original_due_at": base + timedelta(days=2),
+                "due_at": base + timedelta(days=2) if kind == "specialist_investigation" else None,
+                "original_due_at": base + timedelta(days=2)
+                if kind == "specialist_investigation"
+                else None,
                 "calendar_ref": "synthetic-calendar-v1",
                 "source_event_key": "synthetic-case-v1:" + key,
                 "version": 1,
