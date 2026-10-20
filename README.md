@@ -45,7 +45,7 @@ python projects/bank-service-assist/scripts/validate_s02_contracts.py
 python scripts/check_publication.py
 ```
 
-These run local data-parser tests and specification/schema/reference checks. They do **not** validate PostgreSQL execution, an API, a UI, live model behavior or deployment. Public dataset download is optional and is not run by CI. See [data provenance](projects/bank-service-assist/data/README.md).
+These run local data-parser tests and specification/schema/reference checks. They do **not** validate PostgreSQL execution, an API, a UI, live model behavior or deployment. Calendar fixtures explicitly use the `tzdata==2025.2` rule snapshot, independent of the runner OS. This simulated baseline is not a claim about current civil-time rules; a production calendar requires separate validation. Public dataset download is optional and is not run by CI. See [data provenance](projects/bank-service-assist/data/README.md).
 
 ## Proposed implementation
 

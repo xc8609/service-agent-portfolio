@@ -1,2 +1,3 @@
 # Offline schema/contract verification; production dependencies are separate.
 jsonschema==4.25.1
+tzdata==2025.2

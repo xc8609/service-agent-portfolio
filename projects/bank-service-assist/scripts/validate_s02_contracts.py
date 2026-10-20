@@ -2,6 +2,7 @@
 from pathlib import Path
 import copy
 import importlib.metadata
+import importlib.resources
 import json
 import re
 from datetime import datetime, timedelta
@@ -116,14 +117,20 @@ def main():
         grants=permission_actions[name]['grants']
         assert all(v=='deny' for role,v in grants.items() if role!='queue_lead')
     cal=json.loads((C/'calendar-fixtures.json').read_text())
+    # Specification fixtures use a pinned rule snapshot, never the host's tzdb.
+    # This is a simulated calendar baseline, not a current bank calendar.
+    assert importlib.metadata.version('tzdata')==cal['tzdata_version']
+    zone_path=importlib.resources.files('tzdata.zoneinfo').joinpath(*cal['timezone'].split('/'))
+    with zone_path.open('rb') as zone_file:
+        fixture_zone=ZoneInfo.from_file(zone_file,key=cal['timezone'])
     for case in cal['cases']:
-        first=datetime.fromisoformat(case['first_placed_at']).astimezone(ZoneInfo(cal['timezone']))
+        first=datetime.fromisoformat(case['first_placed_at']).astimezone(fixture_zone)
         date=first.date();count=0
         while True:
             if date.weekday() in cal['open_weekdays'] and date.isoformat() not in case['holidays']:count+=1
             if count==3:break
             date+=timedelta(days=1)
-        expected=datetime.combine(date,datetime.strptime(cal['close'],'%H:%M').time(),tzinfo=ZoneInfo(cal['timezone']))
+        expected=datetime.combine(date,datetime.strptime(cal['close'],'%H:%M').time(),tzinfo=fixture_zone)
         assert expected==datetime.fromisoformat(case['expected_end']),(
             case['id'], 'computed', expected.isoformat(), 'fixture', case['expected_end'],
             'first_local', first.isoformat()

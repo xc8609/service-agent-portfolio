@@ -1,5 +1,6 @@
 {
   "version": "demo-calendar-v1",
+  "tzdata_version": "2025.2",
   "timezone": "America/Winnipeg",
   "open_weekdays": [
     0,
@@ -14,7 +15,7 @@
   "holiday_fixture": [
     "2026-10-26"
   ],
-  "notice": "Synthetic holiday override only; no claim about a real bank or statutory calendar.",
+  "notice": "Synthetic calendar using the pinned tzdata 2025.2 rule snapshot. Intentional DST and holiday fixtures, not a claim about current civil-time rules, a real bank or statutory calendar. Production calendar rules require separate validation and versioned change control.",
   "cases": [
     {
       "id": "CAL-01",
