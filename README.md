@@ -2,19 +2,48 @@
 
 [![Checks](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml)
 
-A **simulated bank service workspace** for “Why was I charged twice?”
-Representatives need to find customer information across screens, respect access
-limits and locate the right handling rule. This portfolio turns those pain points
-into **business analysis → specifications → working software → test evidence**.
-The Agent assembles permitted evidence and drafts a next step for human review.
-Business benefit is a hypothesis to evaluate, not a claimed saving.
+**From customer-service problems to working, human-reviewed AI workflows.**
 
-**Works today:** scoped transaction/rule lookup, reviewed notes and specialist
-referrals, specialist findings, verified manual feedback, bounded contact plans,
-overdue/objection handling, and a persisted offline evidence assistant. React +
-FastAPI + PostgreSQL; all operational records are synthetic. Live models remain
-disabled and unqualified. SQL exports reconcile with source records; Tableau Desktop opens the workbook; refresh/layout acceptance and human benefit
-measurement remain pending.
+Service Agent Portfolio is a lightweight, open-source application portfolio that
+connects **business analysis, specification-driven development and Agent engineering**.
+It starts with a simulated banking service desk and demonstrates how requirements,
+process decisions and acceptance criteria become working software and test evidence.
+
+## Why this project
+
+Customer-service representatives often need to navigate several screens to find
+customer information, work within different access permissions and learn which
+handling rules apply. This project brings permitted information, relevant rules and
+accountable follow-up into one workflow.
+
+The first case is **“I bought once — why do I see two credit-card charges?”**
+The representative inspects transactions and existing cases, records what the
+customer recognizes, checks handling rules, and submits a reviewed specialist enquiry
+when needed. The Agent helps assemble evidence and draft the next step; authorized
+staff retain responsibility for decisions and customer communication.
+
+**The intended value:** less information-search effort, more consistent handling and
+clearer handoffs. These are hypotheses to test against the manual workflow; measured
+cost savings and production outcomes are not yet claimed.
+
+## What you can explore
+
+- **Business analysis:** problem definition, current/target processes, permissions,
+  exceptions, story cards, Sprint planning and traceable acceptance criteria.
+- **Working service workflow:** scoped transaction/rule lookup, reviewed notes and
+  referrals, specialist findings, manual feedback and contact/exception handling.
+- **Agent engineering:** a bounded evidence assistant, server-selected model API
+  adapters, persisted runs, source citations and human approval boundaries.
+- **Data and delivery evidence:** reconciled SQL exports, a Tableau workbook,
+  automated tests, CI and a reproducible local deployment.
+
+**Stack:** React/TypeScript · FastAPI/Python · PostgreSQL · SQL/Tableau · Docker Compose.
+
+**Current status:** implementation is under review in [stacked pull requests](https://github.com/xc8609/service-agent-portfolio/pulls).
+The runnable assistant defaults to a scripted offline provider; live models and real
+bank integrations are unqualified. All operational records and rules are synthetic.
+Tableau opens locally; refresh/layout acceptance and human benefit measurement remain
+pending. Voice service and retail clienteling are later releases.
 
 ## Repository map
 
@@ -60,13 +89,24 @@ synthetic demo on localhost; it is not production authentication.
 
 ## Adapt without rebuilding the business process
 
-One UI, one API and one workflow database. Institution-specific data maps into a
-canonical read model; server-owned profiles separate model APIs from Agent execution.
+One UI, one API and one workflow database keep the application small and understandable.
+Institution-specific data integration is designed around a canonical read model;
+server-owned profiles separate model APIs from Agent execution.
 Permissions, evidence versions and human approval remain in shared business services.
 Two source formats and three model protocols have offline test coverage. Real bank
 connectors, SDK runtime adoption and live model qualification remain separate work.
 [Adaptation examples](examples/README.md) ·
 [Decisions, references and limits](docs/architecture/ADR-004-lightweight-enterprise-adaptation.md).
+
+## Open-source references
+
+The [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) and
+[Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) inform our
+separation of model access, tools and orchestration. This project currently uses its
+own small bounded runtime and HTTP protocol adapters; it does not claim to integrate
+those SDKs. [Architecture decisions](docs/architecture/ADR-004-lightweight-enterprise-adaptation.md)
+explain what we adopted, what remains optional and how a concrete institution's
+requirements would change the implementation.
 
 ## Delivery
 
