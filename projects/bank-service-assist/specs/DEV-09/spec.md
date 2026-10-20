@@ -1,6 +1,6 @@
 # DEV-09 — Qualify model runtime and provider adapters with a bounded spike
 
-BANK-S02-v0.4 · Detailed specification candidate; implementation not started.
+BANK-S02-v0.4 · Offline implementation delivered for PR review; live qualification deferred by owner.
 Forecast: S04 | Release: B1 | Estimate: Dev 4, BA 0.25, QA 1 person-days. Provisional until technical review.
 
 ## Business purpose and scope
@@ -34,3 +34,7 @@ Requirements: FR-14. Dependencies: BA-07, BA-08, DEV-01.
 Ready requires versioned technical contract/fixtures, validated dependencies and a story walkthrough. Business rules D-17–D-22 are accepted; proposed business-benefit targets and model budgets are not silently approved. Platform stories can proceed against explicitly frozen draft contracts; dependent workflow acceptance requires those contracts implemented. Done requires the listed tests and review evidence, not merely this document.
 
 [Design](design.md) · [Tasks](tasks.md) · [Acceptance](acceptance.md) · [Current contracts](../contracts/interface-notes.md)
+
+## Offline delivery decision
+
+See [implemented boundary and remaining qualification gates](runtime-contract.md). Live tests are not executed; no public provider is enabled.
