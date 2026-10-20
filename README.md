@@ -12,6 +12,7 @@ A specification-driven portfolio connecting business analysis, data analysis and
 - [Specification handoff and remaining gates](projects/bank-service-assist/docs/sprint-02/spec-completion.md)
 - [Business requirements](projects/bank-service-assist/docs/sprint-01/requirements.json) and [decisions](projects/bank-service-assist/docs/sprint-01/decision-log.md)
 - [Permissions](projects/bank-service-assist/specs/contracts/permissions.md), [data model](projects/bank-service-assist/specs/contracts/data-model.md), [OpenAPI](projects/bank-service-assist/specs/contracts/openapi.json)
+- [Publication evidence and remaining gates](docs/github-publication.md)
 - [Sprint plan](docs/backlog/sprints.md) · [Public Trello](https://trello.com/b/wtNhuN0q/ai-agent)
 
 ## Business case

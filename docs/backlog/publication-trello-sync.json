@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-19",
+  "marker": "PUBLIC-BOOTSTRAP-v1",
+  "method": "Saved descriptions and verified rendered UI",
+  "cards": [
+    {
+      "id": "GIT-01",
+      "url": "https://trello.com/c/dELJPdDz/37-git-01-public-monorepo-contribution-workflow-and-release-hygiene"
+    },
+    {
+      "id": "S02",
+      "url": "https://trello.com/c/CBFn48oC/41-s02-w3-4-rules-data-contracts-and-executable-foundation"
+    }
+  ],
+  "completed_cards": false,
+  "note": "Only these two cards synchronized for repository publication; other cards retain their prior versioned spec updates."
+}

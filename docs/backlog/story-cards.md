@@ -4,7 +4,7 @@ Current metadata source: [S02 Sprint forecast](sprint-forecast.json) and trello-
 
 Current refinement: [bank workflow v0.2](../../projects/bank-service-assist/docs/sprint-01/workflow-increment.md). Detailed selected-story specs supersede older generic wording; new DEV-11/12/13 add explicit scope. No implementation is Done.
 
-Planning baseline: 19 October 2026. S01 started on 19 October; BA-01–05 and GOV-01–03 are review candidates, while GIT-01 setup remains pending. Other stories remain Planned. No application implementation is claimed. Simulated team: two developers, BA/PO and QA; no staffing claim. [Delivery plan](../sdd-portfolio-delivery-plan.md) · [Sprints](sprints.md) · [Trello](https://trello.com/b/wtNhuN0q/ai-agent).
+Planning baseline: 19 October 2026. S01 started on 19 October; BA-01–05 and GOV-01–03 are review candidates, while GIT-01 bootstrap is published with offline CI passed; contribution/release gates remain. Other stories remain Planned. No application implementation is claimed. Simulated team: two developers, BA/PO and QA; no staffing claim. [Delivery plan](../sdd-portfolio-delivery-plan.md) · [Sprints](sprints.md) · [Trello](https://trello.com/b/wtNhuN0q/ai-agent).
 
 Effort is role-specific person-days, not elapsed duration or a promise. Ranges are judgement-based planning uncertainty, not measured historical velocity. Source: [card data](trello-cards.json).
 
@@ -51,7 +51,7 @@ Owner reviews the working agreement. This is portfolio owner review, not employe
 Workstream columns are planned work, not readiness. Move active work to In progress; one major slice per developer. Done needs executed evidence. Role allocations are simulated; never assign fictional people.
 
 Canonical story: docs/backlog/story-cards.md#gov-01
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 
 ### Actual Sprint 1 increment — 19 October 2026
@@ -101,7 +101,7 @@ Roadmap reviewed; no future card marked implemented.
 Role-based person-day estimates replace earlier solo-hour sketches. Split slices above five developer-days at refinement; avoid counting unit tests and documentation again in QA effort.
 
 Canonical story: docs/backlog/story-cards.md#gov-02
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 
 ### Actual Sprint 1 increment — 19 October 2026
@@ -151,7 +151,7 @@ Owner selects initial value hypothesis and records unresolved evidence gaps.
 Two intents: possible duplicate card charge and existing-case status. No actual bank sponsor, approved business case or measured savings is claimed.
 
 Canonical story: docs/backlog/story-cards.md#ba-01
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 
 ### Actual Sprint 1 increment — 19 October 2026
@@ -201,7 +201,7 @@ Responsibilities reviewed and permission questions assigned; unheld workshops re
 No real bank stakeholder endorsement or interviews invented.
 
 Canonical story: docs/backlog/story-cards.md#ba-02
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 
 ### Actual Sprint 1 increment — 19 October 2026
@@ -251,7 +251,7 @@ Owner reviews plausibility and records corrections.
 No invented handling-time baseline. Published complaint narratives do not establish call-centre timings.
 
 Canonical story: docs/backlog/story-cards.md#ba-03
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 
 ### Actual Sprint 1 increment — 19 October 2026
@@ -301,7 +301,7 @@ Owner confirms the first vertical slice and exception handling.
 No automatic refund, credit decision, card cancellation or unrestricted account change.
 
 Canonical story: docs/backlog/story-cards.md#ba-04
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 
 ### Actual Sprint 1 increment — 19 October 2026
@@ -351,7 +351,7 @@ Owner reviews Must scope and sequencing; future estimates remain provisional.
 Preserve existing CFPB analysis; BANKING77 and τ-bench are optional evidence dependencies, not prerequisites for every feature.
 
 Canonical story: docs/backlog/story-cards.md#ba-05
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 
 ### Actual Sprint 1 increment — 19 October 2026
@@ -401,7 +401,7 @@ Every Must rule has an example, counterexample and responsible decision role.
 Do not copy τ-bench's static recovery-bypass mechanism or treat its fictional rules as Canadian law.
 
 Canonical story: docs/backlog/story-cards.md#ba-06
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="ba-07"></a>
 
@@ -446,7 +446,7 @@ Ten seed cases can be represented without ambiguous or fabricated evidence.
 No real bank ledger, call recordings or measured handling-time dataset is currently available.
 
 Canonical story: docs/backlog/story-cards.md#ba-07
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="ba-08"></a>
 
@@ -491,7 +491,7 @@ Critical thresholds have tests and owners; unresolved noncritical targets are ex
 A small hosted demo is not high availability or bank compliance certification.
 
 Canonical story: docs/backlog/story-cards.md#ba-08
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="ba-09"></a>
 
@@ -536,7 +536,7 @@ Owner reviews the first slice; this card plans future specs and does not claim t
 Specs are versioned in Git; Trello tracks status, summaries, dependencies and evidence links.
 
 Canonical story: docs/backlog/story-cards.md#ba-09
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="dev-01"></a>
 
@@ -581,7 +581,7 @@ A second clean run reproduces setup; evidence identifies versions and limitation
 No business story marked complete just because services start.
 
 Canonical story: docs/backlog/story-cards.md#dev-01
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="dev-02"></a>
 
@@ -626,7 +626,7 @@ BR-01 tests pass and UI failure states are reviewed.
 No real bank connection or customer authentication claim for fixture mode.
 
 Canonical story: docs/backlog/story-cards.md#dev-02
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="dev-03"></a>
 
@@ -671,7 +671,7 @@ Normal and exception scenarios complete manually with no LLM.
 No fraud determination, chargeback submission or money movement.
 
 Canonical story: docs/backlog/story-cards.md#dev-03
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="dev-04"></a>
 
@@ -716,7 +716,7 @@ Manual status enquiry succeeds and all exception results are reviewable.
 Merchant refund status is a separate concept and must not be inferred from a bank case label.
 
 Canonical story: docs/backlog/story-cards.md#dev-04
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="dev-05"></a>
 
@@ -761,7 +761,7 @@ Source support and exclusion tests pass; invented policies remain labelled.
 No general web browsing or unrestricted shell/SQL access for the service agent.
 
 Canonical story: docs/backlog/story-cards.md#dev-05
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="dev-06"></a>
 
@@ -806,7 +806,7 @@ Persisted state and audit evidence match the approved content.
 A drafted statement that work was completed never counts as proof of execution.
 
 Canonical story: docs/backlog/story-cards.md#dev-06
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="dev-07"></a>
 
@@ -851,7 +851,7 @@ Unresolved work remains visible until confirmed handled; queue state is not desc
 Mock recipient delivery is labelled simulated. External integrations need separate acceptance.
 
 Canonical story: docs/backlog/story-cards.md#dev-07
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="dev-08"></a>
 
@@ -896,7 +896,7 @@ Critical behavior passes in deterministic tests before live model evaluation.
 This story does not prove superiority to search/templates; QA-02 and QA-03 decide that.
 
 Canonical story: docs/backlog/story-cards.md#dev-08
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="dev-09"></a>
 
@@ -941,7 +941,7 @@ At least two live routes qualified for B1 release; untested routes labelled plan
 No fine-tuning, local model hosting or additional paid deployment required by this spike alone.
 
 Canonical story: docs/backlog/story-cards.md#dev-09
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="dev-10"></a>
 
@@ -986,7 +986,7 @@ Reviewed numbers match source events and simulation boundaries are visible.
 Dashboard creation and validation are future work, not completed by this plan.
 
 Canonical story: docs/backlog/story-cards.md#dev-10
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="qa-01"></a>
 
@@ -1031,7 +1031,7 @@ Coverage is reviewed by behavior/risk, not only a percentage or test count.
 Passing unit tests does not validate real-data SQL, live providers or cloud deployment.
 
 Canonical story: docs/backlog/story-cards.md#qa-01
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="qa-02"></a>
 
@@ -1076,7 +1076,7 @@ Proposed 90% routine/all-critical gates assessed as frozen; limitations and nega
 Finite synthetic success is not a real-bank failure rate or a savings measurement.
 
 Canonical story: docs/backlog/story-cards.md#qa-02
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="qa-03"></a>
 
@@ -1121,7 +1121,7 @@ Actual reviewer, build/spec version and decision are recorded; simulated stakeho
 No claim of generalizable productivity uplift from a small convenience sample.
 
 Canonical story: docs/backlog/story-cards.md#qa-03
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="ops-01"></a>
 
@@ -1166,7 +1166,7 @@ Local checks and actual cloud CI results are distinguished; only executed CI is 
 No cloud resource purchase or public publication is performed by creating this plan.
 
 Canonical story: docs/backlog/story-cards.md#ops-01
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="ops-02"></a>
 
@@ -1211,7 +1211,7 @@ Actual staging smoke and recovery evidence exists; plans alone do not pass.
 Use synthetic records only; managed PostgreSQL/Supabase is an option after an ADR, not an extra mandatory platform.
 
 Canonical story: docs/backlog/story-cards.md#ops-02
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="ops-03"></a>
 
@@ -1256,7 +1256,7 @@ Owner records the actual release decision and evidence; public access and paid s
 No real customers, production banking claim or fabricated uptime history.
 
 Canonical story: docs/backlog/story-cards.md#ops-03
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="v-01"></a>
 
@@ -1301,7 +1301,7 @@ Owner reviews channel-specific authority and failure routes before telephony wor
 Use test callers only; no real customer rollout.
 
 Canonical story: docs/backlog/story-cards.md#v-01
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="v-02"></a>
 
@@ -1346,7 +1346,7 @@ Channel semantics and measured targets reviewed; no telephone-connected claim.
 TTS-only tests cannot establish real caller performance.
 
 Canonical story: docs/backlog/story-cards.md#v-02
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="v-03"></a>
 
@@ -1391,7 +1391,7 @@ Actual connection evidence exists; no tool success string substitutes for a conn
 Actual provisioning/calls incur cost only after the specific budget/destination is established.
 
 Canonical story: docs/backlog/story-cards.md#v-03
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="v-04"></a>
 
@@ -1436,7 +1436,7 @@ All critical transfer cases pass on the defined test environment; limitations do
 No claims about all accents, population-wide accuracy or real contact-centre savings.
 
 Canonical story: docs/backlog/story-cards.md#v-04
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="r-01"></a>
 
@@ -1481,7 +1481,7 @@ Scope and store/category assumptions reviewed; implementation stories split to <
 No automated customer messaging or invented conversion uplift.
 
 Canonical story: docs/backlog/story-cards.md#r-01
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="r-02"></a>
 
@@ -1526,7 +1526,7 @@ Manual follow-up works with AI disabled and permissions enforced server-side.
 Synthetic demo records; no external customer messages sent.
 
 Canonical story: docs/backlog/story-cards.md#r-02
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="r-03"></a>
 
@@ -1571,7 +1571,7 @@ No unapproved outreach or invented product claims in critical suite.
 The system prepares tasks; real customer delivery is a separately authorized integration.
 
 Canonical story: docs/backlog/story-cards.md#r-03
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="r-04"></a>
 
@@ -1616,7 +1616,7 @@ Results, limits, own contribution and upstream reuse are documented.
 A sales lift claim requires a real authorized controlled pilot, not this synthetic demo.
 
 Canonical story: docs/backlog/story-cards.md#r-04
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="pkg-01"></a>
 
@@ -1661,16 +1661,16 @@ Only actual work and verified outcomes are presented; no invented seniority, emp
 Retail packaging follows R-04; do not wait for retail to publish an accepted bank release.
 
 Canonical story: docs/backlog/story-cards.md#pkg-01
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 <a id="git-01"></a>
 
 ## GIT-01 — Public monorepo, contribution workflow and release hygiene
 
-Status: Preparation drafted — GitHub URL/setup pending
+Status: Bootstrap published — offline CI passed; contribution/release gates remain
 Release: All | Priority: P0 | Forecast sprint: S01
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
-Estimate: 3 person-days most likely (2.5–4.5 range): Dev 2, BA/PO 0.5, QA 0.5; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
+Estimate: 3 person-days most likely (2.5–4.5 range): Dev 2, BA/PO 0.5, QA 0.5; confidence medium. Original full-story estimate retained; bootstrap completion is not a re-estimate.
 Dependencies: GOV-01
 
 ## User story
@@ -1683,36 +1683,36 @@ Show maintainable open-source engineering and transparent individual contributio
 Recommend one repository with independent bank and retail modules. The bank voice channel shares bank domain rules but has narrower authority. Split repositories only when independent users, release ownership and stable package contracts justify it.
 
 ## Development / delivery tasks
-- [ ] After the owner supplies the public repository URL, configure the remote; do not publish the current working tree wholesale.
-- [ ] Prepare an allowlisted export of portfolio-only files; exclude English lessons, job-search personal notes, secrets, raw data, generated databases and unrelated history. Inspect every staged file and repository history before publishing.
-- [ ] Create README navigation, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY contact guidance, issue/PR templates and a license decision for owned code. Record third-party/data terms separately.
-- [ ] Use codex/<story-id>-<topic> branches, PRs linking specs and evidence, protected default branch where available, reproducible CI and versioned release notes.
+- [x] Initialize the owner-provided public repository with clean, portfolio-only history.
+- [x] Review an explicit export allowlist and run publication hygiene/link checks. No raw datasets or personal-workspace history included.
+- [x] Add README navigation, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY guidance, issue/PR templates, MIT license and separate third-party notices.
+- [x] Run offline tests and specification checks on GitHub Actions with Python 3.9 and 3.12.
+- [ ] Exercise a story-linked contribution PR and configure/verify default-branch protection.
+- [ ] Execute the application release checklist when working software is ready.
 
 ## Acceptance criteria
 - GIT-01-AC1: Given a public export, when its files and history are reviewed, then only approved portfolio material and permitted assets are included.
 - GIT-01-AC2: Given a PR, then it references its story/spec, checks and change impact; a reviewer can reproduce the reported checks.
 - GIT-01-AC3: Given a new contributor, then setup, demo limitations, module boundaries and contribution steps are documented.
 
-## Test and evidence plan
-- GIT-01-T1 (planned): Inspect staged export and secret-scan results; verify raw/synthetic generated records are excluded.
-- GIT-01-T2 (planned): Rehearse clean clone, offline tests and one contribution using documented instructions.
+## Executed evidence
+- Initial clean import: 5be1a8d. Reproducible calendar fix: 4af1798.
+- Verified CI for 4af1798: https://github.com/xc8609/service-agent-portfolio/actions/runs/39372023490 — both Python jobs passed.
+- Each job: 5 parser tests, workflow-spec checks, contract checks and publication checks.
+- Contract checks cover 45 schemas, 91 payload examples, 52 authored boundary examples and 4 calendar examples; this does not execute application authorization, PostgreSQL DDL or UAT.
+- A host timezone-data mismatch found by CI was corrected by pinning the simulated fixture rule snapshot; current civil-time rules are not asserted by that snapshot.
+
+## Remaining acceptance
+GIT-01-T2's contribution PR rehearsal and branch protection verification remain pending. Do not mark the entire story or S01/S02 Done. No application, model evaluation or deployment has been completed by this publication.
 
 ## Deliverables
-Repository layout ADR, public-file allowlist, contribution templates, licensing register and release checklist.
+Repository: https://github.com/xc8609/service-agent-portfolio
+Publication evidence: https://github.com/xc8609/service-agent-portfolio/blob/main/docs/github-publication.md
+Repository ADR: https://github.com/xc8609/service-agent-portfolio/blob/main/docs/decisions/001-repository-boundaries.md
+Canonical story: https://github.com/xc8609/service-agent-portfolio/blob/main/docs/backlog/story-cards.md#git-01
 
-## Definition of Done
-Repository URL and actual checks recorded; preparing this card does not mean a repository was created.
+PUBLIC-BOOTSTRAP-v1 | MIT selected by owner | 19 October 2026
 
-## Boundaries
-GitHub remote is pending. Public planning is authorized; publishing private job-search material is not.
-
-Canonical story: docs/backlog/story-cards.md#git-01
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
-
-
-### Actual Sprint 1 increment — 19 October 2026
-
-Version 0.1 analysis is prepared. The owner selected customer-information and handling-rule lookup as the primary pain. See the [bank SDD package](../../projects/bank-service-assist/docs/sprint-01/README.md) for detailed specs, evidence and decisions. Structural checks passed; owner acceptance and application implementation remain pending. GitHub URL/export/remote/CI are pending.
 
 <a id="gov-03"></a>
 
@@ -1758,7 +1758,7 @@ Planning baseline reviewed; no sprint is claimed started or completed merely bec
 Relative weeks are authoritative. Example calendar dates are forecasts only and rebase on actual kickoff.
 
 Canonical story: docs/backlog/story-cards.md#gov-03
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 ### GOV-03 three-developer alternative
 
@@ -1812,7 +1812,7 @@ Rehearsal results and fixed/remaining issues recorded.
 No invented peer approval, employer endorsement or business ROI.
 
 Canonical story: docs/backlog/story-cards.md#pkg-02
-SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub URL pending; no implementation/evaluation is claimed by this card.
+SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
 
 <a id="dev-11"></a>
