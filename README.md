@@ -7,19 +7,12 @@ find authorized transactions, retrieve handling rules, and prepare a human-revie
 specialist enquiry. It connects business analysis, specification-driven delivery
 and agent engineering.
 
-**Works today:** React + FastAPI + PostgreSQL, authorized transaction search and
-evidence review, versioned customer statements and explicit pair recognition with
-synthetic records. Related-case lookup shows progress, owners and duplicate-enquiry
-review hints. Applicable simulated handling rules show conditions, exact citations
-and next steps, with explicit conflict/gap handling. Changed queries invalidate old
-evidence and guidance. Editable service notes require human approval and return a durable
-receipt, with source-version checks and safe retries. Reviewed specialist enquiries
-link existing work or create justified queued work, preserving material/contact gaps.
-Specialists can publish findings and customer service can claim work, review feedback
-and record a newly verified synthetic callback. Contact plans, lead review, overdue
-progress and parallel objection/complaint work preserve ownership and history. A bounded
-offline Agent gathers evidence and creates reviewable drafts; live models remain
-unqualified and disabled. No live bank connection or measured savings.
+**Works today:** scoped transaction/rule lookup, reviewed notes and specialist
+referrals, specialist findings, verified manual feedback, bounded contact plans,
+overdue/objection handling, and a persisted offline evidence assistant. React +
+FastAPI + PostgreSQL; all operational records are synthetic. Live models remain
+disabled and unqualified. SQL exports reconcile with source records; Tableau desktop
+validation and human benefit measurement remain pending.
 
 ## Repository map
 
@@ -33,6 +26,7 @@ projects/bank-service-assist/
   specs/contracts/               Permissions, data model, tool/API schemas
   data/                          Source/terms notes; datasets excluded from Git
   scripts/                       Offline data/specification checks
+  sql/ + dashboard/              Operational marts + Tableau workbook candidate
 docs/backlog/                     Story catalogue, Sprint forecast + current scope
 docs/decisions/                   Repository/architecture decisions
 .github/workflows/               Offline, API/browser and container CI

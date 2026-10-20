@@ -1,6 +1,6 @@
 # DEV-10 — Build operational event marts and a reconciled Tableau view
 
-BANK-S02-v0.4 · Detailed specification candidate; implementation not started.
+BANK-S02-v0.4 baseline · Offline implementation under review; see [current evidence](runtime-contract.md).
 Forecast: S05A | Release: B1 | Estimate: Dev 3, BA 1, QA 0.5 person-days. Provisional until technical review.
 
 ## Business purpose and scope
@@ -9,7 +9,7 @@ As an operations analyst, I want trustworthy workflow metrics so that I can insp
 
 Value: Connect the data analyst portfolio to the same service question. Owner relevance: customer-service desktop, banking product/BA and prior frontend experience. Target-role evidence: repository R01/R02/R06 requirements/API/testing/enterprise delivery samples; no new vacancy or proficiency claim.
 
-Dashboard creation and validation are future work, not completed by this plan. All operational scenarios and records are synthetic.
+A Tableau workbook candidate and reconciled export now exist; desktop validation remains pending. All operational scenarios and records are synthetic.
 
 Requirements: BR-01, MEAS-01. Dependencies: DEV-06, DEV-07, DEV-08, BA-07.
 

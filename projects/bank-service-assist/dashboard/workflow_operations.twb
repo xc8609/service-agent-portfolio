@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8'?>
+<workbook original-version="18.1" source-platform="mac" version="18.1">
+  <preferences />
+  <datasources>
+    <datasource caption="Synthetic workflow metrics" inline="true" name="workflow" version="18.1">
+      <connection class="textscan" directory="../data/processed/tableau" filename="workflow_metrics.csv" password="" server="">
+        <relation name="workflow_metrics" table="[workflow_metrics#csv]" type="table">
+          <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+            <column datatype="string" name="metric_group" ordinal="0" />
+            <column datatype="string" name="metric" ordinal="1" />
+            <column datatype="string" name="segment" ordinal="2" />
+            <column datatype="real" name="value" ordinal="3" />
+            <column datatype="string" name="availability" ordinal="4" />
+            <column datatype="string" name="cutoff" ordinal="5" />
+            <column datatype="string" name="data_kind" ordinal="6" />
+          </columns>
+        </relation>
+      </connection>
+      <column caption="Metric Group" datatype="string" name="[metric_group]" role="dimension" type="nominal" />
+      <column caption="Metric" datatype="string" name="[metric]" role="dimension" type="nominal" />
+      <column caption="Segment" datatype="string" name="[segment]" role="dimension" type="nominal" />
+      <column caption="Value" datatype="real" name="[value]" role="measure" type="quantitative" />
+      <column caption="Availability" datatype="string" name="[availability]" role="dimension" type="nominal" />
+      <column caption="Cutoff" datatype="string" name="[cutoff]" role="dimension" type="nominal" />
+      <column caption="Data Kind" datatype="string" name="[data_kind]" role="dimension" type="nominal" />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name="Workflow operational evidence">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>SYNTHETIC WORKFLOW — offline engineering evidence; no measured savings or ROI</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Synthetic workflow metrics" name="workflow" />
+          </datasources>
+          <datasource-dependencies datasource="workflow">
+            <column caption="Metric Group" datatype="string" name="[metric_group]" role="dimension" type="nominal" />
+            <column-instance column="[metric_group]" derivation="None" name="[none:metric_group:nk]" pivot="key" type="nominal" />
+            <column caption="Metric" datatype="string" name="[metric]" role="dimension" type="nominal" />
+            <column-instance column="[metric]" derivation="None" name="[none:metric:nk]" pivot="key" type="nominal" />
+            <column caption="Segment" datatype="string" name="[segment]" role="dimension" type="nominal" />
+            <column-instance column="[segment]" derivation="None" name="[none:segment:nk]" pivot="key" type="nominal" />
+            <column caption="Value" datatype="real" name="[value]" role="measure" type="quantitative" />
+            <column-instance column="[value]" derivation="Sum" name="[sum:value:qk]" pivot="key" type="quantitative" />
+            <column caption="Availability" datatype="string" name="[availability]" role="dimension" type="nominal" />
+            <column-instance column="[availability]" derivation="None" name="[none:availability:nk]" pivot="key" type="nominal" />
+            <column caption="Cutoff" datatype="string" name="[cutoff]" role="dimension" type="nominal" />
+            <column-instance column="[cutoff]" derivation="None" name="[none:cutoff:nk]" pivot="key" type="nominal" />
+            <column caption="Data Kind" datatype="string" name="[data_kind]" role="dimension" type="nominal" />
+            <column-instance column="[data_kind]" derivation="None" name="[none:data_kind:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <aggregation value="true" />
+        </view>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <text column="[workflow].[sum:value:qk]" />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[workflow].[none:metric_group:nk] / [workflow].[none:metric:nk] / [workflow].[none:segment:nk] / [workflow].[none:availability:nk]</rows>
+        <cols />
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows>
+    <window class="worksheet" name="Workflow operational evidence">
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+    </window>
+  </windows>
+</workbook>

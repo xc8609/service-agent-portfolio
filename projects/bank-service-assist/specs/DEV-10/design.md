@@ -1,6 +1,6 @@
 # DEV-10 — Build operational event marts and a reconciled Tableau view
 
-BANK-S02-v0.4 · Detailed specification candidate; implementation not started.
+BANK-S02-v0.4 baseline · Offline implementation under review; see [current evidence](runtime-contract.md).
 Forecast: S05A | Release: B1 | Estimate: Dev 3, BA 1, QA 0.5 person-days. Provisional until technical review.
 
 ## Components and contracts

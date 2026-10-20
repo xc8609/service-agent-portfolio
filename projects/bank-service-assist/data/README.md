@@ -105,3 +105,9 @@ records remain `synthetic-ledger-v1`; DEV-04 case fixtures are retained.
 Source labels, IDs, versions and effective intervals are exposed with guidance.
 Fixtures encode accepted D-23–25 intake boundaries but do not assert financial
 outcomes, savings, stakeholder approvals or model evaluation results.
+
+## DEV-10 operational exports (20 October 2026)
+
+The SQL/Tableau dataset comes from this repository's synthetic PostgreSQL workflow
+and explicit test fixtures, not a bank download or BANKING77 transaction history.
+Generated CSVs/manifests remain ignored. [Reproduction, grain and limitations](../dashboard/README.md).

@@ -81,7 +81,7 @@ def test_one_reserved_date_and_actual_duplicate_retained(environment):
         ]
 
 
-def test_window_expires_then_lead_hold_and_bounded_new_plan(environment):
+def exercise_contact_continuation(environment):
     client, admin, runtime, _ = environment
     _, _, h, w, opened = setup_feedback(client)
     original = detail(client, h, w)["work"]["original_due_at"]
@@ -170,6 +170,10 @@ def test_window_expires_then_lead_hold_and_bounded_new_plan(environment):
             ).status_code
             == 409
         )
+
+
+def test_window_expires_then_lead_hold_and_bounded_new_plan(environment):
+    exercise_contact_continuation(environment)
 
 
 def test_closure_denies_pending_work_then_requires_current_verified_result(environment):

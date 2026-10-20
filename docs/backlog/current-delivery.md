@@ -35,10 +35,10 @@ to mark entire stories complete from a partial slice.
 |---|---|---|---|
 | S02 | Initialization, contracts, CI; DEV-01/QA-01/OPS-01 plus pulled-forward DEV-02/03 reads | Runnable demo, authorization failures and CI/PR evidence | Read slice under PR review; intake rules accepted |
 | S03 | Finish manual investigation: DEV-02/03/04/05 | Statement/selection, current case and policy evidence, stale-query fix, negative permission tests | DEV-03/04 and DEV-05 inbound rule reads under PR review; full workflow and owner acceptance pending |
-| S04 | Manual note and reviewed referral: DEV-06/07; provider qualification DEV-09 | Draft/edit/approve, missing-material/contact-gap intake, atomic receipt, replay tests | DEV-06 note PR and DEV-07 typed initial intake implemented; provider work pending |
-| S04A | Minimal result and manual feedback: DEV-11, core guards from DEV-12/13 | Finding, accountable feedback, actual outcome, no false closure, manual lead review for exceptions | Planned; advanced continuation automation deferred |
-| S05 | Bounded assistance: DEV-08 | Qualified provider, allowlisted tools, cited drafts, manual fallback and model-failure scenarios | Planned; no Agent code yet |
-| S05A / S06 | Evaluation, SQL/Tableau evidence, staging/UAT and bank release | Reconciled metrics, executed evaluation, reproducible deployment/recovery and recorded acceptance | Planned |
+| S04 | Manual note and reviewed referral: DEV-06/07; provider qualification DEV-09 | Draft/edit/approve, missing-material/contact-gap intake, atomic receipt, replay tests | DEV-06/07 implemented in PRs 5/6; DEV-09 offline adapters in PR 10; live qualification deferred by owner |
+| S04A | Minimal result and manual feedback: DEV-11, core guards from DEV-12/13 | Finding, accountable feedback, actual outcome, no false closure, manual lead review for exceptions | DEV-11/12/13 implemented in PRs 7/8/9; local worker, manual callbacks; owner UAT pending |
+| S05 | Bounded assistance: DEV-08 | Qualified provider, allowlisted tools, cited drafts, manual fallback and model-failure scenarios | DEV-08 offline runtime in PR 11; live model validation deferred |
+| S05A / S06 | Evaluation, SQL/Tableau evidence, staging/UAT and bank release | Reconciled metrics, executed evaluation, reproducible deployment/recovery and recorded acceptance | DEV-10 export/workbook candidate; Desktop validation, human study and staging/UAT pending |
 
 ## Keep out of the first core increment
 
@@ -56,15 +56,17 @@ accepted until their specified automation is implemented and tested. The earlier
 question about allocating supplementary calls to plans is deferred with that
 scheduler, not an invitation to invent a new quota or block unrelated core work.
 
-## Next PR-sized work after the foundation
+## Current review and release gates
 
-- DEV-03: statement/recognition and query-context correctness.
-- DEV-04/05: existing-work and policy evidence, with missing/source-failure paths.
-- BA-07/09 + DEV-06/07: typed intake and reviewed persistence, then referral.
-- DEV-11: result and manual feedback with minimal deadline/closure guards.
-- DEV-09/08: provider qualification and bounded assistant, using tested services.
+All bank DEV offline increments now have implementation/evidence in the
+[execution ledger](dev-execution-ledger.md); review stacked PRs in dependency order.
+They are not merged or owner-accepted. Keep the original Sprint forecast as planning
+history, not actual elapsed person-days or completed Sprint acceptance.
 
-No bulk runtime rewrite solely to change folder names. Keep each PR tied to its
-story, accepted rules, design and executed tests. Re-estimate changed/deferred
-work before committing a Sprint; do not reuse the old expanded forecast as a
-verified estimate for this narrower slice.
+1. Review manual workflow and exceptions together with the owner.
+2. Unlock the Mac for Tableau Desktop open/refresh/visual verification.
+3. Qualify one real provider when the owner resumes that explicitly deferred work.
+4. Run the B0/B1 effort/quality evaluation and staging recovery/UAT before release.
+
+No automatic phone execution, financial action or bulk architecture rewrite. Voice
+and retail remain later releases. Do not equate offline tests with real model quality.
