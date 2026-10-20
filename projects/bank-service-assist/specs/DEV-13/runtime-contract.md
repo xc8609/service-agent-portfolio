@@ -36,3 +36,18 @@ AC03 to unknown-reason progress; AC04 to stale commitment; AC05–07 to new evid
 foreign-customer rejection, no-evidence disagreement and parallel idempotent complaint.
 DEV-08 adds model drafting; no live model, business benefit, bank integration or owner
 UAT acceptance is claimed. External complaint adjudication remains outside scope.
+
+## Integration correction: result supersedes interim progress work
+
+DEV-13-AC04: Publishing a specialist finding atomically cancels only unfinished
+progress_callback children of that investigation and advances their versions. It
+supersedes pending/approved update commitments, preserving existing approval fields;
+a pending proposal records supersession by the publishing specialist, not lead approval.
+Original due events, deadlines, completed contacts and historical result versions remain.
+The existing final-feedback task is created/reused. An already-open interim contact
+can no longer disclose or record outdated progress, and cancelled work cannot block
+normal closure. Replayed publication does not repeat this transition.
+
+Regression evidence: test_result_supersedes_open_progress_contact_without_erasing_overdue_history
+and the extended pending-commitment test in test_exceptions.py. Full verification is
+recorded in the follow-up PR; no new external integration or business rule is introduced.

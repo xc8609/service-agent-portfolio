@@ -93,6 +93,107 @@ def test_update_commitment_requires_lead_and_current_investigation(environment):
     r, _ = publish(client, h, w)
     assert r.status_code == 200
     assert confirm(client, lead, w, second).status_code == 409
+    with psycopg.connect(environment[1]) as conn:
+        pending = conn.execute(
+            "SELECT status,decision_reason FROM update_commitments WHERE id=%s",
+            (second["commitment_id"],),
+        ).fetchone()
+        assert pending == ("superseded", "Superseded by published finding; not an approval")
+
+
+def test_result_supersedes_open_progress_contact_without_erasing_overdue_history(environment):
+    client, specialist, investigation, runtime = overdue(environment)
+    tick(Settings(runtime), NOW)
+    proposed = propose(client, specialist, investigation)
+    lead, _ = session(client, "lead")
+    assert confirm(client, lead, investigation, proposed).status_code == 200
+    feedback, _ = session(client, "feedback_unclaimed")
+    progress = find_work(client, feedback, "progress_callback", investigation["case_id"])
+    assert (
+        call(
+            client,
+            feedback,
+            "claim_feedback_task",
+            {
+                **pair(progress),
+                "expected_work_version": progress["version"],
+                "operation_key": str(uuid4()),
+            },
+        ).status_code
+        == 200
+    )
+    before = detail(client, feedback, progress)
+    opened = call(
+        client,
+        feedback,
+        "open_progress_contact",
+        {
+            **pair(progress),
+            "expected_work_version": before["work"]["version"],
+            "operation_key": str(uuid4()),
+        },
+    ).json()
+    assert (
+        call(
+            client,
+            feedback,
+            "demo_callback_verification",
+            {
+                "callback_contact_id": opened["contact_id"],
+                "scenario": "verified",
+                "operation_key": str(uuid4()),
+            },
+        ).status_code
+        == 200
+    )
+    disclosure = {**pair(progress), "callback_contact_id": opened["contact_id"]}
+    assert call(client, feedback, "get_progress_disclosure", disclosure).status_code == 200
+    result, payload = publish(client, specialist, investigation)
+    assert result.status_code == 200, result.text
+    assert call(client, specialist, "record_specialist_result", payload).json() == result.json()
+    after = detail(client, feedback, progress)
+    assert after["work"]["status"] == "cancelled"
+    assert after["work"]["version"] == before["work"]["version"] + 1
+    assert after["work"]["original_due_at"] == before["work"]["original_due_at"]
+    assert call(client, feedback, "get_progress_disclosure", disclosure).status_code == 409
+    assert (
+        call(
+            client,
+            feedback,
+            "record_progress_contact",
+            {
+                **disclosure,
+                "expected_case_version": before["work"]["case_version"],
+                "expected_work_version": before["work"]["version"],
+                "commitment_id": proposed["commitment_id"],
+                "reviewed": True,
+                "operation_key": str(uuid4()),
+            },
+        ).status_code
+        == 409
+    )
+    assert find_work(client, feedback, "customer_feedback", investigation["case_id"])
+    tick(Settings(runtime), NOW)
+    with psycopg.connect(environment[1]) as conn:
+        assert (
+            conn.execute(
+                "SELECT status FROM update_commitments WHERE id=%s", (proposed["commitment_id"],)
+            ).fetchone()[0]
+            == "superseded"
+        )
+        assert (
+            conn.execute(
+                "SELECT count(*) FROM due_events WHERE work_item_id=%s", (investigation["id"],)
+            ).fetchone()[0]
+            == 1
+        )
+        assert (
+            conn.execute(
+                "SELECT count(*) FROM work_items WHERE parent_work_id=%s AND kind='progress_callback'",
+                (investigation["id"],),
+            ).fetchone()[0]
+            == 1
+        )
 
 
 def test_progress_without_result_requires_fresh_proof_and_does_not_consume_final_quota(environment):
