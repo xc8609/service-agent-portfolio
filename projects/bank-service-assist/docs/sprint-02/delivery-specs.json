@@ -1,0 +1,421 @@
+{
+  "version": "0.4",
+  "status": "Detailed candidates; not runtime acceptance",
+  "stories": [
+    {
+      "id": "DEV-01",
+      "requirements": [
+        "FR-12",
+        "DATA-01"
+      ],
+      "sprint": "S02",
+      "acceptance": [
+        {
+          "id": "DEV-01-AC01",
+          "testId": "DEV-01-T01",
+          "given": "A clean supported checkout with empty demo database",
+          "when": "run documented migration and seed commands twice",
+          "then": "second run changes no fixture IDs or counts; API and UI display labelled synthetic scenario and schema version",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-01-AC02",
+          "testId": "DEV-01-T02",
+          "given": "No model credentials",
+          "when": "start UI/API/worker and complete manual lookup",
+          "then": "manual path remains usable; agent availability is explicitly disabled",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-01-AC03",
+          "testId": "DEV-01-T03",
+          "given": "Database is unavailable or a required configuration value is malformed",
+          "when": "check liveness and readiness",
+          "then": "process liveness is separate from dependency readiness; readiness is non-success with sanitized correlation ID",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-01-AC04",
+          "testId": "DEV-01-T04",
+          "given": "Reset is aimed at a database not explicitly marked disposable demo",
+          "when": "request reset",
+          "then": "refuse without deleting records; reset requires matching environment guard and explicit demo target",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-01-AC05",
+          "testId": "DEV-01-T05",
+          "given": "Repository existing Python 3.9 evaluation suite",
+          "when": "install Python 3.12 application dependencies in separate environment",
+          "then": "legacy suite remains independently runnable; app lock and setup record supported versions",
+          "execution": "Not executed"
+        }
+      ]
+    },
+    {
+      "id": "DEV-04",
+      "requirements": [
+        "FR-02",
+        "FR-04"
+      ],
+      "sprint": "S03",
+      "acceptance": [
+        {
+          "id": "DEV-04-AC01",
+          "testId": "DEV-04-T01",
+          "given": "Assigned feedback task and case awaiting documents",
+          "when": "open timeline",
+          "then": "show recorded request, owner, source time and original due date without inventing progress",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-04-AC02",
+          "testId": "DEV-04-T02",
+          "given": "No approved next update or completion estimate",
+          "when": "request customer explanation",
+          "then": "show next update unknown and completion date unknown separately; pending commitment is not displayed as approved",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-04-AC03",
+          "testId": "DEV-04-T03",
+          "given": "Two events arrive out of order with distinct occurrence/recording times",
+          "when": "render case history",
+          "then": "use stable aggregate sequence and show both timestamps; do not overwrite prior finding with late ingestion",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-04-AC04",
+          "testId": "DEV-04-T04",
+          "given": "A case ID belongs to another customer or task has been reassigned",
+          "when": "read case",
+          "then": "deny with uniform FORBIDDEN_OR_NOT_FOUND; no existence disclosure and no retained stale detail",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-04-AC05",
+          "testId": "DEV-04-T05",
+          "given": "Re-review and complaint intake coexist",
+          "when": "read linked work",
+          "then": "show separate owners/statuses and original case link; completion of one does not mark the other resolved",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-04-AC06",
+          "testId": "DEV-04-T06",
+          "given": "Unavailable upstream or conflicting current versions",
+          "when": "refresh",
+          "then": "show unavailable/conflict rather than no case or closed; retain last-view freshness label and disable unsafe commit",
+          "execution": "Not executed"
+        }
+      ]
+    },
+    {
+      "id": "DEV-06",
+      "requirements": [
+        "FR-07",
+        "FR-08",
+        "FR-11",
+        "FR-13",
+        "NFR-02",
+        "NFR-03"
+      ],
+      "sprint": "S04",
+      "acceptance": [
+        {
+          "id": "DEV-06-AC01",
+          "testId": "DEV-06-T01",
+          "given": "A manual draft with customer allegation and supported facts",
+          "when": "staff edits and approves current proposal revision",
+          "then": "save exactly reviewed content, labelled allegations, actor/time, source versions and durable receipt",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-06-AC02",
+          "testId": "DEV-06-T02",
+          "given": "Source or assignment changes after draft",
+          "when": "approve",
+          "then": "reject stale/unauthorized commit; preserve user edits for deliberate rebase, never silently overwrite",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-06-AC03",
+          "testId": "DEV-06-T03",
+          "given": "Two edits target same proposal version",
+          "when": "save both",
+          "then": "one version advances, second conflicts; revision history remains auditable",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-06-AC04",
+          "testId": "DEV-06-T04",
+          "given": "Same approval key/payload is retried after response loss",
+          "when": "retry",
+          "then": "return same committed note and receipt; no duplicate note/outbox event",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-06-AC05",
+          "testId": "DEV-06-T05",
+          "given": "Same operation key with changed content",
+          "when": "retry",
+          "then": "IDEMPOTENCY_CONFLICT with original content untouched",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-06-AC06",
+          "testId": "DEV-06-T06",
+          "given": "Note says refund completed but there is no completion evidence",
+          "when": "review/commit",
+          "then": "flag unsupported action claim; statement may only be stored as attributed customer allegation, not confirmed execution",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-06-AC07",
+          "testId": "DEV-06-T07",
+          "given": "Model or unscoped employee invokes edit or commit",
+          "when": "submit",
+          "then": "deny; create_proposal remains draft-only; server authority does not come from body fields",
+          "execution": "Not executed"
+        }
+      ]
+    },
+    {
+      "id": "DEV-09",
+      "requirements": [
+        "FR-14"
+      ],
+      "sprint": "S04",
+      "acceptance": [
+        {
+          "id": "DEV-09-AC01",
+          "testId": "DEV-09-T01",
+          "given": "Offline fake provider and fixed tool response fixtures",
+          "when": "run normalized multi-turn conversation",
+          "then": "same domain tool schemas and server authorization run without vendor credentials",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-09-AC02",
+          "testId": "DEV-09-T02",
+          "given": "Streaming provider emits partial/invalid tool arguments",
+          "when": "receive tool event",
+          "then": "buffer until complete, validate schema, execute no partial/invalid call; bounded repair or safe failure",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-09-AC03",
+          "testId": "DEV-09-T03",
+          "given": "Rate limit, timeout, cancellation or missing usage",
+          "when": "handle event",
+          "then": "return typed terminal status; no duplicate operational effect; missing usage/cost stays unavailable, not zero",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-09-AC04",
+          "testId": "DEV-09-T04",
+          "given": "Internal-only profile or unapproved endpoint",
+          "when": "attempt fallback/provider request",
+          "then": "deny unauthorized egress; never silently switch to a public provider",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-09-AC05",
+          "testId": "DEV-09-T05",
+          "given": "Eligible OpenAI and Claude credentials/budget available",
+          "when": "run identical required scenarios",
+          "then": "record dated model/provider/config, tool compatibility, actual costs and failures for each; otherwise mark live qualification not executed",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-09-AC06",
+          "testId": "DEV-09-T06",
+          "given": "Provider input contains customer/internal data outside allowed DTO",
+          "when": "prepare request",
+          "then": "exclude credentials/contact details/internal-only notes; safe trace preserves references not sensitive payload",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-09-AC07",
+          "testId": "DEV-09-T07",
+          "given": "A live route lacks a required capability",
+          "when": "select route for B1",
+          "then": "route remains unqualified; DeepSeek/internal compatibility is not inferred from API similarity",
+          "execution": "Not executed"
+        }
+      ]
+    },
+    {
+      "id": "DEV-10",
+      "requirements": [
+        "BR-01",
+        "MEAS-01"
+      ],
+      "sprint": "S05A",
+      "acceptance": [
+        {
+          "id": "DEV-10-AC01",
+          "testId": "DEV-10-T01",
+          "given": "A known synthetic event ledger with duplicate delivery",
+          "when": "build marts",
+          "then": "deduplicate by authoritative IDs; exported totals equal fixture oracle and SQL source totals",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-10-AC02",
+          "testId": "DEV-10-T02",
+          "given": "Completed, cancelled, failed and abandoned runs",
+          "when": "calculate run metrics",
+          "then": "include all started runs in outcome denominator; show unresolved and missing latency explicitly",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-10-AC03",
+          "testId": "DEV-10-T03",
+          "given": "Draft edited multiple times then approved once",
+          "when": "calculate proposal metrics",
+          "then": "count a proposal once by defined revision/status rule; distinguish accepted unchanged from edited; exclude pending from decided-only denominator and display pending count",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-10-AC04",
+          "testId": "DEV-10-T04",
+          "given": "Original contact plan followed by lead-approved plan",
+          "when": "calculate callback metrics",
+          "then": "report lifetime calls, per-plan calls, technical faults and original-window misses separately; no apparent improvement from erased history",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-10-AC05",
+          "testId": "DEV-10-T05",
+          "given": "No human effort study or provider usage missing",
+          "when": "render Tableau",
+          "then": "no measured savings/ROI shown; missing cost remains unavailable; synthetic status visible",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-10-AC06",
+          "testId": "DEV-10-T06",
+          "given": "Same data refresh is repeated, including late events",
+          "when": "export and refresh workbook",
+          "then": "stable snapshot totals reconcile; late-event adjustment and data cutoff are recorded",
+          "execution": "Not executed"
+        }
+      ]
+    },
+    {
+      "id": "QA-01",
+      "requirements": [
+        "NFR-03"
+      ],
+      "sprint": "S02",
+      "acceptance": [
+        {
+          "id": "QA-01-AC01",
+          "testId": "QA-01-T01",
+          "given": "Current Must requirements and story AC IDs",
+          "when": "build coverage manifest",
+          "then": "each maps to planned layer, fixture, independent oracle and release gate; missing mapping fails validation",
+          "execution": "Not executed"
+        },
+        {
+          "id": "QA-01-AC02",
+          "testId": "QA-01-T02",
+          "given": "Cross-customer read or agent-approved write is attempted",
+          "when": "run authorization integration suite",
+          "then": "access is denied at API/service boundary; no secret/internal detail in response or trace",
+          "execution": "Not executed"
+        },
+        {
+          "id": "QA-01-AC03",
+          "testId": "QA-01-T03",
+          "given": "Duplicate requests, stale versions and worker restart",
+          "when": "run real test-Postgres transaction suite",
+          "then": "one effect/receipt, preserved audit, recoverable pending work; report actual database version",
+          "execution": "Not executed"
+        },
+        {
+          "id": "QA-01-AC04",
+          "testId": "QA-01-T04",
+          "given": "A deliberately invalid transition is injected in isolated test",
+          "when": "execute suite",
+          "then": "test fails for the expected business reason; remove mutation after demonstration",
+          "execution": "Not executed"
+        },
+        {
+          "id": "QA-01-AC05",
+          "testId": "QA-01-T05",
+          "given": "Live models/cloud/database are unavailable",
+          "when": "publish test report",
+          "then": "affected suites explicitly skipped with reason; schema checks never relabelled runtime/UAT pass",
+          "execution": "Not executed"
+        },
+        {
+          "id": "QA-01-AC06",
+          "testId": "QA-01-T06",
+          "given": "A critical authorization/closure case fails",
+          "when": "evaluate release gate",
+          "then": "block promotion regardless of average score or total passing-test count",
+          "execution": "Not executed"
+        }
+      ]
+    },
+    {
+      "id": "OPS-01",
+      "requirements": [
+        "OR-01"
+      ],
+      "sprint": "S02",
+      "acceptance": [
+        {
+          "id": "OPS-01-AC01",
+          "testId": "OPS-01-T01",
+          "given": "Clean checkout with approved locks",
+          "when": "build frontend/API/worker artifacts",
+          "then": "record commit/config/image digests; no unpinned latest dependency in release artifact",
+          "execution": "Not executed"
+        },
+        {
+          "id": "OPS-01-AC02",
+          "testId": "OPS-01-T02",
+          "given": "Any required lint/type/contract/integration check fails",
+          "when": "run pipeline",
+          "then": "no release-candidate promotion; retain failure evidence",
+          "execution": "Not executed"
+        },
+        {
+          "id": "OPS-01-AC03",
+          "testId": "OPS-01-T03",
+          "given": "No model key and private database network",
+          "when": "start Compose demo",
+          "then": "manual UI/API operate; database is not publicly exposed; readiness waits for schema/dependencies",
+          "execution": "Not executed"
+        },
+        {
+          "id": "OPS-01-AC04",
+          "testId": "OPS-01-T04",
+          "given": "Browser assets, images and logs inspected",
+          "when": "check secret/data exclusions",
+          "then": "no provider key, private customer material or raw datasets; env example contains placeholders only",
+          "execution": "Not executed"
+        },
+        {
+          "id": "OPS-01-AC05",
+          "testId": "OPS-01-T05",
+          "given": "Only local checks executed, GitHub not connected",
+          "when": "write release evidence",
+          "then": "state cloud CI not executed; never mark cloud build success",
+          "execution": "Not executed"
+        },
+        {
+          "id": "OPS-01-AC06",
+          "testId": "OPS-01-T06",
+          "given": "Migrations or workers fail during staging rollout",
+          "when": "follow runbook",
+          "then": "stop promotion, preserve data and pending work; restore/forward-fix plan tested in isolated staging before release",
+          "execution": "Not executed"
+        }
+      ]
+    }
+  ]
+}

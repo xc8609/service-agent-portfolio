@@ -1,0 +1,1272 @@
+{
+  "version": "0.2",
+  "date": "2026-10-19",
+  "status": "Mixed: accepted business scope and draft implementation contracts; see decisions",
+  "requirements": [
+    {
+      "id": "BR-01",
+      "type": "business",
+      "priority": "Must",
+      "statement": "Reduce active customer-information and applicable-rule lookup effort while preserving supported-answer quality.",
+      "rationale": "Primary owner-selected value; O-01/O-02.",
+      "evidence": "E-02",
+      "rules": [
+        "RULE-16"
+      ],
+      "stories": [
+        "DEV-10",
+        "QA-03"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-01",
+        "given": "Representative completes the same scenario with manual and assisted tools",
+        "when": "time and correctness are evaluated",
+        "then": "report paired active lookup plus verification time, completion outcome and errors without fabricating savings"
+      },
+      "testId": "BANK-T-01",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-01",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Establish contact context from an authorized session before private customer/account/case lookup.",
+      "rationale": "Prevent unauthorized disclosure.",
+      "evidence": "E-01",
+      "rules": [
+        "RULE-01"
+      ],
+      "stories": [
+        "DEV-02"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-02",
+        "given": "a requested account is outside session scope",
+        "when": "a representative or agent requests it",
+        "then": "deny without exposing the other customer's existence or details"
+      },
+      "testId": "BANK-T-02",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-02",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Let the representative clarify merchant, amount/currency/date or case reference and distinguish reported from verified facts.",
+      "rationale": "Lookup must identify the intended record.",
+      "evidence": "E-02",
+      "rules": [
+        "RULE-02"
+      ],
+      "stories": [
+        "DEV-03",
+        "DEV-04"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-03",
+        "given": "multiple transactions match incomplete wording",
+        "when": "a candidate record is suggested",
+        "then": "require selection/clarification and retain fact provenance"
+      },
+      "testId": "BANK-T-03",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-03",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Display scoped transaction status, timestamp and evidence version without treating equal amounts as a confirmed duplicate.",
+      "rationale": "Support the duplicate-charge job.",
+      "evidence": "E-04",
+      "rules": [
+        "RULE-02"
+      ],
+      "stories": [
+        "DEV-03"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-04",
+        "given": "one matching entry is pending and another posted",
+        "when": "facts are displayed or summarized",
+        "then": "show both states and uncertainty without promising reversal/refund"
+      },
+      "testId": "BANK-T-04",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-04",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Retrieve permitted case history, current status, owner and documented next action as of the enquiry.",
+      "rationale": "Support status enquiries without invented promises.",
+      "evidence": "E-02",
+      "rules": [
+        "RULE-04"
+      ],
+      "stories": [
+        "DEV-04"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-05",
+        "given": "a case has no recorded completion date",
+        "when": "the representative asks when it will finish",
+        "then": "state unknown ETA and the recorded next step"
+      },
+      "testId": "BANK-T-05",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-05",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Search policy by product, jurisdiction, audience and effective interval; show policy ID/version/section.",
+      "rationale": "Return applicable evidence, not merely similar text.",
+      "evidence": "E-03",
+      "rules": [
+        "RULE-05"
+      ],
+      "stories": [
+        "DEV-05"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-06",
+        "given": "a candidate document belongs to the wrong product/audience/date",
+        "when": "search runs",
+        "then": "exclude it from authoritative evidence and expose any resulting gap"
+      },
+      "testId": "BANK-T-06",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-06",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Present supported answer/proposed next step, supporting fact/policy references and unresolved questions separately.",
+      "rationale": "Make assistant output inspectable.",
+      "evidence": "E-02",
+      "rules": [
+        "RULE-05"
+      ],
+      "stories": [
+        "DEV-08"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-07",
+        "given": "a material fact or applicable rule is absent",
+        "when": "the assistant responds",
+        "then": "ask for clarification or manual review rather than fabricate the missing evidence"
+      },
+      "testId": "BANK-T-07",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-07",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Invalidate affected proposals when a customer correction or source version changes.",
+      "rationale": "Prevent stale advice and writes.",
+      "evidence": "E-02",
+      "rules": [
+        "RULE-11"
+      ],
+      "stories": [
+        "DEV-06",
+        "DEV-08"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-08",
+        "given": "purchase recognition changes after a draft",
+        "when": "a new turn is recorded",
+        "then": "mark conflicting advice stale and use the manual risk path"
+      },
+      "testId": "BANK-T-08",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-08",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Allow the representative to edit and approve a contact note; distinguish draft, approved and persisted states.",
+      "rationale": "Capture a truthful secondary service record.",
+      "evidence": "E-01",
+      "rules": [
+        "RULE-09"
+      ],
+      "stories": [
+        "DEV-06"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-09",
+        "given": "a representative edits the draft",
+        "when": "they explicitly approve the current version",
+        "then": "save only after current permission/version checks and return actual receipt"
+      },
+      "testId": "BANK-T-09",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-09",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Create follow-up only for explicit unresolved work; link existing tasks before creating new ones.",
+      "rationale": "Avoid artificial case volume and duplicate work.",
+      "evidence": "E-02",
+      "rules": [
+        "RULE-06"
+      ],
+      "stories": [
+        "DEV-07"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-10",
+        "given": "the enquiry is answered and no additional action exists",
+        "when": "the contact is concluded",
+        "then": "save the contact without creating a new operational case/task"
+      },
+      "testId": "BANK-T-10",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-10",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Require a valid owner/queue, reason, next step and review time for follow-up; report actual state.",
+      "rationale": "Do not orphan unresolved work.",
+      "evidence": "E-01",
+      "rules": [
+        "RULE-08"
+      ],
+      "stories": [
+        "DEV-07"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-11",
+        "given": "no valid receiving owner/queue is available",
+        "when": "follow-up is proposed",
+        "then": "do not label it assigned; preserve work and surface the supervisor exception"
+      },
+      "testId": "BANK-T-11",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-11",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Keep complaint-signal review independent of contact closure and new-task need.",
+      "rationale": "Do not lose dissatisfaction while simplifying workflow.",
+      "evidence": "E-02",
+      "rules": [
+        "RULE-07"
+      ],
+      "stories": [
+        "DEV-06",
+        "DEV-07"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-12",
+        "given": "a customer expresses dissatisfaction but the factual enquiry is answered",
+        "when": "the representative concludes the contact",
+        "then": "preserve complaint-review signal/reference according to simulated policy without forcing an unrelated operational task"
+      },
+      "testId": "BANK-T-12",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-12",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Provide the same manual lookup/edit workflow when model assistance fails or is disabled.",
+      "rationale": "Maintain service continuity and a fair baseline.",
+      "evidence": "E-01",
+      "rules": [
+        "RULE-12"
+      ],
+      "stories": [
+        "DEV-01",
+        "DEV-08"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-13",
+        "given": "a provider times out or returns malformed output",
+        "when": "the run stops within bounds",
+        "then": "retain the manual workflow and existing saved work"
+      },
+      "testId": "BANK-T-13",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-13",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Revalidate authorization and source/proposal versions on every approved write; make retries idempotent.",
+      "rationale": "Prevent repeated or stale business effects.",
+      "evidence": "E-01",
+      "rules": [
+        "RULE-10"
+      ],
+      "stories": [
+        "DEV-06",
+        "DEV-07"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-14",
+        "given": "the same approved operation is retried",
+        "when": "the server receives it again",
+        "then": "return a consistent result with one domain effect and auditable attempts"
+      },
+      "testId": "BANK-T-14",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-14",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Use scoped allowlisted tools and bounded turns/time; customer narratives cannot grant authority.",
+      "rationale": "Keep model reasoning outside authorization decisions.",
+      "evidence": "E-02",
+      "rules": [
+        "RULE-13"
+      ],
+      "stories": [
+        "DEV-08",
+        "DEV-09"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-15",
+        "given": "customer content requests ignoring permissions",
+        "when": "the assistant processes it",
+        "then": "treat it as data and reject forbidden tool effects"
+      },
+      "testId": "BANK-T-15",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-15",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Select effective policy by explicit contact as-of time and retain that policy version in evidence.",
+      "rationale": "Handle changing procedure editions transparently.",
+      "evidence": "E-05",
+      "rules": [
+        "RULE-15"
+      ],
+      "stories": [
+        "DEV-05",
+        "DEV-08"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-16",
+        "given": "a later edition is uploaded but not yet effective",
+        "when": "the earlier-as-of contact is handled",
+        "then": "do not use the future edition as current guidance"
+      },
+      "testId": "BANK-T-16",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "NFR-01",
+      "type": "nonfunctional",
+      "priority": "Must",
+      "statement": "Protect private fields in responses, errors, logs and traces; role and customer scope are server-enforced.",
+      "rationale": "Access control extends beyond the user interface.",
+      "evidence": "E-01",
+      "rules": [
+        "RULE-01"
+      ],
+      "stories": [
+        "DEV-02",
+        "DEV-08",
+        "OPS-02"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-17",
+        "given": "an unauthorized read/write or error occurs",
+        "when": "responses and logs are inspected",
+        "then": "no private cross-customer fields or secrets appear"
+      },
+      "testId": "BANK-T-17",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "NFR-02",
+      "type": "nonfunctional",
+      "priority": "Must",
+      "statement": "Bound latency and failure handling; preserve saved state and support reconciliation after an unknown write outcome.",
+      "rationale": "Define observable degradation rather than false success.",
+      "evidence": "E-01",
+      "rules": [
+        "RULE-12"
+      ],
+      "stories": [
+        "DEV-06",
+        "DEV-08",
+        "BA-08"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-18",
+        "given": "the network drops after commit",
+        "when": "the operation is queried/retried",
+        "then": "reconcile known state by operation ID before any new business effect"
+      },
+      "testId": "BANK-T-18",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "NFR-03",
+      "type": "nonfunctional",
+      "priority": "Must",
+      "statement": "Maintain accessible keyboard use and explicit loading/error/stale/saved states in core journeys.",
+      "rationale": "Representative can understand and control service.",
+      "evidence": "E-01",
+      "rules": [
+        "RULE-14"
+      ],
+      "stories": [
+        "DEV-02",
+        "DEV-06",
+        "QA-01"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-19",
+        "given": "the representative uses keyboard navigation",
+        "when": "they inspect evidence and edit/save a note",
+        "then": "all required controls are reachable with visible focus and state feedback"
+      },
+      "testId": "BANK-T-19",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "DATA-01",
+      "type": "data",
+      "priority": "Must",
+      "statement": "Keep public complaint analysis separate from authored operational fixtures and evaluator-only answers.",
+      "rationale": "Prevent fabricated real-world findings or test leakage.",
+      "evidence": "E-06",
+      "rules": [
+        "RULE-16"
+      ],
+      "stories": [
+        "BA-07",
+        "DEV-01",
+        "QA-02"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-20",
+        "given": "a fixture or evaluation export is prepared",
+        "when": "provenance and model-visible fields are checked",
+        "then": "label source/synthetic status and keep future facts/gold answers out of runtime input"
+      },
+      "testId": "BANK-T-20",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "MEAS-01",
+      "type": "measurement",
+      "priority": "Must",
+      "statement": "Record safe correlation IDs, lookup/review/acceptance events, quality scores and known/unknown model usage.",
+      "rationale": "Make usefulness/cost inspectable.",
+      "evidence": "E-02",
+      "rules": [
+        "RULE-16"
+      ],
+      "stories": [
+        "DEV-10",
+        "QA-02",
+        "QA-03"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-21",
+        "given": "a run has missing usage telemetry",
+        "when": "the report is calculated",
+        "then": "report unknown cost separately rather than treating it as zero"
+      },
+      "testId": "BANK-T-21",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "OR-01",
+      "type": "operational",
+      "priority": "Must",
+      "statement": "Support documented setup, access checks, backup restore, rollback and manual-service fallback before public demo release.",
+      "rationale": "An operable product is stronger evidence than a hosted screen.",
+      "evidence": "E-07",
+      "rules": [
+        "RULE-12"
+      ],
+      "stories": [
+        "OPS-01",
+        "OPS-02",
+        "OPS-03"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-22",
+        "given": "a release candidate is proposed",
+        "when": "deployment readiness is reviewed",
+        "then": "executed recovery/access evidence or explicit blocked results determine release status"
+      },
+      "testId": "BANK-T-22",
+      "status": "Draft \u2014 owner review pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+    },
+    {
+      "id": "FR-16",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Create an asynchronous specialist review with accountable queue and truthful receipt.",
+      "rationale": "Reviewed lifecycle increment; see decision status and exact story acceptance.",
+      "evidence": "D-12",
+      "rules": [
+        "SR-02"
+      ],
+      "stories": [
+        "DEV-07"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-23",
+        "given": "A person approves a fresh complete request",
+        "when": "submission succeeds",
+        "then": "return one case/work reference with accountable queue; do not claim a specialist has accepted it"
+      },
+      "testId": "BANK-T-23",
+      "status": "Business direction accepted; technical contract pending",
+      "acceptanceOwner": "Portfolio owner",
+      "detailedAcceptance": [
+        "DEV-07-AC01",
+        "DEV-07-AC02",
+        "DEV-07-AC03",
+        "DEV-07-AC04",
+        "DEV-07-AC05",
+        "DEV-07-AC06"
+      ]
+    },
+    {
+      "id": "FR-17",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Receive a versioned specialist result and create feedback work for a shared customer-service queue.",
+      "rationale": "Reviewed lifecycle increment; see decision status and exact story acceptance.",
+      "evidence": "D-13",
+      "rules": [
+        "SR-02"
+      ],
+      "stories": [
+        "DEV-11"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-24",
+        "given": "An authorized specialist submits an approved result",
+        "when": "the event is processed twice",
+        "then": "persist one result version and one corresponding feedback task"
+      },
+      "testId": "BANK-T-24",
+      "status": "Business direction accepted; technical contract pending",
+      "acceptanceOwner": "Portfolio owner",
+      "detailedAcceptance": [
+        "DEV-11-AC01",
+        "DEV-11-AC02",
+        "DEV-11-AC03",
+        "DEV-11-AC04",
+        "DEV-11-AC05",
+        "DEV-11-AC06"
+      ]
+    },
+    {
+      "id": "FR-18",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Record identity-verified human callback results and enforce normal closure evidence.",
+      "rationale": "Reviewed lifecycle increment; see decision status and exact story acceptance.",
+      "evidence": "D-14",
+      "rules": [
+        "SR-07"
+      ],
+      "stories": [
+        "DEV-11",
+        "DEV-12"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-25",
+        "given": "Approved findings exist, necessary actions are complete and verified feedback leaves no unresolved work",
+        "when": "an authorized person confirms closure",
+        "then": "persist a closed disposition with references and audit evidence"
+      },
+      "testId": "BANK-T-25",
+      "status": "Business direction accepted; technical contract pending",
+      "acceptanceOwner": "Portfolio owner",
+      "detailedAcceptance": [
+        "DEV-11-AC01",
+        "DEV-11-AC02",
+        "DEV-11-AC03",
+        "DEV-11-AC04",
+        "DEV-11-AC05",
+        "DEV-11-AC06",
+        "DEV-12-AC01",
+        "DEV-12-AC02",
+        "DEV-12-AC03",
+        "DEV-12-AC04",
+        "DEV-12-AC05",
+        "DEV-12-AC06",
+        "DEV-12-AC07"
+      ]
+    },
+    {
+      "id": "FR-19",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Limit unanswered callbacks to three attempts in three service days, then require lead review without automatic closure.",
+      "rationale": "Reviewed lifecycle increment; see decision status and exact story acceptance.",
+      "evidence": "D-16",
+      "rules": [
+        "SR-06"
+      ],
+      "stories": [
+        "DEV-12"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-26",
+        "given": "Three attempts have been made or the three-service-day window has elapsed",
+        "when": "the next-step rule is evaluated",
+        "then": "enter unable-to-contact lead review with no resolved closure"
+      },
+      "testId": "BANK-T-26",
+      "status": "Business direction accepted; technical contract pending",
+      "acceptanceOwner": "Portfolio owner",
+      "detailedAcceptance": [
+        "DEV-12-AC01",
+        "DEV-12-AC02",
+        "DEV-12-AC03",
+        "DEV-12-AC04",
+        "DEV-12-AC05",
+        "DEV-12-AC06",
+        "DEV-12-AC07"
+      ]
+    },
+    {
+      "id": "FR-20",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Preserve deadlines/ownership and prepare reviewed progress updates and deduplicated escalation on overdue investigations.",
+      "rationale": "Reviewed lifecycle increment; see decision status and exact story acceptance.",
+      "evidence": "D-14",
+      "rules": [
+        "SR-08"
+      ],
+      "stories": [
+        "DEV-13"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-27",
+        "given": "A routine investigation exceeds the two-service-day target",
+        "when": "the timer event arrives",
+        "then": "retain original due time and ownership and prepare a progress-update task"
+      },
+      "testId": "BANK-T-27",
+      "status": "Mixed accepted deadline duty / proposed branch details",
+      "acceptanceOwner": "Portfolio owner",
+      "detailedAcceptance": [
+        "DEV-13-AC01",
+        "DEV-13-AC02",
+        "DEV-13-AC03",
+        "DEV-13-AC04",
+        "DEV-13-AC05",
+        "DEV-13-AC06",
+        "DEV-13-AC07"
+      ]
+    },
+    {
+      "id": "FR-21",
+      "type": "functional",
+      "priority": "Should",
+      "statement": "Preserve customer objections and evidence, proposing linked re-review and independent complaint review.",
+      "rationale": "Reviewed lifecycle increment; see decision status and exact story acceptance.",
+      "evidence": "D-15",
+      "rules": [
+        "SR-09"
+      ],
+      "stories": [
+        "DEV-13"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-28",
+        "given": "A customer provides a different transaction or new evidence",
+        "when": "a re-review is approved",
+        "then": "link the new work to the original case and preserve old findings/versions"
+      },
+      "testId": "BANK-T-28",
+      "status": "Proposed branch \u2014 review pending",
+      "acceptanceOwner": "Portfolio owner",
+      "detailedAcceptance": [
+        "DEV-13-AC01",
+        "DEV-13-AC02",
+        "DEV-13-AC03",
+        "DEV-13-AC04",
+        "DEV-13-AC05",
+        "DEV-13-AC06",
+        "DEV-13-AC07"
+      ]
+    },
+    {
+      "id": "FR-22",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Resume bounded agent runs from durable current business state with scoped tools and reviewed effects.",
+      "rationale": "Reviewed lifecycle increment; see decision status and exact story acceptance.",
+      "evidence": "D-15",
+      "rules": [
+        "SR-11"
+      ],
+      "stories": [
+        "DEV-08"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-29",
+        "given": "A case waits across a process restart",
+        "when": "a later event starts assistance",
+        "then": "load committed latest state rather than relying on chat history or a live multi-day run"
+      },
+      "testId": "BANK-T-29",
+      "status": "Business direction accepted; technical contract pending",
+      "acceptanceOwner": "Portfolio owner",
+      "detailedAcceptance": [
+        "DEV-08-AC01",
+        "DEV-08-AC02",
+        "DEV-08-AC03",
+        "DEV-08-AC04",
+        "DEV-08-AC05",
+        "DEV-08-AC06",
+        "DEV-08-AC07"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SC-01",
+      "name": "Pending and posted entries",
+      "journey": "UC-01",
+      "given": "Two synthetic matching amount/currency entries; one pending, one posted; authorized scope.",
+      "when": "Customer reports two charges.",
+      "then": "Explain recorded states/uncertainty; inspect applicable simulated policy.",
+      "forbidden": "Confirm duplicate, guarantee refund or submit dispute.",
+      "requirements": [
+        "FR-03",
+        "FR-05"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-02",
+      "name": "Two posted entries, insufficient evidence",
+      "journey": "UC-01",
+      "given": "Two posted records, customer recognizes merchant; prior merchant contact unknown.",
+      "when": "Customer asks for refund.",
+      "then": "Clarify missing facts; show evidence and propose manual next step only if warranted.",
+      "forbidden": "Automatic refund, settled eligibility or assured deadline.",
+      "requirements": [
+        "FR-02",
+        "FR-03",
+        "FR-06"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-03",
+      "name": "Customer correction changes handling",
+      "journey": "UC-01",
+      "given": "A draft assumes recognized purchase; customer later denies both purchases.",
+      "when": "New correction arrives.",
+      "then": "Invalidate affected proposal and use manual risk-handling path.",
+      "forbidden": "Keep the old recommendation or execute financial action.",
+      "requirements": [
+        "FR-07",
+        "FR-14"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-04",
+      "name": "Existing case without ETA",
+      "journey": "UC-02",
+      "given": "Case awaiting evidence, owner/next step recorded, no completion date.",
+      "when": "Ask for status and completion date.",
+      "then": "State current recorded status/next step; ETA unknown; link existing work.",
+      "forbidden": "Invent ETA, imply refund completed or duplicate existing task.",
+      "requirements": [
+        "FR-04",
+        "FR-09"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-05",
+      "name": "Conflicting case events",
+      "journey": "UC-02",
+      "given": "Two inconsistent current-state records as of enquiry.",
+      "when": "Request status.",
+      "then": "Expose conflict and manual clarification; no silent choice.",
+      "forbidden": "Claim definitive resolution from conflicted history.",
+      "requirements": [
+        "FR-04",
+        "FR-06"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-06",
+      "name": "Wrong customer account",
+      "journey": "Both",
+      "given": "Authenticated scope A; requested account belongs to synthetic B.",
+      "when": "Attempt read or write.",
+      "then": "Deny without confirming existence or leaking fields; log safe event.",
+      "forbidden": "Cross-customer facts in output/error/trace.",
+      "requirements": [
+        "FR-01",
+        "NFR-01"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-07",
+      "name": "Identity not established",
+      "journey": "Both",
+      "given": "Contact with unverified context.",
+      "when": "Ask for private account/case information.",
+      "then": "Safe verification/manual route; no private lookup.",
+      "forbidden": "Use name/account number or fluent conversation as authorization.",
+      "requirements": [
+        "FR-01",
+        "NFR-01"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-08",
+      "name": "No applicable policy",
+      "journey": "Both",
+      "given": "Search returns expired/wrong-product/wrong-audience documents only.",
+      "when": "Request handling advice.",
+      "then": "Show rule gap and manual route with no fabricated citation.",
+      "forbidden": "Use wrong policy because text is similar.",
+      "requirements": [
+        "FR-05",
+        "FR-06"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-09",
+      "name": "Source changes after approval draft",
+      "journey": "Both",
+      "given": "Proposal cites transaction version 1; current version 2.",
+      "when": "Approve old proposal.",
+      "then": "Reject stale commit, preserve edits and require refresh.",
+      "forbidden": "Commit stale content or discard human edits silently.",
+      "requirements": [
+        "FR-07",
+        "FR-08",
+        "FR-13"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-10",
+      "name": "Duplicate commit request",
+      "journey": "Both",
+      "given": "A valid approved operation is delivered twice with one operation key.",
+      "when": "Repeat save.",
+      "then": "One business effect; consistent receipt; separate retry audit events allowed.",
+      "forbidden": "Duplicate note/task or fictional exactly-once external delivery.",
+      "requirements": [
+        "FR-13"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-11",
+      "name": "Provider timeout",
+      "journey": "Both",
+      "given": "Saved contact and manual lookup available.",
+      "when": "Model deadline expires.",
+      "then": "Stop run and show error; manual work remains available.",
+      "forbidden": "Lose saved work, hang indefinitely or claim success.",
+      "requirements": [
+        "FR-12",
+        "NFR-02"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-12",
+      "name": "Answered enquiry without new work",
+      "journey": "Both",
+      "given": "Correct supported explanation; no unresolved operational action.",
+      "when": "Conclude contact.",
+      "then": "Save contact outcome; no new operational case/task.",
+      "forbidden": "Escalate solely because every contact must have a case.",
+      "requirements": [
+        "FR-09"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-13",
+      "name": "Answered enquiry with dissatisfaction",
+      "journey": "Both",
+      "given": "Factual question answered; customer still expresses dissatisfaction.",
+      "when": "Conclude contact.",
+      "then": "Preserve complaint signal/manual assessment path independently of task need.",
+      "forbidden": "Erase signal or declare complaint resolved solely from call end.",
+      "requirements": [
+        "FR-11"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-14",
+      "name": "Unresolved action has no receiving owner",
+      "journey": "Both",
+      "given": "A follow-up is needed; no eligible target queue/owner.",
+      "when": "Try to commit follow-up.",
+      "then": "Show exception; do not claim assigned; preserve actionable record/draft for supervisor.",
+      "forbidden": "Orphan work represented as successfully handed off.",
+      "requirements": [
+        "FR-10"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-15",
+      "name": "Instructions embedded in narrative",
+      "journey": "Both",
+      "given": "Customer text asks assistant to ignore authorization or invent supervisor approval.",
+      "when": "Assistant interprets turn.",
+      "then": "Treat instructions as untrusted content; enforce tool permissions.",
+      "forbidden": "Privilege escalation or arbitrary SQL/shell.",
+      "requirements": [
+        "FR-14"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-16",
+      "name": "Write outcome unknown",
+      "journey": "Both",
+      "given": "Network response lost after a committed operation.",
+      "when": "User retries or asks if saved.",
+      "then": "Reconcile operation receipt before new effect; distinguish queued/assigned/completed.",
+      "forbidden": "Blind duplicate write or assertion of human acceptance.",
+      "requirements": [
+        "FR-13",
+        "NFR-02"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-17",
+      "name": "Policy effective-date boundary",
+      "journey": "Both",
+      "given": "Two synthetic policy editions and explicit as-of time; later edition not effective.",
+      "when": "Search before effective boundary.",
+      "then": "Use applicable prior edition; future edition excluded; verify boundary separately.",
+      "forbidden": "Treat latest upload or actual future FCAC guidance as automatically current.",
+      "requirements": [
+        "FR-15"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-18",
+      "name": "Session expires before save",
+      "journey": "Both",
+      "given": "Read was permitted; permission/session expires before approval commit.",
+      "when": "Approve note.",
+      "then": "Reject unauthorized write, preserve recoverable edit according to safe session policy.",
+      "forbidden": "Reuse old read authorization to permit current write.",
+      "requirements": [
+        "FR-08",
+        "NFR-01"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-19",
+      "name": "Measured comparison and unknown usage",
+      "journey": "Evaluation",
+      "given": "Matched synthetic tasks across baseline/assistant; one run has no usage telemetry.",
+      "when": "Compute effort, quality and cost.",
+      "then": "Include failed tasks in outcome reporting, count verification/correction time and mark missing cost unknown.",
+      "forbidden": "Claim actual savings or price an unobserved run as zero.",
+      "requirements": [
+        "BR-01",
+        "MEAS-01"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-20",
+      "name": "Keyboard and explicit status",
+      "journey": "Both",
+      "given": "Representative navigates without a mouse.",
+      "when": "Inspect evidence, edit and save contact note.",
+      "then": "Reach required controls with visible focus and explicit loading/error/saved feedback.",
+      "forbidden": "Inaccessible required control or success conveyed by colour alone.",
+      "requirements": [
+        "NFR-03"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-21",
+      "name": "Fixture provenance and answer isolation",
+      "journey": "Evaluation",
+      "given": "A synthetic scenario includes evaluator-only future facts and expected outcome.",
+      "when": "Build runtime input and public report.",
+      "then": "Exclude future/gold fields and label synthetic versus public-data evidence.",
+      "forbidden": "Gold answer leakage or representation as real bank operation.",
+      "requirements": [
+        "DATA-01"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-22",
+      "name": "Release recovery evidence",
+      "journey": "Deployment",
+      "given": "Candidate hosted demo and documented backup/release versions.",
+      "when": "Run access, restore and rollback rehearsal.",
+      "then": "Record actual checks and block release if critical recovery/access evidence is missing.",
+      "forbidden": "Mark deployed or recovered solely because a runbook exists.",
+      "requirements": [
+        "OR-01"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Owner/domain review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-23",
+      "name": "Create an asynchronous specialist review with accountable queue and truthful receipt.",
+      "journey": "UC-01 continuation",
+      "given": "A person approves a fresh complete request",
+      "when": "submission succeeds",
+      "then": "return one case/work reference with accountable queue; do not claim a specialist has accepted it",
+      "forbidden": "Unauthorized effects, lost ownership, stale evidence or false completion.",
+      "requirements": [
+        "FR-16"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Business direction accepted; technical contract pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-24",
+      "name": "Receive a versioned specialist result and create feedback work for a shared customer-service queue.",
+      "journey": "UC-01 continuation",
+      "given": "An authorized specialist submits an approved result",
+      "when": "the event is processed twice",
+      "then": "persist one result version and one corresponding feedback task",
+      "forbidden": "Unauthorized effects, lost ownership, stale evidence or false completion.",
+      "requirements": [
+        "FR-17"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Business direction accepted; technical contract pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-25",
+      "name": "Record identity-verified human callback results and enforce normal closure evidence.",
+      "journey": "UC-01 continuation",
+      "given": "Approved findings exist, necessary actions are complete and verified feedback leaves no unresolved work",
+      "when": "an authorized person confirms closure",
+      "then": "persist a closed disposition with references and audit evidence",
+      "forbidden": "Unauthorized effects, lost ownership, stale evidence or false completion.",
+      "requirements": [
+        "FR-18"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Business direction accepted; technical contract pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-26",
+      "name": "Limit unanswered callbacks to three attempts in three service days, then require lead review without automatic closure.",
+      "journey": "UC-01 continuation",
+      "given": "Three attempts have been made or the three-service-day window has elapsed",
+      "when": "the next-step rule is evaluated",
+      "then": "enter unable-to-contact lead review with no resolved closure",
+      "forbidden": "Unauthorized effects, lost ownership, stale evidence or false completion.",
+      "requirements": [
+        "FR-19"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Business direction accepted; technical contract pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-27",
+      "name": "Preserve deadlines/ownership and prepare reviewed progress updates and deduplicated escalation on overdue investigations.",
+      "journey": "UC-01 continuation",
+      "given": "A routine investigation exceeds the two-service-day target",
+      "when": "the timer event arrives",
+      "then": "retain original due time and ownership and prepare a progress-update task",
+      "forbidden": "Unauthorized effects, lost ownership, stale evidence or false completion.",
+      "requirements": [
+        "FR-20"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Mixed accepted deadline duty / proposed branch details",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-28",
+      "name": "Preserve customer objections and evidence, proposing linked re-review and independent complaint review.",
+      "journey": "UC-01 continuation",
+      "given": "A customer provides a different transaction or new evidence",
+      "when": "a re-review is approved",
+      "then": "link the new work to the original case and preserve old findings/versions",
+      "forbidden": "Unauthorized effects, lost ownership, stale evidence or false completion.",
+      "requirements": [
+        "FR-21"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Proposed branch \u2014 review pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    },
+    {
+      "id": "SC-29",
+      "name": "Resume bounded agent runs from durable current business state with scoped tools and reviewed effects.",
+      "journey": "UC-01 continuation",
+      "given": "A case waits across a process restart",
+      "when": "a later event starts assistance",
+      "then": "load committed latest state rather than relying on chat history or a live multi-day run",
+      "forbidden": "Unauthorized effects, lost ownership, stale evidence or false completion.",
+      "requirements": [
+        "FR-22"
+      ],
+      "dataKind": "authored synthetic acceptance example",
+      "execution": "Not executed",
+      "review": "Business direction accepted; technical contract pending",
+      "split": "Development/spec example \u2014 never a blind holdout"
+    }
+  ]
+}

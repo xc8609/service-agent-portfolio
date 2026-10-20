@@ -1,0 +1,46 @@
+{
+  "version": "demo-calendar-v1",
+  "timezone": "America/Winnipeg",
+  "open_weekdays": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "open": "09:00",
+  "close": "17:00",
+  "baseline_holidays": [],
+  "holiday_fixture": [
+    "2026-10-26"
+  ],
+  "notice": "Synthetic holiday override only; no claim about a real bank or statutory calendar.",
+  "cases": [
+    {
+      "id": "CAL-01",
+      "first_placed_at": "2026-10-19T10:00:00-05:00",
+      "holidays": [],
+      "expected_end": "2026-10-21T17:00:00-05:00"
+    },
+    {
+      "id": "CAL-02",
+      "first_placed_at": "2026-10-23T10:00:00-05:00",
+      "holidays": [
+        "2026-10-26"
+      ],
+      "expected_end": "2026-10-28T17:00:00-05:00"
+    },
+    {
+      "id": "CAL-03",
+      "first_placed_at": "2026-10-19T16:59:00-05:00",
+      "holidays": [],
+      "expected_end": "2026-10-21T17:00:00-05:00"
+    },
+    {
+      "id": "CAL-04",
+      "first_placed_at": "2026-10-30T10:00:00-05:00",
+      "holidays": [],
+      "expected_end": "2026-11-03T17:00:00-06:00"
+    }
+  ]
+}

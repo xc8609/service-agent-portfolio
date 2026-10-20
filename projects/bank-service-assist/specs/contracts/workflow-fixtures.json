@@ -1,0 +1,26 @@
+{
+  "version": "demo-workflow-v1",
+  "origin": "Authored synthetic portfolio configuration, 2026-10-19",
+  "queues": [
+    {
+      "id": "demo_specialist",
+      "kind": "investigation",
+      "lead_subject": "demo_investigation_lead"
+    },
+    {
+      "id": "demo_feedback",
+      "kind": "feedback",
+      "lead_subject": "demo_feedback_lead"
+    },
+    {
+      "id": "demo_complaint_intake",
+      "kind": "complaint_intake",
+      "lead_subject": "demo_intake_lead"
+    }
+  ],
+  "role_boundary": "Identifiers map to seeded UUID principals; no production identity assertion or privileges. Missing mapping fails visibly.",
+  "calendar_ref": "demo-calendar-v1",
+  "complaint_delivery_mode": "simulated_adapter; external receipt explicitly labelled simulated",
+  "customer_contact_channel": "human callback simulation only; no actual dialing",
+  "source_policy": "fictional versioned handling rules; no current-bank policy or statutory deadline claim"
+}

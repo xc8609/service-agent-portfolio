@@ -1,0 +1,28 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Dependencies / cache / build
+.venv*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+dist/
+coverage/
+.DS_Store
+.idea/
+.vscode/
+# Downloaded/generated data and databases
+**/data/raw/**
+**/data/processed/**
+*.duckdb*
+*.sqlite*
+*.db
+*.twbx
+*.twbr
+*.twb~
+# Local export proof
+.publication-report.json

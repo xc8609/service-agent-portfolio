@@ -1,0 +1,263 @@
+{
+  "version": "0.4",
+  "status": "Review contract; not executed state-machine implementation",
+  "transitions": [
+    {
+      "id": "ST-01",
+      "entity": "investigation",
+      "from_state": "queued",
+      "to_state": "assigned",
+      "actor": "specialist",
+      "guards": "claim permitted queue; expected work version matches",
+      "effects": "set assignee; keep queue owner",
+      "status": "D-12/D-13"
+    },
+    {
+      "id": "ST-02",
+      "entity": "investigation",
+      "from_state": "assigned",
+      "to_state": "investigating",
+      "actor": "specialist",
+      "guards": "current assignee and scope",
+      "effects": "append start event",
+      "status": "design"
+    },
+    {
+      "id": "ST-03",
+      "entity": "investigation",
+      "from_state": "investigating",
+      "to_state": "completed",
+      "actor": "specialist",
+      "guards": "approved finding and evidence; version fresh",
+      "effects": "publish result version; enqueue one feedback item",
+      "status": "D-13"
+    },
+    {
+      "id": "ST-04",
+      "entity": "feedback",
+      "from_state": "queued",
+      "to_state": "assigned",
+      "actor": "feedback_representative",
+      "guards": "eligible membership; atomic expected-version claim",
+      "effects": "grant minimum detail scope; audit claim",
+      "status": "D-17"
+    },
+    {
+      "id": "ST-05",
+      "entity": "feedback",
+      "from_state": "assigned",
+      "to_state": "retry_scheduled",
+      "actor": "feedback_representative",
+      "guards": "actual no-answer; quota/window permit; approved slot",
+      "effects": "reserve one slot; retain owner",
+      "status": "D-16"
+    },
+    {
+      "id": "ST-06",
+      "entity": "feedback",
+      "from_state": "retry_scheduled",
+      "to_state": "assigned",
+      "actor": "feedback_representative",
+      "guards": "slot due and still permitted; latest result fresh",
+      "effects": "prepare callback, no fabricated call outcome",
+      "status": "design"
+    },
+    {
+      "id": "ST-07",
+      "entity": "feedback",
+      "from_state": "assigned or retry_scheduled",
+      "to_state": "lead_review",
+      "actor": "scheduler",
+      "guards": "three counted attempts or elapsed window",
+      "effects": "create one review task; retain case open",
+      "status": "D-16/D-19; third service date 17:00 deadline accepted"
+    },
+    {
+      "id": "ST-08",
+      "entity": "feedback",
+      "from_state": "assigned",
+      "to_state": "completed",
+      "actor": "feedback_representative",
+      "guards": "actual contact plus trusted fresh identity; approved explanation delivered; result current",
+      "effects": "record response and any unresolved objection",
+      "status": "D-14"
+    },
+    {
+      "id": "ST-09",
+      "entity": "case",
+      "from_state": "open or awaiting_feedback",
+      "to_state": "closed",
+      "actor": "assigned feedback or scoped lead",
+      "guards": "current authorized result; necessary actions completed or none; verified feedback; no outstanding work; fresh version",
+      "effects": "audit reason and references; set closed_at",
+      "status": "D-14"
+    },
+    {
+      "id": "ST-10",
+      "entity": "proposal",
+      "from_state": "draft",
+      "to_state": "stale",
+      "actor": "system",
+      "guards": "source/result/assignment scope changed",
+      "effects": "preserve human edits; prevent commit",
+      "status": "design"
+    },
+    {
+      "id": "ST-11",
+      "entity": "proposal",
+      "from_state": "draft",
+      "to_state": "committed",
+      "actor": "authorized person via server",
+      "guards": "explicit approval; fresh versions; allowed action; domain transaction succeeds",
+      "effects": "business+audit+outbox+receipt atomically",
+      "status": "design"
+    },
+    {
+      "id": "ST-12",
+      "entity": "investigation",
+      "from_state": "investigating",
+      "to_state": "investigating",
+      "actor": "scheduler",
+      "guards": "original due time breached and still unfinished",
+      "effects": "keep due time/owner; deduplicated escalation; progress task",
+      "status": "D-14/D-20; original specialist retained; lead confirms specialist-proposed next update; feedback queue communicates"
+    },
+    {
+      "id": "ST-13",
+      "entity": "case",
+      "from_state": "open or closed",
+      "to_state": "under_review",
+      "actor": "authorized reviewer",
+      "guards": "customer objection captured; linked re-review route approved",
+      "effects": "preserve old finding and disposition; link new work",
+      "status": "D-21; separate linked re-review and complaint intake; v0.4 contract authored"
+    },
+    {
+      "id": "ST-14",
+      "entity": "work_item",
+      "from_state": "assigned",
+      "to_state": "assigned",
+      "actor": "queue_lead",
+      "guards": "managed queue; reasoned reassignment; expected version",
+      "effects": "revoke prior assignee scope; invalidate affected approval",
+      "status": "Proposed role detail"
+    },
+    {
+      "id": "ST-15",
+      "entity": "agent_run",
+      "from_state": "running",
+      "to_state": "awaiting_approval",
+      "actor": "agent_runtime",
+      "guards": "typed proposal with citations; bounded run",
+      "effects": "persist draft; stop run; no operational effect",
+      "status": "D-15"
+    },
+    {
+      "id": "ST-16",
+      "entity": "agent_run",
+      "from_state": "running",
+      "to_state": "failed",
+      "actor": "worker",
+      "guards": "deadline/provider/schema failure",
+      "effects": "safe error; preserve committed work/manual path",
+      "status": "design"
+    },
+    {
+      "id": "ST-17",
+      "entity": "feedback",
+      "from_state": "lead_review",
+      "to_state": "retry_scheduled",
+      "actor": "queue_lead",
+      "guards": "responsible lead; reason; fresh versions; explicit bounded new plan approved",
+      "effects": "create distinct approved plan and scheduled work; retain prior attempts/deadlines/approvals; never automatic reset",
+      "status": "D-22 accepted; v0.4 plan contract authored"
+    },
+    {
+      "id": "ST-18",
+      "entity": "feedback",
+      "from_state": "lead_review",
+      "to_state": "review_hold",
+      "actor": "queue_lead",
+      "guards": "responsible lead; reason; named owner; review date; fresh versions",
+      "effects": "retain open case and history; create review obligation; no automatic closure",
+      "status": "D-22 accepted; v0.4 hold contract authored"
+    },
+    {
+      "id": "ST-19",
+      "entity": "commitment",
+      "from_state": "none",
+      "to_state": "pending_approval",
+      "actor": "specialist",
+      "guards": "current investigation assignee; future proposed time; fresh versions",
+      "effects": "record customer-safe progress and pending proposal; no approved promise",
+      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+    },
+    {
+      "id": "ST-20",
+      "entity": "commitment",
+      "from_state": "pending_approval",
+      "to_state": "approved or rejected",
+      "actor": "queue_lead",
+      "guards": "responsible investigation lead; current versions; ongoing investigation",
+      "effects": "record decision; supersede previous active commitment atomically; preserve original due",
+      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+    },
+    {
+      "id": "ST-21",
+      "entity": "objection",
+      "from_state": "captured",
+      "to_state": "linked_work_created",
+      "actor": "authorized_staff",
+      "guards": "exact statement; explicit complaint flag; current case scope",
+      "effects": "persist specialist re-review and optional independent complaint intake/work/outbox atomically",
+      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+    },
+    {
+      "id": "ST-22",
+      "entity": "complaint_intake",
+      "from_state": "recorded or delivery_failed",
+      "to_state": "pending_delivery",
+      "actor": "worker",
+      "guards": "durable request; configured destination; idempotent key",
+      "effects": "retain request and enqueue/retry delivery independently of re-review",
+      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+    },
+    {
+      "id": "ST-23",
+      "entity": "complaint_intake",
+      "from_state": "pending_delivery",
+      "to_state": "acknowledged or delivery_failed",
+      "actor": "trusted_adapter",
+      "guards": "validated receipt or recorded delivery failure",
+      "effects": "record actual receipt/status; never infer acknowledgement from generated text",
+      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+    },
+    {
+      "id": "ST-24",
+      "entity": "feedback",
+      "from_state": "review_hold",
+      "to_state": "lead_review",
+      "actor": "scheduler",
+      "guards": "hold review_at reached and still current",
+      "effects": "create deduplicated review work for owner; no automatic contact/closure",
+      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+    },
+    {
+      "id": "ST-25",
+      "entity": "contact_plan",
+      "from_state": "active",
+      "to_state": "exhausted or expired",
+      "actor": "scheduler",
+      "guards": "quota reached or deadline elapsed; unresolved feedback",
+      "effects": "retain plan and attempts; route feedback to lead review",
+      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+    }
+  ],
+  "forbidden": [
+    "lead_review -> closed solely because calls exhausted",
+    "proposal draft -> financial execution",
+    "agent run succeeded -> case resolved",
+    "callback no_answer -> feedback completed",
+    "stale proposal -> commit without refresh"
+  ]
+}

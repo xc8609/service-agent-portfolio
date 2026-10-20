@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "date": "2026-10-19",
+  "jsonschema_version": "4.25.1",
+  "schemas_meta_validated": 45,
+  "payload_examples": 91,
+  "model_tools": 10,
+  "trusted_commands": 12,
+  "permission_actions": 23,
+  "entities": 32,
+  "foreign_keys": 68,
+  "sprints": 14,
+  "delivery_sprints": 12,
+  "reserve_sprints": 2,
+  "role_effort": {
+    "dev": 104.0,
+    "ba": 31.5,
+    "qa": 35.0,
+    "total": 170.5
+  },
+  "local_links": 59,
+  "trello_payloads": 40,
+  "limits": "Schema/meta/example validation, structural references and aggregate/lane capacity only. Does not execute PostgreSQL DDL, API authorization, semantic state guards, live models, application UAT, resource-level critical-path scheduling or deployment. Trello verification separate.",
+  "contract_version": "0.4",
+  "authored_boundary_examples": 52,
+  "calendar_spec_examples": 4,
+  "new_detailed_stories": 7,
+  "new_planned_acceptance_cases": 43
+}

@@ -1,0 +1,147 @@
+{
+  "date": "2026-10-19",
+  "status": "Saved and verified in Trello UI",
+  "marker": "BANK-S02-v0.4",
+  "cards": [
+    {
+      "id": "BA-06",
+      "url": "https://trello.com/c/CQj4rKaR/8-ba-06-business-rules-decision-tables-and-case-state-model",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "01 | BA discovery and specifications"
+    },
+    {
+      "id": "BA-07",
+      "url": "https://trello.com/c/S77lT3Se/9-ba-07-data-contracts-provenance-quality-and-privacy-requirements",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "01 | BA discovery and specifications"
+    },
+    {
+      "id": "BA-08",
+      "url": "https://trello.com/c/Zf5ZjkSY/10-ba-08-nonfunctional-requirements-and-measurable-release-thresholds",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "01 | BA discovery and specifications"
+    },
+    {
+      "id": "BA-09",
+      "url": "https://trello.com/c/1xqnJCOn/11-ba-09-baseline-specifications-api-contracts-and-change-impact-review",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "01 | BA discovery and specifications"
+    },
+    {
+      "id": "DEV-01",
+      "url": "https://trello.com/c/q57U3B0l/12-dev-01-create-the-application-skeleton-and-deterministic-demo-environment",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-02",
+      "url": "https://trello.com/c/8MGn5QK4/13-dev-02-open-an-authorized-customer-contact-and-inspect-account-context",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-03",
+      "url": "https://trello.com/c/N5Y4v779/14-dev-03-investigate-a-possible-duplicate-charge-from-transaction-evidence",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-04",
+      "url": "https://trello.com/c/Ln57bQr8/15-dev-04-explain-the-recorded-status-and-next-step-of-an-existing-case",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-05",
+      "url": "https://trello.com/c/fEkG3vke/16-dev-05-retrieve-applicable-policy-with-citations-and-version-controls",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-06",
+      "url": "https://trello.com/c/SgB3mHiy/17-dev-06-review-edit-and-commit-a-contact-note-safely",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-07",
+      "url": "https://trello.com/c/Mjwlq4sb/18-dev-07-create-justified-follow-up-work-with-ownership-and-reliable-delivery",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-08",
+      "url": "https://trello.com/c/gZ67RLnh/19-dev-08-add-a-bounded-assistant-that-proposes-evidence-backed-next-steps",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-09",
+      "url": "https://trello.com/c/rU0GwvSp/20-dev-09-qualify-model-runtime-and-provider-adapters-with-a-bounded-spike",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-10",
+      "url": "https://trello.com/c/DVfs7SXq/21-dev-10-build-operational-event-marts-and-a-reconciled-tableau-view",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-11",
+      "url": "https://trello.com/c/e0Hg2a8s/52-dev-11-receive-specialist-findings-and-complete-a-verified-customer-callback",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-12",
+      "url": "https://trello.com/c/kymdAvg6/53-dev-12-retry-unanswered-callbacks-and-guard-normal-closure",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-13",
+      "url": "https://trello.com/c/eNbKvqHE/54-dev-13-handle-overdue-investigations-and-customer-objections-with-linked-work",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "QA-01",
+      "url": "https://trello.com/c/0Gwx6JZI/22-qa-01-implement-layered-verification-and-requirement-to-test-coverage",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "03 | Testing and business acceptance"
+    },
+    {
+      "id": "OPS-01",
+      "url": "https://trello.com/c/IPZBBsYS/25-ops-01-package-the-application-and-establish-ci-release-artifacts",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "04 | Deployment and operations"
+    },
+    {
+      "id": "S02",
+      "url": "https://trello.com/c/CBFn48oC/41-s02-w3-4-rules-data-contracts-and-executable-foundation",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "09 | Sprint roadmap"
+    }
+  ]
+}

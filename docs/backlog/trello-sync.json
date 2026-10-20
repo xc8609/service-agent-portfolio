@@ -1,0 +1,463 @@
+{
+  "date": "2026-10-19",
+  "board": "https://trello.com/b/wtNhuN0q/ai-agent",
+  "visibility": "Public",
+  "cards": [
+    {
+      "id": "GOV-01",
+      "url": "https://trello.com/c/HvZAKRix/1-gov-01-sdd-working-agreement-story-readiness-and-traceability",
+      "descriptionVerified": true,
+      "lastUpdated": "2026-10-19",
+      "marker": "SPRINT1-REVIEW-v0.1",
+      "currentList": "10 | Review and acceptance"
+    },
+    {
+      "id": "GOV-02",
+      "url": "https://trello.com/c/YQ1pq04i/2-gov-02-release-roadmap-architecture-decisions-and-scope-controls",
+      "descriptionVerified": true,
+      "lastUpdated": "2026-10-19",
+      "marker": "SPRINT1-REVIEW-v0.1",
+      "currentList": "10 | Review and acceptance"
+    },
+    {
+      "id": "BA-01",
+      "url": "https://trello.com/c/VvE3u9HY/3-ba-01-define-the-service-problem-value-hypothesis-and-alternatives",
+      "descriptionVerified": true,
+      "lastUpdated": "2026-10-19",
+      "marker": "BANK-SDD-v0.2",
+      "currentList": "10 | Review and acceptance"
+    },
+    {
+      "id": "BA-02",
+      "url": "https://trello.com/c/1ZT5cNaK/4-ba-02-stakeholders-personas-decision-rights-and-elicitation-plan",
+      "descriptionVerified": true,
+      "lastUpdated": "2026-10-19",
+      "marker": "BANK-S02-v0.3",
+      "currentList": "10 | Review and acceptance",
+      "titleVerified": false
+    },
+    {
+      "id": "BA-03",
+      "url": "https://trello.com/c/ATlFMnKf/5-ba-03-model-the-current-process-and-locate-service-failure-points",
+      "descriptionVerified": true,
+      "lastUpdated": "2026-10-19",
+      "marker": "BANK-SDD-v0.2",
+      "currentList": "10 | Review and acceptance"
+    },
+    {
+      "id": "BA-04",
+      "url": "https://trello.com/c/RHpuR1ya/6-ba-04-design-the-future-service-journey-and-exception-paths",
+      "descriptionVerified": true,
+      "lastUpdated": "2026-10-19",
+      "marker": "BANK-SDD-v0.2",
+      "currentList": "10 | Review and acceptance"
+    },
+    {
+      "id": "BA-05",
+      "url": "https://trello.com/c/mG7qod2L/7-ba-05-story-map-scope-baseline-and-requirement-prioritization",
+      "descriptionVerified": true,
+      "lastUpdated": "2026-10-19",
+      "marker": "BANK-SDD-v0.2",
+      "currentList": "10 | Review and acceptance"
+    },
+    {
+      "id": "BA-06",
+      "url": "https://trello.com/c/CQj4rKaR/8-ba-06-business-rules-decision-tables-and-case-state-model",
+      "descriptionVerified": true,
+      "currentList": "01 | BA discovery and specifications",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "BA-07",
+      "url": "https://trello.com/c/S77lT3Se/9-ba-07-data-contracts-provenance-quality-and-privacy-requirements",
+      "descriptionVerified": true,
+      "currentList": "01 | BA discovery and specifications",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "BA-08",
+      "url": "https://trello.com/c/Zf5ZjkSY/10-ba-08-nonfunctional-requirements-and-measurable-release-thresholds",
+      "descriptionVerified": true,
+      "titleVerified": false,
+      "currentList": "01 | BA discovery and specifications",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "BA-09",
+      "url": "https://trello.com/c/1xqnJCOn/11-ba-09-baseline-specifications-api-contracts-and-change-impact-review",
+      "descriptionVerified": true,
+      "currentList": "01 | BA discovery and specifications",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "DEV-01",
+      "url": "https://trello.com/c/q57U3B0l/12-dev-01-create-the-application-skeleton-and-deterministic-demo-environment",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "DEV-02",
+      "url": "https://trello.com/c/8MGn5QK4/13-dev-02-open-an-authorized-customer-contact-and-inspect-account-context",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "DEV-03",
+      "url": "https://trello.com/c/N5Y4v779/14-dev-03-investigate-a-possible-duplicate-charge-from-transaction-evidence",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "DEV-04",
+      "url": "https://trello.com/c/Ln57bQr8/15-dev-04-explain-the-recorded-status-and-next-step-of-an-existing-case",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "DEV-05",
+      "url": "https://trello.com/c/fEkG3vke/16-dev-05-retrieve-applicable-policy-with-citations-and-version-controls",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "DEV-06",
+      "url": "https://trello.com/c/SgB3mHiy/17-dev-06-review-edit-and-commit-a-contact-note-safely",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "DEV-07",
+      "url": "https://trello.com/c/Mjwlq4sb/18-dev-07-create-justified-follow-up-work-with-ownership-and-reliable-delivery",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "DEV-08",
+      "url": "https://trello.com/c/gZ67RLnh/19-dev-08-add-a-bounded-assistant-that-proposes-evidence-backed-next-steps",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "DEV-09",
+      "url": "https://trello.com/c/rU0GwvSp/20-dev-09-qualify-model-runtime-and-provider-adapters-with-a-bounded-spike",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "DEV-10",
+      "url": "https://trello.com/c/DVfs7SXq/21-dev-10-build-operational-event-marts-and-a-reconciled-tableau-view",
+      "descriptionVerified": true,
+      "titleVerified": false,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "QA-01",
+      "url": "https://trello.com/c/0Gwx6JZI/22-qa-01-implement-layered-verification-and-requirement-to-test-coverage",
+      "descriptionVerified": true,
+      "currentList": "03 | Testing and business acceptance",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "QA-02",
+      "url": "https://trello.com/c/eNGuS49L/23-qa-02-freeze-agent-evaluation-and-compare-against-simpler-baselines",
+      "descriptionVerified": true,
+      "titleVerified": false,
+      "currentList": "03 | Testing and business acceptance",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "QA-03",
+      "url": "https://trello.com/c/x00JBUET/24-qa-03-run-business-uat-adoption-review-and-an-exploratory-effort-study",
+      "descriptionVerified": true,
+      "titleVerified": false,
+      "currentList": "03 | Testing and business acceptance",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "OPS-01",
+      "url": "https://trello.com/c/IPZBBsYS/25-ops-01-package-the-application-and-establish-ci-release-artifacts",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "04 | Deployment and operations",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "OPS-02",
+      "url": "https://trello.com/c/nj5ZZDoB/26-ops-02-deploy-staging-and-verify-authentication-migrations-and-recovery",
+      "descriptionVerified": true,
+      "titleVerified": false,
+      "currentList": "04 | Deployment and operations",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "OPS-03",
+      "url": "https://trello.com/c/jlGjauN2/27-ops-03-authorize-the-demo-release-and-establish-monitoring-support",
+      "descriptionVerified": true,
+      "titleVerified": false,
+      "currentList": "04 | Deployment and operations",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "V-01",
+      "url": "https://trello.com/c/ogWo46z4/28-v-01-specify-the-voice-journey-customer-authority-and-handoff-contract",
+      "descriptionVerified": true
+    },
+    {
+      "id": "V-02",
+      "url": "https://trello.com/c/XYO4Doc4/29-v-02-build-browser-voice-with-interruption-and-corrected-facts",
+      "descriptionVerified": true
+    },
+    {
+      "id": "V-03",
+      "url": "https://trello.com/c/e68EP8hq/30-v-03-connect-an-inbound-test-phone-call-and-transfer-context-to-a-human",
+      "descriptionVerified": true
+    },
+    {
+      "id": "V-04",
+      "url": "https://trello.com/c/KycxK8m8/31-v-04-validate-voice-failure-handling-and-release-the-phone-extension",
+      "descriptionVerified": true
+    },
+    {
+      "id": "R-01",
+      "url": "https://trello.com/c/rsr6cwmh/32-r-01-discover-retail-follow-up-value-and-specify-eligibility-rules",
+      "descriptionVerified": true
+    },
+    {
+      "id": "R-02",
+      "url": "https://trello.com/c/e2sfdJWi/33-r-02-implement-customer-visits-stated-needs-and-manual-follow-up-tasks",
+      "descriptionVerified": true
+    },
+    {
+      "id": "R-03",
+      "url": "https://trello.com/c/JN8LHn4o/34-r-03-propose-an-inventory-matched-follow-up-for-associate-approval",
+      "descriptionVerified": true
+    },
+    {
+      "id": "R-04",
+      "url": "https://trello.com/c/UgGelhC5/35-r-04-evaluate-retail-usefulness-and-package-the-second-case",
+      "descriptionVerified": true
+    },
+    {
+      "id": "PKG-01",
+      "url": "https://trello.com/c/reDLbazq/36-pkg-01-publish-connected-ba-data-analyst-and-developer-evidence",
+      "descriptionVerified": true,
+      "titleVerified": false,
+      "currentList": "00 | Delivery guide",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "GIT-01",
+      "url": "https://trello.com/c/dELJPdDz/37-git-01-public-monorepo-contribution-workflow-and-release-hygiene",
+      "descriptionVerified": true,
+      "lastUpdated": "2026-10-19",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    },
+    {
+      "id": "GOV-03",
+      "url": "https://trello.com/c/S22F5HZm/38-gov-03-two-week-sprint-planning-capacity-and-forecast-control",
+      "descriptionVerified": true,
+      "lastUpdated": "2026-10-19",
+      "marker": "BANK-S02-v0.3",
+      "currentList": "10 | Review and acceptance",
+      "titleVerified": false
+    },
+    {
+      "id": "PKG-02",
+      "url": "https://trello.com/c/MFH15FPr/39-pkg-02-final-open-source-reviewer-rehearsal-and-two-case-portfolio",
+      "descriptionVerified": true
+    },
+    {
+      "id": "S01",
+      "url": "https://trello.com/c/GwmtaYiU/40-s01-w1-2-business-framing-and-public-delivery-foundation",
+      "descriptionVerified": true,
+      "lastUpdated": "2026-10-19",
+      "marker": "BANK-S02-v0.3",
+      "currentList": "09 | Sprint roadmap",
+      "titleVerified": true
+    },
+    {
+      "id": "S02",
+      "url": "https://trello.com/c/CBFn48oC/41-s02-w3-4-rules-data-contracts-and-executable-foundation",
+      "descriptionVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": true
+    },
+    {
+      "id": "S03",
+      "url": "https://trello.com/c/QlhRFvgl/42-s03-w5-6-authorized-investigation-and-evidence-retrieval",
+      "descriptionVerified": true,
+      "titleVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "S04",
+      "url": "https://trello.com/c/uQdfGDUX/43-s04-w7-8-complete-manual-workflow-and-qualify-providers",
+      "descriptionVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": true
+    },
+    {
+      "id": "S05",
+      "url": "https://trello.com/c/cx4LUBnZ/44-s05-w9-10-bounded-bank-assistant-and-comparative-evaluation",
+      "descriptionVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": true
+    },
+    {
+      "id": "S06",
+      "url": "https://trello.com/c/w56QWdqt/45-s06-w11-12-bank-uat-hosted-release-and-case-study",
+      "descriptionVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": true
+    },
+    {
+      "id": "S07",
+      "url": "https://trello.com/c/OwniJUT6/46-s07-w13-14-customer-facing-voice-boundaries-and-browser-channel",
+      "descriptionVerified": true,
+      "titleVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "S08",
+      "url": "https://trello.com/c/lZrvLLeL/47-s08-w15-16-inbound-phone-and-verified-human-continuation",
+      "descriptionVerified": true,
+      "titleVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "S09",
+      "url": "https://trello.com/c/wxNmcuRt/48-s09-w17-18-retail-discovery-and-manual-associate-workflow",
+      "descriptionVerified": true,
+      "titleVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "S10",
+      "url": "https://trello.com/c/fT5mWftM/49-s10-w19-20-retail-assistant-evaluation-and-open-source-review",
+      "descriptionVerified": true,
+      "titleVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "S11",
+      "url": "https://trello.com/c/qfoz3fUY/50-s11-w21-22-contingency-and-observed-release-fixes",
+      "descriptionVerified": true,
+      "titleVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "S12",
+      "url": "https://trello.com/c/51uB6dCj/51-s12-w23-24-contingency-and-observed-release-fixes",
+      "descriptionVerified": true,
+      "titleVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "DEV-11",
+      "url": "https://trello.com/c/e0Hg2a8s/52-dev-11-receive-specialist-findings-and-complete-a-verified-customer-callback",
+      "descriptionVerified": true,
+      "marker": "BANK-S02-v0.4",
+      "currentList": "02 | Bank development backlog",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "DEV-12",
+      "url": "https://trello.com/c/kymdAvg6/53-dev-12-retry-unanswered-callbacks-and-guard-normal-closure",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "DEV-13",
+      "url": "https://trello.com/c/eNbKvqHE/54-dev-13-handle-overdue-investigations-and-customer-objections-with-linked-work",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-S02-v0.4",
+      "lastUpdated": "2026-10-19",
+      "titleVerified": false
+    },
+    {
+      "id": "S04A",
+      "url": "https://trello.com/c/3Zhqlipk/55-s04a-w9-10-specialist-result-callback-and-exception-workflow",
+      "descriptionVerified": true,
+      "titleVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    },
+    {
+      "id": "S05A",
+      "url": "https://trello.com/c/uHXhEntZ/56-s05a-w13-14-integrated-evaluation-data-evidence-and-staging",
+      "descriptionVerified": true,
+      "titleVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-S02-v0.3",
+      "lastUpdated": "2026-10-19"
+    }
+  ],
+  "lastActivity": "S02 v0.4: 20 cards updated and verified; no cards marked Done."
+}

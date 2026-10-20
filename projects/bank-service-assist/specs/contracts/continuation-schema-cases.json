@@ -1,0 +1,1110 @@
+{
+  "version": "0.4",
+  "kind": "Authored synthetic payload boundary fixtures; not runtime or banking evaluation data",
+  "cases": [
+    {
+      "id": "proposal-referral",
+      "interface": "create_proposal",
+      "valid": true,
+      "purpose": "Accept this draft subtype only, without operational effect",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-referral-cannot-approve",
+      "interface": "create_proposal",
+      "valid": false,
+      "purpose": "No model/caller approval claim",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null,
+            "approved_by": "demo_lead"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-feedback",
+      "interface": "create_proposal",
+      "valid": true,
+      "purpose": "Accept this draft subtype only, without operational effect",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "feedback",
+          "payload": {
+            "case_id": "demo_01",
+            "result_version": "demo_01",
+            "customer_explanation": "demo_01"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-feedback-cannot-approve",
+      "interface": "create_proposal",
+      "valid": false,
+      "purpose": "No model/caller approval claim",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "feedback",
+          "payload": {
+            "case_id": "demo_01",
+            "result_version": "demo_01",
+            "customer_explanation": "demo_01",
+            "approved_by": "demo_lead"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-retry",
+      "interface": "create_proposal",
+      "valid": true,
+      "purpose": "Accept this draft subtype only, without operational effect",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "retry",
+          "payload": {
+            "case_id": "demo_01",
+            "proposed_at": "2026-10-19T15:00:00Z",
+            "reason": "demo_01",
+            "contact_plan_id": "demo_01"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-retry-cannot-approve",
+      "interface": "create_proposal",
+      "valid": false,
+      "purpose": "No model/caller approval claim",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "retry",
+          "payload": {
+            "case_id": "demo_01",
+            "proposed_at": "2026-10-19T15:00:00Z",
+            "reason": "demo_01",
+            "contact_plan_id": "demo_01",
+            "approved_by": "demo_lead"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-escalation",
+      "interface": "create_proposal",
+      "valid": true,
+      "purpose": "Accept this draft subtype only, without operational effect",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "escalation",
+          "payload": {
+            "case_id": "demo_01",
+            "original_due_at": "demo_01",
+            "recorded_blockers": [],
+            "unknowns": [],
+            "lead_queue": "demo_01"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-escalation-cannot-approve",
+      "interface": "create_proposal",
+      "valid": false,
+      "purpose": "No model/caller approval claim",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "escalation",
+          "payload": {
+            "case_id": "demo_01",
+            "original_due_at": "demo_01",
+            "recorded_blockers": [],
+            "unknowns": [],
+            "lead_queue": "demo_01",
+            "approved_by": "demo_lead"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-rereview",
+      "interface": "create_proposal",
+      "valid": true,
+      "purpose": "Accept this draft subtype only, without operational effect",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "rereview",
+          "payload": {
+            "case_id": "demo_01",
+            "customer_statement_ref": {
+              "kind": "transaction",
+              "id": "demo_01",
+              "version": "demo_01",
+              "section": null
+            },
+            "new_evidence": [],
+            "requested_path": "clarification"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-rereview-cannot-approve",
+      "interface": "create_proposal",
+      "valid": false,
+      "purpose": "No model/caller approval claim",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "rereview",
+          "payload": {
+            "case_id": "demo_01",
+            "customer_statement_ref": {
+              "kind": "transaction",
+              "id": "demo_01",
+              "version": "demo_01",
+              "section": null
+            },
+            "new_evidence": [],
+            "requested_path": "clarification",
+            "approved_by": "demo_lead"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-closure",
+      "interface": "create_proposal",
+      "valid": true,
+      "purpose": "Accept this draft subtype only, without operational effect",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "closure",
+          "payload": {
+            "case_id": "demo_01",
+            "result_ref": {
+              "kind": "transaction",
+              "id": "demo_01",
+              "version": "demo_01",
+              "section": null
+            },
+            "feedback_attempt_id": "demo_01",
+            "completion_evidence": []
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-closure-cannot-approve",
+      "interface": "create_proposal",
+      "valid": false,
+      "purpose": "No model/caller approval claim",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "closure",
+          "payload": {
+            "case_id": "demo_01",
+            "result_ref": {
+              "kind": "transaction",
+              "id": "demo_01",
+              "version": "demo_01",
+              "section": null
+            },
+            "feedback_attempt_id": "demo_01",
+            "completion_evidence": [],
+            "approved_by": "demo_lead"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-note",
+      "interface": "create_proposal",
+      "valid": true,
+      "purpose": "Accept this draft subtype only, without operational effect",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "note",
+          "payload": {
+            "case_id": "demo_01",
+            "contact_id": "demo_01",
+            "body": "demo_01",
+            "customer_allegations": [],
+            "source_refs": []
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-note-cannot-approve",
+      "interface": "create_proposal",
+      "valid": false,
+      "purpose": "No model/caller approval claim",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "note",
+          "payload": {
+            "case_id": "demo_01",
+            "contact_id": "demo_01",
+            "body": "demo_01",
+            "customer_allegations": [],
+            "source_refs": [],
+            "approved_by": "demo_lead"
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-progress_update",
+      "interface": "create_proposal",
+      "valid": true,
+      "purpose": "Accept this draft subtype only, without operational effect",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "progress_update",
+          "payload": {
+            "case_id": "demo_01",
+            "work_item_id": "demo_01",
+            "expected_work_version": 1,
+            "commitment_id": "demo_01",
+            "customer_explanation": "demo_01",
+            "unknowns": []
+          }
+        }
+      }
+    },
+    {
+      "id": "proposal-progress_update-cannot-approve",
+      "interface": "create_proposal",
+      "valid": false,
+      "purpose": "No model/caller approval claim",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "progress_update",
+          "payload": {
+            "case_id": "demo_01",
+            "work_item_id": "demo_01",
+            "expected_work_version": 1,
+            "commitment_id": "demo_01",
+            "customer_explanation": "demo_01",
+            "unknowns": [],
+            "approved_by": "demo_lead"
+          }
+        }
+      }
+    },
+    {
+      "id": "propose_next_update-valid",
+      "interface": "propose_next_update",
+      "valid": true,
+      "purpose": "Structurally valid trusted request; runtime permission separate",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "proposed_update_at": "2026-10-19T15:00:00Z",
+        "customer_safe_progress": "demo_01",
+        "reason": "demo_01"
+      }
+    },
+    {
+      "id": "propose_next_update-actor-injection",
+      "interface": "propose_next_update",
+      "valid": false,
+      "purpose": "Actor must come from trusted session",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "proposed_update_at": "2026-10-19T15:00:00Z",
+        "customer_safe_progress": "demo_01",
+        "reason": "demo_01",
+        "actor_id": "demo_lead"
+      }
+    },
+    {
+      "id": "propose_next_update-zero-work-version",
+      "interface": "propose_next_update",
+      "valid": false,
+      "purpose": "Versions must be positive",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 0,
+        "operation_key": "demo_01",
+        "proposed_update_at": "2026-10-19T15:00:00Z",
+        "customer_safe_progress": "demo_01",
+        "reason": "demo_01"
+      }
+    },
+    {
+      "id": "confirm_next_update-valid",
+      "interface": "confirm_next_update",
+      "valid": true,
+      "purpose": "Structurally valid trusted request; runtime permission separate",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "commitment_id": "demo_01",
+        "expected_commitment_version": 1,
+        "decision": "approve",
+        "reason": "demo_01"
+      }
+    },
+    {
+      "id": "confirm_next_update-actor-injection",
+      "interface": "confirm_next_update",
+      "valid": false,
+      "purpose": "Actor must come from trusted session",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "commitment_id": "demo_01",
+        "expected_commitment_version": 1,
+        "decision": "approve",
+        "reason": "demo_01",
+        "actor_id": "demo_lead"
+      }
+    },
+    {
+      "id": "confirm_next_update-zero-work-version",
+      "interface": "confirm_next_update",
+      "valid": false,
+      "purpose": "Versions must be positive",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 0,
+        "operation_key": "demo_01",
+        "commitment_id": "demo_01",
+        "expected_commitment_version": 1,
+        "decision": "approve",
+        "reason": "demo_01"
+      }
+    },
+    {
+      "id": "register_complaint_intake-valid",
+      "interface": "register_complaint_intake",
+      "valid": true,
+      "purpose": "Structurally valid trusted request; runtime permission separate",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "objection_id": "demo_01"
+      }
+    },
+    {
+      "id": "register_complaint_intake-actor-injection",
+      "interface": "register_complaint_intake",
+      "valid": false,
+      "purpose": "Actor must come from trusted session",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "objection_id": "demo_01",
+        "actor_id": "demo_lead"
+      }
+    },
+    {
+      "id": "register_complaint_intake-zero-work-version",
+      "interface": "register_complaint_intake",
+      "valid": false,
+      "purpose": "Versions must be positive",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 0,
+        "operation_key": "demo_01",
+        "objection_id": "demo_01"
+      }
+    },
+    {
+      "id": "decide_contact_continuation-valid",
+      "interface": "decide_contact_continuation",
+      "valid": true,
+      "purpose": "Structurally valid trusted request; runtime permission separate",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "max_attempts": 1,
+            "approved_slots": [
+              "2026-10-19T15:00:00Z"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "decide_contact_continuation-actor-injection",
+      "interface": "decide_contact_continuation",
+      "valid": false,
+      "purpose": "Actor must come from trusted session",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "max_attempts": 1,
+            "approved_slots": [
+              "2026-10-19T15:00:00Z"
+            ]
+          }
+        },
+        "actor_id": "demo_lead"
+      }
+    },
+    {
+      "id": "decide_contact_continuation-zero-work-version",
+      "interface": "decide_contact_continuation",
+      "valid": false,
+      "purpose": "Versions must be positive",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 0,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "max_attempts": 1,
+            "approved_slots": [
+              "2026-10-19T15:00:00Z"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "edit_proposal-valid",
+      "interface": "edit_proposal",
+      "valid": true,
+      "purpose": "Structurally valid trusted request; runtime permission separate",
+      "payload": {
+        "proposal_id": "demo_01",
+        "expected_proposal_version": 1,
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "replacement": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        },
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "edit_proposal-actor-injection",
+      "interface": "edit_proposal",
+      "valid": false,
+      "purpose": "Actor must come from trusted session",
+      "payload": {
+        "proposal_id": "demo_01",
+        "expected_proposal_version": 1,
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "replacement": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        },
+        "operation_key": "demo_01",
+        "actor_id": "demo_lead"
+      }
+    },
+    {
+      "id": "edit_proposal-zero-work-version",
+      "interface": "edit_proposal",
+      "valid": false,
+      "purpose": "Versions must be positive",
+      "payload": {
+        "proposal_id": "demo_01",
+        "expected_proposal_version": 1,
+        "expected_case_version": 1,
+        "expected_work_version": 0,
+        "replacement": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        },
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "continuation-new_plan",
+      "interface": "decide_contact_continuation",
+      "valid": true,
+      "purpose": "Typed lead choice; semantic time/queue/authority tests separate",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "max_attempts": 1,
+            "approved_slots": [
+              "2026-10-19T15:00:00Z"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "new_plan-missing-max_attempts",
+      "interface": "decide_contact_continuation",
+      "valid": false,
+      "purpose": "No implicit owner, date or allowance",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "approved_slots": [
+              "2026-10-19T15:00:00Z"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "new_plan-missing-valid_until",
+      "interface": "decide_contact_continuation",
+      "valid": false,
+      "purpose": "No implicit owner, date or allowance",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "max_attempts": 1,
+            "approved_slots": [
+              "2026-10-19T15:00:00Z"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "new_plan-missing-approved_slots",
+      "interface": "decide_contact_continuation",
+      "valid": false,
+      "purpose": "No implicit owner, date or allowance",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "max_attempts": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "new-plan-invalid-max_attempts",
+      "interface": "decide_contact_continuation",
+      "valid": false,
+      "purpose": "Plan must contain a positive explicit allowance and at least one slot",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "max_attempts": 0,
+            "approved_slots": [
+              "2026-10-19T15:00:00Z"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "new-plan-invalid-approved_slots",
+      "interface": "decide_contact_continuation",
+      "valid": false,
+      "purpose": "Plan must contain a positive explicit allowance and at least one slot",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "max_attempts": 1,
+            "approved_slots": []
+          }
+        }
+      }
+    },
+    {
+      "id": "continuation-review_hold",
+      "interface": "decide_contact_continuation",
+      "valid": true,
+      "purpose": "Typed lead choice; semantic time/queue/authority tests separate",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "review_hold",
+          "payload": {
+            "owner_id": "demo_01",
+            "review_at": "2026-10-19T15:00:00Z"
+          }
+        }
+      }
+    },
+    {
+      "id": "review_hold-missing-owner_id",
+      "interface": "decide_contact_continuation",
+      "valid": false,
+      "purpose": "No implicit owner, date or allowance",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "review_hold",
+          "payload": {
+            "review_at": "2026-10-19T15:00:00Z"
+          }
+        }
+      }
+    },
+    {
+      "id": "review_hold-missing-review_at",
+      "interface": "decide_contact_continuation",
+      "valid": false,
+      "purpose": "No implicit owner, date or allowance",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "review_hold",
+          "payload": {
+            "owner_id": "demo_01"
+          }
+        }
+      }
+    },
+    {
+      "id": "attempt-missing-plan",
+      "interface": "record_callback_attempt",
+      "valid": false,
+      "purpose": "Actual contact history must link to a plan",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "callback_contact_id": "demo_01",
+        "expected_case_version": 1,
+        "actual_attempt_at": "2026-10-19T15:00:00Z",
+        "dial_state": "not_placed",
+        "outcome": "no_answer",
+        "customer_response": null,
+        "operation_key": "demo_01",
+        "expected_work_version": 1,
+        "reservation_id": "demo_01"
+      }
+    },
+    {
+      "id": "progress-no-approved-date",
+      "interface": "create_proposal",
+      "valid": true,
+      "purpose": "Progress without a date is possible; must not fabricate a promise",
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "progress_update",
+          "payload": {
+            "case_id": "demo_01",
+            "work_item_id": "demo_01",
+            "expected_work_version": 1,
+            "commitment_id": null,
+            "customer_explanation": "demo_01",
+            "unknowns": []
+          }
+        }
+      }
+    },
+    {
+      "id": "no-auto-approval-kind",
+      "interface": "confirm_next_update",
+      "valid": false,
+      "purpose": "Only explicit approve or reject",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "commitment_id": "demo_01",
+        "expected_commitment_version": 1,
+        "decision": "auto_approve",
+        "reason": "demo_01"
+      }
+    },
+    {
+      "id": "invalid-update-date",
+      "interface": "propose_next_update",
+      "valid": false,
+      "purpose": "Require a timestamp, not relative text",
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "proposed_update_at": "tomorrow",
+        "customer_safe_progress": "demo_01",
+        "reason": "demo_01"
+      }
+    },
+    {
+      "id": "confirm_next_update-receipt-0",
+      "interface": "confirm_next_update",
+      "schema": "success_schema",
+      "valid": true,
+      "purpose": "Typed receipt matches decision outcome",
+      "payload": {
+        "data": {
+          "commitment_id": "demo_01",
+          "version": 1,
+          "status": "approved",
+          "approved_update_at": "2026-10-19T15:00:00Z"
+        },
+        "request_id": "demo_request"
+      }
+    },
+    {
+      "id": "confirm_next_update-contradictory-receipt-0",
+      "interface": "confirm_next_update",
+      "schema": "success_schema",
+      "valid": false,
+      "purpose": "Reject contradictory approval/hold receipt",
+      "payload": {
+        "data": {
+          "commitment_id": "demo_01",
+          "version": 1,
+          "status": "approved",
+          "approved_update_at": null
+        },
+        "request_id": "demo_request"
+      }
+    },
+    {
+      "id": "confirm_next_update-receipt-1",
+      "interface": "confirm_next_update",
+      "schema": "success_schema",
+      "valid": true,
+      "purpose": "Typed receipt matches decision outcome",
+      "payload": {
+        "data": {
+          "commitment_id": "demo_01",
+          "version": 1,
+          "status": "rejected",
+          "approved_update_at": null
+        },
+        "request_id": "demo_request"
+      }
+    },
+    {
+      "id": "confirm_next_update-contradictory-receipt-1",
+      "interface": "confirm_next_update",
+      "schema": "success_schema",
+      "valid": false,
+      "purpose": "Reject contradictory approval/hold receipt",
+      "payload": {
+        "data": {
+          "commitment_id": "demo_01",
+          "version": 1,
+          "status": "rejected",
+          "approved_update_at": "2026-10-19T15:00:00Z"
+        },
+        "request_id": "demo_request"
+      }
+    },
+    {
+      "id": "decide_contact_continuation-receipt-0",
+      "interface": "decide_contact_continuation",
+      "schema": "success_schema",
+      "valid": true,
+      "purpose": "Typed receipt matches decision outcome",
+      "payload": {
+        "data": {
+          "decision_id": "demo_01",
+          "receipt_ref": "demo_01",
+          "status": "plan_approved",
+          "new_plan_id": "demo_01",
+          "review_at": null
+        },
+        "request_id": "demo_request"
+      }
+    },
+    {
+      "id": "decide_contact_continuation-contradictory-receipt-0",
+      "interface": "decide_contact_continuation",
+      "schema": "success_schema",
+      "valid": false,
+      "purpose": "Reject contradictory approval/hold receipt",
+      "payload": {
+        "data": {
+          "decision_id": "demo_01",
+          "receipt_ref": "demo_01",
+          "status": "plan_approved",
+          "new_plan_id": null,
+          "review_at": null
+        },
+        "request_id": "demo_request"
+      }
+    },
+    {
+      "id": "decide_contact_continuation-receipt-1",
+      "interface": "decide_contact_continuation",
+      "schema": "success_schema",
+      "valid": true,
+      "purpose": "Typed receipt matches decision outcome",
+      "payload": {
+        "data": {
+          "decision_id": "demo_01",
+          "receipt_ref": "demo_01",
+          "status": "review_hold",
+          "new_plan_id": null,
+          "review_at": "2026-10-19T15:00:00Z"
+        },
+        "request_id": "demo_request"
+      }
+    },
+    {
+      "id": "decide_contact_continuation-contradictory-receipt-1",
+      "interface": "decide_contact_continuation",
+      "schema": "success_schema",
+      "valid": false,
+      "purpose": "Reject contradictory approval/hold receipt",
+      "payload": {
+        "data": {
+          "decision_id": "demo_01",
+          "receipt_ref": "demo_01",
+          "status": "review_hold",
+          "new_plan_id": "demo_plan",
+          "review_at": "2026-10-19T15:00:00Z"
+        },
+        "request_id": "demo_request"
+      }
+    }
+  ]
+}

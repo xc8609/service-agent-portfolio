@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-19",
+  "status": "Synced",
+  "cards": [
+    {
+      "id": "BA-01",
+      "url": "https://trello.com/c/VvE3u9HY/3-ba-01-define-the-service-problem-value-hypothesis-and-alternatives",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    },
+    {
+      "id": "BA-02",
+      "url": "https://trello.com/c/1ZT5cNaK/4-ba-02-stakeholders-personas-decision-rights-and-elicitation-plan",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    },
+    {
+      "id": "BA-03",
+      "url": "https://trello.com/c/ATlFMnKf/5-ba-03-model-the-current-process-and-locate-service-failure-points",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    },
+    {
+      "id": "BA-04",
+      "url": "https://trello.com/c/RHpuR1ya/6-ba-04-design-the-future-service-journey-and-exception-paths",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    },
+    {
+      "id": "BA-05",
+      "url": "https://trello.com/c/mG7qod2L/7-ba-05-story-map-scope-baseline-and-requirement-prioritization",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    },
+    {
+      "id": "GOV-01",
+      "url": "https://trello.com/c/HvZAKRix/1-gov-01-sdd-working-agreement-story-readiness-and-traceability",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    },
+    {
+      "id": "GOV-02",
+      "url": "https://trello.com/c/YQ1pq04i/2-gov-02-release-roadmap-architecture-decisions-and-scope-controls",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    },
+    {
+      "id": "GOV-03",
+      "url": "https://trello.com/c/S22F5HZm/38-gov-03-two-week-sprint-planning-capacity-and-forecast-control",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    },
+    {
+      "id": "GIT-01",
+      "url": "https://trello.com/c/dELJPdDz/37-git-01-public-monorepo-contribution-workflow-and-release-hygiene",
+      "descriptionVerified": true,
+      "currentList": "unchanged",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    },
+    {
+      "id": "S01",
+      "url": "https://trello.com/c/GwmtaYiU/40-s01-w1-2-business-framing-and-public-delivery-foundation",
+      "descriptionVerified": true,
+      "currentList": "unchanged",
+      "marker": "SPRINT1-REVIEW-v0.1"
+    }
+  ]
+}

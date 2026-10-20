@@ -1,0 +1,939 @@
+{
+  "version": "0.2",
+  "date": "2026-10-19",
+  "status": "Detailed candidate; accepted business decisions do not imply code-ready approval",
+  "rules": [
+    {
+      "id": "SR-01",
+      "status": "Accepted D-11",
+      "statement": "Ordinary representatives read only authorized transaction context; financial actions stay external and privileged."
+    },
+    {
+      "id": "SR-02",
+      "status": "Accepted D-12/D-13",
+      "statement": "Routine referral is asynchronous; specialists investigate; the shared feedback queue contacts customers."
+    },
+    {
+      "id": "SR-03",
+      "status": "Accepted D-14",
+      "statement": "Human callback first. App messages are deferred. Reverify identity before private disclosure."
+    },
+    {
+      "id": "SR-04",
+      "status": "Accepted D-14",
+      "statement": "One service day for specialist acceptance; two from submission for investigation; one after approved result for first callback attempt. Progress update by investigation deadline if unfinished; no reset of overdue history."
+    },
+    {
+      "id": "SR-05",
+      "status": "Accepted D-14; fixture detail pending",
+      "statement": "Service calendar Mon–Fri 09:00–17:00 America/Winnipeg, configured holidays excluded; one service day is eight service hours. Store UTC instants and calendar version."
+    },
+    {
+      "id": "SR-06",
+      "status": "Accepted D-16",
+      "statement": "At most three actual callback attempts including the first within three service days; at most one per service date. Exhaustion or elapsed window leads to responsible-person review, never automatic resolved closure."
+    },
+    {
+      "id": "SR-07",
+      "status": "Accepted D-14",
+      "statement": "Normal closure requires authorized findings, completed/no required actions, verified feedback and no remaining work. Silence, sent messages and pending funds do not prove resolution."
+    },
+    {
+      "id": "SR-08",
+      "status": "Accepted D-20; deduplication engineering proposal",
+      "statement": "Overdue investigation retains its original specialist and original deadline. Notify the responsible lead and create customer progress work in the feedback queue. The specialist proposes the next update time; the responsible lead confirms it. Preserve original overdue history. The agent may gather evidence, remind and draft, but cannot commit a completion date."
+    },
+    {
+      "id": "SR-09",
+      "status": "Accepted D-21",
+      "statement": "Feedback staff preserve the customer statement and new evidence, and route disputed findings to specialist re-review. An explicit complaint request creates an independent complaint-intake record without waiting for re-review. Both tracks link to the original case and keep independent ownership/status. Objection or silence never implies resolved closure."
+    },
+    {
+      "id": "SR-10",
+      "status": "Engineering proposal",
+      "statement": "All mutations require trusted actors, version checks, unique operation keys and atomic domain/audit/outbox commit; LLM cannot approve."
+    },
+    {
+      "id": "SR-11",
+      "status": "Engineering proposal",
+      "statement": "Agent tool access is scoped, bounded and read/proposal only; source content is untrusted data and no raw hidden reasoning is logged."
+    },
+    {
+      "id": "SR-12",
+      "status": "Accepted D-18",
+      "statement": "A technical failure with dial_state=not_placed does not consume contact quota. Persist the fault and preserve all original deadlines. A placed unanswered call consumes one contact attempt. The server derives counting from trusted call evidence; the agent cannot override it."
+    },
+    {
+      "id": "SR-13",
+      "status": "Accepted D-19",
+      "statement": "First actually placed callback service date is day 1; the retry window ends at 17:00 America/Winnipeg on the third service date, excluding configured holidays and weekends. At the deadline, unresolved feedback enters lead review even if fewer than three calls occurred; no extension or automatic resolved closure. Before the first placed call, the original first-callback target still applies. Never-placed technical faults do not start or reset this window."
+    },
+    {
+      "id": "SR-14",
+      "status": "Accepted D-22",
+      "statement": "After contact quota or window exhaustion, the responsible lead may approve a reasoned new contact plan or a review hold with a named owner and review date. Preserve all original attempts, deadlines and approval history. Never reset history or mark the case resolved merely because the customer did not answer. Agent suggestions cannot authorize the new plan or hold."
+    }
+  ],
+  "stories": [
+    {
+      "id": "DEV-02",
+      "title": "Open an authorized contact and assemble permitted customer context",
+      "persona": "ordinary representative",
+      "need": "a scoped customer and card context",
+      "value": "avoid repeated page navigation without expanding access",
+      "requirements": [
+        "FR-01",
+        "NFR-01"
+      ],
+      "decisions": [
+        "D-09",
+        "D-11"
+      ],
+      "deps": [
+        "DEV-01",
+        "BA-09"
+      ],
+      "tools": [
+        "get_contact_context"
+      ],
+      "flow": [
+        "Read identity-verification result and session role from trusted services.",
+        "Select an authorized card; show masked identifiers, context timestamp and permitted actions.",
+        "Deny cross-customer reads before model/tool output; retain a manual verification route."
+      ],
+      "work": [
+        "Persist Contact and server-owned ScopeSnapshot; never accept a model-supplied role.",
+        "Implement scoped context API plus loading/expired/denied states in the workspace.",
+        "Add access tests for representative, specialist and feedback roles; sanitize errors and traces."
+      ],
+      "open_items": [
+        "Finalize role/action matrix and identity-proofing fixture; no real identity provider is claimed."
+      ],
+      "estimate": {
+        "dev": 3,
+        "ba": 0.25,
+        "qa": 0.5,
+        "total": 3.75,
+        "range": [
+          3,
+          6
+        ],
+        "unit": "person-days",
+        "confidence": "medium"
+      },
+      "sprint": "S03",
+      "acceptance": [
+        {
+          "id": "DEV-02-AC01",
+          "given": "An authenticated ordinary representative and verified customer context",
+          "when": "the selected card is loaded",
+          "then": "return only the permitted card/account context with source timestamp and version",
+          "testId": "DEV-02-T01",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-02-AC02",
+          "given": "An unverified or expired customer context",
+          "when": "any private lookup is requested",
+          "then": "deny without returning private fields and offer the verification route",
+          "testId": "DEV-02-T02",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-02-AC03",
+          "given": "A prompt supplies a different customer ID or asks for administrator privileges",
+          "when": "the tool is invoked",
+          "then": "derive scope from the session and disclose no out-of-scope existence or details",
+          "testId": "DEV-02-T03",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-02-AC04",
+          "given": "An ordinary representative can read transactions",
+          "when": "a refund or other privileged action is requested",
+          "then": "reject the action; read access does not grant financial authority",
+          "testId": "DEV-02-T04",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-02-AC05",
+          "given": "Scope expires between a proposal and approval",
+          "when": "the person attempts to commit",
+          "then": "reject with AUTH_REQUIRED and preserve the editable draft",
+          "testId": "DEV-02-T05",
+          "execution": "Not executed"
+        }
+      ],
+      "description": "# DEV-02 — Open an authorized contact and assemble permitted customer context\n\nCurrent S02 forecast: **S03**. Updated effort: Dev 3, BA 0.25, QA 0.5 person-days (3.75 total); dependencies DEV-01, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.\n\nBANK-SDD-v0.2 · 19 October 2026\nStatus: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.\nForecast: S03 | Release: B0 manual path / B1 assisted path.\nEstimate: Dev 3, BA 0.25, QA 0.5 person-days; total 3.75 (3–6), confidence medium. Not actual effort.\n\n## User story and value\n\nAs a ordinary representative, I want a scoped customer and card context, so that I can avoid repeated page navigation without expanding access.\n\nOwner relevance: representative desktop, customer-information lookup and processing-rule experience. Role evidence: requirements/API/access/testing/UAT in dated R01/R02/R06 samples; no current vacancy or outcome claim.\n\n## Scope and authority\n\nRequirements: FR-01, NFR-01. Decisions: D-09, D-11. Dependencies: DEV-01, BA-07, BA-09.\nSynthetic records and policies only. Financial execution, real outbound calls, App messaging and a full specialist adjudication platform are excluded.\n\n## Main flow\n\n1. Read identity-verification result and session role from trusted services.\n2. Select an authorized card; show masked identifiers, context timestamp and permitted actions.\n3. Deny cross-customer reads before model/tool output; retain a manual verification route.\n\n## Acceptance criteria\n\n- **DEV-02-AC01** — Given An authenticated ordinary representative and verified customer context; when the selected card is loaded; then return only the permitted card/account context with source timestamp and version. Evidence: DEV-02-T01 (planned, not executed).\n- **DEV-02-AC02** — Given An unverified or expired customer context; when any private lookup is requested; then deny without returning private fields and offer the verification route. Evidence: DEV-02-T02 (planned, not executed).\n- **DEV-02-AC03** — Given A prompt supplies a different customer ID or asks for administrator privileges; when the tool is invoked; then derive scope from the session and disclose no out-of-scope existence or details. Evidence: DEV-02-T03 (planned, not executed).\n- **DEV-02-AC04** — Given An ordinary representative can read transactions; when a refund or other privileged action is requested; then reject the action; read access does not grant financial authority. Evidence: DEV-02-T04 (planned, not executed).\n- **DEV-02-AC05** — Given Scope expires between a proposal and approval; when the person attempts to commit; then reject with AUTH_REQUIRED and preserve the editable draft. Evidence: DEV-02-T05 (planned, not executed).\n\n## Ready gates\n\n- Finalize role/action matrix and identity-proofing fixture; no real identity provider is claimed.\n- Review data/permission contracts, exact fixtures, dependencies and observable results before moving to Ready.\n- No Done status until implementation, appropriate tests, owner UAT and required release evidence exist.\n\n## Traceability\n\n[Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).\n"
+    },
+    {
+      "id": "DEV-03",
+      "title": "Identify a card charge and investigate apparent duplicate entries",
+      "persona": "representative",
+      "need": "transaction evidence in one investigation view",
+      "value": "explain a charge or refer a genuine evidence gap",
+      "requirements": [
+        "FR-02",
+        "FR-03",
+        "FR-06",
+        "FR-07"
+      ],
+      "decisions": [
+        "D-10",
+        "D-11"
+      ],
+      "deps": [
+        "DEV-02",
+        "BA-06"
+      ],
+      "tools": [
+        "search_transactions",
+        "get_transaction_evidence",
+        "get_case_snapshot"
+      ],
+      "flow": [
+        "Capture customer statement separately from verified records.",
+        "Find candidate transactions by permitted card/date/amount/merchant and ask for selection if ambiguous.",
+        "Inspect status, provenance, reliable relationship evidence and related work.",
+        "Prepare an explanation or unresolved question, not a duplicate/refund determination."
+      ],
+      "work": [
+        "Create deterministic synthetic ledger and statement-view fixtures including unlinked equal amounts.",
+        "Implement filtered/paginated search and a selected-record comparison UI.",
+        "Invalidate affected proposals after transaction selection or customer correction changes."
+      ],
+      "open_items": [
+        "The initial job is accepted; exact synthetic transaction fields and out-of-scope risk handoff need contract review."
+      ],
+      "estimate": {
+        "dev": 3,
+        "ba": 0.5,
+        "qa": 0.5,
+        "total": 4,
+        "range": [
+          3,
+          6
+        ],
+        "unit": "person-days",
+        "confidence": "medium"
+      },
+      "sprint": "S03",
+      "acceptance": [
+        {
+          "id": "DEV-03-AC01",
+          "given": "Two entries have equal amount and merchant but no relationship evidence",
+          "when": "the representative or agent reviews them",
+          "then": "show statuses and uncertainty; do not infer a duplicate or a shared purchase",
+          "testId": "DEV-03-T01",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-03-AC02",
+          "given": "One entry is pending and another posted",
+          "when": "evidence is summarized",
+          "then": "cite both states without promising automatic reversal or a refund",
+          "testId": "DEV-03-T02",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-03-AC03",
+          "given": "Several transactions match the customer description",
+          "when": "search returns candidates",
+          "then": "require clarification or explicit selection before a case-specific proposal",
+          "testId": "DEV-03-T03",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-03-AC04",
+          "given": "A customer corrects the transaction or denies the purchase",
+          "when": "the correction is saved",
+          "then": "retain the original statement and mark affected advice stale; offer the reviewed manual risk path",
+          "testId": "DEV-03-T04",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-03-AC05",
+          "given": "Source retrieval times out",
+          "when": "the investigation cannot complete",
+          "then": "show unavailable rather than no transactions; permit manual continuation",
+          "testId": "DEV-03-T05",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-03-AC06",
+          "given": "An existing case covers the selected transaction concern",
+          "when": "related work is displayed",
+          "then": "show its actual reference/status and do not silently create a duplicate",
+          "testId": "DEV-03-T06",
+          "execution": "Not executed"
+        }
+      ],
+      "description": "# DEV-03 — Identify a card charge and investigate apparent duplicate entries\n\nCurrent S02 forecast: **S03**. Updated effort: Dev 3, BA 0.5, QA 0.5 person-days (4 total); dependencies DEV-02, BA-06. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.\n\nBANK-SDD-v0.2 · 19 October 2026\nStatus: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.\nForecast: S03 | Release: B0 manual path / B1 assisted path.\nEstimate: Dev 3, BA 0.5, QA 0.5 person-days; total 4 (3–6), confidence medium. Not actual effort.\n\n## User story and value\n\nAs a representative, I want transaction evidence in one investigation view, so that I can explain a charge or refer a genuine evidence gap.\n\nOwner relevance: representative desktop, customer-information lookup and processing-rule experience. Role evidence: requirements/API/access/testing/UAT in dated R01/R02/R06 samples; no current vacancy or outcome claim.\n\n## Scope and authority\n\nRequirements: FR-02, FR-03, FR-06, FR-07. Decisions: D-10, D-11. Dependencies: DEV-02, BA-07.\nSynthetic records and policies only. Financial execution, real outbound calls, App messaging and a full specialist adjudication platform are excluded.\n\n## Main flow\n\n1. Capture customer statement separately from verified records.\n2. Find candidate transactions by permitted card/date/amount/merchant and ask for selection if ambiguous.\n3. Inspect status, provenance, reliable relationship evidence and related work.\n4. Prepare an explanation or unresolved question, not a duplicate/refund determination.\n\n## Acceptance criteria\n\n- **DEV-03-AC01** — Given Two entries have equal amount and merchant but no relationship evidence; when the representative or agent reviews them; then show statuses and uncertainty; do not infer a duplicate or a shared purchase. Evidence: DEV-03-T01 (planned, not executed).\n- **DEV-03-AC02** — Given One entry is pending and another posted; when evidence is summarized; then cite both states without promising automatic reversal or a refund. Evidence: DEV-03-T02 (planned, not executed).\n- **DEV-03-AC03** — Given Several transactions match the customer description; when search returns candidates; then require clarification or explicit selection before a case-specific proposal. Evidence: DEV-03-T03 (planned, not executed).\n- **DEV-03-AC04** — Given A customer corrects the transaction or denies the purchase; when the correction is saved; then retain the original statement and mark affected advice stale; offer the reviewed manual risk path. Evidence: DEV-03-T04 (planned, not executed).\n- **DEV-03-AC05** — Given Source retrieval times out; when the investigation cannot complete; then show unavailable rather than no transactions; permit manual continuation. Evidence: DEV-03-T05 (planned, not executed).\n- **DEV-03-AC06** — Given An existing case covers the selected transaction concern; when related work is displayed; then show its actual reference/status and do not silently create a duplicate. Evidence: DEV-03-T06 (planned, not executed).\n\n## Ready gates\n\n- The initial job is accepted; exact synthetic transaction fields and out-of-scope risk handoff need contract review.\n- Review data/permission contracts, exact fixtures, dependencies and observable results before moving to Ready.\n- No Done status until implementation, appropriate tests, owner UAT and required release evidence exist.\n\n## Traceability\n\n[Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).\n"
+    },
+    {
+      "id": "DEV-05",
+      "title": "Retrieve applicable handling rules with verifiable citations",
+      "persona": "representative",
+      "need": "context-specific rules and missing-information prompts",
+      "value": "reduce knowledge-base search and learning effort",
+      "requirements": [
+        "FR-05",
+        "FR-06",
+        "FR-15"
+      ],
+      "decisions": [
+        "D-01",
+        "D-09",
+        "D-10"
+      ],
+      "deps": [
+        "DEV-01",
+        "BA-06",
+        "BA-07"
+      ],
+      "tools": [
+        "search_policy",
+        "get_policy_section"
+      ],
+      "flow": [
+        "Build applicability filters from verified product/jurisdiction/transaction context.",
+        "Search permitted policy material as of the contact time.",
+        "Read the exact section and show applicability, version and evidence gaps next to the suggested step."
+      ],
+      "work": [
+        "Author explicitly fictional policy editions and conflicting/expired examples with provenance.",
+        "Implement metadata filtering and section retrieval before model summarization.",
+        "Render cited sections and a manual search fallback; keep customer instructions untrusted."
+      ],
+      "open_items": [
+        "Policy fixture owner, applicability precedence and conflict route must be reviewed before Ready."
+      ],
+      "estimate": {
+        "dev": 4,
+        "ba": 0.25,
+        "qa": 1,
+        "total": 5.25,
+        "range": [
+          4,
+          8
+        ],
+        "unit": "person-days",
+        "confidence": "medium"
+      },
+      "sprint": "S03",
+      "acceptance": [
+        {
+          "id": "DEV-05-AC01",
+          "given": "A newer uploaded rule is not effective at the enquiry time",
+          "when": "policy search runs",
+          "then": "exclude it and use the applicable edition or report a gap",
+          "testId": "DEV-05-T01",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-05-AC02",
+          "given": "Similar text belongs to another product or restricted audience",
+          "when": "retrieval runs",
+          "then": "exclude it before returning content to the agent",
+          "testId": "DEV-05-T02",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-05-AC03",
+          "given": "Two applicable rules conflict",
+          "when": "a response is drafted",
+          "then": "expose the conflict and request authorized clarification, not an authoritative guess",
+          "testId": "DEV-05-T03",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-05-AC04",
+          "given": "No applicable policy exists",
+          "when": "the agent proposes a next step",
+          "then": "state the missing basis and route for manual review",
+          "testId": "DEV-05-T04",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-05-AC05",
+          "given": "Retrieved narrative includes instructions to bypass permissions",
+          "when": "the model reads it",
+          "then": "treat it as data; tool and server permissions stay unchanged",
+          "testId": "DEV-05-T05",
+          "execution": "Not executed"
+        }
+      ],
+      "description": "# DEV-05 — Retrieve applicable handling rules with verifiable citations\n\nCurrent S02 forecast: **S03**. Updated effort: Dev 4, BA 0.25, QA 1 person-days (5.25 total); dependencies DEV-01, BA-06, BA-07. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.\n\nBANK-SDD-v0.2 · 19 October 2026\nStatus: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.\nForecast: S03 | Release: B0 manual path / B1 assisted path.\nEstimate: Dev 4, BA 0.25, QA 1 person-days; total 5.25 (4–8), confidence medium. Not actual effort.\n\n## User story and value\n\nAs a representative, I want context-specific rules and missing-information prompts, so that I can reduce knowledge-base search and learning effort.\n\nOwner relevance: representative desktop, customer-information lookup and processing-rule experience. Role evidence: requirements/API/access/testing/UAT in dated R01/R02/R06 samples; no current vacancy or outcome claim.\n\n## Scope and authority\n\nRequirements: FR-05, FR-06, FR-15. Decisions: D-01, D-09, D-10. Dependencies: BA-06, BA-07, DEV-02.\nSynthetic records and policies only. Financial execution, real outbound calls, App messaging and a full specialist adjudication platform are excluded.\n\n## Main flow\n\n1. Build applicability filters from verified product/jurisdiction/transaction context.\n2. Search permitted policy material as of the contact time.\n3. Read the exact section and show applicability, version and evidence gaps next to the suggested step.\n\n## Acceptance criteria\n\n- **DEV-05-AC01** — Given A newer uploaded rule is not effective at the enquiry time; when policy search runs; then exclude it and use the applicable edition or report a gap. Evidence: DEV-05-T01 (planned, not executed).\n- **DEV-05-AC02** — Given Similar text belongs to another product or restricted audience; when retrieval runs; then exclude it before returning content to the agent. Evidence: DEV-05-T02 (planned, not executed).\n- **DEV-05-AC03** — Given Two applicable rules conflict; when a response is drafted; then expose the conflict and request authorized clarification, not an authoritative guess. Evidence: DEV-05-T03 (planned, not executed).\n- **DEV-05-AC04** — Given No applicable policy exists; when the agent proposes a next step; then state the missing basis and route for manual review. Evidence: DEV-05-T04 (planned, not executed).\n- **DEV-05-AC05** — Given Retrieved narrative includes instructions to bypass permissions; when the model reads it; then treat it as data; tool and server permissions stay unchanged. Evidence: DEV-05-T05 (planned, not executed).\n\n## Ready gates\n\n- Policy fixture owner, applicability precedence and conflict route must be reviewed before Ready.\n- Review data/permission contracts, exact fixtures, dependencies and observable results before moving to Ready.\n- No Done status until implementation, appropriate tests, owner UAT and required release evidence exist.\n\n## Traceability\n\n[Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).\n"
+    },
+    {
+      "id": "DEV-07",
+      "title": "Submit a reviewed specialist enquiry with accountable ownership",
+      "persona": "representative",
+      "need": "a complete specialist-review request",
+      "value": "reduce rework while preserving actual submission state",
+      "requirements": [
+        "FR-09",
+        "FR-10",
+        "FR-13",
+        "FR-16"
+      ],
+      "decisions": [
+        "D-12",
+        "D-13"
+      ],
+      "deps": [
+        "DEV-06",
+        "BA-06"
+      ],
+      "tools": [
+        "get_case_snapshot",
+        "create_proposal",
+        "get_operation_status"
+      ],
+      "flow": [
+        "Check related work and choose explanation-only, link-existing or justified new review.",
+        "Draft the concern, transaction references, checked facts, missing evidence and requested review.",
+        "Person approves; backend rechecks scope, versions, queue eligibility and duplicate keys.",
+        "Commit Case, WorkItem, Audit and Outbox atomically; display the real operation receipt."
+      ],
+      "work": [
+        "Add referral payload and unique operation key, queue ownership and case/work-item versions.",
+        "Build review/edit UI with draft/submitting/queued/failed/unknown states.",
+        "Implement outbox replay and operation reconciliation without duplicate work."
+      ],
+      "open_items": [
+        "Queue routing configuration and permitted referral reasons need BA-06 sign-off."
+      ],
+      "estimate": {
+        "dev": 4,
+        "ba": 0.5,
+        "qa": 1,
+        "total": 5.5,
+        "range": [
+          4,
+          8.5
+        ],
+        "unit": "person-days",
+        "confidence": "medium"
+      },
+      "sprint": "S04",
+      "acceptance": [
+        {
+          "id": "DEV-07-AC01",
+          "given": "The enquiry has a supported answer and no remaining action",
+          "when": "the contact is recorded",
+          "then": "allow a note without forcing a specialist case",
+          "testId": "DEV-07-T01",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-07-AC02",
+          "given": "The same issue already has active specialist work",
+          "when": "a new proposal is reviewed",
+          "then": "link existing work or require an explicit distinct-work reason",
+          "testId": "DEV-07-T02",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-07-AC03",
+          "given": "A person approves a fresh complete request",
+          "when": "submission succeeds",
+          "then": "return one case/work reference with accountable queue; do not claim a specialist has accepted it",
+          "testId": "DEV-07-T03",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-07-AC04",
+          "given": "Submission succeeds but its response is lost",
+          "when": "the client retries or reconciles",
+          "then": "return the original receipt and create no second case or outbox effect",
+          "testId": "DEV-07-T04",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-07-AC05",
+          "given": "The recipient queue is invalid or authorization changed",
+          "when": "approval is committed",
+          "then": "reject without partial business writes and preserve the draft",
+          "testId": "DEV-07-T05",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-07-AC06",
+          "given": "The model states a request was submitted without a receipt",
+          "when": "the UI renders the result",
+          "then": "show a draft or unknown operation state, never a false submitted status",
+          "testId": "DEV-07-T06",
+          "execution": "Not executed"
+        }
+      ],
+      "description": "# DEV-07 — Submit a reviewed specialist enquiry with accountable ownership\n\nCurrent S02 forecast: **S04**. Updated effort: Dev 4, BA 0.5, QA 1 person-days (5.5 total); dependencies DEV-06, BA-06. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.\n\nBANK-SDD-v0.2 · 19 October 2026\nStatus: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.\nForecast: S04 | Release: B0 manual path / B1 assisted path.\nEstimate: Dev 4, BA 0.5, QA 1 person-days; total 5.5 (4–8.5), confidence medium. Not actual effort.\n\n## User story and value\n\nAs a representative, I want a complete specialist-review request, so that I can reduce rework while preserving actual submission state.\n\nOwner relevance: representative desktop, customer-information lookup and processing-rule experience. Role evidence: requirements/API/access/testing/UAT in dated R01/R02/R06 samples; no current vacancy or outcome claim.\n\n## Scope and authority\n\nRequirements: FR-09, FR-10, FR-13, FR-16. Decisions: D-12, D-13. Dependencies: DEV-03, DEV-05, DEV-06, BA-09.\nSynthetic records and policies only. Financial execution, real outbound calls, App messaging and a full specialist adjudication platform are excluded.\n\n## Main flow\n\n1. Check related work and choose explanation-only, link-existing or justified new review.\n2. Draft the concern, transaction references, checked facts, missing evidence and requested review.\n3. Person approves; backend rechecks scope, versions, queue eligibility and duplicate keys.\n4. Commit Case, WorkItem, Audit and Outbox atomically; display the real operation receipt.\n\n## Acceptance criteria\n\n- **DEV-07-AC01** — Given The enquiry has a supported answer and no remaining action; when the contact is recorded; then allow a note without forcing a specialist case. Evidence: DEV-07-T01 (planned, not executed).\n- **DEV-07-AC02** — Given The same issue already has active specialist work; when a new proposal is reviewed; then link existing work or require an explicit distinct-work reason. Evidence: DEV-07-T02 (planned, not executed).\n- **DEV-07-AC03** — Given A person approves a fresh complete request; when submission succeeds; then return one case/work reference with accountable queue; do not claim a specialist has accepted it. Evidence: DEV-07-T03 (planned, not executed).\n- **DEV-07-AC04** — Given Submission succeeds but its response is lost; when the client retries or reconciles; then return the original receipt and create no second case or outbox effect. Evidence: DEV-07-T04 (planned, not executed).\n- **DEV-07-AC05** — Given The recipient queue is invalid or authorization changed; when approval is committed; then reject without partial business writes and preserve the draft. Evidence: DEV-07-T05 (planned, not executed).\n- **DEV-07-AC06** — Given The model states a request was submitted without a receipt; when the UI renders the result; then show a draft or unknown operation state, never a false submitted status. Evidence: DEV-07-T06 (planned, not executed).\n\n## Ready gates\n\n- Queue routing configuration and permitted referral reasons need BA-06 sign-off.\n- Review data/permission contracts, exact fixtures, dependencies and observable results before moving to Ready.\n- No Done status until implementation, appropriate tests, owner UAT and required release evidence exist.\n\n## Traceability\n\n[Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).\n"
+    },
+    {
+      "id": "DEV-11",
+      "title": "Receive specialist findings and complete a verified customer callback",
+      "persona": "feedback representative",
+      "need": "approved findings and a callback task",
+      "value": "continue the case without requiring the original representative",
+      "requirements": [
+        "FR-17",
+        "FR-18"
+      ],
+      "decisions": [
+        "D-13",
+        "D-14"
+      ],
+      "deps": [
+        "DEV-07",
+        "DEV-06",
+        "BA-09"
+      ],
+      "tools": [
+        "get_case_snapshot",
+        "get_contact_attempts",
+        "get_service_targets",
+        "create_proposal"
+      ],
+      "flow": [
+        "Specialist accepts work; use a role-protected synthetic result entry or signed adapter event.",
+        "Store finding, evidence, approved customer explanation, action status and version separately.",
+        "Create one feedback task for the shared queue; assign a person when work begins.",
+        "Draft from approved customer-visible content; person calls, verifies identity and records actual outcome."
+      ],
+      "work": [
+        "Add InvestigationResult and CallbackAttempt tables with versioned evidence and disclosure fields.",
+        "Implement specialist fixture result entry, shared feedback inbox and callback-result form.",
+        "Enforce internal-only exclusions, duplicate-result handling and latest-result checks."
+      ],
+      "open_items": [
+        "Result payload and callback outcome codes need schema review; real outbound telephony is excluded."
+      ],
+      "estimate": {
+        "dev": 4,
+        "ba": 0.5,
+        "qa": 1,
+        "total": 5.5,
+        "range": [
+          4,
+          8
+        ],
+        "unit": "person-days",
+        "confidence": "low"
+      },
+      "sprint": "S04A",
+      "acceptance": [
+        {
+          "id": "DEV-11-AC01",
+          "given": "An authorized specialist submits an approved result",
+          "when": "the event is processed twice",
+          "then": "persist one result version and one corresponding feedback task",
+          "testId": "DEV-11-T01",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-11-AC02",
+          "given": "The original representative is unavailable",
+          "when": "another authorized feedback representative claims the task",
+          "then": "provide scoped history and retain clear ownership",
+          "testId": "DEV-11-T02",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-11-AC03",
+          "given": "A result contains internal-only notes and approved explanation",
+          "when": "the agent drafts customer feedback",
+          "then": "use only approved customer-visible content for the explanation",
+          "testId": "DEV-11-T03",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-11-AC04",
+          "given": "A customer answers but identity verification fails",
+          "when": "the callback is recorded",
+          "then": "record verification failure, disclose no transaction detail and do not mark feedback complete",
+          "testId": "DEV-11-T04",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-11-AC05",
+          "given": "The specialist result changes after draft review",
+          "when": "feedback approval is attempted",
+          "then": "reject stale content and preserve edits for refresh",
+          "testId": "DEV-11-T05",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-11-AC06",
+          "given": "A financial action is only approved or pending",
+          "when": "the agent summarizes the result",
+          "then": "do not state funds moved or that the financial issue is resolved",
+          "testId": "DEV-11-T06",
+          "execution": "Not executed"
+        }
+      ],
+      "description": "# DEV-11 — Receive specialist findings and complete a verified customer callback\n\nCurrent S02 forecast: **S04A**. Updated effort: Dev 4, BA 0.5, QA 1 person-days (5.5 total); dependencies DEV-07, DEV-06, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.\n\nBANK-SDD-v0.2 · 19 October 2026\nStatus: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.\nHistorical forecast superseded by the current Sprint stated above | Release: B0 manual path / B1 assisted path.\nEstimate: Dev 4, BA 0.5, QA 1 person-days; total 5.5 (4–8), confidence low. Not actual effort.\n\n## User story and value\n\nAs a feedback representative, I want approved findings and a callback task, so that I can continue the case without requiring the original representative.\n\nOwner relevance: representative desktop, customer-information lookup and processing-rule experience. Role evidence: requirements/API/access/testing/UAT in dated R01/R02/R06 samples; no current vacancy or outcome claim.\n\n## Scope and authority\n\nRequirements: FR-17, FR-18. Decisions: D-13, D-14. Dependencies: DEV-07, DEV-06, BA-09.\nSynthetic records and policies only. Financial execution, real outbound calls, App messaging and a full specialist adjudication platform are excluded.\n\n## Main flow\n\n1. Specialist accepts work; use a role-protected synthetic result entry or signed adapter event.\n2. Store finding, evidence, approved customer explanation, action status and version separately.\n3. Create one feedback task for the shared queue; assign a person when work begins.\n4. Draft from approved customer-visible content; person calls, verifies identity and records actual outcome.\n\n## Acceptance criteria\n\n- **DEV-11-AC01** — Given An authorized specialist submits an approved result; when the event is processed twice; then persist one result version and one corresponding feedback task. Evidence: DEV-11-T01 (planned, not executed).\n- **DEV-11-AC02** — Given The original representative is unavailable; when another authorized feedback representative claims the task; then provide scoped history and retain clear ownership. Evidence: DEV-11-T02 (planned, not executed).\n- **DEV-11-AC03** — Given A result contains internal-only notes and approved explanation; when the agent drafts customer feedback; then use only approved customer-visible content for the explanation. Evidence: DEV-11-T03 (planned, not executed).\n- **DEV-11-AC04** — Given A customer answers but identity verification fails; when the callback is recorded; then record verification failure, disclose no transaction detail and do not mark feedback complete. Evidence: DEV-11-T04 (planned, not executed).\n- **DEV-11-AC05** — Given The specialist result changes after draft review; when feedback approval is attempted; then reject stale content and preserve edits for refresh. Evidence: DEV-11-T05 (planned, not executed).\n- **DEV-11-AC06** — Given A financial action is only approved or pending; when the agent summarizes the result; then do not state funds moved or that the financial issue is resolved. Evidence: DEV-11-T06 (planned, not executed).\n\n## Ready gates\n\n- Result payload and callback outcome codes need schema review; real outbound telephony is excluded.\n- Review data/permission contracts, exact fixtures, dependencies and observable results before moving to Ready.\n- No Done status until implementation, appropriate tests, owner UAT and required release evidence exist.\n\n## Traceability\n\n[Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).\n"
+    },
+    {
+      "id": "DEV-12",
+      "title": "Retry unanswered callbacks and guard normal closure",
+      "persona": "feedback representative and queue lead",
+      "need": "bounded retries and evidence-based closure",
+      "value": "avoid abandoned feedback and false resolution",
+      "requirements": [
+        "FR-18",
+        "FR-19"
+      ],
+      "decisions": [
+        "D-14",
+        "D-16",
+        "D-18",
+        "D-19",
+        "D-22"
+      ],
+      "deps": [
+        "DEV-11",
+        "BA-06",
+        "BA-09"
+      ],
+      "tools": [
+        "get_case_snapshot",
+        "get_contact_attempts",
+        "get_service_targets",
+        "create_proposal",
+        "get_operation_status"
+      ],
+      "flow": [
+        "Record each actual call and never-placed technical failure with trusted dial state, time and outcome; derive quota on the server (D-18).",
+        "For no answer keep feedback ownership and propose the next allowed contact slot.",
+        "Allow at most three attempts over three service days, including the first; at most one per service date.",
+        "On exhaustion or elapsed window send to lead review; do not close automatically.",
+        "On successful feedback allow human-confirmed closure only when all required work is complete."
+      ],
+      "work": [
+        "Implement versioned calendar calculations and persisted attempts; reserve slots to prevent concurrent duplicates.",
+        "Add queue lead review state and callback constraints with manual fallback.",
+        "Implement server closure preconditions and reasoned rejection with preserved notes."
+      ],
+      "open_items": [
+        "D-19 freezes the three-service-date boundary. Freeze the versioned synthetic holiday fixture list before Ready; no administrative non-response closure is authorized.",
+        "Review v0.4 typed plan/hold contracts, versioned limits and linked attempt fixtures before Ready."
+      ],
+      "estimate": {
+        "dev": 3,
+        "ba": 0.5,
+        "qa": 1,
+        "total": 4.5,
+        "range": [
+          3.5,
+          7
+        ],
+        "unit": "person-days",
+        "confidence": "low"
+      },
+      "sprint": "S04A",
+      "acceptance": [
+        {
+          "id": "DEV-12-AC01",
+          "given": "The first actual callback is unanswered",
+          "when": "the retry is planned",
+          "then": "keep awaiting-feedback state and ownership; schedule only within the accepted contact window; under D-18, a placed unanswered call counts once, while a never-placed technical failure is logged without consuming quota or extending any original deadline",
+          "testId": "DEV-12-T01",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-12-AC02",
+          "given": "One attempt is already recorded for a service date",
+          "when": "a concurrent second retry is submitted",
+          "then": "reject the extra attempt plan for that date; actual duplicate call records remain auditable",
+          "testId": "DEV-12-T02",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-12-AC03",
+          "given": "Three attempts have been made or the three-service-day window has elapsed",
+          "when": "the next-step rule is evaluated",
+          "then": "enter unable-to-contact lead review with no resolved closure; a responsible lead may then approve a reasoned new contact plan or a hold with owner and review date, retaining original attempts/deadlines/approvals",
+          "testId": "DEV-12-T03",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-12-AC04",
+          "given": "Friday is the first attempt and Monday is a configured holiday",
+          "when": "a retry window is calculated",
+          "then": "count Friday as day 1, skip the weekend and configured Monday holiday, and end Wednesday at 17:00 America/Winnipeg; enter lead review at expiry even below three attempts, never automatic closure",
+          "testId": "DEV-12-T04",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-12-AC05",
+          "given": "Approved findings exist, necessary actions are complete and verified feedback leaves no unresolved work",
+          "when": "an authorized person confirms closure",
+          "then": "persist a closed disposition with references and audit evidence",
+          "testId": "DEV-12-T05",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-12-AC06",
+          "given": "There is an unanswered call, failed verification, pending refund, new objection or unowned work",
+          "when": "closure is requested",
+          "then": "deny closure with the unmet conditions",
+          "testId": "DEV-12-T06",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-12-AC07",
+          "given": "An agent suggests a fourth attempt or immediate closure",
+          "when": "the proposal is validated",
+          "then": "reject an agent-only fourth attempt, expired-plan contact or automatic closure; allow further contact only under a distinct current lead-approved plan, preserving all history",
+          "testId": "DEV-12-T07",
+          "execution": "Not executed"
+        }
+      ],
+      "description": "# DEV-12 — Retry unanswered callbacks and guard normal closure\n\nCurrent S02 forecast: **S04A**. Updated effort: Dev 3, BA 0.5, QA 1 person-days (4.5 total); dependencies DEV-11, BA-06, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.\n\nBANK-SDD-v0.2 · 19 October 2026\nStatus: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.\nHistorical forecast superseded by the current Sprint stated above | Release: B0 manual path / B1 assisted path.\nEstimate: Dev 3, BA 0.5, QA 1 person-days; total 4.5 (3.5–7), confidence low. Not actual effort.\n\n## User story and value\n\nAs a feedback representative and queue lead, I want bounded retries and evidence-based closure, so that I can avoid abandoned feedback and false resolution.\n\nOwner relevance: representative desktop, customer-information lookup and processing-rule experience. Role evidence: requirements/API/access/testing/UAT in dated R01/R02/R06 samples; no current vacancy or outcome claim.\n\n## Scope and authority\n\nRequirements: FR-18, FR-19. Decisions: D-14, D-16, D-18, D-19, D-22. Dependencies: DEV-11, BA-06, BA-09.\nSynthetic records and policies only. Financial execution, real outbound calls, App messaging and a full specialist adjudication platform are excluded.\n\n## Main flow\n\n1. Record each actual call attempt with time, verification and outcome.\n2. For no answer keep feedback ownership and propose the next allowed contact slot.\n3. Allow at most three attempts over three service days, including the first; at most one per service date.\n4. On exhaustion or elapsed window send to lead review; do not close automatically.\n5. On successful feedback allow human-confirmed closure only when all required work is complete.\n\n## Acceptance criteria\n\n- **DEV-12-AC01** — Given The first actual callback is unanswered; when the retry is planned; then keep awaiting-feedback state and ownership; schedule only within the accepted contact window; under D-18, a placed unanswered call counts once, while a never-placed technical failure is logged without consuming quota or extending any original deadline. Evidence: DEV-12-T01 (planned, not executed).\n- **DEV-12-AC02** — Given One attempt is already recorded for a service date; when a concurrent second retry is submitted; then reject the extra attempt plan for that date; actual duplicate call records remain auditable. Evidence: DEV-12-T02 (planned, not executed).\n- **DEV-12-AC03** — Given Three attempts have been made or the three-service-day window has elapsed; when the next-step rule is evaluated; then enter unable-to-contact lead review with no resolved closure; a responsible lead may then approve a reasoned new contact plan or a hold with owner and review date, retaining original attempts/deadlines/approvals. Evidence: DEV-12-T03 (planned, not executed).\n- **DEV-12-AC04** — Given Friday is the first attempt and Monday is a configured holiday; when a retry window is calculated; then count Friday as day 1, skip the weekend and configured Monday holiday, and end Wednesday at 17:00 America/Winnipeg; enter lead review at expiry even below three attempts, never automatic closure. Evidence: DEV-12-T04 (planned, not executed).\n- **DEV-12-AC05** — Given Approved findings exist, necessary actions are complete and verified feedback leaves no unresolved work; when an authorized person confirms closure; then persist a closed disposition with references and audit evidence. Evidence: DEV-12-T05 (planned, not executed).\n- **DEV-12-AC06** — Given There is an unanswered call, failed verification, pending refund, new objection or unowned work; when closure is requested; then deny closure with the unmet conditions. Evidence: DEV-12-T06 (planned, not executed).\n- **DEV-12-AC07** — Given An agent suggests a fourth attempt or immediate closure; when the proposal is validated; then reject an agent-only fourth attempt, expired-plan contact or automatic closure; allow further contact only under a distinct current lead-approved plan, preserving all history. Evidence: DEV-12-T07 (planned, not executed).\n\n## Ready gates\n\n- D-19 freezes the three-service-date boundary. Freeze the versioned synthetic holiday fixture list before Ready; no administrative non-response closure is authorized.\n- Review data/permission contracts, exact fixtures, dependencies and observable results before moving to Ready.\n- No Done status until implementation, appropriate tests, owner UAT and required release evidence exist.\n\n## Traceability\n\n[Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).\n"
+    },
+    {
+      "id": "DEV-13",
+      "title": "Handle overdue investigations and customer objections with linked work",
+      "persona": "service lead and representative",
+      "need": "current evidence and accountable exception continuation",
+      "value": "avoid silent delays and lost customer objections",
+      "requirements": [
+        "FR-20",
+        "FR-21"
+      ],
+      "decisions": [
+        "D-14",
+        "D-15",
+        "D-20",
+        "D-21"
+      ],
+      "deps": [
+        "DEV-11",
+        "BA-06",
+        "BA-09"
+      ],
+      "tools": [
+        "get_case_snapshot",
+        "get_service_targets",
+        "get_contact_attempts",
+        "search_policy",
+        "create_proposal"
+      ],
+      "flow": [
+        "Scheduler detects overdue work and rechecks latest state.",
+        "Agent gathers recorded blockers and commitments; drafts escalation and progress update.",
+        "Overdue investigation retains its original specialist and original deadline. Notify the responsible lead and create customer progress work in the feedback queue. The specialist proposes the next update time; the responsible lead confirms it. Preserve original overdue history. The agent may gather evidence, remind and draft, but cannot commit a completion date.",
+        "Capture objection verbatim, compare with old evidence and propose clarification, linked re-review or complaint review.",
+        "Feedback staff preserve the customer statement and new evidence, and route disputed findings to specialist re-review. An explicit complaint request creates an independent complaint-intake record without waiting for re-review. Both tracks link to the original case and keep independent ownership/status. Objection or silence never implies resolved closure."
+      ],
+      "work": [
+        "Add deduplicated deadline events and progress-update proposals with original due timestamps.",
+        "Add objection/re-review linkage and proposal invalidation on new evidence.",
+        "Build lead review UI; keep detailed exception routing disabled until rules are accepted."
+      ],
+      "open_items": [
+        "D-20/D-21 accept overdue responsibility, next-update approval and parallel re-review/complaint intake. Complete typed commitment/approval, progress-without-result, complaint linkage/receipt contracts and configured lead/intake queues before Ready. Additional escalation levels and fixed update cadence are not accepted."
+      ],
+      "estimate": {
+        "dev": 4,
+        "ba": 1,
+        "qa": 1,
+        "total": 6,
+        "range": [
+          4.5,
+          9
+        ],
+        "unit": "person-days",
+        "confidence": "low"
+      },
+      "sprint": "S04A",
+      "acceptance": [
+        {
+          "id": "DEV-13-AC01",
+          "given": "A routine investigation exceeds the two-service-day target",
+          "when": "the timer event arrives",
+          "then": "retain original investigation due time and specialist ownership; notify the responsible lead and create feedback-queue progress work; only a lead-confirmed specialist proposal can establish the next update time, without replacing overdue history",
+          "testId": "DEV-13-T01",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-13-AC02",
+          "given": "The same overdue event is delivered twice",
+          "when": "the worker handles it",
+          "then": "produce one escalation per case, deadline and escalation level",
+          "testId": "DEV-13-T02",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-13-AC03",
+          "given": "No blocker reason is recorded",
+          "when": "the agent drafts an update",
+          "then": "label the reason unknown; do not invent merchant or bank explanations or promise an unapproved date",
+          "testId": "DEV-13-T03",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-13-AC04",
+          "given": "An investigation completes while an escalation is being approved",
+          "when": "the backend rechecks state",
+          "then": "invalidate the outdated escalation and continue with the current result",
+          "testId": "DEV-13-T04",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-13-AC05",
+          "given": "A customer provides a different transaction or new evidence",
+          "when": "a re-review is approved",
+          "then": "link the new work to the original case and preserve old findings/versions",
+          "testId": "DEV-13-T05",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-13-AC06",
+          "given": "A customer explicitly requests complaint handling while re-review remains open",
+          "when": "the objection is assessed",
+          "then": "create independently tracked complaint intake linked to the original case and objection, without waiting for specialist re-review; preserve distinct owners/statuses and do not duplicate intake on replay",
+          "testId": "DEV-13-T06",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-13-AC07",
+          "given": "A customer disagrees without new evidence",
+          "when": "the agent proposes next steps",
+          "then": "preserve the disagreement and route specialist re-review even without new evidence; clarification may accompany it; no coercion, financial action or automatic resolved closure",
+          "testId": "DEV-13-T07",
+          "execution": "Not executed"
+        }
+      ],
+      "description": "# DEV-13 — Handle overdue investigations and customer objections with linked work\n\nCurrent S02 forecast: **S04A**. Updated effort: Dev 4, BA 1, QA 1 person-days (6 total); dependencies DEV-11, BA-06, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.\n\nBANK-SDD-v0.2 · 19 October 2026\nStatus: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.\nHistorical forecast superseded by the current Sprint stated above | Release: B0 manual path / B1 assisted path.\nEstimate: Dev 4, BA 1, QA 1 person-days; total 6 (4.5–9), confidence low. Not actual effort.\n\n## User story and value\n\nAs a service lead and representative, I want current evidence and accountable exception continuation, so that I can avoid silent delays and lost customer objections.\n\nOwner relevance: representative desktop, customer-information lookup and processing-rule experience. Role evidence: requirements/API/access/testing/UAT in dated R01/R02/R06 samples; no current vacancy or outcome claim.\n\n## Scope and authority\n\nRequirements: FR-20, FR-21. Decisions: D-14, D-15, D-20, D-21. Dependencies: DEV-11, BA-06, BA-09.\nSynthetic records and policies only. Financial execution, real outbound calls, App messaging and a full specialist adjudication platform are excluded.\n\n## Main flow\n\n1. Scheduler detects overdue work and rechecks latest state.\n2. Agent gathers recorded blockers and commitments; drafts escalation and progress update.\n3. Keep original deadlines and specialist ownership; a human confirms new commitments.\n4. Capture objection verbatim, compare with old evidence and propose clarification, linked re-review or complaint review.\n5. Preserve prior findings and any complaint request independently of re-review.\n\n## Acceptance criteria\n\n- **DEV-13-AC01** — Given A routine investigation exceeds the two-service-day target; when the timer event arrives; then retain original investigation due time and specialist ownership; notify the responsible lead and create feedback-queue progress work; only a lead-confirmed specialist proposal can establish the next update time, without replacing overdue history. Evidence: DEV-13-T01 (planned, not executed).\n- **DEV-13-AC02** — Given The same overdue event is delivered twice; when the worker handles it; then produce one escalation per case, deadline and escalation level. Evidence: DEV-13-T02 (planned, not executed).\n- **DEV-13-AC03** — Given No blocker reason is recorded; when the agent drafts an update; then label the reason unknown; do not invent merchant or bank explanations or promise an unapproved date. Evidence: DEV-13-T03 (planned, not executed).\n- **DEV-13-AC04** — Given An investigation completes while an escalation is being approved; when the backend rechecks state; then invalidate the outdated escalation and continue with the current result. Evidence: DEV-13-T04 (planned, not executed).\n- **DEV-13-AC05** — Given A customer provides a different transaction or new evidence; when a re-review is approved; then link the new work to the original case and preserve old findings/versions. Evidence: DEV-13-T05 (planned, not executed).\n- **DEV-13-AC06** — Given A customer explicitly requests complaint handling while re-review remains open; when the objection is assessed; then create independently tracked complaint intake linked to the original case and objection, without waiting for specialist re-review; preserve distinct owners/statuses and do not duplicate intake on replay. Evidence: DEV-13-T06 (planned, not executed).\n- **DEV-13-AC07** — Given A customer disagrees without new evidence; when the agent proposes next steps; then preserve the disagreement and route specialist re-review even without new evidence; clarification may accompany it; no coercion, financial action or automatic resolved closure. Evidence: DEV-13-T07 (planned, not executed).\n\n## Ready gates\n\n- D-20/D-21 accept overdue responsibility, next-update approval and parallel re-review/complaint intake. Typed commitment/approval, progress-without-result and complaint linkage/receipt contracts are authored in v0.4; walkthrough and configured lead/intake queues remain before Ready. Additional escalation levels and fixed update cadence are not accepted.\n- Review data/permission contracts, exact fixtures, dependencies and observable results before moving to Ready.\n- No Done status until implementation, appropriate tests, owner UAT and required release evidence exist.\n\n## Traceability\n\n[Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).\n"
+    },
+    {
+      "id": "DEV-08",
+      "title": "Run a bounded evidence agent across persisted workflow stages",
+      "persona": "representative",
+      "need": "an agent that resumes from current case evidence",
+      "value": "reduce evidence assembly and drafting effort across handoffs",
+      "requirements": [
+        "FR-06",
+        "FR-07",
+        "FR-12",
+        "FR-14",
+        "FR-22"
+      ],
+      "decisions": [
+        "D-15"
+      ],
+      "deps": [
+        "DEV-03",
+        "DEV-05",
+        "DEV-06",
+        "DEV-07",
+        "DEV-09",
+        "DEV-11",
+        "DEV-12",
+        "DEV-13",
+        "BA-09"
+      ],
+      "tools": [
+        "get_contact_context",
+        "search_transactions",
+        "get_transaction_evidence",
+        "get_case_snapshot",
+        "search_policy",
+        "get_policy_section",
+        "get_contact_attempts",
+        "get_service_targets",
+        "create_proposal",
+        "get_operation_status"
+      ],
+      "flow": [
+        "Start a run from a permitted user request or allowlisted business event.",
+        "Rehydrate current scoped business state and select only permitted evidence tools.",
+        "Fetch facts and applicable policy, identify gaps and produce a typed cited proposal.",
+        "Stop awaiting human action; resume later in a new bounded run from refreshed evidence.",
+        "Approval and deterministic workflow execution remain outside model authority."
+      ],
+      "work": [
+        "Slice A (3 developer-days): runtime adapter, tool allowlist, bounded execution and deterministic fake-provider tests.",
+        "Slice B (4 developer-days): durable run/proposal records, streamed evidence UI, resume and failure recovery; evaluate actual integration overhead after contracts.",
+        "Instrument safe run/tool/operation correlations; normalize provider output and never treat model prose as execution proof."
+      ],
+      "open_items": [
+        "Tool schemas, model capability qualification and numerical run budgets are Ready gates; DEV-13 branch assistance waits for branch rule acceptance."
+      ],
+      "estimate": {
+        "dev": 9,
+        "ba": 1,
+        "qa": 2.0,
+        "total": 12.0,
+        "range": [
+          9.0,
+          18.0
+        ],
+        "unit": "person-days",
+        "confidence": "low"
+      },
+      "sprint": "S05",
+      "acceptance": [
+        {
+          "id": "DEV-08-AC01",
+          "given": "A duplicate-charge question needs records then policy",
+          "when": "the agent runs",
+          "then": "execute dependent scoped tools and return fact/policy citations, missing facts and a typed next-step proposal",
+          "testId": "DEV-08-T01",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-08-AC02",
+          "given": "A case waits across a process restart",
+          "when": "a later event starts assistance",
+          "then": "load committed latest state rather than relying on chat history or a live multi-day run",
+          "testId": "DEV-08-T02",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-08-AC03",
+          "given": "A source or customer fact changes after proposal creation",
+          "when": "approval is attempted",
+          "then": "reject stale evidence and request refreshed review",
+          "testId": "DEV-08-T03",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-08-AC04",
+          "given": "The provider times out or returns invalid tool arguments",
+          "when": "the run terminates",
+          "then": "honour budgets, return a typed failure and preserve manual access and all committed work",
+          "testId": "DEV-08-T04",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-08-AC05",
+          "given": "A prompt or tool result requests a refund or widened access",
+          "when": "the agent attempts a forbidden action",
+          "then": "reject it in the allowlist/backend and record a sanitized denial",
+          "testId": "DEV-08-T05",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-08-AC06",
+          "given": "The same business event is redelivered",
+          "when": "assistance resumes",
+          "then": "deduplicate effects and reconcile operations before retrying writes",
+          "testId": "DEV-08-T06",
+          "execution": "Not executed"
+        },
+        {
+          "id": "DEV-08-AC07",
+          "given": "A reviewer compares assisted and guided-search tasks",
+          "when": "evaluation is performed",
+          "then": "report correct completion, active checking time, corrections and known cost; no invented savings",
+          "testId": "DEV-08-T07",
+          "execution": "Not executed"
+        }
+      ],
+      "description": "# DEV-08 — Run a bounded evidence agent across persisted workflow stages\n\nCurrent S02 forecast: **S05**. Updated effort: Dev 9, BA 1, QA 2.0 person-days (12.0 total); dependencies DEV-03, DEV-05, DEV-06, DEV-07, DEV-09, DEV-11, DEV-12, DEV-13, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.\n\nBANK-SDD-v0.2 · 19 October 2026\nStatus: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.\nForecast: S05 | Release: B0 manual path / B1 assisted path.\nEstimate: Dev 7, BA 1, QA 1.5 person-days; total 9.5 (7–14.5), confidence medium. Not actual effort.\n\n## User story and value\n\nAs a representative, I want an agent that resumes from current case evidence, so that I can reduce evidence assembly and drafting effort across handoffs.\n\nOwner relevance: representative desktop, customer-information lookup and processing-rule experience. Role evidence: requirements/API/access/testing/UAT in dated R01/R02/R06 samples; no current vacancy or outcome claim.\n\n## Scope and authority\n\nRequirements: FR-06, FR-07, FR-12, FR-14, FR-22. Decisions: D-15. Dependencies: DEV-07, DEV-09, DEV-11, DEV-12, BA-09.\nSynthetic records and policies only. Financial execution, real outbound calls, App messaging and a full specialist adjudication platform are excluded.\n\n## Main flow\n\n1. Start a run from a permitted user request or allowlisted business event.\n2. Rehydrate current scoped business state and select only permitted evidence tools.\n3. Fetch facts and applicable policy, identify gaps and produce a typed cited proposal.\n4. Stop awaiting human action; resume later in a new bounded run from refreshed evidence.\n5. Approval and deterministic workflow execution remain outside model authority.\n\n## Acceptance criteria\n\n- **DEV-08-AC01** — Given A duplicate-charge question needs records then policy; when the agent runs; then execute dependent scoped tools and return fact/policy citations, missing facts and a typed next-step proposal. Evidence: DEV-08-T01 (planned, not executed).\n- **DEV-08-AC02** — Given A case waits across a process restart; when a later event starts assistance; then load committed latest state rather than relying on chat history or a live multi-day run. Evidence: DEV-08-T02 (planned, not executed).\n- **DEV-08-AC03** — Given A source or customer fact changes after proposal creation; when approval is attempted; then reject stale evidence and request refreshed review. Evidence: DEV-08-T03 (planned, not executed).\n- **DEV-08-AC04** — Given The provider times out or returns invalid tool arguments; when the run terminates; then honour budgets, return a typed failure and preserve manual access and all committed work. Evidence: DEV-08-T04 (planned, not executed).\n- **DEV-08-AC05** — Given A prompt or tool result requests a refund or widened access; when the agent attempts a forbidden action; then reject it in the allowlist/backend and record a sanitized denial. Evidence: DEV-08-T05 (planned, not executed).\n- **DEV-08-AC06** — Given The same business event is redelivered; when assistance resumes; then deduplicate effects and reconcile operations before retrying writes. Evidence: DEV-08-T06 (planned, not executed).\n- **DEV-08-AC07** — Given A reviewer compares assisted and guided-search tasks; when evaluation is performed; then report correct completion, active checking time, corrections and known cost; no invented savings. Evidence: DEV-08-T07 (planned, not executed).\n\n## Ready gates\n\n- Tool schemas, model capability qualification and numerical run budgets are Ready gates; DEV-13 business branches are accepted as D-20/D-21; implementation and provider capability remain gates.\n- Review data/permission contracts, exact fixtures, dependencies and observable results before moving to Ready.\n- No Done status until implementation, appropriate tests, owner UAT and required release evidence exist.\n\n## Traceability\n\n[Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).\n"
+    }
+  ],
+  "currentContract": "../sprint-02/README.md (v0.4 contracts)"
+}

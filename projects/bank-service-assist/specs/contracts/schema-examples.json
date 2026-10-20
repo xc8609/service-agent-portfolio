@@ -1,0 +1,1272 @@
+{
+  "version": "0.4",
+  "kind": "Authored schema-only examples, not realistic bank records or held-out model evaluation",
+  "examples": [
+    {
+      "id": "get_contact_context-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "contact_id": "demo_01"
+      }
+    },
+    {
+      "id": "get_contact_context-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "get_contact_context-missing-required-negative",
+      "valid": false,
+      "payload": {}
+    },
+    {
+      "id": "get_contact_context-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "contact_id": "demo_01",
+          "context_version": "demo_01",
+          "verification": "verified",
+          "masked_card_refs": [],
+          "allowed_actions": [],
+          "access_purpose": "inbound_service",
+          "assigned_work_ref": null,
+          "customer_disclosure_allowed": true
+        },
+        "meta": {
+          "as_of": "2026-10-19T15:00:00Z",
+          "scope_ref": "demo_01",
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "search_transactions-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "contact_id": "demo_01",
+        "card_ref": "demo_01",
+        "date_from": "2026-10-19",
+        "date_to": "2026-10-19",
+        "amount_minor": null,
+        "merchant_query": null,
+        "cursor": null,
+        "limit": 1
+      }
+    },
+    {
+      "id": "search_transactions-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "card_ref": "demo_01",
+        "date_from": "2026-10-19",
+        "date_to": "2026-10-19",
+        "amount_minor": null,
+        "merchant_query": null,
+        "cursor": null,
+        "limit": 1,
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "search_transactions-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "card_ref": "demo_01",
+        "date_from": "2026-10-19",
+        "date_to": "2026-10-19",
+        "amount_minor": null,
+        "merchant_query": null,
+        "cursor": null,
+        "limit": 1
+      }
+    },
+    {
+      "id": "search_transactions-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "records": [],
+          "next_cursor": null
+        },
+        "meta": {
+          "as_of": "2026-10-19T15:00:00Z",
+          "scope_ref": "demo_01",
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "get_transaction_evidence-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "contact_id": "demo_01",
+        "transaction_ids": [
+          "demo_01"
+        ]
+      }
+    },
+    {
+      "id": "get_transaction_evidence-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "transaction_ids": [
+          "demo_01"
+        ],
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "get_transaction_evidence-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "transaction_ids": [
+          "demo_01"
+        ]
+      }
+    },
+    {
+      "id": "get_transaction_evidence-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "records": [],
+          "relationships": [],
+          "related_case_ids": [],
+          "missing_evidence": []
+        },
+        "meta": {
+          "as_of": "2026-10-19T15:00:00Z",
+          "scope_ref": "demo_01",
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "get_case_snapshot-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "contact_id": "demo_01",
+        "case_id": "demo_01",
+        "expected_work_version": null
+      }
+    },
+    {
+      "id": "get_case_snapshot-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "case_id": "demo_01",
+        "expected_work_version": null,
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "get_case_snapshot-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "expected_work_version": null
+      }
+    },
+    {
+      "id": "get_case_snapshot-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "case_id": "demo_01",
+          "case_version": "demo_01",
+          "investigation_status": "demo_01",
+          "feedback_status": "demo_01",
+          "case_status": "demo_01",
+          "owner_queue": "demo_01",
+          "assignee_ref": null,
+          "approved_customer_explanation": null,
+          "required_actions": [],
+          "unresolved_items": [],
+          "timeline": [],
+          "progress_commitments": [],
+          "linked_work": [],
+          "contact_plan": {
+            "plan_id": "demo_01",
+            "kind": "initial",
+            "status": "demo_01",
+            "max_attempts": 1,
+            "counted_attempts": 0,
+            "valid_until": "2026-10-19T15:00:00Z"
+          }
+        },
+        "meta": {
+          "as_of": "2026-10-19T15:00:00Z",
+          "scope_ref": "demo_01",
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "search_policy-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "contact_id": "demo_01",
+        "query": "demo_01",
+        "product": "demo_01",
+        "jurisdiction": "demo_01",
+        "as_of": "2026-10-19T15:00:00Z",
+        "transaction_status": null
+      }
+    },
+    {
+      "id": "search_policy-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "query": "demo_01",
+        "product": "demo_01",
+        "jurisdiction": "demo_01",
+        "as_of": "2026-10-19T15:00:00Z",
+        "transaction_status": null,
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "search_policy-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "query": "demo_01",
+        "product": "demo_01",
+        "jurisdiction": "demo_01",
+        "as_of": "2026-10-19T15:00:00Z",
+        "transaction_status": null
+      }
+    },
+    {
+      "id": "search_policy-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "matches": [],
+          "gaps": []
+        },
+        "meta": {
+          "as_of": "2026-10-19T15:00:00Z",
+          "scope_ref": "demo_01",
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "get_policy_section-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "contact_id": "demo_01",
+        "policy_id": "demo_01",
+        "version": "demo_01",
+        "section": "demo_01"
+      }
+    },
+    {
+      "id": "get_policy_section-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "policy_id": "demo_01",
+        "version": "demo_01",
+        "section": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "get_policy_section-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "policy_id": "demo_01",
+        "version": "demo_01",
+        "section": "demo_01"
+      }
+    },
+    {
+      "id": "get_policy_section-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "text": "demo_01",
+          "policy_ref": {
+            "kind": "transaction",
+            "id": "demo_01",
+            "version": "demo_01",
+            "section": null
+          },
+          "applicability": [],
+          "is_simulated": true
+        },
+        "meta": {
+          "as_of": "2026-10-19T15:00:00Z",
+          "scope_ref": "demo_01",
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "get_contact_attempts-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "contact_id": "demo_01",
+        "case_id": "demo_01"
+      }
+    },
+    {
+      "id": "get_contact_attempts-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "case_id": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "get_contact_attempts-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01"
+      }
+    },
+    {
+      "id": "get_contact_attempts-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "attempts": [],
+          "approved_windows": [],
+          "retry_window_end": null
+        },
+        "meta": {
+          "as_of": "2026-10-19T15:00:00Z",
+          "scope_ref": "demo_01",
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "get_service_targets-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "contact_id": "demo_01",
+        "case_id": "demo_01"
+      }
+    },
+    {
+      "id": "get_service_targets-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "case_id": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "get_service_targets-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01"
+      }
+    },
+    {
+      "id": "get_service_targets-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "calendar_version": "demo_01",
+          "acceptance_due_at": "demo_01",
+          "investigation_due_at": "demo_01",
+          "first_callback_due_at": null,
+          "original_deadline_breached": true,
+          "attempt_count": 0,
+          "allowed_retry_at": null,
+          "lead_review_required": true,
+          "active_plan_id": "demo_01",
+          "lifetime_attempt_count": 0,
+          "next_approved_update_at": "2026-10-19T15:00:00Z",
+          "hold_review_at": "2026-10-19T15:00:00Z"
+        },
+        "meta": {
+          "as_of": "2026-10-19T15:00:00Z",
+          "scope_ref": "demo_01",
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "create_proposal-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        }
+      }
+    },
+    {
+      "id": "create_proposal-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        },
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "create_proposal-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        }
+      }
+    },
+    {
+      "id": "create_proposal-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "proposal_id": "demo_01",
+          "proposal_version": "demo_01",
+          "status": "draft",
+          "validation_gaps": [],
+          "requires_human_approval": true,
+          "permitted_next_command": "approve_and_commit_proposal"
+        },
+        "meta": {
+          "as_of": "2026-10-19T15:00:00Z",
+          "scope_ref": "demo_01",
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "get_operation_status-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "contact_id": "demo_01",
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "get_operation_status-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "operation_key": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "get_operation_status-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "get_operation_status-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "status": "not_found",
+          "receipt_ref": null,
+          "domain_ref": null
+        },
+        "meta": {
+          "as_of": "2026-10-19T15:00:00Z",
+          "scope_ref": "demo_01",
+          "sources": []
+        }
+      }
+    },
+    {
+      "id": "accept_specialist_work-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_work_version": 1,
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "accept_specialist_work-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "accept_specialist_work-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "work_item_id": "demo_01",
+        "expected_work_version": 1,
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "accept_specialist_work-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "operation_key": "demo_01",
+          "status": "succeeded",
+          "domain_ref": null,
+          "domain_version": null,
+          "event_ref": null
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "claim_feedback_task-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_work_version": 1,
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "claim_feedback_task-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "claim_feedback_task-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "work_item_id": "demo_01",
+        "expected_work_version": 1,
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "claim_feedback_task-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "operation_key": "demo_01",
+          "status": "succeeded",
+          "domain_ref": null,
+          "domain_version": null,
+          "event_ref": null
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "record_specialist_result-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "finding": "explanation_only",
+        "evidence_refs": [],
+        "approved_customer_explanation": "demo_01",
+        "internal_notes": null,
+        "required_action_statuses": [],
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "record_specialist_result-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "finding": "explanation_only",
+        "evidence_refs": [],
+        "approved_customer_explanation": "demo_01",
+        "internal_notes": null,
+        "required_action_statuses": [],
+        "operation_key": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "record_specialist_result-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "finding": "explanation_only",
+        "evidence_refs": [],
+        "approved_customer_explanation": "demo_01",
+        "internal_notes": null,
+        "required_action_statuses": [],
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "record_specialist_result-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "operation_key": "demo_01",
+          "status": "succeeded",
+          "domain_ref": null,
+          "domain_version": null,
+          "event_ref": null
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "record_callback_attempt-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "callback_contact_id": "demo_01",
+        "expected_case_version": 1,
+        "actual_attempt_at": "2026-10-19T15:00:00Z",
+        "dial_state": "not_placed",
+        "outcome": "no_answer",
+        "customer_response": null,
+        "operation_key": "demo_01",
+        "expected_work_version": 1,
+        "contact_plan_id": "demo_01",
+        "reservation_id": "demo_01"
+      }
+    },
+    {
+      "id": "record_callback_attempt-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "callback_contact_id": "demo_01",
+        "expected_case_version": 1,
+        "actual_attempt_at": "2026-10-19T15:00:00Z",
+        "dial_state": "not_placed",
+        "outcome": "no_answer",
+        "customer_response": null,
+        "operation_key": "demo_01",
+        "expected_work_version": 1,
+        "contact_plan_id": "demo_01",
+        "reservation_id": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "record_callback_attempt-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "work_item_id": "demo_01",
+        "callback_contact_id": "demo_01",
+        "expected_case_version": 1,
+        "actual_attempt_at": "2026-10-19T15:00:00Z",
+        "dial_state": "not_placed",
+        "outcome": "no_answer",
+        "customer_response": null,
+        "operation_key": "demo_01",
+        "expected_work_version": 1,
+        "contact_plan_id": "demo_01",
+        "reservation_id": "demo_01"
+      }
+    },
+    {
+      "id": "record_callback_attempt-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "operation_key": "demo_01",
+          "status": "succeeded",
+          "domain_ref": null,
+          "domain_version": null,
+          "event_ref": null
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "capture_customer_objection-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "case_id": "demo_01",
+        "contact_id": "demo_01",
+        "expected_case_version": 1,
+        "customer_statement": "demo_01",
+        "evidence_refs": [],
+        "complaint_requested": true,
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "capture_customer_objection-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "contact_id": "demo_01",
+        "expected_case_version": 1,
+        "customer_statement": "demo_01",
+        "evidence_refs": [],
+        "complaint_requested": true,
+        "operation_key": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "capture_customer_objection-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_case_version": 1,
+        "customer_statement": "demo_01",
+        "evidence_refs": [],
+        "complaint_requested": true,
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "capture_customer_objection-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "operation_key": "demo_01",
+          "status": "succeeded",
+          "domain_ref": null,
+          "domain_version": null,
+          "event_ref": null
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "approve_and_commit_proposal-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "proposal_id": "demo_01",
+        "expected_proposal_version": "demo_01",
+        "expected_case_version": null,
+        "expected_work_version": null,
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "approve_and_commit_proposal-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "proposal_id": "demo_01",
+        "expected_proposal_version": "demo_01",
+        "expected_case_version": null,
+        "expected_work_version": null,
+        "operation_key": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "approve_and_commit_proposal-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "expected_proposal_version": "demo_01",
+        "expected_case_version": null,
+        "expected_work_version": null,
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "approve_and_commit_proposal-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "operation_key": "demo_01",
+          "status": "succeeded",
+          "domain_ref": null,
+          "domain_version": null,
+          "event_ref": null
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "evaluate_due_work-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "calendar_version": "demo_01",
+        "as_of": "2026-10-19T15:00:00Z",
+        "event_key": "demo_01"
+      }
+    },
+    {
+      "id": "evaluate_due_work-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "calendar_version": "demo_01",
+        "as_of": "2026-10-19T15:00:00Z",
+        "event_key": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "evaluate_due_work-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "as_of": "2026-10-19T15:00:00Z",
+        "event_key": "demo_01"
+      }
+    },
+    {
+      "id": "evaluate_due_work-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "operation_key": "demo_01",
+          "status": "succeeded",
+          "domain_ref": null,
+          "domain_version": null,
+          "event_ref": null
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "propose_next_update-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "proposed_update_at": "2026-10-19T15:00:00Z",
+        "customer_safe_progress": "demo_01",
+        "reason": "demo_01"
+      }
+    },
+    {
+      "id": "propose_next_update-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "proposed_update_at": "2026-10-19T15:00:00Z",
+        "customer_safe_progress": "demo_01",
+        "reason": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "propose_next_update-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "proposed_update_at": "2026-10-19T15:00:00Z",
+        "customer_safe_progress": "demo_01",
+        "reason": "demo_01"
+      }
+    },
+    {
+      "id": "propose_next_update-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "commitment_id": "demo_01",
+          "version": 1,
+          "status": "pending_approval"
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "confirm_next_update-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "commitment_id": "demo_01",
+        "expected_commitment_version": 1,
+        "decision": "approve",
+        "reason": "demo_01"
+      }
+    },
+    {
+      "id": "confirm_next_update-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "commitment_id": "demo_01",
+        "expected_commitment_version": 1,
+        "decision": "approve",
+        "reason": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "confirm_next_update-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "commitment_id": "demo_01",
+        "expected_commitment_version": 1,
+        "decision": "approve",
+        "reason": "demo_01"
+      }
+    },
+    {
+      "id": "confirm_next_update-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "commitment_id": "demo_01",
+          "version": 1,
+          "status": "approved",
+          "approved_update_at": "2026-10-19T15:00:00Z"
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "register_complaint_intake-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "objection_id": "demo_01"
+      }
+    },
+    {
+      "id": "register_complaint_intake-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "objection_id": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "register_complaint_intake-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "objection_id": "demo_01"
+      }
+    },
+    {
+      "id": "register_complaint_intake-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "intake_id": "demo_01",
+          "work_item_id": "demo_01",
+          "queue_id": "demo_01",
+          "status": "recorded",
+          "external_receipt_ref": "demo_01"
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "decide_contact_continuation-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "max_attempts": 1,
+            "approved_slots": [
+              "2026-10-19T15:00:00Z"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "decide_contact_continuation-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "max_attempts": 1,
+            "approved_slots": [
+              "2026-10-19T15:00:00Z"
+            ]
+          }
+        },
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "decide_contact_continuation-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "work_item_id": "demo_01",
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "operation_key": "demo_01",
+        "exhausted_plan_id": "demo_01",
+        "reason": "demo_01",
+        "decision": {
+          "kind": "new_plan",
+          "payload": {
+            "owner_id": "demo_01",
+            "valid_from": "2026-10-19T15:00:00Z",
+            "valid_until": "2026-10-19T15:00:00Z",
+            "max_attempts": 1,
+            "approved_slots": [
+              "2026-10-19T15:00:00Z"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "decide_contact_continuation-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "decision_id": "demo_01",
+          "receipt_ref": "demo_01",
+          "status": "plan_approved",
+          "new_plan_id": "demo_01",
+          "review_at": null
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "edit_proposal-input_schema-positive",
+      "valid": true,
+      "payload": {
+        "proposal_id": "demo_01",
+        "expected_proposal_version": 1,
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "replacement": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        },
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "edit_proposal-untrusted-role-negative",
+      "valid": false,
+      "payload": {
+        "proposal_id": "demo_01",
+        "expected_proposal_version": 1,
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "replacement": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        },
+        "operation_key": "demo_01",
+        "role": "administrator"
+      }
+    },
+    {
+      "id": "edit_proposal-missing-required-negative",
+      "valid": false,
+      "payload": {
+        "expected_proposal_version": 1,
+        "expected_case_version": 1,
+        "expected_work_version": 1,
+        "replacement": {
+          "kind": "referral",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        },
+        "operation_key": "demo_01"
+      }
+    },
+    {
+      "id": "edit_proposal-success_schema-positive",
+      "valid": true,
+      "payload": {
+        "data": {
+          "proposal_id": "demo_01",
+          "version": 1,
+          "status": "draft"
+        },
+        "request_id": "demo_01"
+      }
+    },
+    {
+      "id": "no-refund-proposal",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "expected_context_version": "demo_01",
+        "source_refs": [],
+        "operation_key": "demo_01",
+        "proposal": {
+          "kind": "refund",
+          "payload": {
+            "transaction_ids": [],
+            "concern": "demo_01",
+            "checked_facts": [],
+            "missing_evidence": [],
+            "requested_review": "demo_01",
+            "queue_id": "demo_01",
+            "related_case_id": null
+          }
+        }
+      }
+    },
+    {
+      "id": "bounded-search",
+      "valid": false,
+      "payload": {
+        "contact_id": "demo_01",
+        "card_ref": "demo_01",
+        "date_from": "2026-10-19",
+        "date_to": "2026-10-19",
+        "amount_minor": null,
+        "merchant_query": null,
+        "cursor": null,
+        "limit": 51
+      }
+    },
+    {
+      "id": "no-client-asserted-proof",
+      "valid": false,
+      "payload": {
+        "case_id": "demo_01",
+        "work_item_id": "demo_01",
+        "callback_contact_id": "demo_01",
+        "expected_case_version": 1,
+        "actual_attempt_at": "2026-10-19T15:00:00Z",
+        "dial_state": "not_placed",
+        "outcome": "no_answer",
+        "customer_response": null,
+        "operation_key": "demo_01",
+        "expected_work_version": 1,
+        "contact_plan_id": "demo_01",
+        "reservation_id": "demo_01",
+        "verification_result": true
+      }
+    }
+  ]
+}

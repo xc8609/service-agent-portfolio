@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-19",
+  "status": "Saved and verified in Trello UI",
+  "marker": "BANK-SDD-v0.2",
+  "cards": [
+    {
+      "id": "DEV-11",
+      "url": "https://trello.com/c/e0Hg2a8s/52-dev-11-receive-specialist-findings-and-complete-a-verified-customer-callback",
+      "descriptionVerified": true,
+      "marker": "BANK-SDD-v0.2",
+      "currentList": "02 | Bank development backlog"
+    },
+    {
+      "id": "DEV-12",
+      "url": "https://trello.com/c/kymdAvg6/53-dev-12-retry-unanswered-callbacks-and-guard-normal-closure",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "DEV-13",
+      "url": "https://trello.com/c/eNbKvqHE/54-dev-13-handle-overdue-investigations-and-customer-objections-with-linked-work",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "BA-01",
+      "url": "https://trello.com/c/VvE3u9HY/3-ba-01-define-the-service-problem-value-hypothesis-and-alternatives",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "BA-02",
+      "url": "https://trello.com/c/1ZT5cNaK/4-ba-02-stakeholders-personas-decision-rights-and-elicitation-plan",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "BA-03",
+      "url": "https://trello.com/c/ATlFMnKf/5-ba-03-model-the-current-process-and-locate-service-failure-points",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "BA-04",
+      "url": "https://trello.com/c/RHpuR1ya/6-ba-04-design-the-future-service-journey-and-exception-paths",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "BA-05",
+      "url": "https://trello.com/c/mG7qod2L/7-ba-05-story-map-scope-baseline-and-requirement-prioritization",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "BA-06",
+      "url": "https://trello.com/c/CQj4rKaR/8-ba-06-business-rules-decision-tables-and-case-state-model",
+      "descriptionVerified": true,
+      "currentList": "01 | BA discovery and specifications",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "BA-07",
+      "url": "https://trello.com/c/S77lT3Se/9-ba-07-data-contracts-provenance-quality-and-privacy-requirements",
+      "descriptionVerified": true,
+      "currentList": "01 | BA discovery and specifications",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "BA-09",
+      "url": "https://trello.com/c/1xqnJCOn/11-ba-09-baseline-specifications-api-contracts-and-change-impact-review",
+      "descriptionVerified": true,
+      "currentList": "01 | BA discovery and specifications",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "QA-01",
+      "url": "https://trello.com/c/0Gwx6JZI/22-qa-01-implement-layered-verification-and-requirement-to-test-coverage",
+      "descriptionVerified": true,
+      "currentList": "03 | Testing and business acceptance",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "GOV-03",
+      "url": "https://trello.com/c/S22F5HZm/38-gov-03-two-week-sprint-planning-capacity-and-forecast-control",
+      "descriptionVerified": true,
+      "currentList": "10 | Review and acceptance",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "DEV-02",
+      "url": "https://trello.com/c/8MGn5QK4/13-dev-02-open-an-authorized-customer-contact-and-inspect-account-context",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "DEV-03",
+      "url": "https://trello.com/c/N5Y4v779/14-dev-03-investigate-a-possible-duplicate-charge-from-transaction-evidence",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "DEV-05",
+      "url": "https://trello.com/c/fEkG3vke/16-dev-05-retrieve-applicable-policy-with-citations-and-version-controls",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "DEV-07",
+      "url": "https://trello.com/c/Mjwlq4sb/18-dev-07-create-justified-follow-up-work-with-ownership-and-reliable-delivery",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "DEV-08",
+      "url": "https://trello.com/c/gZ67RLnh/19-dev-08-add-a-bounded-assistant-that-proposes-evidence-backed-next-steps",
+      "descriptionVerified": true,
+      "currentList": "02 | Bank development backlog",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "S01",
+      "url": "https://trello.com/c/GwmtaYiU/40-s01-w1-2-business-framing-and-public-delivery-foundation",
+      "descriptionVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "S02",
+      "url": "https://trello.com/c/CBFn48oC/41-s02-w3-4-rules-data-contracts-and-executable-foundation",
+      "descriptionVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "S04",
+      "url": "https://trello.com/c/uQdfGDUX/43-s04-w7-8-complete-manual-workflow-and-qualify-providers",
+      "descriptionVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "S05",
+      "url": "https://trello.com/c/cx4LUBnZ/44-s05-w9-10-bounded-bank-assistant-and-comparative-evaluation",
+      "descriptionVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-SDD-v0.2"
+    },
+    {
+      "id": "S06",
+      "url": "https://trello.com/c/w56QWdqt/45-s06-w11-12-bank-uat-hosted-release-and-case-study",
+      "descriptionVerified": true,
+      "currentList": "09 | Sprint roadmap",
+      "marker": "BANK-SDD-v0.2"
+    }
+  ]
+}

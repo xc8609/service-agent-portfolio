@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-19",
+  "method": "Browser UI save and reopen verification",
+  "cards": [
+    {
+      "id": "BA-06",
+      "url": "https://trello.com/c/CQj4rKaR/8-ba-06-business-rules-decision-tables-and-case-state-model",
+      "decisions": [
+        "D-20",
+        "D-21"
+      ],
+      "verified": true
+    },
+    {
+      "id": "BA-07",
+      "url": "https://trello.com/c/S77lT3Se/9-ba-07-data-contracts-provenance-quality-and-privacy-requirements",
+      "decisions": [
+        "D-20",
+        "D-21"
+      ],
+      "verified": true
+    },
+    {
+      "id": "BA-09",
+      "url": "https://trello.com/c/1xqnJCOn/11-ba-09-baseline-specifications-api-contracts-and-change-impact-review",
+      "decisions": [
+        "D-20",
+        "D-21"
+      ],
+      "verified": true
+    },
+    {
+      "id": "DEV-11",
+      "url": "https://trello.com/c/e0Hg2a8s/52-dev-11-receive-specialist-findings-and-complete-a-verified-customer-callback",
+      "decisions": [
+        "D-20",
+        "D-21"
+      ],
+      "verified": true
+    },
+    {
+      "id": "DEV-13",
+      "url": "https://trello.com/c/eNbKvqHE/54-dev-13-handle-overdue-investigations-and-customer-objections-with-linked-work",
+      "decisions": [
+        "D-20",
+        "D-21"
+      ],
+      "verified": true
+    }
+  ]
+}

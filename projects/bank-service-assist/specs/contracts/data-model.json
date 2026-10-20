@@ -1,0 +1,1880 @@
+{
+  "version": "0.4",
+  "status": "Logical/physical candidate; SQL not deployed",
+  "database_target": "PostgreSQL",
+  "entities": [
+    {
+      "name": "staff_principals",
+      "purpose": "External identity reference; no local passwords",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "subject_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "subject_ref"
+        ]
+      ],
+      "invariants": []
+    },
+    {
+      "name": "service_queues",
+      "purpose": "Accountable specialist/feedback/lead destinations",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "name"
+        ]
+      ],
+      "invariants": []
+    },
+    {
+      "name": "queue_memberships",
+      "purpose": "Scoped role membership",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "principal_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "queue_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "service_queues.id"
+        },
+        {
+          "name": "role",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "principal_id",
+          "queue_id",
+          "role"
+        ]
+      ],
+      "invariants": []
+    },
+    {
+      "name": "customers",
+      "purpose": "Synthetic customer identity reference only",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "external_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "display_alias",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "data_origin",
+          "type": "text",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "external_ref"
+        ]
+      ],
+      "invariants": [
+        "data_origin is synthetic_demo; real identity/PII absent from public fixtures"
+      ]
+    },
+    {
+      "name": "card_accounts",
+      "purpose": "Synthetic masked card context",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "customer_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "customers.id"
+        },
+        {
+          "name": "masked_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "product",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "currency",
+          "type": "char(3)",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "masked_ref"
+        ]
+      ],
+      "invariants": []
+    },
+    {
+      "name": "card_transactions",
+      "purpose": "Read-model snapshot, not a settlement engine",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "account_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "card_accounts.id"
+        },
+        {
+          "name": "amount_minor",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "currency",
+          "type": "char(3)",
+          "nullable": false
+        },
+        {
+          "name": "merchant_description",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "occurred_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "posted_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "source_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        }
+      ],
+      "unique": [],
+      "invariants": [
+        "Amounts use integer minor units; no floating point money",
+        "Matching merchant/amount does not assert transaction relationship"
+      ]
+    },
+    {
+      "name": "transaction_relationships",
+      "purpose": "Evidence-supported relationship only",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "left_transaction_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "card_transactions.id"
+        },
+        {
+          "name": "right_transaction_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "card_transactions.id"
+        },
+        {
+          "name": "relation",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "evidence_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "left_transaction_id",
+          "right_transaction_id",
+          "relation"
+        ]
+      ],
+      "invariants": [
+        "Both transactions must belong to permitted customer/account context"
+      ]
+    },
+    {
+      "name": "contacts",
+      "purpose": "Inbound/callback interaction separated from case",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "customer_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "customers.id"
+        },
+        {
+          "name": "actor_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "opened_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "closed_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        }
+      ],
+      "unique": [],
+      "invariants": []
+    },
+    {
+      "name": "verification_assertions",
+      "purpose": "Trusted current-contact proof, not customer answers",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "contact_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "contacts.id"
+        },
+        {
+          "name": "issuer_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "state",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "verified_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "expires_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "scope_json",
+          "type": "jsonb",
+          "nullable": false
+        }
+      ],
+      "unique": [],
+      "invariants": [
+        "Only trusted identity adapter writes; no model-provided proof",
+        "Store outcome/reference, not secret answers or identity documents"
+      ]
+    },
+    {
+      "name": "cases",
+      "purpose": "Durable unresolved customer concern",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "customer_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "customers.id"
+        },
+        {
+          "name": "origin_contact_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "contacts.id"
+        },
+        {
+          "name": "owner_queue_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "service_queues.id"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "concern",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "closed_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "disposition",
+          "type": "text",
+          "nullable": true
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        }
+      ],
+      "unique": [],
+      "invariants": [
+        "Customer on case/contact/accounts must agree",
+        "Open case always has accountable queue; contact ending does not close it"
+      ]
+    },
+    {
+      "name": "case_transactions",
+      "purpose": "Selected transaction links",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "transaction_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "card_transactions.id"
+        }
+      ],
+      "unique": [
+        [
+          "case_id",
+          "transaction_id"
+        ]
+      ],
+      "invariants": []
+    },
+    {
+      "name": "work_items",
+      "purpose": "Investigation, feedback, lead review or linked follow-up",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "queue_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "service_queues.id"
+        },
+        {
+          "name": "assignee_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "due_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "original_due_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "calendar_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "source_event_key",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "parent_work_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "work_items.id"
+        }
+      ],
+      "unique": [
+        [
+          "source_event_key"
+        ]
+      ],
+      "invariants": [
+        "Atomic claim compares expected version and eligible queue membership",
+        "Reassignment revokes former assignee authority; original deadlines retained",
+        "D-19: persist callback window due time and calendar version from first placed-call service date through third service date at 17:00 America/Winnipeg; no fault-based reset; first-callback target remains separately auditable.",
+        "D-20/D-21: investigation, progress callback, specialist re-review and complaint-intake tasks keep independent ownership/status and original-case linkage; new update commitments do not replace the original investigation deadline.",
+        "D-22: lead-review hold requires owner and review date; a new contact plan has a separate approval/limits record and never overwrites original deadline or attempts."
+      ]
+    },
+    {
+      "name": "investigation_results",
+      "purpose": "Versioned findings with approved customer explanation",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "work_item_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "work_items.id"
+        },
+        {
+          "name": "author_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "finding_code",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "evidence_refs",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "approved_customer_explanation",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "published_at",
+          "type": "timestamptz",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "case_id",
+          "version"
+        ]
+      ],
+      "invariants": [
+        "Immutable published versions; newer result stales dependent proposals"
+      ]
+    },
+    {
+      "name": "result_private_notes",
+      "purpose": "Internal-only storage separated from public DTO",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "result_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "investigation_results.id"
+        },
+        {
+          "name": "body",
+          "type": "text",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "result_id"
+        ]
+      ],
+      "invariants": [
+        "Excluded from feedback/model retrieval and traces"
+      ]
+    },
+    {
+      "name": "required_actions",
+      "purpose": "External action status/evidence; never executes money movement",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "action_kind",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "external_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "receipt_ref",
+          "type": "text",
+          "nullable": true
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "external_ref"
+        ]
+      ],
+      "invariants": [
+        "Approval is not completion; financial actions remain external"
+      ]
+    },
+    {
+      "name": "callback_attempts",
+      "purpose": "Actual operator-reported attempts, including technical failures",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "work_item_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "work_items.id"
+        },
+        {
+          "name": "contact_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "contacts.id"
+        },
+        {
+          "name": "actor_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "occurred_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "service_date",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "dial_state",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "outcome",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "counts_toward_limit",
+          "type": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "rule_version",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "operation_key",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "contact_plan_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "contact_plans.id"
+        },
+        {
+          "name": "reservation_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "contact_reservations.id"
+        }
+      ],
+      "unique": [
+        [
+          "operation_key"
+        ]
+      ],
+      "invariants": [
+        "Never delete an actual duplicate call to satisfy a quota; block duplicate planned contact instead",
+        "Count flag derived server-side from reviewed rule, not supplied by model",
+        "D-18: not_placed technical_failure is auditable but does not consume quota or extend original deadlines; placed no_answer consumes one attempt.",
+        "D-22: retain lifetime contact history; any post-exhaustion attempt must reference a distinct lead-approved plan. Plan linkage is mandatory; policy violations stay auditable."
+      ]
+    },
+    {
+      "name": "contact_reservations",
+      "purpose": "Prevent conflicting scheduled contact slots",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "service_date",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "scheduled_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "state",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "contact_plan_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "contact_plans.id"
+        }
+      ],
+      "unique": [],
+      "invariants": [
+        "Partial unique active reservation per case/service_date; released reservations do not erase attempts"
+      ]
+    },
+    {
+      "name": "customer_objections",
+      "purpose": "Preserved exact statement and review link",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "contact_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "contacts.id"
+        },
+        {
+          "name": "statement",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "evidence_refs",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "complaint_requested",
+          "type": "boolean",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "nullable": false
+        }
+      ],
+      "unique": [],
+      "invariants": [
+        "Exact statement retained; parallel links live in objection_work_links, not a single overwritten pointer."
+      ]
+    },
+    {
+      "name": "policy_versions",
+      "purpose": "Fictional handling-rule text with applicability and source",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "policy_key",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "product",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "jurisdiction",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "audience",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "effective_from",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "effective_to",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "body",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "source_label",
+          "type": "text",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "policy_key",
+          "version"
+        ]
+      ],
+      "invariants": [
+        "Effective intervals are explicit; overlapping conflicting rules block authoritative guidance"
+      ]
+    },
+    {
+      "name": "service_calendars",
+      "purpose": "Versioned timezone/open windows/fixture holidays",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "calendar_key",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "timezone",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "open_windows",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "holidays",
+          "type": "jsonb",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "calendar_key",
+          "version"
+        ]
+      ],
+      "invariants": [
+        "Synthetic holidays are test inputs, not official Canadian holiday claims"
+      ]
+    },
+    {
+      "name": "proposals",
+      "purpose": "Editable suggested changes, independent of execution",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "cases.id"
+        },
+        {
+          "name": "contact_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "contacts.id"
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "payload",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "source_versions",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "author_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "rendered_source_hash",
+          "type": "text",
+          "nullable": false
+        }
+      ],
+      "unique": [],
+      "invariants": [
+        "Created proposal confers no business authority; approve/commit require trusted actor and fresh source versions"
+      ]
+    },
+    {
+      "name": "operations",
+      "purpose": "Idempotent write reconciliation",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "actor_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "operation_key",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "command",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "request_hash",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "receipt",
+          "type": "jsonb",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "actor_id",
+          "command",
+          "operation_key"
+        ]
+      ],
+      "invariants": [
+        "Unique actor/command/key plus normalized request hash; authorized replay returns prior receipt before stale version checks."
+      ]
+    },
+    {
+      "name": "audit_events",
+      "purpose": "Append-only safe decision/action evidence",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "cases.id"
+        },
+        {
+          "name": "actor_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "event_type",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "occurred_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "safe_details",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "operation_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "operations.id"
+        },
+        {
+          "name": "aggregate_sequence",
+          "type": "bigint",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "case_id",
+          "aggregate_sequence"
+        ]
+      ],
+      "invariants": [
+        "No raw card/contact secrets or hidden model reasoning"
+      ]
+    },
+    {
+      "name": "outbox_events",
+      "purpose": "Atomic publication with domain write",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "event_key",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "aggregate_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "aggregate_version",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "event_type",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "payload",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "lease_expires_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "attempt_count",
+          "type": "integer",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "event_key"
+        ]
+      ],
+      "invariants": [
+        "At-least-once delivery; consumer effect deduplication required; no exactly-once transport claim"
+      ]
+    },
+    {
+      "name": "agent_runs",
+      "purpose": "Short bounded execution over durable case state",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "cases.id"
+        },
+        {
+          "name": "contact_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "contacts.id"
+        },
+        {
+          "name": "scope_snapshot",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "provider_profile",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "trigger_key",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "started_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "finished_at",
+          "type": "timestamptz",
+          "nullable": true
+        }
+      ],
+      "unique": [
+        [
+          "trigger_key"
+        ]
+      ],
+      "invariants": [
+        "Expiry/reassignment revalidated on every tool/commit; no multi-day live model loop"
+      ]
+    },
+    {
+      "name": "agent_steps",
+      "purpose": "Sanitized tool/proposal trace",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "run_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "agent_runs.id"
+        },
+        {
+          "name": "sequence",
+          "type": "integer",
+          "nullable": false
+        },
+        {
+          "name": "tool_name",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "source_refs",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "safe_result",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "duration_ms",
+          "type": "integer",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "run_id",
+          "sequence"
+        ]
+      ],
+      "invariants": [
+        "Store references and outcome summaries; not internal notes, secrets or hidden reasoning"
+      ]
+    },
+    {
+      "name": "update_commitments",
+      "purpose": "Specialist proposal and lead-confirmed next-update history",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "work_item_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "work_items.id"
+        },
+        {
+          "name": "proposed_by",
+          "type": "uuid",
+          "nullable": false,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "proposed_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "proposed_update_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "customer_safe_progress",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "decided_by",
+          "type": "uuid",
+          "nullable": true,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "decided_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "decision_reason",
+          "type": "text",
+          "nullable": true
+        },
+        {
+          "name": "supersedes_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "update_commitments.id"
+        },
+        {
+          "name": "operation_key",
+          "type": "text",
+          "nullable": false
+        }
+      ],
+      "unique": [],
+      "checks": [
+        "status IN ('pending_approval','approved','rejected','superseded','missed')",
+        "status NOT IN ('approved','rejected','superseded','missed') OR (decided_by IS NOT NULL AND decided_at IS NOT NULL)",
+        "proposed_update_at > proposed_at"
+      ],
+      "invariants": [
+        "Only lead can approve; original investigation deadline remains unchanged; source work version rechecked."
+      ]
+    },
+    {
+      "name": "complaint_intakes",
+      "purpose": "Independent simulated intake; not full complaint adjudication",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "objection_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "customer_objections.id"
+        },
+        {
+          "name": "work_item_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "work_items.id"
+        },
+        {
+          "name": "queue_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "service_queues.id"
+        },
+        {
+          "name": "recorded_by",
+          "type": "uuid",
+          "nullable": false,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "recorded_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "external_receipt_ref",
+          "type": "text",
+          "nullable": true
+        },
+        {
+          "name": "acknowledged_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "objection_id"
+        ],
+        [
+          "work_item_id"
+        ]
+      ],
+      "checks": [
+        "status IN ('recorded','pending_delivery','delivery_failed','acknowledged')",
+        "status <> 'acknowledged' OR (external_receipt_ref IS NOT NULL AND acknowledged_at IS NOT NULL)"
+      ],
+      "invariants": [
+        "Explicit complaint request creates internal intake immediately; external acknowledgement requires trusted receipt."
+      ]
+    },
+    {
+      "name": "objection_work_links",
+      "purpose": "Parallel independently owned review/intake work",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "objection_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "customer_objections.id"
+        },
+        {
+          "name": "work_item_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "work_items.id"
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "objection_id",
+          "kind"
+        ]
+      ],
+      "checks": [
+        "kind IN ('specialist_rereview','complaint_intake')"
+      ],
+      "invariants": [
+        "Both work items must belong to the objection case; distinct statuses do not automatically close one another."
+      ]
+    },
+    {
+      "name": "lead_review_decisions",
+      "purpose": "Immutable accountable plan/hold decisions",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "work_item_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "work_items.id"
+        },
+        {
+          "name": "exhausted_plan_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "contact_plans.id"
+        },
+        {
+          "name": "actor_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "decided_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "reason",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "owner_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "review_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "operation_key",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "expected_work_version",
+          "type": "bigint",
+          "nullable": false
+        }
+      ],
+      "unique": [],
+      "checks": [
+        "kind IN ('new_plan','review_hold')",
+        "(kind = 'review_hold' AND review_at > decided_at) OR (kind = 'new_plan' AND review_at IS NULL)"
+      ],
+      "invariants": [
+        "Current responsible lead only; one effective decision per expected work version, enforced atomically with work version increment."
+      ]
+    },
+    {
+      "name": "contact_plans",
+      "purpose": "Original and separately approved post-exhaustion contact plans",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "cases.id"
+        },
+        {
+          "name": "work_item_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "work_items.id"
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "version",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "previous_plan_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "contact_plans.id"
+        },
+        {
+          "name": "approval_decision_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "lead_review_decisions.id"
+        },
+        {
+          "name": "owner_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "max_attempts",
+          "type": "integer",
+          "nullable": false
+        },
+        {
+          "name": "valid_from",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "valid_until",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "approved_slots",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "calendar_ref",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "first_placed_at",
+          "type": "timestamptz",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "nullable": false
+        }
+      ],
+      "unique": [
+        [
+          "approval_decision_id"
+        ]
+      ],
+      "checks": [
+        "kind IN ('initial','lead_approved')",
+        "max_attempts > 0",
+        "valid_until IS NULL OR valid_until > valid_from",
+        "kind <> 'lead_approved' OR (approval_decision_id IS NOT NULL AND previous_plan_id IS NOT NULL AND owner_id IS NOT NULL AND valid_from IS NOT NULL AND valid_until IS NOT NULL)",
+        "kind <> 'initial' OR (previous_plan_id IS NULL AND approval_decision_id IS NULL AND max_attempts = 3)"
+      ],
+      "invariants": [
+        "Initial window set atomically on first placed call using D-19. Preserve initial first-callback due on work item. Global case/service-date limit applies across plans."
+      ]
+    },
+    {
+      "name": "contact_notes",
+      "purpose": "Human-reviewed note content and immutable source provenance",
+      "fields": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "primary": true
+        },
+        {
+          "name": "contact_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "contacts.id"
+        },
+        {
+          "name": "case_id",
+          "type": "uuid",
+          "nullable": true,
+          "references": "cases.id"
+        },
+        {
+          "name": "proposal_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "proposals.id"
+        },
+        {
+          "name": "reviewed_proposal_version",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "body",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "customer_allegations",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "source_versions",
+          "type": "jsonb",
+          "nullable": false
+        },
+        {
+          "name": "committed_by",
+          "type": "uuid",
+          "nullable": false,
+          "references": "staff_principals.id"
+        },
+        {
+          "name": "committed_at",
+          "type": "timestamptz",
+          "nullable": false
+        },
+        {
+          "name": "operation_id",
+          "type": "uuid",
+          "nullable": false,
+          "references": "operations.id"
+        }
+      ],
+      "unique": [
+        [
+          "proposal_id",
+          "reviewed_proposal_version"
+        ],
+        [
+          "operation_id"
+        ]
+      ],
+      "checks": [],
+      "invariants": []
+    }
+  ],
+  "invariants": [
+    "Cross-entity customer ownership checked in service transaction; single FK alone is insufficient.",
+    "Case closure requires authorized result, no outstanding required actions/work, verified feedback and current version.",
+    "Session/assignment expiration enforced per call; browser-hidden fields are not access control."
+  ],
+  "retention": "Synthetic demo retention until reset; actual bank retention/deletion policy is not asserted. Auditable anonymization and production policy are future requirements."
+}

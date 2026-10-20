@@ -1,0 +1,9 @@
+# Third-party sources and data
+
+The MIT License applies only to eligible original project material. It does not relicense third-party datasets, publisher pages, libraries or benchmark assets.
+
+- BANKING77: optional source from PolyAI-LDN/task-specific-datasets. No dataset is bundled. Verify publisher terms and preserve attribution before download/use; provenance instructions are in the bank data README.
+- Public bank and government guidance: linked and summarized as dated research evidence. No bank affiliation, endorsement or current compliance certification is implied.
+- Benchmark sources: references inform evaluation design; no benchmark data/model assets are bundled by this initial import.
+- Synthetic payload/calendar fixtures: authored specification examples, not real financial records or observed business outcomes.
+- GitHub Actions and Python dependencies: fetched from their publishers during checks, retain their own licenses.

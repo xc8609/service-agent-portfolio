@@ -1,0 +1,374 @@
+{
+  "version": "0.4",
+  "status": "RB-01 through RB-06 accepted as D-17 through D-22; additional technical grants remain candidates",
+  "roles": [
+    "inbound_representative",
+    "specialist",
+    "feedback_representative",
+    "queue_lead",
+    "policy_steward",
+    "scheduler",
+    "agent_runtime"
+  ],
+  "default": "deny",
+  "conditions": {
+    "verified_active_contact": "Trusted employee session + fresh customer proof + explicitly selected authorized card/account + active contact purpose.",
+    "claimed_feedback_task": "Employee is current assignee of an active feedback work item; restrict to its case/customer and needed evidence. Caller verification is NOT required to prepare; it IS required to disclose private facts to the customer.",
+    "managed_case_with_reason": "Lead manages the current queue and supplies an auditable operational purpose; no global access or financial authority.",
+    "delegated_read_scope": "Agent receives server-issued run scope from initiating staff assignment/contact; event runs receive only customer-visible scoped evidence. It never supplies roles or widens scope.",
+    "own_queue_masked": "Eligible membership grants summary-only queue listing; details require assignment.",
+    "disclosure_gate": "Fresh identity assurance belongs to the current callback contact; old inbound verification cannot be reused.",
+    "lead_continuation_approval": "Responsible lead within managed feedback queue; reason, fresh case/work/proposal versions; explicit bounded contact plan or named hold owner and review date; agent cannot approve."
+  },
+  "actions": [
+    {
+      "action": "queue.list_summary",
+      "grants": {
+        "inbound_representative": "own_queue_masked",
+        "specialist": "own_queue_masked",
+        "feedback_representative": "own_queue_masked",
+        "queue_lead": "managed_queue_masked",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "delegated_masked"
+      },
+      "notes": "Customer alias/card last4, concern category, work age/status; no transaction amounts or findings before claim."
+    },
+    {
+      "action": "work.claim",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "eligible_specialist_queue",
+        "feedback_representative": "eligible_feedback_queue",
+        "queue_lead": "assign_managed_queue",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Atomic claim on expected work version; one current assignee. D-17 accepted for feedback."
+    },
+    {
+      "action": "customer.read_context",
+      "grants": {
+        "inbound_representative": "verified_active_contact",
+        "specialist": "assigned_case",
+        "feedback_representative": "claimed_feedback_task",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "delegated_read_scope"
+      },
+      "notes": "Staff preparation and customer disclosure are separate authorities."
+    },
+    {
+      "action": "transaction.read",
+      "grants": {
+        "inbound_representative": "verified_active_contact",
+        "specialist": "assigned_case",
+        "feedback_representative": "claimed_feedback_task_minimum",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "delegated_read_scope"
+      },
+      "notes": "No all-customer or all-account grant; full PAN/CVV never returned."
+    },
+    {
+      "action": "result.read_approved",
+      "grants": {
+        "inbound_representative": "verified_contact_linked_case",
+        "specialist": "assigned_case",
+        "feedback_representative": "claimed_feedback_task",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "delegated_customer_visible"
+      },
+      "notes": "Only approved customer explanation enters feedback generation."
+    },
+    {
+      "action": "result.read_internal",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "assigned_case",
+        "feedback_representative": "deny",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Internal-only notes excluded from model prompts/traces; steward is not a customer-data role."
+    },
+    {
+      "action": "policy.read",
+      "grants": {
+        "inbound_representative": "staff_audience",
+        "specialist": "staff_audience",
+        "feedback_representative": "staff_audience",
+        "queue_lead": "staff_audience",
+        "policy_steward": "steward_scope",
+        "scheduler": "deny",
+        "agent_runtime": "delegated_policy_scope"
+      },
+      "notes": "Product, jurisdiction, audience and effective time filter enforced before return."
+    },
+    {
+      "action": "referral.submit",
+      "grants": {
+        "inbound_representative": "verified_active_contact_approve",
+        "specialist": "deny",
+        "feedback_representative": "deny",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Human approval followed by server guards; model only proposes."
+    },
+    {
+      "action": "result.publish",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "assigned_case",
+        "feedback_representative": "deny",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Publishing specialist findings is not a financial operation; queue-lead override is proposed pending review."
+    },
+    {
+      "action": "callback.record",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "deny",
+        "feedback_representative": "claimed_feedback_task",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Record actual result even if verification failed; completed feedback requires verified disclosure context."
+    },
+    {
+      "action": "objection.capture",
+      "grants": {
+        "inbound_representative": "verified_contact_linked_case",
+        "specialist": "assigned_case",
+        "feedback_representative": "claimed_feedback_task",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Exact customer statement retained; complaint handling is a separate pending rule."
+    },
+    {
+      "action": "proposal.create",
+      "grants": {
+        "inbound_representative": "scoped_draft",
+        "specialist": "scoped_draft",
+        "feedback_representative": "claimed_feedback_draft",
+        "queue_lead": "managed_case_draft",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "delegated_draft_only"
+      },
+      "notes": "Draft is not approval; affected source versions attached."
+    },
+    {
+      "action": "proposal.approve",
+      "grants": {
+        "inbound_representative": "allowed_inbound_action",
+        "specialist": "allowed_specialist_action",
+        "feedback_representative": "allowed_feedback_action",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Action-kind specific validation; broad approve-any is prohibited. D-22: post-exhaustion plan/hold approval is restricted to responsible queue lead; generic feedback/specialist approval grants do not authorize this subtype."
+    },
+    {
+      "action": "case.close",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "deny",
+        "feedback_representative": "claimed_feedback_closure_guards",
+        "queue_lead": "managed_case_closure_guards",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Accepted normal closure only; lead-review cannot become automatic unresolved closure."
+    },
+    {
+      "action": "work.reassign",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "deny",
+        "feedback_representative": "deny",
+        "queue_lead": "managed_queue_reasoned",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Proposed lead-only control; revokes former assignee scope and invalidates stale approvals."
+    },
+    {
+      "action": "deadline.evaluate",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "deny",
+        "feedback_representative": "deny",
+        "queue_lead": "deny",
+        "policy_steward": "deny",
+        "scheduler": "service_identity_metadata",
+        "agent_runtime": "deny"
+      },
+      "notes": "Scheduler reads only timing/status/ownership metadata, never transcript/body to detect time."
+    },
+    {
+      "action": "policy.publish",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "deny",
+        "feedback_representative": "deny",
+        "queue_lead": "deny",
+        "policy_steward": "steward_scope",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Separate versioned publishing authority; never lets policy text grant data access."
+    },
+    {
+      "action": "financial.execute",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "deny",
+        "feedback_representative": "deny",
+        "queue_lead": "deny",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Outside demo; no refund/card-block/dispute-submission endpoint exists."
+    },
+    {
+      "action": "commitment.propose",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "assigned_case",
+        "feedback_representative": "deny",
+        "queue_lead": "deny",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Current investigation assignee; server records proposer, future update, immutable history."
+    },
+    {
+      "action": "commitment.confirm",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "deny",
+        "feedback_representative": "deny",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Responsible investigation lead only; not ordinary staff or agent."
+    },
+    {
+      "action": "complaint.register",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "assigned_case",
+        "feedback_representative": "claimed_feedback_task",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Explicit customer complaint request; designated intake queue; independent of re-review."
+    },
+    {
+      "action": "contact_continuation.decide",
+      "grants": {
+        "inbound_representative": "deny",
+        "specialist": "deny",
+        "feedback_representative": "deny",
+        "queue_lead": "lead_continuation_approval",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "New bounded plan or owned review hold; cannot erase lifetime history."
+    },
+    {
+      "action": "proposal.edit",
+      "grants": {
+        "inbound_representative": "verified_active_contact",
+        "specialist": "assigned_case",
+        "feedback_representative": "claimed_feedback_task",
+        "queue_lead": "managed_case_with_reason",
+        "policy_steward": "deny",
+        "scheduler": "deny",
+        "agent_runtime": "deny"
+      },
+      "notes": "Staff edit draft only; kind and customer/case/contact immutable; previous revision audited."
+    }
+  ],
+  "deny_cases": [
+    {
+      "id": "AUTH-01",
+      "given": "Feedback user is in the queue but has not claimed task",
+      "action": "transaction.read",
+      "expected": "deny details; summary only"
+    },
+    {
+      "id": "AUTH-02",
+      "given": "Feedback user claims task atomically with fresh staff session",
+      "action": "transaction.read",
+      "expected": "allow case-relevant preparation; caller proof not yet required"
+    },
+    {
+      "id": "AUTH-03",
+      "given": "Customer has not passed callback verification",
+      "action": "customer_disclosure",
+      "expected": "deny private disclosure even though staff preparation was permitted"
+    },
+    {
+      "id": "AUTH-04",
+      "given": "Task is reassigned after a proposal",
+      "action": "proposal.approve",
+      "expected": "deny old assignee; preserve draft/audit"
+    },
+    {
+      "id": "AUTH-05",
+      "given": "Agent asks for internal result notes",
+      "action": "result.read_internal",
+      "expected": "deny"
+    },
+    {
+      "id": "AUTH-06",
+      "given": "Ordinary representative requests refund",
+      "action": "financial.execute",
+      "expected": "no callable endpoint; deny"
+    },
+    {
+      "id": "AUTH-07",
+      "given": "Two operators claim same work version",
+      "action": "work.claim",
+      "expected": "one succeeds; other receives STALE_VERSION"
+    },
+    {
+      "id": "AUTH-08",
+      "given": "Prompt includes another customer identifier",
+      "action": "transaction.read",
+      "expected": "scope check rejects without existence disclosure"
+    }
+  ]
+}

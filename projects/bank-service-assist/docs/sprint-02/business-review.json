@@ -1,0 +1,47 @@
+{
+  "version": "0.3",
+  "items": [
+    {
+      "id": "RB-01",
+      "topic": "Feedback preparation access",
+      "recommendation": "Masked queue summary before claim; minimum necessary detail after claim; fresh verification before customer disclosure",
+      "status": "Accepted by owner",
+      "decision": "D-17"
+    },
+    {
+      "id": "RB-02",
+      "topic": "Technical dialing failures and contact quota",
+      "recommendation": "A call never placed does not consume contact quota; log fault and preserve deadline. A placed unanswered call counts.",
+      "status": "Accepted by owner",
+      "decision": "D-18"
+    },
+    {
+      "id": "RB-03",
+      "topic": "Three-service-day window boundary",
+      "recommendation": "First actually placed callback service date is day 1; the retry window ends at 17:00 America/Winnipeg on the third service date, excluding configured holidays and weekends. At the deadline, unresolved feedback enters lead review even if fewer than three calls occurred; no extension or automatic resolved closure. Before the first placed call, the original first-callback target still applies. Never-placed technical faults do not start or reset this window.",
+      "status": "Accepted by owner",
+      "decision": "D-19"
+    },
+    {
+      "id": "RB-04",
+      "topic": "Overdue escalation and next progress update",
+      "recommendation": "Overdue investigation retains its original specialist and original deadline. Notify the responsible lead and create customer progress work in the feedback queue. The specialist proposes the next update time; the responsible lead confirms it. Preserve original overdue history. The agent may gather evidence, remind and draft, but cannot commit a completion date.",
+      "status": "Accepted by owner",
+      "decision": "D-20"
+    },
+    {
+      "id": "RB-05",
+      "topic": "Customer objection and complaint ownership",
+      "recommendation": "Feedback staff preserve the customer statement and new evidence, and route disputed findings to specialist re-review. An explicit complaint request creates an independent complaint-intake record without waiting for re-review. Both tracks link to the original case and keep independent ownership/status. Objection or silence never implies resolved closure.",
+      "status": "Accepted by owner",
+      "decision": "D-21"
+    },
+    {
+      "id": "RB-06",
+      "topic": "Lead override after exhausted contact",
+      "recommendation": "After contact quota or window exhaustion, the responsible lead may approve a reasoned new contact plan or a review hold with a named owner and review date. Preserve all original attempts, deadlines and approval history. Never reset history or mark the case resolved merely because the customer did not answer. Agent suggestions cannot authorize the new plan or hold.",
+      "status": "Accepted by owner",
+      "decision": "D-22"
+    }
+  ]
+}
