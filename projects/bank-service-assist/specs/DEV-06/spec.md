@@ -1,6 +1,6 @@
 # DEV-06 — Review, edit and commit a contact note safely
 
-BANK-S02-v0.4 · Detailed specification candidate; implementation not started.
+BANK-S02-v0.4 · Inbound note implementation under PR review; owner UAT pending.
 Forecast: S04 | Release: B0 | Estimate: Dev 5, BA 0.5, QA 1 person-days. Provisional until technical review.
 
 ## Business purpose and scope

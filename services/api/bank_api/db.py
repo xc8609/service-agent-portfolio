@@ -9,7 +9,7 @@ from psycopg.rows import dict_row
 
 ROOT = Path(__file__).resolve().parents[3]
 MIGRATIONS = ROOT / "services/api/migrations"
-SCHEMA_VERSION = "005_policy_lookup.sql"
+SCHEMA_VERSION = "006_reviewed_notes.sql"
 MARKER = "service-agent-disposable-v1"
 
 
@@ -83,9 +83,17 @@ def provision_runtime(dsn, password):
             "demo_environment",
             "demo_sessions",
             "investigation_revisions",
+            "proposals",
+            "proposal_revisions",
+            "contact_notes",
+            "operations",
         ]
         for table in tables:
             conn.execute(sql.SQL("GRANT SELECT ON {} TO bank_app").format(sql.Identifier(table)))
+        conn.execute(
+            "GRANT INSERT ON proposals,proposal_revisions,contact_notes,operations,outbox_events TO bank_app"
+        )
+        conn.execute("GRANT UPDATE (payload,version,status) ON proposals TO bank_app")
         conn.execute(
             "GRANT INSERT ON demo_sessions, audit_events, investigation_revisions TO bank_app"
         )

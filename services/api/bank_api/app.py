@@ -22,6 +22,7 @@ from .db import ROOT, SCHEMA_VERSION, runtime_connection
 from .fixtures import FIXTURE_VERSION, PERSONAS, uid
 from .investigation import dispatch_investigation
 from .policy_lookup import dispatch_policy
+from .proposals import dispatch_proposals
 
 CONTRACTS = json.loads(
     (ROOT / "projects/bank-service-assist/specs/contracts/agent-tools.json").read_text()
@@ -29,6 +30,14 @@ CONTRACTS = json.loads(
 TOOLS = {t["name"]: t for t in CONTRACTS["tools"]}
 READ_TOOLS = ("get_contact_context", "search_transactions", "get_transaction_evidence")
 MESSAGES = {
+    "IDEMPOTENCY_CONFLICT": (
+        "This operation key already belongs to different reviewed content. Reload its receipt; do not overwrite it.",
+        409,
+    ),
+    "UNSUPPORTED_CLAIM": (
+        "Unsupported financial completion claim: attribute customer reports separately; no execution evidence exists.",
+        422,
+    ),
     "EVIDENCE_CHANGED": (
         "Selected transaction evidence changed. Inspect the pair again before using a handling rule.",
         409,
@@ -540,6 +549,28 @@ def create_app(settings=None, clock=None):
             if name == "get_handling_rules"
             else TOOLS[name]["http"]["path"],
             endpoint(name, dispatch_policy),
+            methods=["POST"],
+            name=name,
+        )
+
+    for name in (
+        "create_proposal",
+        "get_operation_status",
+        "edit_proposal",
+        "approve_and_commit_proposal",
+        "get_proposals",
+        "prepare_note",
+    ):
+        prefix = (
+            "agent-tools"
+            if name in ("create_proposal", "get_operation_status")
+            else "workspace"
+            if name in ("get_proposals", "prepare_note")
+            else "commands"
+        )
+        app.add_api_route(
+            "/v1/" + prefix + "/" + name,
+            endpoint(name, dispatch_proposals),
             methods=["POST"],
             name=name,
         )
