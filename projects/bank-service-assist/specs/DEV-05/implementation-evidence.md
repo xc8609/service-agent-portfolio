@@ -1,6 +1,8 @@
 # DEV-05 execution evidence
 
 20 October 2026 · Branch `codex/dev-05-handling-rules`, based on DEV-04 PR #3.
+[PR #4](https://github.com/xc8609/service-agent-portfolio/pull/4), stacked on
+[PR #3](https://github.com/xc8609/service-agent-portfolio/pull/3).
 Inbound read increment; owner walkthrough acceptance and merge pending.
 
 ## Implemented
@@ -43,3 +45,5 @@ Existing-volume upgrade preserves account jurisdiction as unknown rather than
 inventing it. Use a new isolated synthetic demo for the v3 fixture set. No existing
 reports need deleting to apply the migration. Cloud PostgreSQL 17/container
 results are recorded on the PR, separately from local evidence.
+
+Trello DEV-05 and S03 descriptions saved and reopened to verify; [sync record](trello-sync.json). Original forecast/baseline retained; neither card marked Done.
