@@ -49,5 +49,4 @@ can no longer disclose or record outdated progress, and cancelled work cannot bl
 normal closure. Replayed publication does not repeat this transition.
 
 Regression evidence: test_result_supersedes_open_progress_contact_without_erasing_overdue_history
-and the extended pending-commitment test in test_exceptions.py. Full verification is
-recorded in the follow-up PR; no new external integration or business rule is introduced.
+and the extended pending-commitment test in test_exceptions.py. Full local verification: 181 PostgreSQL API tests and 32 Chromium tests passed; no new external integration or business rule is introduced.
