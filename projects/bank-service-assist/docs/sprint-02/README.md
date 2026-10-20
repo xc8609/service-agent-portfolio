@@ -1,6 +1,6 @@
 # Sprint 02 — authority, data and agent contracts
 
-BANK-S02-v0.4 · Started specification refinement on 19 October 2026 at the owner's request, before its illustrative calendar slot. S01 remains open for repository/acceptance work. No application implementation is claimed.
+BANK-S02-v0.4 · Started specification refinement on 19 October 2026 at the owner's request, before its illustrative calendar slot. S01 remains open for repository/acceptance work. The first inbound lookup slice is under implementation/PR review; see the current scope and evidence below.
 
 ## Deliverables
 
@@ -53,8 +53,12 @@ Detailed four-file packages now cover BA-01–09, DEV-01–13, QA-01 and OPS-01:
 | Benefit target and model budgets | Proposed, not silently accepted | Freeze experiment target before evaluation; qualify budgets in DEV-09 spike |
 | Runtime database/API/UI/security | Not executed | Implement and run meaningful transaction/permission/UI tests |
 | Live model and deployment | Not executed | Qualified routes, UAT/recovery and staging evidence |
-| Public GitHub repository | URL/setup still open | Portfolio-only export and actual cloud CI evidence |
+| Public GitHub repository | Published with MIT; offline CI passed | First runtime PR and branch protection verification |
 
 Sprint allocation and provisional effort remain unchanged in this specification pass. Before committing S04A capacity, check the continuation implementation against the existing DEV-12/13 estimates; record a change/reforecast if integration expands. S01 remains open for repository/acceptance work. Draft specs and accepted business rules do not mark a Sprint Done.
 
 Current completion evidence: [specification handoff](spec-completion.md), [validation](validation.json), [52 targeted schema boundary cases](../../specs/contracts/continuation-schema-cases.json), and [four calendar examples](../../specs/contracts/calendar-fixtures.json). All are offline artifact checks; application acceptance remains pending.
+
+## Current runtime increment — 20 October 2026
+
+[Authorized lookup slice](implementation/lookup-slice.md) implements a bounded DEV-01/02/03 path with QA-01/OPS-01 evidence. [Execution record](implementation/lookup-evidence.md) supersedes earlier blanket runtime-not-executed wording for this slice only. DEV-02/03 read work is pulled forward from S03; remaining stories, estimates and later workflow scope are retained. Parent stories/Sprints remain in progress.

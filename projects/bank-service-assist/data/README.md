@@ -75,3 +75,7 @@ No audio or real customer information is collected by these scripts.
 ## S02 contract fixtures, authored 19 October 2026
 
 The v0.4 JSON payload and calendar fixtures in `specs/contracts/` are authored synthetic specification inputs. They were not downloaded, do not contain real customers and are not model-evaluation results. The 26 October holiday is deliberately synthetic. Source: this portfolio design and owner decisions D-17–D-22. Public dataset terms remain separate; no new BANKING77 download is claimed.
+
+## Runtime seed fixtures — 20 October 2026
+
+The authored `services/api/bank_api/fixtures.py` generator (repository root) creates two synthetic customers, masked demo cards, seven transaction records, fixed staff personas and explicitly fake verification assertions. Version: `bank-lookup-synthetic-v1`. It is not downloaded bank data, does not contain PAN/CVV, and does not measure real outcomes. Database instances and generated records are excluded from Git. BANKING77 remains optional and was not downloaded by this runtime implementation.

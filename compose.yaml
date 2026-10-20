@@ -1,0 +1,49 @@
+name: bank-service-demo
+services:
+  db:
+    image: postgres:17.6-bookworm@sha256:f3bd19c606e442c3d7bdfa8002e03fe260a1023351e0ea4598032022b68dd6e3
+    environment:
+      POSTGRES_DB: bank_demo_compose
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${BANK_ADMIN_PASSWORD:?Run python3 scripts/configure_demo.py}
+    volumes: ["bank-demo-data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bank_demo_compose"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    # No host database port. This network serves only the local demo stack.
+  init:
+    build: .
+    image: bank-service-local:dev
+    depends_on:
+      db: {condition: service_healthy}
+    environment:
+      BANK_MODE: local
+      BANK_ADMIN_DATABASE_URL: postgresql://postgres:${BANK_ADMIN_PASSWORD}@db:5432/bank_demo_compose
+      BANK_APP_PASSWORD: ${BANK_APP_PASSWORD:?Run python3 scripts/configure_demo.py}
+    command: ["sh", "-c", "python -m bank_api.manage migrate && python -m bank_api.manage init-demo --target bank_demo_compose && python -m bank_api.manage provision"]
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+  api:
+    build: .
+    image: bank-service-local:dev
+    depends_on:
+      init: {condition: service_completed_successfully}
+    environment:
+      BANK_MODE: local
+      BANK_DATABASE_URL: postgresql://bank_app:${BANK_APP_PASSWORD}@db:5432/bank_demo_compose
+    ports: ["127.0.0.1:8000:8000"]
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/ready')"]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+volumes:
+  bank-demo-data:

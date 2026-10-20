@@ -4,7 +4,9 @@
 
 A specification-driven portfolio connecting business analysis, data analysis and agent engineering. The first case is a **simulated bank representative workspace**: find authorized customer and transaction facts, retrieve applicable handling rules, and move unresolved work through accountable human review.
 
-**Current state: specifications and offline validation tooling.** There is no working banking application, deployed agent, real customer data or measured savings yet. This is independent portfolio work, not a bank-sponsored system.
+**Current state: first local bank lookup slice under PR review.** A React/FastAPI/PostgreSQL demo supports authorized inbound context, transaction search and selected evidence with synthetic records. Agent execution, write workflows and deployment remain planned; no real customer data or measured savings. This is independent portfolio work, not a bank-sponsored system.
+
+[Run the local demo](services/api/README.md) · [Slice scope and acceptance](projects/bank-service-assist/docs/sprint-02/implementation/lookup-slice.md) · [Executed evidence](projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md)
 
 ## Start here
 
@@ -25,7 +27,7 @@ The planned workflow keeps ordinary staff read access separate from financial au
 
 | Release | Scope | State |
 |---|---|---|
-| B0 | Manual bank investigation, notes, referral and continuation | Specified; application not implemented |
+| B0 | Manual bank investigation, notes, referral and continuation | Authorized lookup slice under review; remaining workflow planned |
 | B1 | Bounded agent, provider qualification, operational SQL/Tableau and evaluation | Specified/planned |
 | B2 | Bank voice self-service with verified human handoff | Planned |
 | R1 | Separate retail clienteling assistant for reviewed follow-up | Planned |
