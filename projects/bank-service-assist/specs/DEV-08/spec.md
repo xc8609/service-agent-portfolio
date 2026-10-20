@@ -1,5 +1,7 @@
 # DEV-08 — Run a bounded evidence agent across persisted workflow stages
 
+[Current implementation and qualification limits](runtime-contract.md). Historical forecasts are not actual effort; owner UAT remains pending.
+
 Current S02 forecast: **S05**. Updated effort: Dev 9, BA 1, QA 2.0 person-days (12.0 total); dependencies DEV-03, DEV-05, DEV-06, DEV-07, DEV-09, DEV-11, DEV-12, DEV-13, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; offline runtime implemented for PR review.
 
 BANK-SDD-v0.2 · 19 October 2026

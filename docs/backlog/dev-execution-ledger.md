@@ -18,7 +18,7 @@ suite is engineering evidence, not business-owner UAT or production qualificatio
 | DEV-13 | Overdue work, objection/review and complaint | [PR 9](https://github.com/xc8609/service-agent-portfolio/pull/9); four cloud checks passed |
 | DEV-09 | Provider boundary and qualification | [PR 10](https://github.com/xc8609/service-agent-portfolio/pull/10); four cloud checks passed; live qualification explicitly deferred |
 | DEV-08 | Bounded persisted Agent | [PR 11](https://github.com/xc8609/service-agent-portfolio/pull/11); four cloud checks passed |
-| DEV-10 | Evaluation marts and Tableau | Offline SQL/CSV reconciliation and Tableau candidate implemented; Desktop visual verification pending |
+| DEV-10 | Evaluation marts and Tableau | [PR 12](https://github.com/xc8609/service-agent-portfolio/pull/12); SQL/CSV checks passed; Desktop visual verification pending |
 
 Confirmed D-17–25 remain binding. No contact attempt quota reset, automatic closure
 of unanswered contact, financial execution or invented customer evidence. Keep

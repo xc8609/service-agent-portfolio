@@ -147,44 +147,67 @@
       "url": "https://trello.com/c/SgB3mHiy/17-dev-06-review-edit-and-commit-a-contact-note-safely",
       "descriptionVerified": true,
       "marker": "BANK-DEV06-DELIVERY-2026-10-20",
-      "currentList": "02 | Bank development backlog",
+      "currentList": "10 | Review and acceptance",
       "lastUpdated": "2026-10-20",
-      "pullRequest": "https://github.com/xc8609/service-agent-portfolio/pull/5"
+      "pullRequest": "https://github.com/xc8609/service-agent-portfolio/pull/5",
+      "deliveryPR": "https://github.com/xc8609/service-agent-portfolio/pull/5",
+      "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
+      "listVerifiedDate": "2026-10-20"
     },
     {
       "id": "DEV-07",
       "url": "https://trello.com/c/Mjwlq4sb/18-dev-07-create-justified-follow-up-work-with-ownership-and-reliable-delivery",
       "descriptionVerified": true,
-      "currentList": "02 | Bank development backlog",
+      "currentList": "10 | Review and acceptance",
       "marker": "BANK-S02-v0.4",
       "lastUpdated": "2026-10-19",
-      "titleVerified": false
+      "titleVerified": false,
+      "deliveryPR": "https://github.com/xc8609/service-agent-portfolio/pull/6",
+      "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
+      "listVerifiedDate": "2026-10-20",
+      "deliveryCommentVerified": true,
+      "deliveryCommentMarker": "BANK-DEV07-DELIVERY-2026-10-20"
     },
     {
       "id": "DEV-08",
       "url": "https://trello.com/c/gZ67RLnh/19-dev-08-add-a-bounded-assistant-that-proposes-evidence-backed-next-steps",
       "descriptionVerified": true,
-      "currentList": "02 | Bank development backlog",
+      "currentList": "10 | Review and acceptance",
       "marker": "BANK-S02-v0.4",
       "lastUpdated": "2026-10-19",
-      "titleVerified": false
+      "titleVerified": false,
+      "deliveryPR": "https://github.com/xc8609/service-agent-portfolio/pull/11",
+      "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
+      "listVerifiedDate": "2026-10-20",
+      "deliveryCommentVerified": true,
+      "deliveryCommentMarker": "BANK-DEV08-DELIVERY-2026-10-20"
     },
     {
       "id": "DEV-09",
       "url": "https://trello.com/c/rU0GwvSp/20-dev-09-qualify-model-runtime-and-provider-adapters-with-a-bounded-spike",
       "descriptionVerified": true,
       "marker": "BANK-S02-v0.4",
-      "currentList": "02 | Bank development backlog",
-      "lastUpdated": "2026-10-19"
+      "currentList": "10 | Review and acceptance",
+      "lastUpdated": "2026-10-19",
+      "deliveryPR": "https://github.com/xc8609/service-agent-portfolio/pull/10",
+      "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
+      "listVerifiedDate": "2026-10-20",
+      "deliveryCommentVerified": true,
+      "deliveryCommentMarker": "BANK-DEV09-DELIVERY-2026-10-20"
     },
     {
       "id": "DEV-10",
       "url": "https://trello.com/c/DVfs7SXq/21-dev-10-build-operational-event-marts-and-a-reconciled-tableau-view",
       "descriptionVerified": true,
       "titleVerified": false,
-      "currentList": "02 | Bank development backlog",
+      "currentList": "10 | Review and acceptance",
       "marker": "BANK-S02-v0.4",
-      "lastUpdated": "2026-10-19"
+      "lastUpdated": "2026-10-19",
+      "deliveryPR": "https://github.com/xc8609/service-agent-portfolio/pull/12",
+      "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
+      "listVerifiedDate": "2026-10-20",
+      "deliveryCommentVerified": true,
+      "deliveryCommentMarker": "BANK-DEV10-DELIVERY-2026-10-20"
     },
     {
       "id": "QA-01",
@@ -344,7 +367,9 @@
       "currentList": "09 | Sprint roadmap",
       "marker": "BANK-S02-v0.3",
       "lastUpdated": "2026-10-19",
-      "titleVerified": true
+      "titleVerified": true,
+      "executionCommentVerified": true,
+      "executionCommentMarker": "BANK-DEV-EXECUTION-2026-10-20"
     },
     {
       "id": "S05",
@@ -423,27 +448,42 @@
       "url": "https://trello.com/c/e0Hg2a8s/52-dev-11-receive-specialist-findings-and-complete-a-verified-customer-callback",
       "descriptionVerified": true,
       "marker": "BANK-S02-v0.4",
-      "currentList": "02 | Bank development backlog",
+      "currentList": "10 | Review and acceptance",
       "lastUpdated": "2026-10-19",
-      "titleVerified": false
+      "titleVerified": false,
+      "deliveryPR": "https://github.com/xc8609/service-agent-portfolio/pull/7",
+      "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
+      "listVerifiedDate": "2026-10-20",
+      "deliveryCommentVerified": true,
+      "deliveryCommentMarker": "BANK-DEV11-DELIVERY-2026-10-20"
     },
     {
       "id": "DEV-12",
       "url": "https://trello.com/c/kymdAvg6/53-dev-12-retry-unanswered-callbacks-and-guard-normal-closure",
       "descriptionVerified": true,
-      "currentList": "02 | Bank development backlog",
+      "currentList": "10 | Review and acceptance",
       "marker": "BANK-S02-v0.4",
       "lastUpdated": "2026-10-19",
-      "titleVerified": false
+      "titleVerified": false,
+      "deliveryPR": "https://github.com/xc8609/service-agent-portfolio/pull/8",
+      "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
+      "listVerifiedDate": "2026-10-20",
+      "deliveryCommentVerified": true,
+      "deliveryCommentMarker": "BANK-DEV12-DELIVERY-2026-10-20"
     },
     {
       "id": "DEV-13",
       "url": "https://trello.com/c/eNbKvqHE/54-dev-13-handle-overdue-investigations-and-customer-objections-with-linked-work",
       "descriptionVerified": true,
-      "currentList": "02 | Bank development backlog",
+      "currentList": "10 | Review and acceptance",
       "marker": "BANK-S02-v0.4",
       "lastUpdated": "2026-10-19",
-      "titleVerified": false
+      "titleVerified": false,
+      "deliveryPR": "https://github.com/xc8609/service-agent-portfolio/pull/9",
+      "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
+      "listVerifiedDate": "2026-10-20",
+      "deliveryCommentVerified": true,
+      "deliveryCommentMarker": "BANK-DEV13-DELIVERY-2026-10-20"
     },
     {
       "id": "S04A",

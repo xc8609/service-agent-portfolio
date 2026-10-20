@@ -1,5 +1,7 @@
 # DEV-08 task slices
 
+[Current implementation and qualification limits](runtime-contract.md). Historical forecasts are not actual effort; owner UAT remains pending.
+
 BANK-SDD-v0.2
 
 - [x] Draft story, design and Given/When/Then examples.

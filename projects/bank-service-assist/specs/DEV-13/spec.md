@@ -1,5 +1,7 @@
 # DEV-13 — Handle overdue investigations and customer objections with linked work
 
+[Current implementation and qualification limits](runtime-contract.md). Historical forecasts are not actual effort; owner UAT remains pending.
+
 Current S02 forecast: **S04A**. Updated effort: Dev 4, BA 1, QA 1 person-days (6 total); dependencies DEV-11, BA-06, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation delivered for PR review.
 
 BANK-SDD-v0.2 · 19 October 2026

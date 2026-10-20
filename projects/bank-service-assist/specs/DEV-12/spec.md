@@ -1,5 +1,7 @@
 # DEV-12 — Retry unanswered callbacks and guard normal closure
 
+[Current implementation and qualification limits](runtime-contract.md). Historical forecasts are not actual effort; owner UAT remains pending.
+
 Current S02 forecast: **S04A**. Updated effort: Dev 3, BA 0.5, QA 1 person-days (4.5 total); dependencies DEV-11, BA-06, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation delivered for PR review.
 
 BANK-SDD-v0.2 · 19 October 2026
