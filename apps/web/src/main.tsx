@@ -4,6 +4,7 @@ import './style.css';
 import {InvestigationPanel} from './InvestigationPanel';
 import {RelatedCases} from './RelatedCases';
 import {HandlingRules} from './HandlingRules';
+import {AgentPanel} from './AgentPanel';
 import {NotePanel} from './NotePanel';
 import {ReferralPanel} from './ReferralPanel';
 import {OperationsDesk} from './OperationsDesk';
@@ -65,7 +66,7 @@ function App(){
     finally{if(rev===revision.current)setBusy(false);}
   }
   return <div className="layout">
-    <aside><div className="brand">SERVICE / LAB</div><h2>Bank workspace</h2><p className="muted">Credit-card enquiries</p><nav><strong>01 · Transaction investigation</strong><span>02 · Policy evidence</span><span>03 · Specialist referral — planned</span></nav><div className="demo"><b>Synthetic demo only</b><p>No bank connection, real customers or financial operations.</p><p>Agent: disabled<br/>Manual lookup: available</p></div></aside>
+    <aside><div className="brand">SERVICE / LAB</div><h2>Bank workspace</h2><p className="muted">Credit-card enquiries</p><nav><strong>01 · Transaction investigation</strong><span>02 · Policy evidence</span><span>03 · Reviewed specialist referral</span></nav><div className="demo"><b>Synthetic demo only</b><p>No bank connection, real customers or financial operations.</p><p>Agent: offline fixture<br/>Manual lookup: available</p></div></aside>
     <main><header><div><p className="eyebrow">INBOUND SERVICE · B0 MANUAL BASELINE</p><h1>Understand the charge.</h1><p>Gather permitted facts, inspect source evidence, and keep uncertainty visible.</p></div><span className="badge">MANUAL INVESTIGATION</span></header>
       <section aria-labelledby="session-heading"><div className="section-head"><h2 id="session-heading">1. Establish an authorized contact</h2><span>Schema: {schema}</span></div><p>Local simulation of trusted identity input. This selector is not a production sign-in.</p><div className="controls"><label>Demo scenario<select value={persona} disabled={saving} onChange={e=>changePersona(e.target.value)}><option value="verified">Verified inbound representative</option><option value="unverified">Customer not verified — deny</option><option value="expired">Customer proof expired — deny</option><option value="feedback_unclaimed">Feedback representative, unclaimed — deny</option><option value="agent">Agent without delegation — deny</option><option value="other_customer">Other customer's authorized contact</option></select></label><button onClick={start} disabled={busy||saving}>Start demo contact</button></div>{context&&<p className="success" role="status">Verified contact · {context.masked_card_refs.join(', ')} · Authorized transaction read · Customer report capture</p>}</section>
       {error&&<div role="alert" className="error">{error}</div>}
@@ -79,7 +80,7 @@ function App(){
       {auth&&evidence&&<RelatedCases key={`cases:${meta?.as_of}`} auth={auth} transactionIds={evidence.records.map(r=>r.id)}/>}
       {auth&&<InvestigationPanel key={auth.token} auth={auth} evidence={evidence} busy={busy} onStatementChange={invalidateStatement} onSaving={setSaving}/>}
       {auth&&evidence&&<HandlingRules key={`rules:${meta?.as_of}`} auth={auth} records={evidence.records}/>}
-      {auth&&<NotePanel key={`note:${auth.token}`} auth={auth} records={evidence?.records??null} contextKey={`${meta?.as_of}:${stale}`}/>}
+      {auth&&<><AgentPanel token={auth.token} context={{contact_id:auth.contact,case_id:null,work_item_id:null,transaction_ids:selection}} contextKey={JSON.stringify([auth.contact,card,from,to,merchant,amount,selection,evidence])}/><NotePanel key={`note:${auth.token}`} auth={auth} records={evidence?.records??null} contextKey={`${meta?.as_of}:${stale}`}/></>}
       {auth&&<ReferralPanel key={`referral:${auth.token}`} auth={auth} records={evidence?.records??null} contextKey={`${meta?.as_of}:${stale}`}/>}
       <footer aria-live="polite">{busy?'Retrieving authorized evidence…':'Local synthetic workflow. No measured savings or production readiness claimed.'}</footer>
       <OperationsDesk/>

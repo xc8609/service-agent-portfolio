@@ -21,6 +21,6 @@ export function NotePanel({auth,records,contextKey}:{auth:{token:string;contact:
     <button onClick={save} disabled={busy||stale||!body.trim()||!!operation.current||draft?.status==='committed'}>Save note draft</button><button onClick={approve} disabled={busy||stale||!draft||!!modified||!!operation.current||draft.status==='committed'}>Approve and commit note</button>
     {operation.current&&<button onClick={reconcile} disabled={busy}>Retry same note operation</button>}
     <button disabled={busy} onClick={()=>act(async()=>{const d=await api('/v1/workspace/get_proposals',{contact_id:auth.contact});setHistory(d.proposals.filter((x:Draft & {kind:string})=>x.kind==='note'));})}>Load note history</button>
-    <ul>{history.map(d=><li key={d.id}>{d.status} · version {d.version} · {d.id}<p>{d.payload.body}</p><p>Customer allegations: {d.payload.customer_allegations.join('; ')}</p></li>)}</ul>
+    <ul>{history.map(d=><li key={d.id}>{d.status} · version {d.version} · {d.id}<p>{d.payload.body}</p>{d.status==='draft'&&<button disabled={busy} onClick={()=>{setBody(d.payload.body);setAllegations(d.payload.customer_allegations.join('\n'));setRefs(d.payload.source_refs);setVersion(d.payload.source_refs.find(r=>r.kind==='contact')?.version??'');setDraft(d);setStale(false);setStatus('Loaded saved draft for human review. Server rechecks current evidence at approval.');}}>Review saved note draft {d.id.slice(0,8)}</button>}<p>Customer allegations: {d.payload.customer_allegations.join('; ')}</p></li>)}</ul>
   </section>;
 }

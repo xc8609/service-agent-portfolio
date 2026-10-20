@@ -478,6 +478,7 @@ def create_app(settings=None, clock=None):
             "schema_version": SCHEMA_VERSION,
             "fixture_version": FIXTURE_VERSION,
             "agent_enabled": False,
+            "offline_assistant_available": True,
         }
 
     @app.post("/v1/demo/session")
@@ -605,6 +606,29 @@ def create_app(settings=None, clock=None):
         else:
             path = "/v1/" + prefix + "/" + name
         app.add_api_route(path, endpoint(name, dispatch_workflow), methods=["POST"], name=name)
+
+    from .agent.runtime import control as agent_control
+    from .agent.runtime import run as agent_run
+
+    def agent_dispatch(settings, name, payload, authorization, request_id, at):
+        try:
+            return (
+                agent_run(settings, payload, authorization, request_id, at)
+                if name == "run"
+                else agent_control(settings, name, payload, authorization, request_id, at)
+            )
+        except (psycopg.errors.UniqueViolation, psycopg.errors.SerializationFailure):
+            fail("CONFLICT")
+        except (psycopg.Error, RuntimeError):
+            fail("DEPENDENCY_UNAVAILABLE")
+
+    for action in ("run", "get_run", "cancel_run"):
+        app.add_api_route(
+            "/v1/assistant/" + action,
+            endpoint(action, agent_dispatch),
+            methods=["POST"],
+            name="assistant_" + action,
+        )
 
     @app.api_route("/v1/{unsupported:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE"])
     def unsupported_api(unsupported: str):
