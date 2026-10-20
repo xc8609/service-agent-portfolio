@@ -27,6 +27,18 @@ services:
     tmpfs: [/tmp]
     cap_drop: [ALL]
     security_opt: ["no-new-privileges:true"]
+  worker:
+    image: bank-service-local:dev
+    depends_on:
+      init: {condition: service_completed_successfully}
+    environment:
+      BANK_MODE: local
+      BANK_DATABASE_URL: postgresql://bank_app:${BANK_APP_PASSWORD}@db:5432/bank_demo_compose
+    command: ["python", "-m", "bank_api.worker"]
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
   api:
     build: .
     image: bank-service-local:dev

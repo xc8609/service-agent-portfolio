@@ -154,3 +154,7 @@ deadlines. Migration 008 grants only needed column updates and private-note INSE
 private-note SELECT and ledger mutation remain denied.
 
 [Authority, recovery and actual test evidence](../../projects/bank-service-assist/specs/DEV-11/runtime-contract.md).
+
+## DEV-12/13 continuation
+
+The operations desk includes bounded contact plans, lead holds/one-slot continuation, guarded closure, approved update commitments, verified manual progress contacts and independent objection/complaint work. Run `python -m bank_api.worker --once` with the restricted runtime environment to evaluate due work and deliver local notifications; Compose also starts the repeating worker. No real phone, email, financial or external complaint execution occurs. See the DEV-12 and DEV-13 runtime contracts for acceptance boundaries.

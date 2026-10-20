@@ -37,6 +37,19 @@ SCHEMAS = {
     "close_case": obj(
         {**PAIR, "expected_work_version": VER, "expected_case_version": VER, "reason": TEXT, **KEY}
     ),
+    "open_progress_contact": obj({**PAIR, "expected_work_version": VER, **KEY}),
+    "get_progress_disclosure": obj({**PAIR, "callback_contact_id": ID}),
+    "record_progress_contact": obj(
+        {
+            **PAIR,
+            "callback_contact_id": ID,
+            "expected_case_version": VER,
+            "expected_work_version": VER,
+            "commitment_id": {"type": ["string", "null"], "format": "uuid"},
+            "reviewed": {"const": True},
+            **KEY,
+        }
+    ),
     "list_work": obj({}),
     "get_work_detail": obj(PAIR),
     "open_callback": obj({**PAIR, "expected_work_version": VER, **KEY}),
@@ -270,6 +283,22 @@ def detail(conn, w):
             "SELECT m.principal_id AS id,m.role FROM queue_memberships m WHERE m.queue_id=%s AND m.active AND m.role IN ('feedback_representative','queue_lead')",
             (w["queue_id"],),
         ).fetchall(),
+        "commitments": conn.execute(
+            "SELECT id,work_item_id,status,version,proposed_update_at,customer_safe_progress,reason FROM update_commitments WHERE case_id=%s ORDER BY proposed_at,id",
+            (w["case_id"],),
+        ).fetchall(),
+        "objections": conn.execute(
+            "SELECT * FROM customer_objections WHERE case_id=%s ORDER BY created_at,id",
+            (w["case_id"],),
+        ).fetchall(),
+        "complaints": conn.execute(
+            "SELECT id,work_item_id,status,external_receipt_ref FROM complaint_intakes WHERE case_id=%s",
+            (w["case_id"],),
+        ).fetchall(),
+        "overdue_events": conn.execute(
+            "SELECT d.* FROM due_events d JOIN work_items wi ON wi.id=d.work_item_id WHERE wi.case_id=%s ORDER BY recorded_at",
+            (w["case_id"],),
+        ).fetchall(),
         "contact_methods": conn.execute(
             "SELECT id,masked_ref,version FROM customer_contact_methods WHERE customer_id=%s AND active ORDER BY id",
             (w["customer_id"],),
@@ -318,10 +347,16 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                             "notice": "Masked queue summary only; claim before details.",
                         }
                     else:
-                        if name == "demo_callback_verification":
+                        if name in ("demo_callback_verification", "capture_customer_objection"):
                             link = conn.execute(
                                 "SELECT x.work_item_id,w.case_id FROM callback_contexts x JOIN work_items w ON w.id=x.work_item_id WHERE x.contact_id=%s",
-                                (as_uuid(payload["callback_contact_id"]),),
+                                (
+                                    as_uuid(
+                                        payload["contact_id"]
+                                        if name == "capture_customer_objection"
+                                        else payload["callback_contact_id"]
+                                    ),
+                                ),
                             ).fetchone()
                             if not link:
                                 fail("FORBIDDEN_OR_NOT_FOUND")
@@ -329,7 +364,7 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                         else:
                             wid, cid = payload["work_item_id"], payload["case_id"]
                         claiming = name in ("accept_specialist_work", "claim_feedback_task")
-                        lead = name == "decide_contact_continuation"
+                        lead = name in ("decide_contact_continuation", "confirm_next_update")
                         roles = (
                             ("queue_lead",)
                             if lead
@@ -339,6 +374,7 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                                 "accept_specialist_work",
                                 "record_specialist_result",
                                 "request_material",
+                                "propose_next_update",
                             )
                             else ("feedback_representative",)
                             if name not in ("get_work_detail",)
@@ -364,6 +400,10 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                             fail("FORBIDDEN_OR_NOT_FOUND")
                         if name == "get_work_detail":
                             result = detail(conn, w)
+                        elif name == "get_progress_disclosure":
+                            from .progress import execute as progress
+
+                            result = progress(conn, name, payload, w, actor, None, request_id, now)
                         elif name == "get_callback_disclosure":
                             c = callback_context(conn, actor, payload["callback_contact_id"], w)
                             proof(conn, c, now)

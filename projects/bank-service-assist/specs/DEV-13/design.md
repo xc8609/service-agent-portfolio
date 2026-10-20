@@ -1,6 +1,6 @@
 # DEV-13 design
 
-BANK-SDD-v0.2 · Candidate architecture; no runtime implementation.
+BANK-SDD-v0.2 · Architecture baseline; see [implemented boundary](runtime-contract.md).
 
 Model-visible tools: get_case_snapshot, get_service_targets, get_contact_attempts, search_policy, create_proposal. Human/system commands and complete schemas are in [shared contracts](../contracts/agent-tools.md).
 
@@ -31,3 +31,7 @@ Overdue investigation retains its original specialist and original deadline. Not
 Feedback staff preserve the customer statement and new evidence, and route disputed findings to specialist re-review. An explicit complaint request creates an independent complaint-intake record without waiting for re-review. Both tracks link to the original case and keep independent ownership/status. Objection or silence never implies resolved closure.
 
 See [D-20/D-21 contract addendum](../contracts/continuation-addendum.md) for required schema completion and planned negative/concurrency tests before Ready.
+
+## Current delivery
+
+[Runtime behavior and executed checks](runtime-contract.md) supersede historical implementation-pending wording. Agent drafting and owner UAT remain separate gates.

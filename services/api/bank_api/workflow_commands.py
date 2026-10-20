@@ -14,6 +14,19 @@ from .workflow import bump_case, callback_context, command_result, latest_result
 def execute(conn, name, p, w, actor, operation, request_id, now):
     from .app import as_uuid, fail
 
+    if name in ("open_progress_contact", "record_progress_contact"):
+        from .progress import execute as progress
+
+        return progress(conn, name, p, w, actor, operation, request_id, now)
+    if name in (
+        "propose_next_update",
+        "confirm_next_update",
+        "capture_customer_objection",
+        "register_complaint_intake",
+    ):
+        from .exceptions import execute as exception_command
+
+        return exception_command(conn, name, p, w, actor, operation, request_id, now)
     if name in (
         "reserve_callback",
         "evaluate_contact_window",
@@ -124,6 +137,11 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
         ).fetchone()
         if feedback:
             fid = feedback["id"]
+            if feedback["status"] == "completed":
+                conn.execute(
+                    "UPDATE contact_plans SET status='exhausted',version=version+1 WHERE work_item_id=%s AND status='completed'",
+                    (fid,),
+                )
             due = add_hours(now, 8)
             conn.execute(
                 "UPDATE work_items SET version=version+1,due_at=coalesce(due_at,%s),original_due_at=coalesce(original_due_at,%s),status=CASE WHEN status='completed' THEN 'lead_review' WHEN status='waiting_for_result' THEN 'queued' ELSE status END WHERE id=%s",

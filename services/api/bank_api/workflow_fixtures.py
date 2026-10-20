@@ -4,6 +4,7 @@
 def seed_workflow_roles(conn):
     from .fixtures import insert, uid
 
+    conn.execute("UPDATE service_routes SET complaint_queue_id=%s", (uid("complaint_queue"),))
     for actor, queue, role in [
         ("Demo specialist Alex", "specialist_queue", "specialist"),
         ("feedback", "feedback_queue", "feedback_representative"),
