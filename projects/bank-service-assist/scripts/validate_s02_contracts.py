@@ -124,7 +124,10 @@ def main():
             if count==3:break
             date+=timedelta(days=1)
         expected=datetime.combine(date,datetime.strptime(cal['close'],'%H:%M').time(),tzinfo=ZoneInfo(cal['timezone']))
-        assert expected==datetime.fromisoformat(case['expected_end']),case['id']
+        assert expected==datetime.fromisoformat(case['expected_end']),(
+            case['id'], 'computed', expected.isoformat(), 'fixture', case['expected_end'],
+            'first_local', first.isoformat()
+        )
     delivery=json.loads((D/'delivery-specs.json').read_text())['stories']
     delivery_ac=0
     for story in delivery:
