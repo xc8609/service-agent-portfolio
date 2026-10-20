@@ -12,8 +12,8 @@ suite is engineering evidence, not business-owner UAT or production qualificatio
 | DEV-04 | Related case progress | PR 3; assigned-feedback extension follows DEV-11 |
 | DEV-05 | Scoped handling rules | PR 4 |
 | DEV-06 | Reviewed notes, receipts and retries | [PR 5](https://github.com/xc8609/service-agent-portfolio/pull/5); four cloud checks passed |
-| DEV-07 | Reviewed specialist referral and typed intake | Initial intake implemented; PR preparation; downstream follow-up in DEV-11–13 |
-| DEV-11 | Specialist result and owned feedback | After DEV-07 |
+| DEV-07 | Reviewed specialist referral and typed intake | [PR 6](https://github.com/xc8609/service-agent-portfolio/pull/6); four cloud checks passed; downstream follow-up in DEV-11–13 |
+| DEV-11 | Specialist result and owned feedback | Manual implementation verified; PR preparation |
 | DEV-12 | Contact plans, attempts and closure guards | After DEV-11 |
 | DEV-13 | Overdue work, objection/review and complaint | After DEV-11/12 |
 | DEV-09 | Provider boundary and qualification | Offline implementation independent; live qualification needs approved credentials/budget |

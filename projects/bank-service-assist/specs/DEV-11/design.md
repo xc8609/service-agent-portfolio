@@ -23,3 +23,9 @@ Use explicit foreign keys among contact, case, work item, result, attempt and pr
 ## Deployment
 
 Ship through existing API/worker/UI release, with migration and fixture updates. Verify permissions, pending-event replay and rollback/restore in staging before acceptance. This story does not provision infrastructure or contact real customers.
+
+## Current delivery
+
+See [runtime design and executed evidence](runtime-contract.md) for scope, authority,
+recovery and remaining gates. It supersedes historical implementation-not-started
+wording for the manual flow. Agent drafting and owner acceptance are not claimed.

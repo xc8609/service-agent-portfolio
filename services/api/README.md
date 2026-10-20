@@ -1,6 +1,6 @@
 # Bank lookup runtime
 
-Python 3.12, FastAPI, psycopg and PostgreSQL. Six v0.4 read contracts are implemented for an authorized **inbound representative**. Feedback assignment, agent delegation, worker processing and specialist/feedback commands are intentionally unsupported and deny by default. All records and identity assertions are synthetic.
+Python 3.12, FastAPI, psycopg and PostgreSQL. Six v0.4 read contracts are implemented for an authorized **inbound representative**. Assigned specialist and feedback commands are implemented through the separate trusted workflow desk. Agent delegation and scheduled continuation remain dependent work. All records and identity assertions are synthetic.
 
 ## Run with Docker Compose (from repository root)
 
@@ -141,3 +141,16 @@ save and approve. A linked receipt reuses existing work; queued means not yet
 accepted. Migration 007 and normal seed/provision add synthetic route/contact
 configuration and immutable intakes. Existing records are preserved. Restart retains
 receipts and history. See [v0.5 intake contract](../../projects/bank-service-assist/specs/DEV-07/runtime-contract.md).
+
+## DEV-11 specialist and customer-feedback desk
+
+Open the operations desk using a separate synthetic specialist/feedback persona.
+Claim queued work before detail access. Publish a finding, switch to another feedback
+representative, claim the shared task, open a new callback context, save/approve the
+feedback review, simulate fresh identity verification and retrieve customer disclosure.
+Record the actual outcome; feedback completion does not close the case. Never-dialed
+faults do not consume attempts. Materials/contact-resolution work retains original
+deadlines. Migration 008 grants only needed column updates and private-note INSERT;
+private-note SELECT and ledger mutation remain denied.
+
+[Authority, recovery and actual test evidence](../../projects/bank-service-assist/specs/DEV-11/runtime-contract.md).

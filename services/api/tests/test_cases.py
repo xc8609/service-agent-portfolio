@@ -252,7 +252,7 @@ def test_bad_inputs_and_outage_never_look_like_no_case(environment):
         assert related(broken, headers, contact).status_code == 503
         assert snapshot(broken, headers, contact).status_code == 503
     for statement in [
-        "UPDATE cases SET status='closed'",
+        "UPDATE cases SET customer_id=customer_id",
         "DELETE FROM case_timeline_events",
         "SELECT * FROM result_private_notes",
     ]:

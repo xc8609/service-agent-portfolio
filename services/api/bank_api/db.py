@@ -9,7 +9,7 @@ from psycopg.rows import dict_row
 
 ROOT = Path(__file__).resolve().parents[3]
 MIGRATIONS = ROOT / "services/api/migrations"
-SCHEMA_VERSION = "007_referrals.sql"
+SCHEMA_VERSION = "008_specialist_feedback.sql"
 MARKER = "service-agent-disposable-v1"
 
 
@@ -89,6 +89,14 @@ def provision_runtime(dsn, password):
             "customer_contact_methods",
             "referral_pair_guards",
             "referral_intakes",
+            "callback_contexts",
+            "feedback_reviews",
+            "callback_details",
+            "callback_attempts",
+            "contact_plans",
+            "contact_reservations",
+            "evidence_requests",
+            "followup_entries",
             "contact_notes",
             "operations",
         ]
@@ -102,6 +110,24 @@ def provision_runtime(dsn, password):
             "GRANT INSERT ON cases,case_transactions,case_timeline_events,work_items,referral_intakes,referral_pair_guards TO bank_app"
         )
         conn.execute("GRANT UPDATE (revision) ON referral_pair_guards TO bank_app")
+        conn.execute(
+            "GRANT INSERT ON investigation_results,result_private_notes,required_actions,contact_plans,contacts,verification_assertions,callback_contexts,feedback_reviews,callback_attempts,callback_details,evidence_requests,followup_entries TO bank_app"
+        )
+        conn.execute(
+            "GRANT UPDATE (status,version,status_recorded_at,timeline_sequence) ON cases TO bank_app"
+        )
+        conn.execute(
+            "GRANT UPDATE (status,assignee_id,version,due_at,original_due_at) ON work_items TO bank_app"
+        )
+        conn.execute(
+            "GRANT UPDATE (status,version,first_placed_at,valid_from,valid_until) ON contact_plans TO bank_app"
+        )
+        conn.execute(
+            "GRANT UPDATE (state,verified_at,expires_at) ON verification_assertions TO bank_app"
+        )
+        conn.execute("GRANT UPDATE (status,version) ON feedback_reviews TO bank_app")
+        conn.execute("GRANT SELECT (id,display_alias) ON customers TO bank_app")
+
         conn.execute(
             "GRANT INSERT ON demo_sessions, audit_events, investigation_revisions TO bank_app"
         )
