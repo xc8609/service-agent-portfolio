@@ -9,7 +9,8 @@ and agent engineering.
 
 **Works today:** React + FastAPI + PostgreSQL, authorized transaction search and
 evidence review, versioned customer statements and explicit pair recognition with
-synthetic records. Changed queries invalidate old evidence. **Next:** rules,
+synthetic records. Related-case lookup shows progress, owners and duplicate-enquiry
+review hints. Changed queries invalidate old evidence. **Next:** rules,
 notes/referral/feedback, then
 bounded Agent assistance. No live bank connection, implemented Agent or measured savings.
 

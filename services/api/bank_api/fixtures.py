@@ -1,4 +1,4 @@
-"""Authored synthetic fixtures, v1; stable IDs and no external data source."""
+"""Authored synthetic fixtures, v2; stable IDs and no external data source."""
 
 from datetime import UTC, datetime, timedelta
 from uuid import NAMESPACE_URL, uuid5
@@ -7,9 +7,10 @@ import psycopg
 from psycopg import sql
 from psycopg.types.json import Jsonb
 
+from .case_fixtures import seed_cases
 from .db import MARKER, assert_demo_target
 
-FIXTURE_VERSION = "bank-lookup-synthetic-v1"
+FIXTURE_VERSION = "bank-cases-synthetic-v2"
 
 
 def uid(name):
@@ -232,6 +233,11 @@ def seed(dsn, target, initialize=False, now=None):
                 "evidence_ref": "synthetic-ledger-v1:authorization-link",
                 "version": 1,
             },
+        )
+
+        seed_cases(conn)
+        conn.execute(
+            "UPDATE demo_environment SET fixture_version=%s WHERE singleton", (FIXTURE_VERSION,)
         )
 
 

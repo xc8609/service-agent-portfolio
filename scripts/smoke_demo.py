@@ -35,3 +35,14 @@ assert saved['saved_revision']==history['current_revision']+1
 assert saved['history'][-1]['recognized_transaction_id'] is None
 assert request('/v1/workspace/save_investigation',report,token)==saved
 print('PASS: scoped customer-report persistence and idempotent replay; no financial action.')
+
+cases=request('/v1/workspace/get_related_cases',{'contact_id':contact,'transaction_ids':ids},token)
+assert cases['review_state']=='review_existing_work'
+case=cases['cases'][0]
+assert case['reference']=='DEMO-CASE-001' and case['coverage']=='full_selection'
+assert case['snapshot']['investigation_status']=='awaiting_documents'
+assert any(w['assignee_name']=='Demo specialist Alex' for w in case['work_items'])
+snapshot=request('/v1/agent-tools/get_case_snapshot',{'contact_id':contact,'case_id':case['snapshot']['case_id'],'expected_work_version':None},token)
+assert snapshot['data']==case['snapshot']
+assert 'UNAPPROVED PRIVATE UPDATE' not in json.dumps(cases)
+print('PASS: scoped related-case progress, accountable ownership and duplicate-enquiry review; no case created.')

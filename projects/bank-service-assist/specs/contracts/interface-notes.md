@@ -52,3 +52,13 @@ add two `/v1/workspace/` endpoints for append-only customer reports. They do not
 change the v0.4 model tool allowlist or implement proposal approval/referral.
 This local slice uses a sanitized `CONFLICT` (409) for stale versions or operation
 key mismatch; source facts and customer recognition remain distinct.
+
+## DEV-04 verified inbound projection
+
+The [case read contract](../DEV-04/runtime-contract.md) implements get_case_snapshot
+for verified inbound scope and adds the manual get_related_cases endpoint using
+the existing selected-evidence input shape. Assigned feedback/Agent delegation
+remain denied. Migration 004 is an additive runtime read projection, not a revision
+of the entire planned v0.4 state machine. Runtime permission mapping uses
+customer.read_context, transaction.read and result.read_approved; private notes
+remain inaccessible. Related-work hints do not replace DEV-07 atomic submission checks.

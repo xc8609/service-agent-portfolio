@@ -22,10 +22,11 @@ The Agent never obtains a privileged database connection or an approval tool.
 | Layer | Location | Responsibility and boundary |
 |---|---|---|
 | UI | `apps/web/src/` | Contact context, query, explicit selection, evidence and later draft review; no authoritative role/state decisions |
-| HTTP and read tools | `services/api/bank_api/app.py` | Current server-side session/scope validation and three canonical read endpoints |
+| HTTP and read tools | `services/api/bank_api/app.py` | Current server-side session/scope validation and four canonical read endpoints plus the human related-case view |
 | Persistence | `services/api/bank_api/db.py`, `services/api/migrations/` | Restricted runtime role; ordered migrations; source versions and audit |
 | Demo lifecycle | `fixtures.py`, `manage.py`, `local_postgres.py` under `services/api/` | Synthetic seed, guarded reset and isolated local database; separate from production identity |
 | Agent | [Agent module boundary](../services/api/bank_api/agent/README.md) | Planned orchestration, tool allowlist, evidence-backed drafts and provider adapter; currently no executable Agent code |
+| Case progress reads | `services/api/bank_api/case_lookup.py` | Shared customer-safe snapshot, work ownership and conservative related-case review hints; no case mutation |
 | Human report capture | `services/api/bank_api/investigation.py` | Scoped append-only statement/recognition revisions, concurrency and idempotency; not exposed to the model |
 | Referral/note write services | Within `bank_api/`, planned DEV-06/07 | Human-approved commands, authorization, versions, idempotency and atomic writes; model tools cannot call approval commands |
 | Durable continuation | Backend worker entrypoint when DEV-11–13 requires it | Persisted work/events and deadline checks; no long-lived model conversation used as a timer |
