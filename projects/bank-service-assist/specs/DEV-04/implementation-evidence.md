@@ -3,6 +3,10 @@
 20 October 2026. Synthetic inbound manual workflow; not production or owner UAT.
 Branch `codex/dev-04-related-case-progress`, stacked on unmerged DEV-03 PR #2.
 
+[Implementation PR #3](https://github.com/xc8609/service-agent-portfolio/pull/3) ·
+[Verified Trello synchronization](trello-sync.json) for DEV-04 and S03. No story
+was marked Done; PR checks show the current commit’s cloud results.
+
 ## Delivered and traced
 
 The [runtime contract](runtime-contract.md) maps CK-01–07 to DEV-04 acceptance.
