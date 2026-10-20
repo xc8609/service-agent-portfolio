@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import UTC, datetime
 
 import psycopg
 import pytest
@@ -70,6 +70,11 @@ def test_pair_guidance_citations_and_manual_boundaries(environment):
         "section": "handling",
     }
     assert len(value["data"]["transaction_sources"]) == 2
+    with psycopg.connect(admin) as c:
+        effective = c.execute(
+            "SELECT effective_from FROM policy_versions WHERE id=%s", (uid("policy_posted"),)
+        ).fetchone()[0]
+        assert effective == datetime(2026, 1, 1, tzinfo=UTC)
     assert "same account" in " ".join(rule["applicability"])
     assert "original deadlines" in rule["text"]
     assert "customer-service" in " ".join(rule["next_steps"])
