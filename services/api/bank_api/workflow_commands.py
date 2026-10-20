@@ -14,6 +14,15 @@ from .workflow import bump_case, callback_context, command_result, latest_result
 def execute(conn, name, p, w, actor, operation, request_id, now):
     from .app import as_uuid, fail
 
+    if name in (
+        "reserve_callback",
+        "evaluate_contact_window",
+        "close_case",
+        "decide_contact_continuation",
+    ):
+        from .continuation import execute as continuation
+
+        return continuation(conn, name, p, w, actor, operation, request_id, now)
     if name in ("accept_specialist_work", "claim_feedback_task"):
         allowed = (
             ("specialist_investigation", "specialist_rereview")
@@ -167,6 +176,9 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
         ).fetchone()
         if gaps:
             fail("CONTACT_GAP")
+        from .continuation import eligibility
+
+        eligibility(conn, w, plan, now, now, preparing=True)
         cid = uuid4()
         conn.execute(
             "INSERT INTO contacts(id,customer_id,actor_id,kind,status,opened_at,version) VALUES (%s,%s,%s,'callback','open',%s,1)",

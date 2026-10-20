@@ -1,9 +1,9 @@
 # DEV-12 — Retry unanswered callbacks and guard normal closure
 
-Current S02 forecast: **S04A**. Updated effort: Dev 3, BA 0.5, QA 1 person-days (4.5 total); dependencies DEV-11, BA-06, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.
+Current S02 forecast: **S04A**. Updated effort: Dev 3, BA 0.5, QA 1 person-days (4.5 total); dependencies DEV-11, BA-06, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation delivered for PR review.
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Runtime implemented; owner UAT pending. Business decisions accepted only as listed; technical design/Ready gates pending.
 Historical forecast superseded by the current Sprint stated above | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 3, BA 0.5, QA 1 person-days; total 4.5 (3.5–7), confidence low. Not actual effort.
 
@@ -56,3 +56,7 @@ Customer service owns contact resolution. Preserve original deadlines and
 separate investigation completion from feedback delivery; no automatic closure
 for undelivered feedback. These rules do not accept implementation or extend
 existing call quotas; supplementation-call accounting still needs a scoped review.
+
+## Current delivery
+
+See [runtime contract and executed checks](runtime-contract.md). Historical planned-test wording above is retained for traceability; owner UAT remains pending.

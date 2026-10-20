@@ -3,7 +3,10 @@
 from datetime import timedelta
 from uuid import uuid4
 
+from psycopg.types.json import Jsonb
+
 from .calendar import VERSION, ZONE, contact_window
+from .continuation import lead_review, permitted_slot
 from .workflow import bump_case, callback_context, command_result, latest_result, proof
 
 
@@ -12,7 +15,12 @@ def record_attempt(conn, p, w, actor, request_id, now):
 
     from .app import as_uuid, fail
 
-    if w["kind"] != "customer_feedback" or w["status"] not in ("assigned", "retry_scheduled"):
+    if w["kind"] != "customer_feedback" or w["status"] not in (
+        "assigned",
+        "retry_scheduled",
+        "lead_review",
+        "review_hold",
+    ):
         fail("CONFLICT")
     c = callback_context(conn, actor, p["callback_contact_id"], w)
     plan = conn.execute(
@@ -25,7 +33,20 @@ def record_attempt(conn, p, w, actor, request_id, now):
     if actual > now + timedelta(seconds=30) or actual < c["opened_at"]:
         fail("VALIDATION_ERROR")
     if p["reservation_id"] is not None:
-        fail("VALIDATION_ERROR")
+        reservation = conn.execute(
+            "SELECT * FROM contact_reservations WHERE id=%s AND contact_plan_id=%s",
+            (as_uuid(p["reservation_id"]), plan["id"]),
+        ).fetchone()
+        if (
+            not reservation
+            or reservation["state"] != "reserved"
+            or reservation["service_date"] != actual.astimezone(ZONE).date()
+        ):
+            fail("CONFLICT")
+        conn.execute(
+            "UPDATE contact_reservations SET state='consumed',version=version+1 WHERE id=%s",
+            (reservation["id"],),
+        )
     pairs = {
         "not_placed": {"technical_failure"},
         "placed": {"no_answer", "technical_failure"},
@@ -55,7 +76,7 @@ def record_attempt(conn, p, w, actor, request_id, now):
     localdate = actual.astimezone(ZONE).date()
     conn.execute(
         """INSERT INTO callback_attempts(id,case_id,work_item_id,contact_id,actor_id,occurred_at,service_date,dial_state,outcome,counts_toward_limit,rule_version,operation_key,contact_plan_id,reservation_id)
-      VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,NULL)""",
+      VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
         (
             aid,
             w["case_id"],
@@ -70,6 +91,7 @@ def record_attempt(conn, p, w, actor, request_id, now):
             VERSION,
             p["operation_key"],
             plan["id"],
+            p["reservation_id"],
         ),
     )
     conn.execute(
@@ -83,7 +105,7 @@ def record_attempt(conn, p, w, actor, request_id, now):
         ),
     )
     end = plan["valid_until"]
-    if counted and plan["first_placed_at"] is None:
+    if counted and plan["first_placed_at"] is None and plan["kind"] == "initial":
         end = contact_window(actual)
         conn.execute(
             "UPDATE contact_plans SET first_placed_at=%s,valid_from=%s,valid_until=%s,version=version+1 WHERE id=%s",
@@ -93,21 +115,55 @@ def record_attempt(conn, p, w, actor, request_id, now):
         "SELECT count(*) AS n FROM callback_attempts WHERE contact_plan_id=%s AND counts_toward_limit",
         (plan["id"],),
     ).fetchone()["n"]
+    anomalies = []
+    if counted:
+        if (
+            conn.execute(
+                "SELECT count(*) AS n FROM callback_attempts WHERE case_id=%s AND service_date=%s AND counts_toward_limit",
+                (w["case_id"], localdate),
+            ).fetchone()["n"]
+            > 1
+        ):
+            anomalies.append("multiple_calls_same_date")
+        if not permitted_slot(actual):
+            anomalies.append("outside_service_window")
+        if (
+            plan["status"] != "active"
+            or (plan["valid_until"] and actual >= plan["valid_until"])
+            or count > plan["max_attempts"]
+        ):
+            anomalies.append("outside_plan")
+    if anomalies:
+        conn.execute(
+            "INSERT INTO callback_anomalies VALUES (%s,%s,%s,%s)",
+            (uuid4(), aid, Jsonb(anomalies), now),
+        )
     status = (
         "completed"
-        if verified
+        if verified and not anomalies
         else "lead_review"
-        if count >= plan["max_attempts"] or (end and now >= end)
+        if anomalies
+        or count >= plan["max_attempts"]
+        or (end and now >= end)
+        or plan["status"] != "active"
+        or (not end and w["original_due_at"] and now >= w["original_due_at"])
         else "retry_scheduled"
     )
-    if not counted and not end:
+    if (
+        not counted
+        and not end
+        and plan["status"] == "active"
+        and (not w["original_due_at"] or now < w["original_due_at"])
+    ):
         status = "assigned"
     conn.execute("UPDATE work_items SET status=%s,version=version+1 WHERE id=%s", (status, w["id"]))
     if status in ("completed", "lead_review"):
         conn.execute(
             "UPDATE contact_plans SET status=%s,version=version+1 WHERE id=%s",
-            ("completed" if verified else "exhausted", plan["id"]),
+            ("completed" if status == "completed" else "exhausted", plan["id"]),
         )
+    if status == "lead_review":
+        lead_review(conn, w, plan, now)
     event, _ = bump_case(
         conn,
         w,

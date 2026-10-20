@@ -19,3 +19,7 @@ Each implementation slice must be at most five developer-days; DEV-08 explicitly
 - [ ] Implement D-19 versioned three-service-date deadline and DEV-12-T04 boundary/holiday/DST/fault fixtures. Preserve separate first-callback overdue tracking.
 
 - [ ] Implement D-22 typed lead-approved plan/hold with reason, version checks, immutable history, bounded plan limits and review due work. Complete AC03/AC07 permission, replay and stale-approval fixtures.
+
+## Current delivery
+
+See [runtime contract and executed checks](runtime-contract.md). Historical planned-test wording above is retained for traceability; owner UAT remains pending.

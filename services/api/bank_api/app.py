@@ -593,6 +593,7 @@ def create_app(settings=None, clock=None):
         "claim_feedback_task",
         "record_specialist_result",
         "record_callback_attempt",
+        "decide_contact_continuation",
     ):
         prefix = "workspace" if name in WORKFLOW_SCHEMAS else "commands"
         if name == "demo_callback_verification":
