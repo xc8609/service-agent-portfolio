@@ -1,0 +1,45 @@
+{
+  "mapping": {
+    "source": "synthetic-legacy-export",
+    "namespace": "0c807ceb-2837-49d7-bd80-b36806ab4bdf",
+    "fields": {
+      "id": "EntryNo",
+      "account_id": "AccountNo",
+      "version": "Revision",
+      "amount": "Amount",
+      "currency": "Currency",
+      "status": "BookingCode",
+      "merchant_description": "Descriptor",
+      "occurred_at": "EventTime",
+      "posted_at": "BookingTime",
+      "updated_at": "ChangedTime"
+    },
+    "statuses": {
+      "BOOKED": "posted",
+      "AUTH": "pending",
+      "VOID": "reversed"
+    },
+    "amount_unit": "major_decimal",
+    "currency_exponents": {
+      "CAD": 2,
+      "USD": 2
+    }
+  },
+  "accounts": {
+    "synthetic-account-1": "5ccca772-6438-4de1-a22a-40cdd9da029a"
+  },
+  "records": [
+    {
+      "EntryNo": "synthetic-entry-1",
+      "AccountNo": "synthetic-account-1",
+      "Revision": 1,
+      "Amount": "49.99",
+      "Currency": "CAD",
+      "BookingCode": "BOOKED",
+      "Descriptor": "SYNTHETIC SHOP",
+      "EventTime": "2026-10-19T10:00:00-05:00",
+      "BookingTime": "2026-10-20T10:00:00-05:00",
+      "ChangedTime": "2026-10-20T10:00:00-05:00"
+    }
+  ]
+}

@@ -111,3 +111,10 @@ outcomes, savings, stakeholder approvals or model evaluation results.
 The SQL/Tableau dataset comes from this repository's synthetic PostgreSQL workflow
 and explicit test fixtures, not a bank download or BANKING77 transaction history.
 Generated CSVs/manifests remain ignored. [Reproduction, grain and limitations](../dashboard/README.md).
+
+## Source-mapping rehearsal fixtures
+
+`examples/integrations/` at repository root contains two tiny, explicitly synthetic
+schema examples authored on 20 October 2026 under the project's MIT license. They are
+not downloaded customer data or verified bank schemas. No external data is required
+for the offline mapping tests; generated/private integration data remains excluded.

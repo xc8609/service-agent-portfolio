@@ -27,3 +27,10 @@ Ship through existing API/worker/UI release, with migration and fixture updates.
 ## Current implementation slice — 20 October 2026
 
 [Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md). Only the explicitly mapped read-path cases have executed evidence. The historical contract/forecast above remains the full-story scope; no owner UAT, worker, write-effect or model acceptance is implied.
+
+## Integration mapping follow-up
+
+The canonical transaction contract now has two synthetic source-mapping rehearsals.
+These validate ownership mappings, money, timestamps, source identity and versions;
+they do not connect to a bank or write to the runtime database.
+[Design and acceptance](../contracts/extensibility-change.md).

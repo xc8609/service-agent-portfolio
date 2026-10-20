@@ -38,3 +38,16 @@ Trello DEV-06–13 cards are verified in **Review and acceptance**, with per-sto
 and execution comments. Nothing is marked Done or merged. DEV-10 Tableau native
 open is verified after fixing three XML compatibility errors; refresh/layout acceptance remains pending. Live model testing is owner-deferred;
 human effort study and owner UAT remain release gates. Voice/retail are later scope.
+
+## Lightweight adaptation follow-up
+
+[PR 14](https://github.com/xc8609/service-agent-portfolio/pull/14) repairs the actual
+Tableau Desktop XML load errors. Desktop opened the workbook; refresh and layout
+acceptance remain partial.
+
+DEV-02/08/09 follow-up adds server-owned model selection/audit fingerprints and two
+synthetic source-mapping previews. See [change scope and EXT-01–07 acceptance](../../projects/bank-service-assist/specs/contracts/extensibility-change.md).
+203 local PostgreSQL/API tests passed, including 22 mapping/profile cases; five
+offline tests, SDD/publication checks and Ruff passed. No real bank connector,
+provider qualification, production identity or SDK runtime adoption is claimed.
+The review follows S04/S05; the original Sprint forecast is not actual effort.

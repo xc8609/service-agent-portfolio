@@ -13,3 +13,10 @@ OpenAI, Claude, DeepSeek/internal endpoints remain unqualified and disabled.
 
 No paid calls, live benchmark, latency promise, model pricing or vendor SDK adoption
 is claimed. Pinned existing httpx/jsonschema dependencies are reused; no new SDK.
+
+## Server selection follow-up
+
+`agent/selection.py` adds deployment profiles and audit fingerprints. Protocol choice
+is exercised through the same HTTP assistant endpoint with mock transport, including
+unqualified rejection and persisted replay after a configuration change. No live
+route is enabled. See [cross-story design and acceptance](../contracts/extensibility-change.md).

@@ -70,3 +70,12 @@ history, not actual elapsed person-days or completed Sprint acceptance.
 
 No automatic phone execution, financial action or bulk architecture rewrite. Voice
 and retail remain later releases. Do not equate offline tests with real model quality.
+
+## Adaptability within the small core
+
+Owner requested lightweight enterprise adaptation on 20 October. The DEV-02/08/09
+[follow-up scope](../../projects/bank-service-assist/specs/contracts/extensibility-change.md)
+adds source-mapping rehearsal and server-owned model profiles within S04/S05 review.
+It does not add another platform service or move voice/retail ahead of bank acceptance.
+Real source ingestion, production identity and model qualification remain explicit
+future gates after an institution's interfaces and policies are known.

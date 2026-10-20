@@ -72,3 +72,29 @@ DEV-05 adds `bank_api/policy_lookup.py` and `HandlingRules.tsx` within the exist
 API/workspace. Deterministic metadata filtering and source reads serve both the
 manual path and two canonical read tools; no provider, vector service or Agent
 loop is introduced. [Policy runtime design](../projects/bank-service-assist/specs/DEV-05/runtime-contract.md).
+
+## Adaptation boundaries
+
+[ADR-004](architecture/ADR-004-lightweight-enterprise-adaptation.md) explains the
+business-first, single-deployment design and what can change by configuration,
+source adapter or a reviewed specification change. The application workflow database
+is not an interchangeable external bank database. Source mapping preview is offline;
+real synchronization and freshness controls remain an onboarding increment.
+
+```mermaid
+flowchart LR
+    BANK[Institution database / API / export] -. future qualified feed .-> MAP[Canonical mapping contract]
+    MAP -. future atomic ingestion .-> DATA[(Versioned PostgreSQL read model)]
+    PREVIEW[Two synthetic export fixtures] --> MAP
+    DATA --> DOMAIN[Shared authorized business services]
+    DOMAIN --> MANUAL[Manual workspace]
+    DOMAIN --> RUN[One bounded Agent runtime]
+    CFG[Server-owned profile] --> MODEL[Responses / Messages / compatible API]
+    RUN --> MODEL
+    RUN --> DRAFT[Draft + source references]
+    DRAFT --> HUMAN[Human review and trusted command]
+```
+
+Solid edges describe implemented runtime or offline rehearsal boundaries; dotted
+edges are planned external connectivity/ingestion. Models never connect to BANK/DATA.
+See [change acceptance](../projects/bank-service-assist/specs/contracts/extensibility-change.md).

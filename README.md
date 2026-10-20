@@ -2,10 +2,12 @@
 
 [![Checks](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml)
 
-A **simulated bank service workspace** for investigating credit-card charges:
-find authorized transactions, retrieve handling rules, and prepare a human-reviewed
-specialist enquiry. It connects business analysis, specification-driven delivery
-and agent engineering.
+A **simulated bank service workspace** for “Why was I charged twice?”
+Representatives need to find customer information across screens, respect access
+limits and locate the right handling rule. This portfolio turns those pain points
+into **business analysis → specifications → working software → test evidence**.
+The Agent assembles permitted evidence and drafts a next step for human review.
+Business benefit is a hypothesis to evaluate, not a claimed saving.
 
 **Works today:** scoped transaction/rule lookup, reviewed notes and specialist
 referrals, specialist findings, verified manual feedback, bounded contact plans,
@@ -19,7 +21,8 @@ measurement remain pending.
 ```text
 apps/web/                         React/TypeScript workspace + browser tests
 services/api/                     FastAPI, PostgreSQL migrations + API tests
-  bank_api/agent/                 Bounded offline runtime + provider adapters
+  bank_api/agent/                 Bounded runtime, provider adapters + server selection
+  bank_api/integrations/          Offline source-mapping validation
 projects/bank-service-assist/
   docs/                          Business analysis, decisions + Sprint evidence
   specs/<STORY-ID>/               spec, design, tasks, acceptance
@@ -28,7 +31,8 @@ projects/bank-service-assist/
   scripts/                       Offline data/specification checks
   sql/ + dashboard/              Operational marts + Tableau workbook candidate
 docs/backlog/                     Story catalogue, Sprint forecast + current scope
-docs/decisions/                   Repository/architecture decisions
+docs/decisions/ + architecture/   Repository decisions + architecture ADRs
+examples/                        Synthetic source mappings + disabled model profiles
 .github/workflows/               Offline, API/browser and container CI
 ```
 
@@ -53,6 +57,16 @@ synthetic demo on localhost; it is not production authentication.
 
 [Mac setup without Docker, tests and recovery](services/api/README.md) ·
 [Executed evidence and limits](projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md)
+
+## Adapt without rebuilding the business process
+
+One UI, one API and one workflow database. Institution-specific data maps into a
+canonical read model; server-owned profiles separate model APIs from Agent execution.
+Permissions, evidence versions and human approval remain in shared business services.
+Two source formats and three model protocols have offline test coverage. Real bank
+connectors, SDK runtime adoption and live model qualification remain separate work.
+[Adaptation examples](examples/README.md) ·
+[Decisions, references and limits](docs/architecture/ADR-004-lightweight-enterprise-adaptation.md).
 
 ## Delivery
 

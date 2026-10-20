@@ -400,8 +400,11 @@ def dispatch(settings, name, payload, authorization, request_id, now):
     return result
 
 
-def create_app(settings=None, clock=None):
+def create_app(settings=None, clock=None, *, provider_route=None):
     settings = settings or Settings.from_env()
+    from .agent.selection import load_route
+
+    provider_route = provider_route or load_route(settings.provider_config)
     now = clock or (lambda: datetime.now(UTC))
     app = FastAPI(
         title="Synthetic bank service — authorized lookup",
@@ -613,7 +616,7 @@ def create_app(settings=None, clock=None):
     def agent_dispatch(settings, name, payload, authorization, request_id, at):
         try:
             return (
-                agent_run(settings, payload, authorization, request_id, at)
+                agent_run(settings, payload, authorization, request_id, at, route=provider_route)
                 if name == "run"
                 else agent_control(settings, name, payload, authorization, request_id, at)
             )

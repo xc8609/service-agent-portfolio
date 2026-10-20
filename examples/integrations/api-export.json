@@ -1,0 +1,45 @@
+{
+  "mapping": {
+    "source": "synthetic-api-export",
+    "namespace": "0c807ceb-2837-49d7-bd80-b36806ab4bdf",
+    "fields": {
+      "id": "id",
+      "account_id": "account_id",
+      "version": "version",
+      "amount": "amount",
+      "currency": "currency",
+      "status": "status",
+      "merchant_description": "merchant_description",
+      "occurred_at": "occurred_at",
+      "posted_at": "posted_at",
+      "updated_at": "updated_at"
+    },
+    "statuses": {
+      "settled": "posted",
+      "authorized": "pending",
+      "reversed": "reversed"
+    },
+    "amount_unit": "minor_integer",
+    "currency_exponents": {
+      "CAD": 2,
+      "USD": 2
+    }
+  },
+  "accounts": {
+    "synthetic-account-1": "5ccca772-6438-4de1-a22a-40cdd9da029a"
+  },
+  "records": [
+    {
+      "id": "synthetic-entry-1",
+      "account_id": "synthetic-account-1",
+      "version": 1,
+      "amount": 4999,
+      "currency": "CAD",
+      "status": "settled",
+      "merchant_description": "SYNTHETIC SHOP",
+      "occurred_at": "2026-10-19T10:00:00-05:00",
+      "posted_at": "2026-10-20T10:00:00-05:00",
+      "updated_at": "2026-10-20T10:00:00-05:00"
+    }
+  ]
+}

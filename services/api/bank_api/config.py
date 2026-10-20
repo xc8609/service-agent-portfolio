@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 class Settings:
     database_url: str = field(repr=False)
     mode: str = "local"
+    provider_config: str | None = field(default=None, repr=False)
 
     def __post_init__(self):
         if self.mode != "local":
@@ -18,4 +19,5 @@ class Settings:
         return cls(
             os.environ.get("BANK_DATABASE_URL", ""),
             os.environ.get("BANK_MODE", "local"),
+            os.environ.get("BANK_PROVIDER_CONFIG") or None,
         )

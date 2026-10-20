@@ -2,7 +2,7 @@
 
 import json
 from dataclasses import dataclass, field
-from typing import Callable
+from typing import Callable, Protocol
 from urllib.parse import urlsplit
 
 import httpx
@@ -28,6 +28,14 @@ class Reply:
     calls: list[Call] = field(default_factory=list)
     usage: dict | None = None
     status: str = "completed"
+
+
+class Provider(Protocol):
+    """Wire adapters return domain-neutral replies, never execute business tools."""
+
+    def complete(
+        self, messages: list[dict], schemas: dict, cancelled: Callable[[], bool]
+    ) -> Reply: ...
 
 
 @dataclass(frozen=True)
