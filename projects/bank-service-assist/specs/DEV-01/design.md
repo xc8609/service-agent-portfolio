@@ -1,6 +1,6 @@
 # DEV-01 — Create the application skeleton and deterministic demo environment
 
-BANK-S02-v0.4 · Detailed specification candidate; implementation not started.
+BANK-S02-v0.4 · Read slice implemented in PR #1; full story acceptance pending.
 Forecast: S02 | Release: B0 | Estimate: Dev 3, BA 0.25, QA 0.5 person-days. Provisional until technical review.
 
 ## Components and contracts
@@ -16,3 +16,7 @@ Shared invariants: server-derived identity/assignment; source and record version
 ## Delivery and recovery
 
 Runnable skeleton, migrations, seed tooling, environment guide and architecture ADR. Reproduce in disposable local/test environment; document exact versions and skipped suites. Runtime/deployment evidence remains pending.
+
+## Current implementation slice — 20 October 2026
+
+[Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md). Only the explicitly mapped read-path cases have executed evidence. The historical contract/forecast above remains the full-story scope; no owner UAT, worker, write-effect or model acceptance is implied.

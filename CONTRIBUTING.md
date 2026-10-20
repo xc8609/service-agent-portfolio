@@ -11,3 +11,5 @@ This repository follows specification-driven development. For a feature or fix:
 The first import is a clean portfolio-only history. Future product features use PRs. Trello is the planning/review mirror; versioned specs and code in Git are canonical. Do not attach customer records, employer documents, access tokens or private job-search material.
 
 Before submitting, run the README checks. Public data terms remain independent of project code licensing. Report security issues using SECURITY.md; do not place exploit credentials or private records in public issues.
+
+Main is protected: PR required, all four CI contexts must pass and the branch must be up to date; conversations must be resolved. Force push/deletion are disabled and administrators are included. The solo portfolio requires zero additional human approvals; this is not independent review. See [verified settings](docs/github-branch-protection.json). Application changes additionally run the [runtime checks](services/api/README.md).

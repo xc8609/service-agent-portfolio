@@ -23,3 +23,7 @@ Use explicit foreign keys among contact, case, work item, result, attempt and pr
 ## Deployment
 
 Ship through existing API/worker/UI release, with migration and fixture updates. Verify permissions, pending-event replay and rollback/restore in staging before acceptance. This story does not provision infrastructure or contact real customers.
+
+## Current implementation slice — 20 October 2026
+
+[Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md). Only the explicitly mapped read-path cases have executed evidence. The historical contract/forecast above remains the full-story scope; no owner UAT, worker, write-effect or model acceptance is implied.

@@ -3,7 +3,7 @@
 Current S02 forecast: **S03**. Updated effort: Dev 3, BA 0.5, QA 0.5 person-days (4 total); dependencies DEV-02, BA-06. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Read slice implemented in PR #1; full story acceptance pending. Business decisions accepted only as listed; technical design/Ready gates pending.
 Forecast: S03 | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 3, BA 0.5, QA 0.5 person-days; total 4 (3–6), confidence medium. Not actual effort.
 
@@ -43,3 +43,7 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 ## Traceability
 
 [Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).
+
+## Current implementation slice — 20 October 2026
+
+[Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md). Only the explicitly mapped read-path cases have executed evidence. The historical contract/forecast above remains the full-story scope; no owner UAT, worker, write-effect or model acceptance is implied.
