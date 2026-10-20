@@ -3,6 +3,10 @@
 20 October 2026 · Synthetic local portfolio workflow; implementation review,
 not owner UAT or a production acceptance. Built on the foundation PR #1.
 
+[Implementation PR #2](https://github.com/xc8609/service-agent-portfolio/pull/2)
+uses a stacked base until #1 is merged. [Trello synchronization](trello-sync.json)
+records verified updates to DEV-03 and S03; neither was marked Done.
+
 ## Implemented increment
 
 - Human-only scoped report read/save, append-only statement revisions with original
@@ -55,3 +59,8 @@ Preserve existing volumes and forward-fix rather than resetting data for recover
 Container smoke now checks persisted capture and replay as well as lookup; cloud
 PostgreSQL 17 and container results are reported in the PR checks, separately from
 local PostgreSQL 16.2 evidence above.
+
+Cloud run [39488694094](https://github.com/xc8609/service-agent-portfolio/actions/runs/39488694094)
+passed PostgreSQL 17 API/browser tests but failed container startup. The image
+allowlist/COPY missed the new runtime schema. Both packaging entries were added;
+see PR checks for the current commit's subsequent container result.

@@ -14,6 +14,7 @@ RUN pip install --no-cache-dir -r services/api/requirements.lock && useradd --ui
 COPY services/api/bank_api /app/services/api/bank_api
 COPY services/api/migrations /app/services/api/migrations
 COPY projects/bank-service-assist/specs/contracts/agent-tools.json /app/projects/bank-service-assist/specs/contracts/agent-tools.json
+COPY projects/bank-service-assist/specs/DEV-03/investigation-input.schema.json /app/projects/bank-service-assist/specs/DEV-03/investigation-input.schema.json
 COPY --from=web /build/dist /app/apps/web/dist
 USER 10001
 EXPOSE 8000
