@@ -1,4 +1,4 @@
-"""Authored synthetic fixtures, v2; stable IDs and no external data source."""
+"""Authored synthetic fixtures, v3; stable IDs and no external data source."""
 
 from datetime import UTC, datetime, timedelta
 from uuid import NAMESPACE_URL, uuid5
@@ -9,8 +9,9 @@ from psycopg.types.json import Jsonb
 
 from .case_fixtures import seed_cases
 from .db import MARKER, assert_demo_target
+from .policy_fixtures import seed_policies
 
-FIXTURE_VERSION = "bank-cases-synthetic-v2"
+FIXTURE_VERSION = "bank-policy-synthetic-v3"
 
 
 def uid(name):
@@ -114,6 +115,7 @@ def seed(dsn, target, initialize=False, now=None):
                     "customer_id": uid(name),
                     "masked_ref": card,
                     "product": "credit_card",
+                    "jurisdiction": "CA",
                     "currency": "CAD",
                     "version": 1,
                 },
@@ -236,6 +238,7 @@ def seed(dsn, target, initialize=False, now=None):
         )
 
         seed_cases(conn)
+        seed_policies(conn)
         conn.execute(
             "UPDATE demo_environment SET fixture_version=%s WHERE singleton", (FIXTURE_VERSION,)
         )
@@ -247,5 +250,5 @@ def reset(dsn, target):
         assert_demo_target(conn, target)
         # Never drop schemas or run against an unmarked database. Keep migrations/marker.
         conn.execute(
-            "TRUNCATE staff_principals, service_queues, customers, audit_events, operations, outbox_events CASCADE"
+            "TRUNCATE staff_principals, service_queues, customers, audit_events, operations, outbox_events, policy_versions CASCADE"
         )

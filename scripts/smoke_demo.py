@@ -46,3 +46,18 @@ snapshot=request('/v1/agent-tools/get_case_snapshot',{'contact_id':contact,'case
 assert snapshot['data']==case['snapshot']
 assert 'UNAPPROVED PRIVATE UPDATE' not in json.dumps(cases)
 print('PASS: scoped related-case progress, accountable ownership and duplicate-enquiry review; no case created.')
+
+rules=request('/v1/workspace/get_handling_rules',{'contact_id':contact,'transaction_ids':ids,
+    'expected_versions':{r['id']:r['version'] for r in evidence['data']['records']}},token)
+assert rules['data']['state']=='applicable'
+rule=rules['data']['rules'][0]
+assert rule['is_simulated'] and rule['next_steps']
+ref=rule['policy_ref']
+exact=request('/v1/agent-tools/get_policy_section',{'contact_id':contact,'policy_id':ref['id'],
+    'version':ref['version'],'section':ref['section']},token)
+assert exact['data']['text']==rule['text']
+metadata=request('/v1/agent-tools/search_policy',{'contact_id':contact,'query':'posted',
+    'product':'credit_card','jurisdiction':'CA','as_of':rules['data']['policy_as_of'],
+    'transaction_status':'posted'},token)
+assert ref['id'] in [m['policy_id'] for m in metadata['data']['matches']]
+print('PASS: permitted effective rule → applicability and next steps → exact citation; simulated guidance only.')

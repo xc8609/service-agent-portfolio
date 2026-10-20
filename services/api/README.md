@@ -1,6 +1,6 @@
 # Bank lookup runtime
 
-Python 3.12, FastAPI, psycopg and PostgreSQL. Four v0.4 read contracts are implemented for an authorized **inbound representative**. Feedback assignment, agent delegation, referral commands and worker processing are intentionally unsupported and deny by default. All records and identity assertions are synthetic.
+Python 3.12, FastAPI, psycopg and PostgreSQL. Six v0.4 read contracts are implemented for an authorized **inbound representative**. Feedback assignment, agent delegation, referral commands and worker processing are intentionally unsupported and deny by default. All records and identity assertions are synthetic.
 
 ## Run with Docker Compose (from repository root)
 
@@ -58,13 +58,13 @@ npm run test:e2e
 
 ## Read flow and recovery
 
-The demo persona adapter is separate from model tools. It issues opaque credentials mapped to server-side synthetic principals/contact records; no request body can grant roles, approve transactions or expand customer scope. The three tool paths follow the shared JSON schema registry. Search uses UTC date bounds, exact integer minor units, literal merchant matching and bounded keyset pagination. The UI requests up to 50 results and asks for narrower filters when more are available. Evidence retrieval requires explicit selection (1–10 IDs); a mixed-scope request fails as a whole.
+The demo persona adapter is separate from model tools. It issues opaque credentials mapped to server-side synthetic principals/contact records; no request body can grant roles, approve transactions or expand customer scope. Canonical tool paths follow the shared JSON schema registry. Search uses UTC date bounds, exact integer minor units, literal merchant matching and bounded keyset pagination. The UI requests up to 50 results and asks for narrower filters when more are available. Evidence retrieval requires explicit selection (1–10 IDs); a mixed-scope request fails as a whole.
 
 `/health/live` measures process liveness; `/health/ready` checks database, schema and demo marker. A database outage returns sanitized 503 plus a correlation ID; it is never an empty successful search. Wrong database credentials/schema or failed initialization should stop startup readiness; inspect configuration and migration checksums, preserve the volume and forward-fix. The DEV-03 report-capture increment adds append-only revisions with atomic audit and replay receipts; there is no workflow worker or referral side effect.
 
 ## Traceability and limits
 
-See [slice specification](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-slice.md) and [execution evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md). This is not production authentication, bank connectivity, UAT or regulatory certification. Policy lookup, case-detail retrieval, note/referral commits, callbacks and agent execution remain future work.
+See [slice specification](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-slice.md) and [execution evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md). This is not production authentication, bank connectivity, UAT or regulatory certification. Scoped inbound case and policy reads are implemented; note/referral commits, callbacks and agent execution remain future work.
 
 Implementation references: [FastAPI container guidance](https://fastapi.tiangolo.com/deployment/docker/), [psycopg installation](https://www.psycopg.org/psycopg3/docs/basic/install.html), [optional pgserver publisher](https://pypi.org/project/pgserver/). These inform packaging; the domain authority rules come from this project's accepted decisions and specs.
 
@@ -96,3 +96,28 @@ corrected. Never invent a closed status or create another case to bypass a faile
 lookup. On access denial, re-establish authorized context; do not alter role/proof
 in the request. No case mutation or outbound feedback permission is enabled.
 See [contract and acceptance](../../projects/bank-service-assist/specs/DEV-04/runtime-contract.md).
+
+## DEV-05 simulated handling rules
+
+Migration `005_policy_lookup.sql` adds nullable account jurisdiction, policy
+publication state and exact sections. Run normal migrate/seed/provision for
+existing disposable volumes; runtime has SELECT only on policies. Existing
+accounts retain unknown jurisdiction rather than infer a country from currency:
+those accounts show a policy gap. A fresh disposable demo has explicitly authored
+CA accounts (`bank-policy-synthetic-v3`). Preserve saved reports when upgrading;
+use a new isolated demo for a full fresh fixture set rather than reset useful work.
+
+Select two entries and inspect evidence to see conditions, citation and proposed
+next steps. Manual refresh works without an LLM. Gap/conflict: seek service-lead
+policy clarification. Evidence changed: reinspect the pair. Access denied:
+re-establish authorized context. Outage: keep the concern open through manual
+support; do not reuse stale advice or fabricate a policy result.
+
+`policy_lookup.py` implements pair-specific workspace reads and the canonical
+`search_policy`/`get_policy_section` tools. Scope/time/audience filtering precedes
+content; exact fetch repeats it. Search uses literal text matching, not embeddings.
+[Runtime contract](../../projects/bank-service-assist/specs/DEV-05/runtime-contract.md)
+and [evidence](../../projects/bank-service-assist/specs/DEV-05/implementation-evidence.md)
+record the narrow inbound scope. Contact-start effective time is shown separately
+from retrieval time. The current demo is one exact section per edition; production
+knowledge ingestion, policy approval and model orchestration remain later work.

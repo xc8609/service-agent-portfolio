@@ -9,7 +9,7 @@ from psycopg.rows import dict_row
 
 ROOT = Path(__file__).resolve().parents[3]
 MIGRATIONS = ROOT / "services/api/migrations"
-SCHEMA_VERSION = "004_case_lookup.sql"
+SCHEMA_VERSION = "005_policy_lookup.sql"
 MARKER = "service-agent-disposable-v1"
 
 
@@ -67,6 +67,8 @@ def provision_runtime(dsn, password):
             "contacts",
             "verification_assertions",
             "card_accounts",
+            "policy_versions",
+            "policy_sections",
             "card_transactions",
             "transaction_relationships",
             "cases",
