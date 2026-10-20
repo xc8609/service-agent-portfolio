@@ -1,14 +1,21 @@
 # Bank Service Assist
 
-A simulated Canadian bank representative workspace, focused on finding authorized customer facts and applicable handling rules. The owner has reported experience with telephone-enabled customer-service desktops; this is new portfolio work, not an employer deployment.
+A simulated representative workspace for “What is this charge?” and “Why are
+there two entries?” The primary problem is finding authorized customer facts
+and applicable handling rules across screens.
 
-Current milestone: [Sprint 1 discovery and SDD review package](docs/sprint-01/README.md). It includes business background, options, stakeholders, current/target processes, requirements and acceptance examples. Application development, model integration and hosted deployment remain planned.
+**Running today:** local React/FastAPI/PostgreSQL manual transaction lookup and
+evidence review. **Planned:** rule/case retrieval, reviewed enquiry and feedback,
+then bounded Agent assistance. No real bank integration or measured savings.
 
-Start with possible duplicate-card-charge and existing-case enquiries. Build a manual/search baseline, then evaluate bounded assistance. Voice self-service and verified human handoff are a later bank release.
+- [Run and test the application](../../services/api/README.md)
+- [Business analysis and decisions](docs/README.md)
+- [Stories and Sprint sequence](../../docs/backlog/README.md)
+- [Detailed specifications and design](specs/README.md)
+- [Architecture and Agent boundary](../../docs/architecture.md)
+- [Data provenance](data/README.md)
+- [Executed evidence](docs/sprint-02/implementation/lookup-evidence.md)
 
-- [Detailed stories and sprint plan](../../docs/sdd-portfolio-delivery-plan.md)
-- [Public Trello](https://trello.com/b/wtNhuN0q/ai-agent)
-- [Data provenance/status](data/README.md)
-- [Earlier source feasibility inspection](docs/data-feasibility-review.md)
-
-CFPB remains the separate real public-data analytical foundation. This application will use clearly labelled synthetic operational records; public complaints are not real customer-account ledgers. BANKING77 download remains pending.
+Operational records are synthetic; public complaint/intent datasets are not
+customer ledgers. Voice and retail remain later releases. The owner's reported
+customer-service desktop experience informs the scenario, not an employer claim.

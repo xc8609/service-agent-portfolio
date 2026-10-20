@@ -47,3 +47,14 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 ## Current implementation slice — 20 October 2026
 
 [Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md). Only the explicitly mapped read-path cases have executed evidence. The historical contract/forecast above remains the full-story scope; no owner UAT, worker, write-effect or model acceptance is implied.
+
+## Accepted intake continuation — 20 October 2026
+
+D-23–D-25 are accepted simulated rules. See the [DEV-07 intake card](../DEV-07/referral-intake-review.md)
+and [readiness review](../DEV-07/referral-readiness.md). Paired unresolved
+recognition must remain explicit; missing material may follow at specialist
+request through customer service; unusable contact details do not block enquiry.
+Customer service owns contact resolution. Preserve original deadlines and
+separate investigation completion from feedback delivery; no automatic closure
+for undelivered feedback. These rules do not accept implementation or extend
+existing call quotas; supplementation-call accounting still needs a scoped review.

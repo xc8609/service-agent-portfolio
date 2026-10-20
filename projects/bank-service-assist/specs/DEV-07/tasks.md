@@ -3,6 +3,13 @@
 BANK-SDD-v0.2
 
 - [x] Draft story, design and Given/When/Then examples.
+- [x] Draft [intake review refinement](referral-intake-review.md) for one recognized
+  purchase and two posted entries; business decisions are recorded below; no implementation acceptance implied.
+- [x] Record owner acceptance of RI-01 as D-23.
+- [x] Record owner acceptance of RI-02 as D-24.
+- [x] Record owner acceptance of RI-03 as D-25.
+- [ ] Close [readiness gaps](referral-readiness.md) and assess contract/data/estimate
+  impact before implementing intake criteria RI-AC01–17.
 - [ ] Close Ready gates and accept technical/data contract.
 - [ ] Add referral payload and unique operation key, queue ownership and case/work-item versions.
 - [ ] Build review/edit UI with draft/submitting/queued/failed/unknown states.

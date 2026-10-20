@@ -1,5 +1,10 @@
 # Sprint forecast — S02 revision v0.3
 
+Current execution scope: [core-first delivery](current-delivery.md), updated
+20 October under D-26. The dates/capacity below are the retained expanded
+forecast, not a fresh estimate of the simplified core. Deferred automation must
+be re-estimated before commitment; no completed work is inferred from dates.
+
 BANK-S02-v0.3 · 19 October 2026. Supersedes previous relative weeks/dates for expanded scope. Historical cards and the pre-S02 snapshot preserve prior estimates.
 
 **12 delivery iterations / 24 weeks, plus two unallocated reserve iterations.** Two developers plus explicit BA/QA, not personal-hours scheduling or actual staffing. S02 specification refinement is now in progress by owner request; S01 repository/acceptance work remains open. Future calendar blocks are illustrative.

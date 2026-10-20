@@ -35,6 +35,58 @@ Version 0.1 · 19 October 2026. Actual portfolio owner decisions are distinguish
 
 ## Assumptions and evidence gaps
 
+### D-23 — Paired enquiry when transaction recognition is ambiguous
+
+Owner explicitly accepted RI-01 on 20 October 2026: when a customer recognizes
+one purchase but cannot distinguish the two matching statement entries, allow
+both entries to be submitted together for specialist review. Record one purchase
+recognized and unresolved transaction mapping. Neither staff nor the agent may
+arbitrarily select an entry as the duplicate or infer entitlement to a refund.
+This is a simulated business rule, not implementation acceptance.
+
+Trace: [DEV-07 intake refinement](../../specs/DEV-07/referral-intake-review.md),
+M04 and RI-AC02/RI-T02. RI-02 was subsequently accepted as D-24 below;
+RI-03 was subsequently accepted as D-25 below. Contracts, implementation and tests are pending.
+
+### D-24 — Initial enquiry with incomplete supporting material
+
+Owner explicitly accepted RI-02 on 20 October 2026: allow initial specialist
+enquiry when supporting material is incomplete, provided the mandatory intake
+minimum is available. Record evidence gaps. The specialist determines whether
+additional material is needed and requests it; customer service contacts the
+customer to obtain it. Preserve original submission time and processing
+deadlines; missing or later-supplied material does not reset or extend them.
+This does not waive identity, transaction-scope or submission controls, establish
+a new financial-dispute procedure, or accept implementation.
+
+Trace: [DEV-07 intake refinement](../../specs/DEV-07/referral-intake-review.md),
+RI-AC04/RI-T04 and RI-AC10/RI-T10. Contact gaps (RI-03) were subsequently accepted as D-25.
+
+### D-25 — Continue investigation when customer contact details are unusable
+
+Owner explicitly accepted RI-03 on 20 October 2026: allow specialist enquiry
+submission while customer service owns resolution of the contact-details gap.
+Retain original processing deadlines; an undelivered result must not automatically
+close the case. Investigation and customer-feedback progress remain distinct.
+The reviewed design does not grant ordinary staff or agents authority to silently
+replace verified contact details or treat a caller-provided number as verified.
+
+Trace: [DEV-07 intake refinement](../../specs/DEV-07/referral-intake-review.md),
+RI-AC05/15/16/17 and corresponding planned tests; DEV-11/12 continuation.
+RI-01–03 business review is complete. Typed contracts, queue configuration,
+implementation and runtime acceptance remain pending; no new SLA is invented.
+
+### D-26 — Keep the core small and the repository navigable
+
+Owner requested on 20 October 2026: avoid unnecessary complexity, preserve the
+core workflow, maintain clear project structure and a concise README, and publish
+work through a PR. [Current delivery](../../../../docs/backlog/current-delivery.md)
+records implementation prioritization: manual investigation/referral/result/
+feedback first, then bounded assistance. Advanced continuation automation, voice
+and retail remain later scope. D-23–D-25 and existing access/deadline/closure rules
+are retained; no new contact allowance, benefit result or implementation approval
+is inferred. Forecasts require re-estimation before commitment.
+
 | ID | Assumption / gap | Validation / owner role | Consequence if false |
 |---|---|---|---|
 | A-01 | Lookup consumes material avoidable effort | EL-02 observation/task study; owner/service lead | Prefer better navigation/templates or stop AI investment |

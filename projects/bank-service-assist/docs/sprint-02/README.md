@@ -62,3 +62,21 @@ Current completion evidence: [specification handoff](spec-completion.md), [valid
 ## Current runtime increment — 20 October 2026
 
 [Authorized lookup slice](implementation/lookup-slice.md) implements a bounded DEV-01/02/03 path with QA-01/OPS-01 evidence. [Execution record](implementation/lookup-evidence.md) supersedes earlier blanket runtime-not-executed wording for this slice only. DEV-02/03 read work is pulled forward from S03; remaining stories, estimates and later workflow scope are retained. Parent stories/Sprints remain in progress.
+
+## Intake review decisions — 20 October 2026
+
+D-23–D-25 accept paired unresolved recognition, deferred supporting evidence
+with specialist-requested/customer-service follow-up, and enquiry despite
+unusable contact details with customer-service ownership. Keep original
+deadlines; undelivered feedback never automatically closes the case.
+
+[Detailed intake card and RI-AC01–17](../../specs/DEV-07/referral-intake-review.md),
+[development-readiness gaps](../../specs/DEV-07/referral-readiness.md), and
+[verified eight-card Trello sync](intake-trello-sync.json). Technical contracts,
+write implementation and runtime/UAT acceptance remain pending. Earlier claims
+about RI-01–03 being pending are superseded by D-23–D-25; existing v0.4 schemas
+are not silently upgraded by these documentation changes.
+
+Current execution priority is [D-26 core-first delivery](../../../../docs/backlog/current-delivery.md).
+Use [business analysis navigation](../README.md) and the [specification index](../../specs/README.md)
+to separate BA work, technical design and executed evidence.
