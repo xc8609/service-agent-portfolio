@@ -60,10 +60,22 @@ npm run test:e2e
 
 The demo persona adapter is separate from model tools. It issues opaque credentials mapped to server-side synthetic principals/contact records; no request body can grant roles, approve transactions or expand customer scope. The three tool paths follow the shared JSON schema registry. Search uses UTC date bounds, exact integer minor units, literal merchant matching and bounded keyset pagination. The UI requests up to 50 results and asks for narrower filters when more are available. Evidence retrieval requires explicit selection (1–10 IDs); a mixed-scope request fails as a whole.
 
-`/health/live` measures process liveness; `/health/ready` checks database, schema and demo marker. A database outage returns sanitized 503 plus a correlation ID; it is never an empty successful search. Wrong database credentials/schema or failed initialization should stop startup readiness; inspect configuration and migration checksums, preserve the volume and forward-fix. This read-only slice introduces no workflow worker or recoverable write effects.
+`/health/live` measures process liveness; `/health/ready` checks database, schema and demo marker. A database outage returns sanitized 503 plus a correlation ID; it is never an empty successful search. Wrong database credentials/schema or failed initialization should stop startup readiness; inspect configuration and migration checksums, preserve the volume and forward-fix. The DEV-03 report-capture increment adds append-only revisions with atomic audit and replay receipts; there is no workflow worker or referral side effect.
 
 ## Traceability and limits
 
 See [slice specification](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-slice.md) and [execution evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md). This is not production authentication, bank connectivity, UAT or regulatory certification. Policy lookup, case-detail retrieval, note/referral commits, callbacks and agent execution remain future work.
 
 Implementation references: [FastAPI container guidance](https://fastapi.tiangolo.com/deployment/docker/), [psycopg installation](https://www.psycopg.org/psycopg3/docs/basic/install.html), [optional pgserver publisher](https://pypi.org/project/pgserver/). These inform packaging; the domain authority rules come from this project's accepted decisions and specs.
+
+## DEV-03 customer reports
+
+Migration `003_investigation.sql` adds `investigation_revisions`; the runtime role
+has SELECT/INSERT only (no UPDATE/DELETE) on this table and still cannot mutate
+the ledger. Run the normal initialization/migration and role-provisioning path
+when upgrading an existing disposable volume. No data reset is needed for upgrade.
+Historical reports require fresh inspection before reuse; failed saves preserve
+local edits. Retry unchanged input after an uncertain response, or reload saved
+history. A 409 requires reloading history and rechecking evidence. Preserve the
+database on failure; forward-fix migrations instead of deleting saved reports.
+See the [human capture contract](../../projects/bank-service-assist/specs/DEV-03/investigation-contract.md).

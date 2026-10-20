@@ -7,7 +7,7 @@ Read README.md and docs/backlog/current-delivery.md first; use projects/bank-ser
 - Connect business requirements, rules, story IDs, implementation and UAT evidence.
 - Model tools are read/draft only. Trusted commands enforce identity, scope, versions, deterministic transitions and idempotency.
 - Keep raw/generated data, private material, secrets and local databases out of Git. Never import an entire personal workspace or its Git history.
-- Current runtime is a limited local inbound lookup slice under PR review. Read services/api/README.md and the S02 implementation evidence. Do not describe agent/writes/feedback/deployment or whole stories as implemented.
+- Current runtime is local inbound lookup plus trusted manual customer-report capture under PR review. Read services/api/README.md and the S02 implementation evidence. Only investigation_revisions has implemented business writes; do not describe Agent/referral/feedback/deployment or whole stories as implemented.
 - Start implementation with DEV-01/QA-01/OPS-01, then the B0 manual baseline. Preserve independent later voice and retail scope.
 - Use codex/<story-id>-<topic> branches and a reviewable PR. No force pushes to main.
 - Pure offline tooling remains Python 3.9 compatible; application runtime is planned for Python 3.12. Pin actual application dependencies after compatibility checks.

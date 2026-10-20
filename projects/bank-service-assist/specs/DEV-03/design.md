@@ -1,6 +1,6 @@
 # DEV-03 design
 
-BANK-SDD-v0.2 · Candidate architecture; no runtime implementation.
+BANK-SDD-v0.2 · Full-story architecture below; implemented increments are linked separately.
 
 Model-visible tools: search_transactions, get_transaction_evidence, get_case_snapshot. Human/system commands and complete schemas are in [shared contracts](../contracts/agent-tools.md).
 
@@ -27,3 +27,10 @@ Ship through existing API/worker/UI release, with migration and fixture updates.
 ## Current implementation slice — 20 October 2026
 
 [Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md). Only the explicitly mapped read-path cases have executed evidence. The historical contract/forecast above remains the full-story scope; no owner UAT, worker, write-effect or model acceptance is implied.
+
+## Manual statement and recognition increment — 20 October 2026
+
+[Detailed runtime contract and SI-01–06 acceptance scenarios](investigation-contract.md)
+cover customer statement revisions, explicit recognition including D-23 unresolved
+pairs, and immediate invalidation after query/selection/statement changes.
+See [execution evidence](implementation-evidence.md) for tested scope and limits.

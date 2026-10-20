@@ -8,7 +8,9 @@ specialist enquiry. It connects business analysis, specification-driven delivery
 and agent engineering.
 
 **Works today:** React + FastAPI + PostgreSQL, authorized transaction search and
-evidence review with synthetic records. **Next:** notes/referral/feedback, then
+evidence review, versioned customer statements and explicit pair recognition with
+synthetic records. Changed queries invalidate old evidence. **Next:** rules,
+notes/referral/feedback, then
 bounded Agent assistance. No live bank connection, implemented Agent or measured savings.
 
 ## Repository map
