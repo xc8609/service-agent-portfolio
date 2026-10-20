@@ -19,6 +19,29 @@ def seed_cases(conn):
         )
     for key in ["Demo specialist Alex", "Demo callback Sam", "Demo complaint Casey"]:
         insert(conn, "staff_principals", {"id": uid(key), "subject_ref": key, "active": True})
+    insert(
+        conn,
+        "service_routes",
+        {
+            "concern_code": "duplicate_charge",
+            "queue_id": uid("specialist_queue"),
+            "feedback_queue_id": uid("feedback_queue"),
+            "lead_id": uid("lead"),
+            "version": 1,
+            "active": True,
+        },
+    )
+    insert(
+        conn,
+        "customer_contact_methods",
+        {
+            "id": uid("customer_a_phone"),
+            "customer_id": uid("customer_a"),
+            "masked_ref": "Demo phone ending 0100",
+            "active": True,
+            "version": 1,
+        },
+    )
     for key, customer, txs, status, concern, code, ref in [
         (
             "duplicate_case",

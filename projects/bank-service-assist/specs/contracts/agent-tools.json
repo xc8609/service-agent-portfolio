@@ -1,5 +1,5 @@
 {
-  "version": "0.4",
+  "version": "0.5",
   "status": "Complete continuation contract candidate; offline artifact validation only, not runtime acceptance",
   "trusted_context": [
     "actor_id",
@@ -2069,7 +2069,10 @@
                         "items": {
                           "type": "string",
                           "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
-                        }
+                        },
+                        "minItems": 2,
+                        "maxItems": 2,
+                        "uniqueItems": true
                       },
                       "concern": {
                         "type": "string",
@@ -2141,6 +2144,267 @@
                           "string",
                           "null"
                         ]
+                      },
+                      "intake": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "statement_revision": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "recognition": {
+                            "type": "string",
+                            "enum": [
+                              "one_purchase_unresolved",
+                              "specific_entry"
+                            ]
+                          },
+                          "recognized_transaction_id": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "maxLength": 2000
+                          },
+                          "clarifications": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "purchase_date": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "answered",
+                                      "unknown",
+                                      "declined",
+                                      "not_asked"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ],
+                                    "maxLength": 2000
+                                  }
+                                },
+                                "required": [
+                                  "state",
+                                  "value"
+                                ]
+                              },
+                              "purchase_count": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "answered",
+                                      "unknown",
+                                      "declined",
+                                      "not_asked"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ],
+                                    "maxLength": 2000
+                                  }
+                                },
+                                "required": [
+                                  "state",
+                                  "value"
+                                ]
+                              },
+                              "purchase_amount": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "answered",
+                                      "unknown",
+                                      "declined",
+                                      "not_asked"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ],
+                                    "maxLength": 2000
+                                  }
+                                },
+                                "required": [
+                                  "state",
+                                  "value"
+                                ]
+                              },
+                              "prior_contact": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "answered",
+                                      "unknown",
+                                      "declined",
+                                      "not_asked"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ],
+                                    "maxLength": 2000
+                                  }
+                                },
+                                "required": [
+                                  "state",
+                                  "value"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "purchase_date",
+                              "purchase_count",
+                              "purchase_amount",
+                              "prior_contact"
+                            ]
+                          },
+                          "material_gaps": {
+                            "type": "array",
+                            "maxItems": 10,
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "item": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 2000
+                                },
+                                "state": {
+                                  "type": "string",
+                                  "enum": [
+                                    "unavailable",
+                                    "not_requested",
+                                    "declined"
+                                  ]
+                                },
+                                "owner": {
+                                  "const": "specialist"
+                                },
+                                "next_action": {
+                                  "const": "assess_need"
+                                },
+                                "review_trigger": {
+                                  "const": "specialist_acceptance"
+                                }
+                              },
+                              "required": [
+                                "item",
+                                "state",
+                                "owner",
+                                "next_action",
+                                "review_trigger"
+                              ]
+                            }
+                          },
+                          "contact": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "state": {
+                                "type": "string",
+                                "enum": [
+                                  "available",
+                                  "unavailable",
+                                  "unknown"
+                                ]
+                              },
+                              "method_ref": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "maxLength": 2000
+                              },
+                              "method_version": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ],
+                                "minimum": 1
+                              },
+                              "reason": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "maxLength": 2000
+                              }
+                            },
+                            "required": [
+                              "state",
+                              "method_ref",
+                              "method_version",
+                              "reason"
+                            ]
+                          },
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "link_existing",
+                              "new"
+                            ]
+                          },
+                          "distinct_work_reason": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "maxLength": 2000
+                          },
+                          "customer_summary_confirmed": {
+                            "type": "boolean"
+                          },
+                          "route_version": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "route_basis": {
+                            "type": "string",
+                            "enum": [
+                              "applicable_policy",
+                              "manual_policy_review"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "statement_revision",
+                          "recognition",
+                          "recognized_transaction_id",
+                          "clarifications",
+                          "material_gaps",
+                          "contact",
+                          "mode",
+                          "distinct_work_reason",
+                          "customer_summary_confirmed",
+                          "route_version",
+                          "route_basis"
+                        ]
                       }
                     },
                     "required": [
@@ -2150,7 +2414,8 @@
                       "missing_evidence",
                       "requested_review",
                       "queue_id",
-                      "related_case_id"
+                      "related_case_id",
+                      "intake"
                     ]
                   }
                 },
@@ -4647,7 +4912,10 @@
                         "items": {
                           "type": "string",
                           "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
-                        }
+                        },
+                        "minItems": 2,
+                        "maxItems": 2,
+                        "uniqueItems": true
                       },
                       "concern": {
                         "type": "string",
@@ -4719,6 +4987,267 @@
                           "string",
                           "null"
                         ]
+                      },
+                      "intake": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "statement_revision": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "recognition": {
+                            "type": "string",
+                            "enum": [
+                              "one_purchase_unresolved",
+                              "specific_entry"
+                            ]
+                          },
+                          "recognized_transaction_id": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "maxLength": 2000
+                          },
+                          "clarifications": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "purchase_date": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "answered",
+                                      "unknown",
+                                      "declined",
+                                      "not_asked"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ],
+                                    "maxLength": 2000
+                                  }
+                                },
+                                "required": [
+                                  "state",
+                                  "value"
+                                ]
+                              },
+                              "purchase_count": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "answered",
+                                      "unknown",
+                                      "declined",
+                                      "not_asked"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ],
+                                    "maxLength": 2000
+                                  }
+                                },
+                                "required": [
+                                  "state",
+                                  "value"
+                                ]
+                              },
+                              "purchase_amount": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "answered",
+                                      "unknown",
+                                      "declined",
+                                      "not_asked"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ],
+                                    "maxLength": 2000
+                                  }
+                                },
+                                "required": [
+                                  "state",
+                                  "value"
+                                ]
+                              },
+                              "prior_contact": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "answered",
+                                      "unknown",
+                                      "declined",
+                                      "not_asked"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ],
+                                    "maxLength": 2000
+                                  }
+                                },
+                                "required": [
+                                  "state",
+                                  "value"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "purchase_date",
+                              "purchase_count",
+                              "purchase_amount",
+                              "prior_contact"
+                            ]
+                          },
+                          "material_gaps": {
+                            "type": "array",
+                            "maxItems": 10,
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "item": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 2000
+                                },
+                                "state": {
+                                  "type": "string",
+                                  "enum": [
+                                    "unavailable",
+                                    "not_requested",
+                                    "declined"
+                                  ]
+                                },
+                                "owner": {
+                                  "const": "specialist"
+                                },
+                                "next_action": {
+                                  "const": "assess_need"
+                                },
+                                "review_trigger": {
+                                  "const": "specialist_acceptance"
+                                }
+                              },
+                              "required": [
+                                "item",
+                                "state",
+                                "owner",
+                                "next_action",
+                                "review_trigger"
+                              ]
+                            }
+                          },
+                          "contact": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "state": {
+                                "type": "string",
+                                "enum": [
+                                  "available",
+                                  "unavailable",
+                                  "unknown"
+                                ]
+                              },
+                              "method_ref": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "maxLength": 2000
+                              },
+                              "method_version": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ],
+                                "minimum": 1
+                              },
+                              "reason": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "maxLength": 2000
+                              }
+                            },
+                            "required": [
+                              "state",
+                              "method_ref",
+                              "method_version",
+                              "reason"
+                            ]
+                          },
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "link_existing",
+                              "new"
+                            ]
+                          },
+                          "distinct_work_reason": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "maxLength": 2000
+                          },
+                          "customer_summary_confirmed": {
+                            "type": "boolean"
+                          },
+                          "route_version": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "route_basis": {
+                            "type": "string",
+                            "enum": [
+                              "applicable_policy",
+                              "manual_policy_review"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "statement_revision",
+                          "recognition",
+                          "recognized_transaction_id",
+                          "clarifications",
+                          "material_gaps",
+                          "contact",
+                          "mode",
+                          "distinct_work_reason",
+                          "customer_summary_confirmed",
+                          "route_version",
+                          "route_basis"
+                        ]
                       }
                     },
                     "required": [
@@ -4728,7 +5257,8 @@
                       "missing_evidence",
                       "requested_review",
                       "queue_id",
-                      "related_case_id"
+                      "related_case_id",
+                      "intake"
                     ]
                   }
                 },

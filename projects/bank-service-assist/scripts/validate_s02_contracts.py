@@ -31,7 +31,10 @@ def sample(schema, key=''):
         if 'null' in kind:return None
         kind=kind[0]
     if kind=='object':return {k:sample(v,k) for k,v in schema['properties'].items() if k in schema.get('required',[])}
-    if kind=='array':return [sample(schema['items']) for _ in range(schema.get('minItems',0))]
+    if kind=='array':
+        values=[sample(schema['items']) for _ in range(schema.get('minItems',0))]
+        if schema.get('uniqueItems') and schema['items'].get('type')=='string':values=[v+str(i) for i,v in enumerate(values)]
+        return values
     if kind=='integer':return schema.get('minimum',1)
     if kind=='boolean':return True
     if kind=='null':return None

@@ -1,13 +1,13 @@
 # Service Agent Portfolio development instructions
 
-Read README.md and docs/backlog/current-delivery.md first; use projects/bank-service-assist/docs/sprint-02/README.md for dated evidence. Current specification version: v0.4. RB-01–RB-06 are accepted as D-17–D-22; do not repeatedly ask for those decisions. RI-01–03 are accepted as D-23–D-25; D-26 prioritizes a small core with manual continuation before advanced automation. Numeric business targets and model budgets remain proposed.
+Read README.md and docs/backlog/current-delivery.md first; use projects/bank-service-assist/docs/sprint-02/README.md for dated evidence. Current tool contract version: v0.5 (initial-intake extension); continuation reference baseline v0.4. RB-01–RB-06 are accepted as D-17–D-22; do not repeatedly ask for those decisions. RI-01–03 are accepted as D-23–D-25; D-26 prioritizes a small core with manual continuation before advanced automation. Numeric business targets and model budgets remain proposed.
 
 - English public artifacts; conversational language follows the owner.
 - All bank/retail operational records and rules are explicitly simulated. Never invent measured benefits, a bank sponsor, executed tests or deployment.
 - Connect business requirements, rules, story IDs, implementation and UAT evidence.
 - Model tools are read/draft only. Trusted commands enforce identity, scope, versions, deterministic transitions and idempotency.
 - Keep raw/generated data, private material, secrets and local databases out of Git. Never import an entire personal workspace or its Git history.
-- Current runtime is local inbound lookup, related-case progress, deterministic handling-rule lookup and trusted manual customer-report capture under PR review. Read services/api/README.md and the S02 implementation evidence. Versioned investigation reports and human-reviewed notes have implemented business writes; do not describe Agent/referral/feedback/deployment or whole stories as implemented.
+- Current runtime is local inbound lookup, related-case progress, deterministic handling-rule lookup and trusted manual customer-report capture under PR review. Read services/api/README.md and the S02 implementation evidence. Versioned investigation reports, human-reviewed notes and initial specialist intake have implemented business writes. Agent, specialist results/feedback, continuation and deployment remain dependent work; do not mark whole stories accepted from these slices.
 - Start implementation with DEV-01/QA-01/OPS-01, then the B0 manual baseline. Preserve independent later voice and retail scope.
 - Use codex/<story-id>-<topic> branches and a reviewable PR. No force pushes to main.
 - Pure offline tooling remains Python 3.9 compatible; application runtime is planned for Python 3.12. Pin actual application dependencies after compatibility checks.

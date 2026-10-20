@@ -1,9 +1,9 @@
 # DEV-07 — Submit a reviewed specialist enquiry with accountable ownership
 
-Current S02 forecast: **S04**. Updated effort: Dev 4, BA 0.5, QA 1 person-days (5.5 total); dependencies DEV-06, BA-06. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.
+Current S02 forecast: **S04**. Updated effort: Dev 4, BA 0.5, QA 1 person-days (5.5 total); dependencies DEV-06, BA-06. This supersedes older forecast/estimate lines below. Contract version 0.5 initial intake implemented; owner UAT and downstream continuation pending.
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Initial-intake implementation under PR review; downstream continuation and owner UAT pending. Business decisions accepted only as listed; technical design/Ready gates pending.
 Forecast: S04 | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 4, BA 0.5, QA 1 person-days; total 5.5 (4–8.5), confidence medium. Not actual effort.
 
@@ -64,3 +64,9 @@ v0.4 payloads and the running read-only demo do not yet implement this workflow.
 ## Traceability
 
 [Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).
+
+## Current implementation update
+
+The [v0.5 runtime contract](runtime-contract.md) supersedes historical initial-intake
+implementation gates above. See [executed evidence](implementation-evidence.md).
+Post-intake supplementation/contact resolution and owner acceptance remain pending.

@@ -73,3 +73,10 @@ and role are server constrained; requested metadata cannot widen access.
 IDs and exact expected versions. [Runtime contract](../DEV-05/runtime-contract.md)
 defines applicability, conflict/gap handling and explicit unsupported scopes.
 Assigned outbound and model-delegation behavior remain pending.
+
+## v0.5 initial intake implementation
+
+DEV-07 extends create/edit referral schemas with typed recognition, statement
+revision, clarification states, material/contact gaps, route basis and duplicate-work
+decision. [Runtime/migration mapping](../DEV-07/runtime-contract.md) supersedes
+initial-intake missing-field notes; downstream continuation retains its own gates.

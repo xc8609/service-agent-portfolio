@@ -1,5 +1,5 @@
 {
-  "version": "0.4",
+  "version": "0.5",
   "kind": "Authored schema-only examples, not realistic bank records or held-out model evaluation",
   "examples": [
     {
@@ -106,7 +106,7 @@
       "payload": {
         "contact_id": "demo_01",
         "transaction_ids": [
-          "demo_01"
+          "demo_010"
         ]
       }
     },
@@ -116,7 +116,7 @@
       "payload": {
         "contact_id": "demo_01",
         "transaction_ids": [
-          "demo_01"
+          "demo_010"
         ],
         "role": "administrator"
       }
@@ -126,7 +126,7 @@
       "valid": false,
       "payload": {
         "transaction_ids": [
-          "demo_01"
+          "demo_010"
         ]
       }
     },
@@ -411,13 +411,51 @@
         "proposal": {
           "kind": "referral",
           "payload": {
-            "transaction_ids": [],
+            "transaction_ids": [
+              "demo_010",
+              "demo_011"
+            ],
             "concern": "demo_01",
             "checked_facts": [],
             "missing_evidence": [],
             "requested_review": "demo_01",
             "queue_id": "demo_01",
-            "related_case_id": null
+            "related_case_id": null,
+            "intake": {
+              "statement_revision": 1,
+              "recognition": "one_purchase_unresolved",
+              "recognized_transaction_id": null,
+              "clarifications": {
+                "purchase_date": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_count": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_amount": {
+                  "state": "answered",
+                  "value": null
+                },
+                "prior_contact": {
+                  "state": "answered",
+                  "value": null
+                }
+              },
+              "material_gaps": [],
+              "contact": {
+                "state": "available",
+                "method_ref": null,
+                "method_version": null,
+                "reason": null
+              },
+              "mode": "link_existing",
+              "distinct_work_reason": null,
+              "customer_summary_confirmed": true,
+              "route_version": 1,
+              "route_basis": "applicable_policy"
+            }
           }
         }
       }
@@ -433,13 +471,51 @@
         "proposal": {
           "kind": "referral",
           "payload": {
-            "transaction_ids": [],
+            "transaction_ids": [
+              "demo_010",
+              "demo_011"
+            ],
             "concern": "demo_01",
             "checked_facts": [],
             "missing_evidence": [],
             "requested_review": "demo_01",
             "queue_id": "demo_01",
-            "related_case_id": null
+            "related_case_id": null,
+            "intake": {
+              "statement_revision": 1,
+              "recognition": "one_purchase_unresolved",
+              "recognized_transaction_id": null,
+              "clarifications": {
+                "purchase_date": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_count": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_amount": {
+                  "state": "answered",
+                  "value": null
+                },
+                "prior_contact": {
+                  "state": "answered",
+                  "value": null
+                }
+              },
+              "material_gaps": [],
+              "contact": {
+                "state": "available",
+                "method_ref": null,
+                "method_version": null,
+                "reason": null
+              },
+              "mode": "link_existing",
+              "distinct_work_reason": null,
+              "customer_summary_confirmed": true,
+              "route_version": 1,
+              "route_basis": "applicable_policy"
+            }
           }
         },
         "role": "administrator"
@@ -455,13 +531,51 @@
         "proposal": {
           "kind": "referral",
           "payload": {
-            "transaction_ids": [],
+            "transaction_ids": [
+              "demo_010",
+              "demo_011"
+            ],
             "concern": "demo_01",
             "checked_facts": [],
             "missing_evidence": [],
             "requested_review": "demo_01",
             "queue_id": "demo_01",
-            "related_case_id": null
+            "related_case_id": null,
+            "intake": {
+              "statement_revision": 1,
+              "recognition": "one_purchase_unresolved",
+              "recognized_transaction_id": null,
+              "clarifications": {
+                "purchase_date": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_count": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_amount": {
+                  "state": "answered",
+                  "value": null
+                },
+                "prior_contact": {
+                  "state": "answered",
+                  "value": null
+                }
+              },
+              "material_gaps": [],
+              "contact": {
+                "state": "available",
+                "method_ref": null,
+                "method_version": null,
+                "reason": null
+              },
+              "mode": "link_existing",
+              "distinct_work_reason": null,
+              "customer_summary_confirmed": true,
+              "route_version": 1,
+              "route_basis": "applicable_policy"
+            }
           }
         }
       }
@@ -1143,13 +1257,51 @@
         "replacement": {
           "kind": "referral",
           "payload": {
-            "transaction_ids": [],
+            "transaction_ids": [
+              "demo_010",
+              "demo_011"
+            ],
             "concern": "demo_01",
             "checked_facts": [],
             "missing_evidence": [],
             "requested_review": "demo_01",
             "queue_id": "demo_01",
-            "related_case_id": null
+            "related_case_id": null,
+            "intake": {
+              "statement_revision": 1,
+              "recognition": "one_purchase_unresolved",
+              "recognized_transaction_id": null,
+              "clarifications": {
+                "purchase_date": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_count": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_amount": {
+                  "state": "answered",
+                  "value": null
+                },
+                "prior_contact": {
+                  "state": "answered",
+                  "value": null
+                }
+              },
+              "material_gaps": [],
+              "contact": {
+                "state": "available",
+                "method_ref": null,
+                "method_version": null,
+                "reason": null
+              },
+              "mode": "link_existing",
+              "distinct_work_reason": null,
+              "customer_summary_confirmed": true,
+              "route_version": 1,
+              "route_basis": "applicable_policy"
+            }
           }
         },
         "operation_key": "demo_01"
@@ -1166,13 +1318,51 @@
         "replacement": {
           "kind": "referral",
           "payload": {
-            "transaction_ids": [],
+            "transaction_ids": [
+              "demo_010",
+              "demo_011"
+            ],
             "concern": "demo_01",
             "checked_facts": [],
             "missing_evidence": [],
             "requested_review": "demo_01",
             "queue_id": "demo_01",
-            "related_case_id": null
+            "related_case_id": null,
+            "intake": {
+              "statement_revision": 1,
+              "recognition": "one_purchase_unresolved",
+              "recognized_transaction_id": null,
+              "clarifications": {
+                "purchase_date": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_count": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_amount": {
+                  "state": "answered",
+                  "value": null
+                },
+                "prior_contact": {
+                  "state": "answered",
+                  "value": null
+                }
+              },
+              "material_gaps": [],
+              "contact": {
+                "state": "available",
+                "method_ref": null,
+                "method_version": null,
+                "reason": null
+              },
+              "mode": "link_existing",
+              "distinct_work_reason": null,
+              "customer_summary_confirmed": true,
+              "route_version": 1,
+              "route_basis": "applicable_policy"
+            }
           }
         },
         "operation_key": "demo_01",
@@ -1189,13 +1379,51 @@
         "replacement": {
           "kind": "referral",
           "payload": {
-            "transaction_ids": [],
+            "transaction_ids": [
+              "demo_010",
+              "demo_011"
+            ],
             "concern": "demo_01",
             "checked_facts": [],
             "missing_evidence": [],
             "requested_review": "demo_01",
             "queue_id": "demo_01",
-            "related_case_id": null
+            "related_case_id": null,
+            "intake": {
+              "statement_revision": 1,
+              "recognition": "one_purchase_unresolved",
+              "recognized_transaction_id": null,
+              "clarifications": {
+                "purchase_date": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_count": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_amount": {
+                  "state": "answered",
+                  "value": null
+                },
+                "prior_contact": {
+                  "state": "answered",
+                  "value": null
+                }
+              },
+              "material_gaps": [],
+              "contact": {
+                "state": "available",
+                "method_ref": null,
+                "method_version": null,
+                "reason": null
+              },
+              "mode": "link_existing",
+              "distinct_work_reason": null,
+              "customer_summary_confirmed": true,
+              "route_version": 1,
+              "route_basis": "applicable_policy"
+            }
           }
         },
         "operation_key": "demo_01"
@@ -1224,13 +1452,51 @@
         "proposal": {
           "kind": "refund",
           "payload": {
-            "transaction_ids": [],
+            "transaction_ids": [
+              "demo_010",
+              "demo_011"
+            ],
             "concern": "demo_01",
             "checked_facts": [],
             "missing_evidence": [],
             "requested_review": "demo_01",
             "queue_id": "demo_01",
-            "related_case_id": null
+            "related_case_id": null,
+            "intake": {
+              "statement_revision": 1,
+              "recognition": "one_purchase_unresolved",
+              "recognized_transaction_id": null,
+              "clarifications": {
+                "purchase_date": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_count": {
+                  "state": "answered",
+                  "value": null
+                },
+                "purchase_amount": {
+                  "state": "answered",
+                  "value": null
+                },
+                "prior_contact": {
+                  "state": "answered",
+                  "value": null
+                }
+              },
+              "material_gaps": [],
+              "contact": {
+                "state": "available",
+                "method_ref": null,
+                "method_version": null,
+                "reason": null
+              },
+              "mode": "link_existing",
+              "distinct_work_reason": null,
+              "customer_summary_confirmed": true,
+              "route_version": 1,
+              "route_basis": "applicable_policy"
+            }
           }
         }
       }

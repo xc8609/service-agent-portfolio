@@ -30,6 +30,10 @@ CONTRACTS = json.loads(
 TOOLS = {t["name"]: t for t in CONTRACTS["tools"]}
 READ_TOOLS = ("get_contact_context", "search_transactions", "get_transaction_evidence")
 MESSAGES = {
+    "DUPLICATE_REVIEW_REQUIRED": (
+        "Related active work exists. Link it or review a distinct-work reason before submitting.",
+        409,
+    ),
     "IDEMPOTENCY_CONFLICT": (
         "This operation key already belongs to different reviewed content. Reload its receipt; do not overwrite it.",
         409,
@@ -560,12 +564,14 @@ def create_app(settings=None, clock=None):
         "approve_and_commit_proposal",
         "get_proposals",
         "prepare_note",
+        "prepare_referral",
+        "get_referrals",
     ):
         prefix = (
             "agent-tools"
             if name in ("create_proposal", "get_operation_status")
             else "workspace"
-            if name in ("get_proposals", "prepare_note")
+            if name in ("get_proposals", "prepare_note", "prepare_referral", "get_referrals")
             else "commands"
         )
         app.add_api_route(
