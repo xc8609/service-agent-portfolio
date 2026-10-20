@@ -92,7 +92,9 @@ def normalize_transactions(records, mapping, accounts, observed_at):
                 amount = r["amount"]
             else:
                 # Floating-point monetary values are ambiguous; use decimal strings.
-                if not isinstance(r["amount"], str) or len(r["amount"]) > 40:
+                if not isinstance(r["amount"], str) or not re.fullmatch(
+                    r"-?(?:0|[1-9][0-9]{0,18})(?:\.[0-9]{1,3})?", r["amount"]
+                ):
                     raise ValueError()
                 scaled = Decimal(r["amount"]) * (10**exponent)
                 if (

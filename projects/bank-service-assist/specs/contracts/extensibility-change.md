@@ -73,7 +73,7 @@ staging/UAT remain separately scheduled gates. Voice and retail scope are unchan
 
 ## Executed engineering evidence — 20 October 2026
 
-Python 3.12.14 / isolated PostgreSQL 16.2: **203 tests passed**, including 22 new
+Python 3.12.14 / isolated PostgreSQL 16.2: **204 tests passed**, including 23 new
 mapping/profile tests. The three protocol routes each exercise a successful draft
 and a simulated rate-limit failure through the application endpoint using mock HTTP.
 Five offline data tests, both SDD validators, publication/link checks and Ruff passed.

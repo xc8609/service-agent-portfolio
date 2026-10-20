@@ -38,6 +38,7 @@ def test_different_source_shapes_preserve_business_meaning_and_namespace():
         ("Revision", 0),
         ("Amount", 49.99),
         ("Amount", "49.991"),
+        ("Amount", "49.990000000000000000000000000000001"),
         ("Amount", "NaN"),
         ("Amount", "1e100"),
         ("Currency", "UNKNOWN"),

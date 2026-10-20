@@ -45,9 +45,14 @@ human effort study and owner UAT remain release gates. Voice/retail are later sc
 Tableau Desktop XML load errors. Desktop opened the workbook; refresh and layout
 acceptance remain partial.
 
-DEV-02/08/09 follow-up adds server-owned model selection/audit fingerprints and two
+[PR 15](https://github.com/xc8609/service-agent-portfolio/pull/15) adds server-owned model selection/audit fingerprints and two
 synthetic source-mapping previews. See [change scope and EXT-01–07 acceptance](../../projects/bank-service-assist/specs/contracts/extensibility-change.md).
-203 local PostgreSQL/API tests passed, including 22 mapping/profile cases; five
+204 local PostgreSQL/API tests passed, including 23 mapping/profile cases; five
 offline tests, SDD/publication checks and Ruff passed. No real bank connector,
 provider qualification, production identity or SDK runtime adoption is claimed.
 The review follows S04/S05; the original Sprint forecast is not actual effort.
+
+Trello comments verified on DEV-02, DEV-08, DEV-09, DEV-10 and S04 for these
+follow-ups; original story specifications remain versioned planning history. No
+card marked Done. PR 14 has four passing cloud checks. PR 15 CI tracks its latest
+head; local evidence is 204 tests including the precision-boundary regression.
