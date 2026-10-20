@@ -25,3 +25,16 @@ of unanswered contact, financial execution or invented customer evidence. Keep
 public story cards and execution evidence aligned with actual verified changes.
 
 Owner confirmed on 20 October: complete DEV-09 offline first; live model validation is deferred. No paid model calls are authorized by this execution pass.
+
+## Final integration review
+
+[PR 13](https://github.com/xc8609/service-agent-portfolio/pull/13) corrects DEV-13-AC04:
+published findings supersede interim progress tasks/commitments without losing overdue
+history. 181 PostgreSQL API tests passed. DEV-10 adds six metric tests to the prior
+174-test baseline; the integration regression adds one. The latest local demo runs
+these branches on localhost with synthetic data.
+
+Trello DEV-06–13 cards are verified in **Review and acceptance**, with per-story PR
+and execution comments. Nothing is marked Done or merged. DEV-10 Tableau native
+render/refresh is blocked by the locked Mac. Live model testing is owner-deferred;
+human effort study and owner UAT remain release gates. Voice/retail are later scope.
