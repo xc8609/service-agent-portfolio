@@ -1,9 +1,9 @@
 # DEV-08 — Run a bounded evidence agent across persisted workflow stages
 
-Current S02 forecast: **S05**. Updated effort: Dev 9, BA 1, QA 2.0 person-days (12.0 total); dependencies DEV-03, DEV-05, DEV-06, DEV-07, DEV-09, DEV-11, DEV-12, DEV-13, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.
+Current S02 forecast: **S05**. Updated effort: Dev 9, BA 1, QA 2.0 person-days (12.0 total); dependencies DEV-03, DEV-05, DEV-06, DEV-07, DEV-09, DEV-11, DEV-12, DEV-13, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; offline runtime implemented for PR review.
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Offline runtime implemented; owner UAT and live qualification pending. Business decisions accepted only as listed; technical design/Ready gates pending.
 Forecast: S05 | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 7, BA 1, QA 1.5 person-days; total 9.5 (7–14.5), confidence medium. Not actual effort.
 
@@ -45,3 +45,7 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 ## Traceability
 
 [Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).
+
+## Current offline delivery
+
+See [implemented runtime, executed tests and remaining gates](runtime-contract.md). Historical live-provider/streaming/effort-study acceptance is not marked complete.

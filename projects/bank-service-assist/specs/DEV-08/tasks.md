@@ -13,3 +13,7 @@ BANK-SDD-v0.2
 - [ ] Owner reviews demonstrated behavior and records acceptance.
 
 Each implementation slice must be at most five developer-days; DEV-08 now totals 9 developer-days and splits into runtime/tools, durable continuation and UI/integration slices of approximately 3 days each; v0.3 supersedes the older 3+4 estimate. Other listed stories are at most four developer-days before re-estimation. BA/QA estimates are separate. New stories are incremental scope, not hidden inside DEV-07.
+
+## Current offline delivery
+
+See [implemented runtime, executed tests and remaining gates](runtime-contract.md). Historical live-provider/streaming/effort-study acceptance is not marked complete.

@@ -15,3 +15,7 @@ Implementation: not started. Runtime tests: not executed. Actual reviewer: not y
 | DEV-08-AC07 | DEV-08-T07 | report correct completion, active checking time, corrections and known cost; no invented savings | Pending implementation | Not executed |
 
 Structural validation of specifications is reported separately in workflow-validation.json and does not pass these tests. Record environment, fixture/calendar/policy/provider versions, commands, actual output, defects and review decision when run.
+
+## Current offline delivery
+
+See [implemented runtime, executed tests and remaining gates](runtime-contract.md). Historical live-provider/streaming/effort-study acceptance is not marked complete.

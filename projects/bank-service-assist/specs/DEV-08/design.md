@@ -1,6 +1,6 @@
 # DEV-08 design
 
-BANK-SDD-v0.2 · Candidate architecture; no runtime implementation.
+BANK-SDD-v0.2 · Architecture baseline; offline runtime delivery is recorded below.
 
 Model-visible tools: get_contact_context, search_transactions, get_transaction_evidence, get_case_snapshot, search_policy, get_policy_section, get_contact_attempts, get_service_targets, create_proposal, get_operation_status. Human/system commands and complete schemas are in [shared contracts](../contracts/agent-tools.md).
 
@@ -33,3 +33,7 @@ Use the [runtime module boundary](../../../../services/api/bank_api/agent/README
 and [architecture map](../../../../docs/architecture.md). Durable continuation
 is later work within this story; do not mark the full story Done from an initial
 assistant demo. Provider-neutral design does not prove provider compatibility.
+
+## Current offline delivery
+
+See [implemented runtime, executed tests and remaining gates](runtime-contract.md). Historical live-provider/streaming/effort-study acceptance is not marked complete.

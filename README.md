@@ -16,15 +16,17 @@ evidence and guidance. Editable service notes require human approval and return 
 receipt, with source-version checks and safe retries. Reviewed specialist enquiries
 link existing work or create justified queued work, preserving material/contact gaps.
 Specialists can publish findings and customer service can claim work, review feedback
-and record a newly verified synthetic callback. **Next:** continuation controls and
-bounded Agent assistance. No live bank connection, implemented Agent or measured savings.
+and record a newly verified synthetic callback. Contact plans, lead review, overdue
+progress and parallel objection/complaint work preserve ownership and history. A bounded
+offline Agent gathers evidence and creates reviewable drafts; live models remain
+unqualified and disabled. No live bank connection or measured savings.
 
 ## Repository map
 
 ```text
 apps/web/                         React/TypeScript workspace + browser tests
 services/api/                     FastAPI, PostgreSQL migrations + API tests
-  bank_api/agent/                 Agent module boundary (design only today)
+  bank_api/agent/                 Bounded offline runtime + provider adapters
 projects/bank-service-assist/
   docs/                          Business analysis, decisions + Sprint evidence
   specs/<STORY-ID>/               spec, design, tasks, acceptance
@@ -42,7 +44,7 @@ docs/decisions/                   Repository/architecture decisions
 [Architecture & Agent boundary](docs/architecture.md) ·
 [Trello](https://trello.com/b/wtNhuN0q/ai-agent)
 
-## Run the manual demo
+## Run the demo
 
 Requires Docker Compose. From the repository root:
 

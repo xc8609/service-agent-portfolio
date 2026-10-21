@@ -16,6 +16,5 @@ Checks from root: python -m pytest; python projects/bank-service-assist/scripts/
 
 Structure: docs/backlog owns story catalogue and scheduling; project docs own BA
 evidence and decisions; specs/<ID> owns requirement/design/tasks/acceptance;
-services/api and apps/web own runtime code. The Agent module currently contains
-design guidance only. Preserve existing links and stable story IDs; do not create
+services/api and apps/web own runtime code. The Agent module now contains a bounded offline runtime and provider adapters; live providers remain disabled/unqualified. Preserve existing links and stable story IDs; do not create
 additional services or placeholder provider implementations solely for structure.
