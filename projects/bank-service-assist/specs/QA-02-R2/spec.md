@@ -27,3 +27,11 @@ Deliver ten visible development cases, independent reviewer observations, a Pyth
 offline scoring CLI and regressions. No new hold-out, model call, runtime integration,
 financial action or complete QA-02 acceptance. [Design](design.md), [tasks](tasks.md),
 [acceptance](acceptance.md), [rubric and cases](../../evaluation/r2/README.md).
+
+## Batch review deliverable
+
+[Candidate answer matrix and examples](../../evaluation/r2/owner-review.md) cover all ten
+development cases. [Gate proposal](../../evaluation/r2/adoption-proposal.md) defines
+quality, critical, baseline-value and scoring-review thresholds, run counts, evidence
+requirements and stop decisions. R2-A01/R2-G01 require explicit owner review; these
+documents do not freeze the corpus or implement gate automation.

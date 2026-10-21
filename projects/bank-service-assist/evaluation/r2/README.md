@@ -6,6 +6,12 @@ visible. Their families and paraphrases must be excluded from any future hidden
 hold-out. No independent case authorship, case-by-case owner adjudication, model run
 or business saving is claimed. Existing pilot-v1 and review-v2 files remain unchanged.
 
+## Batch owner review
+
+Read the [ten-case answer packet](owner-review.md) and [proposed evaluation gates](adoption-proposal.md)
+together. R2-A01 and R2-G01 remain pending; R2-S01–04 are already confirmed.
+The packet contains authored examples and candidate thresholds, not model results.
+
 ## What is delivered
 
 [development.json](development.json) contains ten cases in six development families:
