@@ -15,8 +15,8 @@ suite is engineering evidence, not business-owner UAT or production qualificatio
 | DEV-07 | Reviewed specialist referral and typed intake | [PR 6](https://github.com/xc8609/service-agent-portfolio/pull/6); four cloud checks passed; downstream follow-up in DEV-11–13 |
 | DEV-11 | Specialist result and owned feedback | [PR 7](https://github.com/xc8609/service-agent-portfolio/pull/7); four cloud checks passed |
 | DEV-12 | Contact plans, attempts and closure guards | [PR 8](https://github.com/xc8609/service-agent-portfolio/pull/8); four cloud checks passed |
-| DEV-13 | Overdue work, objection/review and complaint | Implemented; PR preparation |
-| DEV-09 | Provider boundary and qualification | Offline implementation independent; live qualification needs approved credentials/budget |
+| DEV-13 | Overdue work, objection/review and complaint | [PR 9](https://github.com/xc8609/service-agent-portfolio/pull/9); cloud checks pending |
+| DEV-09 | Provider boundary and qualification | Offline adapters implemented; live qualification explicitly deferred |
 | DEV-08 | Bounded persisted Agent | After domain tools and DEV-09 |
 | DEV-10 | Evaluation marts and Tableau | After event-producing runtime |
 

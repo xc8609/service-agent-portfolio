@@ -1,6 +1,6 @@
 # DEV-09 — Qualify model runtime and provider adapters with a bounded spike
 
-BANK-S02-v0.4 · Detailed specification candidate; implementation not started.
+BANK-S02-v0.4 · Offline implementation delivered for PR review; live qualification deferred by owner.
 Forecast: S04 | Release: B1 | Estimate: Dev 4, BA 0.25, QA 1 person-days. Provisional until technical review.
 
 | AC | Test | Expected outcome | Actual evidence | Status |
@@ -14,3 +14,7 @@ Forecast: S04 | Release: B1 | Estimate: Dev 4, BA 0.25, QA 1 person-days. Provis
 | DEV-09-AC07 | DEV-09-T07 | route remains unqualified; DeepSeek/internal compatibility is not inferred from API similarity | Pending implementation | Not executed |
 
 Record environment, commit, fixture/calendar/provider versions, command, actual result, defects and reviewer. Artifact checks are separate from runtime acceptance.
+
+## Offline delivery decision
+
+See [implemented boundary and remaining qualification gates](runtime-contract.md). Live tests are not executed; no public provider is enabled.

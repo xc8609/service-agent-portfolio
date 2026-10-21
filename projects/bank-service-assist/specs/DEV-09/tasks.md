@@ -1,6 +1,6 @@
 # DEV-09 — Qualify model runtime and provider adapters with a bounded spike
 
-BANK-S02-v0.4 · Detailed specification candidate; implementation not started.
+BANK-S02-v0.4 · Offline implementation delivered for PR review; live qualification deferred by owner.
 Forecast: S04 | Release: B1 | Estimate: Dev 4, BA 0.25, QA 1 person-days. Provisional until technical review.
 
 - [x] Write detailed specification and linked expected outcomes.
@@ -16,3 +16,7 @@ Forecast: S04 | Release: B1 | Estimate: Dev 4, BA 0.25, QA 1 person-days. Provis
 - [ ] Implement and record DEV-09-T06: prepare request.
 - [ ] Implement and record DEV-09-T07: select route for B1.
 - [ ] Record runtime defects, re-test and owner UAT/release review; do not mark Done from artifact validation.
+
+## Offline delivery decision
+
+See [implemented boundary and remaining qualification gates](runtime-contract.md). Live tests are not executed; no public provider is enabled.
