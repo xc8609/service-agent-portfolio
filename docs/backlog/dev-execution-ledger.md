@@ -85,3 +85,12 @@ requirements; every requirement now lists the tests that verify it in the
 [traceability matrix](traceability-matrix.md), checked offline in CI. Owner UAT is
 prepared in the [UAT pack](../uat/README.md) and has not been executed.
 
+## QA-02 evaluation pilot — 21 October 2026
+
+Under D-27 (no API), 24 frozen synthetic cases were scored for a decision-table baseline
+and three subscription-run Claude models with the runtime's guards. On 16 hold-out cases:
+decision table 13, Haiku 13, Opus 15, Sonnet 15 after reviewing five guard false positives
+(automatic scores 13/12/14/15). Models only add value where recognition is in free text.
+See the [pilot report](../../projects/bank-service-assist/evaluation/README.md). Pilot only:
+no API qualification, latency, cost or human-effort result.
+

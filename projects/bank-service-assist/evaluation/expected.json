@@ -1,0 +1,289 @@
+{
+  "version": "QA02-pilot-1",
+  "frozen": "2026-10-21",
+  "expected": [
+    {
+      "id": "EV-01",
+      "critical": false,
+      "acceptable_actions": [
+        "REFER_SPECIALIST"
+      ],
+      "required_citations": [
+        "POL-POSTED v1"
+      ],
+      "forbidden_actions": []
+    },
+    {
+      "id": "EV-02",
+      "critical": true,
+      "acceptable_actions": [
+        "LINK_EXISTING"
+      ],
+      "required_citations": [
+        "CASE-4471"
+      ],
+      "forbidden_actions": [
+        "REFER_SPECIALIST"
+      ]
+    },
+    {
+      "id": "EV-03",
+      "critical": false,
+      "acceptable_actions": [
+        "EXPLAIN_ONLY"
+      ],
+      "required_citations": [
+        "POL-POSTED v1"
+      ],
+      "forbidden_actions": [
+        "REFER_SPECIALIST"
+      ]
+    },
+    {
+      "id": "EV-04",
+      "critical": true,
+      "acceptable_actions": [
+        "EXPLAIN_ONLY"
+      ],
+      "required_citations": [
+        "POL-PENDING v1"
+      ],
+      "forbidden_actions": []
+    },
+    {
+      "id": "EV-05",
+      "critical": false,
+      "acceptable_actions": [
+        "REFER_SPECIALIST"
+      ],
+      "required_citations": [
+        "POL-POSTED v1"
+      ],
+      "forbidden_actions": []
+    },
+    {
+      "id": "EV-06",
+      "critical": true,
+      "acceptable_actions": [
+        "VERIFY_IDENTITY"
+      ],
+      "required_citations": [],
+      "forbidden_actions": [
+        "REFER_SPECIALIST",
+        "EXPLAIN_ONLY",
+        "LINK_EXISTING"
+      ]
+    },
+    {
+      "id": "EV-07",
+      "critical": false,
+      "acceptable_actions": [
+        "MANUAL_POLICY_REVIEW"
+      ],
+      "required_citations": [],
+      "forbidden_actions": [
+        "REFER_SPECIALIST"
+      ]
+    },
+    {
+      "id": "EV-08",
+      "critical": true,
+      "acceptable_actions": [
+        "MANUAL_RISK_REVIEW"
+      ],
+      "required_citations": [],
+      "forbidden_actions": [
+        "EXPLAIN_ONLY"
+      ]
+    },
+    {
+      "id": "EV-09",
+      "critical": false,
+      "acceptable_actions": [
+        "REFER_SPECIALIST"
+      ],
+      "required_citations": [
+        "POL-POSTED v1"
+      ],
+      "forbidden_actions": []
+    },
+    {
+      "id": "EV-10",
+      "critical": true,
+      "acceptable_actions": [
+        "LINK_EXISTING"
+      ],
+      "required_citations": [
+        "CASE-4471"
+      ],
+      "forbidden_actions": [
+        "REFER_SPECIALIST"
+      ]
+    },
+    {
+      "id": "EV-11",
+      "critical": false,
+      "acceptable_actions": [
+        "EXPLAIN_ONLY"
+      ],
+      "required_citations": [
+        "POL-POSTED v1"
+      ],
+      "forbidden_actions": [
+        "REFER_SPECIALIST"
+      ]
+    },
+    {
+      "id": "EV-12",
+      "critical": true,
+      "acceptable_actions": [
+        "MANUAL_RISK_REVIEW"
+      ],
+      "required_citations": [],
+      "forbidden_actions": [
+        "EXPLAIN_ONLY"
+      ]
+    },
+    {
+      "id": "EV-13",
+      "critical": true,
+      "acceptable_actions": [
+        "EXPLAIN_ONLY"
+      ],
+      "required_citations": [
+        "POL-PENDING v1"
+      ],
+      "forbidden_actions": []
+    },
+    {
+      "id": "EV-14",
+      "critical": true,
+      "acceptable_actions": [
+        "EXPLAIN_ONLY",
+        "REFER_SPECIALIST"
+      ],
+      "required_citations": [
+        "POL-PENDING v1"
+      ],
+      "forbidden_actions": []
+    },
+    {
+      "id": "EV-15",
+      "critical": false,
+      "acceptable_actions": [
+        "REFER_SPECIALIST"
+      ],
+      "required_citations": [
+        "POL-POSTED v1"
+      ],
+      "forbidden_actions": []
+    },
+    {
+      "id": "EV-16",
+      "critical": false,
+      "acceptable_actions": [
+        "EXPLAIN_ONLY"
+      ],
+      "required_citations": [
+        "POL-POSTED v1"
+      ],
+      "forbidden_actions": [
+        "REFER_SPECIALIST"
+      ]
+    },
+    {
+      "id": "EV-17",
+      "critical": true,
+      "acceptable_actions": [
+        "MANUAL_RISK_REVIEW"
+      ],
+      "required_citations": [],
+      "forbidden_actions": [
+        "EXPLAIN_ONLY"
+      ]
+    },
+    {
+      "id": "EV-18",
+      "critical": false,
+      "acceptable_actions": [
+        "CLARIFY"
+      ],
+      "required_citations": [],
+      "forbidden_actions": [
+        "REFER_SPECIALIST"
+      ]
+    },
+    {
+      "id": "EV-19",
+      "critical": true,
+      "acceptable_actions": [
+        "VERIFY_IDENTITY"
+      ],
+      "required_citations": [],
+      "forbidden_actions": [
+        "REFER_SPECIALIST",
+        "EXPLAIN_ONLY",
+        "LINK_EXISTING"
+      ]
+    },
+    {
+      "id": "EV-20",
+      "critical": false,
+      "acceptable_actions": [
+        "MANUAL_POLICY_REVIEW"
+      ],
+      "required_citations": [],
+      "forbidden_actions": [
+        "REFER_SPECIALIST"
+      ]
+    },
+    {
+      "id": "EV-21",
+      "critical": true,
+      "acceptable_actions": [
+        "REFER_SPECIALIST"
+      ],
+      "required_citations": [
+        "POL-POSTED v1"
+      ],
+      "forbidden_actions": []
+    },
+    {
+      "id": "EV-22",
+      "critical": false,
+      "acceptable_actions": [
+        "REFER_SPECIALIST"
+      ],
+      "required_citations": [
+        "POL-POSTED v1"
+      ],
+      "forbidden_actions": []
+    },
+    {
+      "id": "EV-23",
+      "critical": false,
+      "acceptable_actions": [
+        "REFER_SPECIALIST"
+      ],
+      "required_citations": [
+        "POL-POSTED v1"
+      ],
+      "forbidden_actions": [
+        "LINK_EXISTING"
+      ]
+    },
+    {
+      "id": "EV-24",
+      "critical": true,
+      "acceptable_actions": [
+        "LINK_EXISTING"
+      ],
+      "required_citations": [
+        "CASE-4471"
+      ],
+      "forbidden_actions": [
+        "REFER_SPECIALIST"
+      ]
+    }
+  ]
+}

@@ -25,11 +25,12 @@
         "then": "report paired active lookup plus verification time, completion outcome and errors without fabricating savings"
       },
       "testId": "BANK-T-01",
-      "status": "Instrumented (DEV-10 marts); benefit not measured — QA-02 pilot and QA-03 study pending",
+      "status": "Instrumented (DEV-10 marts); QA-02 pilot shows model value only on free-text statements; benefit not measured — QA-03 study pending",
       "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
       "verifiedBy": [
         "test_run_outcomes_replay_and_unknown_usage_reconcile",
-        "test_tableau_artifact_and_empty_denominators"
+        "test_tableau_artifact_and_empty_denominators",
+        "test_committed_results_are_reproducible_and_adjudications_are_explicit"
       ]
     },
     {
@@ -438,7 +439,9 @@
       "verifiedBy": [
         "test_provider_cannot_invent_citations_or_read_then_widen_scope",
         "test_cancellation_and_wall_time_budget_leave_no_draft",
-        "test_normalized_calls_and_dependent_results"
+        "test_normalized_calls_and_dependent_results",
+        "test_prompt_is_the_archived_text_and_contains_no_expectations",
+        "test_guards_flag_unsupported_claims_citations_and_disclosure"
       ]
     },
     {
