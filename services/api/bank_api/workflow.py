@@ -24,6 +24,19 @@ VER = {"type": "integer", "minimum": 1}
 PAIR = {"case_id": ID, "work_item_id": ID}
 KEY = {"operation_key": {"type": "string", "minLength": 1, "maxLength": 128}}
 SCHEMAS = {
+    "reserve_callback": obj(
+        {
+            **PAIR,
+            "expected_work_version": VER,
+            "contact_plan_id": ID,
+            "scheduled_at": {"type": "string", "format": "date-time"},
+            **KEY,
+        }
+    ),
+    "evaluate_contact_window": obj({**PAIR, "expected_work_version": VER, **KEY}),
+    "close_case": obj(
+        {**PAIR, "expected_work_version": VER, "expected_case_version": VER, "reason": TEXT, **KEY}
+    ),
     "list_work": obj({}),
     "get_work_detail": obj(PAIR),
     "open_callback": obj({**PAIR, "expected_work_version": VER, **KEY}),
@@ -238,6 +251,25 @@ def detail(conn, w):
         "material_requests": requests,
         "followup": followup,
         "required_actions": actions,
+        "plans": conn.execute(
+            "SELECT * FROM contact_plans WHERE work_item_id=%s ORDER BY created_at,id", (w["id"],)
+        ).fetchall(),
+        "attempts": conn.execute(
+            "SELECT * FROM callback_attempts WHERE work_item_id=%s ORDER BY occurred_at,id",
+            (w["id"],),
+        ).fetchall(),
+        "reservations": conn.execute(
+            "SELECT * FROM contact_reservations WHERE case_id=%s ORDER BY scheduled_at",
+            (w["case_id"],),
+        ).fetchall(),
+        "lead_decisions": conn.execute(
+            "SELECT * FROM lead_review_decisions WHERE work_item_id=%s ORDER BY decided_at",
+            (w["id"],),
+        ).fetchall(),
+        "eligible_owners": conn.execute(
+            "SELECT m.principal_id AS id,m.role FROM queue_memberships m WHERE m.queue_id=%s AND m.active AND m.role IN ('feedback_representative','queue_lead')",
+            (w["queue_id"],),
+        ).fetchall(),
         "contact_methods": conn.execute(
             "SELECT id,masked_ref,version FROM customer_contact_methods WHERE customer_id=%s AND active ORDER BY id",
             (w["customer_id"],),
@@ -297,8 +329,11 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                         else:
                             wid, cid = payload["work_item_id"], payload["case_id"]
                         claiming = name in ("accept_specialist_work", "claim_feedback_task")
+                        lead = name == "decide_contact_continuation"
                         roles = (
-                            ("specialist",)
+                            ("queue_lead",)
+                            if lead
+                            else ("specialist",)
                             if name
                             in (
                                 "accept_specialist_work",
@@ -307,10 +342,23 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                             )
                             else ("feedback_representative",)
                             if name not in ("get_work_detail",)
-                            else ("specialist", "feedback_representative")
+                            else ("specialist", "feedback_representative", "queue_lead")
                         )
                         w = work_scope(
-                            conn, actor, str(wid), str(cid), roles, assigned=not claiming
+                            conn,
+                            actor,
+                            str(wid),
+                            str(cid),
+                            roles,
+                            assigned=not claiming
+                            and not lead
+                            and not (
+                                name == "get_work_detail"
+                                and conn.execute(
+                                    "SELECT 1 FROM queue_memberships WHERE principal_id=%s AND role='queue_lead' AND active AND queue_id=(SELECT queue_id FROM work_items WHERE id=%s)",
+                                    (actor, as_uuid(str(wid))),
+                                ).fetchone()
+                            ),
                         )
                         if claiming and w["assignee_id"] not in (None, actor):
                             fail("FORBIDDEN_OR_NOT_FOUND")

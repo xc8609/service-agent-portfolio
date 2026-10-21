@@ -5,15 +5,16 @@ from importlib.resources import files
 from zoneinfo import ZoneInfo
 
 VERSION = "demo-calendar-v1"
+HOLIDAYS = ("2026-10-12",)  # Explicit synthetic fixture; not a statutory calendar.
 with files("tzdata.zoneinfo").joinpath("America", "Winnipeg").open("rb") as f:
     ZONE = ZoneInfo.from_file(f, key="America/Winnipeg")
 
 
-def service_date(day, holidays=()):
+def service_date(day, holidays=HOLIDAYS):
     return day.weekday() < 5 and day.isoformat() not in holidays
 
 
-def add_hours(start, hours, holidays=()):
+def add_hours(start, hours, holidays=HOLIDAYS):
     current = start.astimezone(ZONE)
     remaining = timedelta(hours=hours)
     while remaining > timedelta(0):
@@ -30,7 +31,7 @@ def add_hours(start, hours, holidays=()):
     return current
 
 
-def contact_window(first, holidays=()):
+def contact_window(first, holidays=HOLIDAYS):
     day = first.astimezone(ZONE).date()
     count = 0
     while True:

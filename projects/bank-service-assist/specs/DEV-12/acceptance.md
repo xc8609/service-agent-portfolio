@@ -2,7 +2,7 @@
 
 BANK-SDD-v0.2
 
-Implementation: not started. Runtime tests: not executed. Actual reviewer: not yet assigned for implementation acceptance. No bank approval is implied.
+Implementation: delivered for PR review. Runtime tests: see [current delivery evidence](runtime-contract.md). Actual reviewer: not yet assigned for implementation acceptance. No bank approval is implied.
 
 | AC | Planned test | Expected outcome | Actual / evidence | Status |
 |---|---|---|---|---|
@@ -15,3 +15,7 @@ Implementation: not started. Runtime tests: not executed. Actual reviewer: not y
 | DEV-12-AC07 | DEV-12-T07 | reject an agent-only fourth attempt, expired-plan contact or automatic closure; allow further contact only under a distinct current lead-approved plan, preserving all history | Pending implementation | Not executed |
 
 Structural validation of specifications is reported separately in workflow-validation.json and does not pass these tests. Record environment, fixture/calendar/policy/provider versions, commands, actual output, defects and review decision when run.
+
+## Current delivery
+
+See [runtime contract and executed checks](runtime-contract.md). Historical planned-test wording above is retained for traceability; owner UAT remains pending.

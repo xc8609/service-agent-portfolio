@@ -1,6 +1,6 @@
 # DEV-12 design
 
-BANK-SDD-v0.2 · Candidate architecture; no runtime implementation.
+BANK-SDD-v0.2 · Architecture baseline; implemented boundary and evidence in [runtime-contract.md](runtime-contract.md).
 
 Model-visible tools: get_case_snapshot, get_contact_attempts, get_service_targets, create_proposal, get_operation_status. Human/system commands and complete schemas are in [shared contracts](../contracts/agent-tools.md).
 
@@ -50,3 +50,7 @@ All fixtures use synthetic records and configured calendar data. They are specif
 After contact quota or window exhaustion, the responsible lead may approve a reasoned new contact plan or a review hold with a named owner and review date. Preserve all original attempts, deadlines and approval history. Never reset history or mark the case resolved merely because the customer did not answer. Agent suggestions cannot authorize the new plan or hold.
 
 See [continuation addendum](../contracts/continuation-addendum.md). Ordinary retry eligibility remains bounded by D-16/D-19; exceptional contact requires a separate approved plan. Plan quota/window limits must be explicit, never inferred as an automatic fresh three-call allowance.
+
+## Current delivery
+
+See [runtime contract and executed checks](runtime-contract.md). Historical planned-test wording above is retained for traceability; owner UAT remains pending.

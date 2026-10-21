@@ -14,6 +14,15 @@ from .workflow import bump_case, callback_context, command_result, latest_result
 def execute(conn, name, p, w, actor, operation, request_id, now):
     from .app import as_uuid, fail
 
+    if name in (
+        "reserve_callback",
+        "evaluate_contact_window",
+        "close_case",
+        "decide_contact_continuation",
+    ):
+        from .continuation import execute as continuation
+
+        return continuation(conn, name, p, w, actor, operation, request_id, now)
     if name in ("accept_specialist_work", "claim_feedback_task"):
         allowed = (
             ("specialist_investigation", "specialist_rereview")
@@ -47,6 +56,9 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
         if w["kind"] not in ("specialist_investigation", "specialist_rereview") or w[
             "status"
         ] not in ("investigating", "awaiting_documents", "completed"):
+            fail("CONFLICT")
+        # A closed case reopens only through a captured customer objection (ST-13).
+        if w["case_status"] == "closed":
             fail("CONFLICT")
         if (
             not p["approved_customer_explanation"].strip()
@@ -109,6 +121,12 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
         conn.execute(
             "UPDATE work_items SET status='completed',version=version+1 WHERE id=%s", (w["id"],)
         )
+        # The specialist decided on the available evidence. Outstanding material requests
+        # are superseded, not deleted: requests and follow-up entries remain in history.
+        conn.execute(
+            "UPDATE work_items SET status='cancelled',version=version+1 WHERE parent_work_id=%s AND kind='material_followup' AND status NOT IN ('completed','cancelled')",
+            (w["id"],),
+        )
         feedback = conn.execute(
             "SELECT * FROM work_items WHERE case_id=%s AND kind='customer_feedback'",
             (w["case_id"],),
@@ -167,6 +185,9 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
         ).fetchone()
         if gaps:
             fail("CONTACT_GAP")
+        from .continuation import eligibility
+
+        eligibility(conn, w, plan, now, now, preparing=True)
         cid = uuid4()
         conn.execute(
             "INSERT INTO contacts(id,customer_id,actor_id,kind,status,opened_at,version) VALUES (%s,%s,%s,'callback','open',%s,1)",
@@ -281,6 +302,10 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
             "INSERT INTO evidence_requests VALUES (%s,%s,%s,%s,%s,%s,%s)",
             (rid, w["case_id"], w["id"], fid, p["question"], actor, now),
         )
+        conn.execute(
+            "UPDATE work_items SET status='awaiting_documents',version=version+1 WHERE id=%s",
+            (w["id"],),
+        )
         event, _ = bump_case(
             conn,
             w,
@@ -306,7 +331,9 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
                 fail("FORBIDDEN_OR_NOT_FOUND")
         elif p["method_ref"] is not None:
             fail("VALIDATION_ERROR")
-        resolved = p["state"] in ("received", "contact_resolved")
+        # Material follow-up ends with the customer's answer (received, unavailable or
+        # declined); the specialist then decides. An unreachable contact stays owned.
+        resolved = w["kind"] == "material_followup" or p["state"] == "contact_resolved"
         if w["kind"] == "contact_resolution" and p["state"] == "received":
             fail("VALIDATION_ERROR")
         eid = uuid4()
@@ -328,6 +355,12 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
             "UPDATE work_items SET status=%s,version=version+1 WHERE id=%s",
             ("completed" if resolved else "assigned", w["id"]),
         )
+        if w["kind"] == "material_followup":
+            conn.execute(
+                """UPDATE work_items SET status='investigating',version=version+1 WHERE id=%s AND status='awaiting_documents'
+                AND NOT EXISTS(SELECT 1 FROM work_items m WHERE m.parent_work_id=%s AND m.kind='material_followup' AND m.status NOT IN ('completed','cancelled'))""",
+                (w["parent_work_id"], w["parent_work_id"]),
+            )
         event, _ = bump_case(
             conn,
             w,
