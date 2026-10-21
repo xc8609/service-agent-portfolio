@@ -49,7 +49,8 @@ plan segments, and check unavailable cost/ROI before publishing any screenshot.
 | Terminal latency | finished minus started; unfinished excluded from mean and shown as missing; not human handling time |
 | Missing usage / cost | Missing usage reported; cost unavailable until a qualified pricing/usage source exists |
 | Proposal disposition | One proposal ID; committed current payload compared to first revision; multiple edits do not multiply decisions |
-| Accepted proportion | Committed / (committed + rejected); pending excluded and separately shown; no denominator yields blank |
+| Accepted proportion | Committed / (committed + rejected); pending excluded and separately shown; no denominator yields blank. `reject_proposal` records an explicit human decline with a reason |
+| Proposal origin | `agent` = created by a bounded Assistant run (`agent-draft:` operation); `staff` = representative-authored. Agent-draft acceptance is reported separately and never mixed with manual drafting |
 | Recorded outcomes | All persisted callback outcomes, including never-dialed faults |
 | Quota-counted calls | Authoritative counts_toward_limit; separate initial and lead-approved plans |
 | Retained window misses | Window expired without a non-anomalous verified contact by that deadline; subsequent plans cannot erase it |

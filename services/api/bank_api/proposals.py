@@ -195,11 +195,32 @@ def dispatch_proposals(settings, name, payload, authorization, request_id, now):
                                 "uniqueItems": True,
                                 "items": {"type": "string", "format": "uuid"},
                             }
+                    elif name == "reject_proposal":
+                        schema = {
+                            "type": "object",
+                            "additionalProperties": False,
+                            "required": [
+                                "proposal_id",
+                                "expected_proposal_version",
+                                "reason",
+                                "operation_key",
+                            ],
+                            "properties": {
+                                "proposal_id": {"type": "string", "format": "uuid"},
+                                "expected_proposal_version": {"type": "integer", "minimum": 1},
+                                "reason": {"type": "string", "minLength": 1, "maxLength": 2000},
+                                "operation_key": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 128,
+                                },
+                            },
+                        }
                     else:
                         schema = registry()[name]["input_schema"]
                     validate(schema, payload)
                     proposal = None
-                    if name in ("edit_proposal", "approve_and_commit_proposal"):
+                    if name in ("edit_proposal", "approve_and_commit_proposal", "reject_proposal"):
                         proposal = conn.execute(
                             "SELECT * FROM proposals WHERE id=%s AND author_ref=%s",
                             (as_uuid(payload["proposal_id"]), str(actor)),
@@ -299,6 +320,29 @@ def dispatch_proposals(settings, name, payload, authorization, request_id, now):
                         receipt, operation = replay(conn, actor, contact["id"], name, payload)
                         if receipt:
                             result = receipt
+                        elif name == "reject_proposal":
+                            # A human may always decline a draft, including one whose evidence
+                            # went stale. Nothing is committed; the reason stays in the receipt.
+                            if (
+                                proposal["status"] != "draft"
+                                or proposal["version"] != payload["expected_proposal_version"]
+                            ):
+                                fail("CONFLICT")
+                            if not payload["reason"].strip():
+                                fail("VALIDATION_ERROR")
+                            conn.execute(
+                                "UPDATE proposals SET status='rejected' WHERE id=%s",
+                                (proposal["id"],),
+                            )
+                            result = {
+                                "data": {
+                                    "proposal_id": str(proposal["id"]),
+                                    "version": proposal["version"],
+                                    "status": "rejected",
+                                    "reason": payload["reason"],
+                                },
+                                "request_id": request_id,
+                            }
                         elif name == "create_proposal":
                             item = payload["proposal"]
                             refs = payload["source_refs"]

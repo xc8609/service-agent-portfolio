@@ -10,6 +10,32 @@ from .proposals import unsupported_claims
 from .workflow import bump_case, callback_context, command_result, proof, result_refs
 
 
+def inbound_objection_scope(conn, session, p, now):
+    """A verified inbound contact may dispute a communicated finding on its own case."""
+    from .app import as_uuid, fail, scope
+    from .case_lookup import read_case
+
+    contact, cards = scope(conn, session, p["contact_id"], now)
+    # Same customer, card scope and consistent timeline as the inbound case read.
+    read_case(conn, as_uuid(p["case_id"]), contact, cards)
+    w = conn.execute(
+        """SELECT w.*,c.customer_id,c.origin_contact_id,c.status AS case_status,c.version AS case_version,
+        c.timeline_sequence,c.concern_code,c.public_reference,q.name AS queue_name FROM work_items w
+        JOIN cases c ON c.id=w.case_id JOIN service_queues q ON q.id=w.queue_id
+        WHERE c.id=%s AND c.customer_id=%s AND w.kind='customer_feedback'""",
+        (as_uuid(p["case_id"]), contact["customer_id"]),
+    ).fetchone()
+    if (
+        not w
+        or not conn.execute(
+            "SELECT 1 FROM investigation_results WHERE case_id=%s", (w["case_id"],)
+        ).fetchone()
+    ):
+        # No finding has been published yet; there is no outcome to dispute.
+        fail("CONFLICT")
+    return {**w, "inbound_contact": contact, "inbound_accounts": [c["id"] for c in cards]}
+
+
 def complaint(conn, w, objection, actor, now):
     from .app import fail
     from .referrals import route_config
@@ -128,17 +154,24 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
             "request_id": request_id,
         }
     if name == "capture_customer_objection":
-        if w["kind"] != "customer_feedback" or w["case_status"] == "closed":
+        if w["kind"] != "customer_feedback":
             fail("CONFLICT")
-        contact = callback_context(conn, actor, p["contact_id"], w)
-        proof(conn, contact, now)
+        contact = w.get("inbound_contact")
+        if contact is None:
+            contact = callback_context(conn, actor, p["contact_id"], w)
+            proof(conn, contact, now)
         if len(p["customer_statement"]) > 4000 or not p["customer_statement"].strip():
             fail("VALIDATION_ERROR")
         for ref in p["evidence_refs"]:
             if ref["kind"] == "transaction":
                 tx = conn.execute(
-                    "SELECT t.id,t.version FROM card_transactions t JOIN card_accounts a ON a.id=t.account_id WHERE t.id=%s AND a.customer_id=%s",
-                    (as_uuid(ref["id"]), w["customer_id"]),
+                    "SELECT t.id,t.version FROM card_transactions t JOIN card_accounts a ON a.id=t.account_id WHERE t.id=%s AND a.customer_id=%s AND (%s::uuid[] IS NULL OR a.id=ANY(%s::uuid[]))",
+                    (
+                        as_uuid(ref["id"]),
+                        w["customer_id"],
+                        w.get("inbound_accounts"),
+                        w.get("inbound_accounts"),
+                    ),
                 ).fetchone()
                 if not tx:
                     fail("FORBIDDEN_OR_NOT_FOUND")
@@ -184,6 +217,20 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
             "INSERT INTO objection_work_links VALUES (%s,%s,%s,'specialist_rereview',%s)",
             (uuid4(), oid, rid, now),
         )
+        reopened = w["case_status"] == "closed"
+        if reopened:
+            # Reopen without erasing history: the closure row and its result remain.
+            closure = conn.execute(
+                "SELECT id FROM case_closures WHERE case_id=%s ORDER BY closed_at DESC LIMIT 1",
+                (w["case_id"],),
+            ).fetchone()
+            if not closure:
+                fail("CONFLICT")
+            conn.execute(
+                "INSERT INTO case_reopenings VALUES (%s,%s,%s,%s,%s,%s)",
+                (uuid4(), w["case_id"], closure["id"], oid, actor, now),
+            )
+            conn.execute("UPDATE cases SET closed_at=NULL WHERE id=%s", (w["case_id"],))
         if p["complaint_requested"]:
             complaint(conn, w, {"id": oid, "complaint_requested": True}, actor, now)
         event, _ = bump_case(
@@ -191,7 +238,9 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
             w,
             now,
             "objection.captured",
-            "Customer disagreement recorded for independent re-review; complaint request tracked separately.",
+            "Customer disagreement reopened the closed case for independent re-review; prior closure retained."
+            if reopened
+            else "Customer disagreement recorded for independent re-review; complaint request tracked separately.",
             "under_review",
         )
         return command_result(p["operation_key"], oid, 1, event, request_id)

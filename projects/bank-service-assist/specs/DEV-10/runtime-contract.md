@@ -27,6 +27,9 @@ Six tests in `services/api/tests/test_analytics.py` passed within the 180-test P
 of unchanged ledger has identical CSV hash; late changes alter the source fingerprint.
 Agent failure, cancellation, interruption and active runs all remain in the denominator.
 Multi-edit accepted drafts count once; pending excluded from decided-only rate.
+Review follow-up: a human `reject_proposal` command (reason in the receipt, allowed for
+stale drafts) makes rejection reachable, so the decided-only rate is no longer 100% by
+construction. Agent-origin and staff-origin drafts are separate segments.
 
 Tableau Desktop 2026.2.3 opened the repaired XML and resolved the CSV.
 Thirty marks rendered; refresh could not be verified and label/title layout needs work.

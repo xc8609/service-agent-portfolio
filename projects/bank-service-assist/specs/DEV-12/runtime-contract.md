@@ -20,7 +20,8 @@ configured synthetic holiday 2026-10-12. This is not a statutory bank calendar.
 - `close_case`: assigned feedback representative, current case/work versions,
   latest specialist result with verified feedback, all required actions completed
   with receipts, no outstanding work. Atomic closure record, audit, outbox and
-  replay receipt. No financial execution endpoint exists.
+  replay receipt. No financial execution endpoint exists. A closed case accepts no
+  further specialist result; it reopens only through a captured objection (ST-13).
 
 Case/work/plan mutations use repeatable-read conflict detection; reservation
 uniqueness prevents concurrent duplicate plans. Preparation of a callback context
@@ -28,7 +29,8 @@ is not an actual dial; actual out-of-hours activity remains auditable.
 
 ## Verification and acceptance mapping
 
-PostgreSQL 16.2: 146 API tests passed. Chromium: 31 browser regressions passed.
+PostgreSQL 16.2: 146 API tests passed at delivery; the review follow-up adds closed-case
+result rejection and material-answer/supersession closure (148 at this branch). Chromium: 31 browser regressions passed.
 Ruff and TypeScript/Vite build passed. `test_continuation.py` covers AC01–07:
 weekend/holiday/DST boundaries, three daily attempts, expiry below quota, duplicate
 reservation and actual duplicate preservation, reasoned hold/new-plan authorization,
