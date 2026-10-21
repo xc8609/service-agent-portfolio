@@ -22,3 +22,10 @@ test('NOTE-03: lost commit reply retries the identical operation',async({page})=
   const keys:string[]=[];let receipt='';await page.route('**/v1/commands/approve_and_commit_proposal',async route=>{keys.push(route.request().postDataJSON().operation_key);const response=await route.fetch();const data=await response.json();if(keys.length===1){receipt=data.data.domain_ref;await route.abort();}else{expect(data.data.domain_ref).toBe(receipt);await route.fulfill({response});}});
   await page.getByRole('button',{name:'Approve and commit note'}).click();await expect(page.getByRole('button',{name:'Retry same note operation'})).toBeVisible();await expect(page.getByRole('button',{name:'Refresh note sources'})).toBeDisabled();await page.getByRole('button',{name:'Retry same note operation'}).click();await expect(page.getByText(/Committed service record:/)).toContainText(receipt);expect(keys).toHaveLength(2);expect(keys[0]).toBe(keys[1]);
 });
+test('NOTE-04: a person can return a draft with a reason and nothing is committed',async({page})=>{
+  await begin(page);await page.getByRole('button',{name:'Save note draft',exact:true}).click();await expect(page.getByText('Draft saved — not a committed service record.',{exact:true})).toBeVisible();
+  await page.getByLabel('Reason for returning this draft').fill('Summary does not match what the customer recognizes.');
+  await page.getByRole('button',{name:'Return draft without committing'}).click();await expect(page.getByText(/returned without committing/)).toBeVisible();
+  await expect(page.getByRole('button',{name:'Approve and commit note'})).toBeDisabled();
+  await page.getByRole('button',{name:'Load note history'}).click();await expect(page.getByText(/^rejected · version 1/).first()).toBeVisible();
+});
