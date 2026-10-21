@@ -611,8 +611,14 @@ def create_app(settings=None, clock=None, *, provider_route=None):
         "register_complaint_intake",
     ):
         prefix = "workspace" if name in WORKFLOW_SCHEMAS else "commands"
-        if name == "demo_callback_verification":
-            path = "/v1/demo/callback-verification"
+        # Synthetic stand-ins for external systems are kept under /v1/demo.
+        demo_paths = {
+            "demo_callback_verification": "/v1/demo/callback-verification",
+            "record_complaint_receipt": "/v1/demo/complaint-receipt",
+            "record_action_receipt": "/v1/demo/action-receipt",
+        }
+        if name in demo_paths:
+            path = demo_paths[name]
         else:
             path = "/v1/" + prefix + "/" + name
         app.add_api_route(path, endpoint(name, dispatch_workflow), methods=["POST"], name=name)

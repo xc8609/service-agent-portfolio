@@ -305,6 +305,10 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
         }
     if name == "record_callback_attempt":
         return record_attempt(conn, p, w, actor, request_id, now)
+    if name in ("record_complaint_receipt", "record_action_receipt"):
+        from .receipts import execute as receipt
+
+        return receipt(conn, name, p, w, actor, request_id, now)
     if name == "request_material":
         if w["kind"] not in ("specialist_investigation", "specialist_rereview") or w[
             "status"

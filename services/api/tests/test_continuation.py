@@ -435,3 +435,42 @@ def test_material_answer_returns_work_to_specialist_and_finding_supersedes_open_
         )
     closed = close_case(client, h, w)
     assert closed.status_code == 200, closed.text
+
+
+def action_receipt(client, h, w, action_id, version=1, **changes):
+    return client.post(
+        "/v1/demo/action-receipt",
+        headers=h,
+        json={
+            **pair(w),
+            "action_id": action_id,
+            "expected_action_version": version,
+            "external_receipt_ref": "SYN-ACTION-1",
+            "operation_key": str(uuid4()),
+            **changes,
+        },
+    )
+
+
+def test_external_action_receipt_completes_required_action_and_unblocks_closure(environment):
+    client, admin, *_ = environment
+    sh, sw, h, w, opened = setup_feedback(client)
+    action = uid("receipt_request")
+    assert action_receipt(client, h, w, action).status_code == 404  # feedback role cannot
+    assert action_receipt(client, sh, sw, action, external_receipt_ref="paid").status_code == 422
+    assert action_receipt(client, sh, sw, action, version=2).status_code == 409
+    recorded = action_receipt(client, sh, sw, action)
+    assert recorded.status_code == 200, recorded.text
+    assert action_receipt(client, sh, sw, action, version=2).status_code == 409
+    verified_callback(client, h, w, opened)
+    with psycopg.connect(admin) as c:
+        # Test setup only: seeded historical work outside this scenario.
+        c.execute(
+            "UPDATE work_items SET status='completed' WHERE case_id=%s AND kind NOT IN ('customer_feedback') AND status NOT IN ('completed','cancelled')",
+            (w["case_id"],),
+        )
+        assert c.execute(
+            "SELECT status,receipt_ref FROM required_actions WHERE id=%s", (action,)
+        ).fetchone() == ("completed", "SYN-ACTION-1")
+    closed = close_case(client, h, w)
+    assert closed.status_code == 200, closed.text

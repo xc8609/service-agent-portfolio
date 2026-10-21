@@ -67,3 +67,19 @@ Independent review (20 October 2026) found two gaps, now corrected:
   (migration `012_objection_reopen.sql`, forward-only). The callback path now also
   checks that the payload case matches the callback's case.
 
+## Complaint delivery and external action receipts (ST-22/23)
+
+The worker moves `recorded` or `delivery_failed` complaint intakes to
+`pending_delivery` and writes a local outbox event; no external system is called.
+A complaint coordinator records the complaint unit's answer through the synthetic
+`/v1/demo/complaint-receipt` adapter: an acknowledgement with a `SYN-` reference
+completes the intake task (the complaint continues under that reference, independent
+of contact closure, FR-11); a failure keeps the request for the next delivery attempt.
+Acknowledgement is impossible before delivery is requested, and never inferred.
+
+Required financial actions stay outside this application. The case specialist can
+record a synthetic external system receipt (`/v1/demo/action-receipt`); only then does
+closure accept the action as completed. Nothing is executed here.
+Evidence: `test_complaint_delivery_is_requested_by_worker_and_acknowledged_by_receipt`,
+`test_external_action_receipt_completes_required_action_and_unblocks_closure`.
+
