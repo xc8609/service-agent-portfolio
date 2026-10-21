@@ -2,6 +2,10 @@
 
 [Current implementation and qualification limits](runtime-contract.md). Historical forecasts are not actual effort; owner UAT remains pending.
 
+[Merchant descriptor change and MD-01–05 acceptance](merchant-evidence.md) extend
+AC01/03/05 with the owner-approved minimum read-only field; execution evidence is
+recorded separately from semantic model qualification.
+
 BANK-SDD-v0.2
 
 Offline implementation delivered; current runtime evidence is linked below. Actual reviewer: not yet assigned for implementation acceptance. No bank approval is implied.
