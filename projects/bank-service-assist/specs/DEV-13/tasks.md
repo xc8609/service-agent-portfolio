@@ -17,3 +17,7 @@ Each implementation slice must be at most five developer-days; DEV-08 explicitly
 - [ ] Complete next-update proposal/lead approval and progress-message contract without requiring a completed finding.
 - [ ] Add independent complaint-intake reference/receipt and one-to-many objection/work linkage; route alongside specialist re-review.
 - [ ] Add unauthorized commitment, duplicate event/intake, branch failure and completion-race tests from the contract addendum.
+
+## Current delivery
+
+[Runtime behavior and executed checks](runtime-contract.md) supersede historical implementation-pending wording. Agent drafting and owner UAT remain separate gates.
