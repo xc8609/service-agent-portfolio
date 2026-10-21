@@ -6,7 +6,25 @@ type Case={reference:string;concern:string;status_as_of:string;owner_queue_name:
 type Response={cases:Case[];as_of:string;review_state:string};
 const time=(value:string|null)=>value?new Date(value).toISOString().replace('T',' ').replace('.000Z',' UTC'):'Not recorded';
 const label=(value:string)=>value.replaceAll('_',' ');
-const hints:Record<string,string>={potential_existing_enquiry:'Potential existing enquiry: this active duplicate-charge case covers the selection. Review and continue existing work before considering another submission.',review_closed_case:'Closed related case: review its outcome and the current concern. Do not reopen or infer a refund automatically.',review_overlap_and_concern:'Related work needs review: transaction overlap alone does not establish the same concern. Do not automatically reuse or reject a new enquiry.'};
+const hints:Record<string,string>={potential_existing_enquiry:'Potential existing enquiry: this active duplicate-charge case covers the selection. Review and continue existing work before considering another submission.',review_closed_case:'Closed related case: review its outcome and the current concern. Never reopen automatically or infer a refund; if the customer disputes the outcome, record the disagreement for independent re-review.',review_overlap_and_concern:'Related work needs review: transaction overlap alone does not establish the same concern. Do not automatically reuse or reject a new enquiry.'};
+
+function Disagreement({auth,caseId,version,onSaved}:{auth:{token:string;contact:string};caseId:string;version:string;onSaved:()=>void}){
+  const [statement,setStatement]=useState(''),[complaint,setComplaint]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+  const pending=useRef<{key:string;body:string}|null>(null);
+  async function submit(){
+    setBusy(true);setMessage('');
+    // Keep one operation key until the server answers, so a lost reply is retried safely.
+    pending.current??={key:crypto.randomUUID(),body:statement};
+    try{
+      const r=await fetch('/v1/commands/capture_customer_objection',{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${auth.token}`},body:JSON.stringify({case_id:caseId,contact_id:auth.contact,expected_case_version:Number(version),customer_statement:pending.current.body,evidence_refs:[],complaint_requested:complaint,operation_key:pending.current.key})});
+      const d=await r.json();
+      if(!r.ok){if(r.status<500)pending.current=null;throw new Error(`${d.error?.code}: ${d.error?.safe_message}`);}
+      pending.current=null;setStatement('');setMessage(`Disagreement recorded for independent re-review · receipt ${d.data.operation_key}. No outcome or refund has changed.`);onSaved();
+    }catch(e){setMessage(e instanceof Error?e.message:'Unavailable. Retry keeps the same operation.');}
+    finally{setBusy(false);}
+  }
+  return <fieldset disabled={busy}><legend>Customer disputes this outcome</legend><label>Customer statement (verbatim)<textarea value={statement} maxLength={4000} onChange={e=>{setStatement(e.target.value);pending.current=null;}}/></label><label><input type="checkbox" checked={complaint} onChange={e=>setComplaint(e.target.checked)}/> Customer explicitly requests a complaint</label><button onClick={submit} disabled={!statement.trim()}>Record disagreement for re-review</button>{message&&<p aria-live="polite">{message}</p>}</fieldset>;
+}
 
 export function RelatedCases({auth,transactionIds}:{auth:{token:string;contact:string};transactionIds:string[]}){
   const [data,setData]=useState<Response|null>(null),[error,setError]=useState(''),[loading,setLoading]=useState(false),[lastSuccess,setLastSuccess]=useState<string|null>(null);
@@ -36,6 +54,7 @@ export function RelatedCases({auth,transactionIds}:{auth:{token:string;contact:s
         <h4>Work ownership and progress</h4>{c.work_items.length===0?<p>No work ownership recorded. Request manual review.</p>:<ul>{c.work_items.map(w=><li key={w.id}><b>{label(w.kind)} · {label(w.status)}</b><p>Responsible: {w.assignee_name??'Unassigned'}{w.assignee_active===false?' (inactive)':''} · Queue: {w.queue_name}{!w.queue_active?' (inactive)':''}</p><p>Original due: {time(w.original_due_at)} · Current due: {time(w.due_at)}</p><small>Work {w.id} · version {w.version}</small></li>)}</ul>}
         <h4>Outstanding requirements</h4>{c.snapshot.unresolved_items.length?<ul>{c.snapshot.unresolved_items.map((item,i)=><li key={i}>{item}</li>)}</ul>:<p>No outstanding requirement recorded.</p>}
         <h4>Customer-safe update</h4><p>{c.snapshot.approved_customer_explanation??'No published explanation recorded.'}</p>
+        {c.snapshot.approved_customer_explanation&&<Disagreement auth={auth} caseId={c.snapshot.case_id} version={c.snapshot.case_version} onSaved={()=>void refresh()}/>}
         {!c.snapshot.progress_commitments.some(x=>x.status==='approved')&&<p>Next approved update: Unknown.</p>}
         {c.snapshot.progress_commitments.map(x=><p key={x.id}>{label(x.status)} update: {time(x.approved_update_at)} · {x.customer_safe_progress}</p>)}<p>Completion estimate: Unknown. Due dates and update commitments are not completion promises.</p>
         <details><summary>Recorded timeline · {c.snapshot.timeline.length} events</summary><ol>{c.snapshot.timeline.map(e=><li key={e.event_id}><b>#{e.sequence} · {e.customer_safe_summary}</b><p>Occurred: {time(e.occurred_at)} · Recorded: {time(e.recorded_at)}</p><small>Source: {e.source_ref.section}</small></li>)}</ol></details>

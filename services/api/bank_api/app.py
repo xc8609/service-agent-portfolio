@@ -572,6 +572,7 @@ def create_app(settings=None, clock=None, *, provider_route=None):
         "get_operation_status",
         "edit_proposal",
         "approve_and_commit_proposal",
+        "reject_proposal",
         "get_proposals",
         "prepare_note",
         "prepare_referral",

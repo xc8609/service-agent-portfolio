@@ -70,7 +70,8 @@ def test_overdue_deduplicates_and_keeps_original_owner_and_deadline(environment)
         d["work"]["original_due_at"] == before["original_due_at"]
         and d["work"]["assignee_id"] == before["assignee_id"]
     )
-    assert len([e for e in d["overdue_events"] if e["work_item_id"] == w["id"]]) == 1
+    # One escalation per case, deadline and level: the new progress task is not born overdue.
+    assert [e["work_item_id"] for e in d["overdue_events"]] == [w["id"]]
     with psycopg.connect(environment[1]) as c:
         assert (
             c.execute(
@@ -80,6 +81,18 @@ def test_overdue_deduplicates_and_keeps_original_owner_and_deadline(environment)
             == 1
         )
         assert c.execute("SELECT count(*) FROM local_notifications").fetchone()[0] > 0
+        assert (
+            c.execute(
+                "SELECT count(*) FROM case_timeline_events WHERE case_id=%s AND event_type='work.overdue'",
+                (w["case_id"],),
+            ).fetchone()[0]
+            == 1
+        )
+        progress_due = c.execute(
+            "SELECT original_due_at FROM work_items WHERE parent_work_id=%s AND kind='progress_callback'",
+            (w["id"],),
+        ).fetchone()[0]
+        assert progress_due > NOW
 
 
 def test_update_commitment_requires_lead_and_current_investigation(environment):
@@ -369,3 +382,83 @@ def test_new_same_customer_transaction_is_linked_without_overwriting_prior_findi
     d = detail(client, h, w)
     assert any(t["id"] == str(tx[0]) for t in d["transactions"])
     assert len(d["complaints"]) == 0 and d["result"]["version"] == 1
+
+
+def inbound_objection(client, h, contact, case_id, version, **changes):
+    return command(
+        client,
+        h,
+        "capture_customer_objection",
+        {
+            "case_id": case_id,
+            "contact_id": contact,
+            "expected_case_version": version,
+            "customer_statement": "I still believe I was charged twice for one purchase.",
+            "evidence_refs": [],
+            "complaint_requested": False,
+            "operation_key": str(uuid4()),
+            **changes,
+        },
+    )
+
+
+def case_version(admin, case_id):
+    with psycopg.connect(admin) as c:
+        return c.execute("SELECT version FROM cases WHERE id=%s", (case_id,)).fetchone()[0]
+
+
+def test_inbound_objection_reopens_closed_case_and_keeps_closure_history(environment):
+    from test_continuation import close_case, complete_unrelated_seed_work, verified_callback
+
+    client, admin, *_ = environment
+    sh, sw, h, w, opened = setup_feedback(client)
+    verified_callback(client, h, w, opened)
+    complete_unrelated_seed_work(admin, w["case_id"])
+    assert close_case(client, h, w).status_code == 200
+    inbound, contact = session(client)
+    other, other_contact = session(client, "other_customer")
+    assert (
+        inbound_objection(
+            client, other, other_contact, w["case_id"], case_version(admin, w["case_id"])
+        ).status_code
+        == 404
+    )
+    stale = inbound_objection(client, inbound, contact, w["case_id"], 1)
+    assert stale.status_code == 409
+    p_version = case_version(admin, w["case_id"])
+    captured = inbound_objection(client, inbound, contact, w["case_id"], p_version)
+    assert captured.status_code == 200, captured.text
+    with psycopg.connect(admin) as c:
+        status, closed_at = c.execute(
+            "SELECT status,closed_at FROM cases WHERE id=%s", (w["case_id"],)
+        ).fetchone()
+        assert status == "under_review" and closed_at is None
+        assert c.execute("SELECT count(*) FROM case_closures").fetchone()[0] == 1
+        assert c.execute("SELECT count(*) FROM case_reopenings").fetchone()[0] == 1
+    rereview = find_work(client, sh, "specialist_rereview", w["case_id"])
+    accepted = command(
+        client,
+        sh,
+        "accept_specialist_work",
+        {
+            **pair(rereview),
+            "expected_work_version": rereview["version"],
+            "operation_key": str(uuid4()),
+        },
+    )
+    assert accepted.status_code == 200, accepted.text
+    revised, _ = publish(client, sh, rereview)
+    assert revised.status_code == 200, revised.text
+    # A revised result after delivered feedback needs lead-approved contact, not auto-closure.
+    assert detail(client, h, w)["work"]["status"] == "lead_review"
+
+
+def test_inbound_objection_requires_a_communicated_finding(environment):
+    client, admin, *_ = environment
+    inbound, contact = session(client)
+    case_id = uid("duplicate_case")
+    r = inbound_objection(client, inbound, contact, case_id, case_version(admin, case_id))
+    assert r.status_code == 409
+    unverified, unverified_contact = session(client, "unverified")
+    r = inbound_objection(client, unverified, unverified_contact, case_id, 2)
+    assert r.status_code in (401, 404)

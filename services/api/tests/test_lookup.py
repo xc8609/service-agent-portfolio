@@ -290,7 +290,7 @@ def test_runtime_db_cannot_modify_ledger_or_read_internal_notes(environment):
 def test_readiness_outage_and_public_mode(environment):
     client, _, _, _ = environment
     assert client.get("/health/live").status_code == 200
-    assert client.get("/health/ready").json()["schema_version"] == "011_bounded_agent.sql"
+    assert client.get("/health/ready").json()["schema_version"] == "012_objection_reopen.sql"
     with TestClient(
         create_app(Settings("postgresql://bank_app:unused@127.0.0.1:1/bank_demo"))
     ) as broken:

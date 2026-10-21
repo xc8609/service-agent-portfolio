@@ -50,3 +50,20 @@ normal closure. Replayed publication does not repeat this transition.
 
 Regression evidence: test_result_supersedes_open_progress_contact_without_erasing_overdue_history
 and the extended pending-commitment test in test_exceptions.py. Full local verification: 181 PostgreSQL API tests and 32 Chromium tests passed; no new external integration or business rule is introduced.
+
+## Review follow-up: one escalation per deadline and post-closure objections
+
+Independent review (20 October 2026) found two gaps, now corrected:
+
+- The progress task created by an overdue investigation inherited the missed deadline,
+  so the next worker tick escalated the same case/deadline again. It now has its own
+  one-service-day target; `test_overdue_deduplicates_and_keeps_original_owner_and_deadline`
+  asserts one due event and one `work.overdue` timeline entry per case.
+- ST-13 allows `closed → under_review`, but objections could only be captured inside an
+  open callback. `capture_customer_objection` now also accepts a verified **inbound**
+  contact (same customer, card scope and timeline checks as the case read) when a
+  finding has been published. A closed case reopens with a `case_reopenings` record;
+  the original closure row is retained and a later closure must cite a newer result
+  (migration `012_objection_reopen.sql`, forward-only). The callback path now also
+  checks that the payload case matches the callback's case.
+
