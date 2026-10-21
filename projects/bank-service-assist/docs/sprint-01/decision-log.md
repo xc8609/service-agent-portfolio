@@ -87,6 +87,21 @@ and retail remain later scope. D-23–D-25 and existing access/deadline/closure 
 are retained; no new contact allowance, benefit result or implementation approval
 is inferred. Forecasts require re-estimation before commitment.
 
+### D-27 — Evaluate with a subscription model until an API route is enabled
+
+Owner directed on 21 October 2026: no paid model API for now; use the existing
+subscription for model evaluation. A subscription session can produce recorded
+outputs for frozen synthetic cases; they are replayed offline through the same
+citation, claim and schema guards. This is a pilot, not provider qualification: the
+application's live route stays disabled and no latency/cost claim is made.
+
+### D-28 — Publish analysis results, cite rather than copy source data
+
+Owner directed on 21 October 2026: the public repository includes analysis results
+(aggregates, metrics, findings, SQL and workbooks) from public datasets, while raw
+source files stay local and are cited with provenance, checksum and terms. Release
+versions may follow delivered value rather than the original Sprint numbering.
+
 | ID | Assumption / gap | Validation / owner role | Consequence if false |
 |---|---|---|---|
 | A-01 | Lookup consumes material avoidable effort | EL-02 observation/task study; owner/service lead | Prefer better navigation/templates or stop AI investment |
@@ -97,6 +112,7 @@ is inferred. Forecasts require re-estimation before commitment.
 | A-06 | Volunteers or owner role-play can establish formative effort observations | QA-03 participant plan | Report self-test only; no real-bank efficiency inference |
 | A-07 | Proposed role capacity and calendar remain available | Sprint planning at actual kickoff | Reforecast, particularly year-end and phone integration |
 | A-08 | Formal complaint process is external and must be represented honestly | BA-06/07 define flag, reference and manual handoff | Do not market complete complaint management or compliance |
+
 
 ## CR-001 Lookup-first prioritization
 

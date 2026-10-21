@@ -21,11 +21,11 @@ Requirements: FR-12, DATA-01. Dependencies: BA-07, BA-08, BA-09.
 
 ## Acceptance criteria
 
-- **DEV-01-AC01** — Given A clean supported checkout with empty demo database; when run documented migration and seed commands twice; then second run changes no fixture IDs or counts; API and UI display labelled synthetic scenario and schema version. Evidence: DEV-01-T01, planned/not executed.
-- **DEV-01-AC02** — Given No model credentials; when start UI/API/worker and complete manual lookup; then manual path remains usable; agent availability is explicitly disabled. Evidence: DEV-01-T02, planned/not executed.
-- **DEV-01-AC03** — Given Database is unavailable or a required configuration value is malformed; when check liveness and readiness; then process liveness is separate from dependency readiness; readiness is non-success with sanitized correlation ID. Evidence: DEV-01-T03, planned/not executed.
-- **DEV-01-AC04** — Given Reset is aimed at a database not explicitly marked disposable demo; when request reset; then refuse without deleting records; reset requires matching environment guard and explicit demo target. Evidence: DEV-01-T04, planned/not executed.
-- **DEV-01-AC05** — Given Repository existing Python 3.9 evaluation suite; when install Python 3.12 application dependencies in separate environment; then legacy suite remains independently runnable; app lock and setup record supported versions. Evidence: DEV-01-T05, planned/not executed.
+- **DEV-01-AC01** — Given A clean supported checkout with empty demo database; when run documented migration and seed commands twice; then second run changes no fixture IDs or counts; API and UI display labelled synthetic scenario and schema version. Evidence: DEV-01-T01 — actual status in the [acceptance record](acceptance.md).
+- **DEV-01-AC02** — Given No model credentials; when start UI/API/worker and complete manual lookup; then manual path remains usable; agent availability is explicitly disabled. Evidence: DEV-01-T02 — actual status in the [acceptance record](acceptance.md).
+- **DEV-01-AC03** — Given Database is unavailable or a required configuration value is malformed; when check liveness and readiness; then process liveness is separate from dependency readiness; readiness is non-success with sanitized correlation ID. Evidence: DEV-01-T03 — actual status in the [acceptance record](acceptance.md).
+- **DEV-01-AC04** — Given Reset is aimed at a database not explicitly marked disposable demo; when request reset; then refuse without deleting records; reset requires matching environment guard and explicit demo target. Evidence: DEV-01-T04 — actual status in the [acceptance record](acceptance.md).
+- **DEV-01-AC05** — Given Repository existing Python 3.9 evaluation suite; when install Python 3.12 application dependencies in separate environment; then legacy suite remains independently runnable; app lock and setup record supported versions. Evidence: DEV-01-T05 — actual status in the [acceptance record](acceptance.md).
 
 ## Ready and Done boundaries
 

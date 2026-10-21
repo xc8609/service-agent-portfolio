@@ -5,9 +5,9 @@
   "acceptance_examples": 49,
   "tools": 10,
   "human_system_commands": 12,
-  "requirements": 29,
+  "requirements": 38,
   "scenarios": 29,
-  "local_links": 154,
+  "local_links": 199,
   "trello_payloads": 23,
   "limitations": "Not a full JSON Schema meta-validation, runtime/security test, rendered-diagram review, model evaluation or UAT. Trello save verification is separate."
 }

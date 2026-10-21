@@ -23,13 +23,13 @@ Requirements: FR-14. Dependencies: BA-07, BA-08, DEV-01.
 
 ## Acceptance criteria
 
-- **DEV-09-AC01** — Given Offline fake provider and fixed tool response fixtures; when run normalized multi-turn conversation; then same domain tool schemas and server authorization run without vendor credentials. Evidence: DEV-09-T01, planned/not executed.
-- **DEV-09-AC02** — Given Streaming provider emits partial/invalid tool arguments; when receive tool event; then buffer until complete, validate schema, execute no partial/invalid call; bounded repair or safe failure. Evidence: DEV-09-T02, planned/not executed.
-- **DEV-09-AC03** — Given Rate limit, timeout, cancellation or missing usage; when handle event; then return typed terminal status; no duplicate operational effect; missing usage/cost stays unavailable, not zero. Evidence: DEV-09-T03, planned/not executed.
-- **DEV-09-AC04** — Given Internal-only profile or unapproved endpoint; when attempt fallback/provider request; then deny unauthorized egress; never silently switch to a public provider. Evidence: DEV-09-T04, planned/not executed.
-- **DEV-09-AC05** — Given Eligible OpenAI and Claude credentials/budget available; when run identical required scenarios; then record dated model/provider/config, tool compatibility, actual costs and failures for each; otherwise mark live qualification not executed. Evidence: DEV-09-T05, planned/not executed.
-- **DEV-09-AC06** — Given Provider input contains customer/internal data outside allowed DTO; when prepare request; then exclude credentials/contact details/internal-only notes; safe trace preserves references not sensitive payload. Evidence: DEV-09-T06, planned/not executed.
-- **DEV-09-AC07** — Given A live route lacks a required capability; when select route for B1; then route remains unqualified; DeepSeek/internal compatibility is not inferred from API similarity. Evidence: DEV-09-T07, planned/not executed.
+- **DEV-09-AC01** — Given Offline fake provider and fixed tool response fixtures; when run normalized multi-turn conversation; then same domain tool schemas and server authorization run without vendor credentials. Evidence: DEV-09-T01 — actual status in the [acceptance record](acceptance.md).
+- **DEV-09-AC02** — Given Streaming provider emits partial/invalid tool arguments; when receive tool event; then buffer until complete, validate schema, execute no partial/invalid call; bounded repair or safe failure. Evidence: DEV-09-T02 — actual status in the [acceptance record](acceptance.md).
+- **DEV-09-AC03** — Given Rate limit, timeout, cancellation or missing usage; when handle event; then return typed terminal status; no duplicate operational effect; missing usage/cost stays unavailable, not zero. Evidence: DEV-09-T03 — actual status in the [acceptance record](acceptance.md).
+- **DEV-09-AC04** — Given Internal-only profile or unapproved endpoint; when attempt fallback/provider request; then deny unauthorized egress; never silently switch to a public provider. Evidence: DEV-09-T04 — actual status in the [acceptance record](acceptance.md).
+- **DEV-09-AC05** — Given Eligible OpenAI and Claude credentials/budget available; when run identical required scenarios; then record dated model/provider/config, tool compatibility, actual costs and failures for each; otherwise mark live qualification not executed. Evidence: DEV-09-T05 — actual status in the [acceptance record](acceptance.md).
+- **DEV-09-AC06** — Given Provider input contains customer/internal data outside allowed DTO; when prepare request; then exclude credentials/contact details/internal-only notes; safe trace preserves references not sensitive payload. Evidence: DEV-09-T06 — actual status in the [acceptance record](acceptance.md).
+- **DEV-09-AC07** — Given A live route lacks a required capability; when select route for B1; then route remains unqualified; DeepSeek/internal compatibility is not inferred from API similarity. Evidence: DEV-09-T07 — actual status in the [acceptance record](acceptance.md).
 
 ## Ready and Done boundaries
 

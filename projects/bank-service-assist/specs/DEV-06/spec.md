@@ -1,6 +1,6 @@
 # DEV-06 — Review, edit and commit a contact note safely
 
-BANK-S02-v0.4 · Inbound note implementation under PR review; owner UAT pending.
+BANK-S02-v0.4 · Inbound note implementation merged to main; owner UAT pending.
 Forecast: S04 | Release: B0 | Estimate: Dev 5, BA 0.5, QA 1 person-days. Provisional until technical review.
 
 ## Business purpose and scope
@@ -21,13 +21,13 @@ Requirements: FR-07, FR-08, FR-11, FR-13, NFR-02, NFR-03. Dependencies: DEV-02, 
 
 ## Acceptance criteria
 
-- **DEV-06-AC01** — Given A manual draft with customer allegation and supported facts; when staff edits and approves current proposal revision; then save exactly reviewed content, labelled allegations, actor/time, source versions and durable receipt. Evidence: DEV-06-T01, planned/not executed.
-- **DEV-06-AC02** — Given Source or assignment changes after draft; when approve; then reject stale/unauthorized commit; preserve user edits for deliberate rebase, never silently overwrite. Evidence: DEV-06-T02, planned/not executed.
-- **DEV-06-AC03** — Given Two edits target same proposal version; when save both; then one version advances, second conflicts; revision history remains auditable. Evidence: DEV-06-T03, planned/not executed.
-- **DEV-06-AC04** — Given Same approval key/payload is retried after response loss; when retry; then return same committed note and receipt; no duplicate note/outbox event. Evidence: DEV-06-T04, planned/not executed.
-- **DEV-06-AC05** — Given Same operation key with changed content; when retry; then IDEMPOTENCY_CONFLICT with original content untouched. Evidence: DEV-06-T05, planned/not executed.
-- **DEV-06-AC06** — Given Note says refund completed but there is no completion evidence; when review/commit; then flag unsupported action claim; statement may only be stored as attributed customer allegation, not confirmed execution. Evidence: DEV-06-T06, planned/not executed.
-- **DEV-06-AC07** — Given Model or unscoped employee invokes edit or commit; when submit; then deny; create_proposal remains draft-only; server authority does not come from body fields. Evidence: DEV-06-T07, planned/not executed.
+- **DEV-06-AC01** — Given A manual draft with customer allegation and supported facts; when staff edits and approves current proposal revision; then save exactly reviewed content, labelled allegations, actor/time, source versions and durable receipt. Evidence: DEV-06-T01 — actual status in the [acceptance record](acceptance.md).
+- **DEV-06-AC02** — Given Source or assignment changes after draft; when approve; then reject stale/unauthorized commit; preserve user edits for deliberate rebase, never silently overwrite. Evidence: DEV-06-T02 — actual status in the [acceptance record](acceptance.md).
+- **DEV-06-AC03** — Given Two edits target same proposal version; when save both; then one version advances, second conflicts; revision history remains auditable. Evidence: DEV-06-T03 — actual status in the [acceptance record](acceptance.md).
+- **DEV-06-AC04** — Given Same approval key/payload is retried after response loss; when retry; then return same committed note and receipt; no duplicate note/outbox event. Evidence: DEV-06-T04 — actual status in the [acceptance record](acceptance.md).
+- **DEV-06-AC05** — Given Same operation key with changed content; when retry; then IDEMPOTENCY_CONFLICT with original content untouched. Evidence: DEV-06-T05 — actual status in the [acceptance record](acceptance.md).
+- **DEV-06-AC06** — Given Note says refund completed but there is no completion evidence; when review/commit; then flag unsupported action claim; statement may only be stored as attributed customer allegation, not confirmed execution. Evidence: DEV-06-T06 — actual status in the [acceptance record](acceptance.md).
+- **DEV-06-AC07** — Given Model or unscoped employee invokes edit or commit; when submit; then deny; create_proposal remains draft-only; server authority does not come from body fields. Evidence: DEV-06-T07 — actual status in the [acceptance record](acceptance.md).
 
 ## Ready and Done boundaries
 

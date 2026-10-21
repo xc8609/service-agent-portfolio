@@ -27,12 +27,12 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 
 ## Acceptance criteria
 
-- **DEV-03-AC01** — Given Two entries have equal amount and merchant but no relationship evidence; when the representative or agent reviews them; then show statuses and uncertainty; do not infer a duplicate or a shared purchase. Evidence: DEV-03-T01 (planned, not executed).
-- **DEV-03-AC02** — Given One entry is pending and another posted; when evidence is summarized; then cite both states without promising automatic reversal or a refund. Evidence: DEV-03-T02 (planned, not executed).
-- **DEV-03-AC03** — Given Several transactions match the customer description; when search returns candidates; then require clarification or explicit selection before a case-specific proposal. Evidence: DEV-03-T03 (planned, not executed).
-- **DEV-03-AC04** — Given A customer corrects the transaction or denies the purchase; when the correction is saved; then retain the original statement and mark affected advice stale; offer the reviewed manual risk path. Evidence: DEV-03-T04 (planned, not executed).
-- **DEV-03-AC05** — Given Source retrieval times out; when the investigation cannot complete; then show unavailable rather than no transactions; permit manual continuation. Evidence: DEV-03-T05 (planned, not executed).
-- **DEV-03-AC06** — Given An existing case covers the selected transaction concern; when related work is displayed; then show its actual reference/status and do not silently create a duplicate. Evidence: DEV-03-T06 (planned, not executed).
+- **DEV-03-AC01** — Given Two entries have equal amount and merchant but no relationship evidence; when the representative or agent reviews them; then show statuses and uncertainty; do not infer a duplicate or a shared purchase. Evidence: DEV-03-T01 — actual status in the [acceptance record](acceptance.md).
+- **DEV-03-AC02** — Given One entry is pending and another posted; when evidence is summarized; then cite both states without promising automatic reversal or a refund. Evidence: DEV-03-T02 — actual status in the [acceptance record](acceptance.md).
+- **DEV-03-AC03** — Given Several transactions match the customer description; when search returns candidates; then require clarification or explicit selection before a case-specific proposal. Evidence: DEV-03-T03 — actual status in the [acceptance record](acceptance.md).
+- **DEV-03-AC04** — Given A customer corrects the transaction or denies the purchase; when the correction is saved; then retain the original statement and mark affected advice stale; offer the reviewed manual risk path. Evidence: DEV-03-T04 — actual status in the [acceptance record](acceptance.md).
+- **DEV-03-AC05** — Given Source retrieval times out; when the investigation cannot complete; then show unavailable rather than no transactions; permit manual continuation. Evidence: DEV-03-T05 — actual status in the [acceptance record](acceptance.md).
+- **DEV-03-AC06** — Given An existing case covers the selected transaction concern; when related work is displayed; then show its actual reference/status and do not silently create a duplicate. Evidence: DEV-03-T06 — actual status in the [acceptance record](acceptance.md).
 
 ## Ready gates
 

@@ -35,7 +35,7 @@ history. 181 PostgreSQL API tests passed. DEV-10 adds six metric tests to the pr
 these branches on localhost with synthetic data.
 
 Trello DEV-06–13 cards are verified in **Review and acceptance**, with per-story PR
-and execution comments. Nothing is marked Done or merged. DEV-10 Tableau native
+and execution comments. At that time nothing was marked Done or merged (all PRs were merged on 21 October; see below). DEV-10 Tableau native
 open is verified after fixing three XML compatibility errors; refresh/layout acceptance remains pending. Live model testing is owner-deferred;
 human effort study and owner UAT remain release gates. Voice/retail are later scope.
 
@@ -74,4 +74,14 @@ Local evidence on the integrated head: 214 PostgreSQL 16.2 API tests and 35 Chro
 browser tests passed (against a disposable database), plus offline tests, both SDD
 validators, publication checks, Ruff and the TypeScript/Vite build. Owner UAT, live
 model qualification and Tableau refresh acceptance remain pending.
+
+## Post-merge state — 21 October 2026
+
+PRs 1–15 are squash-merged to `main` in dependency order (one linear commit per
+story). [PR 16](https://github.com/xc8609/service-agent-portfolio/pull/16) completes the
+closure path: complaint delivery (ST-22/23) and synthetic external action receipts.
+Requirements baseline v0.3 adds D-23–D-28 rules, review-derived behaviour and EXT
+requirements; every requirement now lists the tests that verify it in the
+[traceability matrix](traceability-matrix.md), checked offline in CI. Owner UAT is
+prepared in the [UAT pack](../uat/README.md) and has not been executed.
 

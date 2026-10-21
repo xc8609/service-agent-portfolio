@@ -21,12 +21,12 @@ Requirements: BR-01, MEAS-01. Dependencies: DEV-06, DEV-07, DEV-08, BA-07.
 
 ## Acceptance criteria
 
-- **DEV-10-AC01** — Given A known synthetic event ledger with duplicate delivery; when build marts; then deduplicate by authoritative IDs; exported totals equal fixture oracle and SQL source totals. Evidence: DEV-10-T01, planned/not executed.
-- **DEV-10-AC02** — Given Completed, cancelled, failed and abandoned runs; when calculate run metrics; then include all started runs in outcome denominator; show unresolved and missing latency explicitly. Evidence: DEV-10-T02, planned/not executed.
-- **DEV-10-AC03** — Given Draft edited multiple times then approved once; when calculate proposal metrics; then count a proposal once by defined revision/status rule; distinguish accepted unchanged from edited; exclude pending from decided-only denominator and display pending count. Evidence: DEV-10-T03, planned/not executed.
-- **DEV-10-AC04** — Given Original contact plan followed by lead-approved plan; when calculate callback metrics; then report lifetime calls, per-plan calls, technical faults and original-window misses separately; no apparent improvement from erased history. Evidence: DEV-10-T04, planned/not executed.
-- **DEV-10-AC05** — Given No human effort study or provider usage missing; when render Tableau; then no measured savings/ROI shown; missing cost remains unavailable; synthetic status visible. Evidence: DEV-10-T05, planned/not executed.
-- **DEV-10-AC06** — Given Same data refresh is repeated, including late events; when export and refresh workbook; then stable snapshot totals reconcile; late-event adjustment and data cutoff are recorded. Evidence: DEV-10-T06, planned/not executed.
+- **DEV-10-AC01** — Given A known synthetic event ledger with duplicate delivery; when build marts; then deduplicate by authoritative IDs; exported totals equal fixture oracle and SQL source totals. Evidence: DEV-10-T01 — actual status in the [acceptance record](acceptance.md).
+- **DEV-10-AC02** — Given Completed, cancelled, failed and abandoned runs; when calculate run metrics; then include all started runs in outcome denominator; show unresolved and missing latency explicitly. Evidence: DEV-10-T02 — actual status in the [acceptance record](acceptance.md).
+- **DEV-10-AC03** — Given Draft edited multiple times then approved once; when calculate proposal metrics; then count a proposal once by defined revision/status rule; distinguish accepted unchanged from edited; exclude pending from decided-only denominator and display pending count. Evidence: DEV-10-T03 — actual status in the [acceptance record](acceptance.md).
+- **DEV-10-AC04** — Given Original contact plan followed by lead-approved plan; when calculate callback metrics; then report lifetime calls, per-plan calls, technical faults and original-window misses separately; no apparent improvement from erased history. Evidence: DEV-10-T04 — actual status in the [acceptance record](acceptance.md).
+- **DEV-10-AC05** — Given No human effort study or provider usage missing; when render Tableau; then no measured savings/ROI shown; missing cost remains unavailable; synthetic status visible. Evidence: DEV-10-T05 — actual status in the [acceptance record](acceptance.md).
+- **DEV-10-AC06** — Given Same data refresh is repeated, including late events; when export and refresh workbook; then stable snapshot totals reconcile; late-event adjustment and data cutoff are recorded. Evidence: DEV-10-T06 — actual status in the [acceptance record](acceptance.md).
 
 ## Ready and Done boundaries
 

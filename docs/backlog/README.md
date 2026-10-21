@@ -7,6 +7,8 @@
 | What is the detailed requirement/design for a story? | [Specification index](../../projects/bank-service-assist/specs/README.md) |
 | What is the small-team Sprint forecast? | [Sprint sequence and illustrative dates](sprints.md) |
 | Where are capacity and allocation calculations? | [Structured forecast](sprint-forecast.json) |
+| Which tests verify each requirement? | [Traceability matrix](traceability-matrix.md) |
+| How does the owner accept the workflow? | [UAT pack](../uat/README.md) |
 | Where can a reviewer follow progress? | [Public Trello](https://trello.com/b/wtNhuN0q/ai-agent) |
 
 Stories have stable IDs across schedule revisions. Detailed story folders hold
