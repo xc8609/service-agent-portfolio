@@ -70,6 +70,28 @@ SCHEMAS = {
     ),
     "get_callback_disclosure": obj({**PAIR, "callback_contact_id": ID, "review_id": ID}),
     "request_material": obj({**PAIR, "expected_case_version": VER, "question": TEXT, **KEY}),
+    "record_complaint_receipt": obj(
+        {
+            **PAIR,
+            "expected_work_version": VER,
+            "outcome": {"enum": ["acknowledged", "delivery_failed"]},
+            "external_receipt_ref": {
+                "type": ["string", "null"],
+                "pattern": "^SYN-[A-Z0-9-]{4,40}$",
+            },
+            "reason": {"type": ["string", "null"], "maxLength": 2000},
+            **KEY,
+        }
+    ),
+    "record_action_receipt": obj(
+        {
+            **PAIR,
+            "action_id": ID,
+            "expected_action_version": VER,
+            "external_receipt_ref": {"type": "string", "pattern": "^SYN-[A-Z0-9-]{4,40}$"},
+            **KEY,
+        }
+    ),
     "record_followup": obj(
         {
             **PAIR,
@@ -236,7 +258,7 @@ def detail(conn, w):
         (w["case_id"],),
     ).fetchall()
     actions = conn.execute(
-        "SELECT id,status,receipt_ref FROM required_actions WHERE case_id=%s ORDER BY id",
+        "SELECT id,status,receipt_ref,version FROM required_actions WHERE case_id=%s ORDER BY id",
         (w["case_id"],),
     ).fetchall()
     return {
@@ -334,9 +356,10 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                     if name == "list_work":
                         rows = conn.execute(
                             """SELECT w.id,w.case_id,w.kind,w.status,w.version,w.original_due_at,c.public_reference,c.concern_code,
-                         q.name AS queue_name,cu.display_alias,w.assignee_id FROM work_items w JOIN cases c ON c.id=w.case_id
+                         q.name AS queue_name,cu.display_alias,w.assignee_id,ci.status AS delivery_status FROM work_items w JOIN cases c ON c.id=w.case_id
                          JOIN customers cu ON cu.id=c.customer_id JOIN service_queues q ON q.id=w.queue_id
-                         WHERE q.active AND EXISTS(SELECT 1 FROM queue_memberships m WHERE m.queue_id=w.queue_id AND m.principal_id=%s AND m.active AND m.role IN ('specialist','feedback_representative','queue_lead'))
+                         LEFT JOIN complaint_intakes ci ON ci.work_item_id=w.id
+                         WHERE q.active AND EXISTS(SELECT 1 FROM queue_memberships m WHERE m.queue_id=w.queue_id AND m.principal_id=%s AND m.active AND m.role IN ('specialist','feedback_representative','queue_lead','complaint_coordinator'))
                          ORDER BY w.original_due_at,w.id LIMIT 101""",
                             (actor,),
                         ).fetchall()
@@ -375,9 +398,13 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                             wid, cid = payload["work_item_id"], payload["case_id"]
                         claiming = name in ("accept_specialist_work", "claim_feedback_task")
                         lead = name in ("decide_contact_continuation", "confirm_next_update")
+                        # The complaint coordinator acts for the queue; intake has no claim step.
+                        coordinator = name == "record_complaint_receipt"
                         roles = (
                             ("queue_lead",)
                             if lead
+                            else ("complaint_coordinator",)
+                            if coordinator
                             else ("specialist",)
                             if name
                             in (
@@ -385,6 +412,7 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                                 "record_specialist_result",
                                 "request_material",
                                 "propose_next_update",
+                                "record_action_receipt",
                             )
                             else ("feedback_representative",)
                             if name not in ("get_work_detail",)
@@ -398,6 +426,7 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                             roles,
                             assigned=not claiming
                             and not lead
+                            and not coordinator
                             and not (
                                 name == "get_work_detail"
                                 and conn.execute(

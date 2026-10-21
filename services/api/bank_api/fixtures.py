@@ -48,6 +48,12 @@ PERSONAS = {
     ),
     "agent": ("agent", "contact_agent", "agent_runtime", "customer_a"),
     "lead": ("lead", "contact_lead", "queue_lead", "customer_a"),
+    "complaints": (
+        "Demo complaint Casey",
+        "contact_complaints",
+        "complaint_coordinator",
+        "customer_a",
+    ),
 }
 
 

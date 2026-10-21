@@ -152,6 +152,12 @@ def provision_runtime(dsn, password):
         conn.execute("GRANT UPDATE (status,attempt_count) ON outbox_events TO bank_app")
         conn.execute("GRANT INSERT ON agent_runs,agent_steps TO bank_app")
         conn.execute(
+            "GRANT UPDATE (status,receipt_ref,updated_at,version) ON required_actions TO bank_app"
+        )
+        conn.execute(
+            "GRANT UPDATE (status,external_receipt_ref,acknowledged_at,version) ON complaint_intakes TO bank_app"
+        )
+        conn.execute(
             "GRANT UPDATE (status,finished_at,output,error_code,usage,cancelled,lease_until) ON agent_runs TO bank_app"
         )
         conn.execute("GRANT SELECT (id,display_alias) ON customers TO bank_app")
