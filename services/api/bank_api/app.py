@@ -400,8 +400,11 @@ def dispatch(settings, name, payload, authorization, request_id, now):
     return result
 
 
-def create_app(settings=None, clock=None):
+def create_app(settings=None, clock=None, *, provider_route=None):
     settings = settings or Settings.from_env()
+    from .agent.selection import load_route
+
+    provider_route = provider_route or load_route(settings.provider_config)
     now = clock or (lambda: datetime.now(UTC))
     app = FastAPI(
         title="Synthetic bank service — authorized lookup",
@@ -456,7 +459,11 @@ def create_app(settings=None, clock=None):
 
     @app.get("/health/live")
     def live():
-        return {"status": "alive", "data_kind": "synthetic", "agent_enabled": False}
+        return {
+            "status": "alive",
+            "data_kind": "synthetic",
+            "agent_enabled": provider_route.live_ready,
+        }
 
     @app.get("/health/ready")
     def ready():
@@ -477,8 +484,10 @@ def create_app(settings=None, clock=None):
             "data_kind": "synthetic",
             "schema_version": SCHEMA_VERSION,
             "fixture_version": FIXTURE_VERSION,
-            "agent_enabled": False,
-            "offline_assistant_available": True,
+            # Reports the server-selected route; live only when its qualification matches.
+            "agent_enabled": provider_route.live_ready,
+            "assistant_route": provider_route.audit_name,
+            "offline_assistant_available": provider_route.profile is None,
         }
 
     @app.post("/v1/demo/session")
@@ -614,7 +623,7 @@ def create_app(settings=None, clock=None):
     def agent_dispatch(settings, name, payload, authorization, request_id, at):
         try:
             return (
-                agent_run(settings, payload, authorization, request_id, at)
+                agent_run(settings, payload, authorization, request_id, at, route=provider_route)
                 if name == "run"
                 else agent_control(settings, name, payload, authorization, request_id, at)
             )

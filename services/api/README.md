@@ -1,6 +1,6 @@
 # Bank lookup runtime
 
-Python 3.12, FastAPI, psycopg and PostgreSQL. Six v0.4 read contracts are implemented for an authorized **inbound representative**. Assigned specialist and feedback commands are implemented through the separate trusted workflow desk. Agent delegation and scheduled continuation remain dependent work. All records and identity assertions are synthetic.
+Python 3.12, FastAPI, psycopg and PostgreSQL. Six v0.4 read contracts are implemented for an authorized **inbound representative**. Assigned specialist and feedback commands are implemented through the separate trusted workflow desk. Bounded offline assistance and a local due-work worker are implemented. All records and identity assertions are synthetic.
 
 ## Run with Docker Compose (from repository root)
 
@@ -60,11 +60,11 @@ npm run test:e2e
 
 The demo persona adapter is separate from model tools. It issues opaque credentials mapped to server-side synthetic principals/contact records; no request body can grant roles, approve transactions or expand customer scope. Canonical tool paths follow the shared JSON schema registry. Search uses UTC date bounds, exact integer minor units, literal merchant matching and bounded keyset pagination. The UI requests up to 50 results and asks for narrower filters when more are available. Evidence retrieval requires explicit selection (1–10 IDs); a mixed-scope request fails as a whole.
 
-`/health/live` measures process liveness; `/health/ready` checks database, schema and demo marker. A database outage returns sanitized 503 plus a correlation ID; it is never an empty successful search. Wrong database credentials/schema or failed initialization should stop startup readiness; inspect configuration and migration checksums, preserve the volume and forward-fix. The DEV-03 report-capture increment adds append-only revisions with atomic audit and replay receipts; there is no workflow worker or referral side effect.
+`/health/live` measures process liveness; `/health/ready` checks database, schema and demo marker. A database outage returns sanitized 503 plus a correlation ID; it is never an empty successful search. Wrong database credentials/schema or failed initialization should stop startup readiness; inspect configuration and migration checksums, preserve the volume and forward-fix. The DEV-03 report-capture increment adds append-only revisions with atomic audit and replay receipts; report capture itself has no referral side effect; subsequent commands own referrals and continuation.
 
 ## Traceability and limits
 
-See [slice specification](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-slice.md) and [execution evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md). This is not production authentication, bank connectivity, UAT or regulatory certification. Scoped inbound case and policy reads are implemented; reviewed inbound note commits are implemented. Reviewed referrals are implemented; callbacks and Agent execution remain future work.
+See [slice specification](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-slice.md) and [execution evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md). This is not production authentication, bank connectivity, UAT or regulatory certification. Scoped inbound case and policy reads are implemented; reviewed inbound note commits are implemented. Reviewed referrals are implemented; manual callback recording and bounded offline Agent execution are implemented; real telephony and live models remain separate gates.
 
 Implementation references: [FastAPI container guidance](https://fastapi.tiangolo.com/deployment/docker/), [psycopg installation](https://www.psycopg.org/psycopg3/docs/basic/install.html), [optional pgserver publisher](https://pypi.org/project/pgserver/). These inform packaging; the domain authority rules come from this project's accepted decisions and specs.
 
@@ -165,3 +165,10 @@ The workspace runs the labelled offline scripted assistant; all live profiles re
 unqualified/disabled. Run/step persistence and tools share manual scope/version gates.
 [Agent boundary](bank_api/agent/README.md) ·
 [Reproduce SQL/Tableau export](../../projects/bank-service-assist/dashboard/README.md).
+
+## Institution and provider adaptation
+
+See [examples](../../examples/README.md) and [ADR-004](../../docs/architecture/ADR-004-lightweight-enterprise-adaptation.md).
+`BANK_PROVIDER_CONFIG` is optional and server-only. Source normalization is a separate
+offline CLI with no database writes; enterprise ingestion and real identity adapters
+are not implemented. Keep the local demo on localhost regardless of model selection.

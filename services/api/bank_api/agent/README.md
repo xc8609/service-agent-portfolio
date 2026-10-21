@@ -7,8 +7,11 @@ step repeats trusted session/assignment and source-version checks through the sa
 choose customer/account IDs or call human commands. No provider owns transactions.
 
 `providers.py` normalizes OpenAI Responses, Claude Messages and compatible-chat
-shapes. Current application uses **only `offline-scripted-v1`**, a deterministic
-fixture, not a live language model. Live adapters are unqualified and disabled.
+shapes. Default application profile is **`offline-scripted-v1`**, a deterministic fixture,
+not a language model. `selection.py` loads a server-owned deployment profile and
+records a configuration fingerprint with each new run. Live candidates remain
+unqualified and disabled; protocol substitution is tested through mock HTTP only.
+See [configuration examples](../../../../examples/README.md).
 
 Inbound assistance creates an ordinary uncommitted note proposal with a deterministic
 operation key. Use Load note history → Review saved draft → human approval. Feedback

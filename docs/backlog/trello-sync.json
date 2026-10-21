@@ -111,7 +111,14 @@
       "currentList": "02 | Bank development backlog",
       "marker": "BANK-S02-v0.4",
       "lastUpdated": "2026-10-19",
-      "titleVerified": false
+      "titleVerified": false,
+      "adaptationFollowup": {
+        "date": "2026-10-20",
+        "commentMarker": "BANK-SOURCE-MAPPING-2026-10-20",
+        "commentVerified": true,
+        "pr": "https://github.com/xc8609/service-agent-portfolio/pull/15",
+        "scope": "Review evidence only; no Done or owner acceptance"
+      }
     },
     {
       "id": "DEV-03",
@@ -180,7 +187,14 @@
       "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
       "listVerifiedDate": "2026-10-20",
       "deliveryCommentVerified": true,
-      "deliveryCommentMarker": "BANK-DEV08-DELIVERY-2026-10-20"
+      "deliveryCommentMarker": "BANK-DEV08-DELIVERY-2026-10-20",
+      "adaptationFollowup": {
+        "date": "2026-10-20",
+        "commentMarker": "BANK-AGENT-STRUCTURE-2026-10-20",
+        "commentVerified": true,
+        "pr": "https://github.com/xc8609/service-agent-portfolio/pull/15",
+        "scope": "Review evidence only; no Done or owner acceptance"
+      }
     },
     {
       "id": "DEV-09",
@@ -193,7 +207,14 @@
       "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
       "listVerifiedDate": "2026-10-20",
       "deliveryCommentVerified": true,
-      "deliveryCommentMarker": "BANK-DEV09-DELIVERY-2026-10-20"
+      "deliveryCommentMarker": "BANK-DEV09-DELIVERY-2026-10-20",
+      "adaptationFollowup": {
+        "date": "2026-10-20",
+        "commentMarker": "BANK-EXTENSIBILITY-2026-10-20",
+        "commentVerified": true,
+        "pr": "https://github.com/xc8609/service-agent-portfolio/pull/15",
+        "scope": "Review evidence only; no Done or owner acceptance"
+      }
     },
     {
       "id": "DEV-10",
@@ -207,7 +228,14 @@
       "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
       "listVerifiedDate": "2026-10-20",
       "deliveryCommentVerified": true,
-      "deliveryCommentMarker": "BANK-DEV10-DELIVERY-2026-10-20"
+      "deliveryCommentMarker": "BANK-DEV10-DELIVERY-2026-10-20",
+      "adaptationFollowup": {
+        "date": "2026-10-20",
+        "commentMarker": "BANK-DEV10-DESKTOP-2026-10-20",
+        "commentVerified": true,
+        "pr": "https://github.com/xc8609/service-agent-portfolio/pull/14",
+        "scope": "Review evidence only; no Done or owner acceptance"
+      }
     },
     {
       "id": "QA-01",
@@ -369,7 +397,14 @@
       "lastUpdated": "2026-10-19",
       "titleVerified": true,
       "executionCommentVerified": true,
-      "executionCommentMarker": "BANK-DEV-EXECUTION-2026-10-20"
+      "executionCommentMarker": "BANK-DEV-EXECUTION-2026-10-20",
+      "adaptationFollowup": {
+        "date": "2026-10-20",
+        "commentMarker": "BANK-ADAPTATION-REVIEW-2026-10-20",
+        "commentVerified": true,
+        "pr": "https://github.com/xc8609/service-agent-portfolio/pull/15",
+        "scope": "Review evidence only; no Done or owner acceptance"
+      }
     },
     {
       "id": "S05",
@@ -507,5 +542,5 @@
       "lastUpdated": "2026-10-19"
     }
   ],
-  "lastActivity": "S02 v0.4: 20 cards updated and verified; no cards marked Done."
+  "lastActivity": "DEV-02/08/09/10 and S04 follow-up comments saved and verified; lightweight adaptation and Desktop findings, no Done status."
 }

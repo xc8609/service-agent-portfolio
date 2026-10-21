@@ -12,7 +12,14 @@ from psycopg.types.json import Jsonb
 from ..db import runtime_connection
 from ..proposals import snapshot_hash, unsupported_claims
 from ..workflow import ID, obj, work_scope
-from .providers import Call, FakeProvider, ProviderFailure, Reply, safe_context
+from .providers import (
+    PROVIDER_TIMEOUT_SECONDS,
+    Call,
+    FakeProvider,
+    ProviderFailure,
+    Reply,
+    safe_context,
+)
 
 EMPTY = obj({})
 DRAFT = obj(
@@ -182,10 +189,23 @@ def fixture(evidence, refs, stage):
     )
 
 
-def run(settings, p, authorization, request_id, now, provider=None, monotonic=time.monotonic):
+def run(
+    settings,
+    p,
+    authorization,
+    request_id,
+    now,
+    provider=None,
+    monotonic=time.monotonic,
+    *,
+    route=None,
+):
     from ..app import BankError, audit, fail, validate
+    from .selection import ProviderRoute
 
     validate(REQUEST, p)
+    route = route or ProviderRoute()
+    profile_name = route.audit_name if provider is None else "injected-test-provider"
     started = monotonic()
     with runtime_connection(settings.database_url) as conn:
         actor, cid, stage, evidence, refs, ehash = current(conn, authorization, p, now)
@@ -212,22 +232,24 @@ def run(settings, p, authorization, request_id, now, provider=None, monotonic=ti
             return response(old)
         rid = uuid4()
         conn.execute(
-            "INSERT INTO agent_runs(id,case_id,contact_id,scope_snapshot,provider_profile,trigger_key,status,started_at,actor_id,request_hash,evidence_hash,lease_until) VALUES (%s,%s,%s,%s,'offline-scripted-v1',%s,'running',%s,%s,%s,%s,%s)",
+            "INSERT INTO agent_runs(id,case_id,contact_id,scope_snapshot,provider_profile,trigger_key,status,started_at,actor_id,request_hash,evidence_hash,lease_until) VALUES (%s,%s,%s,%s,%s,%s,'running',%s,%s,%s,%s,%s)",
             (
                 rid,
                 p["case_id"],
                 cid,
                 Jsonb(p),
+                profile_name,
                 key,
                 now,
                 actor,
                 rh,
                 ehash,
-                now + timedelta(seconds=MAX_SECONDS + 5),
+                # A provider call may start just before the budget ends.
+                now + timedelta(seconds=MAX_SECONDS + PROVIDER_TIMEOUT_SECONDS + 5),
             ),
         )
         audit(conn, actor, "agent.run", "started", request_id, now)
-    provider = provider or fixture(evidence, refs, stage)
+    provider = provider or route.build(evidence, refs, stage)
     messages = [
         {
             "role": "system",
@@ -309,7 +331,7 @@ def run(settings, p, authorization, request_id, now, provider=None, monotonic=ti
                     "stage": stage,
                     "source_refs": refs,
                     "proposal_id": None,
-                    "notice": "Uncommitted draft; review current evidence. Scripted fixture, not a live language model.",
+                    "notice": "Uncommitted draft; review current evidence. " + route.notice,
                 }
                 result = {"status": "draft_only"}
             completed_tools.add(c.name)

@@ -1,0 +1,49 @@
+{
+  "selected": "offline-scripted-v1",
+  "profiles": {
+    "openai-candidate": {
+      "protocol": "openai_responses",
+      "model": "qualification-model-id",
+      "endpoint": "https://api.openai.com/v1/responses",
+      "allowed_endpoints": [
+        "https://api.openai.com/v1/responses"
+      ],
+      "internal_only": false,
+      "internal_endpoints": [],
+      "live_enabled": false,
+      "qualified": false,
+      "qualified_fingerprint": null,
+      "credential_env": "BANK_MODEL_API_KEY"
+    },
+    "claude-candidate": {
+      "protocol": "claude_messages",
+      "model": "qualification-model-id",
+      "endpoint": "https://api.anthropic.com/v1/messages",
+      "allowed_endpoints": [
+        "https://api.anthropic.com/v1/messages"
+      ],
+      "internal_only": false,
+      "internal_endpoints": [],
+      "live_enabled": false,
+      "qualified": false,
+      "qualified_fingerprint": null,
+      "credential_env": "BANK_MODEL_API_KEY"
+    },
+    "compatible-candidate": {
+      "protocol": "compatible_chat",
+      "model": "qualification-model-id",
+      "endpoint": "https://bank-model.example.invalid/v1/chat/completions",
+      "allowed_endpoints": [
+        "https://bank-model.example.invalid/v1/chat/completions"
+      ],
+      "internal_only": true,
+      "internal_endpoints": [
+        "https://bank-model.example.invalid/v1/chat/completions"
+      ],
+      "live_enabled": false,
+      "qualified": false,
+      "qualified_fingerprint": null,
+      "credential_env": "BANK_MODEL_API_KEY"
+    }
+  }
+}

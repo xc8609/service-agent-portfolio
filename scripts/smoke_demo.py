@@ -11,7 +11,7 @@ def request(path,payload=None,token=None):
         data=json.dumps(payload).encode() if payload is not None else None,headers=headers)
     with urllib.request.urlopen(req,timeout=10) as response:return json.load(response)
 
-ready=request('/health/ready');assert ready['agent_enabled'] is False
+ready=request('/health/ready');assert ready['agent_enabled'] is False and ready['assistant_route']=='offline-scripted-v1'
 session=request('/v1/demo/session',{'persona':'verified'})
 token=session['access_token'];contact=session['contact_id']
 context=request('/v1/agent-tools/get_contact_context',{'contact_id':contact},token)
