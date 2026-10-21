@@ -175,14 +175,19 @@ def dispatch_proposals(settings, name, payload, authorization, request_id, now):
                 with conn.transaction():
                     session = authenticate(conn, authorization, now)
                     actor = session["principal_id"]
-                    if name in ("get_proposals", "prepare_note"):
+                    if name in (
+                        "get_proposals",
+                        "prepare_note",
+                        "prepare_referral",
+                        "get_referrals",
+                    ):
                         schema = {
                             "type": "object",
                             "additionalProperties": False,
                             "required": ["contact_id"],
                             "properties": {"contact_id": {"type": "string", "format": "uuid"}},
                         }
-                        if name == "prepare_note":
+                        if name in ("prepare_note", "prepare_referral"):
                             schema["required"].append("transaction_ids")
                             schema["properties"]["transaction_ids"] = {
                                 "type": "array",
@@ -205,7 +210,35 @@ def dispatch_proposals(settings, name, payload, authorization, request_id, now):
                     else:
                         cid = payload["contact_id"]
                     contact, cards = scope(conn, session, cid, now)
-                    if name == "prepare_note":
+                    if name == "prepare_referral":
+                        from .referrals import prepare
+
+                        result = {"data": prepare(conn, contact, cards, payload["transaction_ids"])}
+                    elif name == "get_referrals":
+                        rows = conn.execute(
+                            """SELECT i.*,q.name AS queue_name,w.status AS work_status,w.original_due_at FROM referral_intakes i JOIN work_items w ON w.id=i.work_item_id JOIN service_queues q ON q.id=w.queue_id WHERE i.contact_id=%s AND i.committed_by=%s ORDER BY i.committed_at""",
+                            (contact["id"], actor),
+                        ).fetchall()
+                        for row in rows:
+                            authorize_refs(conn, contact, cards, row["source_versions"])
+                        result = {
+                            "referrals": [
+                                {
+                                    "proposal_id": str(r["proposal_id"]),
+                                    "case_id": str(r["case_id"]),
+                                    "work_item_id": str(r["work_item_id"]),
+                                    "disposition": r["disposition"],
+                                    "queue_name": r["queue_name"],
+                                    "work_status": r["work_status"],
+                                    "original_due_at": r["original_due_at"].isoformat()
+                                    if r["original_due_at"]
+                                    else None,
+                                    "payload": r["payload"],
+                                }
+                                for r in rows
+                            ]
+                        }
+                    elif name == "prepare_note":
                         refs = [source("contact", contact["id"], contact["version"])]
                         rows = conn.execute(
                             "SELECT * FROM card_transactions WHERE id=ANY(%s::uuid[]) AND account_id=ANY(%s::uuid[]) ORDER BY id",
@@ -269,13 +302,22 @@ def dispatch_proposals(settings, name, payload, authorization, request_id, now):
                         elif name == "create_proposal":
                             item = payload["proposal"]
                             refs = payload["source_refs"]
-                            if item["kind"] != "note":
+                            if item["kind"] not in ("note", "referral"):
                                 fail("VALIDATION_ERROR")
                             if str(contact["version"]) != payload["expected_context_version"]:
                                 fail("CONFLICT")
                             note = item["payload"]
-                            case_id = as_uuid(note["case_id"]) if note["case_id"] else None
-                            validate_note(note, contact, refs, case_id)
+                            case_id = (
+                                as_uuid(note["case_id"])
+                                if item["kind"] == "note" and note["case_id"]
+                                else None
+                            )
+                            if item["kind"] == "note":
+                                validate_note(note, contact, refs, case_id)
+                            else:
+                                from .referrals import validate_referral
+
+                                validate_referral(conn, contact, cards, note, refs)
                             current = current_sources(conn, contact, cards, refs)
                             pid = uuid4()
                             conn.execute(
@@ -284,7 +326,7 @@ def dispatch_proposals(settings, name, payload, authorization, request_id, now):
                                     pid,
                                     case_id,
                                     contact["id"],
-                                    "note",
+                                    item["kind"],
                                     Jsonb(note),
                                     Jsonb(refs),
                                     "draft",
@@ -296,7 +338,7 @@ def dispatch_proposals(settings, name, payload, authorization, request_id, now):
                                 "INSERT INTO proposal_revisions VALUES (%s,1,%s,%s,%s)",
                                 (pid, Jsonb(note), actor, now),
                             )
-                            gaps = unsupported_claims(note["body"])
+                            gaps = unsupported_claims(note.get("body", ""))
                             result = envelope(
                                 {
                                     "proposal_id": str(pid),
@@ -336,12 +378,23 @@ def dispatch_proposals(settings, name, payload, authorization, request_id, now):
                                 replacement = payload["replacement"]
                                 if replacement["kind"] != proposal["kind"]:
                                     fail("VALIDATION_ERROR")
-                                validate_note(
-                                    replacement["payload"],
-                                    contact,
-                                    proposal["source_versions"],
-                                    str(proposal["case_id"]) if proposal["case_id"] else None,
-                                )
+                                if proposal["kind"] == "note":
+                                    validate_note(
+                                        replacement["payload"],
+                                        contact,
+                                        proposal["source_versions"],
+                                        str(proposal["case_id"]) if proposal["case_id"] else None,
+                                    )
+                                else:
+                                    from .referrals import validate_referral
+
+                                    validate_referral(
+                                        conn,
+                                        contact,
+                                        cards,
+                                        replacement["payload"],
+                                        proposal["source_versions"],
+                                    )
                                 version = proposal["version"] + 1
                                 conn.execute(
                                     "UPDATE proposals SET payload=%s,version=%s WHERE id=%s",
@@ -365,6 +418,34 @@ def dispatch_proposals(settings, name, payload, authorization, request_id, now):
                                     },
                                     "request_id": request_id,
                                 }
+                            elif proposal["kind"] == "referral":
+                                from .referrals import commit
+
+                                committed = commit(
+                                    conn, contact, cards, proposal, actor, operation[0], now
+                                )
+                                result = {
+                                    "data": {
+                                        "operation_key": payload["operation_key"],
+                                        "status": "succeeded",
+                                        **committed,
+                                    },
+                                    "request_id": request_id,
+                                }
+                                record_operation(
+                                    conn,
+                                    actor,
+                                    contact["id"],
+                                    name,
+                                    payload,
+                                    operation,
+                                    result,
+                                    now,
+                                )
+                                conn.execute(
+                                    "UPDATE proposals SET status='committed' WHERE id=%s",
+                                    (proposal["id"],),
+                                )
                             else:
                                 note = proposal["payload"]
                                 if unsupported_claims(note["body"]):

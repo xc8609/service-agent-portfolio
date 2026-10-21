@@ -5,6 +5,7 @@ import {InvestigationPanel} from './InvestigationPanel';
 import {RelatedCases} from './RelatedCases';
 import {HandlingRules} from './HandlingRules';
 import {NotePanel} from './NotePanel';
+import {ReferralPanel} from './ReferralPanel';
 
 type RecordRow={id:string;version:string;amount_minor:number;currency:string;merchant_description:string;status:string;occurred_at:string;posted_at:string|null};
 type Meta={as_of:string;scope_ref:string;sources:{kind:string;id:string;version:string;section:string|null}[]};
@@ -78,6 +79,7 @@ function App(){
       {auth&&<InvestigationPanel key={auth.token} auth={auth} evidence={evidence} busy={busy} onStatementChange={invalidateStatement} onSaving={setSaving}/>}
       {auth&&evidence&&<HandlingRules key={`rules:${meta?.as_of}`} auth={auth} records={evidence.records}/>}
       {auth&&<NotePanel key={`note:${auth.token}`} auth={auth} records={evidence?.records??null} contextKey={`${meta?.as_of}:${stale}`}/>}
+      {auth&&<ReferralPanel key={`referral:${auth.token}`} auth={auth} records={evidence?.records??null} contextKey={`${meta?.as_of}:${stale}`}/>}
       <footer aria-live="polite">{busy?'Retrieving authorized evidence…':'Local synthetic workflow. No measured savings or production readiness claimed.'}</footer>
     </main></div>;
 }

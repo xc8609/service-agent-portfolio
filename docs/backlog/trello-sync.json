@@ -146,9 +146,10 @@
       "id": "DEV-06",
       "url": "https://trello.com/c/SgB3mHiy/17-dev-06-review-edit-and-commit-a-contact-note-safely",
       "descriptionVerified": true,
-      "marker": "BANK-S02-v0.4",
+      "marker": "BANK-DEV06-DELIVERY-2026-10-20",
       "currentList": "02 | Bank development backlog",
-      "lastUpdated": "2026-10-19"
+      "lastUpdated": "2026-10-20",
+      "pullRequest": "https://github.com/xc8609/service-agent-portfolio/pull/5"
     },
     {
       "id": "DEV-07",

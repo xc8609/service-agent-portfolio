@@ -13,7 +13,9 @@ synthetic records. Related-case lookup shows progress, owners and duplicate-enqu
 review hints. Applicable simulated handling rules show conditions, exact citations
 and next steps, with explicit conflict/gap handling. Changed queries invalidate old
 evidence and guidance. Editable service notes require human approval and return a durable
-receipt, with source-version checks and safe retries. **Next:** referral/feedback, then
+receipt, with source-version checks and safe retries. Reviewed specialist enquiries
+link existing work or create justified queued work, preserving material/contact gaps.
+**Next:** specialist results and feedback, then
 bounded Agent assistance. No live bank connection, implemented Agent or measured savings.
 
 ## Repository map

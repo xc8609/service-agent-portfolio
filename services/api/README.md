@@ -1,6 +1,6 @@
 # Bank lookup runtime
 
-Python 3.12, FastAPI, psycopg and PostgreSQL. Six v0.4 read contracts are implemented for an authorized **inbound representative**. Feedback assignment, agent delegation, referral commands and worker processing are intentionally unsupported and deny by default. All records and identity assertions are synthetic.
+Python 3.12, FastAPI, psycopg and PostgreSQL. Six v0.4 read contracts are implemented for an authorized **inbound representative**. Feedback assignment, agent delegation, worker processing and specialist/feedback commands are intentionally unsupported and deny by default. All records and identity assertions are synthetic.
 
 ## Run with Docker Compose (from repository root)
 
@@ -64,7 +64,7 @@ The demo persona adapter is separate from model tools. It issues opaque credenti
 
 ## Traceability and limits
 
-See [slice specification](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-slice.md) and [execution evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md). This is not production authentication, bank connectivity, UAT or regulatory certification. Scoped inbound case and policy reads are implemented; reviewed inbound note commits are implemented. Referrals, callbacks and Agent execution remain future work.
+See [slice specification](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-slice.md) and [execution evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md). This is not production authentication, bank connectivity, UAT or regulatory certification. Scoped inbound case and policy reads are implemented; reviewed inbound note commits are implemented. Reviewed referrals are implemented; callbacks and Agent execution remain future work.
 
 Implementation references: [FastAPI container guidance](https://fastapi.tiangolo.com/deployment/docker/), [psycopg installation](https://www.psycopg.org/psycopg3/docs/basic/install.html), [optional pgserver publisher](https://pypi.org/project/pgserver/). These inform packaging; the domain authority rules come from this project's accepted decisions and specs.
 
@@ -132,3 +132,12 @@ Unknown responses retain the operation key; retry the same operation. A definiti
 validation rejection unlocks editing. History is scoped to the authenticated author
 and current verified contact. The runtime cannot update/delete committed notes.
 See [executed evidence](../../projects/bank-service-assist/specs/DEV-06/implementation-evidence.md).
+
+## DEV-07 reviewed specialist intake
+
+After saving the customer report for two posted entries, prepare a fresh referral,
+review related work, record missing materials/contact readiness, confirm the summary,
+save and approve. A linked receipt reuses existing work; queued means not yet
+accepted. Migration 007 and normal seed/provision add synthetic route/contact
+configuration and immutable intakes. Existing records are preserved. Restart retains
+receipts and history. See [v0.5 intake contract](../../projects/bank-service-assist/specs/DEV-07/runtime-contract.md).

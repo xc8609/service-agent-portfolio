@@ -11,8 +11,8 @@ suite is engineering evidence, not business-owner UAT or production qualificatio
 | DEV-03 | Statement and recognition | PR 2 |
 | DEV-04 | Related case progress | PR 3; assigned-feedback extension follows DEV-11 |
 | DEV-05 | Scoped handling rules | PR 4 |
-| DEV-06 | Reviewed notes, receipts and retries | Implemented; PR preparation |
-| DEV-07 | Reviewed specialist referral and typed intake | Next, depends on DEV-06 |
+| DEV-06 | Reviewed notes, receipts and retries | [PR 5](https://github.com/xc8609/service-agent-portfolio/pull/5); four cloud checks passed |
+| DEV-07 | Reviewed specialist referral and typed intake | Initial intake implemented; PR preparation; downstream follow-up in DEV-11–13 |
 | DEV-11 | Specialist result and owned feedback | After DEV-07 |
 | DEV-12 | Contact plans, attempts and closure guards | After DEV-11 |
 | DEV-13 | Overdue work, objection/review and complaint | After DEV-11/12 |
@@ -23,3 +23,5 @@ suite is engineering evidence, not business-owner UAT or production qualificatio
 Confirmed D-17–25 remain binding. No contact attempt quota reset, automatic closure
 of unanswered contact, financial execution or invented customer evidence. Keep
 public story cards and execution evidence aligned with actual verified changes.
+
+Owner confirmed on 20 October: complete DEV-09 offline first; live model validation is deferred. No paid model calls are authorized by this execution pass.

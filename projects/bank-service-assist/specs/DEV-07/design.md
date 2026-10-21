@@ -31,3 +31,9 @@ missing typed fields, append-only evidence, customer-service contact-gap work,
 independent feedback state and migration/permission tests. Proposed engineering
 shape is not a deployed contract. Extend shared schemas and persistence together
 before accepting referral writes; keep commands outside model tools.
+
+## Current implementation update
+
+The [v0.5 runtime contract](runtime-contract.md) supersedes historical initial-intake
+implementation gates above. See [executed evidence](implementation-evidence.md).
+Post-intake supplementation/contact resolution and owner acceptance remain pending.

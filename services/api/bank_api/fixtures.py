@@ -250,5 +250,5 @@ def reset(dsn, target):
         assert_demo_target(conn, target)
         # Never drop schemas or run against an unmarked database. Keep migrations/marker.
         conn.execute(
-            "TRUNCATE staff_principals, service_queues, customers, audit_events, operations, outbox_events, policy_versions CASCADE"
+            "TRUNCATE referral_pair_guards, staff_principals, service_queues, customers, audit_events, operations, outbox_events, policy_versions CASCADE"
         )
