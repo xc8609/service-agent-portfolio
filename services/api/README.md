@@ -1,6 +1,6 @@
 # Bank lookup runtime
 
-Python 3.12, FastAPI, psycopg and PostgreSQL. Three v0.4 read contracts are implemented for an authorized **inbound representative**. Feedback assignment, agent delegation, commands and worker processing are intentionally unsupported and deny by default. All records and identity assertions are synthetic.
+Python 3.12, FastAPI, psycopg and PostgreSQL. Four v0.4 read contracts are implemented for an authorized **inbound representative**. Feedback assignment, agent delegation, referral commands and worker processing are intentionally unsupported and deny by default. All records and identity assertions are synthetic.
 
 ## Run with Docker Compose (from repository root)
 
@@ -79,3 +79,20 @@ local edits. Retry unchanged input after an uncertain response, or reload saved
 history. A 409 requires reloading history and rechecking evidence. Preserve the
 database on failure; forward-fix migrations instead of deleting saved reports.
 See the [human capture contract](../../projects/bank-service-assist/specs/DEV-03/investigation-contract.md).
+
+## DEV-04 case progress
+
+Migration `004_case_lookup.sql` adds customer-safe timeline/source-head fields.
+Normal migrate/seed/provision upgrades the disposable demo additively; it does not
+overwrite report history. `case_fixtures.py` seeds three synthetic cases, including
+the two $85 entries linked to DEMO-CASE-001, closed history and another customer.
+Fresh fixtures are `bank-cases-synthetic-v2`; transaction source references remain
+`synthetic-ledger-v1`. The database itself is not tracked in Git.
+
+After inspecting the pair, review its linked case and refresh to recheck current
+ownership. STALE_VERSION means timeline/head disagreement: preserve source data,
+use the correlation ID for manual reconciliation and retry after the source is
+corrected. Never invent a closed status or create another case to bypass a failed
+lookup. On access denial, re-establish authorized context; do not alter role/proof
+in the request. No case mutation or outbound feedback permission is enabled.
+See [contract and acceptance](../../projects/bank-service-assist/specs/DEV-04/runtime-contract.md).

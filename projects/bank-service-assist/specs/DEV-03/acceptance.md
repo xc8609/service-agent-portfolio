@@ -11,7 +11,7 @@ Implementation: bounded read slice in PR #1. Selected runtime tests executed; se
 | DEV-03-AC03 | DEV-03-T03 | require clarification or explicit selection before a case-specific proposal | [Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md) (30 API/PostgreSQL tests, 3 browser journeys; CI linked) | Passed (read slice) |
 | DEV-03-AC04 | DEV-03-T04 / SI-01–06 | retain the original statement and mark affected advice stale; offer the reviewed manual risk path | [Statement/recognition evidence](implementation-evidence.md): history, evidence invalidation and manual risk prompt tested; proposal commits not implemented | Passed (manual capture slice); full acceptance pending |
 | DEV-03-AC05 | DEV-03-T05 | show unavailable rather than no transactions; permit manual continuation | [Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md) (30 API/PostgreSQL tests, 3 browser journeys; CI linked) | Passed (slice) |
-| DEV-03-AC06 | DEV-03-T06 | show its actual reference/status and do not silently create a duplicate | Pending implementation | Not executed |
+| DEV-03-AC06 | DEV-03-T06 / CK-01–07 | show its actual reference/status and do not silently create a duplicate | [DEV-04 evidence](../DEV-04/implementation-evidence.md): scoped status/ownership and review hints | Passed (read slice); atomic submission checks pending DEV-07 |
 
 Structural validation of specifications is reported separately in workflow-validation.json and does not pass these tests. Record environment, fixture/calendar/policy/provider versions, commands, actual output, defects and review decision when run.
 

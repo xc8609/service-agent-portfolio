@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-20",
+  "marker": "BANK-DEV04-CASES-v1",
+  "pr": "https://github.com/xc8609/service-agent-portfolio/pull/3",
+  "base_pr": "https://github.com/xc8609/service-agent-portfolio/pull/2",
+  "cards": [
+    {
+      "id": "DEV-04",
+      "url": "https://trello.com/c/Ln57bQr8",
+      "saved_and_reopened_verified": true,
+      "marked_done": false
+    },
+    {
+      "id": "S03",
+      "url": "https://trello.com/c/QlhRFvgl",
+      "saved_and_reopened_verified": true,
+      "marked_done": false
+    }
+  ],
+  "method": "Read visible Markdown, prepend tested scope/PR and remaining gates, retain original baseline, save via UI and reload to verify.",
+  "checks": "78 local API/PostgreSQL tests, 15 browser journeys; current cloud checks linked on PR.",
+  "limits": "Inbound read increment only. DEV-07 atomic duplicate submission guard and owner UAT pending."
+}

@@ -16,6 +16,7 @@ from psycopg.types.json import Jsonb
 from starlette.concurrency import run_in_threadpool
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
+from .case_lookup import dispatch_cases
 from .config import Settings
 from .db import ROOT, SCHEMA_VERSION, runtime_connection
 from .fixtures import FIXTURE_VERSION, PERSONAS, uid
@@ -27,6 +28,14 @@ CONTRACTS = json.loads(
 TOOLS = {t["name"]: t for t in CONTRACTS["tools"]}
 READ_TOOLS = ("get_contact_context", "search_transactions", "get_transaction_evidence")
 MESSAGES = {
+    "STALE_VERSION": (
+        "Recorded case state conflicts with its timeline. Refresh or request manual reconciliation; do not create another enquiry from this view.",
+        409,
+    ),
+    "LIMIT_EXCEEDED": (
+        "Too much related history to safely display. Narrow the selection or use manual case review.",
+        422,
+    ),
     "CONFLICT": (
         "Investigation or source evidence changed. Reload history and recheck selected evidence before saving.",
         409,
@@ -320,6 +329,7 @@ def dispatch(settings, name, payload, authorization, request_id, now):
                         "allowed_actions": [
                             "customer.read_context",
                             "transaction.read",
+                            "result.read_approved",
                         ],
                         "access_purpose": "inbound_service",
                         "assigned_work_ref": None,
@@ -502,6 +512,17 @@ def create_app(settings=None, clock=None):
             methods=["POST"],
             name=name,
         )
+
+    app.add_api_route(
+        TOOLS["get_case_snapshot"]["http"]["path"],
+        endpoint("get_case_snapshot", dispatch_cases),
+        methods=["POST"],
+    )
+    app.add_api_route(
+        "/v1/workspace/get_related_cases",
+        endpoint("get_related_cases", dispatch_cases),
+        methods=["POST"],
+    )
 
     @app.api_route("/v1/{unsupported:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE"])
     def unsupported_api(unsupported: str):

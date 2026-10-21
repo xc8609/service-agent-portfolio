@@ -79,3 +79,13 @@ The v0.4 JSON payload and calendar fixtures in `specs/contracts/` are authored s
 ## Runtime seed fixtures — 20 October 2026
 
 The authored `services/api/bank_api/fixtures.py` generator (repository root) creates two synthetic customers, masked demo cards, seven transaction records, fixed staff personas and explicitly fake verification assertions. Version: `bank-lookup-synthetic-v1`. It is not downloaded bank data, does not contain PAN/CVV, and does not measure real outcomes. Database instances and generated records are excluded from Git. BANKING77 remains optional and was not downloaded by this runtime implementation.
+
+## DEV-04 authored case fixtures — 20 October 2026
+
+`services/api/bank_api/case_fixtures.py` (repository root) extends the runtime seed
+to `bank-cases-synthetic-v2`: three fake cases, a customer-safe timeline, linked
+work ownership/due dates and an unapproved commitment used for disclosure tests.
+DEMO-CASE-001 covers both $85 DEMO STORE entries. No actual bank/customer data
+was downloaded; staff names and progress are invented demonstration records.
+Own fixture code is MIT; public dataset terms are unchanged. Generated databases
+remain excluded from Git. Dates/deadlines are test inputs, not bank service promises.

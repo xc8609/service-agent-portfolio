@@ -127,9 +127,10 @@
       "id": "DEV-04",
       "url": "https://trello.com/c/Ln57bQr8/15-dev-04-explain-the-recorded-status-and-next-step-of-an-existing-case",
       "descriptionVerified": true,
-      "marker": "BANK-S02-v0.4",
+      "marker": "BANK-DEV04-CASES-v1",
       "currentList": "02 | Bank development backlog",
-      "lastUpdated": "2026-10-19"
+      "lastUpdated": "2026-10-20",
+      "reopenedVerified": true
     },
     {
       "id": "DEV-05",
@@ -330,7 +331,7 @@
       "descriptionVerified": true,
       "titleVerified": true,
       "currentList": "09 | Sprint roadmap",
-      "marker": "BANK-DEV03-CAPTURE-v1",
+      "marker": "BANK-DEV04-CASES-v1",
       "lastUpdated": "2026-10-20",
       "reopenedVerified": true
     },
