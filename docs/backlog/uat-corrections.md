@@ -45,3 +45,10 @@ Twenty offline/SQL tests, Ruff, frontend build, spec/schema validators, publicat
 hygiene and whitespace checks passed. Cloud CI and interactive retest follow the PR.
 
 [Trello REV-02](https://trello.com/c/hqWMOquN/58-rev-02-fix-approval-lifecycle-and-specialist-intake-handoff).
+
+## Post-CI retest
+
+All four PR checks passed on application commit `9b61430`. The subsequent
+[delegated core-flow retest](../uat/2026-10-21-retest.md) passed UAT-01–03 and the
+observed query-to-verified-feedback path. Remaining manual coverage and the
+conservative wording guard limitation are recorded explicitly. PR remains open.

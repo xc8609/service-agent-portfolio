@@ -63,3 +63,9 @@ U14 needs the background worker (included in Docker Compose).
 Sign-off: owner name, date, environment (commit SHA, fixture version) and overall decision
 (accept / accept with listed defects / reject). Defects become issues linked to the
 requirement ID; failed rules are not silently changed in the specification.
+
+## Correction retest
+
+[REV-02 observed retest](2026-10-21-retest.md) records the three defect corrections
+and the post-CI query-to-feedback walkthrough. It supplements the original findings;
+owner sign-off and broader release gates are still separate.
