@@ -271,7 +271,7 @@ def test_evidence_does_not_infer_duplicate_or_financial_action(environment):
         client.post(
             "/v1/commands/approve_and_commit_proposal", headers=headers, json={}
         ).status_code
-        == 404
+        == 422
     )
 
 
@@ -290,7 +290,7 @@ def test_runtime_db_cannot_modify_ledger_or_read_internal_notes(environment):
 def test_readiness_outage_and_public_mode(environment):
     client, _, _, _ = environment
     assert client.get("/health/live").status_code == 200
-    assert client.get("/health/ready").json()["schema_version"] == "005_policy_lookup.sql"
+    assert client.get("/health/ready").json()["schema_version"] == "006_reviewed_notes.sql"
     with TestClient(
         create_app(Settings("postgresql://bank_app:unused@127.0.0.1:1/bank_demo"))
     ) as broken:

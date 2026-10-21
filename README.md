@@ -12,7 +12,8 @@ evidence review, versioned customer statements and explicit pair recognition wit
 synthetic records. Related-case lookup shows progress, owners and duplicate-enquiry
 review hints. Applicable simulated handling rules show conditions, exact citations
 and next steps, with explicit conflict/gap handling. Changed queries invalidate old
-evidence and guidance. **Next:** notes/referral/feedback, then
+evidence and guidance. Editable service notes require human approval and return a durable
+receipt, with source-version checks and safe retries. **Next:** referral/feedback, then
 bounded Agent assistance. No live bank connection, implemented Agent or measured savings.
 
 ## Repository map

@@ -64,7 +64,7 @@ The demo persona adapter is separate from model tools. It issues opaque credenti
 
 ## Traceability and limits
 
-See [slice specification](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-slice.md) and [execution evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md). This is not production authentication, bank connectivity, UAT or regulatory certification. Scoped inbound case and policy reads are implemented; note/referral commits, callbacks and agent execution remain future work.
+See [slice specification](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-slice.md) and [execution evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md). This is not production authentication, bank connectivity, UAT or regulatory certification. Scoped inbound case and policy reads are implemented; reviewed inbound note commits are implemented. Referrals, callbacks and Agent execution remain future work.
 
 Implementation references: [FastAPI container guidance](https://fastapi.tiangolo.com/deployment/docker/), [psycopg installation](https://www.psycopg.org/psycopg3/docs/basic/install.html), [optional pgserver publisher](https://pypi.org/project/pgserver/). These inform packaging; the domain authority rules come from this project's accepted decisions and specs.
 
@@ -121,3 +121,14 @@ and [evidence](../../projects/bank-service-assist/specs/DEV-05/implementation-ev
 record the narrow inbound scope. Contact-start effective time is shown separately
 from retrieval time. The current demo is one exact section per edition; production
 knowledge ingestion, policy approval and model orchestration remain later work.
+
+## DEV-06 reviewed service notes
+
+Migration `006_reviewed_notes.sql` adds immutable draft revisions and contact-bound
+operation receipts. Refresh note sources, edit facts/allegations separately, save a
+draft, then explicitly approve. Only a successful commit receipt means the service
+record exists. Refresh retains edits and exposes old/current source facts for review.
+Unknown responses retain the operation key; retry the same operation. A definitive
+validation rejection unlocks editing. History is scoped to the authenticated author
+and current verified contact. The runtime cannot update/delete committed notes.
+See [executed evidence](../../projects/bank-service-assist/specs/DEV-06/implementation-evidence.md).
