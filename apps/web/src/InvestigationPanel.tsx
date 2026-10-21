@@ -8,8 +8,11 @@ const modes:Record<string,string>={not_recorded:'Recognition not yet recorded',s
 export function InvestigationPanel({auth,evidence,busy,onStatementChange,onSaving}:{auth:{token:string;contact:string};evidence:{records:Transaction[]}|null;busy:boolean;onStatementChange:()=>void;onSaving:(value:boolean)=>void}){
   const [statement,setStatement]=useState('');
   const [history,setHistory]=useState<History|null>(null);
-  const [recognition,setRecognition]=useState('not_recorded');
-  const [recognized,setRecognized]=useState('');
+  // A choice belongs to this inspected snapshot, never to a later render/effect.
+  const [choice,setChoice]=useState<{evidence:typeof evidence;recognition:string;recognized:string}|null>(null);
+  const currentChoice=choice?.evidence===evidence?choice:null;
+  const recognition=currentChoice?.recognition??'not_recorded';
+  const recognized=currentChoice?.recognized??'';
   const [error,setError]=useState('');
   const [notice,setNotice]=useState('');
   const [saving,setSaving]=useState(false);
@@ -30,7 +33,7 @@ export function InvestigationPanel({auth,evidence,busy,onStatementChange,onSavin
     finally{if(active.current)setLoading(false);}
   }
   useEffect(()=>{active.current=true;void load(true);return()=>{active.current=false;};},[auth.token]);
-  useEffect(()=>{setRecognition('not_recorded');setRecognized('');setNotice('');},[evidence]);
+  useEffect(()=>{setNotice('');},[evidence]);
   async function save(){
     if(!history)return;
     const input={contact_id:auth.contact,expected_revision:history.current_revision,statement,recognition,transaction_versions:recognition==='not_recorded'?[]:(pair??[]).map(({id,version})=>({id,version})),recognized_transaction_id:recognition==='specific_entry'?recognized:null};
@@ -45,9 +48,9 @@ export function InvestigationPanel({auth,evidence,busy,onStatementChange,onSavin
     <p>Customer-reported information is separate from source facts. Record only synthetic details in this demo.</p>
     <label>Customer statement<textarea maxLength={2000} rows={4} value={statement} disabled={saving||loading} onChange={e=>{setStatement(e.target.value);setNotice('');onStatementChange();}}/></label>
     <p className="muted">Editing the statement invalidates earlier evidence and recognition. Reinspect the selected pair before recording recognition.</p>
-    <label>Customer recognition<select value={recognition} disabled={!pair||saving||busy} onChange={e=>{setRecognition(e.target.value);setRecognized('');setNotice('');}}>{Object.entries(modes).map(([value,label])=><option key={value} value={value}>{label}</option>)}</select></label>
+    <label>Customer recognition<select value={recognition} disabled={!pair||saving||busy} onChange={e=>{setChoice({evidence,recognition:e.target.value,recognized:''});setNotice('');}}>{Object.entries(modes).map(([value,label])=><option key={value} value={value}>{label}</option>)}</select></label>
     {!pair&&<p>Inspect exactly two entries to record their recognition scope. You can save the statement first.</p>}
-    {recognition==='specific_entry'&&<label>Recognized entry<select value={recognized} disabled={saving||busy} onChange={e=>setRecognized(e.target.value)}><option value="">Choose the entry identified by the customer</option>{pair?.map(r=><option key={r.id} value={r.id}>{r.merchant_description} · {r.currency} {(r.amount_minor/100).toFixed(2)} · {r.status} · {r.id}</option>)}</select></label>}
+    {recognition==='specific_entry'&&<label>Recognized entry<select value={recognized} disabled={saving||busy} onChange={e=>setChoice({evidence,recognition,recognized:e.target.value})}><option value="">Choose the entry identified by the customer</option>{pair?.map(r=><option key={r.id} value={r.id}>{r.merchant_description} · {r.currency} {(r.amount_minor/100).toFixed(2)} · {r.status} · {r.id}</option>)}</select></label>}
     {recognition==='one_purchase_unresolved'&&<p className="notice">Both entries will be recorded together. Which entry is additional remains unresolved; no disputed entry is inferred.</p>}
     {recognition==='neither'&&<p className="notice">Manual risk review: clarify the customer's denial and follow the approved risk-handling process with an authorized colleague. No fraud case, refund or transfer is created here.</p>}
     <div className="controls"><button onClick={save} disabled={!history||loading||saving||busy||!statement.trim()||(recognition!=='not_recorded'&&!pair)||(recognition==='specific_entry'&&!recognized)}>{saving?'Saving customer report…':'Save customer report'}</button><button onClick={()=>{onStatementChange();void load();}} disabled={saving||loading||busy}>Reload saved history</button></div>
