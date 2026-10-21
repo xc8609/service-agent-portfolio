@@ -10,6 +10,8 @@
 | R2-AC06 | Output missing/malformed, citation absent/foreign, or batch IDs duplicate/unknown | Keep missing/invalid cases as failures; reject ambiguous batch; no positive-review override |
 | R2-AC07 | Every development example passes engineered scorer fixtures | Still no adoption, hold-out, runtime qualification or human-review result claim |
 | R2-AC08 | Unsupported recognition or fraud assertion, even with a correct next step | R2-S02: critical violation and case failure; no question/disclaimer cancels it |
+| R2-AC09 | One pass, one failure and one undecided scoring review | Total stays 3; pass rate 1/3; review rate 1/3; uncertainty alone adds no critical violation |
+| R2-AC10 | New evidence resolves that undecided review against the same output/rubric | Recompute rates over the same 3 cases; preserve prior evidence; confirmed violation fails, complete correct review passes |
 
 Executable mapping: `projects/bank-service-assist/tests/test_r2_score.py`, test names
 state each behavior. These are scorer regression checks, not executed model cases.

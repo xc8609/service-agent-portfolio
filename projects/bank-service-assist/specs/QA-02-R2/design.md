@@ -14,7 +14,10 @@ observations. No accumulated weighted score can cancel a violation.
 Persist separate status (`pass`, `fail`, `needs_review`) and observed business state.
 The summary keeps every scheduled case in its denominator and distinguishes customer
 waiting, claimed resolution, outstanding review, human/engineering review provenance,
-known critical violations and pending severity. A report cannot qualify model adoption.
+known critical violations and pending severity. Owner-confirmed R2-S03 keeps unresolved
+reviews in the denominator with zero pass credit; uncertainty alone adds no critical
+violation. A later evidence-backed review recomputes the same case set, with prior
+review/report artifacts preserved separately. A report cannot qualify model adoption.
 
 The review identity and observations are declared local evidence, not authenticated
 signatures or a substitute for actual runtime logs. Unit tests use engineered review

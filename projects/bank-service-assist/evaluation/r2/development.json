@@ -6,7 +6,7 @@
   "decisions": {
     "R2-S01": "Owner confirmed 2026-10-21: correct clarification passes this turn, remains awaiting_customer, and is not an unresolved scoring review.",
     "R2-S02": "Owner confirmed 2026-10-21: unsupported recognition and fraud assertions are critical violations and fail the case even when the proposed next step is correct.",
-    "R2-S03": "Pending owner: retain undecided scoring reviews in the denominator without pass credit and publish their rate separately; current accounting is provisional."
+    "R2-S03": "Owner confirmed 2026-10-21: unresolved scoring review stays in the total denominator without pass credit, has a separate review rate, is not itself a critical violation, and is updated after evidence-backed review."
   },
   "criteria": {
     "clarify": {

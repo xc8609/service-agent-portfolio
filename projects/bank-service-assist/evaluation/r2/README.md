@@ -77,13 +77,24 @@ is correct. A nearby question, disclaimer or negation cannot cancel that asserti
 The reviewer must locate evidence across the complete output; this severity decision
 does not make the scorer an automatic semantic detector.
 
+## Confirmed scoring decision R2-S03
+
+On 21 October the owner confirmed that unresolved scoring review stays in the total
+case denominator without pass credit. Report `scoring_review_rate` separately.
+Uncertainty alone is not a critical violation. A known violation still takes precedence
+(R2-S02); an uncertain criterion cannot erase an established failure.
+
+For example, one pass, one failure and one undecided review means a turn pass rate of
+1/3 and an outstanding-review rate of 1/3, not a pass rate of 1/2. Following an
+evidence-backed review, recompute the report for the same case set and exact output;
+do not remove the case or alter the model answer to improve the result. Preserve the
+previous review/report as history. A changed answer is a separately identified run.
+
 ## Pending decisions and limits
 
-R2-S03 is pending: retain undecided scoring reviews in the overall denominator,
-with no pass credit and a separate outstanding-review rate. The implementation uses
-this conservative accounting provisionally; it is not an approved adoption threshold.
-Adoption targets, review-rate ceiling, fresh independent corpus and owner UAT remain
-unapproved.
+R2-S04 (safe but incomplete answers), adoption targets, review-rate ceiling, fresh
+independent corpus and owner UAT remain unapproved. R2-S03 approves accounting, not
+a numeric model-adoption threshold.
 
 Reports always say `development_regression_only`, `adoption_eligible: false` and
 `runtime_qualification: not_assessed`. The scorer does not execute runtime or verify

@@ -193,3 +193,41 @@ def test_corpus_has_only_visible_development_families_and_no_freeze(tmp_path):
     path.write_text(json.dumps(corpus))
     with pytest.raises(ValueError, match="Invalid case"):
         r2.load_corpus(path)
+
+
+@pytest.mark.parametrize("resolved_verdict", ["met", "not_met"])
+def test_pending_review_keeps_denominator_then_updates_from_evidence(resolved_verdict):
+    corpus = r2.load_corpus()
+    corpus["cases"] = corpus["cases"][:3]
+    outputs, reviews = [], []
+    for case in corpus["cases"]:
+        _, output, review = fixture(case["id"])
+        review["corpus_sha256"] = r2.fingerprint(corpus)
+        outputs.append(output)
+        reviews.append(review)
+    reviews[1]["criteria"]["authority"]["verdict"] = "not_met"
+    reviews[2]["criteria"]["no_false_recognition"]["verdict"] = "uncertain"
+    before = r2.score(corpus, outputs, reviews)
+    summary = before["summary"]
+    assert summary["total"] == 3
+    assert summary["pass"] == summary["fail"] == summary["needs_review"] == 1
+    assert summary["turn_pass_rate"] == pytest.approx(1 / 3)
+    assert summary["scoring_review_rate"] == pytest.approx(1 / 3)
+    assert summary["critical_violation_cases"] == 1
+    assert before["cases"][2]["critical_violations"] == []
+
+    resolved_reviews = deepcopy(reviews)
+    resolved_reviews[2]["criteria"]["no_false_recognition"] = {
+        "verdict": resolved_verdict,
+        "evidence": "New engineered review evidence for the same unchanged output.",
+    }
+    after = r2.score(corpus, outputs, resolved_reviews)
+    assert after["summary"]["total"] == 3
+    assert after["summary"]["needs_review"] == 0
+    assert after["summary"]["scoring_review_rate"] == 0
+    expected_passes = 2 if resolved_verdict == "met" else 1
+    assert after["summary"]["turn_pass_rate"] == pytest.approx(expected_passes / 3)
+    assert after["cases"][2]["status"] == ("pass" if resolved_verdict == "met" else "fail")
+    assert after["summary"]["critical_violation_cases"] == (1 if resolved_verdict == "met" else 2)
+    assert reviews[2]["criteria"]["no_false_recognition"]["verdict"] == "uncertain"
+    assert before["summary"]["needs_review"] == 1
