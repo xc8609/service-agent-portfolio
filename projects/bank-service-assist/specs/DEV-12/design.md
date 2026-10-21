@@ -30,7 +30,7 @@ Ship through existing API/worker/UI release, with migration and fixture updates.
 
 A technical failure with dial_state=not_placed does not consume contact quota. Persist the fault and preserve all original deadlines. A placed unanswered call consumes one contact attempt. The server derives counting from trusted call evidence; the agent cannot override it.
 
-DEV-12-T01 must include paired synthetic fixtures: existing count 1, unchanged due time, then (a) not_placed + technical_failure leaves count 1 and persists fault, (b) placed + no_answer produces count 2. Replay of either operation key must not duplicate its effect. Deadline expiry still sends the case to lead review, never resolved closure. These tests are planned, not executed.
+DEV-12-T01 must include paired synthetic fixtures: existing count 1, unchanged due time, then (a) not_placed + technical_failure leaves count 1 and persists fault, (b) placed + no_answer produces count 2. Replay of either operation key must not duplicate its effect. Deadline expiry still sends the case to lead review, never resolved closure. Executed in `test_continuation.py`; see the [acceptance record](acceptance.md).
 
 ## D-19 deterministic calendar fixtures (planned)
 

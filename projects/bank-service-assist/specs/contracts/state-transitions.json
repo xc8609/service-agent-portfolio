@@ -1,6 +1,6 @@
 {
   "version": "0.4",
-  "status": "Review contract; not executed state-machine implementation",
+  "status": "v0.4 contract extended 2026-10-21 with ST-26–ST-33; implemented rows enforced on main",
   "transitions": [
     {
       "id": "ST-01",
@@ -210,7 +210,7 @@
       "actor": "authorized_staff",
       "guards": "exact statement; explicit complaint flag; current case scope",
       "effects": "persist specialist re-review and optional independent complaint intake/work/outbox atomically",
-      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+      "status": "D-20/D-21/D-22 mapped in v0.4; implemented on main"
     },
     {
       "id": "ST-22",
@@ -220,7 +220,7 @@
       "actor": "worker",
       "guards": "durable request; configured destination; idempotent key",
       "effects": "retain request and enqueue/retry delivery independently of re-review",
-      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+      "status": "D-20/D-21/D-22; implemented on main (synthetic adapter)"
     },
     {
       "id": "ST-23",
@@ -230,7 +230,7 @@
       "actor": "trusted_adapter",
       "guards": "validated receipt or recorded delivery failure",
       "effects": "record actual receipt/status; never infer acknowledgement from generated text",
-      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+      "status": "D-20/D-21/D-22; implemented on main (synthetic adapter)"
     },
     {
       "id": "ST-24",
@@ -240,7 +240,7 @@
       "actor": "scheduler",
       "guards": "hold review_at reached and still current",
       "effects": "create deduplicated review work for owner; no automatic contact/closure",
-      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+      "status": "D-20/D-21/D-22 mapped in v0.4; implemented on main"
     },
     {
       "id": "ST-25",
@@ -250,7 +250,87 @@
       "actor": "scheduler",
       "guards": "quota reached or deadline elapsed; unresolved feedback",
       "effects": "retain plan and attempts; route feedback to lead review",
-      "status": "D-20/D-21/D-22 mapped in v0.4; runtime pending"
+      "status": "D-20/D-21/D-22 mapped in v0.4; implemented on main"
+    },
+    {
+      "id": "ST-26",
+      "entity": "investigation",
+      "from_state": "investigating",
+      "to_state": "awaiting_documents",
+      "actor": "specialist",
+      "guards": "current assignee; material requested through customer service",
+      "effects": "create owned material follow-up with the original due time; D-24; implemented",
+      "status": "implemented on main"
+    },
+    {
+      "id": "ST-27",
+      "entity": "investigation",
+      "from_state": "awaiting_documents",
+      "to_state": "investigating",
+      "actor": "system",
+      "guards": "last open material follow-up answered (received, unavailable or declined)",
+      "effects": "retain the answer and deadlines; D-24; implemented",
+      "status": "implemented on main"
+    },
+    {
+      "id": "ST-28",
+      "entity": "material_followup",
+      "from_state": "queued or assigned",
+      "to_state": "completed or cancelled",
+      "actor": "feedback_representative, or specialist finding",
+      "guards": "customer answer recorded; or a finding is published",
+      "effects": "answer is append-only history; a finding supersedes open requests; D-24; implemented",
+      "status": "implemented on main"
+    },
+    {
+      "id": "ST-29",
+      "entity": "contact_resolution",
+      "from_state": "assigned",
+      "to_state": "completed",
+      "actor": "feedback_representative",
+      "guards": "existing active customer-scoped method and explanation",
+      "effects": "unblock callback; original deadlines unchanged; customer master not modified; D-25; implemented",
+      "status": "implemented on main"
+    },
+    {
+      "id": "ST-30",
+      "entity": "progress_callback",
+      "from_state": "queued",
+      "to_state": "assigned → completed or cancelled",
+      "actor": "feedback_representative, or specialist finding",
+      "guards": "fresh verified progress contact; or a finding is published",
+      "effects": "own one-service-day target; no final-result quota use; D-26; implemented",
+      "status": "implemented on main"
+    },
+    {
+      "id": "ST-31",
+      "entity": "proposal",
+      "from_state": "draft",
+      "to_state": "rejected",
+      "actor": "proposal author",
+      "guards": "expected version and reason; stale evidence allowed",
+      "effects": "reason kept in the receipt; no domain effect; FR-26; implemented",
+      "status": "implemented on main"
+    },
+    {
+      "id": "ST-32",
+      "entity": "case",
+      "from_state": "closed",
+      "to_state": "under_review",
+      "actor": "verified inbound representative or assigned feedback representative",
+      "guards": "objection on a published finding; customer, card scope and timeline checks",
+      "effects": "record reopening; clear closed_at; retain closure and result; FR-27; implemented",
+      "status": "implemented on main"
+    },
+    {
+      "id": "ST-33",
+      "entity": "required_action",
+      "from_state": "pending",
+      "to_state": "completed",
+      "actor": "case specialist via synthetic external receipt",
+      "guards": "SYN- reference and expected version",
+      "effects": "closure may accept the action; nothing executed here; FR-28; implemented",
+      "status": "implemented on main"
     }
   ],
   "forbidden": [
@@ -258,6 +338,9 @@
     "proposal draft -> financial execution",
     "agent run succeeded -> case resolved",
     "callback no_answer -> feedback completed",
-    "stale proposal -> commit without refresh"
+    "stale proposal -> commit without refresh",
+    "case closed -> any open state without a captured objection",
+    "complaint recorded -> acknowledged without a requested delivery",
+    "required action pending -> completed without an external receipt"
   ]
 }

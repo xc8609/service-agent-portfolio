@@ -1,6 +1,6 @@
 # Current delivery — finish the bank core first
 
-20 October 2026 · Owner-directed simplification (D-26).
+20 October 2026 · Owner-directed simplification (D-26). Status updated 21 October 2026.
 
 Build a small, explainable service workflow before expanding its automation.
 Keep the existing application initialization and story IDs. Preserve accepted
@@ -31,14 +31,14 @@ The existing [capacity/calendar forecast](sprints.md) remains indicative. This i
 an execution-priority overlay, not a recalculated delivery promise or permission
 to mark entire stories complete from a partial slice.
 
-| Existing Sprint | Increment / stories | Exit evidence | Current status |
+| Existing Sprint | Increment / stories | Exit evidence | Status (21 October 2026) |
 |---|---|---|---|
-| S02 | Initialization, contracts, CI; DEV-01/QA-01/OPS-01 plus pulled-forward DEV-02/03 reads | Runnable demo, authorization failures and CI/PR evidence | Read slice under PR review; intake rules accepted |
-| S03 | Finish manual investigation: DEV-02/03/04/05 | Statement/selection, current case and policy evidence, stale-query fix, negative permission tests | DEV-03/04 and DEV-05 inbound rule reads under PR review; full workflow and owner acceptance pending |
-| S04 | Manual note and reviewed referral: DEV-06/07; provider qualification DEV-09 | Draft/edit/approve, missing-material/contact-gap intake, atomic receipt, replay tests | DEV-06/07 implemented in PRs 5/6; DEV-09 offline adapters in PR 10; live qualification deferred by owner |
-| S04A | Minimal result and manual feedback: DEV-11, core guards from DEV-12/13 | Finding, accountable feedback, actual outcome, no false closure, manual lead review for exceptions | DEV-11/12/13 implemented in PRs 7/8/9; local worker, manual callbacks; owner UAT pending |
-| S05 | Bounded assistance: DEV-08 | Qualified provider, allowlisted tools, cited drafts, manual fallback and model-failure scenarios | DEV-08 offline runtime in PR 11; live model validation deferred |
-| S05A / S06 | Evaluation, SQL/Tableau evidence, staging/UAT and bank release | Reconciled metrics, executed evaluation, reproducible deployment/recovery and recorded acceptance | DEV-10 export/workbook candidate; Desktop open verified; refresh/layout, human study and staging/UAT pending |
+| S02 | Initialization, contracts, CI; DEV-01/QA-01/OPS-01 plus DEV-02/03 reads | Runnable demo, authorization failures and CI/PR evidence | Merged (#1–#2); owner UAT pending |
+| S03 | Manual investigation: DEV-02/03/04/05 | Statement/selection, current case and policy evidence, stale-query fix, negative permission tests | Merged (#2–#4); owner UAT pending |
+| S04 | Reviewed note and referral DEV-06/07; provider boundary DEV-09 | Draft/edit/approve, missing-material/contact-gap intake, atomic receipt, replay tests | Merged (#5, #6, #10, #15); live provider qualification deferred |
+| S04A | Result, feedback and exceptions DEV-11/12/13 | Finding, accountable feedback, actual outcome, no false closure, objections, complaint delivery | Merged (#7–#9, #13, #16); owner UAT pending |
+| S05 | Bounded assistance DEV-08 | Allowlisted tools, cited drafts, manual fallback and model-failure scenarios | Merged offline (#11); real-model route unqualified |
+| S05A / S06 | Evaluation, SQL/Tableau evidence, staging/UAT and bank release | Reconciled metrics, executed evaluation, reproducible deployment/recovery and recorded acceptance | DEV-10 merged (#12, #14); QA-02 subscription-run pilot (D-27); staging, owner UAT and Tableau refresh acceptance pending |
 
 ## Keep out of the first core increment
 
@@ -58,15 +58,15 @@ scheduler, not an invitation to invent a new quota or block unrelated core work.
 
 ## Current review and release gates
 
-All bank DEV offline increments now have implementation/evidence in the
-[execution ledger](dev-execution-ledger.md); review stacked PRs in dependency order.
-They are not merged or owner-accepted. Keep the original Sprint forecast as planning
-history, not actual elapsed person-days or completed Sprint acceptance.
+All bank DEV increments are merged to `main` with automated evidence in the
+[execution ledger](dev-execution-ledger.md). Merged is not owner-accepted. Keep the
+original Sprint forecast as planning history, not actual elapsed person-days.
 
-1. Review manual workflow and exceptions together with the owner.
-2. Complete Tableau refresh/layout acceptance; Desktop open is verified.
-3. Qualify one real provider when the owner resumes that explicitly deferred work.
-4. Run the B0/B1 effort/quality evaluation and staging recovery/UAT before release.
+1. Owner UAT of the manual workflow and exceptions — [UAT pack](../uat/README.md).
+2. Tableau refresh/layout acceptance for both workbooks; Desktop open is verified for the bank workbook.
+3. QA-02: subscription-run evaluation pilot now (D-27); API-based provider
+   qualification only when the owner enables an API route.
+4. Staging recovery (OPS-02) needs an owner-chosen hosting account.
 
 No automatic phone execution, financial action or bulk architecture rewrite. Voice
 and retail remain later releases. Do not equate offline tests with real model quality.

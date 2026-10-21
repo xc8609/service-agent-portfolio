@@ -26,11 +26,11 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 
 ## Acceptance criteria
 
-- **DEV-02-AC01** — Given An authenticated ordinary representative and verified customer context; when the selected card is loaded; then return only the permitted card/account context with source timestamp and version. Evidence: DEV-02-T01 (planned, not executed).
-- **DEV-02-AC02** — Given An unverified or expired customer context; when any private lookup is requested; then deny without returning private fields and offer the verification route. Evidence: DEV-02-T02 (planned, not executed).
-- **DEV-02-AC03** — Given A prompt supplies a different customer ID or asks for administrator privileges; when the tool is invoked; then derive scope from the session and disclose no out-of-scope existence or details. Evidence: DEV-02-T03 (planned, not executed).
-- **DEV-02-AC04** — Given An ordinary representative can read transactions; when a refund or other privileged action is requested; then reject the action; read access does not grant financial authority. Evidence: DEV-02-T04 (planned, not executed).
-- **DEV-02-AC05** — Given Scope expires between a proposal and approval; when the person attempts to commit; then reject with AUTH_REQUIRED and preserve the editable draft. Evidence: DEV-02-T05 (planned, not executed).
+- **DEV-02-AC01** — Given An authenticated ordinary representative and verified customer context; when the selected card is loaded; then return only the permitted card/account context with source timestamp and version. Evidence: DEV-02-T01 — actual status in the [acceptance record](acceptance.md).
+- **DEV-02-AC02** — Given An unverified or expired customer context; when any private lookup is requested; then deny without returning private fields and offer the verification route. Evidence: DEV-02-T02 — actual status in the [acceptance record](acceptance.md).
+- **DEV-02-AC03** — Given A prompt supplies a different customer ID or asks for administrator privileges; when the tool is invoked; then derive scope from the session and disclose no out-of-scope existence or details. Evidence: DEV-02-T03 — actual status in the [acceptance record](acceptance.md).
+- **DEV-02-AC04** — Given An ordinary representative can read transactions; when a refund or other privileged action is requested; then reject the action; read access does not grant financial authority. Evidence: DEV-02-T04 — actual status in the [acceptance record](acceptance.md).
+- **DEV-02-AC05** — Given Scope expires between a proposal and approval; when the person attempts to commit; then reject with AUTH_REQUIRED and preserve the editable draft. Evidence: DEV-02-T05 — actual status in the [acceptance record](acceptance.md).
 
 ## Ready gates
 

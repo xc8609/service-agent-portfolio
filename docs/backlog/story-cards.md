@@ -544,7 +544,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-01 — Create the application skeleton and deterministic demo environment
 
-Status: Planned — not Ready
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Release: B0 | Priority: P0 | Forecast sprint: S02
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
 Estimate: 3.75 person-days most likely (3–6 range): Dev 3, BA/PO 0.25, QA 0.5; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -589,7 +589,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-02 — Open an authorized customer contact and inspect account context
 
-Status: Planned — not Ready
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Release: B0 | Priority: P0 | Forecast sprint: S03
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
 Estimate: 3.75 person-days most likely (3–6 range): Dev 3, BA/PO 0.25, QA 0.5; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -634,7 +634,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-03 — Investigate a possible duplicate charge from transaction evidence
 
-Status: Planned — not Ready
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Release: B0 | Priority: P0 | Forecast sprint: S03
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
 Estimate: 4 person-days most likely (3–6 range): Dev 3, BA/PO 0.5, QA 0.5; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -679,7 +679,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-04 — Explain the recorded status and next step of an existing case
 
-Status: Planned — not Ready
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Release: B0 | Priority: P0 | Forecast sprint: S03
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
 Estimate: 2.75 person-days most likely (2–4.5 range): Dev 2, BA/PO 0.25, QA 0.5; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -724,7 +724,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-05 — Retrieve applicable policy with citations and version controls
 
-Status: Planned — not Ready
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Release: B0/B1 | Priority: P0 | Forecast sprint: S03
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
 Estimate: 5.25 person-days most likely (4–8 range): Dev 4, BA/PO 0.25, QA 1; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -769,7 +769,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-06 — Review, edit and commit a contact note safely
 
-Status: Planned — not Ready
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Release: B0 | Priority: P0 | Forecast sprint: S04
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
 Estimate: 6.5 person-days most likely (5–10 range): Dev 5, BA/PO 0.5, QA 1; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -814,7 +814,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-07 — Create justified follow-up work with ownership and reliable delivery
 
-Status: Planned — not Ready
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Release: B0/B1 | Priority: P0 | Forecast sprint: S04
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
 Estimate: 5.5 person-days most likely (4–8.5 range): Dev 4, BA/PO 0.5, QA 1; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -859,7 +859,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-08 — Add a bounded assistant that proposes evidence-backed next steps
 
-Status: Planned — not Ready
+Status: Merged to main (offline bounded runtime) — real-model route unqualified; owner UAT pending
 Release: B1 | Priority: P0 | Forecast sprint: S05
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
 Estimate: 9.5 person-days most likely (7–14.5 range): Dev 7, BA/PO 1, QA 1.5; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -904,7 +904,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-09 — Qualify model runtime and provider adapters with a bounded spike
 
-Status: Planned — not Ready
+Status: Merged to main (offline adapters, fingerprint-bound qualification gate) — API qualification deferred (D-27)
 Release: B1 | Priority: P0 | Forecast sprint: S04
 Role owner: Developer A / backend-platform (simulated team allocation, not actual staffing)
 Estimate: 5.25 person-days most likely (4–8 range): Dev 4, BA/PO 0.25, QA 1; confidence low. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -949,7 +949,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-10 — Build operational event marts and a reconciled Tableau view
 
-Status: Planned — not Ready
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Release: B1 | Priority: P1 | Forecast sprint: S05
 Role owner: Developer B / data, with BA (simulated team allocation, not actual staffing)
 Estimate: 4.5 person-days most likely (3.5–7 range): Dev 3, BA/PO 1, QA 0.5; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -994,7 +994,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## QA-01 — Implement layered verification and requirement-to-test coverage
 
-Status: Planned — not Ready
+Status: Merged to main — layered API/browser/offline CI in place
 Release: B0/B1 | Priority: P0 | Forecast sprint: S02
 Role owner: QA with BA/PO (simulated team allocation, not actual staffing)
 Estimate: 3 person-days most likely (2.5–4.5 range): Dev 1, BA/PO 0.5, QA 1.5; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -1039,7 +1039,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## QA-02 — Freeze agent evaluation and compare against simpler baselines
 
-Status: Planned — not Ready
+Status: In progress — subscription-run evaluation pilot (D-27); API qualification deferred
 Release: B1 | Priority: P0 | Forecast sprint: S05
 Role owner: QA with BA/PO (simulated team allocation, not actual staffing)
 Estimate: 4.5 person-days most likely (3.5–7 range): Dev 2, BA/PO 0.5, QA 2; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -1084,7 +1084,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## QA-03 — Run business UAT, adoption review and an exploratory effort study
 
-Status: Planned — not Ready
+Status: Ready for owner — UAT pack prepared; execution pending
 Release: B1 | Priority: P0 | Forecast sprint: S06
 Role owner: QA with BA/PO (simulated team allocation, not actual staffing)
 Estimate: 3.5 person-days most likely (2.5–5.5 range): Dev 0.5, BA/PO 1, QA 2; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -1129,7 +1129,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## OPS-01 — Package the application and establish CI release artifacts
 
-Status: Planned — not Ready
+Status: Merged to main — container build, CI and local recovery in place
 Release: B0/B1 | Priority: P0 | Forecast sprint: S02
 Role owner: Developer A / backend-platform (simulated team allocation, not actual staffing)
 Estimate: 2.5 person-days most likely (2–4 range): Dev 2, BA/PO 0, QA 0.5; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -1669,7 +1669,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## GIT-01 — Public monorepo, contribution workflow and release hygiene
 
-Status: Bootstrap published — offline CI passed; contribution/release gates remain
+Status: Merged to main — branch protection, linear history and auto branch deletion enabled
 Release: All | Priority: P0 | Forecast sprint: S01
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
 Estimate: 3 person-days most likely (2.5–4.5 range): Dev 2, BA/PO 0.5, QA 0.5; confidence medium. Original full-story estimate retained; bootstrap completion is not a re-estimate.
@@ -1822,7 +1822,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 # DEV-11 — Receive specialist findings and complete a verified customer callback
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Forecast: Reforecast pending; after S04 foundation, before B1 acceptance | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 4, BA 0.5, QA 1 person-days; total 5.5 (4–8), confidence low. Not actual effort.
 
@@ -1880,7 +1880,7 @@ All listed test IDs are planned. Include database integration, UI state, permiss
 # DEV-12 — Retry unanswered callbacks and guard normal closure
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Forecast: Reforecast pending; after S04 foundation, before B1 acceptance | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 3, BA 0.5, QA 1 person-days; total 4.5 (3.5–7), confidence low. Not actual effort.
 
@@ -1940,7 +1940,7 @@ All listed test IDs are planned. Include database integration, UI state, permiss
 # DEV-13 — Handle overdue investigations and customer objections with linked work
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Merged to main — automated evidence recorded; owner UAT pending
 Forecast: Reforecast pending; after S04 foundation, before B1 acceptance | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 4, BA 1, QA 1 person-days; total 6 (4.5–9), confidence low. Not actual effort.
 

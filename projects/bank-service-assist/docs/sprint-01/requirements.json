@@ -1,7 +1,7 @@
 {
-  "version": "0.2",
-  "date": "2026-10-19",
-  "status": "Mixed: accepted business scope and draft implementation contracts; see decisions",
+  "version": "0.3",
+  "date": "2026-10-21",
+  "status": "Accepted business scope with D-17–D-28; implemented on main except where a requirement status says otherwise; owner UAT pending",
   "requirements": [
     {
       "id": "BR-01",
@@ -25,8 +25,12 @@
         "then": "report paired active lookup plus verification time, completion outcome and errors without fabricating savings"
       },
       "testId": "BANK-T-01",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Instrumented (DEV-10 marts); benefit not measured — QA-02 pilot and QA-03 study pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_run_outcomes_replay_and_unknown_usage_reconcile",
+        "test_tableau_artifact_and_empty_denominators"
+      ]
     },
     {
       "id": "FR-01",
@@ -49,8 +53,14 @@
         "then": "deny without exposing the other customer's existence or details"
       },
       "testId": "BANK-T-02",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_verified_lookup_and_contract_provenance",
+        "test_unsupported_or_unverified_denied",
+        "test_sessions_and_revocation_rechecked",
+        "AUTH-UI"
+      ]
     },
     {
       "id": "FR-02",
@@ -74,8 +84,13 @@
         "then": "require selection/clarification and retain fact provenance"
       },
       "testId": "BANK-T-03",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_explicit_recognition_modes",
+        "test_revision_history_replay_and_safe_audit",
+        "SI-01/02/03"
+      ]
     },
     {
       "id": "FR-03",
@@ -98,8 +113,13 @@
         "then": "show both states and uncertainty without promising reversal/refund"
       },
       "testId": "BANK-T-04",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_evidence_does_not_infer_duplicate_or_financial_action",
+        "test_pagination_filter_binding_literal_search",
+        "UI-01"
+      ]
     },
     {
       "id": "FR-04",
@@ -122,8 +142,13 @@
         "then": "state unknown ETA and the recorded next step"
       },
       "testId": "BANK-T-05",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_pair_progress_owners_due_dates_and_canonical_contract",
+        "test_timeline_uses_sequence_not_ingestion_or_occurrence_order",
+        "CK-01/02/05/07"
+      ]
     },
     {
       "id": "FR-05",
@@ -146,8 +171,13 @@
         "then": "exclude it from authoritative evidence and expose any resulting gap"
       },
       "testId": "BANK-T-06",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_pair_guidance_citations_and_manual_boundaries",
+        "test_effective_interval_uses_contact_time_not_client_or_upload_order",
+        "RP-01"
+      ]
     },
     {
       "id": "FR-06",
@@ -170,8 +200,13 @@
         "then": "ask for clarification or manual review rather than fabricate the missing evidence"
       },
       "testId": "BANK-T-07",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented offline (scripted provider) — real-model quality not evaluated",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_agent_creates_only_draft_and_replays_persisted_run_after_restart",
+        "test_provider_cannot_invent_citations_or_read_then_widen_scope",
+        "AG-01"
+      ]
     },
     {
       "id": "FR-07",
@@ -195,8 +230,13 @@
         "then": "mark conflicting advice stale and use the manual risk path"
       },
       "testId": "BANK-T-08",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_stale_or_unauthorized_commit_retains_draft",
+        "test_changed_transaction_version_requires_reinspection",
+        "test_agent_rechecks_current_authority_and_source_versions"
+      ]
     },
     {
       "id": "FR-08",
@@ -219,8 +259,12 @@
         "then": "save only after current permission/version checks and return actual receipt"
       },
       "testId": "BANK-T-09",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_exact_reviewed_revision_receipt_and_retry",
+        "NOTE-01"
+      ]
     },
     {
       "id": "FR-09",
@@ -243,8 +287,13 @@
         "then": "save the contact without creating a new operational case/task"
       },
       "testId": "BANK-T-10",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_link_existing_preserves_deadline_and_no_duplicate",
+        "test_no_existing_work_concurrent_drafts_do_not_create_duplicate",
+        "REF-01"
+      ]
     },
     {
       "id": "FR-10",
@@ -267,8 +316,12 @@
         "then": "do not label it assigned; preserve work and surface the supervisor exception"
       },
       "testId": "BANK-T-11",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_distinct_enquiry_with_material_contact_gaps_has_owned_work",
+        "test_duplicate_reason_required_and_summary_not_optional"
+      ]
     },
     {
       "id": "FR-11",
@@ -292,8 +345,11 @@
         "then": "preserve complaint-review signal/reference according to simulated policy without forcing an unrelated operational task"
       },
       "testId": "BANK-T-12",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_objection_without_new_evidence_and_parallel_complaint_are_idempotent"
+      ]
     },
     {
       "id": "FR-12",
@@ -317,8 +373,12 @@
         "then": "retain the manual workflow and existing saved work"
       },
       "testId": "BANK-T-13",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_agent_failure_preserves_manual_work",
+        "test_unqualified_route_records_failure_without_transport_and_manual_path_remains"
+      ]
     },
     {
       "id": "FR-13",
@@ -342,8 +402,14 @@
         "then": "return a consistent result with one domain effect and auditable attempts"
       },
       "testId": "BANK-T-14",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_foreign_sources_and_scope_rechecked_on_replay",
+        "test_competing_keys_for_same_draft_commit_one_referral",
+        "NOTE-03",
+        "REF-04"
+      ]
     },
     {
       "id": "FR-14",
@@ -367,8 +433,13 @@
         "then": "treat it as data and reject forbidden tool effects"
       },
       "testId": "BANK-T-15",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented offline — live provider route unqualified (D-27)",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_provider_cannot_invent_citations_or_read_then_widen_scope",
+        "test_cancellation_and_wall_time_budget_leave_no_draft",
+        "test_normalized_calls_and_dependent_results"
+      ]
     },
     {
       "id": "FR-15",
@@ -392,8 +463,11 @@
         "then": "do not use the future edition as current guidance"
       },
       "testId": "BANK-T-16",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_effective_interval_uses_contact_time_not_client_or_upload_order"
+      ]
     },
     {
       "id": "NFR-01",
@@ -418,8 +492,14 @@
         "then": "no private cross-customer fields or secrets appear"
       },
       "testId": "BANK-T-17",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_pending_and_private_information_never_disclosed",
+        "test_runtime_db_cannot_modify_ledger_or_read_internal_notes",
+        "test_positive_dto_projection_excludes_contact_internal_notes_and_credentials",
+        "test_http_errors_never_leak_body_or_follow_redirect"
+      ]
     },
     {
       "id": "NFR-02",
@@ -444,8 +524,15 @@
         "then": "reconcile known state by operation ID before any new business effect"
       },
       "testId": "BANK-T-18",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Partly verified — bounded runs, reconciliation and unknown-outcome replay tested; latency thresholds proposed, not measured",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "threshold": "Proposed: scoped reads p95 ≤ 1 s and commands p95 ≤ 2 s on the synthetic dataset; Agent run ≤ 4 steps and 20 s plus one provider timeout; unknown write outcomes reconcilable by operation key.",
+      "verifiedBy": [
+        "test_interrupted_run_is_detected_without_duplicate_effect",
+        "test_concurrent_edits_and_atomic_failure",
+        "test_readiness_outage_and_public_mode",
+        "NOTE-03"
+      ]
     },
     {
       "id": "NFR-03",
@@ -470,8 +557,14 @@
         "then": "all required controls are reachable with visible focus and state feedback"
       },
       "testId": "BANK-T-19",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Partly verified — keyboard-reachable controls and explicit states in browser tests; automated WCAG check not yet executed",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "threshold": "Proposed: WCAG 2.2 AA for core journeys; zero serious/critical automated accessibility violations; every async action shows loading, error, stale and saved states.",
+      "verifiedBy": [
+        "FAIL-UI",
+        "SI-06",
+        "RP-03"
+      ]
     },
     {
       "id": "DATA-01",
@@ -496,8 +589,12 @@
         "then": "label source/synthetic status and keep future facts/gold answers out of runtime input"
       },
       "testId": "BANK-T-20",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented — synthetic fixtures separate from the public complaint analytics project",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_reset_requires_marker_and_matching_target",
+        "test_migrations_seed_idempotent_constraints"
+      ]
     },
     {
       "id": "MEAS-01",
@@ -522,8 +619,13 @@
         "then": "report unknown cost separately rather than treating it as zero"
       },
       "testId": "BANK-T-21",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Implemented for runs, proposals and contact outcomes; human effort and quality scores not yet measured",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_run_outcomes_replay_and_unknown_usage_reconcile",
+        "test_proposal_multiple_edits_are_one_decision",
+        "test_never_dialed_fault_and_replayed_actual_attempt"
+      ]
     },
     {
       "id": "OR-01",
@@ -548,8 +650,12 @@
         "then": "executed recovery/access evidence or explicit blocked results determine release status"
       },
       "testId": "BANK-T-22",
-      "status": "Draft \u2014 owner review pending",
-      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes"
+      "status": "Partly implemented — local setup, readiness, migrations and manual fallback; staging backup/restore and release pending (OPS-02/03)",
+      "acceptanceOwner": "Portfolio owner; simulated service owner for business outcomes",
+      "verifiedBy": [
+        "test_readiness_outage_and_public_mode",
+        "test_reset_requires_marker_and_matching_target"
+      ]
     },
     {
       "id": "FR-16",
@@ -572,7 +678,7 @@
         "then": "return one case/work reference with accountable queue; do not claim a specialist has accepted it"
       },
       "testId": "BANK-T-23",
-      "status": "Business direction accepted; technical contract pending",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
       "acceptanceOwner": "Portfolio owner",
       "detailedAcceptance": [
         "DEV-07-AC01",
@@ -581,6 +687,11 @@
         "DEV-07-AC04",
         "DEV-07-AC05",
         "DEV-07-AC06"
+      ],
+      "verifiedBy": [
+        "test_referral_atomicity_and_no_model_authority",
+        "test_link_existing_preserves_deadline_and_no_duplicate",
+        "REF-01"
       ]
     },
     {
@@ -604,7 +715,7 @@
         "then": "persist one result version and one corresponding feedback task"
       },
       "testId": "BANK-T-24",
-      "status": "Business direction accepted; technical contract pending",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
       "acceptanceOwner": "Portfolio owner",
       "detailedAcceptance": [
         "DEV-11-AC01",
@@ -613,6 +724,11 @@
         "DEV-11-AC04",
         "DEV-11-AC05",
         "DEV-11-AC06"
+      ],
+      "verifiedBy": [
+        "test_result_replay_and_masked_claimed_feedback_boundary",
+        "test_claim_concurrency_and_unauthorized_result_write",
+        "WF-01"
       ]
     },
     {
@@ -637,7 +753,7 @@
         "then": "persist a closed disposition with references and audit evidence"
       },
       "testId": "BANK-T-25",
-      "status": "Business direction accepted; technical contract pending",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
       "acceptanceOwner": "Portfolio owner",
       "detailedAcceptance": [
         "DEV-11-AC01",
@@ -653,6 +769,11 @@
         "DEV-12-AC05",
         "DEV-12-AC06",
         "DEV-12-AC07"
+      ],
+      "verifiedBy": [
+        "test_verified_disclosure_and_completion_requires_current_callback_proof",
+        "test_closure_denies_pending_work_then_requires_current_verified_result",
+        "test_pending_financial_action_is_never_completed_by_specialist"
       ]
     },
     {
@@ -676,7 +797,7 @@
         "then": "enter unable-to-contact lead review with no resolved closure"
       },
       "testId": "BANK-T-26",
-      "status": "Business direction accepted; technical contract pending",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
       "acceptanceOwner": "Portfolio owner",
       "detailedAcceptance": [
         "DEV-12-AC01",
@@ -686,6 +807,11 @@
         "DEV-12-AC05",
         "DEV-12-AC06",
         "DEV-12-AC07"
+      ],
+      "verifiedBy": [
+        "test_three_daily_attempts_exhaust_without_closing",
+        "test_window_expires_then_lead_hold_and_bounded_new_plan",
+        "test_verification_failure_and_never_dialed_fault_remain_outstanding"
       ]
     },
     {
@@ -709,7 +835,7 @@
         "then": "retain original due time and ownership and prepare a progress-update task"
       },
       "testId": "BANK-T-27",
-      "status": "Mixed accepted deadline duty / proposed branch details",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
       "acceptanceOwner": "Portfolio owner",
       "detailedAcceptance": [
         "DEV-13-AC01",
@@ -719,6 +845,11 @@
         "DEV-13-AC05",
         "DEV-13-AC06",
         "DEV-13-AC07"
+      ],
+      "verifiedBy": [
+        "test_overdue_deduplicates_and_keeps_original_owner_and_deadline",
+        "test_update_commitment_requires_lead_and_current_investigation",
+        "test_result_supersedes_open_progress_contact_without_erasing_overdue_history"
       ]
     },
     {
@@ -742,7 +873,7 @@
         "then": "link the new work to the original case and preserve old findings/versions"
       },
       "testId": "BANK-T-28",
-      "status": "Proposed branch \u2014 review pending",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
       "acceptanceOwner": "Portfolio owner",
       "detailedAcceptance": [
         "DEV-13-AC01",
@@ -752,6 +883,11 @@
         "DEV-13-AC05",
         "DEV-13-AC06",
         "DEV-13-AC07"
+      ],
+      "verifiedBy": [
+        "test_objection_without_new_evidence_and_parallel_complaint_are_idempotent",
+        "test_new_same_customer_transaction_is_linked_without_overwriting_prior_finding",
+        "WF-01"
       ]
     },
     {
@@ -775,7 +911,7 @@
         "then": "load committed latest state rather than relying on chat history or a live multi-day run"
       },
       "testId": "BANK-T-29",
-      "status": "Business direction accepted; technical contract pending",
+      "status": "Implemented offline — live provider route unqualified (D-27)",
       "acceptanceOwner": "Portfolio owner",
       "detailedAcceptance": [
         "DEV-08-AC01",
@@ -785,7 +921,254 @@
         "DEV-08-AC05",
         "DEV-08-AC06",
         "DEV-08-AC07"
+      ],
+      "verifiedBy": [
+        "test_allowlisted_business_event_replay_is_scoped",
+        "test_assigned_feedback_run_excludes_private_notes_and_rehydrates_current_result"
       ]
+    },
+    {
+      "id": "FR-23",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "When a customer recognizes one purchase but cannot tell which of two entries is extra, submit both together with the mapping recorded as unresolved.",
+      "rationale": "No one may pick the duplicate or imply a refund on the customer's behalf.",
+      "evidence": "D-23",
+      "rules": [],
+      "stories": [
+        "DEV-03",
+        "DEV-07"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-30",
+        "given": "a customer recognizes one purchase but not which entry is extra",
+        "when": "the representative prepares a specialist enquiry",
+        "then": "submit the pair together, record the recognition as unresolved and infer no disputed entry"
+      },
+      "testId": "BANK-T-30",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner",
+      "verifiedBy": [
+        "test_link_existing_preserves_deadline_and_no_duplicate",
+        "test_reject_unresolved_mapping_with_invented_recognized_entry",
+        "SI-01/02/03"
+      ]
+    },
+    {
+      "id": "FR-24",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Allow an enquiry with incomplete supporting material; the specialist requests material through customer service, the customer's answer ends that task, and a published finding supersedes open requests without changing deadlines.",
+      "rationale": "Missing material must neither block the enquiry nor leave work that can never finish.",
+      "evidence": "D-24",
+      "rules": [],
+      "stories": [
+        "DEV-07",
+        "DEV-11",
+        "DEV-12"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-31",
+        "given": "a specialist requests a receipt and the customer declines",
+        "when": "the follow-up and finding are recorded",
+        "then": "return the work to the specialist, keep the original deadline and allow closure once other conditions hold"
+      },
+      "testId": "BANK-T-31",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner",
+      "verifiedBy": [
+        "test_distinct_enquiry_with_material_contact_gaps_has_owned_work",
+        "test_material_answer_returns_work_to_specialist_and_finding_supersedes_open_requests",
+        "WF-02"
+      ]
+    },
+    {
+      "id": "FR-25",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Allow an enquiry when contact details are unusable; customer service owns resolution, callbacks stay blocked until resolved and deadlines are retained.",
+      "rationale": "An undelivered result is not a resolved case.",
+      "evidence": "D-25",
+      "rules": [],
+      "stories": [
+        "DEV-07",
+        "DEV-11"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-32",
+        "given": "contact details are unusable at intake",
+        "when": "a finding is published",
+        "then": "keep feedback outstanding and owned, block the callback until contact is resolved, never close automatically"
+      },
+      "testId": "BANK-T-32",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner",
+      "verifiedBy": [
+        "test_contact_gap_survives_result_until_owned_resolution",
+        "REF-02"
+      ]
+    },
+    {
+      "id": "FR-26",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Let a person decline a draft with a reason, even when its evidence went stale; report acceptance separately for Agent-origin and staff-origin drafts.",
+      "rationale": "Without a recorded decline, acceptance is 100% by construction and Agent value cannot be judged.",
+      "evidence": "D-26",
+      "rules": [],
+      "stories": [
+        "DEV-06",
+        "DEV-10"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-33",
+        "given": "an Agent draft does not reflect the customer's account",
+        "when": "the representative returns it with a reason",
+        "then": "record a rejected proposal with no committed note and count it in the Agent decided-only denominator"
+      },
+      "testId": "BANK-T-33",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner",
+      "verifiedBy": [
+        "test_agent_draft_rejection_is_a_separate_human_decision",
+        "test_proposal_multiple_edits_are_one_decision",
+        "NOTE-04"
+      ]
+    },
+    {
+      "id": "FR-27",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Reopen a closed case only through a captured customer objection, including from a verified inbound caller; retain the original closure and require a newer result for a later closure.",
+      "rationale": "ST-13 allows closed → under_review; history must stay auditable.",
+      "evidence": "D-21",
+      "rules": [],
+      "stories": [
+        "DEV-12",
+        "DEV-13"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-34",
+        "given": "a closed case whose customer calls in to dispute the finding",
+        "when": "a verified inbound representative records the disagreement",
+        "then": "set the case under review with linked re-review, keep the closure record and reject new results without an objection"
+      },
+      "testId": "BANK-T-34",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner",
+      "verifiedBy": [
+        "test_inbound_objection_reopens_closed_case_and_keeps_closure_history",
+        "test_closed_case_rejects_a_new_result_without_objection",
+        "WF-03"
+      ]
+    },
+    {
+      "id": "FR-28",
+      "type": "functional",
+      "priority": "Must",
+      "statement": "Request complaint delivery and record the complaint unit's acknowledgement or failure; record external receipts for required actions. The application executes no financial action.",
+      "rationale": "Complaints and further actions must be traceable without inferring completion from generated text.",
+      "evidence": "D-21",
+      "rules": [],
+      "stories": [
+        "DEV-11",
+        "DEV-13"
+      ],
+      "release": "B0",
+      "acceptance": {
+        "id": "BANK-AC-35",
+        "given": "a customer explicitly requests a complaint",
+        "when": "delivery is requested and the complaint unit answers",
+        "then": "record acknowledgement with its reference (or failure and retry) independently of contact closure"
+      },
+      "testId": "BANK-T-35",
+      "status": "Implemented on main — automated evidence; owner UAT pending",
+      "acceptanceOwner": "Portfolio owner",
+      "verifiedBy": [
+        "test_complaint_delivery_is_requested_by_worker_and_acknowledged_by_receipt",
+        "test_external_action_receipt_completes_required_action_and_unblocks_closure"
+      ]
+    },
+    {
+      "id": "FR-29",
+      "type": "functional",
+      "priority": "Should",
+      "statement": "Validate institution source mappings before ingestion: declared key scope, money precision, time zone, status and booking-time consistency, account aliasing; reject ambiguous batches whole.",
+      "rationale": "Integration requirements must be reviewable without changing the service process.",
+      "evidence": "E-01",
+      "rules": [],
+      "stories": [
+        "DEV-02"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-36",
+        "given": "a legacy export whose entry numbers are unique only per account",
+        "when": "the mapping is previewed",
+        "then": "derive distinct canonical IDs per declared scope and reject any ambiguous row with the whole batch"
+      },
+      "testId": "BANK-T-36",
+      "status": "Implemented as an offline preview — no production ingestion",
+      "acceptanceOwner": "Portfolio owner",
+      "verifiedBy": [
+        "test_different_source_shapes_preserve_business_meaning_and_namespace",
+        "test_source_key_scope_is_explicit_and_never_aliases_accounts"
+      ]
+    },
+    {
+      "id": "FR-30",
+      "type": "functional",
+      "priority": "Should",
+      "statement": "Select the model route on the server only; a route runs live only when its qualification cites the route fingerprint, which includes the credential reference.",
+      "rationale": "A model or credential change must not inherit an earlier qualification.",
+      "evidence": "D-27",
+      "rules": [],
+      "stories": [
+        "DEV-08",
+        "DEV-09"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-37",
+        "given": "a route marked qualified whose model or credential reference changed",
+        "when": "an Agent run starts",
+        "then": "fail before any network call with LIVE_NOT_QUALIFIED and keep the manual path"
+      },
+      "testId": "BANK-T-37",
+      "status": "Implemented offline — no route qualified (D-27)",
+      "acceptanceOwner": "Portfolio owner",
+      "verifiedBy": [
+        "test_default_offline_and_strict_server_configuration",
+        "test_endpoint_internal_gate_and_live_qualification_prevent_transport"
+      ]
+    },
+    {
+      "id": "NFR-04",
+      "type": "nonfunctional",
+      "priority": "Must",
+      "statement": "State data handling limits: synthetic operational records only; retention, legal hold and deletion periods are institution-defined; public outputs never contain raw source records.",
+      "rationale": "Retention is a bank policy decision, not a portfolio default.",
+      "evidence": "D-28",
+      "rules": [],
+      "stories": [
+        "BA-07",
+        "OPS-03"
+      ],
+      "release": "B1",
+      "acceptance": {
+        "id": "BANK-AC-38",
+        "given": "a reviewer asks how long notes and audit records are kept",
+        "when": "the documentation is read",
+        "then": "find an explicit assumption that retention is institution-defined and that only synthetic or aggregate data is published"
+      },
+      "testId": "BANK-T-38",
+      "status": "Documented assumption — no retention job implemented",
+      "acceptanceOwner": "Portfolio owner"
     }
   ],
   "scenarios": [
@@ -804,7 +1187,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-02",
@@ -822,7 +1205,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-03",
@@ -839,7 +1222,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-04",
@@ -856,7 +1239,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-05",
@@ -873,7 +1256,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-06",
@@ -890,7 +1273,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-07",
@@ -907,7 +1290,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-08",
@@ -924,7 +1307,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-09",
@@ -942,7 +1325,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-10",
@@ -958,7 +1341,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-11",
@@ -975,7 +1358,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-12",
@@ -991,7 +1374,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-13",
@@ -1007,7 +1390,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-14",
@@ -1023,7 +1406,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-15",
@@ -1039,7 +1422,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-16",
@@ -1056,7 +1439,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-17",
@@ -1072,7 +1455,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-18",
@@ -1089,7 +1472,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-19",
@@ -1106,7 +1489,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-20",
@@ -1122,7 +1505,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-21",
@@ -1138,7 +1521,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-22",
@@ -1154,7 +1537,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Owner/domain review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-23",
@@ -1170,7 +1553,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Business direction accepted; technical contract pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-24",
@@ -1186,7 +1569,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Business direction accepted; technical contract pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-25",
@@ -1202,7 +1585,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Business direction accepted; technical contract pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-26",
@@ -1218,7 +1601,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Business direction accepted; technical contract pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-27",
@@ -1234,7 +1617,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Mixed accepted deadline duty / proposed branch details",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-28",
@@ -1249,8 +1632,8 @@
       ],
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
-      "review": "Proposed branch \u2014 review pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "review": "Proposed branch — review pending",
+      "split": "Development/spec example — never a blind holdout"
     },
     {
       "id": "SC-29",
@@ -1266,7 +1649,7 @@
       "dataKind": "authored synthetic acceptance example",
       "execution": "Not executed",
       "review": "Business direction accepted; technical contract pending",
-      "split": "Development/spec example \u2014 never a blind holdout"
+      "split": "Development/spec example — never a blind holdout"
     }
   ]
 }

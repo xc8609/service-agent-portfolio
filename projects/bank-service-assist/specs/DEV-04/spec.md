@@ -21,12 +21,12 @@ Requirements: FR-02, FR-04. Dependencies: DEV-02, BA-06.
 
 ## Acceptance criteria
 
-- **DEV-04-AC01** — Given Assigned feedback task and case awaiting documents; when open timeline; then show recorded request, owner, source time and original due date without inventing progress. Evidence: DEV-04-T01, planned/not executed.
-- **DEV-04-AC02** — Given No approved next update or completion estimate; when request customer explanation; then show next update unknown and completion date unknown separately; pending commitment is not displayed as approved. Evidence: DEV-04-T02, planned/not executed.
-- **DEV-04-AC03** — Given Two events arrive out of order with distinct occurrence/recording times; when render case history; then use stable aggregate sequence and show both timestamps; do not overwrite prior finding with late ingestion. Evidence: DEV-04-T03, planned/not executed.
-- **DEV-04-AC04** — Given A case ID belongs to another customer or task has been reassigned; when read case; then deny with uniform FORBIDDEN_OR_NOT_FOUND; no existence disclosure and no retained stale detail. Evidence: DEV-04-T04, planned/not executed.
-- **DEV-04-AC05** — Given Re-review and complaint intake coexist; when read linked work; then show separate owners/statuses and original case link; completion of one does not mark the other resolved. Evidence: DEV-04-T05, planned/not executed.
-- **DEV-04-AC06** — Given Unavailable upstream or conflicting current versions; when refresh; then show unavailable/conflict rather than no case or closed; retain last-view freshness label and disable unsafe commit. Evidence: DEV-04-T06, planned/not executed.
+- **DEV-04-AC01** — Given Assigned feedback task and case awaiting documents; when open timeline; then show recorded request, owner, source time and original due date without inventing progress. Evidence: DEV-04-T01 — actual status in the [acceptance record](acceptance.md).
+- **DEV-04-AC02** — Given No approved next update or completion estimate; when request customer explanation; then show next update unknown and completion date unknown separately; pending commitment is not displayed as approved. Evidence: DEV-04-T02 — actual status in the [acceptance record](acceptance.md).
+- **DEV-04-AC03** — Given Two events arrive out of order with distinct occurrence/recording times; when render case history; then use stable aggregate sequence and show both timestamps; do not overwrite prior finding with late ingestion. Evidence: DEV-04-T03 — actual status in the [acceptance record](acceptance.md).
+- **DEV-04-AC04** — Given A case ID belongs to another customer or task has been reassigned; when read case; then deny with uniform FORBIDDEN_OR_NOT_FOUND; no existence disclosure and no retained stale detail. Evidence: DEV-04-T04 — actual status in the [acceptance record](acceptance.md).
+- **DEV-04-AC05** — Given Re-review and complaint intake coexist; when read linked work; then show separate owners/statuses and original case link; completion of one does not mark the other resolved. Evidence: DEV-04-T05 — actual status in the [acceptance record](acceptance.md).
+- **DEV-04-AC06** — Given Unavailable upstream or conflicting current versions; when refresh; then show unavailable/conflict rather than no case or closed; retain last-view freshness label and disable unsafe commit. Evidence: DEV-04-T06 — actual status in the [acceptance record](acceptance.md).
 
 ## Ready and Done boundaries
 

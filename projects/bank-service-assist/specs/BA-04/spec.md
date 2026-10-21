@@ -1,6 +1,6 @@
 # BA-04 Target process, decisions and exceptions
 
-Version 0.1 · 19 October 2026 · **Draft process design**. B0 is a usable human workflow; B1 adds bounded evidence assistance. Formal rule/data/NFR baselines are S02 work.
+Version 0.2 · 21 October 2026 · **Target process aligned with D-17–D-28 and the implemented workflow** (see [lifecycle v0.2](#target-lifecycle-v02)); v0.1 sections below remain as design history. B0 is a usable human workflow; B1 adds bounded evidence assistance. Formal rule/data/NFR baselines are S02 work.
 
 ## User-visible target experience
 
@@ -68,6 +68,8 @@ Owner accepted this normal-path proposal in D-14 on 19 October 2026. All numbers
 
 ### Exception review and agent orchestration — proposed, not accepted
 
+> Superseded for implemented rules by the [v0.2 lifecycle](#target-lifecycle-v02); kept as the original design reasoning.
+
 D-15 emphasizes a demonstrable agent-connected workflow. The following candidate rules and acceptance examples require incorporation into BA-06 decision tables, BA-07 data contracts and the machine-readable scenario/requirement register after review. They do not establish new implemented or tested coverage.
 
 **Unanswered callback — business rule accepted in D-16; detailed contract pending:** record an actual human-entered call outcome. Keep the case awaiting feedback and retain feedback-queue ownership. Allow at most three total attempts, including the first, over three service days starting with that attempt, at most one per service date and within approved contact windows. Scheduling/window conflicts go to the queue lead. After exhaustion, route to human review as unable-to-contact; do not automatically close as resolved or silently switch channels. A later administrative closure policy is not yet approved. Agent retrieves previous attempts and the latest approved result, prepares an updated briefing and proposes a permissible retry; deterministic scheduling/limits decide when it may occur. No model-only claim of a completed call counts as evidence.
@@ -105,6 +107,62 @@ flowchart TD
     O -- Passed --> Q["Atomic commit with idempotency and audit"]
     Q --> R["Show actual receipt; end contact without implying case resolution"]
 ~~~
+
+## Target lifecycle v0.2
+
+Simulated target process after the post-referral and exception decisions. Each branch is
+enforced by a trusted command or the worker; the Agent only reads and drafts.
+
+~~~mermaid
+flowchart TD
+    A["Verified inbound contact: customer reports two charges"] --> B["Scoped transaction search and explicit pair selection"]
+    B --> C["Record what the customer recognizes, separate from source facts"]
+    C --> D["Applicable simulated rules and existing related work"]
+    D --> E{"Existing active work for the same pair?"}
+    E -- Yes --> F["Link existing work; no duplicate case"]
+    E -- No --> G{"Specialist review needed?"}
+    G -- No --> H["Reviewed contact note; Agent draft may be approved or returned with a reason"]
+    G -- Yes --> I["Reviewed enquiry: unresolved pair allowed (D-23); material gaps (D-24) and contact gaps (D-25) recorded"]
+    I --> J["Queued in specialist queue with receipt and original deadline"]
+    J --> K{"Contact details unusable?"}
+    K -- Yes --> K1["Customer service owns contact resolution; callback blocked until resolved"]
+    J --> L["Specialist accepts and investigates"]
+    L --> M{"Material needed?"}
+    M -- Yes --> M1["Awaiting documents: customer service asks; answer received, unavailable or declined returns work to specialist"]
+    M1 --> L
+    L --> N{"Original deadline missed?"}
+    N -- Yes --> N1["One escalation; lead-approved next update; separate progress contact"]
+    N1 --> L
+    L --> O["Published finding with approved customer explanation; open material and progress work superseded"]
+    O --> P{"Further action required?"}
+    P -- Yes --> P1["Pending until an external system receipt is recorded"]
+    O --> Q["Shared feedback queue: claim, callback, fresh identity, approved explanation"]
+    Q --> R{"Actual outcome"}
+    R -- "No answer, failed identity, declined" --> S{"Three attempts or window used?"}
+    S -- No --> Q
+    S -- Yes --> T["Lead review: new bounded plan or review hold; never auto-closed"]
+    T --> Q
+    R -- "Verified feedback delivered" --> U{"All work and actions complete?"}
+    U -- No --> U1["Case stays open with owners"]
+    U -- Yes --> V["Human-confirmed closure with references"]
+    V --> W{"Customer disputes later?"}
+    W -- Yes --> X["Verified caller's objection reopens for re-review; closure history kept; complaint delivered independently if requested"]
+    X --> L
+~~~
+
+| Exception | Rule | Requirement | Transitions |
+|---|---|---|---|
+| Customer cannot tell which entry is extra | D-23 | FR-23 | — |
+| Supporting material missing or refused | D-24 | FR-24 | ST-26–ST-28 |
+| Contact details unusable | D-25 | FR-25 | ST-29 |
+| Investigation overdue | D-20 | FR-20 | ST-12, ST-19, ST-20, ST-30 |
+| Callback unanswered or identity fails | D-16, D-18, D-19, D-22 | FR-19 | ST-05–ST-07, ST-17, ST-18, ST-24, ST-25 |
+| Draft not acceptable | D-26 | FR-26 | ST-31 |
+| Disagreement after closure | D-21 | FR-27 | ST-13, ST-32 |
+| Complaint requested; further action needed | D-21 | FR-28 | ST-21–ST-23, ST-33 |
+
+Every requirement's current evidence is listed in the
+[traceability matrix](../../../../docs/backlog/traceability-matrix.md).
 
 ## Draft decision rules for S02 elaboration
 

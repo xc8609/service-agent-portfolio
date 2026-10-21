@@ -1,6 +1,6 @@
 # State transitions v0.4
 
-BANK-S02-v0.4 · Business decisions are accepted as referenced; runtime state-machine implementation is pending.
+BANK-S02-v0.4, extended 21 October 2026 · Business decisions are accepted as referenced. Rows marked implemented are enforced by trusted commands or the worker on `main`; owner UAT is pending.
 
 | ID | Entity | From → To | Actor | Guards | Effects / status |
 |---|---|---|---|---|---|
@@ -22,13 +22,21 @@ BANK-S02-v0.4 · Business decisions are accepted as referenced; runtime state-ma
 | ST-16 | agent_run | running → failed | worker | deadline/provider/schema failure | safe error; preserve committed work/manual path; design |
 | ST-17 | feedback | lead_review → retry_scheduled | queue_lead | responsible lead; reason; fresh versions; explicit bounded new plan approved | create distinct approved plan and scheduled work; retain prior attempts/deadlines/approvals; never automatic reset; D-22 accepted; v0.4 plan contract authored |
 | ST-18 | feedback | lead_review → review_hold | queue_lead | responsible lead; reason; named owner; review date; fresh versions | retain open case and history; create review obligation; no automatic closure; D-22 accepted; v0.4 hold contract authored |
-| ST-19 | commitment | none → pending_approval | specialist | current investigation assignee; future proposed time; fresh versions | record customer-safe progress and pending proposal; no approved promise; D-20/D-21/D-22 mapped in v0.4; runtime pending |
-| ST-20 | commitment | pending_approval → approved or rejected | queue_lead | responsible investigation lead; current versions; ongoing investigation | record decision; supersede previous active commitment atomically; preserve original due; D-20/D-21/D-22 mapped in v0.4; runtime pending |
-| ST-21 | objection | captured → linked_work_created | authorized_staff | exact statement; explicit complaint flag; current case scope | persist specialist re-review and optional independent complaint intake/work/outbox atomically; D-20/D-21/D-22 mapped in v0.4; runtime pending |
+| ST-19 | commitment | none → pending_approval | specialist | current investigation assignee; future proposed time; fresh versions | record customer-safe progress and pending proposal; no approved promise; D-20/D-21/D-22 mapped in v0.4; implemented on main |
+| ST-20 | commitment | pending_approval → approved or rejected | queue_lead | responsible investigation lead; current versions; ongoing investigation | record decision; supersede previous active commitment atomically; preserve original due; D-20/D-21/D-22 mapped in v0.4; implemented on main |
+| ST-21 | objection | captured → linked_work_created | authorized_staff | exact statement; explicit complaint flag; current case scope | persist specialist re-review and optional independent complaint intake/work/outbox atomically; D-20/D-21/D-22 mapped in v0.4; implemented on main |
 | ST-22 | complaint_intake | recorded or delivery_failed → pending_delivery | worker | durable request; configured destination; idempotent key | retain request and enqueue/retry delivery independently of re-review; D-20/D-21/D-22; implemented in `worker.py` (local outbox only) |
 | ST-23 | complaint_intake | pending_delivery → acknowledged or delivery_failed | trusted_adapter | validated receipt or recorded delivery failure | record actual receipt/status; never infer acknowledgement from generated text; D-20/D-21/D-22; implemented as the synthetic `/v1/demo/complaint-receipt` adapter (complaint coordinator) |
-| ST-24 | feedback | review_hold → lead_review | scheduler | hold review_at reached and still current | create deduplicated review work for owner; no automatic contact/closure; D-20/D-21/D-22 mapped in v0.4; runtime pending |
-| ST-25 | contact_plan | active → exhausted or expired | scheduler | quota reached or deadline elapsed; unresolved feedback | retain plan and attempts; route feedback to lead review; D-20/D-21/D-22 mapped in v0.4; runtime pending |
+| ST-24 | feedback | review_hold → lead_review | scheduler | hold review_at reached and still current | create deduplicated review work for owner; no automatic contact/closure; D-20/D-21/D-22 mapped in v0.4; implemented on main |
+| ST-25 | contact_plan | active → exhausted or expired | scheduler | quota reached or deadline elapsed; unresolved feedback | retain plan and attempts; route feedback to lead review; D-20/D-21/D-22 mapped in v0.4; implemented on main |
+| ST-26 | investigation | investigating → awaiting_documents | specialist | current assignee; material requested through customer service | create owned material follow-up with the original due time; D-24; implemented |
+| ST-27 | investigation | awaiting_documents → investigating | system | last open material follow-up answered (received, unavailable or declined) | retain the answer and deadlines; D-24; implemented |
+| ST-28 | material_followup | queued or assigned → completed or cancelled | feedback_representative, or specialist finding | customer answer recorded; or a finding is published | answer is append-only history; a finding supersedes open requests; D-24; implemented |
+| ST-29 | contact_resolution | assigned → completed | feedback_representative | existing active customer-scoped method and explanation | unblock callback; original deadlines unchanged; customer master not modified; D-25; implemented |
+| ST-30 | progress_callback | queued → assigned → completed or cancelled | feedback_representative, or specialist finding | fresh verified progress contact; or a finding is published | own one-service-day target; no final-result quota use; D-26; implemented |
+| ST-31 | proposal | draft → rejected | proposal author | expected version and reason; stale evidence allowed | reason kept in the receipt; no domain effect; FR-26; implemented |
+| ST-32 | case | closed → under_review | verified inbound representative or assigned feedback representative | objection on a published finding; customer, card scope and timeline checks | record reopening; clear closed_at; retain closure and result; FR-27; implemented |
+| ST-33 | required_action | pending → completed | case specialist via synthetic external receipt | SYN- reference and expected version | closure may accept the action; nothing executed here; FR-28; implemented |
 
 Forbidden transitions:
 
@@ -37,3 +45,6 @@ Forbidden transitions:
 - agent run succeeded -> case resolved
 - callback no_answer -> feedback completed
 - stale proposal -> commit without refresh
+- case closed -> any open state without a captured objection
+- complaint recorded -> acknowledged without a requested delivery
+- required action pending -> completed without an external receipt

@@ -1,9 +1,9 @@
 # DEV-11 — Receive specialist findings and complete a verified customer callback
 
-Current S02 forecast: **S04A**. Updated effort: Dev 4, BA 0.5, QA 1 person-days (5.5 total); dependencies DEV-07, DEV-06, BA-09. This supersedes older forecast/estimate lines below. Trusted command baseline v0.4; manual runtime implemented under PR review.
+Current S02 forecast: **S04A**. Updated effort: Dev 4, BA 0.5, QA 1 person-days (5.5 total); dependencies DEV-07, DEV-06, BA-09. This supersedes older forecast/estimate lines below. Trusted command baseline v0.4; manual runtime merged to main.
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Manual specialist/feedback implementation under PR review; owner UAT and Agent integration pending. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Manual specialist/feedback implementation merged to main; offline Agent integration merged in DEV-08; owner UAT pending. Business decisions accepted only as listed; technical design/Ready gates pending.
 Historical forecast superseded by the current Sprint stated above | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 4, BA 0.5, QA 1 person-days; total 5.5 (4–8), confidence low. Not actual effort.
 
@@ -27,12 +27,12 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 
 ## Acceptance criteria
 
-- **DEV-11-AC01** — Given An authorized specialist submits an approved result; when the event is processed twice; then persist one result version and one corresponding feedback task. Evidence: DEV-11-T01 (planned, not executed).
-- **DEV-11-AC02** — Given The original representative is unavailable; when another authorized feedback representative claims the task; then provide scoped history and retain clear ownership. Evidence: DEV-11-T02 (planned, not executed).
-- **DEV-11-AC03** — Given A result contains internal-only notes and approved explanation; when the agent drafts customer feedback; then use only approved customer-visible content for the explanation. Evidence: DEV-11-T03 (planned, not executed).
-- **DEV-11-AC04** — Given A customer answers but identity verification fails; when the callback is recorded; then record verification failure, disclose no transaction detail and do not mark feedback complete. Evidence: DEV-11-T04 (planned, not executed).
-- **DEV-11-AC05** — Given The specialist result changes after draft review; when feedback approval is attempted; then reject stale content and preserve edits for refresh. Evidence: DEV-11-T05 (planned, not executed).
-- **DEV-11-AC06** — Given A financial action is only approved or pending; when the agent summarizes the result; then do not state funds moved or that the financial issue is resolved. Evidence: DEV-11-T06 (planned, not executed).
+- **DEV-11-AC01** — Given An authorized specialist submits an approved result; when the event is processed twice; then persist one result version and one corresponding feedback task. Evidence: DEV-11-T01 — actual status in the [acceptance record](acceptance.md).
+- **DEV-11-AC02** — Given The original representative is unavailable; when another authorized feedback representative claims the task; then provide scoped history and retain clear ownership. Evidence: DEV-11-T02 — actual status in the [acceptance record](acceptance.md).
+- **DEV-11-AC03** — Given A result contains internal-only notes and approved explanation; when the agent drafts customer feedback; then use only approved customer-visible content for the explanation. Evidence: DEV-11-T03 — actual status in the [acceptance record](acceptance.md).
+- **DEV-11-AC04** — Given A customer answers but identity verification fails; when the callback is recorded; then record verification failure, disclose no transaction detail and do not mark feedback complete. Evidence: DEV-11-T04 — actual status in the [acceptance record](acceptance.md).
+- **DEV-11-AC05** — Given The specialist result changes after draft review; when feedback approval is attempted; then reject stale content and preserve edits for refresh. Evidence: DEV-11-T05 — actual status in the [acceptance record](acceptance.md).
+- **DEV-11-AC06** — Given A financial action is only approved or pending; when the agent summarizes the result; then do not state funds moved or that the financial issue is resolved. Evidence: DEV-11-T06 — actual status in the [acceptance record](acceptance.md).
 
 ## Ready gates
 

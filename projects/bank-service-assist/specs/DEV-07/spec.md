@@ -3,7 +3,7 @@
 Current S02 forecast: **S04**. Updated effort: Dev 4, BA 0.5, QA 1 person-days (5.5 total); dependencies DEV-06, BA-06. This supersedes older forecast/estimate lines below. Contract version 0.5 initial intake implemented; owner UAT and downstream continuation pending.
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Initial-intake implementation under PR review; downstream continuation and owner UAT pending. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Initial-intake implementation merged to main; continuation merged in DEV-11–13; owner UAT pending. Business decisions accepted only as listed; technical design/Ready gates pending.
 Forecast: S04 | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 4, BA 0.5, QA 1 person-days; total 5.5 (4–8.5), confidence medium. Not actual effort.
 
@@ -41,12 +41,12 @@ v0.4 payloads and the running read-only demo do not yet implement this workflow.
 
 ## Acceptance criteria
 
-- **DEV-07-AC01** — Given The enquiry has a supported answer and no remaining action; when the contact is recorded; then allow a note without forcing a specialist case. Evidence: DEV-07-T01 (planned, not executed).
-- **DEV-07-AC02** — Given The same issue already has active specialist work; when a new proposal is reviewed; then link existing work or require an explicit distinct-work reason. Evidence: DEV-07-T02 (planned, not executed).
-- **DEV-07-AC03** — Given A person approves a fresh complete request; when submission succeeds; then return one case/work reference with accountable queue; do not claim a specialist has accepted it. Evidence: DEV-07-T03 (planned, not executed).
-- **DEV-07-AC04** — Given Submission succeeds but its response is lost; when the client retries or reconciles; then return the original receipt and create no second case or outbox effect. Evidence: DEV-07-T04 (planned, not executed).
-- **DEV-07-AC05** — Given The recipient queue is invalid or authorization changed; when approval is committed; then reject without partial business writes and preserve the draft. Evidence: DEV-07-T05 (planned, not executed).
-- **DEV-07-AC06** — Given The model states a request was submitted without a receipt; when the UI renders the result; then show a draft or unknown operation state, never a false submitted status. Evidence: DEV-07-T06 (planned, not executed).
+- **DEV-07-AC01** — Given The enquiry has a supported answer and no remaining action; when the contact is recorded; then allow a note without forcing a specialist case. Evidence: DEV-07-T01 — actual status in the [acceptance record](acceptance.md).
+- **DEV-07-AC02** — Given The same issue already has active specialist work; when a new proposal is reviewed; then link existing work or require an explicit distinct-work reason. Evidence: DEV-07-T02 — actual status in the [acceptance record](acceptance.md).
+- **DEV-07-AC03** — Given A person approves a fresh complete request; when submission succeeds; then return one case/work reference with accountable queue; do not claim a specialist has accepted it. Evidence: DEV-07-T03 — actual status in the [acceptance record](acceptance.md).
+- **DEV-07-AC04** — Given Submission succeeds but its response is lost; when the client retries or reconciles; then return the original receipt and create no second case or outbox effect. Evidence: DEV-07-T04 — actual status in the [acceptance record](acceptance.md).
+- **DEV-07-AC05** — Given The recipient queue is invalid or authorization changed; when approval is committed; then reject without partial business writes and preserve the draft. Evidence: DEV-07-T05 — actual status in the [acceptance record](acceptance.md).
+- **DEV-07-AC06** — Given The model states a request was submitted without a receipt; when the UI renders the result; then show a draft or unknown operation state, never a false submitted status. Evidence: DEV-07-T06 — actual status in the [acceptance record](acceptance.md).
 
 ## Ready gates
 

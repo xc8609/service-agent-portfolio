@@ -30,13 +30,13 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 
 ## Acceptance criteria
 
-- **DEV-08-AC01** — Given A duplicate-charge question needs records then policy; when the agent runs; then execute dependent scoped tools and return fact/policy citations, missing facts and a typed next-step proposal. Evidence: DEV-08-T01 (planned, not executed).
-- **DEV-08-AC02** — Given A case waits across a process restart; when a later event starts assistance; then load committed latest state rather than relying on chat history or a live multi-day run. Evidence: DEV-08-T02 (planned, not executed).
-- **DEV-08-AC03** — Given A source or customer fact changes after proposal creation; when approval is attempted; then reject stale evidence and request refreshed review. Evidence: DEV-08-T03 (planned, not executed).
-- **DEV-08-AC04** — Given The provider times out or returns invalid tool arguments; when the run terminates; then honour budgets, return a typed failure and preserve manual access and all committed work. Evidence: DEV-08-T04 (planned, not executed).
-- **DEV-08-AC05** — Given A prompt or tool result requests a refund or widened access; when the agent attempts a forbidden action; then reject it in the allowlist/backend and record a sanitized denial. Evidence: DEV-08-T05 (planned, not executed).
-- **DEV-08-AC06** — Given The same business event is redelivered; when assistance resumes; then deduplicate effects and reconcile operations before retrying writes. Evidence: DEV-08-T06 (planned, not executed).
-- **DEV-08-AC07** — Given A reviewer compares assisted and guided-search tasks; when evaluation is performed; then report correct completion, active checking time, corrections and known cost; no invented savings. Evidence: DEV-08-T07 (planned, not executed).
+- **DEV-08-AC01** — Given A duplicate-charge question needs records then policy; when the agent runs; then execute dependent scoped tools and return fact/policy citations, missing facts and a typed next-step proposal. Evidence: DEV-08-T01 — actual status in the [acceptance record](acceptance.md).
+- **DEV-08-AC02** — Given A case waits across a process restart; when a later event starts assistance; then load committed latest state rather than relying on chat history or a live multi-day run. Evidence: DEV-08-T02 — actual status in the [acceptance record](acceptance.md).
+- **DEV-08-AC03** — Given A source or customer fact changes after proposal creation; when approval is attempted; then reject stale evidence and request refreshed review. Evidence: DEV-08-T03 — actual status in the [acceptance record](acceptance.md).
+- **DEV-08-AC04** — Given The provider times out or returns invalid tool arguments; when the run terminates; then honour budgets, return a typed failure and preserve manual access and all committed work. Evidence: DEV-08-T04 — actual status in the [acceptance record](acceptance.md).
+- **DEV-08-AC05** — Given A prompt or tool result requests a refund or widened access; when the agent attempts a forbidden action; then reject it in the allowlist/backend and record a sanitized denial. Evidence: DEV-08-T05 — actual status in the [acceptance record](acceptance.md).
+- **DEV-08-AC06** — Given The same business event is redelivered; when assistance resumes; then deduplicate effects and reconcile operations before retrying writes. Evidence: DEV-08-T06 — actual status in the [acceptance record](acceptance.md).
+- **DEV-08-AC07** — Given A reviewer compares assisted and guided-search tasks; when evaluation is performed; then report correct completion, active checking time, corrections and known cost; no invented savings. Evidence: DEV-08-T07 — actual status in the [acceptance record](acceptance.md).
 
 ## Ready gates
 
