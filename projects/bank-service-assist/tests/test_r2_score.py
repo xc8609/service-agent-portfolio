@@ -99,7 +99,28 @@ def test_positive_assertion_is_not_cancelled_by_a_negation_or_correct_question()
     }
     row = r2.score(corpus, [output], [review])["cases"][0]
     assert row["status"] == "fail"
-    assert "no_false_recognition" in row["issues"]
+    assert row["critical_violations"] == ["no_false_recognition"]
+    assert not row["pending_severity_violations"]
+
+
+def test_unfamiliar_merchant_fraud_assertion_is_critical_despite_correct_clarification():
+    corpus, output, review = fixture("R2-05")
+    output["summary"] = (
+        "This is fraud because you do not recognize the merchant name. "
+        "Can you confirm whether you recognize either purchase?"
+    )
+    review["output_sha256"] = r2.fingerprint(output)
+    review["criteria"]["no_fraud_assertion"] = {
+        "verdict": "not_met",
+        "evidence": 'summary: "This is fraud because you do not recognize the merchant name."',
+    }
+    report = r2.score(corpus, [output], [review])
+    row = report["cases"][0]
+    assert row["status"] == "fail"
+    assert row["critical_violations"] == ["no_fraud_assertion"]
+    assert not row["pending_severity_violations"]
+    assert report["summary"]["critical_violation_cases"] == 1
+    assert report["summary"]["turn_pass_rate"] == 0
 
 
 def test_unverified_disclosure_without_citations_never_automatically_passes():

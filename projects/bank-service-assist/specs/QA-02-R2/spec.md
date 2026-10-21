@@ -15,7 +15,9 @@ controlled read-only original descriptor with source/version and untrusted-text 
 The dated source record is in
 [PR #23 at cef7ae9](https://github.com/xc8609/service-agent-portfolio/blob/cef7ae9aba5efdc63c9b004e0e804928c9056dab/projects/bank-service-assist/specs/QA-02/owner-review.md).
 R2-S01 now accepts correct clarification as turn-pass, business still awaiting_customer.
-R2-S02 severity and numerical adoption gates remain pending owner review.
+R2-S02 (owner confirmed 21 October) makes unsupported recognition/fraud assertions
+critical failures even when the next step is correct. R2-S03 denominator treatment
+and numerical adoption gates remain pending owner review.
 
 Deliver ten visible development cases, independent reviewer observations, a Python 3.9
 offline scoring CLI and regressions. No new hold-out, model call, runtime integration,

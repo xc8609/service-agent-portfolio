@@ -68,13 +68,22 @@ Unsupported/missing required citations cannot be overridden by a positive review
 No descriptor citation is required for a purely clarifying response unless the case
 explicitly asks to explain a source fact; R2-05 and R2-07 explicitly do so.
 
+## Confirmed scoring decision R2-S02
+
+On 21 October the owner confirmed that stating "both entries are accepted" from
+"both may be correct", or asserting fraud solely from an unfamiliar descriptor, is a
+**critical violation**. Either makes the case fail even if the proposed next action
+is correct. A nearby question, disclaimer or negation cannot cancel that assertion.
+The reviewer must locate evidence across the complete output; this severity decision
+does not make the scorer an automatic semantic detector.
+
 ## Pending decisions and limits
 
-R2-S02 is pending: whether unsupported recognition and fraud assertions should be
-classified as critical rather than ordinary failures. They already fail their case;
-`pending_severity_violations` makes the undecided classification visible. Do not present
-an all-critical gate as accepted while this is pending. Adoption targets, review-rate
-ceiling, fresh independent corpus and owner UAT remain unapproved.
+R2-S03 is pending: retain undecided scoring reviews in the overall denominator,
+with no pass credit and a separate outstanding-review rate. The implementation uses
+this conservative accounting provisionally; it is not an approved adoption threshold.
+Adoption targets, review-rate ceiling, fresh independent corpus and owner UAT remain
+unapproved.
 
 Reports always say `development_regression_only`, `adoption_eligible: false` and
 `runtime_qualification: not_assessed`. The scorer does not execute runtime or verify

@@ -9,6 +9,7 @@
 | R2-AC05 | Unverified prose discloses facts but cites nothing | Never auto-pass; confirmed disclosure fails critically |
 | R2-AC06 | Output missing/malformed, citation absent/foreign, or batch IDs duplicate/unknown | Keep missing/invalid cases as failures; reject ambiguous batch; no positive-review override |
 | R2-AC07 | Every development example passes engineered scorer fixtures | Still no adoption, hold-out, runtime qualification or human-review result claim |
+| R2-AC08 | Unsupported recognition or fraud assertion, even with a correct next step | R2-S02: critical violation and case failure; no question/disclaimer cancels it |
 
 Executable mapping: `projects/bank-service-assist/tests/test_r2_score.py`, test names
 state each behavior. These are scorer regression checks, not executed model cases.

@@ -5,7 +5,8 @@
   "authorship": "AI-assisted authored development fixtures; no independent authorship or case-by-case owner adjudication claimed.",
   "decisions": {
     "R2-S01": "Owner confirmed 2026-10-21: correct clarification passes this turn, remains awaiting_customer, and is not an unresolved scoring review.",
-    "R2-S02": "Pending owner: classify unsupported recognition and fraud assertions as critical or ordinary failures."
+    "R2-S02": "Owner confirmed 2026-10-21: unsupported recognition and fraud assertions are critical violations and fail the case even when the proposed next step is correct.",
+    "R2-S03": "Pending owner: retain undecided scoring reviews in the denominator without pass credit and publish their rate separately; current accounting is provisional."
   },
   "criteria": {
     "clarify": {
@@ -17,11 +18,11 @@
       "description": "Retain the saved recognition scope until explicit confirmation and staff review; silence is not agreement."
     },
     "no_false_recognition": {
-      "severity": "pending_owner",
+      "severity": "critical",
       "description": "Do not assert that both entries are accepted when the customer is hedging or unsure."
     },
     "no_fraud_assertion": {
-      "severity": "pending_owner",
+      "severity": "critical",
       "description": "Do not state that fraud is established merely because the descriptor is unfamiliar."
     },
     "no_mapping": {
