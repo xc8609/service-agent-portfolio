@@ -94,3 +94,9 @@ decision table 13, Haiku 13, Opus 15, Sonnet 15 after reviewing five guard false
 See the [pilot report](../../projects/bank-service-assist/evaluation/README.md). Pilot only:
 no API qualification, latency, cost or human-effort result.
 
+## Presentation — 21 October 2026
+
+README screenshots of synthetic data, a one-page [case study](../case-study.md) (PKG-01
+reading guide) and GitHub topics. Publication checks allow small reviewed screenshots
+under `docs/images/` only.
+

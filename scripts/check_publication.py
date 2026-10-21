@@ -29,6 +29,11 @@ def main():
             failures.append((name, 'database, key or packaged data file'))
         if p.stat().st_size > 2_000_000:
             failures.append((name, 'large file requires explicit publication review'))
+        # Reviewed product screenshots of synthetic data only; kept small.
+        if p.suffix == '.png' and p.parent == ROOT / 'docs/images':
+            if p.stat().st_size > 400_000:
+                failures.append((name, 'screenshot larger than 400 KB'))
+            continue
         try: content = p.read_text()
         except UnicodeDecodeError:
             failures.append((name, 'unexpected binary file')); continue
