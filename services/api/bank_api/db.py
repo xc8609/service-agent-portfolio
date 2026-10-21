@@ -9,7 +9,7 @@ from psycopg.rows import dict_row
 
 ROOT = Path(__file__).resolve().parents[3]
 MIGRATIONS = ROOT / "services/api/migrations"
-SCHEMA_VERSION = "013_complaint_receipts.sql"
+SCHEMA_VERSION = "014_commitment_approval.sql"
 MARKER = "service-agent-disposable-v1"
 
 
@@ -148,7 +148,7 @@ def provision_runtime(dsn, password):
             "GRANT INSERT ON progress_contacts,customer_objections,objection_work_links,complaint_intakes,update_commitments,due_events,local_notifications TO bank_app"
         )
         conn.execute(
-            "GRANT UPDATE (status,version,decided_by,decided_at,decision_reason) ON update_commitments TO bank_app"
+            "GRANT UPDATE (status,version,decided_by,decided_at,decision_reason,approved_by,approved_at) ON update_commitments TO bank_app"
         )
         conn.execute("GRANT UPDATE (status,attempt_count) ON outbox_events TO bank_app")
         conn.execute("GRANT INSERT ON agent_runs,agent_steps TO bank_app")

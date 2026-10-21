@@ -246,7 +246,7 @@ def detail(conn, w):
         (w["id"],),
     ).fetchone()
     intakes = conn.execute(
-        "SELECT payload,committed_at FROM referral_intakes WHERE case_id=%s ORDER BY committed_at",
+        "SELECT id,payload,committed_at FROM referral_intakes WHERE case_id=%s ORDER BY committed_at,id",
         (w["case_id"],),
     ).fetchall()
     followup = conn.execute(

@@ -41,7 +41,7 @@ export function RelatedCases({auth,transactionIds}:{auth:{token:string;contact:s
   }
   useEffect(()=>{void refresh();return()=>{revision.current++;};},[auth.token,transactionIds.join(',')]);
   return <section aria-labelledby="cases-heading"><div className="section-head"><h2 id="cases-heading">Related cases · Review before a new enquiry</h2><button onClick={refresh} disabled={loading}>Refresh related cases</button></div>
-    <p>Querying or saving a customer report does not submit a new case. No referral submission is available in this increment.</p>
+    <p>Querying or saving a customer report does not submit a new case. Review related work first; section 6 submits an enquiry only after explicit approval.</p>
     {loading&&<p aria-live="polite">Checking existing work… Previous details are not current until refresh succeeds.</p>}
     {error&&<div role="alert" className="error"><p>{error}</p><p>Duplicate check incomplete. Use manual case review; do not treat this as no existing case.</p>{lastSuccess&&<p>Last successful lookup (stale): {time(lastSuccess)}. Details cleared.</p>}</div>}
     {data&&<><p className="muted">Case lookup as of {time(data.as_of)}</p>{data.cases.length===0?<p>No linked case found for the selected transactions. This is not an authorization to submit; recheck at referral time.</p>:<p className="notice">Existing related work found. Confirm the concern and coverage before opening another enquiry.</p>}

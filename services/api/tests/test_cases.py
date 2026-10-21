@@ -93,8 +93,8 @@ def test_pending_and_private_information_never_disclosed(environment):
     assert "PRIVATE" not in json.dumps(data) and "INTERNAL" not in json.dumps(data)
     with psycopg.connect(admin) as c:
         c.execute(
-            "UPDATE update_commitments SET status='approved',decided_by=%s,decided_at=%s,customer_safe_progress='Approved progress only'",
-            (uid("lead"), NOW),
+            "UPDATE update_commitments SET status='approved',decided_by=%s,decided_at=%s,approved_by=%s,approved_at=%s,customer_safe_progress='Approved progress only'",
+            (uid("lead"), NOW, uid("lead"), NOW),
         )
     data = related(client, headers, contact).json()["cases"][0]["snapshot"]
     assert data["progress_commitments"][0]["customer_safe_progress"] == "Approved progress only"
@@ -272,3 +272,27 @@ def test_unknown_case_status_requires_review_not_active_duplicate_hint(environme
         )
     case = related(client, headers, contact).json()["cases"][0]
     assert case["review_hint"] == "review_overlap_and_concern"
+
+
+@pytest.mark.parametrize(
+    "status,proven", [("approved", True), ("missed", True), ("superseded", False)]
+)
+def test_legacy_approval_migration_does_not_infer_superseded_approval(environment, status, proven):
+    from bank_api.db import MIGRATIONS
+
+    with psycopg.connect(environment[1]) as conn:
+        # Rehearse migration against a legacy row inside a rolled-back transaction.
+        conn.execute(
+            "ALTER TABLE update_commitments DROP COLUMN approved_at, DROP COLUMN approved_by"
+        )
+        conn.execute(
+            "UPDATE update_commitments SET status=%s,decided_by=%s,decided_at=%s",
+            (status, uid("lead"), NOW),
+        )
+        conn.execute((MIGRATIONS / "014_commitment_approval.sql").read_text())
+        row = conn.execute(
+            "SELECT status,approved_by,approved_at FROM update_commitments"
+        ).fetchone()
+        assert row[0] == status
+        assert (row[1] is not None and row[2] is not None) == proven
+        conn.rollback()

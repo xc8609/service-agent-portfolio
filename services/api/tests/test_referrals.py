@@ -297,3 +297,97 @@ def test_missing_policy_has_explicit_configured_manual_route(environment):
     p["payload"]["intake"]["customer_summary_confirmed"] = True
     draft = create(client, headers, contact, p)
     assert post(client, headers, "approve_and_commit_proposal", approve(draft)).status_code == 200
+
+
+@pytest.mark.parametrize("mode", ["new", "link_existing"])
+def test_assigned_handoff_preserves_intake_revisions_and_scope(environment, mode):
+    from test_workflow import call, detail, find_work, pair
+
+    client, _, *_ = environment
+    headers, contact = session(client)
+    p = prepare(client, headers, contact)
+    i = p["payload"]["intake"]
+    i.update(
+        mode=mode,
+        customer_summary_confirmed=True,
+        distinct_work_reason="Independent synthetic handoff check." if mode == "new" else None,
+    )
+    i["material_gaps"] = [
+        {
+            "item": "Receipt",
+            "state": "unavailable",
+            "owner": "specialist",
+            "next_action": "assess_need",
+            "review_trigger": "specialist_acceptance",
+        }
+    ]
+    i["contact"] = {
+        "state": "unavailable",
+        "method_ref": None,
+        "method_version": None,
+        "reason": "Phone is unusable; customer service must resolve.",
+    }
+    first_payload = p["payload"]
+    result = post(
+        client, headers, "approve_and_commit_proposal", approve(create(client, headers, contact, p))
+    )
+    assert result.status_code == 200, result.text
+    case = result.json()["data"]["domain_ref"]
+    specialist, _ = session(client, "specialist")
+    work = find_work(client, specialist, "specialist_investigation", case)
+    outsider, _ = session(client, "feedback_other")
+    assert call(client, outsider, "get_work_detail", pair(work)).status_code == 404
+    if mode == "new":
+        assert call(client, specialist, "get_work_detail", pair(work)).status_code == 404
+        assert (
+            call(
+                client,
+                specialist,
+                "accept_specialist_work",
+                {
+                    **pair(work),
+                    "expected_work_version": work["version"],
+                    "operation_key": str(uuid4()),
+                },
+            ).status_code
+            == 200
+        )
+    before = detail(client, specialist, work)
+    assert before["intakes"][0]["payload"] == first_payload
+    assert before["intakes"][0]["id"] and before["intakes"][0]["committed_at"]
+    assert {t["id"] for t in before["transactions"]} == set(first_payload["transaction_ids"])
+    assert all(
+        t["amount_minor"] == 8500 and t["currency"] and t["occurred_at"]
+        for t in before["transactions"]
+    )
+    saved = save_report(
+        client,
+        headers,
+        report_payload(
+            contact,
+            expected_revision=1,
+            statement="Updated customer statement; still only one purchase.",
+        ),
+    )
+    assert saved.status_code == 200, saved.text
+    fresh = client.post(
+        "/v1/workspace/prepare_referral",
+        headers=headers,
+        json={"contact_id": contact, "transaction_ids": first_payload["transaction_ids"]},
+    ).json()["data"]
+    fresh["payload"]["related_case_id"] = case
+    fresh["payload"]["intake"].update(mode="link_existing", customer_summary_confirmed=True)
+    result = post(
+        client,
+        headers,
+        "approve_and_commit_proposal",
+        approve(create(client, headers, contact, fresh)),
+    )
+    assert result.status_code == 200, result.text
+    after = detail(client, specialist, work)
+    assert {r["payload"]["intake"]["statement_revision"] for r in after["intakes"]} == {1, 2}
+    assert (
+        next(r for r in after["intakes"] if r["id"] == before["intakes"][0]["id"])
+        == before["intakes"][0]
+    )
+    assert after["work"]["original_due_at"] == before["work"]["original_due_at"]
