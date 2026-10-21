@@ -8,7 +8,7 @@ from uuid import uuid4
 import psycopg
 from psycopg.types.json import Jsonb
 
-from .calendar import VERSION
+from .calendar import VERSION, add_hours
 from .config import Settings
 from .continuation import latest_plan, lead_review
 from .db import runtime_connection
@@ -63,14 +63,17 @@ def tick(settings, now):
                 from .referrals import route_config
 
                 route = route_config(conn)
+                # The progress contact has its own one-service-day target. Inheriting the
+                # missed deadline would escalate the same case/deadline a second time.
+                progress_due = add_hours(now, 8)
                 conn.execute(
                     "INSERT INTO work_items(id,case_id,kind,queue_id,status,original_due_at,due_at,calendar_ref,source_event_key,version,parent_work_id) VALUES (%s,%s,'progress_callback',%s,'queued',%s,%s,%s,%s,1,%s)",
                     (
                         uuid4(),
                         w["case_id"],
                         route["feedback_queue_id"],
-                        due,
-                        due,
+                        progress_due,
+                        progress_due,
                         VERSION,
                         "progress:" + str(eid),
                         w["id"],
