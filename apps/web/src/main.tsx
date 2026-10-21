@@ -80,7 +80,7 @@ function App(){
       {auth&&evidence&&<RelatedCases key={`cases:${meta?.as_of}`} auth={auth} transactionIds={evidence.records.map(r=>r.id)}/>}
       {auth&&<InvestigationPanel key={auth.token} auth={auth} evidence={evidence} busy={busy} onStatementChange={invalidateStatement} onSaving={setSaving}/>}
       {auth&&evidence&&<HandlingRules key={`rules:${meta?.as_of}`} auth={auth} records={evidence.records}/>}
-      {auth&&<><AgentPanel token={auth.token} context={{contact_id:auth.contact,case_id:null,work_item_id:null,transaction_ids:selection}} contextKey={JSON.stringify([auth.contact,card,from,to,merchant,amount,selection,evidence])}/><NotePanel key={`note:${auth.token}`} auth={auth} records={evidence?.records??null} contextKey={`${meta?.as_of}:${stale}`}/></>}
+      {auth&&<><AgentPanel disabled={busy||saving||!evidence} token={auth.token} context={{contact_id:auth.contact,case_id:null,work_item_id:null,transaction_ids:selection}} contextKey={JSON.stringify([auth.contact,card,from,to,merchant,amount,selection,evidence])}/><NotePanel key={`note:${auth.token}`} auth={auth} records={evidence?.records??null} contextKey={`${meta?.as_of}:${stale}`}/></>}
       {auth&&<ReferralPanel key={`referral:${auth.token}`} auth={auth} records={evidence?.records??null} contextKey={`${meta?.as_of}:${stale}`}/>}
       <footer aria-live="polite">{busy?'Retrieving authorized evidence…':'Local synthetic workflow. No measured savings or production readiness claimed.'}</footer>
       <OperationsDesk/>

@@ -64,3 +64,9 @@ Cloud run [39488694094](https://github.com/xc8609/service-agent-portfolio/action
 passed PostgreSQL 17 API/browser tests but failed container startup. The image
 allowlist/COPY missed the new runtime schema. Both packaging entries were added;
 see PR checks for the current commit's subsequent container result.
+
+## Merge-pass recognition regression
+
+[DEV-03/08 UI state correction](../DEV-08/ui-state-regression.md) records the
+reproduced post-inspection recognition reset, evidence-bound fix, and SI-07
+persistence test. This supplements the historical execution record above.
