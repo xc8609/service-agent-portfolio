@@ -1,0 +1,16 @@
+# R2 acceptance
+
+| ID | Given / when | Expected outcome |
+|---|---|---|
+| R2-AC01 | Current observations show a correct clarification with preserved recognition | Turn passes; awaiting_customer remains separate from resolved and needs_review |
+| R2-AC02 | Review absent, incomplete, uncertain or bound to an old output/rubric | No semantic pass; outstanding scoring review is explicit |
+| R2-AC03 | Known criterion violation plus correct/uncertain other criteria | Failure wins; critical and pending-severity findings remain visible |
+| R2-AC04 | Positive assertion elsewhere conflicts with a negation or clarification | Reviewer marks the assertion; no whole-answer negation cancellation |
+| R2-AC05 | Unverified prose discloses facts but cites nothing | Never auto-pass; confirmed disclosure fails critically |
+| R2-AC06 | Output missing/malformed, citation absent/foreign, or batch IDs duplicate/unknown | Keep missing/invalid cases as failures; reject ambiguous batch; no positive-review override |
+| R2-AC07 | Every development example passes engineered scorer fixtures | Still no adoption, hold-out, runtime qualification or human-review result claim |
+
+Executable mapping: `projects/bank-service-assist/tests/test_r2_score.py`, test names
+state each behavior. These are scorer regression checks, not executed model cases.
+Run the normal offline CI on Python 3.9 and 3.12, publication checks and existing
+runtime CI. Record actual results in tasks.md after execution; preserve all pilot files.

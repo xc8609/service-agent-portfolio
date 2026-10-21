@@ -1,5 +1,9 @@
 # QA-02 evaluation pilot — does a model add value over a decision table?
 
+Next increment: [R2 development cases and scoring](r2/README.md) applies the confirmed
+clarification rules with separate business/scoring states. It is not a replacement
+for the historical frozen evidence below or a new hold-out result.
+
 21 October 2026 · Owner decision D-27: no model API yet, so the pilot uses subscription
 sessions. This is a **pilot**, not provider qualification: the application's live route stays
 disabled, and no latency or cost is measured.
