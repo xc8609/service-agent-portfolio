@@ -209,6 +209,10 @@ def test_tableau_artifact_and_empty_denominators(environment, tmp_path):
     assert values[("Accepted proportion", "decided only")] == ""
     assert values[("Mean terminal latency (ms)", "completed timing only")] == ""
     workbook = ET.parse(PROJECT / "dashboard/workflow_operations.twb")
+    # Regression for the actual Desktop 2026.2 load errors, not a full TWB schema validator.
+    assert workbook.getroot().get("source-build")
+    assert [e.tag for e in workbook.find(".//worksheet/table")][:3] == ["view", "style", "panes"]
+    assert [e.tag for e in workbook.find(".//window")][:2] == ["cards", "viewpoint"]
     connection = workbook.find(".//connection")
     assert connection.attrib["class"] == "textscan"
     assert connection.attrib["directory"] == "../data/processed/tableau"

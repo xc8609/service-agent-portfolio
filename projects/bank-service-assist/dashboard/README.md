@@ -72,6 +72,20 @@ this deployment contains synthetic operational records only.
 replays/outcomes, multiple revisions, faults, retained continuation history, late
 corrections and empty denominators. Exported review journey: 1 run, 1 pending proposal,
 1 recorded call, 1 expired initial window; new-plan history retained. No efficacy claim.
-XML connection/field structure checked. **Tableau Desktop opening, refresh and visual
-verification remain pending: native access was blocked by the locked Mac.** This file
-is a workbook candidate, not a claimed rendered/accepted dashboard. Owner UAT pending.
+Desktop verification on 20 October 2026: Tableau Desktop Free Edition 2026.2.3
+opened the repaired workbook and resolved the relative CSV connection. The initial
+attempt exposed missing `source-build`, table `style`, and window `cards` elements;
+the hand-authored XML now includes them, with a regression check.
+
+The sheet displayed 30 marks: one started run awaiting human review, one pending
+proposal, and one recorded contact outcome. Model cost, measured savings and ROI
+remained blank with explicit unavailable reasons. This is synthetic engineering
+evidence, not a measured business benefit. Some labels are truncated and the title
+is not visible in the current sheet layout; presentation polish remains open.
+A subsequent refresh action could not be verified when native controls stopped
+responding and screenshots became unavailable. Refresh acceptance and owner UAT
+remain pending; a successful open is not full visual acceptance.
+
+The installed Free Edition displays a restriction on sharing its assets. This pass
+only opened the hand-authored workbook locally; no workbook was published. Choose
+an appropriate Tableau publication route/license before sharing a rendered asset.

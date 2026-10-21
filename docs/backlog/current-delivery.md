@@ -38,7 +38,7 @@ to mark entire stories complete from a partial slice.
 | S04 | Manual note and reviewed referral: DEV-06/07; provider qualification DEV-09 | Draft/edit/approve, missing-material/contact-gap intake, atomic receipt, replay tests | DEV-06/07 implemented in PRs 5/6; DEV-09 offline adapters in PR 10; live qualification deferred by owner |
 | S04A | Minimal result and manual feedback: DEV-11, core guards from DEV-12/13 | Finding, accountable feedback, actual outcome, no false closure, manual lead review for exceptions | DEV-11/12/13 implemented in PRs 7/8/9; local worker, manual callbacks; owner UAT pending |
 | S05 | Bounded assistance: DEV-08 | Qualified provider, allowlisted tools, cited drafts, manual fallback and model-failure scenarios | DEV-08 offline runtime in PR 11; live model validation deferred |
-| S05A / S06 | Evaluation, SQL/Tableau evidence, staging/UAT and bank release | Reconciled metrics, executed evaluation, reproducible deployment/recovery and recorded acceptance | DEV-10 export/workbook candidate; Desktop validation, human study and staging/UAT pending |
+| S05A / S06 | Evaluation, SQL/Tableau evidence, staging/UAT and bank release | Reconciled metrics, executed evaluation, reproducible deployment/recovery and recorded acceptance | DEV-10 export/workbook candidate; Desktop open verified; refresh/layout, human study and staging/UAT pending |
 
 ## Keep out of the first core increment
 
@@ -64,7 +64,7 @@ They are not merged or owner-accepted. Keep the original Sprint forecast as plan
 history, not actual elapsed person-days or completed Sprint acceptance.
 
 1. Review manual workflow and exceptions together with the owner.
-2. Unlock the Mac for Tableau Desktop open/refresh/visual verification.
+2. Complete Tableau refresh/layout acceptance; Desktop open is verified.
 3. Qualify one real provider when the owner resumes that explicitly deferred work.
 4. Run the B0/B1 effort/quality evaluation and staging recovery/UAT before release.
 
