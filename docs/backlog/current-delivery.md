@@ -38,7 +38,7 @@ to mark entire stories complete from a partial slice.
 | S04 | Reviewed note and referral DEV-06/07; provider boundary DEV-09 | Draft/edit/approve, missing-material/contact-gap intake, atomic receipt, replay tests | Merged (#5, #6, #10, #15); live provider qualification deferred |
 | S04A | Result, feedback and exceptions DEV-11/12/13 | Finding, accountable feedback, actual outcome, no false closure, objections, complaint delivery | Merged (#7–#9, #13, #16); owner UAT pending |
 | S05 | Bounded assistance DEV-08 | Allowlisted tools, cited drafts, manual fallback and model-failure scenarios | Merged offline (#11); real-model route unqualified |
-| S05A / S06 | Evaluation, SQL/Tableau evidence, staging/UAT and bank release | Reconciled metrics, executed evaluation, reproducible deployment/recovery and recorded acceptance | DEV-10 merged (#12, #14); QA-02 subscription-run pilot (D-27); staging, owner UAT and Tableau refresh acceptance pending |
+| S05A / S06 | Evaluation, SQL/Tableau evidence, staging/UAT and bank release | Reconciled metrics, executed evaluation, reproducible deployment/recovery and recorded acceptance | DEV-10 merged (#12, #14); QA-02 pilot executed ([report](../../projects/bank-service-assist/evaluation/README.md)); staging, owner UAT and Tableau refresh acceptance pending |
 
 ## Keep out of the first core increment
 
@@ -64,8 +64,8 @@ original Sprint forecast as planning history, not actual elapsed person-days.
 
 1. Owner UAT of the manual workflow and exceptions — [UAT pack](../uat/README.md).
 2. Tableau refresh/layout acceptance for both workbooks; Desktop open is verified for the bank workbook.
-3. QA-02: subscription-run evaluation pilot now (D-27); API-based provider
-   qualification only when the owner enables an API route.
+3. QA-02 pilot executed (D-27); next: independent fresh hold-out and a negation-aware
+   promise guard. API-based provider qualification only when the owner enables an API route.
 4. Staging recovery (OPS-02) needs an owner-chosen hosting account.
 
 No automatic phone execution, financial action or bulk architecture rewrite. Voice

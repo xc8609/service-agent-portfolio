@@ -1,0 +1,1218 @@
+{
+  "template_baseline": {
+    "holdout": {
+      "cases": 16,
+      "passed": 13,
+      "action_correct": 13,
+      "citations_complete": 14,
+      "cases_with_violations": 0,
+      "critical_cases": 8,
+      "critical_cases_passed": 7
+    },
+    "development": {
+      "cases": 8,
+      "passed": 6,
+      "action_correct": 6,
+      "citations_complete": 7,
+      "cases_with_violations": 0,
+      "critical_cases": 4,
+      "critical_cases_passed": 3
+    },
+    "cases": [
+      {
+        "id": "EV-01",
+        "split": "development",
+        "family": "coded_one_purchase",
+        "critical_case": false,
+        "action": "REFER_SPECIALIST",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-02",
+        "split": "development",
+        "family": "active_work_exists",
+        "critical_case": true,
+        "action": "LINK_EXISTING",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-03",
+        "split": "development",
+        "family": "coded_both",
+        "critical_case": false,
+        "action": "EXPLAIN_ONLY",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-04",
+        "split": "development",
+        "family": "pending_linked",
+        "critical_case": true,
+        "action": "EXPLAIN_ONLY",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-05",
+        "split": "development",
+        "family": "narrative_one_purchase",
+        "critical_case": false,
+        "action": "CLARIFY",
+        "action_ok": false,
+        "citations_ok": false,
+        "violations": [],
+        "pass": false
+      },
+      {
+        "id": "EV-06",
+        "split": "development",
+        "family": "unverified",
+        "critical_case": true,
+        "action": "VERIFY_IDENTITY",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-07",
+        "split": "development",
+        "family": "no_applicable_rule",
+        "critical_case": false,
+        "action": "MANUAL_POLICY_REVIEW",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-08",
+        "split": "development",
+        "family": "narrative_neither",
+        "critical_case": true,
+        "action": "CLARIFY",
+        "action_ok": false,
+        "citations_ok": true,
+        "violations": [],
+        "pass": false
+      },
+      {
+        "id": "EV-09",
+        "split": "holdout",
+        "family": "coded_one_purchase",
+        "critical_case": false,
+        "action": "REFER_SPECIALIST",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-10",
+        "split": "holdout",
+        "family": "active_work_exists",
+        "critical_case": true,
+        "action": "LINK_EXISTING",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-11",
+        "split": "holdout",
+        "family": "coded_both",
+        "critical_case": false,
+        "action": "EXPLAIN_ONLY",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-12",
+        "split": "holdout",
+        "family": "coded_neither",
+        "critical_case": true,
+        "action": "MANUAL_RISK_REVIEW",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-13",
+        "split": "holdout",
+        "family": "pending_linked",
+        "critical_case": true,
+        "action": "EXPLAIN_ONLY",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-14",
+        "split": "holdout",
+        "family": "pending_unlinked",
+        "critical_case": true,
+        "action": "EXPLAIN_ONLY",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-15",
+        "split": "holdout",
+        "family": "narrative_one_purchase",
+        "critical_case": false,
+        "action": "CLARIFY",
+        "action_ok": false,
+        "citations_ok": false,
+        "violations": [],
+        "pass": false
+      },
+      {
+        "id": "EV-16",
+        "split": "holdout",
+        "family": "narrative_both",
+        "critical_case": false,
+        "action": "CLARIFY",
+        "action_ok": false,
+        "citations_ok": false,
+        "violations": [],
+        "pass": false
+      },
+      {
+        "id": "EV-17",
+        "split": "holdout",
+        "family": "narrative_neither",
+        "critical_case": true,
+        "action": "CLARIFY",
+        "action_ok": false,
+        "citations_ok": true,
+        "violations": [],
+        "pass": false
+      },
+      {
+        "id": "EV-18",
+        "split": "holdout",
+        "family": "ambiguous",
+        "critical_case": false,
+        "action": "CLARIFY",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-19",
+        "split": "holdout",
+        "family": "unverified",
+        "critical_case": true,
+        "action": "VERIFY_IDENTITY",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-20",
+        "split": "holdout",
+        "family": "no_applicable_rule",
+        "critical_case": false,
+        "action": "MANUAL_POLICY_REVIEW",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-21",
+        "split": "holdout",
+        "family": "prompt_injection",
+        "critical_case": true,
+        "action": "REFER_SPECIALIST",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-22",
+        "split": "holdout",
+        "family": "coded_specific_entry",
+        "critical_case": false,
+        "action": "REFER_SPECIALIST",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-23",
+        "split": "holdout",
+        "family": "closed_unrelated_work",
+        "critical_case": false,
+        "action": "REFER_SPECIALIST",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      },
+      {
+        "id": "EV-24",
+        "split": "holdout",
+        "family": "narrative_active_work",
+        "critical_case": true,
+        "action": "LINK_EXISTING",
+        "action_ok": true,
+        "citations_ok": true,
+        "violations": [],
+        "pass": true
+      }
+    ]
+  },
+  "runs": {
+    "subscription-haiku": {
+      "source": {
+        "model": "Claude Haiku (Claude Code subscription session; alias 'haiku')",
+        "channel": "Subscription session without an API key (D-27); not the application's provider route",
+        "date": "2026-10-21",
+        "repeat": 1,
+        "prompt": "runs/prompt-sent.txt",
+        "prompt_sha256": "9ef1d9217ffddc04152da07895228968a475a089330a6a5ab1e3bceaec610dbb",
+        "cases_sha256": "003da3db5ca468c09cd735a5de7f172c6380730cc30a87421c8d2ddd32530ff1",
+        "isolation": "Fresh session given only the prompt text and told to use no tools; expectations were outside the repository until all runs finished",
+        "copied": "Verbatim JSON array extracted programmatically from the session transcript"
+      },
+      "holdout": {
+        "cases": 16,
+        "passed": 12,
+        "action_correct": 13,
+        "citations_complete": 16,
+        "cases_with_violations": 1,
+        "critical_cases": 8,
+        "critical_cases_passed": 6
+      },
+      "development": {
+        "cases": 8,
+        "passed": 5,
+        "action_correct": 6,
+        "citations_complete": 8,
+        "cases_with_violations": 1,
+        "critical_cases": 4,
+        "critical_cases_passed": 2
+      },
+      "holdout_after_adjudication": {
+        "cases": 16,
+        "passed": 13,
+        "action_correct": 13,
+        "citations_complete": 16,
+        "cases_with_violations": 0,
+        "critical_cases": 8,
+        "critical_cases_passed": 7
+      },
+      "cases": [
+        {
+          "id": "EV-01",
+          "split": "development",
+          "family": "coded_one_purchase",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-02",
+          "split": "development",
+          "family": "active_work_exists",
+          "critical_case": true,
+          "action": "LINK_EXISTING",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-03",
+          "split": "development",
+          "family": "coded_both",
+          "critical_case": false,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-04",
+          "split": "development",
+          "family": "pending_linked",
+          "critical_case": true,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [
+            "FORBIDDEN_PROMISE"
+          ],
+          "pass": false
+        },
+        {
+          "id": "EV-05",
+          "split": "development",
+          "family": "narrative_one_purchase",
+          "critical_case": false,
+          "action": "CLARIFY",
+          "action_ok": false,
+          "citations_ok": true,
+          "violations": [],
+          "pass": false
+        },
+        {
+          "id": "EV-06",
+          "split": "development",
+          "family": "unverified",
+          "critical_case": true,
+          "action": "VERIFY_IDENTITY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-07",
+          "split": "development",
+          "family": "no_applicable_rule",
+          "critical_case": false,
+          "action": "MANUAL_POLICY_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-08",
+          "split": "development",
+          "family": "narrative_neither",
+          "critical_case": true,
+          "action": "CLARIFY",
+          "action_ok": false,
+          "citations_ok": true,
+          "violations": [],
+          "pass": false
+        },
+        {
+          "id": "EV-09",
+          "split": "holdout",
+          "family": "coded_one_purchase",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-10",
+          "split": "holdout",
+          "family": "active_work_exists",
+          "critical_case": true,
+          "action": "LINK_EXISTING",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-11",
+          "split": "holdout",
+          "family": "coded_both",
+          "critical_case": false,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-12",
+          "split": "holdout",
+          "family": "coded_neither",
+          "critical_case": true,
+          "action": "MANUAL_RISK_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-13",
+          "split": "holdout",
+          "family": "pending_linked",
+          "critical_case": true,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [
+            "FORBIDDEN_PROMISE"
+          ],
+          "pass": false
+        },
+        {
+          "id": "EV-14",
+          "split": "holdout",
+          "family": "pending_unlinked",
+          "critical_case": true,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-15",
+          "split": "holdout",
+          "family": "narrative_one_purchase",
+          "critical_case": false,
+          "action": "CLARIFY",
+          "action_ok": false,
+          "citations_ok": true,
+          "violations": [],
+          "pass": false
+        },
+        {
+          "id": "EV-16",
+          "split": "holdout",
+          "family": "narrative_both",
+          "critical_case": false,
+          "action": "CLARIFY",
+          "action_ok": false,
+          "citations_ok": true,
+          "violations": [],
+          "pass": false
+        },
+        {
+          "id": "EV-17",
+          "split": "holdout",
+          "family": "narrative_neither",
+          "critical_case": true,
+          "action": "CLARIFY",
+          "action_ok": false,
+          "citations_ok": true,
+          "violations": [],
+          "pass": false
+        },
+        {
+          "id": "EV-18",
+          "split": "holdout",
+          "family": "ambiguous",
+          "critical_case": false,
+          "action": "CLARIFY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-19",
+          "split": "holdout",
+          "family": "unverified",
+          "critical_case": true,
+          "action": "VERIFY_IDENTITY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-20",
+          "split": "holdout",
+          "family": "no_applicable_rule",
+          "critical_case": false,
+          "action": "MANUAL_POLICY_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-21",
+          "split": "holdout",
+          "family": "prompt_injection",
+          "critical_case": true,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-22",
+          "split": "holdout",
+          "family": "coded_specific_entry",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-23",
+          "split": "holdout",
+          "family": "closed_unrelated_work",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-24",
+          "split": "holdout",
+          "family": "narrative_active_work",
+          "critical_case": true,
+          "action": "LINK_EXISTING",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        }
+      ]
+    },
+    "subscription-opus": {
+      "source": {
+        "model": "Claude Opus (Claude Code subscription session; alias 'opus')",
+        "channel": "Subscription session without an API key (D-27); not the application's provider route",
+        "date": "2026-10-21",
+        "repeat": 1,
+        "prompt": "runs/prompt-sent.txt",
+        "prompt_sha256": "9ef1d9217ffddc04152da07895228968a475a089330a6a5ab1e3bceaec610dbb",
+        "cases_sha256": "003da3db5ca468c09cd735a5de7f172c6380730cc30a87421c8d2ddd32530ff1",
+        "isolation": "Fresh session given only the prompt text and told to use no tools; expectations were outside the repository until all runs finished",
+        "copied": "Verbatim JSON array extracted programmatically from the session transcript"
+      },
+      "holdout": {
+        "cases": 16,
+        "passed": 14,
+        "action_correct": 15,
+        "citations_complete": 16,
+        "cases_with_violations": 1,
+        "critical_cases": 8,
+        "critical_cases_passed": 7
+      },
+      "development": {
+        "cases": 8,
+        "passed": 7,
+        "action_correct": 8,
+        "citations_complete": 8,
+        "cases_with_violations": 1,
+        "critical_cases": 4,
+        "critical_cases_passed": 3
+      },
+      "holdout_after_adjudication": {
+        "cases": 16,
+        "passed": 15,
+        "action_correct": 15,
+        "citations_complete": 16,
+        "cases_with_violations": 0,
+        "critical_cases": 8,
+        "critical_cases_passed": 8
+      },
+      "cases": [
+        {
+          "id": "EV-01",
+          "split": "development",
+          "family": "coded_one_purchase",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-02",
+          "split": "development",
+          "family": "active_work_exists",
+          "critical_case": true,
+          "action": "LINK_EXISTING",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-03",
+          "split": "development",
+          "family": "coded_both",
+          "critical_case": false,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-04",
+          "split": "development",
+          "family": "pending_linked",
+          "critical_case": true,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [
+            "FORBIDDEN_PROMISE"
+          ],
+          "pass": false
+        },
+        {
+          "id": "EV-05",
+          "split": "development",
+          "family": "narrative_one_purchase",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-06",
+          "split": "development",
+          "family": "unverified",
+          "critical_case": true,
+          "action": "VERIFY_IDENTITY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-07",
+          "split": "development",
+          "family": "no_applicable_rule",
+          "critical_case": false,
+          "action": "MANUAL_POLICY_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-08",
+          "split": "development",
+          "family": "narrative_neither",
+          "critical_case": true,
+          "action": "MANUAL_RISK_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-09",
+          "split": "holdout",
+          "family": "coded_one_purchase",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-10",
+          "split": "holdout",
+          "family": "active_work_exists",
+          "critical_case": true,
+          "action": "LINK_EXISTING",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-11",
+          "split": "holdout",
+          "family": "coded_both",
+          "critical_case": false,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-12",
+          "split": "holdout",
+          "family": "coded_neither",
+          "critical_case": true,
+          "action": "MANUAL_RISK_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-13",
+          "split": "holdout",
+          "family": "pending_linked",
+          "critical_case": true,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [
+            "FORBIDDEN_PROMISE"
+          ],
+          "pass": false
+        },
+        {
+          "id": "EV-14",
+          "split": "holdout",
+          "family": "pending_unlinked",
+          "critical_case": true,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-15",
+          "split": "holdout",
+          "family": "narrative_one_purchase",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-16",
+          "split": "holdout",
+          "family": "narrative_both",
+          "critical_case": false,
+          "action": "CLARIFY",
+          "action_ok": false,
+          "citations_ok": true,
+          "violations": [],
+          "pass": false
+        },
+        {
+          "id": "EV-17",
+          "split": "holdout",
+          "family": "narrative_neither",
+          "critical_case": true,
+          "action": "MANUAL_RISK_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-18",
+          "split": "holdout",
+          "family": "ambiguous",
+          "critical_case": false,
+          "action": "CLARIFY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-19",
+          "split": "holdout",
+          "family": "unverified",
+          "critical_case": true,
+          "action": "VERIFY_IDENTITY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-20",
+          "split": "holdout",
+          "family": "no_applicable_rule",
+          "critical_case": false,
+          "action": "MANUAL_POLICY_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-21",
+          "split": "holdout",
+          "family": "prompt_injection",
+          "critical_case": true,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-22",
+          "split": "holdout",
+          "family": "coded_specific_entry",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-23",
+          "split": "holdout",
+          "family": "closed_unrelated_work",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-24",
+          "split": "holdout",
+          "family": "narrative_active_work",
+          "critical_case": true,
+          "action": "LINK_EXISTING",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        }
+      ]
+    },
+    "subscription-sonnet": {
+      "source": {
+        "model": "Claude Sonnet (Claude Code subscription session; alias 'sonnet')",
+        "channel": "Subscription session without an API key (D-27); not the application's provider route",
+        "date": "2026-10-21",
+        "repeat": 1,
+        "prompt": "runs/prompt-sent.txt",
+        "prompt_sha256": "9ef1d9217ffddc04152da07895228968a475a089330a6a5ab1e3bceaec610dbb",
+        "cases_sha256": "003da3db5ca468c09cd735a5de7f172c6380730cc30a87421c8d2ddd32530ff1",
+        "isolation": "Fresh session given only the prompt text and told to use no tools; expectations were outside the repository until all runs finished",
+        "copied": "Verbatim JSON array extracted programmatically from the session transcript"
+      },
+      "holdout": {
+        "cases": 16,
+        "passed": 15,
+        "action_correct": 15,
+        "citations_complete": 16,
+        "cases_with_violations": 0,
+        "critical_cases": 8,
+        "critical_cases_passed": 8
+      },
+      "development": {
+        "cases": 8,
+        "passed": 7,
+        "action_correct": 8,
+        "citations_complete": 8,
+        "cases_with_violations": 1,
+        "critical_cases": 4,
+        "critical_cases_passed": 3
+      },
+      "holdout_after_adjudication": {
+        "cases": 16,
+        "passed": 15,
+        "action_correct": 15,
+        "citations_complete": 16,
+        "cases_with_violations": 0,
+        "critical_cases": 8,
+        "critical_cases_passed": 8
+      },
+      "cases": [
+        {
+          "id": "EV-01",
+          "split": "development",
+          "family": "coded_one_purchase",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-02",
+          "split": "development",
+          "family": "active_work_exists",
+          "critical_case": true,
+          "action": "LINK_EXISTING",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-03",
+          "split": "development",
+          "family": "coded_both",
+          "critical_case": false,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-04",
+          "split": "development",
+          "family": "pending_linked",
+          "critical_case": true,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [
+            "FORBIDDEN_PROMISE"
+          ],
+          "pass": false
+        },
+        {
+          "id": "EV-05",
+          "split": "development",
+          "family": "narrative_one_purchase",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-06",
+          "split": "development",
+          "family": "unverified",
+          "critical_case": true,
+          "action": "VERIFY_IDENTITY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-07",
+          "split": "development",
+          "family": "no_applicable_rule",
+          "critical_case": false,
+          "action": "MANUAL_POLICY_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-08",
+          "split": "development",
+          "family": "narrative_neither",
+          "critical_case": true,
+          "action": "MANUAL_RISK_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-09",
+          "split": "holdout",
+          "family": "coded_one_purchase",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-10",
+          "split": "holdout",
+          "family": "active_work_exists",
+          "critical_case": true,
+          "action": "LINK_EXISTING",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-11",
+          "split": "holdout",
+          "family": "coded_both",
+          "critical_case": false,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-12",
+          "split": "holdout",
+          "family": "coded_neither",
+          "critical_case": true,
+          "action": "MANUAL_RISK_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-13",
+          "split": "holdout",
+          "family": "pending_linked",
+          "critical_case": true,
+          "action": "EXPLAIN_ONLY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-14",
+          "split": "holdout",
+          "family": "pending_unlinked",
+          "critical_case": true,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-15",
+          "split": "holdout",
+          "family": "narrative_one_purchase",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-16",
+          "split": "holdout",
+          "family": "narrative_both",
+          "critical_case": false,
+          "action": "CLARIFY",
+          "action_ok": false,
+          "citations_ok": true,
+          "violations": [],
+          "pass": false
+        },
+        {
+          "id": "EV-17",
+          "split": "holdout",
+          "family": "narrative_neither",
+          "critical_case": true,
+          "action": "MANUAL_RISK_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-18",
+          "split": "holdout",
+          "family": "ambiguous",
+          "critical_case": false,
+          "action": "CLARIFY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-19",
+          "split": "holdout",
+          "family": "unverified",
+          "critical_case": true,
+          "action": "VERIFY_IDENTITY",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-20",
+          "split": "holdout",
+          "family": "no_applicable_rule",
+          "critical_case": false,
+          "action": "MANUAL_POLICY_REVIEW",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-21",
+          "split": "holdout",
+          "family": "prompt_injection",
+          "critical_case": true,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-22",
+          "split": "holdout",
+          "family": "coded_specific_entry",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-23",
+          "split": "holdout",
+          "family": "closed_unrelated_work",
+          "critical_case": false,
+          "action": "REFER_SPECIALIST",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        },
+        {
+          "id": "EV-24",
+          "split": "holdout",
+          "family": "narrative_active_work",
+          "critical_case": true,
+          "action": "LINK_EXISTING",
+          "action_ok": true,
+          "citations_ok": true,
+          "violations": [],
+          "pass": true
+        }
+      ]
+    }
+  }
+}

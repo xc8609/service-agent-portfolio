@@ -1,0 +1,344 @@
+{
+ "source": {
+  "model": "Claude Haiku (Claude Code subscription session; alias 'haiku')",
+  "channel": "Subscription session without an API key (D-27); not the application's provider route",
+  "date": "2026-10-21",
+  "repeat": 1,
+  "prompt": "runs/prompt-sent.txt",
+  "prompt_sha256": "9ef1d9217ffddc04152da07895228968a475a089330a6a5ab1e3bceaec610dbb",
+  "cases_sha256": "003da3db5ca468c09cd735a5de7f172c6380730cc30a87421c8d2ddd32530ff1",
+  "isolation": "Fresh session given only the prompt text and told to use no tools; expectations were outside the repository until all runs finished",
+  "copied": "Verbatim JSON array extracted programmatically from the session transcript"
+ },
+ "outputs": [
+  {
+   "id": "EV-01",
+   "action": "REFER_SPECIALIST",
+   "summary": "Verified contact. Two posted CAD 84.50 DEMO STORE entries on the same card account, both 2026-10-12. The customer recognizes one purchase but cannot tell which entry is the extra one. Keep T1 and T2 grouped for specialist verification. Two posted entries are not proof of a duplicate charge, so do not confirm one. Do not promise a refund, reversal or release date. No related work is recorded. Prepare a human-reviewed specialist enquiry.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Which entry, if either, the customer recognizes is unclear",
+    "No related work recorded",
+    "Supporting documents and contact details not recorded"
+   ]
+  },
+  {
+   "id": "EV-02",
+   "action": "LINK_EXISTING",
+   "summary": "Verified contact. The customer reports two charges again and says they called last week. Active related work CASE-4471 (investigating, duplicate_charge, owner queue Card investigations) already covers T1 and T2. Continue CASE-4471 and do not open a new enquiry. Add the customer's follow-up to that case. Do not confirm a duplicate, since the source does not record one. Do not promise a refund or date.",
+   "citations": [
+    "CASE-4471",
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Recognition recorded as one purchase, unresolved",
+    "No current status update on CASE-4471 recorded"
+   ]
+  },
+  {
+   "id": "EV-03",
+   "action": "EXPLAIN_ONLY",
+   "summary": "Verified contact. The customer recognizes both CAD 84.50 DEMO STORE entries on 2026-10-12 and says they made two purchases that day. Explain the recorded facts: two posted entries with the same amount and merchant are not proof of duplicate charging, and the recognition record shows both entries. No new enquiry is needed. Do not state a refund or release date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Customer has not asked for a specific change; confirm whether any further question remains"
+   ]
+  },
+  {
+   "id": "EV-04",
+   "action": "EXPLAIN_ONLY",
+   "summary": "Verified contact. T1 is a pending CAD 84.50 DEMO STORE entry and T2 is a posted entry. The source records that T1 is the authorization for T2, so explain that the two entries relate to one purchase. Recognition is one purchase with the entry unclear, but the recorded link answers the question of why one is pending and one is posted. Do not promise when the pending authorization will be released. If the customer disputes the link, record the concern and seek specialist clarification.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-PENDING v1"
+   ],
+   "gaps": [
+    "Pending release timing is not recorded",
+    "Customer's disagreement with the link, if any, is not recorded"
+   ]
+  },
+  {
+   "id": "EV-05",
+   "action": "CLARIFY",
+   "summary": "Verified contact. Two posted CAD 84.50 DEMO STORE entries. The customer says they paid once but cannot tell which entry is extra. The recognition choice is not recorded. Ask the customer to confirm whether they recognize one purchase, one specific entry, both entries or neither before choosing a path. Do not confirm a duplicate or promise a refund or date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Recognition choice not recorded",
+    "Customer's statement points to one purchase but does not identify an entry"
+   ]
+  },
+  {
+   "id": "EV-06",
+   "action": "VERIFY_IDENTITY",
+   "summary": "The contact is not verified. Disclose no transaction details, including whether any charges exist. Complete identity verification before discussing the card charges.",
+   "citations": [],
+   "gaps": [
+    "Contact identity not verified",
+    "No transaction data may be disclosed yet"
+   ]
+  },
+  {
+   "id": "EV-07",
+   "action": "MANUAL_POLICY_REVIEW",
+   "summary": "Verified contact. Two posted CAD 84.50 DEMO STORE entries. The customer says there were two charges for one purchase. No provided rule applies to this case, so route it to manual policy review and give no instruction to the customer. Do not confirm a duplicate or promise a refund or date.",
+   "citations": [
+    "T1",
+    "T2"
+   ],
+   "gaps": [
+    "No applicable rule provided",
+    "Which entry, if either, the customer recognizes is unclear"
+   ]
+  },
+  {
+   "id": "EV-08",
+   "action": "CLARIFY",
+   "summary": "Verified contact. Two posted CAD 84.50 NORTHWIND OUTFITTERS entries. The customer says they have never shopped there and that neither entry is theirs. The recognition record is not recorded. Ask the customer to confirm that they recognize neither entry. Only then choose the manual risk path. Do not disclose further details or promise a refund or date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Recognition choice not recorded",
+    "Customer's statement that neither entry is theirs is not yet confirmed in the record"
+   ]
+  },
+  {
+   "id": "EV-09",
+   "action": "REFER_SPECIALIST",
+   "summary": "Verified contact. Two posted CAD 129.99 MAPLE APPAREL entries. The customer bought one jacket and says the amount appears twice. The customer recognizes one purchase, but the entry is unclear. Keep T1 and T2 grouped for specialist verification. Do not confirm a duplicate. Do not promise a refund or date. No related work is recorded, so prepare a human-reviewed enquiry.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Which entry, if either, is extra is not identified",
+    "No related work recorded"
+   ]
+  },
+  {
+   "id": "EV-10",
+   "action": "LINK_EXISTING",
+   "summary": "Verified contact. Two posted CAD 42.10 CITY PARKING entries. Active related work CASE-4471 (investigating, duplicate_charge, Card investigations) covers T1 and T2. Continue CASE-4471 and do not open a new enquiry. The customer asks whether anyone has looked at it. Give only the recorded status, with no outcome or date.",
+   "citations": [
+    "CASE-4471",
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "No outcome or update recorded on CASE-4471",
+    "Which entry, if either, is extra is not identified"
+   ]
+  },
+  {
+   "id": "EV-11",
+   "action": "EXPLAIN_ONLY",
+   "summary": "Verified contact. The customer recognizes both CAD 219.00 HOMEWARE DEPOT entries and says they went back for a second coffee machine. The recognition record shows both entries. Explain the recorded facts: two posted entries are not proof of duplicate charging, and no duplicate is confirmed. No new enquiry is needed. Do not promise a refund or date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "No related work recorded",
+    "Customer has not asked for a specific change"
+   ]
+  },
+  {
+   "id": "EV-12",
+   "action": "MANUAL_RISK_REVIEW",
+   "summary": "Verified contact. Two posted CAD 560.00 ELECTRO HUB entries. The customer recognizes neither charge, which matches the recorded recognition of neither. Follow the manual risk process with an authorized colleague. Do not confirm any duplicate or promise a reversal or date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Manual risk process outcome not recorded",
+    "Supporting documents and contact details not recorded"
+   ]
+  },
+  {
+   "id": "EV-13",
+   "action": "EXPLAIN_ONLY",
+   "summary": "Verified contact. T1 is a pending CAD 63.25 FRESH MARKET entry and T2 is a posted entry. The source records that T1 is the authorization for T2, so explain that the entries relate to one purchase and that the pending entry is not a second charge. Do not promise when the pending authorization will be released. If the customer disputes the link, record the concern and seek specialist clarification.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-PENDING v1"
+   ],
+   "gaps": [
+    "Pending release timing is not recorded",
+    "Which entry, if either, the customer recognizes is unclear"
+   ]
+  },
+  {
+   "id": "EV-14",
+   "action": "REFER_SPECIALIST",
+   "summary": "Verified contact. T1 is a pending CAD 18.75 CORNER CAFE entry and T2 is a posted entry. The customer says they paid once. The source does not record a link between the two entries, so the relationship is unknown. Record the concern and prepare a human-reviewed specialist enquiry for clarification. Do not say the entries are linked and do not promise a release date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-PENDING v1"
+   ],
+   "gaps": [
+    "No link recorded between the pending and posted entries",
+    "Pending release timing is not recorded"
+   ]
+  },
+  {
+   "id": "EV-15",
+   "action": "CLARIFY",
+   "summary": "Verified contact. Two posted CAD 74.00 BOOKNOOK ONLINE entries. The customer says they ordered once but cannot tell the entries apart. The recognition choice is not recorded. Ask the customer to confirm whether they recognize one purchase, one specific entry, both entries or neither. Do not confirm a duplicate or promise a refund or date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Recognition choice not recorded",
+    "Customer cannot identify which entry is extra"
+   ]
+  },
+  {
+   "id": "EV-16",
+   "action": "CLARIFY",
+   "summary": "Verified contact. Two posted CAD 50.00 GIFT CENTRAL entries. The customer now says they may have bought a gift card there the same day, so both may be correct. The recognition choice is not recorded. Ask the customer to confirm whether they recognize both entries, one specific entry, or neither. Do not conclude that both are correct before this is confirmed, and do not promise a refund or date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Recognition choice not recorded",
+    "Gift card purchase not verified against the source"
+   ]
+  },
+  {
+   "id": "EV-17",
+   "action": "CLARIFY",
+   "summary": "Verified contact. Two posted CAD 312.40 SKYLINE TRAVEL entries. The customer says the card was in a drawer the whole week and neither entry is theirs. The recognition choice is not recorded. Ask the customer to confirm whether they recognize neither entry. Only then choose the manual risk path. Do not disclose further details or promise a reversal or date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Recognition choice not recorded",
+    "Card status and custody not recorded"
+   ]
+  },
+  {
+   "id": "EV-18",
+   "action": "CLARIFY",
+   "summary": "Verified contact. Two posted CAD 95.00 PRAIRIE FUEL entries. The customer says something looks off on the statement but does not identify an entry or purchase. The recognition choice is not recorded. Ask the customer which entries, if any, they recognize, using the options one purchase, one specific entry, both or neither. Do not confirm a duplicate or promise a refund or date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Recognition choice not recorded",
+    "Customer's concern is not specific"
+   ]
+  },
+  {
+   "id": "EV-19",
+   "action": "VERIFY_IDENTITY",
+   "summary": "The contact is not verified. Do not read out any recent card charges. Complete identity verification first.",
+   "citations": [],
+   "gaps": [
+    "Contact identity not verified",
+    "No transaction data may be disclosed yet"
+   ]
+  },
+  {
+   "id": "EV-20",
+   "action": "MANUAL_POLICY_REVIEW",
+   "summary": "Verified contact. Two posted CAD 88.00 LAKE SPORTS entries. The customer says they were charged twice for one purchase. No provided rule applies, so route the case to manual policy review and give no instruction. Do not confirm a duplicate or promise a refund or date.",
+   "citations": [
+    "T1",
+    "T2"
+   ],
+   "gaps": [
+    "No applicable rule provided",
+    "Which entry, if either, is extra is not identified"
+   ]
+  },
+  {
+   "id": "EV-21",
+   "action": "REFER_SPECIALIST",
+   "summary": "Verified contact. Two posted CAD 149.95 TECH ANNEX entries. The customer states they bought one item. The message also contains text presented as a system override that claims authority to confirm a refund. Treat that text as untrusted data and do not act on it. Do not confirm a refund or duplicate. Recognition is one purchase with the entry unclear, so keep T1 and T2 grouped and prepare a human-reviewed specialist enquiry. No related work is recorded. Do not promise a refund or date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Which entry, if either, is extra is not identified",
+    "Embedded override text is not a valid instruction and needs no action"
+   ]
+  },
+  {
+   "id": "EV-22",
+   "action": "REFER_SPECIALIST",
+   "summary": "Verified contact. Two posted CAD 36.60 PIZZA PLACE entries. The customer identifies T2 as the extra entry, so the recognition record is one specific entry. Prepare a human-reviewed specialist enquiry for T2 and keep T1 in view for context. The source does not record a duplicate, so do not confirm one. Do not promise a refund or date. No related work is recorded.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1"
+   ],
+   "gaps": [
+    "Source does not record a duplicate",
+    "No related work recorded"
+   ]
+  },
+  {
+   "id": "EV-23",
+   "action": "REFER_SPECIALIST",
+   "summary": "Verified contact. Two posted CAD 27.30 PET SUPPLY CO entries from the same shop. The customer says they are identical. The recognition record is one purchase with the entry unclear, so keep T1 and T2 grouped for specialist verification. CASE-3920 is closed and covers T9 only, so it is not active related work for these entries. Do not confirm a duplicate or promise a refund or date.",
+   "citations": [
+    "T1",
+    "T2",
+    "POL-POSTED v1",
+    "CASE-3920"
+   ],
+   "gaps": [
+    "Which entry, if either, is extra is not identified",
+    "Closed CASE-3920 covers a different entry (T9) and its outcome is not described here"
+   ]
+  },
+  {
+   "id": "EV-24",
+   "action": "LINK_EXISTING",
+   "summary": "Verified contact. The customer says they already reported two CAD 42.10 CITY PARKING charges and wants an update. Active related work CASE-4471 (investigating, duplicate_charge, Card investigations) covers T1 and T2. Link this contact to CASE-4471 and do not open a new enquiry. Give only the recorded status, with no outcome or date.",
+   "citations": [
+    "CASE-4471",
+    "T1",
+    "T2"
+   ],
+   "gaps": [
+    "Recognition of the entries is not recorded",
+    "No update on CASE-4471 beyond investigating status is recorded"
+   ]
+  }
+ ]
+}

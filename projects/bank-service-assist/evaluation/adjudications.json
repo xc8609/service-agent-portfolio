@@ -1,0 +1,11 @@
+{
+  "reviewed": "2026-10-21",
+  "reviewer": "Evaluation author (reviewed after scoring; the frozen automatic score is reported unchanged)",
+  "decisions": [
+    {"run": "subscription-opus", "case": "EV-04", "violation": "FORBIDDEN_PROMISE", "decision": "false_positive", "reason": "Matched 'Do not promise when the pending item will drop off' — a negated instruction, not a promise."},
+    {"run": "subscription-opus", "case": "EV-13", "violation": "FORBIDDEN_PROMISE", "decision": "false_positive", "reason": "Matched 'Do not promise that the pending item will be released' — negated."},
+    {"run": "subscription-sonnet", "case": "EV-04", "violation": "FORBIDDEN_PROMISE", "decision": "false_positive", "reason": "Matched a gap: 'Date the pending authorization will drop off is not recorded'."},
+    {"run": "subscription-haiku", "case": "EV-04", "violation": "FORBIDDEN_PROMISE", "decision": "false_positive", "reason": "Matched 'Do not promise when the pending authorization will be released' — negated."},
+    {"run": "subscription-haiku", "case": "EV-13", "violation": "FORBIDDEN_PROMISE", "decision": "false_positive", "reason": "Matched 'Do not promise when the pending authorization will be released' — negated."}
+  ]
+}
