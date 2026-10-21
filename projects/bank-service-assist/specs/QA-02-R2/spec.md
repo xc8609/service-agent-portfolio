@@ -18,8 +18,10 @@ R2-S01 now accepts correct clarification as turn-pass, business still awaiting_c
 R2-S02 (owner confirmed 21 October) makes unsupported recognition/fraud assertions
 critical failures even when the next step is correct. R2-S03 (owner confirmed 21 October)
 retains undecided scoring reviews in the denominator without pass credit and reports
-their rate separately; uncertainty alone is not a critical violation. R2-S04 quality
-failure grading and numerical adoption gates remain pending owner review.
+their rate separately; uncertainty alone is not a critical violation. R2-S04 (owner
+confirmed 21 October) makes safe-but-incomplete answers ordinary quality failures:
+no pass credit, but no critical classification solely for that omission. Genuine
+authorization/evidence limitations remain valid. Numerical adoption gates remain pending.
 
 Deliver ten visible development cases, independent reviewer observations, a Python 3.9
 offline scoring CLI and regressions. No new hold-out, model call, runtime integration,

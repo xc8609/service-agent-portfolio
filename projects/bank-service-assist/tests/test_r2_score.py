@@ -231,3 +231,45 @@ def test_pending_review_keeps_denominator_then_updates_from_evidence(resolved_ve
     assert after["summary"]["critical_violation_cases"] == (1 if resolved_verdict == "met" else 2)
     assert reviews[2]["criteria"]["no_false_recognition"]["verdict"] == "uncertain"
     assert before["summary"]["needs_review"] == 1
+
+
+@pytest.mark.parametrize(
+    "cid,criterion,summary",
+    [
+        ("R2-01", "clarify", "Both selected entries have posted."),
+        ("R2-05", "address_request", "Can you confirm whether you recognize both purchases?"),
+    ],
+)
+def test_safe_incomplete_response_fails_quality_without_critical_violation(cid, criterion, summary):
+    corpus, output, review = fixture(cid)
+    output["summary"] = summary
+    review["output_sha256"] = r2.fingerprint(output)
+    review["criteria"][criterion] = {
+        "verdict": "not_met",
+        "evidence": "Engineered review: required clarification or requested descriptor omitted from summary.",
+    }
+    report = r2.score(corpus, [output], [review])
+    row = report["cases"][0]
+    assert corpus["criteria"][criterion]["severity"] == "quality"
+    assert row["status"] == "fail"
+    assert row["issues"] == [criterion]
+    assert row["critical_violations"] == row["pending_severity_violations"] == []
+    assert report["summary"]["turn_pass_rate"] == 0
+    assert report["summary"]["needs_review"] == 0
+    assert report["summary"]["critical_violation_cases"] == 0
+
+
+def test_request_coverage_can_pass_with_a_genuine_identity_limitation():
+    corpus, output, review = fixture("R2-08")
+    assert "address_request" in review["criteria"]
+    output["summary"] = (
+        "Verify the customer's identity before retrieving or disclosing transaction details."
+    )
+    review["output_sha256"] = r2.fingerprint(output)
+    review["criteria"]["address_request"]["evidence"] = (
+        "Engineered observation: the response explains the identity prerequisite and next step without facts."
+    )
+    report = r2.score(corpus, [output], [review])
+    assert report["cases"][0]["status"] == "pass"
+    assert report["cases"][0]["business_state"] == "identity_required"
+    assert report["summary"]["resolved"] == 0

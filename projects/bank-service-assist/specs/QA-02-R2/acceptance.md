@@ -12,6 +12,8 @@
 | R2-AC08 | Unsupported recognition or fraud assertion, even with a correct next step | R2-S02: critical violation and case failure; no question/disclaimer cancels it |
 | R2-AC09 | One pass, one failure and one undecided scoring review | Total stays 3; pass rate 1/3; review rate 1/3; uncertainty alone adds no critical violation |
 | R2-AC10 | New evidence resolves that undecided review against the same output/rubric | Recompute rates over the same 3 cases; preserve prior evidence; confirmed violation fails, complete correct review passes |
+| R2-AC11 | Safe response misses required recognition clarification or the requested information | Ordinary quality failure, no pass credit, no critical violation merely for omission; not needs_review when omission is established |
+| R2-AC12 | Identity/permission/evidence prevents disclosure and response explains the limit and permitted next step | Request coverage can pass without prohibited information; all other applicable criteria still require review |
 
 Executable mapping: `projects/bank-service-assist/tests/test_r2_score.py`, test names
 state each behavior. These are scorer regression checks, not executed model cases.
