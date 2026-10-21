@@ -62,7 +62,7 @@ All bank DEV increments are merged to `main` with automated evidence in the
 [execution ledger](dev-execution-ledger.md). Merged is not owner-accepted. Keep the
 original Sprint forecast as planning history, not actual elapsed person-days.
 
-1. Complete the [REV-01 review corrections](review-fixes.md), then owner UAT of the manual workflow and exceptions — [UAT pack](../uat/README.md).
+1. Complete [REV-01](review-fixes.md) and the [REV-02 UAT corrections](uat-corrections.md), then retest the manual workflow and exceptions — [UAT pack](../uat/README.md). The delegated 21 October assessment found changes required; do not replace that historical result with an unobserved pass.
 2. Tableau refresh/layout acceptance for both workbooks; Desktop open is verified for the bank workbook.
 3. QA-02 pilot executed (D-27); next: independent fresh hold-out and a negation-aware
    promise guard. API-based provider qualification only when the owner enables an API route.

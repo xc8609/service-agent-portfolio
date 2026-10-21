@@ -4,6 +4,10 @@ Purpose: the business owner decides whether the merged workflow does what the ac
 rules say, using the running synthetic demo. Automated tests prove behaviour; this pack
 records a person's acceptance. Nothing here is pre-filled as passed.
 
+The owner delegated a browser-based assessment on 21 October 2026:
+[executed results, defects and reference practices](2026-10-21-delegated-assessment.md).
+Its decision is **changes required**; it does not fill in the owner's personal sign-off below.
+
 ## Setup
 
 ```bash
@@ -59,3 +63,9 @@ U14 needs the background worker (included in Docker Compose).
 Sign-off: owner name, date, environment (commit SHA, fixture version) and overall decision
 (accept / accept with listed defects / reject). Defects become issues linked to the
 requirement ID; failed rules are not silently changed in the specification.
+
+## Correction retest
+
+[REV-02 observed retest](2026-10-21-retest.md) records the three defect corrections
+and the post-CI query-to-feedback walkthrough. It supplements the original findings;
+owner sign-off and broader release gates are still separate.

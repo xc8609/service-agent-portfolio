@@ -623,3 +623,51 @@ def test_receipt_history_survives_retry_and_is_append_only(environment):
     assert history[0]["reason"] == "Complaint unit unavailable."
     other, _ = session(client, "feedback_other")
     assert call(client, other, "get_work_detail", pair(w)).status_code == 404
+
+
+def test_supersession_preserves_approval_provenance_and_hides_unapproved_updates(environment):
+    from test_cases import related, snapshot
+
+    client, specialist, work, runtime = overdue(environment)
+    inbound, contact = session(client)
+    approved = propose(client, specialist, work)
+    lead, _ = session(client, "lead")
+    assert confirm(client, lead, work, approved).status_code == 200
+    # The original seed proposal has never been approved. Both will be superseded.
+    result, payload = publish(client, specialist, work)
+    assert result.status_code == 200, result.text
+    assert call(client, specialist, "record_specialist_result", payload).json() == result.json()
+    for data in [
+        related(client, inbound, contact).json()["cases"][0]["snapshot"],
+        snapshot(client, inbound, contact).json()["data"],
+    ]:
+        assert [c["id"] for c in data["progress_commitments"]] == [approved["commitment_id"]]
+        assert data["progress_commitments"][0]["status"] == "superseded"
+        assert "PRIVATE" not in str(data)
+    with psycopg.connect(environment[1]) as conn:
+        pending = conn.execute(
+            "SELECT status,approved_by,approved_at,decided_at FROM update_commitments WHERE id=%s",
+            (uid("pending_commitment"),),
+        ).fetchone()
+        assert pending[:3] == ("superseded", None, None)
+        assert pending[3] is not None  # Decision/supersession timestamp is NOT approval.
+        proof = conn.execute(
+            "SELECT approved_by,approved_at FROM update_commitments WHERE id=%s",
+            (approved["commitment_id"],),
+        ).fetchone()
+        assert str(proof[0]) == uid("lead") and proof[1] == NOW
+
+
+def test_approval_survives_replaced_commitments(environment):
+    from test_cases import snapshot
+
+    client, specialist, work, runtime = overdue(environment)
+    lead, _ = session(client, "lead")
+    first = propose(client, specialist, work)
+    assert confirm(client, lead, work, first).status_code == 200
+    second = propose(client, specialist, work)
+    assert confirm(client, lead, work, second).status_code == 200
+    inbound, contact = session(client)
+    rows = snapshot(client, inbound, contact).json()["data"]["progress_commitments"]
+    states = {r["id"]: r["status"] for r in rows}
+    assert states == {first["commitment_id"]: "superseded", second["commitment_id"]: "approved"}

@@ -51,7 +51,8 @@ def read_case(conn, case_id, contact, cards):
     commitments = conn.execute(
         """SELECT id,version,status,proposed_update_at,customer_safe_progress
         FROM update_commitments WHERE case_id=%s
-        AND status IN ('approved','superseded','missed') ORDER BY proposed_at,id""",
+        AND status IN ('approved','superseded','missed')
+        AND approved_by IS NOT NULL AND approved_at IS NOT NULL ORDER BY proposed_at,id""",
         (case["id"],),
     ).fetchall()
     actions = conn.execute(

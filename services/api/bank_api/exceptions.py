@@ -132,8 +132,16 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
                 (w["id"],),
             )
         conn.execute(
-            "UPDATE update_commitments SET status=%s,version=version+1,decided_by=%s,decided_at=%s,decision_reason=%s WHERE id=%s",
-            (status, actor, now, p["reason"], c["id"]),
+            "UPDATE update_commitments SET status=%s,version=version+1,decided_by=%s,decided_at=%s,decision_reason=%s,approved_by=%s,approved_at=%s WHERE id=%s",
+            (
+                status,
+                actor,
+                now,
+                p["reason"],
+                actor if status == "approved" else None,
+                now if status == "approved" else None,
+                c["id"],
+            ),
         )
         bump_case(
             conn,
