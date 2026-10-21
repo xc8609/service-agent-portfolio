@@ -39,11 +39,10 @@ cost savings and production outcomes are not yet claimed.
 
 **Stack:** React/TypeScript · FastAPI/Python · PostgreSQL · SQL/Tableau · Docker Compose.
 
-**Current status:** implementation is under review in [stacked pull requests](https://github.com/xc8609/service-agent-portfolio/pulls).
-The runnable assistant defaults to a scripted offline provider; live models and real
-bank integrations are unqualified. All operational records and rules are synthetic.
-Tableau opens locally; refresh/layout acceptance and human benefit measurement remain
-pending. Voice service and retail clienteling are later releases.
+**Current status:** the bank core runs end to end on synthetic data with an offline,
+scripted assistant. Live models and real bank integrations are deliberately not
+qualified. Tableau opens locally; refresh/layout acceptance and a human benefit
+study remain pending. Voice service and retail clienteling are later releases.
 
 ## Repository map
 
@@ -80,19 +79,50 @@ python3 scripts/configure_demo.py
 docker compose up --build --wait
 ```
 
-Open **http://127.0.0.1:8000**. Start a verified demo contact, search `DEMO STORE`,
-select both entries and inspect evidence. No model key is needed. Keep this
-synthetic demo on localhost; it is not production authentication.
+Open **http://127.0.0.1:8000**. No model key is needed. Keep this synthetic demo on
+localhost; the persona selector is a local identity simulation, not production sign-in.
 
 [Mac setup without Docker, tests and recovery](services/api/README.md) ·
 [Executed evidence and limits](projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md)
 
-## Adapt without rebuilding the business process
+## Walk through the core flow
 
-One UI, one API and one workflow database keep the application small and understandable.
-Institution-specific data integration is designed around a canonical read model;
-server-owned profiles separate model APIs from Agent execution.
-Permissions, evidence versions and human approval remain in shared business services.
+The page follows the case from the first call to the final callback. Each write is a
+trusted command that rechecks identity, scope and versions and returns a receipt.
+
+| Step | Where (role) | What it demonstrates |
+|---|---|---|
+| 1 | Sections 1–3 · *Verified inbound representative* | Search `DEMO STORE`, select both entries, inspect evidence: pending vs posted, and no inferred duplicate |
+| 2 | Section 4, rules, related cases | Record what the customer recognizes, kept separate from source facts; cited simulated rules; existing work shown before any new enquiry |
+| 3 | Offline assistant, section 5 | A bounded run drafts a cited note; a person edits and approves it, or returns it with a reason |
+| 4 | Section 6 | A reviewed specialist enquiry, including an unresolved pair, missing material or a contact gap, with a receipt and the accountable queue |
+| 5 | Section 7 · *Demo specialist Alex* | Claim, request material through customer service, publish a finding with a customer-approved explanation and separate private notes |
+| 6 | Section 7 · *Feedback representative* | Claim feedback, open a synthetic callback, approve the explanation, verify identity, record the actual outcome. No answer means a retry or lead review, never closure |
+| 7 | Section 7, then related cases | Close only after verified feedback and completed work. A customer who later disputes it can call in; the disagreement reopens the case for re-review with history kept |
+
+## Architecture and extension points
+
+One UI, one API and one workflow database keep the application small and explainable:
+
+```text
+React workspace ──► FastAPI trusted commands ──► PostgreSQL workflow store
+                      │  identity · scope · versions · receipts · audit · outbox
+                      ├─ Bounded Agent runtime (read/draft tools only)
+                      │    └─ server-selected model route ─► Responses | Messages | compatible chat
+                      └─ Canonical read model ◄── source mapping preview (export / API shapes)
+```
+
+- **Model APIs:** a deployment profile selects the protocol, endpoint allowlist and
+  credential *reference*. A route runs live only when its qualification cites the
+  route's own fingerprint; changing the model or credential reference invalidates it.
+  Health and every Agent run record which route was used.
+- **Bank data:** institution-specific exports or APIs map into the canonical read model.
+  Mappings declare where source keys are unique and reject ambiguous money, time,
+  status or ownership facts for the whole batch, instead of guessing.
+- **Business rules stay put:** permissions, evidence versions, deadlines and human
+  approval live in shared services, so swapping a model or a data source leaves the
+  customer-service process unchanged.
+
 Two source formats and three model protocols have offline test coverage. Real bank
 connectors, SDK runtime adoption and live model qualification remain separate work.
 [Adaptation examples](examples/README.md) ·

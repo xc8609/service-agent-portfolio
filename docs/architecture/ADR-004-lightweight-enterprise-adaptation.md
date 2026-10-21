@@ -49,7 +49,10 @@ No arbitrary SQL, enterprise credentials or bank connection strings go to the Ag
   utility is not a deployed ingestion service and does not write database records.
 
 Unknown usage remains unknown. Configured `qualified: true` is an operational gate,
-not evidence that a model has passed tests. The release owner must retain the dated
+not evidence that a model has passed tests; it only takes effect when
+`qualified_fingerprint` matches the route's identity fingerprint, so a later model,
+endpoint or credential-reference change silently loses qualification rather than
+inheriting it. The release owner must retain the dated
 qualification report and approved budget; no candidate is qualified in this repo.
 
 ## Reference review and deliberate differences

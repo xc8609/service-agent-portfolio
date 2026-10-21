@@ -37,7 +37,36 @@ def test_default_offline_and_strict_server_configuration(tmp_path):
         route.audit_name
         != replace(route, profile=replace(route.profile, model="changed")).audit_name
     )
+    assert route.profile.credential_ref == "BANK_MODEL_API_KEY" and not route.live_ready
+    renamed = load_route(
+        write_config(
+            tmp_path,
+            lambda c: c["profiles"]["openai-candidate"].update(credential_env="OTHER_TENANT_KEY"),
+        ),
+        environ={},
+    )
+    assert renamed.audit_name != route.audit_name
+    # A qualified flag alone is not enough: it must cite this route's fingerprint.
+    flagged = load_route(
+        write_config(
+            tmp_path,
+            lambda c: c["profiles"]["openai-candidate"].update(live_enabled=True, qualified=True),
+        ),
+        environ={},
+    )
+    assert flagged.audit_name == route.audit_name and not flagged.live_ready
+    cited = load_route(
+        write_config(
+            tmp_path,
+            lambda c: c["profiles"]["openai-candidate"].update(
+                live_enabled=True, qualified=True, qualified_fingerprint=route.profile.fingerprint
+            ),
+        ),
+        environ={},
+    )
+    assert cited.live_ready
     for mutation in (
+        lambda c: c["profiles"]["openai-candidate"].update(qualified_fingerprint="not-a-hash"),
         lambda c: c.update(selected="unknown"),
         lambda c: c["profiles"]["openai-candidate"].update(live_enabled="false"),
         lambda c: c["profiles"]["openai-candidate"].update(api_key="must-not-be-in-config"),
@@ -64,7 +93,12 @@ def test_unqualified_route_records_failure_without_transport_and_manual_path_rem
         assert result.status_code == 200
         data = result.json()
         assert data["status"] == "failed" and data["error_code"] == "LIVE_NOT_QUALIFIED"
-        assert client.get("/health/ready").status_code == 200
+        ready = client.get("/health/ready")
+        assert ready.status_code == 200
+        # Health reports the configured route honestly: selected, but not live.
+        assert ready.json()["assistant_route"] == route.audit_name
+        assert ready.json()["agent_enabled"] is False
+        assert ready.json()["offline_assistant_available"] is False
         manual = client.post(
             "/v1/agent-tools/get_contact_context", headers=h, json={"contact_id": p["contact_id"]}
         )
@@ -154,6 +188,7 @@ def test_server_selected_protocol_uses_same_scoped_runtime_and_persists_route(
         live_enabled=True,
         qualified=True,
     )
+    profile = replace(profile, qualified_fingerprint=profile.fingerprint)
     route = ProviderRoute(profile, "synthetic-test-key", httpx.MockTransport(respond))
     with TestClient(
         create_app(Settings(runtime), clock=lambda: NOW, provider_route=route)

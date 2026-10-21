@@ -1,10 +1,9 @@
 """Server-owned model selection; no client endpoint, credential or fallback routing."""
 
-import hashlib
 import json
 import os
 import re
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from .providers import HttpProvider, Profile, Provider
@@ -20,10 +19,11 @@ class ProviderRoute:
     def audit_name(self):
         if self.profile is None:
             return "offline-scripted-v1"
-        fingerprint = hashlib.sha256(
-            json.dumps(asdict(self.profile), sort_keys=True).encode()
-        ).hexdigest()[:12]
-        return self.profile.name + "@" + fingerprint
+        return self.profile.name + "@" + self.profile.fingerprint
+
+    @property
+    def live_ready(self):
+        return self.profile is not None and self.profile.live_ready
 
     @property
     def notice(self):
@@ -75,8 +75,15 @@ def load_route(path=None, *, environ=None, transport=None):
             "internal_endpoints",
             "live_enabled",
             "qualified",
+            "qualified_fingerprint",
         }
         if set(entry) != expected:
+            raise ValueError()
+        qualified_fingerprint = entry["qualified_fingerprint"]
+        if qualified_fingerprint is not None and not (
+            isinstance(qualified_fingerprint, str)
+            and re.fullmatch(r"[0-9a-f]{12}", qualified_fingerprint)
+        ):
             raise ValueError()
         for name in ("protocol", "model", "endpoint"):
             if not isinstance(entry[name], str) or not entry[name] or len(entry[name]) > 2048:
@@ -93,7 +100,32 @@ def load_route(path=None, *, environ=None, transport=None):
             ):
                 raise ValueError()
             entry[name] = tuple(values)
-        return ProviderRoute(Profile(name=selected, **entry), env.get(key_env, ""), transport)
+        return ProviderRoute(
+            Profile(name=selected, credential_ref=key_env, **entry), env.get(key_env, ""), transport
+        )
     except (OSError, ValueError, TypeError, KeyError):
         # Do not expose config contents, endpoints, secrets or filesystem paths.
         raise ValueError("Invalid server provider configuration") from None
+
+
+def main():
+    """Print the route fingerprint a qualification report must cite. No network call."""
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Show the server-selected model route")
+    parser.add_argument("--config", required=True)
+    args = parser.parse_args()
+    route = load_route(args.config, environ={})
+    print(
+        json.dumps(
+            {
+                "route": route.audit_name,
+                "fingerprint": route.profile.fingerprint if route.profile else None,
+                "live_ready": route.live_ready,
+            }
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()

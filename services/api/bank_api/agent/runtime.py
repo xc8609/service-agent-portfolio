@@ -12,7 +12,14 @@ from psycopg.types.json import Jsonb
 from ..db import runtime_connection
 from ..proposals import snapshot_hash, unsupported_claims
 from ..workflow import ID, obj, work_scope
-from .providers import Call, FakeProvider, ProviderFailure, Reply, safe_context
+from .providers import (
+    PROVIDER_TIMEOUT_SECONDS,
+    Call,
+    FakeProvider,
+    ProviderFailure,
+    Reply,
+    safe_context,
+)
 
 EMPTY = obj({})
 DRAFT = obj(
@@ -237,7 +244,8 @@ def run(
                 actor,
                 rh,
                 ehash,
-                now + timedelta(seconds=MAX_SECONDS + 5),
+                # A provider call may start just before the budget ends.
+                now + timedelta(seconds=MAX_SECONDS + PROVIDER_TIMEOUT_SECONDS + 5),
             ),
         )
         audit(conn, actor, "agent.run", "started", request_id, now)

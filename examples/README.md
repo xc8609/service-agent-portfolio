@@ -15,7 +15,11 @@ PYTHONPATH=services/api .venv-app/bin/python -m bank_api.integrations.transactio
   --fixture examples/integrations/api-export.json --observed-at 2026-10-20T16:00:00Z
 ```
 
-Both validate one row; neither writes to the database. The Python function returns
+Both validate one row; neither writes to the database. `key_scope` declares where the
+source guarantees key uniqueness: `source` (the API shape) or `account` (the legacy
+entry number). Canonical IDs follow that scope, so equal entry numbers on different
+accounts never alias, and a reused source-unique key rejects the batch. A posted row
+must carry a booking time no earlier than its event; a pending row must not. The Python function returns
 canonical fields for contract testing; the CLI reports only summary information.
 Account aliases must be mapped by the institution's authorized integration process,
 never inferred by the model. Namespace/source names are stable deployment identifiers.
@@ -42,7 +46,17 @@ explicit read-only config mount and secret environment injection in a deployment
 override. Do not bake credentials into the image.
 
 Selecting a disabled candidate demonstrates `LIVE_NOT_QUALIFIED`, without network
-traffic. A qualified route additionally needs reviewed exact HTTPS egress endpoints,
+traffic. `qualified: true` is not sufficient on its own: `qualified_fingerprint` must
+equal the route fingerprint that the dated qualification report evaluated. Print it
+without any network call:
+
+```bash
+PYTHONPATH=services/api .venv-app/bin/python -m bank_api.agent.selection --config <copy>
+```
+
+The fingerprint covers protocol, model, endpoint allowlist, internal-only routing and
+the credential environment *name* (never its value). Changing any of them requires a
+new qualification. A qualified route additionally needs reviewed exact HTTPS egress endpoints,
 a model/version and budget, credential injection, provider capability/quality tests
 and data-handling approval. Configuration flags do not substitute for that evidence.
 The owner has deferred real model testing; no live candidate is enabled by this change.

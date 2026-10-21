@@ -20,3 +20,13 @@ is claimed. Pinned existing httpx/jsonschema dependencies are reused; no new SDK
 is exercised through the same HTTP assistant endpoint with mock transport, including
 unqualified rejection and persisted replay after a configuration change. No live
 route is enabled. See [cross-story design and acceptance](../contracts/extensibility-change.md).
+
+## Qualification checklist additions (review, 20 October 2026)
+
+Mock HTTP proves our wire mapping, not provider acceptance. Before enabling a route,
+verify against the real endpoint: OpenAI Responses `strict` function schemas accept
+the draft schema's keywords (`minLength`/`maxLength`/`uniqueItems` may need
+relaxing and server-side validation instead); Claude tool-use stop reasons and
+single-tool behaviour; compatible-chat tool-call formatting. Record the dated report
+against the route fingerprint printed by `python -m bank_api.agent.selection`.
+

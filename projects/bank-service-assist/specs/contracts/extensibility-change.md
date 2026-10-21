@@ -55,6 +55,8 @@ proven by a successful preview. Do not use it as a production importer.
 | EXT-04 | Unqualified candidate / run / zero transport calls, persisted failure and readiness/manual route retained | `test_unqualified_route_records_failure_without_transport_and_manual_path_remains` |
 | EXT-05 | Three protocol mock routes / same scoped run / execute evidence/rule tools, produce a cited review draft or fail safely on simulated rate limit | Parameterized `test_server_selected_protocol_uses_same_scoped_runtime_and_persists_route` |
 | EXT-06 | Existing trigger / change route and replay / return recorded outcome, never silently make a second provider call | Replay assertion in EXT-04 |
+| EXT-08 | Source keys unique per account, or a source-unique key reused / preview / distinct IDs per declared `key_scope`, or whole-batch rejection; posted/pending must agree with booking time | `test_source_key_scope_is_explicit_and_never_aliases_accounts`, booking-time cases |
+| EXT-09 | Qualified flag without a matching fingerprint, or model/credential reference changed / start or run / route not live; health reports the selected route | `test_default_offline_and_strict_server_configuration`, provider gate cases |
 | EXT-07 | Owner reads repository / inspect boundaries / distinguish implemented preview/protocol support from live integration, SDK adoption and demonstrated benefit | README, ADR-004, examples and owner review (pending) |
 
 Implementation tasks: source preview and two fixtures; server profile factory; runtime
@@ -80,3 +82,11 @@ Five offline data tests, both SDD validators, publication/link checks and Ruff p
 Both documented mapping CLI examples executed successfully with one validated row
 and `database_written: false`. No real provider request or bank connection executed.
 Owner review and live qualification remain pending. CI evidence is tracked in the PR.
+
+## Review follow-up — 20 October 2026
+
+Independent review added EXT-08/09: explicit source-key scope with booking-time
+consistency, qualification bound to the route fingerprint (credential reference
+included), health reporting the selected route, a provider-call-aware run lease and
+tolerance for compatible servers that return `tool_calls: null`. Still offline only.
+

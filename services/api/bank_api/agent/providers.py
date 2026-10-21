@@ -1,5 +1,6 @@
 """Normalized provider boundary. Live routes are disabled until separately qualified."""
 
+import hashlib
 import json
 from dataclasses import dataclass, field
 from typing import Callable, Protocol
@@ -7,6 +8,8 @@ from urllib.parse import urlsplit
 
 import httpx
 from jsonschema import Draft202012Validator
+
+PROVIDER_TIMEOUT_SECONDS = 15
 
 
 class ProviderFailure(Exception):
@@ -49,6 +52,34 @@ class Profile:
     internal_endpoints: tuple[str, ...] = ()
     live_enabled: bool = False
     qualified: bool = False
+    credential_ref: str = ""
+    qualified_fingerprint: str | None = None
+
+    @property
+    def fingerprint(self):
+        """Route identity: what a qualification report evaluated. Excludes the enable
+        flags and never includes credential values, only the environment reference."""
+        identity = {
+            "name": self.name,
+            "protocol": self.protocol,
+            "model": self.model,
+            "endpoint": self.endpoint,
+            "allowed_endpoints": list(self.allowed_endpoints),
+            "internal_only": self.internal_only,
+            "internal_endpoints": list(self.internal_endpoints),
+            "credential_ref": self.credential_ref,
+        }
+        return hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()[:12]
+
+    @property
+    def live_ready(self):
+        # A qualification applies only to the exact route it evaluated.
+        return (
+            self.live_enabled
+            and self.qualified
+            and self.qualified_fingerprint is not None
+            and self.qualified_fingerprint == self.fingerprint
+        )
 
     def validate(self):
         u = urlsplit(self.endpoint)
@@ -65,7 +96,7 @@ class Profile:
             raise ProviderFailure("EGRESS_DENIED")
         if self.protocol not in ("openai_responses", "claude_messages", "compatible_chat"):
             raise ProviderFailure("UNSUPPORTED_PROVIDER")
-        if not self.live_enabled or not self.qualified:
+        if not self.live_ready:
             raise ProviderFailure("LIVE_NOT_QUALIFIED")
 
 
@@ -260,7 +291,8 @@ def normalize(protocol, data, schemas):
                 raise ProviderFailure("INCOMPLETE_RESPONSE")
             msg = choice["message"]
             text.append(msg.get("content") or "")
-            for item in msg.get("tool_calls", []):
+            # Compatible servers may send an explicit null when no tool is called.
+            for item in msg.get("tool_calls") or []:
                 calls.append(
                     checked_call(
                         item["id"], item["function"]["name"], item["function"]["arguments"], schemas
@@ -306,7 +338,10 @@ class HttpProvider:
         )
         try:
             with httpx.Client(
-                timeout=15, follow_redirects=False, trust_env=False, transport=self._transport
+                timeout=PROVIDER_TIMEOUT_SECONDS,
+                follow_redirects=False,
+                trust_env=False,
+                transport=self._transport,
             ) as client:
                 with client.stream(
                     "POST",

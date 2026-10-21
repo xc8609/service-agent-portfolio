@@ -32,6 +32,8 @@ PROFILE = Profile(
     live_enabled=True,
     qualified=True,
 )
+# Test-only qualification evidence for this exact mock route.
+PROFILE = replace(PROFILE, qualified_fingerprint=PROFILE.fingerprint)
 
 
 def test_partial_arguments_are_not_executable():
@@ -132,6 +134,9 @@ def test_endpoint_internal_gate_and_live_qualification_prevent_transport():
 
     for profile, code in [
         (replace(PROFILE, qualified=False), "LIVE_NOT_QUALIFIED"),
+        # Changing the model or credential reference invalidates an earlier qualification.
+        (replace(PROFILE, model="other-model"), "LIVE_NOT_QUALIFIED"),
+        (replace(PROFILE, credential_ref="OTHER_TENANT_KEY"), "LIVE_NOT_QUALIFIED"),
         (replace(PROFILE, internal_only=True), "EGRESS_DENIED"),
         (replace(PROFILE, endpoint="https://evil.example"), "EGRESS_DENIED"),
     ]:

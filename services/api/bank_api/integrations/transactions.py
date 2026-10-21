@@ -50,11 +50,16 @@ def normalize_transactions(records, mapping, accounts, observed_at):
         if set(mapping) != {
             "namespace",
             "source",
+            "key_scope",
             "fields",
             "statuses",
             "amount_unit",
             "currency_exponents",
         }:
+            raise ValueError()
+        # Where the source guarantees key uniqueness. Legacy entry numbers are often
+        # unique per account only; guessing would alias different customers' entries.
+        if mapping["key_scope"] not in ("source", "account"):
             raise ValueError()
         if not isinstance(mapping["source"], str) or not re.fullmatch(
             r"[a-z0-9_-]{1,64}", mapping["source"]
@@ -74,7 +79,12 @@ def normalize_transactions(records, mapping, accounts, observed_at):
             r = {key: row[source] for key, source in fields.items()}
             if not isinstance(r["id"], str) or not r["id"] or len(r["id"]) > 200:
                 raise ValueError()
-            ident = str(uuid5(namespace, mapping["source"] + ":" + r["id"]))
+            if not isinstance(r["account_id"], str):
+                raise ValueError()
+            scoped = (
+                r["id"] if mapping["key_scope"] == "source" else r["account_id"] + ":" + r["id"]
+            )
+            ident = str(uuid5(namespace, mapping["source"] + ":" + scoped))
             if ident in seen:
                 raise ValueError()
             seen.add(ident)
@@ -115,7 +125,14 @@ def normalize_transactions(records, mapping, accounts, observed_at):
             ):
                 raise ValueError()
             updated = instant(r["updated_at"])
-            if updated > observed_at:
+            occurred = instant(r["occurred_at"])
+            posted = instant(r["posted_at"]) if r["posted_at"] is not None else None
+            if updated > observed_at or occurred > observed_at:
+                raise ValueError()
+            # Booking time must agree with the mapped state; never infer either one.
+            if (status == "posted" and posted is None) or (status == "pending" and posted):
+                raise ValueError()
+            if posted is not None and posted < occurred:
                 raise ValueError()
             normalized.append(
                 {
@@ -126,8 +143,8 @@ def normalize_transactions(records, mapping, accounts, observed_at):
                     "currency": r["currency"],
                     "status": status,
                     "merchant_description": r["merchant_description"],
-                    "occurred_at": instant(r["occurred_at"]),
-                    "posted_at": instant(r["posted_at"]) if r["posted_at"] is not None else None,
+                    "occurred_at": occurred,
+                    "posted_at": posted,
                     "source": mapping["source"],
                     "source_updated_at": updated,
                     "observed_at": observed_at,

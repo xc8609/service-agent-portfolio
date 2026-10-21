@@ -56,3 +56,22 @@ Trello comments verified on DEV-02, DEV-08, DEV-09, DEV-10 and S04 for these
 follow-ups; original story specifications remain versioned planning history. No
 card marked Done. PR 14 has four passing cloud checks. PR 15 CI tracks its latest
 head; local evidence is 204 tests including the precision-boundary regression.
+
+## Independent review follow-up — 20 October 2026
+
+An independent code review found five workflow/evidence defects and several
+adaptation gaps. Each fix is committed in the PR that introduced the behaviour and
+merged forward through the stack; no applied migration was edited.
+
+| PR | Correction |
+|---|---|
+| [8](https://github.com/xc8609/service-agent-portfolio/pull/8) | A closed case accepts no new result; a material answer (received, unavailable, declined) ends the customer-service task and returns the specialist from `awaiting_documents`; a finding supersedes open requests, so a refusal no longer blocks closure |
+| [12](https://github.com/xc8609/service-agent-portfolio/pull/12) | `reject_proposal` makes declining a draft a recorded human decision; acceptance is reported separately for Agent and staff drafts, so it is no longer 100% by construction |
+| [13](https://github.com/xc8609/service-agent-portfolio/pull/13) | One escalation per case and deadline; a verified inbound caller can dispute a published finding, reopening a closed case with history retained (forward migration 012) |
+| [15](https://github.com/xc8609/service-agent-portfolio/pull/15) | Qualification bound to the route fingerprint (credential reference included); health reports the selected route; source-key scope and booking-time checks; README walkthrough of the full flow |
+
+Local evidence on the integrated head: 214 PostgreSQL 16.2 API tests and 35 Chromium
+browser tests passed (against a disposable database), plus offline tests, both SDD
+validators, publication checks, Ruff and the TypeScript/Vite build. Owner UAT, live
+model qualification and Tableau refresh acceptance remain pending.
+
