@@ -13,3 +13,9 @@ BANK-SDD-v0.2
 - [ ] Owner reviews demonstrated behavior and records acceptance.
 
 Each implementation slice must be at most five developer-days; DEV-08 explicitly splits into 3+4 developer-days. Other listed stories are at most four developer-days before re-estimation. BA/QA estimates are separate. New stories are incremental scope, not hidden inside DEV-07.
+
+## Current delivery
+
+See [runtime design and executed evidence](runtime-contract.md) for scope, authority,
+recovery and remaining gates. It supersedes historical implementation-not-started
+wording for the manual flow. Agent drafting and owner acceptance are not claimed.

@@ -1,9 +1,9 @@
 # DEV-11 — Receive specialist findings and complete a verified customer callback
 
-Current S02 forecast: **S04A**. Updated effort: Dev 4, BA 0.5, QA 1 person-days (5.5 total); dependencies DEV-07, DEV-06, BA-09. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.
+Current S02 forecast: **S04A**. Updated effort: Dev 4, BA 0.5, QA 1 person-days (5.5 total); dependencies DEV-07, DEV-06, BA-09. This supersedes older forecast/estimate lines below. Trusted command baseline v0.4; manual runtime implemented under PR review.
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Manual specialist/feedback implementation under PR review; owner UAT and Agent integration pending. Business decisions accepted only as listed; technical design/Ready gates pending.
 Historical forecast superseded by the current Sprint stated above | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 4, BA 0.5, QA 1 person-days; total 5.5 (4–8), confidence low. Not actual effort.
 
@@ -54,3 +54,9 @@ Customer service owns contact resolution. Preserve original deadlines and
 separate investigation completion from feedback delivery; no automatic closure
 for undelivered feedback. These rules do not accept implementation or extend
 existing call quotas; supplementation-call accounting still needs a scoped review.
+
+## Current delivery
+
+See [runtime design and executed evidence](runtime-contract.md) for scope, authority,
+recovery and remaining gates. It supersedes historical implementation-not-started
+wording for the manual flow. Agent drafting and owner acceptance are not claimed.

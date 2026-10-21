@@ -23,6 +23,8 @@ from .fixtures import FIXTURE_VERSION, PERSONAS, uid
 from .investigation import dispatch_investigation
 from .policy_lookup import dispatch_policy
 from .proposals import dispatch_proposals
+from .workflow import SCHEMAS as WORKFLOW_SCHEMAS
+from .workflow import dispatch_workflow
 
 CONTRACTS = json.loads(
     (ROOT / "projects/bank-service-assist/specs/contracts/agent-tools.json").read_text()
@@ -30,6 +32,10 @@ CONTRACTS = json.loads(
 TOOLS = {t["name"]: t for t in CONTRACTS["tools"]}
 READ_TOOLS = ("get_contact_context", "search_transactions", "get_transaction_evidence")
 MESSAGES = {
+    "CONTACT_GAP": (
+        "Customer-service contact resolution is still outstanding. Investigation deadlines remain unchanged.",
+        409,
+    ),
     "DUPLICATE_REVIEW_REQUIRED": (
         "Related active work exists. Link it or review a distinct-work reason before submitting.",
         409,
@@ -580,6 +586,20 @@ def create_app(settings=None, clock=None):
             methods=["POST"],
             name=name,
         )
+
+    for name in (
+        *WORKFLOW_SCHEMAS,
+        "accept_specialist_work",
+        "claim_feedback_task",
+        "record_specialist_result",
+        "record_callback_attempt",
+    ):
+        prefix = "workspace" if name in WORKFLOW_SCHEMAS else "commands"
+        if name == "demo_callback_verification":
+            path = "/v1/demo/callback-verification"
+        else:
+            path = "/v1/" + prefix + "/" + name
+        app.add_api_route(path, endpoint(name, dispatch_workflow), methods=["POST"], name=name)
 
     @app.api_route("/v1/{unsupported:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE"])
     def unsupported_api(unsupported: str):

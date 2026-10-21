@@ -6,6 +6,7 @@ import {RelatedCases} from './RelatedCases';
 import {HandlingRules} from './HandlingRules';
 import {NotePanel} from './NotePanel';
 import {ReferralPanel} from './ReferralPanel';
+import {OperationsDesk} from './OperationsDesk';
 
 type RecordRow={id:string;version:string;amount_minor:number;currency:string;merchant_description:string;status:string;occurred_at:string;posted_at:string|null};
 type Meta={as_of:string;scope_ref:string;sources:{kind:string;id:string;version:string;section:string|null}[]};
@@ -81,6 +82,7 @@ function App(){
       {auth&&<NotePanel key={`note:${auth.token}`} auth={auth} records={evidence?.records??null} contextKey={`${meta?.as_of}:${stale}`}/>}
       {auth&&<ReferralPanel key={`referral:${auth.token}`} auth={auth} records={evidence?.records??null} contextKey={`${meta?.as_of}:${stale}`}/>}
       <footer aria-live="polite">{busy?'Retrieving authorized evidence…':'Local synthetic workflow. No measured savings or production readiness claimed.'}</footer>
+      <OperationsDesk/>
     </main></div>;
 }
 createRoot(document.getElementById('root')!).render(<App/>);

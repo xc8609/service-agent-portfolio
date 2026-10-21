@@ -19,6 +19,13 @@ def uid(name):
 
 
 PERSONAS = {
+    "specialist": ("Demo specialist Alex", "contact_specialist", "specialist", "customer_a"),
+    "feedback_other": (
+        "feedback_other",
+        "contact_feedback_other",
+        "feedback_representative",
+        "customer_a",
+    ),
     "verified": ("rep_a", "contact_a", "inbound_representative", "customer_a"),
     "unverified": (
         "rep_unverified",
@@ -238,6 +245,9 @@ def seed(dsn, target, initialize=False, now=None):
         )
 
         seed_cases(conn)
+        from .workflow_fixtures import seed_workflow_roles
+
+        seed_workflow_roles(conn)
         seed_policies(conn)
         conn.execute(
             "UPDATE demo_environment SET fixture_version=%s WHERE singleton", (FIXTURE_VERSION,)

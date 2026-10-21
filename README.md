@@ -15,7 +15,8 @@ and next steps, with explicit conflict/gap handling. Changed queries invalidate 
 evidence and guidance. Editable service notes require human approval and return a durable
 receipt, with source-version checks and safe retries. Reviewed specialist enquiries
 link existing work or create justified queued work, preserving material/contact gaps.
-**Next:** specialist results and feedback, then
+Specialists can publish findings and customer service can claim work, review feedback
+and record a newly verified synthetic callback. **Next:** continuation controls and
 bounded Agent assistance. No live bank connection, implemented Agent or measured savings.
 
 ## Repository map
