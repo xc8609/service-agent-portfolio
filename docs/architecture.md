@@ -16,7 +16,7 @@ flowchart LR
     UI -. human-approved command: planned .-> API
 ```
 
-Solid lines are the existing manual read path. Dashed lines are planned.
+Solid lines are the existing manual read and customer-report capture path. Dashed lines are planned.
 The Agent never obtains a privileged database connection or an approval tool.
 
 | Layer | Location | Responsibility and boundary |
@@ -26,7 +26,8 @@ The Agent never obtains a privileged database connection or an approval tool.
 | Persistence | `services/api/bank_api/db.py`, `services/api/migrations/` | Restricted runtime role; ordered migrations; source versions and audit |
 | Demo lifecycle | `fixtures.py`, `manage.py`, `local_postgres.py` under `services/api/` | Synthetic seed, guarded reset and isolated local database; separate from production identity |
 | Agent | [Agent module boundary](../services/api/bank_api/agent/README.md) | Planned orchestration, tool allowlist, evidence-backed drafts and provider adapter; currently no executable Agent code |
-| Domain write services | Within `bank_api/`, introduced with DEV-06/07 | Human-approved commands, authorization, versions, idempotency and atomic writes; model tools cannot call approval commands |
+| Human report capture | `services/api/bank_api/investigation.py` | Scoped append-only statement/recognition revisions, concurrency and idempotency; not exposed to the model |
+| Referral/note write services | Within `bank_api/`, planned DEV-06/07 | Human-approved commands, authorization, versions, idempotency and atomic writes; model tools cannot call approval commands |
 | Durable continuation | Backend worker entrypoint when DEV-11–13 requires it | Persisted work/events and deadline checks; no long-lived model conversation used as a timer |
 | Tests | `services/api/tests/`, `apps/web/tests/` | Database/API permission and failure tests; real UI journeys |
 
@@ -44,7 +45,8 @@ for appearance. Reuse one domain implementation for manual and assisted flows.
 - Trello mirrors work/decisions; Git retains the versioned specification and code.
 
 D-23–D-25 are accepted business rules. Their structured intake/continuation
-extension is not yet in v0.4 schemas or executable writes. Keep that distinction
+extension is not yet in v0.4 referral schemas. D-23 recognition now has a separate
+[human capture contract](../projects/bank-service-assist/specs/DEV-03/investigation-contract.md); referral and feedback writes remain planned. Keep that distinction
 visible when changing JSON Schema, OpenAPI, persistence and UI together.
 
 ## Agent delivery constraints

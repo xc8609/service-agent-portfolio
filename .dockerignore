@@ -21,3 +21,5 @@
 !projects/bank-service-assist/specs/
 !projects/bank-service-assist/specs/contracts/
 !projects/bank-service-assist/specs/contracts/agent-tools.json
+!projects/bank-service-assist/specs/DEV-03/
+!projects/bank-service-assist/specs/DEV-03/investigation-input.schema.json

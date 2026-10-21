@@ -1,6 +1,6 @@
 # DEV-03 — Identify a card charge and investigate apparent duplicate entries
 
-Current S02 forecast: **S03**. Updated effort: Dev 3, BA 0.5, QA 0.5 person-days (4 total); dependencies DEV-02, BA-06. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.
+Current S02 forecast: **S03**. Updated effort: Dev 3, BA 0.5, QA 0.5 person-days (4 total); dependencies DEV-02, BA-06. This supersedes older forecast/estimate lines below. Shared contract version 0.4; DEV-03 human capture extension is specified separately below.
 
 BANK-SDD-v0.2 · 19 October 2026
 Status: Read slice implemented in PR #1; full story acceptance pending. Business decisions accepted only as listed; technical design/Ready gates pending.
@@ -58,3 +58,10 @@ Customer service owns contact resolution. Preserve original deadlines and
 separate investigation completion from feedback delivery; no automatic closure
 for undelivered feedback. These rules do not accept implementation or extend
 existing call quotas; supplementation-call accounting still needs a scoped review.
+
+## Manual statement and recognition increment — 20 October 2026
+
+[Detailed runtime contract and SI-01–06 acceptance scenarios](investigation-contract.md)
+cover customer statement revisions, explicit recognition including D-23 unresolved
+pairs, and immediate invalidation after query/selection/statement changes.
+See [execution evidence](implementation-evidence.md) for tested scope and limits.

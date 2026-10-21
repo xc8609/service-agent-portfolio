@@ -1,4 +1,4 @@
-"""Three read contracts over scoped synthetic PostgreSQL records."""
+"""Scoped synthetic lookup and trusted human investigation commands."""
 
 import base64
 import hashlib
@@ -19,6 +19,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from .config import Settings
 from .db import ROOT, SCHEMA_VERSION, runtime_connection
 from .fixtures import FIXTURE_VERSION, PERSONAS, uid
+from .investigation import dispatch_investigation
 
 CONTRACTS = json.loads(
     (ROOT / "projects/bank-service-assist/specs/contracts/agent-tools.json").read_text()
@@ -26,6 +27,10 @@ CONTRACTS = json.loads(
 TOOLS = {t["name"]: t for t in CONTRACTS["tools"]}
 READ_TOOLS = ("get_contact_context", "search_transactions", "get_transaction_evidence")
 MESSAGES = {
+    "CONFLICT": (
+        "Investigation or source evidence changed. Reload history and recheck selected evidence before saving.",
+        409,
+    ),
     "AUTH_REQUIRED": ("Fresh session and customer verification are required.", 401),
     "FORBIDDEN_OR_NOT_FOUND": (
         "Requested information is not available in this scope.",
@@ -472,11 +477,11 @@ def create_app(settings=None, clock=None):
 
         return await run_in_threadpool(issue)
 
-    def endpoint(name):
+    def endpoint(name, handler=dispatch):
         async def call(request: Request):
             payload = await body(request)
             return await run_in_threadpool(
-                dispatch,
+                handler,
                 settings,
                 name,
                 payload,
@@ -489,6 +494,14 @@ def create_app(settings=None, clock=None):
 
     for name in READ_TOOLS:
         app.add_api_route(TOOLS[name]["http"]["path"], endpoint(name), methods=["POST"], name=name)
+
+    for name in ("get_investigation", "save_investigation"):
+        app.add_api_route(
+            "/v1/workspace/" + name,
+            endpoint(name, dispatch_investigation),
+            methods=["POST"],
+            name=name,
+        )
 
     @app.api_route("/v1/{unsupported:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE"])
     def unsupported_api(unsupported: str):

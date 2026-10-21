@@ -44,3 +44,11 @@ deadlines and never automatically close undelivered feedback. See the
 [readiness gap review](../DEV-07/referral-readiness.md). Current v0.4 schemas do
 not yet implement this full extension; field/state changes must be propagated
 together through schemas, OpenAPI, persistence, permissions and tests.
+
+## DEV-03 human capture extension
+
+The [runtime contract](../DEV-03/investigation-contract.md) and strict input schema
+add two `/v1/workspace/` endpoints for append-only customer reports. They do not
+change the v0.4 model tool allowlist or implement proposal approval/referral.
+This local slice uses a sanitized `CONFLICT` (409) for stale versions or operation
+key mismatch; source facts and customer recognition remain distinct.

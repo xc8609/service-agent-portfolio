@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-20",
+  "marker": "BANK-DEV03-CAPTURE-v1",
+  "pr": "https://github.com/xc8609/service-agent-portfolio/pull/2",
+  "base_pr": "https://github.com/xc8609/service-agent-portfolio/pull/1",
+  "cards": [
+    {
+      "id": "DEV-03",
+      "url": "https://trello.com/c/N5Y4v779",
+      "saved_and_reopened_verified": true,
+      "marked_done": false
+    },
+    {
+      "id": "S03",
+      "url": "https://trello.com/c/QlhRFvgl",
+      "saved_and_reopened_verified": true,
+      "marked_done": false
+    }
+  ],
+  "method": "Read visible Markdown, retain original baseline, prepend tested increment and remaining acceptance; save via UI and reload to verify. No status inferred from unsaved editor.",
+  "tests": "56 local API/PostgreSQL tests and 9 browser journeys; latest cloud status linked on PR."
+}
