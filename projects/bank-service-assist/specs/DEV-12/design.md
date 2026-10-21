@@ -1,5 +1,7 @@
 # DEV-12 design
 
+[Current implementation and qualification limits](runtime-contract.md). Historical forecasts are not actual effort; owner UAT remains pending.
+
 BANK-SDD-v0.2 · Architecture baseline; implemented boundary and evidence in [runtime-contract.md](runtime-contract.md).
 
 Model-visible tools: get_case_snapshot, get_contact_attempts, get_service_targets, create_proposal, get_operation_status. Human/system commands and complete schemas are in [shared contracts](../contracts/agent-tools.md).

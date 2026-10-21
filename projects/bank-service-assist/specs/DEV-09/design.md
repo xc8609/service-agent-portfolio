@@ -1,5 +1,7 @@
 # DEV-09 — Qualify model runtime and provider adapters with a bounded spike
 
+[Current implementation and qualification limits](runtime-contract.md). Historical forecasts are not actual effort; owner UAT remains pending.
+
 BANK-S02-v0.4 · Offline implementation delivered for PR review; live qualification deferred by owner.
 Forecast: S04 | Release: B1 | Estimate: Dev 4, BA 0.25, QA 1 person-days. Provisional until technical review.
 
