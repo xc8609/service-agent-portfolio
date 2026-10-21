@@ -46,3 +46,11 @@ no HTTP endpoint or migration. Actual authority, deterministic writes and idempo
 remain in existing commands. Injected/offline transport cannot count as live evidence.
 See the [experiment guide](../../evaluation/r2/experiment-guide.md) for schema,
 false-positive/negative limits, baseline lock and unresolved independence requirements.
+
+`r2_holdout.py` layers private authoring fields and pending four-batch review over the
+existing scaffold. Review is bound to the complete source manifest. Freeze requires
+explicit owner authorization, no outstanding exceptions, complete keys and declared
+independent human author/reviewer provenance, then reuses readiness(). It writes a
+new document with source/review hashes; existing outputs are never overwritten.
+This is local consistency/accidental-overwrite protection, not authenticated identity.
+No candidate model is called or given keys; no business thresholds are changed.

@@ -19,6 +19,10 @@ whole bundle. Review provenance and source logs remain subject to accountable au
 Offline/injected providers and injected transports are `engineering_fixture`, never
 live-model evidence. No API has been called by this work.
 
+For the authoring fields, four-batch owner packet and explicit freeze command, use
+[the handoff workflow](holdout-workflow.md). The commands below describe the lower-level
+experiment scaffold and evidence format; the workflow adds author/reviewer controls.
+
 ## Prepare the hidden collection
 
 Use Python 3.9+ with `requirements-test.txt` from the repository root:

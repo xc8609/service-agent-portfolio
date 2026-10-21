@@ -6,6 +6,14 @@ visible. Their families and paraphrases must be excluded from any future hidden
 hold-out. No independent case authorship, case-by-case owner adjudication, model run
 or business saving is claimed. Existing pilot-v1 and review-v2 files remain unchanged.
 
+## Independent collection handoff
+
+The [author/reviewer/freeze workflow](holdout-workflow.md) separates Codex, Claude
+and human responsibilities, groups owner review into four batches, and supplies
+[copyable Claude prompts](claude-handoff.md). `r2_holdout.py` creates private blank
+authoring forms, pending review packets and a new frozen file only after explicit,
+current human review and readiness. No independent samples or approvals are prefilled.
+
 ## Gate automation and execution evidence
 
 Use the [experiment guide](experiment-guide.md) to prepare the private 64-slot

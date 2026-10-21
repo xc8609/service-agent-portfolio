@@ -32,3 +32,13 @@ runtime CI. Record actual results in tasks.md after execution; preserve all pilo
 | R2-AC18 | Invalid identity, tool denial, concurrent source mutation or reused trigger | Preserve actual rejection/failure, no invented answer; detect changed state/reused generation; `test_evaluation_evidence.py` |
 | R2-AC19 | Operator binds scenario before freeze | Inspection returns only configuration/evidence hashes, creates no run/draft and calls no model |
 | R2-AC20 | All engineered checks pass | No model activation, independent-authorship certification or owner UAT acceptance |
+
+| ID | Given / when | Expected outcome / executable evidence |
+|---|---|---|
+| R2-AC21 | Prepare authoring and review packets | 64 blank slots in four groups 15/15/10/24; no identity, decision or freeze approval prefilled |
+| R2-AC22 | Manifest changed, batch pending/excepted, membership changed or owner freeze authorization absent | Freeze blocked; no implicit owner acceptance |
+| R2-AC23 | Model-authored/AI-reviewed, self-reviewed or incomplete keys despite batch acceptance | Independent freeze blocked; no relabelling candidates as human-authored |
+| R2-AC24 | Current complete review and all readiness checks pass | New manifest with source/review hashes, source unchanged; existing output cannot be overwritten |
+
+Executable mapping: `test_r2_holdout.py`. Engineered declarations only; this does
+not execute an actual owner review or freeze the private collection.

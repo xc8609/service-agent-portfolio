@@ -64,3 +64,24 @@ browser and container checks separately on the pushed commit. No UI changed here
 This is one batched increment to open PR #24, still within the S05B stage-1 scope;
 PR #23 remains the separate replay/merchant projection increment. Parent QA-02 stays
 in Testing. The reports do not authenticate reviewers or certify a live model.
+
+## Private author/reviewer handoff increment — 21 October 2026
+
+- [x] Document human author/reviewer/owner and Codex/Claude responsibilities, with
+  a separate disclosed model-assisted candidate lane; preserve accepted rules.
+- [x] Supply three Claude handoff prompts without sending messages or hidden data.
+- [x] Prepare local ignored 64-slot authoring form, four pending answer-review batches
+  (15/15/10/24) and a private review document. No substantive cases or approvals filled.
+- [x] Add explicit hash-bound freeze with completeness/readiness checks and exclusive
+  file creation; regression acceptance R2-AC21–24.
+- [ ] Independent substantive authoring, different human answer reviewer, actual
+  owner batch acceptance and exact-revision freeze authorization remain external inputs.
+
+Local checks on this increment: 20 new workflow tests; full offline suite 109 passed,
+2 SQL modules skipped (DuckDB absent locally); Ruff lint/format, workflow/S02 contracts,
+publication links and whitespace passed. No API/UI code changed and no additional
+local runtime run was needed; CI rechecks the submitted head separately. The previous
+39e6093 head passed all four checks (94 offline on each Python version, 238 PostgreSQL
+API tests, 42 browser tests and container smoke). No model call, data freeze or real
+human review occurred. This is another batched increment in PR #24/S05B, not another
+completed Sprint or an increase to the published staffing estimate.
