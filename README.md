@@ -26,6 +26,13 @@ staff retain responsibility for decisions and customer communication.
 clearer handoffs. These are hypotheses to test against the manual workflow; measured
 cost savings and production outcomes are not yet claimed.
 
+**Start here:** the one-page [case study](docs/case-study.md) — problem, approach,
+decisions and what the evidence does and does not show.
+
+| Evidence, not a guess | Rules before advice | A draft, never a decision |
+|---|---|---|
+| ![Selected entries with no recorded relationship: equal amounts do not establish a duplicate](docs/images/evidence.png) | ![Cited simulated procedure with applicability conditions and reviewed next steps](docs/images/handling-rules.png) | ![Bounded assistant run awaiting human review, with citations and an uncommitted draft](docs/images/assistant-draft.png) |
+
 ## What you can explore
 
 - **Business analysis:** problem definition, current/target processes, permissions,
@@ -34,6 +41,9 @@ cost savings and production outcomes are not yet claimed.
   referrals, specialist findings, manual feedback and contact/exception handling.
 - **Agent engineering:** a bounded evidence assistant, server-selected model API
   adapters, persisted runs, source citations and human approval boundaries.
+- **Honest evaluation:** a [frozen pilot](projects/bank-service-assist/evaluation/README.md)
+  comparing a decision table with three models — models help only when the customer's
+  account is in free text, and none broke a safety rule.
 - **Data and delivery evidence:** reconciled SQL exports, a Tableau workbook,
   automated tests, CI and a reproducible local deployment.
 - **Real-data analytics:** [complaint operations analytics](projects/complaint-analytics/README.md)
@@ -43,9 +53,10 @@ cost savings and production outcomes are not yet claimed.
 **Stack:** React/TypeScript · FastAPI/Python · PostgreSQL · SQL/Tableau · Docker Compose.
 
 **Current status:** the bank core runs end to end on synthetic data with an offline,
-scripted assistant. Live models and real bank integrations are deliberately not
-qualified. Tableau opens locally; refresh/layout acceptance and a human benefit
-study remain pending. Voice service and retail clienteling are later releases.
+scripted assistant; 38 requirements trace to the tests that verify them. Live models and
+real bank integrations are deliberately not qualified. Owner UAT ([pack](docs/uat/README.md)),
+Tableau refresh acceptance and a human benefit study remain pending. Voice service and
+retail clienteling are later releases.
 
 ## Repository map
 
@@ -103,6 +114,7 @@ trusted command that rechecks identity, scope and versions and returns a receipt
 | 5 | Section 7 · *Demo specialist Alex* | Claim, request material through customer service, publish a finding with a customer-approved explanation and separate private notes |
 | 6 | Section 7 · *Feedback representative* | Claim feedback, open a synthetic callback, approve the explanation, verify identity, record the actual outcome. No answer means a retry or lead review, never closure |
 | 7 | Section 7, then related cases | Close only after verified feedback and completed work. A customer who later disputes it can call in; the disagreement reopens the case for re-review with history kept |
+| 8 | Section 7 · *Complaint intake coordinator* | A requested complaint is delivered by the worker and acknowledged with the complaint unit's reference, independently of the re-review |
 
 ## Architecture and extension points
 
