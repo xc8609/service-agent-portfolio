@@ -317,6 +317,13 @@ def detail(conn, w):
             "SELECT id,work_item_id,status,external_receipt_ref FROM complaint_intakes WHERE case_id=%s",
             (w["case_id"],),
         ).fetchall(),
+        "complaint_receipts": conn.execute(
+            """SELECT r.intake_id,r.intake_version,r.outcome,r.reason,r.external_receipt_ref,
+            r.recorded_at,r.actor_id FROM complaint_delivery_receipts r
+            JOIN complaint_intakes ci ON ci.id=r.intake_id WHERE ci.case_id=%s
+            ORDER BY r.recorded_at,r.intake_version""",
+            (w["case_id"],),
+        ).fetchall(),
         "overdue_events": conn.execute(
             "SELECT d.* FROM due_events d JOIN work_items wi ON wi.id=d.work_item_id WHERE wi.case_id=%s ORDER BY recorded_at",
             (w["case_id"],),

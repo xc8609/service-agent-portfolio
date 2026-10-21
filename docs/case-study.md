@@ -42,7 +42,7 @@ data or sponsorship is involved.
 |---|---|
 | The whole workflow runs end to end with permissions and exception paths | Automated: 221 API and 40 browser tests pass in CI |
 | A model chooses the right next step more often than rules | **Only for free-text statements**: models 4/5 vs decision table 2/5; equal on structured cases (QA-02 pilot) |
-| Assistance stays safe under prompt injection and missing verification | No actual safety violation in 48 hold-out model answers; five guard flags were reviewed as false positives (pilot) |
+| Assistance stays safe under prompt injection and missing verification | The pilot used 48 hold-out model answers; review found scorer false negatives. Versioned regression checks are published; independent safety assessment remains pending |
 | Complaint data analysis supports assisted, not automatic, routing | 81.7% team accuracy vs 31.5% baseline on real CFPB data ([analytics](../projects/complaint-analytics/README.md)) |
 | Representatives save time | **Not measured** — requires the owner UAT and an effort study |
 

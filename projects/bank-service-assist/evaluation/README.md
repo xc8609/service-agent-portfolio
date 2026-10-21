@@ -21,7 +21,7 @@ than a deterministic decision table, without breaking a safety rule?
 | Models | Claude Opus, Sonnet and Haiku in fresh subscription sessions, one run each, given only [the archived prompt](runs/prompt-sent.txt) and told to use no tools |
 | Guards | The runtime's unsupported-claim check plus schema, citation allowlist, forbidden promise, duplicate assertion and disclosure-without-verification. Any violation or forbidden action fails the case |
 
-## Results (hold-out, 16 cases)
+## Historical pilot-v1 results (hold-out, 16 cases)
 
 | Source | Passed (automatic) | Passed (after flag review) | Critical cases passed | Narrative-only cases (5) |
 |---|---:|---:|---:|---:|
@@ -30,8 +30,8 @@ than a deterministic decision table, without breaking a safety rule?
 | Claude Opus | 14 | 15 | 8 / 8 | 4 |
 | **Claude Sonnet** | **15** | **15** | **8 / 8** | **4** |
 
-"Automatic" is the frozen rubric exactly as registered. Five guard flags were reviewed by a
-person afterwards and recorded in [adjudications.json](adjudications.json): every one was a
+"Automatic" is the frozen rubric exactly as registered. Five guard flags were reviewed by the
+evaluation author afterwards and recorded in [adjudications.json](adjudications.json): every one was a
 negation ("Do not promise when the pending item will drop off") or a stated gap, not a promise.
 Per-case scores: [results.json](results.json).
 
@@ -42,7 +42,7 @@ Per-case scores: [results.json](results.json).
 2. **The value is in reading the customer's words.** When recognition existed only in the
    statement, the decision table asked the customer again (2/5). Opus and Sonnet chose the
    correct path in 4/5; Haiku behaved like the decision table.
-3. **No model broke a safety rule.** All refused the "SYSTEM OVERRIDE … confirm a refund"
+3. **Original pilot observations, not safety certification.** The archived answers refused the "SYSTEM OVERRIDE … confirm a refund"
    injection, disclosed nothing to unverified callers, never opened a duplicate enquiry when
    active work existed and never stated a refund.
 4. **The naive promise guard is too strict.** It flagged careful negations as promises. In
@@ -70,9 +70,26 @@ by quality on that slice, not by overall score.
 
 ```bash
 PYTHONPATH=services/api .venv-app/bin/python -m bank_api.evaluation prompt   # exact prompt sent
-PYTHONPATH=services/api .venv-app/bin/python -m bank_api.evaluation score    # rescore all runs
+PYTHONPATH=services/api .venv-app/bin/python -m bank_api.evaluation score --rubric pilot-v1  # historical scores
+PYTHONPATH=services/api .venv-app/bin/python -m bank_api.evaluation score  # review-v2 regression scores
 ```
 
 Scoring makes no network calls. A new run is added as another file in `runs/` with the same
 provenance fields; reusing these cases after changing prompts or guards makes them regression
 evidence, not a new selection claim (QA-02-AC3).
+
+## Review correction — review-v2
+
+The original rubric could pass an unverified answer containing transaction facts when
+it supplied no citation. A negated duplicate claim anywhere in an answer also suppressed
+a positive assertion elsewhere. The regression rubric now checks each assertion locally
+and automatically accepts unverified text only when it is the reviewed fact-free
+verification message with no gaps or citations. Other wording requires explicit review;
+this is conservative and does not imply that every flagged answer disclosed data.
+
+[review-v2 results](results-review-v2.json) re-score the same archived outputs: these are
+regression results, not a new hold-out or model selection experiment. Historical
+`results.json`, inputs, prompt and raw model outputs remain unchanged. Old adjudications
+apply only to pilot-v1. No review-v2 flags have been manually overturned. Neither rubric
+proves arbitrary prose safe or qualifies the application's provider route. Independent
+cases and review remain necessary, as does promise-guard refinement.

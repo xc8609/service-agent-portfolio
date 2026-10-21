@@ -1,6 +1,8 @@
 """Synthetic external receipts. The application records what another system reports;
 it never delivers a complaint or executes a financial action itself."""
 
+from uuid import uuid4
+
 from .workflow import bump_case, command_result
 
 
@@ -38,6 +40,23 @@ def execute(conn, name, p, w, actor, request_id, now):
             )
             conn.execute("UPDATE work_items SET version=version+1 WHERE id=%s", (w["id"],))
             summary = "Complaint delivery failed; the request is retained and will be retried."
+        # Append-only receipt history survives retries and final acknowledgement.
+        conn.execute(
+            """INSERT INTO complaint_delivery_receipts
+            (id,intake_id,intake_version,outcome,reason,external_receipt_ref,recorded_at,actor_id,operation_key)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+            (
+                uuid4(),
+                intake["id"],
+                intake["version"] + 1,
+                p["outcome"],
+                p["reason"].strip() if p["reason"] else None,
+                p["external_receipt_ref"],
+                now,
+                actor,
+                p["operation_key"],
+            ),
+        )
         event, _ = bump_case(conn, w, now, "complaint." + p["outcome"], summary)
         return command_result(
             p["operation_key"], intake["id"], intake["version"] + 1, event, request_id

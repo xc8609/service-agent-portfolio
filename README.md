@@ -42,8 +42,9 @@ decisions and what the evidence does and does not show.
 - **Agent engineering:** a bounded evidence assistant, server-selected model API
   adapters, persisted runs, source citations and human approval boundaries.
 - **Honest evaluation:** a [frozen pilot](projects/bank-service-assist/evaluation/README.md)
-  comparing a decision table with three models — models help only when the customer's
-  account is in free text, and none broke a safety rule.
+  comparing a decision table with three models on a small synthetic case set.
+  Review found gaps in the original safety scorer; versioned regression checks and
+  limitations are published alongside the historical pilot.
 - **Data and delivery evidence:** reconciled SQL exports, a Tableau workbook,
   automated tests, CI and a reproducible local deployment.
 - **Real-data analytics:** [complaint operations analytics](projects/complaint-analytics/README.md)
