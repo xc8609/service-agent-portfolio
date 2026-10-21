@@ -39,3 +39,11 @@ cancellation and fabricated citations. Provider tests are offline. 32 Chromium t
 covers run → durable reload → note review → context-change invalidation. Owner UAT,
 B0/B1 human effort study and live model qualification remain unexecuted; DEV-10
 provides the measurement infrastructure rather than invented savings.
+
+## Evidence refresh and asynchronous UI state
+
+Inbound launch requires completed inspection and no report save in progress.
+Run and reload displays belong to one identity/query context; late success or
+failure cannot restore the old context. [Regression design and executed evidence](ui-state-regression.md)
+connect this correction to DEV-03-AC04 and DEV-08-AC03/04. Authority and human
+approval remain server-enforced; this UI guard does not grant new permissions.
