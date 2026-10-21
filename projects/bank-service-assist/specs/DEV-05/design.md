@@ -1,6 +1,8 @@
 # DEV-05 design
 
-BANK-SDD-v0.2 · Candidate architecture; no runtime implementation.
+BANK-SDD-v0.2 baseline; inbound runtime design updated 20 October 2026.
+
+See [runtime contract](runtime-contract.md) for the implemented deterministic PostgreSQL policy reader, pair scope, endpoint semantics and failure behavior. `services/api/bank_api/policy_lookup.py` supplies both human reads and canonical tool endpoints. No model runs in this increment.
 
 Model-visible tools: search_policy, get_policy_section. Human/system commands and complete schemas are in [shared contracts](../contracts/agent-tools.md).
 

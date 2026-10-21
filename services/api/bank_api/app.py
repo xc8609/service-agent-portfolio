@@ -21,6 +21,7 @@ from .config import Settings
 from .db import ROOT, SCHEMA_VERSION, runtime_connection
 from .fixtures import FIXTURE_VERSION, PERSONAS, uid
 from .investigation import dispatch_investigation
+from .policy_lookup import dispatch_policy
 
 CONTRACTS = json.loads(
     (ROOT / "projects/bank-service-assist/specs/contracts/agent-tools.json").read_text()
@@ -28,6 +29,14 @@ CONTRACTS = json.loads(
 TOOLS = {t["name"]: t for t in CONTRACTS["tools"]}
 READ_TOOLS = ("get_contact_context", "search_transactions", "get_transaction_evidence")
 MESSAGES = {
+    "EVIDENCE_CHANGED": (
+        "Selected transaction evidence changed. Inspect the pair again before using a handling rule.",
+        409,
+    ),
+    "POLICY_CONFLICT": (
+        "Applicable handling rules conflict. Request service-lead and policy-owner clarification; no instruction selected.",
+        409,
+    ),
     "STALE_VERSION": (
         "Recorded case state conflicts with its timeline. Refresh or request manual reconciliation; do not create another enquiry from this view.",
         409,
@@ -330,6 +339,7 @@ def dispatch(settings, name, payload, authorization, request_id, now):
                             "customer.read_context",
                             "transaction.read",
                             "result.read_approved",
+                            "policy.read",
                         ],
                         "access_purpose": "inbound_service",
                         "assigned_work_ref": None,
@@ -523,6 +533,16 @@ def create_app(settings=None, clock=None):
         endpoint("get_related_cases", dispatch_cases),
         methods=["POST"],
     )
+
+    for name in ("search_policy", "get_policy_section", "get_handling_rules"):
+        app.add_api_route(
+            "/v1/workspace/get_handling_rules"
+            if name == "get_handling_rules"
+            else TOOLS[name]["http"]["path"],
+            endpoint(name, dispatch_policy),
+            methods=["POST"],
+            name=name,
+        )
 
     @app.api_route("/v1/{unsupported:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE"])
     def unsupported_api(unsupported: str):

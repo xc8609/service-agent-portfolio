@@ -73,6 +73,7 @@ def test_verified_lookup_and_contract_provenance(environment):
         "customer.read_context",
         "transaction.read",
         "result.read_approved",
+        "policy.read",
     ]
     result = call(client, "search_transactions", search_payload(contact), headers).json()
     assert len(result["data"]["records"]) == 6
@@ -289,7 +290,7 @@ def test_runtime_db_cannot_modify_ledger_or_read_internal_notes(environment):
 def test_readiness_outage_and_public_mode(environment):
     client, _, _, _ = environment
     assert client.get("/health/live").status_code == 200
-    assert client.get("/health/ready").json()["schema_version"] == "004_case_lookup.sql"
+    assert client.get("/health/ready").json()["schema_version"] == "005_policy_lookup.sql"
     with TestClient(
         create_app(Settings("postgresql://bank_app:unused@127.0.0.1:1/bank_demo"))
     ) as broken:

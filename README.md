@@ -10,8 +10,9 @@ and agent engineering.
 **Works today:** React + FastAPI + PostgreSQL, authorized transaction search and
 evidence review, versioned customer statements and explicit pair recognition with
 synthetic records. Related-case lookup shows progress, owners and duplicate-enquiry
-review hints. Changed queries invalidate old evidence. **Next:** rules,
-notes/referral/feedback, then
+review hints. Applicable simulated handling rules show conditions, exact citations
+and next steps, with explicit conflict/gap handling. Changed queries invalidate old
+evidence and guidance. **Next:** notes/referral/feedback, then
 bounded Agent assistance. No live bank connection, implemented Agent or measured savings.
 
 ## Repository map

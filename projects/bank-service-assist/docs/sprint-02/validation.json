@@ -18,7 +18,7 @@
     "qa": 35.0,
     "total": 170.5
   },
-  "local_links": 71,
+  "local_links": 72,
   "trello_payloads": 40,
   "limits": "Schema/meta/example validation, structural references and aggregate/lane capacity only. Does not execute PostgreSQL DDL, API authorization, semantic state guards, live models, application UAT, resource-level critical-path scheduling or deployment. Trello verification separate.",
   "contract_version": "0.4",

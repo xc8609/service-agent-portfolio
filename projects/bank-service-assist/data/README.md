@@ -89,3 +89,19 @@ DEMO-CASE-001 covers both $85 DEMO STORE entries. No actual bank/customer data
 was downloaded; staff names and progress are invented demonstration records.
 Own fixture code is MIT; public dataset terms are unchanged. Generated databases
 remain excluded from Git. Dates/deadlines are test inputs, not bank service promises.
+
+## DEV-05 authored synthetic policy fixtures — 20 October 2026
+
+`services/api/bank_api/policy_fixtures.py` authors the `bank-policy-synthetic-v3`
+fixture extension: two active representative procedures (posted pair and
+pending/posted pair), expired/future editions, restricted audience, different
+product/jurisdiction and unpublished examples. Tests activate an overlapping
+edition to prove conservative conflict handling. No policies were downloaded;
+these are portfolio-authored simulated rules under the repository MIT licence,
+not actual bank procedures or statements of Canadian law. Account jurisdiction
+is explicitly set to CA in fresh fixtures, not inferred from currency. Ledger
+records remain `synthetic-ledger-v1`; DEV-04 case fixtures are retained.
+
+Source labels, IDs, versions and effective intervals are exposed with guidance.
+Fixtures encode accepted D-23–25 intake boundaries but do not assert financial
+outcomes, savings, stakeholder approvals or model evaluation results.

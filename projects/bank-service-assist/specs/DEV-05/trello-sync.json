@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-20",
+  "marker": "BANK-DEV05-POLICY-v1",
+  "pr": "https://github.com/xc8609/service-agent-portfolio/pull/4",
+  "base_pr": "https://github.com/xc8609/service-agent-portfolio/pull/3",
+  "cards": [
+    {
+      "id": "DEV-05",
+      "url": "https://trello.com/c/fEkG3vke",
+      "saved_and_reopened_verified": true,
+      "marked_done": false
+    },
+    {
+      "id": "S03",
+      "url": "https://trello.com/c/QlhRFvgl",
+      "saved_and_reopened_verified": true,
+      "marked_done": false
+    }
+  ],
+  "method": "Read visible Markdown, preserve baseline, prepend actual delivery and remaining gates, save, reload and read back.",
+  "checks": "105 API/PostgreSQL tests, 23 browser journeys; build/lint/offline/spec/publication and HTTP smoke passed. Cloud checks linked on PR.",
+  "limits": "Deterministic inbound read increment; owner UAT, delegated Agent and assigned outbound scope pending. No financial/referral mutation."
+}

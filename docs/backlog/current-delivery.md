@@ -34,7 +34,7 @@ to mark entire stories complete from a partial slice.
 | Existing Sprint | Increment / stories | Exit evidence | Current status |
 |---|---|---|---|
 | S02 | Initialization, contracts, CI; DEV-01/QA-01/OPS-01 plus pulled-forward DEV-02/03 reads | Runnable demo, authorization failures and CI/PR evidence | Read slice under PR review; intake rules accepted |
-| S03 | Finish manual investigation: DEV-02/03/04/05 | Statement/selection, current case and policy evidence, stale-query fix, negative permission tests | DEV-03 capture and DEV-04 inbound case progress under PR review; DEV-05 and full workflow acceptance planned |
+| S03 | Finish manual investigation: DEV-02/03/04/05 | Statement/selection, current case and policy evidence, stale-query fix, negative permission tests | DEV-03/04 and DEV-05 inbound rule reads under PR review; full workflow and owner acceptance pending |
 | S04 | Manual note and reviewed referral: DEV-06/07; provider qualification DEV-09 | Draft/edit/approve, missing-material/contact-gap intake, atomic receipt, replay tests | Planned; typed intake extension still needed |
 | S04A | Minimal result and manual feedback: DEV-11, core guards from DEV-12/13 | Finding, accountable feedback, actual outcome, no false closure, manual lead review for exceptions | Planned; advanced continuation automation deferred |
 | S05 | Bounded assistance: DEV-08 | Qualified provider, allowlisted tools, cited drafts, manual fallback and model-failure scenarios | Planned; no Agent code yet |

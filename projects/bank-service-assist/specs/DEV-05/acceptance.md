@@ -1,15 +1,18 @@
 # DEV-05 acceptance record
 
-BANK-SDD-v0.2
+20 October 2026 · Inbound deterministic read increment implemented; owner UAT
+pending. No full-story Done, model result, bank approval or production release.
 
-Implementation: not started. Runtime tests: not executed. Actual reviewer: not yet assigned for implementation acceptance. No bank approval is implied.
+| AC | Executed evidence | Result / remaining boundary |
+|---|---|---|
+| DEV-05-AC01 / T01 | `test_effective_interval_uses_contact_time_not_client_or_upload_order`; excluded edition tests | Effective start inclusive/end exclusive; future/old editions excluded; forged enquiry time rejected. Passed inbound scope. |
+| DEV-05-AC02 / T02 | Product/jurisdiction/audience/direct-section denial, role/proof revocation and mixed-account tests | Filter before content; repeat exact-read authorization; metadata cannot widen scope. Passed inbound scope. |
+| DEV-05-AC03 / T03 | `test_conflict_suppresses_instructions_and_cannot_be_hidden_by_query`; browser RP-04 | Conflict shown, guidance withheld, lead/policy-owner review requested. Passed deterministic path; generated draft deferred. |
+| DEV-05-AC04 / T04 | Missing publication/jurisdiction/unsupported pair and dependency failure tests; browser RP-02/04 | Explicit gap/manual review; timeout/outage is not empty success. Passed deterministic path. |
+| DEV-05-AC05 / T05 | Hostile-source privilege test and browser RP-05 | Inert text, no HTML execution, foreign/refund reads denied. Boundary passed; LLM prompt-injection evaluation remains DEV-08. |
+| FR-15 / RP-03 | Browser old-response/query/statement/selection/identity tests; API expected-version mismatch | Old evidence/rules are cleared; fresh transaction version required. |
 
-| AC | Planned test | Expected outcome | Actual / evidence | Status |
-|---|---|---|---|---|
-| DEV-05-AC01 | DEV-05-T01 | exclude it and use the applicable edition or report a gap | Pending implementation | Not executed |
-| DEV-05-AC02 | DEV-05-T02 | exclude it before returning content to the agent | Pending implementation | Not executed |
-| DEV-05-AC03 | DEV-05-T03 | expose the conflict and request authorized clarification, not an authoritative guess | Pending implementation | Not executed |
-| DEV-05-AC04 | DEV-05-T04 | state the missing basis and route for manual review | Pending implementation | Not executed |
-| DEV-05-AC05 | DEV-05-T05 | treat it as data; tool and server permissions stay unchanged | Pending implementation | Not executed |
-
-Structural validation of specifications is reported separately in workflow-validation.json and does not pass these tests. Record environment, fixture/calendar/policy/provider versions, commands, actual output, defects and review decision when run.
+[Runtime contract](runtime-contract.md) · [Execution record](implementation-evidence.md).
+Review the simulated decision table, gap/conflict language and next-step wording
+with the owner before accepting the story. No financial or referral commands
+were implemented by this read increment.

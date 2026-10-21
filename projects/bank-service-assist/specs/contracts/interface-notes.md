@@ -62,3 +62,14 @@ remain denied. Migration 004 is an additive runtime read projection, not a revis
 of the entire planned v0.4 state machine. Runtime permission mapping uses
 customer.read_context, transaction.read and result.read_approved; private notes
 remain inaccessible. Related-work hints do not replace DEV-07 atomic submission checks.
+
+
+## DEV-05 implemented inbound policy reads
+
+`search_policy` and `get_policy_section` now implement their v0.4 read envelopes
+for verified inbound representatives. Contact time, permitted product/jurisdiction
+and role are server constrained; requested metadata cannot widen access.
+`get_handling_rules` is the human workspace adapter with two selected transaction
+IDs and exact expected versions. [Runtime contract](../DEV-05/runtime-contract.md)
+defines applicability, conflict/gap handling and explicit unsupported scopes.
+Assigned outbound and model-delegation behavior remain pending.

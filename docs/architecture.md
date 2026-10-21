@@ -63,3 +63,9 @@ missing evidence and proposes an explanation or enquiry. Human review uses the
 same deterministic command as the manual UI. A failed provider leaves the manual
 path usable. Never give the model authority to refund, change verified contact
 details, extend deadlines or claim a submission without a committed receipt.
+
+
+DEV-05 adds `bank_api/policy_lookup.py` and `HandlingRules.tsx` within the existing
+API/workspace. Deterministic metadata filtering and source reads serve both the
+manual path and two canonical read tools; no provider, vector service or Agent
+loop is introduced. [Policy runtime design](../projects/bank-service-assist/specs/DEV-05/runtime-contract.md).
