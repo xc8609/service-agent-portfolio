@@ -58,7 +58,11 @@ recorded actual attempt. Completion of feedback does not close the case.
 
 Specialists can request material through owned customer-service work. Responses are
 append-only with actor/time and evidence references; earlier statements/intake and
-original due times remain unchanged. Material unavailable/declined stays outstanding.
+original due times remain unchanged. A material request moves the specialist to
+`awaiting_documents`; the customer's answer (received, unavailable or declined)
+completes the customer-service task and returns the work to `investigating`.
+Publishing a finding supersedes still-open requests (cancelled, history retained):
+the specialist decides on the available evidence, so a refusal never blocks closure.
 A contact-gap task can be resolved only by its assigned customer-service employee
 with an existing active customer-scoped method reference and recorded explanation.
 This does not modify the customer master. Results may arrive while the gap remains;
