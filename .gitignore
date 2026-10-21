@@ -30,4 +30,5 @@ coverage/
 .ruff_cache/
 test-results/
 playwright-report/
+**/evaluation/local-recordings/**
 *.log
