@@ -38,3 +38,29 @@ model run, automated adoption gate or reviewed answer approval.
 Owner approval update, 21 October 2026: R2-A01 and R2-G01 are accepted.
 The preceding packet commit 4777f8b passed all four CI checks. Approval does not
 complete gate automation, independent data authorship, evaluation or UAT.
+
+## Approved gate and runtime-evidence increment — 21 October 2026
+
+- [x] Implement G1–G6 arithmetic for three runs, paired baseline comparison, review
+  history, configuration/source binding and rejection of reused/fixture evidence.
+- [x] Prepare an ignored private 64-slot manifest and published-exposure inventory;
+  implement readiness checks and answer-key-safe field projection.
+- [x] Add read-only pre-freeze inspection and actual-runtime/DB evidence capture.
+- [x] Add 40 offline gate regressions and 6 PostgreSQL capture regressions; extend
+  SDD R2-AC13–20 and the operator guide. No user decision was re-opened.
+- [ ] Obtain independently authored hidden cases and owner-reviewed keys; the empty
+  scaffold is preparation only, not a completed holdout.
+- [ ] Qualify the chosen API route/access/budget, freeze the full experiment, execute
+  and adjudicate real model outputs. No live call or model selection was performed.
+
+Executed locally on the final implementation: 89 offline tests passed (including
+34 existing R2 scorer + 40 new gate tests); 2 SQL modules skipped for missing DuckDB.
+238 API integration tests passed on disposable PostgreSQL 16.2, including 6 new
+capture tests. The existing Starlette/httpx deprecation warning remains. Ruff lint
+and format, workflow/S02 contract validation, publication links and whitespace checks
+passed. GitHub runs PostgreSQL 17, complete offline dependencies on Python 3.9/3.12,
+browser and container checks separately on the pushed commit. No UI changed here.
+
+This is one batched increment to open PR #24, still within the S05B stage-1 scope;
+PR #23 remains the separate replay/merchant projection increment. Parent QA-02 stays
+in Testing. The reports do not authenticate reviewers or certify a live model.

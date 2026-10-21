@@ -28,3 +28,21 @@ signatures or a substitute for actual runtime logs. Unit tests use engineered re
 records only. Future R1 runtime artifacts must establish tools, permissions, freshness
 and no-write postconditions independently. A semantic pass cannot overturn a runtime
 failure. A new production guard or automatic semantic classifier is outside this slice.
+
+## Gate calculation and runtime capture
+
+`r2_experiment.py` stays Python 3.9/offline and imports only the sibling scorer.
+Readiness compares current published-source fingerprints, family/text exposure,
+60-development/40-quality-family allocation and 24 critical cases. Each candidate
+artifact is bound to scenario, configuration, timestamps and a unique runtime ID.
+Scores are recomputed from actual drafts and separate hash-bound observations;
+first-pass review cannot be overwritten to lower the reported review rate.
+
+`bank_api.agent.evaluation_evidence` is a local Python 3.12 adapter. Pre-freeze
+inspection reads source/config hashes without calling a model. Capture invokes
+`runtime.run` under the restricted application role, then exports DB trace and
+independent before/after postcondition hashes from a trusted test observer. It adds
+no HTTP endpoint or migration. Actual authority, deterministic writes and idempotency
+remain in existing commands. Injected/offline transport cannot count as live evidence.
+See the [experiment guide](../../evaluation/r2/experiment-guide.md) for schema,
+false-positive/negative limits, baseline lock and unresolved independence requirements.

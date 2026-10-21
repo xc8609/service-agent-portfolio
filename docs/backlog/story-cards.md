@@ -1055,6 +1055,7 @@ Show honest model evaluation and solution selection.
 Define correctness as supported facts, valid action, permitted access and actual postconditions. Freeze rubric, thresholds and split before provider/prompt selection.
 
 ## Development / delivery tasks
+- [x] Implement approved R2 gate arithmetic, local runtime evidence capture and private holdout preparation ([operator guide](../../projects/bank-service-assist/evaluation/r2/experiment-guide.md)); engineering tests do not qualify a model.
 - [ ] Plan 100 bank scenario families: 60 development/40 held-out, plus 24 critical cases; group variants and duplicate text before splitting.
 - [ ] Compare manual/templates, retrieval and bounded agent with the same information; compare providers after holding architecture constant.
 - [ ] Repeat held-out runs three times where budget allows; publish actual denominators, failure types, variance, latency and cost. Keep upstream τ-bench results separate from adapted local UAT.

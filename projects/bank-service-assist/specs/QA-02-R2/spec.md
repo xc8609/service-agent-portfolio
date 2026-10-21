@@ -25,7 +25,7 @@ authorization/evidence limitations remain valid. R2-A01 answer intent and R2-G01
 21 October; corpus/run freeze and model qualification remain pending.
 
 Deliver ten visible development cases, independent reviewer observations, a Python 3.9
-offline scoring CLI and regressions. No new hold-out, model call, runtime integration,
+offline scoring CLI and regressions. No new independent hold-out, model call,
 financial action or complete QA-02 acceptance. [Design](design.md), [tasks](tasks.md),
 [acceptance](acceptance.md), [rubric and cases](../../evaluation/r2/README.md).
 
@@ -35,4 +35,14 @@ financial action or complete QA-02 acceptance. [Design](design.md), [tasks](task
 development cases. [Approved candidate gates](../../evaluation/r2/adoption-proposal.md) define
 quality, critical, baseline-value and scoring-review thresholds, run counts, evidence
 requirements and stop decisions. R2-A01/R2-G01 were accepted in one owner batch review on 21 October. These
-documents do not freeze the corpus, implement gate automation or qualify a model.
+documents do not freeze the corpus or qualify a model.
+
+## Gate/evidence implementation increment
+
+As the owner, I need the accepted thresholds computed against actual execution and
+review records so that good-looking answers cannot mask a runtime failure or leaked
+holdout. Deliver a fail-closed three-run validator, private collection scaffold and
+exposure inventory, plus opt-in local capture around the existing bounded runtime.
+Keep engineering replay, actual model generation and independently authored holdout
+distinct. No live route is enabled by a report. Trace: R2-G01 G1–G6 and QA-02-AC1–3.
+[Operator contract and remaining dependencies](../../evaluation/r2/experiment-guide.md).

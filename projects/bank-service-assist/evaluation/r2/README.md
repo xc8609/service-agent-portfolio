@@ -6,6 +6,12 @@ visible. Their families and paraphrases must be excluded from any future hidden
 hold-out. No independent case authorship, case-by-case owner adjudication, model run
 or business saving is claimed. Existing pilot-v1 and review-v2 files remain unchanged.
 
+## Gate automation and execution evidence
+
+Use the [experiment guide](experiment-guide.md) to prepare the private 64-slot
+collection, capture the actual runtime and calculate the approved gates. Empty slots
+are not independent authored cases. Engineering fixtures never qualify a model.
+
 ## Batch owner review
 
 Read the [ten-case answer packet](owner-review.md) and [approved candidate gates](adoption-proposal.md)

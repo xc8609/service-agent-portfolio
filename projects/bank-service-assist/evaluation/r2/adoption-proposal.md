@@ -125,6 +125,9 @@ are dependencies. Reconcile effort and dates when author/reviewer availability a
 route are known; do not silently add a second full estimate to the existing plan.
 
 The current `r2_score.py` remains a development scorer: `adoption_eligible: false`.
-It does not aggregate three runs, authenticate reviewers, implement these gates or
-verify runtime/DB traces. Gate automation/integration requires a later reviewed change;
-this packet supplies requirements, not a false implementation claim.
+The reviewed increment adds `r2_experiment.py` for these three-run calculations and
+`bank_api.agent.evaluation_evidence` for actual runtime/DB capture. See the
+[experiment guide](experiment-guide.md) for contracts, commands and limits. Neither
+local hashes nor declared reviews authenticate provenance. Independent data, actual
+API execution, adjudication and qualification remain pending; no gate result is
+claimed from the engineered regression tests.

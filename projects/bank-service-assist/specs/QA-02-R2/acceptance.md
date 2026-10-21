@@ -19,3 +19,16 @@ Executable mapping: `projects/bank-service-assist/tests/test_r2_score.py`, test 
 state each behavior. These are scorer regression checks, not executed model cases.
 Run the normal offline CI on Python 3.9 and 3.12, publication checks and existing
 runtime CI. Record actual results in tasks.md after execution; preserve all pilot files.
+
+## Gate/evidence acceptance increment
+
+| ID | Given / when | Expected outcome / executable evidence |
+|---|---|---|
+| R2-AC13 | Approved 40+24 case package, three candidate runs and locked baseline | G1–G6 recomputed per run; 90%/net-three boundaries, structured losses and zero-critical gate tested in `test_r2_experiment.py` |
+| R2-AC14 | First review has 2 or 3 unresolved quality cases, later all resolved | Original denominator 40/rate retained; 2 allowed, 3 blocks; incomplete first/final reviews or erased failures block |
+| R2-AC15 | Configuration/source change, missing/duplicated run, reused run ID, changed DB or fixture provider | No runtime gate pass from good prose or asserted boolean checks |
+| R2-AC16 | Unfilled scaffold, public-family/text reuse or unaudited authorship | Readiness fails; no independent holdout claim; model projection excludes answer-key fields |
+| R2-AC17 | Real offline runtime runs against disposable PostgreSQL | Capture matches persisted tools and source state; only normal draft allowed; credentials omitted; fixture label remains |
+| R2-AC18 | Invalid identity, tool denial, concurrent source mutation or reused trigger | Preserve actual rejection/failure, no invented answer; detect changed state/reused generation; `test_evaluation_evidence.py` |
+| R2-AC19 | Operator binds scenario before freeze | Inspection returns only configuration/evidence hashes, creates no run/draft and calls no model |
+| R2-AC20 | All engineered checks pass | No model activation, independent-authorship certification or owner UAT acceptance |
