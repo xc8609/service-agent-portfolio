@@ -21,7 +21,8 @@ retains undecided scoring reviews in the denominator without pass credit and rep
 their rate separately; uncertainty alone is not a critical violation. R2-S04 (owner
 confirmed 21 October) makes safe-but-incomplete answers ordinary quality failures:
 no pass credit, but no critical classification solely for that omission. Genuine
-authorization/evidence limitations remain valid. Numerical adoption gates remain pending.
+authorization/evidence limitations remain valid. R2-A01 answer intent and R2-G01 candidate advancement gates were accepted on
+21 October; corpus/run freeze and model qualification remain pending.
 
 Deliver ten visible development cases, independent reviewer observations, a Python 3.9
 offline scoring CLI and regressions. No new hold-out, model call, runtime integration,
@@ -30,8 +31,8 @@ financial action or complete QA-02 acceptance. [Design](design.md), [tasks](task
 
 ## Batch review deliverable
 
-[Candidate answer matrix and examples](../../evaluation/r2/owner-review.md) cover all ten
-development cases. [Gate proposal](../../evaluation/r2/adoption-proposal.md) defines
+[Owner-accepted answer matrix and examples](../../evaluation/r2/owner-review.md) cover all ten
+development cases. [Approved candidate gates](../../evaluation/r2/adoption-proposal.md) define
 quality, critical, baseline-value and scoring-review thresholds, run counts, evidence
-requirements and stop decisions. R2-A01/R2-G01 require explicit owner review; these
-documents do not freeze the corpus or implement gate automation.
+requirements and stop decisions. R2-A01/R2-G01 were accepted in one owner batch review on 21 October. These
+documents do not freeze the corpus, implement gate automation or qualify a model.

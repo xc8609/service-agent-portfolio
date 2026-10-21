@@ -1039,7 +1039,7 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## QA-02 — Freeze agent evaluation and compare against simpler baselines
 
-Status: Pilot executed (D-27) — 24 frozen cases, decision table vs three subscription-run models; API qualification and full 100-family evaluation pending — [pilot report](../../projects/bank-service-assist/evaluation/README.md). R2-S01–04 grading rules confirmed; [batch answer/gate review](../../projects/bank-service-assist/evaluation/r2/owner-review.md) is a pending candidate in PR #24, not owner acceptance.
+Status: Pilot executed (D-27) — 24 frozen cases, decision table vs three subscription-run models; API qualification and full 100-family evaluation pending — [pilot report](../../projects/bank-service-assist/evaluation/README.md). R2-S01–04 grading rules and [R2-A01/R2-G01 answer intent and candidate gates](../../projects/bank-service-assist/evaluation/r2/owner-review.md) accepted by the owner on 21 October 2026 (PR #24); independent corpus freeze, evaluation and model qualification remain pending.
 Release: B1 | Priority: P0 | Forecast sprint: S05
 Role owner: QA with BA/PO (simulated team allocation, not actual staffing)
 Estimate: 4.5 person-days most likely (3.5–7 range): Dev 2, BA/PO 0.5, QA 2; confidence medium. Includes implementation, developer tests, review fixes and story documentation. QA = additional independent/system testing, not duplicate unit-test effort.
@@ -1072,7 +1072,7 @@ Define correctness as supported facts, valid action, permitted access and actual
 Frozen scenario manifest, evaluator/rubric, baseline comparison, error analysis and go/narrow/no-go recommendation.
 
 ## Definition of Done
-Proposed 90% routine/all-critical gates assessed as frozen; limitations and negative results published.
+Owner-approved R2-G01 candidate gates are assessed only after complete experiment freeze and execution; limitations and negative results published. Business approval of thresholds alone does not complete QA-02.
 
 ## Boundaries
 Finite synthetic success is not a real-bank failure rate or a savings measurement.

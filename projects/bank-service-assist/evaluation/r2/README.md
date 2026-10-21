@@ -8,8 +8,9 @@ or business saving is claimed. Existing pilot-v1 and review-v2 files remain unch
 
 ## Batch owner review
 
-Read the [ten-case answer packet](owner-review.md) and [proposed evaluation gates](adoption-proposal.md)
-together. R2-A01 and R2-G01 remain pending; R2-S01–04 are already confirmed.
+Read the [ten-case answer packet](owner-review.md) and [approved candidate gates](adoption-proposal.md)
+together. The owner accepted R2-A01 and R2-G01 on 21 October 2026; R2-S01–04
+were already confirmed. These decisions are closed and must not be re-asked.
 The packet contains authored examples and candidate thresholds, not model results.
 
 ## What is delivered
@@ -113,9 +114,11 @@ prose-quality detector.
 
 ## Pending decisions and limits
 
-R2-S01–04 are owner-confirmed. Numerical adoption targets, review-rate ceiling, fresh
-independent corpus and owner UAT remain unapproved. Confirming scoring rules does not
-approve model adoption or certify these visible cases as an independent hold-out.
+R2-S01–04, R2-A01 and R2-G01 are owner-confirmed. Answer intent, numerical
+advancement targets and the scoring-review ceiling are approved as candidate gates.
+Fresh independent corpus/keys, complete run-manifest freeze, actual execution, provider
+qualification and owner UAT remain pending. The approval neither adopts a model nor
+certifies these visible cases as an independent hold-out.
 
 Reports always say `development_regression_only`, `adoption_eligible: false` and
 `runtime_qualification: not_assessed`. The scorer does not execute runtime or verify

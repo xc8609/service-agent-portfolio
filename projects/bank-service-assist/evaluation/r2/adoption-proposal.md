@@ -1,8 +1,8 @@
-# R2 evaluation and advancement gates — proposal for one batch decision
+# R2 evaluation and advancement gates — owner-approved candidate baseline
 
-21 October 2026 · **R2-G01 pending owner approval; not frozen and not executed.**
+21 October 2026 · **R2-G01 accepted by the owner on 21 October 2026; corpus/run manifest not frozen and evaluation not executed.**
 [Answer packet](owner-review.md) · [QA-02 story](../../../../docs/backlog/story-cards.md#qa-02).
-These numbers are proposed portfolio experiment choices, not industry standards or
+These numbers are owner-approved portfolio experiment choices, not industry standards or
 claimed bank risk tolerances. Approval permits evaluation planning, not API spend,
 public exposure, automatic actions or a qualified production release.
 
@@ -39,7 +39,7 @@ cost savings. The existing manual/decision-table workflow remains usable regardl
   model route fingerprint, baseline configuration, run count and gates before runs.
   Keep answer keys and future customer events outside model-visible prompts.
 
-## Proposed gates (all must pass)
+## Approved candidate gates (all must pass)
 
 | Gate | Preregistered calculation / limit | Failure consequence |
 |---|---|---|
@@ -77,7 +77,7 @@ the stronger simpler baseline on development evidence, with its tie-break specif
 before looking at hold-out outputs. The same owner-reviewed rubric applies to all.
 Evaluate manual operator effort separately from deterministic template output.
 
-Propose **three actual independent model generations per frozen case**, no prompt or
+Require **three actual independent model generations per frozen case**, no prompt or
 provider changes between runs, no best-of-three selection. Apply G1–G6 to each run,
 and publish all runs plus aggregate counts and ranges. This is 192 Agent outputs
 (64 x 3) per candidate route, not 192 independent scenario families. Deterministic
@@ -92,7 +92,7 @@ three independent model generations or live API latency.
 
 ## Qualification and business evidence remain separate
 
-No real API calls are authorized by this proposal. Provider/protocol compatibility,
+No real API calls are authorized by this gate approval. Provider/protocol compatibility,
 retention controls, synthetic projection, request/token/spend ceilings and kill switch
 must be selected and verified for the exact route before API qualification. Those
 operational limits remain unapproved, so passing text gates cannot enable a route.
@@ -112,7 +112,7 @@ descriptive results, not generalized savings. No positive model gate is a saving
 
 | Order | Work and owner role (simulated allocation) | Evidence / exit |
 |---|---|---|
-| 1 · this increment | BA prepares answer packet and gate proposal; project owner batch-reviews R2-A01 and R2-G01 | Decision log with actual approval or case/gate amendments; current state pending |
+| 1 · completed business decision | BA prepared answer packet and gates; project owner accepted R2-A01 and R2-G01 on 21 October | Answer intent and entire candidate-gate package approved; technical execution and model qualification remain pending |
 | 2 · before freeze | Independent author and BA/QA construct provenance/family inventory and fresh cases; owner adjudicates keys | 60/40 family inventory, 24 critical cases, exposure audit and split hashes; stop if independence unsubstantiated |
 | 3 · execution readiness | Developer/QA connects outputs from real runtime to the rubric; locks baselines/configuration; confirms access and budget | Real trace and postcondition capture plus route/run manifest; no model activation from this document |
 | 4 · evaluate once frozen | Execute every scheduled run, retain failures, record reviewer observations with output/corpus hashes | First-pass and final reports, paired baseline comparison, gates reported individually |

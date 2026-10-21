@@ -10,8 +10,9 @@
 - [x] Record owner-confirmed R2-S03 denominator/review-rate treatment and mixed-batch regressions.
 - [x] Record R2-S04 quality-failure grading, request coverage and boundary regressions.
 - [x] Prepare one batch packet with ten illustrative answers, failure boundaries and candidate gates.
-- [ ] Owner adjudicates R2-A01 answer expectations and R2-G01 gate proposal.
-- [ ] Preregister approved numerical adoption targets and review-rate ceiling before any freeze.
+- [x] Owner accepted R2-A01 answer intent and R2-G01 candidate gates on 21 October.
+- [x] Record approved numerical targets, review ceiling and three-run requirement as the candidate baseline.
+- [ ] Freeze the complete corpus/keys, family split, baselines, configuration and run manifest before execution.
 - [ ] Independent author/reviewer supplies new hidden families before any hold-out freeze.
 - [ ] Execute actual runtime/model runs and evidence-backed human adjudication.
 
@@ -26,10 +27,14 @@ installs the full offline dependencies for Python 3.9 and 3.12. No actual model 
 human adjudication, database runtime test or benefit study was executed in this slice.
 
 Scheduling: this is part of the proposed S05B QA-02 stage-1 work in PR #23, not an
-additional completed Sprint or a new cumulative estimate. Pending scoring decisions
-block corpus/adoption freeze, not these independent scorer engineering checks.
+additional completed Sprint or a new cumulative estimate. Remaining corpus/provenance and run-readiness work
+blocks experiment freeze; confirmed scoring decisions must not be re-asked.
 
 Batch-review packet check, 21 October 2026: documentation-only increment; public links
 passed (407 files / 787 links); the unchanged local offline suite passed 49 tests
 with two SQL modules skipped for missing DuckDB. It adds no
 model run, automated adoption gate or reviewed answer approval.
+
+Owner approval update, 21 October 2026: R2-A01 and R2-G01 are accepted.
+The preceding packet commit 4777f8b passed all four CI checks. Approval does not
+complete gate automation, independent data authorship, evaluation or UAT.
