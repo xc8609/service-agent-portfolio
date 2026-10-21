@@ -1,0 +1,2947 @@
+<?xml version='1.0' encoding='utf-8'?>
+<workbook _.fcp.WorkbookFingerprinting.true...author-id="7cf56da3e3f51ed7831aab815db687d293f01efc2e500d1df09180816180f9d2" _.fcp.WorkbookFingerprinting.true...creator-author-id="7cf56da3e3f51ed7831aab815db687d293f01efc2e500d1df09180816180f9d2" _.fcp.WorkbookFingerprinting.true...creator-license-type="free" _.fcp.WorkbookFingerprinting.true...creator-machine-id="0964accdab3f58cc4115241a36868673593d714645905ee0c9b7865ebf06ebe8" _.fcp.WorkbookFingerprinting.true...license-type="free" _.fcp.WorkbookFingerprinting.true...machine-id="0964accdab3f58cc4115241a36868673593d714645905ee0c9b7865ebf06ebe8" original-version="18.1" source-build="2026.2.3 (20262.26.0912.1023)" source-platform="mac" version="18.1">
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+    <_.fcp.WorkbookFingerprinting.true...WorkbookFingerprinting />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name="ui.encoding.shelf.height" value="24" />
+    <preference name="ui.shelf.height" value="26" />
+  </preferences>
+  <datasources>
+    <datasource caption="complaint_daily" inline="true" name="federated.1figdwu091p4er1diuanl1ifsitg" version="18.1">
+      <connection class="federated">
+        <named-connections>
+          <named-connection caption="complaint_daily" name="textscan.0my3c2b06hxdr911qkbxj084tevo">
+            <connection class="textscan" directory="../results" filename="complaint_daily.csv" password="" server="" />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.0my3c2b06hxdr911qkbxj084tevo" name="complaint_daily.csv" table="[complaint_daily#csv]" type="table">
+          <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+            <column datatype="date" name="date_received" ordinal="0" />
+            <column datatype="string" name="routing_team" ordinal="1" />
+            <column datatype="string" name="product" ordinal="2" />
+            <column datatype="string" name="issue" ordinal="3" />
+            <column datatype="string" name="channel" ordinal="4" />
+            <column datatype="string" name="company_response" ordinal="5" />
+            <column datatype="integer" name="complaint_count" ordinal="6" />
+            <column datatype="integer" name="narrative_count" ordinal="7" />
+            <column datatype="integer" name="timely_yes_count" ordinal="8" />
+            <column datatype="integer" name="timely_no_count" ordinal="9" />
+            <column datatype="integer" name="timely_unknown_count" ordinal="10" />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class="capability">
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype="string" name="character-set">"UTF-8"</attribute>
+              <attribute datatype="string" name="collation">"en_GB"</attribute>
+              <attribute datatype="string" name="field-delimiter">","</attribute>
+              <attribute datatype="string" name="header-row">"true"</attribute>
+              <attribute datatype="string" name="locale">"en_CA"</attribute>
+              <attribute datatype="string" name="single-char">""</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>date_received</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[date_received]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>date_received</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>routing_team</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[routing_team]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>routing_team</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag="0" name="LEN_RGB" />
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>product</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>product</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag="0" name="LEN_RGB" />
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>issue</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[issue]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>issue</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag="0" name="LEN_RGB" />
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>channel</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[channel]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>channel</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag="0" name="LEN_RGB" />
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>company_response</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[company_response]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>company_response</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag="0" name="LEN_RGB" />
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>complaint_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[complaint_count]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>complaint_count</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>narrative_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[narrative_count]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>narrative_count</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>timely_yes_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[timely_yes_count]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>timely_yes_count</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>timely_no_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[timely_no_count]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>timely_no_count</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>timely_unknown_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[timely_unknown_count]</local-name>
+            <parent-name>[complaint_daily.csv]</parent-name>
+            <remote-alias>timely_unknown_count</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled="yes" />
+      <column caption="complaint_daily.csv" datatype="table" name="[__tableau_internal_object_id__].[complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E]" role="measure" type="quantitative" />
+      <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+      <column caption="Company Response" datatype="string" name="[company_response]" role="dimension" type="nominal" />
+      <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+      <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+      <column caption="Issue" datatype="string" name="[issue]" role="dimension" type="nominal" />
+      <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+      <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+        <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+      </column>
+      <column caption="No Public Narrative" datatype="integer" default-format="#,##0" name="[no_narrative]" role="measure" type="quantitative">
+        <calculation class="tableau" formula="[complaint_count]-[narrative_count]" />
+      </column>
+      <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+        <aliases>
+          <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+          <alias key="&quot;Credit card&quot;" value="Credit card" />
+          <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+          <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+          <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+          <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+          <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+        </aliases>
+      </column>
+      <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+      <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+      <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+        <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+      </column>
+      <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+      <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+      <layout dim-ordering="alphabetic" measure-ordering="alphabetic" show-structure="true" />
+      <semantic-values>
+        <semantic-value key="[Country].[Name]" value="&quot;Canada&quot;" />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption="complaint_daily.csv" id="complaint_daily.csv_F9ECF8076E6A4D438712D32625E56A1E">
+            <properties context="">
+              <relation connection="textscan.0my3c2b06hxdr911qkbxj084tevo" name="complaint_daily.csv" table="[complaint_daily#csv]" type="table">
+                <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+                  <column datatype="date" name="date_received" ordinal="0" />
+                  <column datatype="string" name="routing_team" ordinal="1" />
+                  <column datatype="string" name="product" ordinal="2" />
+                  <column datatype="string" name="issue" ordinal="3" />
+                  <column datatype="string" name="channel" ordinal="4" />
+                  <column datatype="string" name="company_response" ordinal="5" />
+                  <column datatype="integer" name="complaint_count" ordinal="6" />
+                  <column datatype="integer" name="narrative_count" ordinal="7" />
+                  <column datatype="integer" name="timely_yes_count" ordinal="8" />
+                  <column datatype="integer" name="timely_no_count" ordinal="9" />
+                  <column datatype="integer" name="timely_unknown_count" ordinal="10" />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name="Company Responses">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Company Responses</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Company Response" datatype="string" name="[company_response]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[company_response]" derivation="None" name="[none:company_response:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="left" />
+          </style-rule>
+          <style-rule element="header">
+            <format attr="width" field="[federated.1figdwu091p4er1diuanl1ifsitg].[none:company_response:nk]" value="175" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[none:company_response:nk]&gt;
+</run>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1figdwu091p4er1diuanl1ifsitg].[none:company_response:nk]</rows>
+        <cols>[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]</cols>
+      </table>
+      <simple-id uuid="{CD501B3B-143F-4109-96EC-E0A0EA227827}" />
+    </worksheet>
+    <worksheet name="Complaints">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Complaints</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="center" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#19354a" fontsize="24">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+              <style-rule element="pane">
+                <format attr="text-align" value="center" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{1A9FB30A-151F-46C0-BF7F-7C832D8A21EA}" />
+    </worksheet>
+    <worksheet name="Complaints by Product">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Complaints by Product</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="left" />
+          </style-rule>
+          <style-rule element="header">
+            <format attr="width" field="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]" value="175" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]&gt;
+</run>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</rows>
+        <cols>[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]</cols>
+      </table>
+      <simple-id uuid="{F87ED4E3-7C54-4B8C-A499-62A1D5F87C26}" />
+    </worksheet>
+    <worksheet name="Daily Complaints">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Daily Complaints</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="left" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Line" />
+            <encodings>
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]&gt;
+</run>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="false" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]</rows>
+        <cols>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</cols>
+      </table>
+      <simple-id uuid="{6D102A16-D802-4012-9606-3A40D110EA83}" />
+    </worksheet>
+    <worksheet name="Issues - scroll to explore">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Issues - scroll to explore</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Issue" datatype="string" name="[issue]" role="dimension" type="nominal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[issue]" derivation="None" name="[none:issue:nk]" pivot="key" type="nominal" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="left" />
+          </style-rule>
+          <style-rule element="header">
+            <format attr="width" field="[federated.1figdwu091p4er1diuanl1ifsitg].[none:issue:nk]" value="185" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[none:issue:nk]&gt;
+</run>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1figdwu091p4er1diuanl1ifsitg].[none:issue:nk]</rows>
+        <cols>[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]</cols>
+      </table>
+      <simple-id uuid="{DEE88C9C-A54A-44C2-B4D0-03C472C23021}" />
+    </worksheet>
+    <worksheet name="Narrative Coverage">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Narrative Coverage</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="center" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#19354a" fontsize="24">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#217b88" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+              <style-rule element="pane">
+                <format attr="text-align" value="center" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{03B05763-2085-4971-A45C-331A3A3A9DEB}" />
+    </worksheet>
+    <worksheet name="Narrative Coverage by Product">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Narrative Coverage by Product</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="left" />
+          </style-rule>
+          <style-rule element="header">
+            <format attr="width" field="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]" value="175" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]&gt;
+</run>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#217b88" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</rows>
+        <cols>[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]</cols>
+      </table>
+      <simple-id uuid="{10B6DB3D-598B-44BD-A4A5-ACDDB36F4CCD}" />
+    </worksheet>
+    <worksheet name="No Public Narrative">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">No Public Narrative</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column caption="No Public Narrative" datatype="integer" default-format="#,##0" name="[no_narrative]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="[complaint_count]-[narrative_count]" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[no_narrative]" derivation="Sum" name="[sum:no_narrative:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="center" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:no_narrative:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#19354a" fontsize="24">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:no_narrative:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+              <style-rule element="pane">
+                <format attr="text-align" value="center" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{9D149C60-6042-43E7-94D1-EDAAD0A2208B}" />
+    </worksheet>
+    <worksheet name="Public Narrative Availability">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Public Narrative Availability</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column caption="No Public Narrative" datatype="integer" default-format="#,##0" name="[no_narrative]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="[complaint_count]-[narrative_count]" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[no_narrative]" derivation="Sum" name="[sum:no_narrative:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[:Measure Names]">
+            <groupfilter function="union">
+              <groupfilter function="member" level="[:Measure Names]" member="&quot;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&quot;" />
+              <groupfilter function="member" level="[:Measure Names]" member="&quot;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:no_narrative:qk]&quot;" />
+            </groupfilter>
+          </filter>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[:Measure Names]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="left" />
+          </style-rule>
+          <style-rule element="header">
+            <format attr="width" field="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]" value="175" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings>
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+              <color column="[federated.1figdwu091p4er1diuanl1ifsitg].[:Measure Names]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]&gt;
+</run>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="false" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</rows>
+        <cols>[federated.1figdwu091p4er1diuanl1ifsitg].[Multiple Values]</cols>
+      </table>
+      <simple-id uuid="{EF3C9508-D7CD-4892-B763-FBD8B8900F6C}" />
+    </worksheet>
+    <worksheet name="Public Narratives">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Public Narratives</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="center" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#19354a" fontsize="24">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+              <style-rule element="pane">
+                <format attr="text-align" value="center" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{A99FEC17-A7DD-428E-8E45-705AEDD09B79}" />
+    </worksheet>
+    <worksheet name="Simulated Team Workload">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Simulated Team Workload</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="left" />
+          </style-rule>
+          <style-rule element="header">
+            <format attr="width" field="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" value="175" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]&gt;
+</run>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</rows>
+        <cols>[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]</cols>
+      </table>
+      <simple-id uuid="{E0382F1B-B447-4CBA-88B1-0C17E9AAC754}" />
+    </worksheet>
+    <worksheet name="Timely Response Rate">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Timely Response Rate</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="center" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#19354a" fontsize="24">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+              <style-rule element="pane">
+                <format attr="text-align" value="center" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{4886A136-21D0-4C6E-82CB-F2011AC3821D}" />
+    </worksheet>
+    <worksheet name="Unknown Timeliness">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#19354a" fontsize="10">Unknown Timeliness</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+          </datasources>
+          <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+            <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+            <column caption="Complaint Count" datatype="integer" default-format="#,##0" name="[complaint_count]" role="measure" type="quantitative" />
+            <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+            <column caption="Narrative Count" datatype="integer" default-format="#,##0" name="[narrative_count]" role="measure" type="quantitative" />
+            <column caption="Narrative Coverage" datatype="real" default-format="p0.0%" name="[narrative_coverage]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([complaint_count]) &gt; 0 THEN SUM([narrative_count])/SUM([complaint_count]) END" />
+            </column>
+            <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+            <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+            <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+            <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+              <aliases>
+                <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+                <alias key="&quot;Credit card&quot;" value="Credit card" />
+                <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+                <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+                <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+                <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+                <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+              </aliases>
+            </column>
+            <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+            <column-instance column="[complaint_count]" derivation="Sum" name="[sum:complaint_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[narrative_count]" derivation="Sum" name="[sum:narrative_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_no_count]" derivation="Sum" name="[sum:timely_no_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_unknown_count]" derivation="Sum" name="[sum:timely_unknown_count:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_yes_count]" derivation="Sum" name="[sum:timely_yes_count:qk]" pivot="key" type="quantitative" />
+            <column caption="Timely No Count" datatype="integer" default-format="#,##0" name="[timely_no_count]" role="measure" type="quantitative" />
+            <column caption="Timely Response Rate" datatype="real" default-format="p0.0%" name="[timely_rate]" role="measure" type="quantitative">
+              <calculation class="tableau" formula="IF SUM([timely_yes_count])+SUM([timely_no_count]) &gt; 0 THEN SUM([timely_yes_count])/(SUM([timely_yes_count])+SUM([timely_no_count])) END" />
+            </column>
+            <column caption="Timely Unknown Count" datatype="integer" default-format="#,##0" name="[timely_unknown_count]" role="measure" type="quantitative" />
+            <column caption="Timely Yes Count" datatype="integer" default-format="#,##0" name="[timely_yes_count]" role="measure" type="quantitative" />
+            <column-instance column="[narrative_coverage]" derivation="User" name="[usr:narrative_coverage:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[timely_rate]" derivation="User" name="[usr:timely_rate:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[none:channel:nk]" filter-group="2">
+            <groupfilter function="level-members" level="[none:channel:nk]" />
+          </filter>
+          <filter class="quantitative" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" filter-group="4" included-values="in-range">
+            <min>#2026-07-01#</min>
+            <max>#2026-07-31#</max>
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]">
+            <groupfilter function="level-members" level="[none:product:nk]" />
+          </filter>
+          <filter class="categorical" column="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" filter-group="3">
+            <groupfilter function="level-members" level="[none:routing_team:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]</column>
+            <column>[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Tableau Book" />
+            <format attr="font-size" value="10" />
+            <format attr="text-align" value="center" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="zeroline">
+            <format attr="line-visibility" value="on" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <text column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]" />
+              <tooltip column="[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Complaints: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:complaint_count:qk]&gt;
+</run>
+                <run>Public narratives: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:narrative_count:qk]&gt;
+</run>
+                <run>Narrative coverage: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:narrative_coverage:qk]&gt;
+</run>
+                <run>Timely Yes: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_yes_count:qk]&gt;
+</run>
+                <run>Timely No: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_no_count:qk]&gt;
+</run>
+                <run>Unknown timeliness: &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;
+</run>
+                <run>Timely response rate (known): &lt;[federated.1figdwu091p4er1diuanl1ifsitg].[usr:timely_rate:qk]&gt;
+</run>
+                <run fontcolor="#687985" fontsize="9">US CFPB | July 2026 | Simulated routing teams
+Timely response does not establish resolution or satisfaction.</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#19354a" fontsize="24">&lt;[federated.1figdwu091p4er1diuanl1ifsitg].[sum:timely_unknown_count:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="color" value="#32658b" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+              <style-rule element="pane">
+                <format attr="text-align" value="center" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{2AD5C279-17F1-4125-B181-2B7388D5186E}" />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name="Complaint Overview">
+      <style />
+      <size maxheight="740" maxwidth="1200" minheight="740" minwidth="1200" />
+      <datasources>
+        <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+      </datasources>
+      <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+        <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+        <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+        <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+        <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+        <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+        <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+        <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+          <aliases>
+            <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+            <alias key="&quot;Credit card&quot;" value="Credit card" />
+            <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+            <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+            <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+            <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+            <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+          </aliases>
+        </column>
+        <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+      </datasource-dependencies>
+      <zones>
+        <zone h="100000" id="17" type-v2="layout-basic" w="100000" x="0" y="0">
+          <zone h="4865" id="1" type-v2="text" w="97333" x="1333" y="1081">
+            <formatted-text>
+              <run bold="true" fontcolor="#19354a" fontsize="20">COMPLAINT OVERVIEW</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="5946" id="2" type-v2="text" w="97333" x="1333" y="6081">
+            <formatted-text>
+              <run bold="false" fontcolor="#19354a" fontsize="9">US CFPB | Received 1–31 Jul 2026 | Snapshot downloaded 28 Sep 2026
+Simulated banking operations: 7 products / 5 teams. All filters apply to both pages.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="7432" id="3" mode="checkdropdown" name="Complaints" param="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]" type-v2="filter" w="30833" x="1333" y="12162">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="7432" id="4" mode="checkdropdown" name="Complaints" param="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" type-v2="filter" w="20000" x="32167" y="12162">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="7432" id="5" mode="checkdropdown" name="Complaints" param="[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]" type-v2="filter" w="19167" x="52167" y="12162">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="7432" id="6" mode="range" name="Complaints" param="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" type-v2="filter" w="27333" x="71333" y="12162">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="3514" id="7" type-v2="text" w="97333" x="1333" y="19865">
+            <formatted-text>
+              <run bold="false" fontcolor="#19354a" fontsize="8">Reset: choose (All) in each list and restore 1–31 July 2026. No public text does not mean no complaint description was submitted.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="10811" id="8" name="Complaints" w="23833" x="1333" y="23919">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="10811" id="9" name="Public Narratives" w="23833" x="25833" y="23919">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="10811" id="10" name="Timely Response Rate" w="23833" x="50333" y="23919">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="10811" id="11" name="Unknown Timeliness" w="23833" x="74833" y="23919">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="27703" id="12" name="Complaints by Product" w="47833" x="1333" y="35811">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="27703" id="13" name="Daily Complaints" w="47833" x="50833" y="35811">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="26081" id="14" name="Issues - scroll to explore" w="47833" x="1333" y="65541">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="26081" id="15" name="Company Responses" w="47833" x="50833" y="65541">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="6486" id="16" type-v2="text" w="97333" x="1333" y="92838">
+            <formatted-text>
+              <run bold="false" fontcolor="#19354a" fontsize="8">Timely response = Yes / (Yes + No); unknowns excluded. Timeliness is not resolution or satisfaction. Counts are not risk per customer.
+Source: CFPB Consumer Complaint Database. US proxy data; routing teams and operational scenario are simulated.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+        </zone>
+      </zones>
+      <simple-id uuid="{4337D1A0-30D0-4936-9AB2-A29987443F57}" />
+    </dashboard>
+    <dashboard name="Text Coverage and AI Readiness">
+      <style />
+      <size maxheight="740" maxwidth="1200" minheight="740" minwidth="1200" />
+      <datasources>
+        <datasource caption="complaint_daily" name="federated.1figdwu091p4er1diuanl1ifsitg" />
+      </datasources>
+      <datasource-dependencies datasource="federated.1figdwu091p4er1diuanl1ifsitg">
+        <column caption="Channel" datatype="string" name="[channel]" role="dimension" type="nominal" />
+        <column caption="Date Received" datatype="date" name="[date_received]" role="dimension" type="ordinal" />
+        <column-instance column="[channel]" derivation="None" name="[none:channel:nk]" pivot="key" type="nominal" />
+        <column-instance column="[date_received]" derivation="None" name="[none:date_received:qk]" pivot="key" type="quantitative" />
+        <column-instance column="[product]" derivation="None" name="[none:product:nk]" pivot="key" type="nominal" />
+        <column-instance column="[routing_team]" derivation="None" name="[none:routing_team:nk]" pivot="key" type="nominal" />
+        <column caption="Product" datatype="string" name="[product]" role="dimension" type="nominal">
+          <aliases>
+            <alias key="&quot;Checking or savings account&quot;" value="Checking / savings" />
+            <alias key="&quot;Credit card&quot;" value="Credit card" />
+            <alias key="&quot;Money transfer, virtual currency, or money service&quot;" value="Transfers / digital wallet" />
+            <alias key="&quot;Mortgage&quot;" value="Mortgage" />
+            <alias key="&quot;Payday loan, title loan, personal loan, or advance loan&quot;" value="Personal / payday / title loan" />
+            <alias key="&quot;Prepaid card&quot;" value="Prepaid card" />
+            <alias key="&quot;Vehicle loan or lease&quot;" value="Vehicle loan / lease" />
+          </aliases>
+        </column>
+        <column caption="Routing Team" datatype="string" name="[routing_team]" role="dimension" type="nominal" />
+      </datasource-dependencies>
+      <zones>
+        <zone h="100000" id="16" type-v2="layout-basic" w="100000" x="0" y="0">
+          <zone h="4865" id="1" type-v2="text" w="97333" x="1333" y="1081">
+            <formatted-text>
+              <run bold="true" fontcolor="#19354a" fontsize="20">TEXT COVERAGE AND AI READINESS</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="5946" id="2" type-v2="text" w="97333" x="1333" y="6081">
+            <formatted-text>
+              <run bold="false" fontcolor="#19354a" fontsize="9">US CFPB | Received 1–31 Jul 2026 | Snapshot downloaded 28 Sep 2026
+Simulated banking operations: 7 products / 5 teams. All filters apply to both pages.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="7432" id="3" mode="checkdropdown" name="Complaints" param="[federated.1figdwu091p4er1diuanl1ifsitg].[none:product:nk]" type-v2="filter" w="30833" x="1333" y="12162">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="7432" id="4" mode="checkdropdown" name="Complaints" param="[federated.1figdwu091p4er1diuanl1ifsitg].[none:routing_team:nk]" type-v2="filter" w="20000" x="32167" y="12162">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="7432" id="5" mode="checkdropdown" name="Complaints" param="[federated.1figdwu091p4er1diuanl1ifsitg].[none:channel:nk]" type-v2="filter" w="19167" x="52167" y="12162">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="7432" id="6" mode="range" name="Complaints" param="[federated.1figdwu091p4er1diuanl1ifsitg].[none:date_received:qk]" type-v2="filter" w="27333" x="71333" y="12162">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="3514" id="7" type-v2="text" w="97333" x="1333" y="19865">
+            <formatted-text>
+              <run bold="false" fontcolor="#19354a" fontsize="8">Reset: choose (All) in each list and restore 1–31 July 2026. No public text does not mean no complaint description was submitted.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="10811" id="8" name="Complaints" w="23833" x="1333" y="23919">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="10811" id="9" name="Public Narratives" w="23833" x="25833" y="23919">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="10811" id="10" name="Narrative Coverage" w="23833" x="50333" y="23919">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="10811" id="11" name="No Public Narrative" w="23833" x="74833" y="23919">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="27703" id="12" name="Narrative Coverage by Product" w="47833" x="1333" y="35811">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="27703" id="13" name="Public Narrative Availability" w="47833" x="50833" y="35811">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="26081" id="14" name="Simulated Team Workload" w="47833" x="1333" y="65541">
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="6486" id="15" type-v2="text" w="97333" x="1333" y="92838">
+            <formatted-text>
+              <run bold="false" fontcolor="#19354a" fontsize="8">Public narratives are a selective sample; labels are consumer-selected proxy targets. No model results or savings are claimed.
+Source: CFPB Consumer Complaint Database. Routing teams are simulated, not actual bank departments.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-color" value="#000000" />
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="3" />
+              <format attr="background-color" value="#ffffff" />
+            </zone-style>
+          </zone>
+          <zone h="26081" id="99" type-v2="text" w="47833" x="50833" y="65541">
+            <formatted-text>
+              <run bold="true" fontcolor="#19354a" fontsize="12">INTERPRETING AI READINESS
+
+</run>
+              <run fontcolor="#41566a" fontsize="10">Coverage = public narratives / all complaints after filters.
+
+Blue: public narrative. Orange: no public narrative.
+Hover bars for exact counts; missing text needs a fallback.
+
+Next gate: review labels, fix the evaluation split, compare baselines.
+
+One US month cannot establish Canadian demand, annual trends, model accuracy or operational savings.</run>
+            </formatted-text>
+          </zone>
+        </zone>
+      </zones>
+      <simple-id uuid="{C718EC35-7F0D-4768-89D2-18A83CC43933}" />
+    </dashboard>
+  </dashboards>
+  <windows source-height="30">
+    <window class="worksheet" name="Complaints">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{14A589A2-6293-4419-89A4-D36503963506}" />
+    </window>
+    <window class="worksheet" name="Public Narratives">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{41AB2D99-ABAC-45F4-8DD9-4371B33C3720}" />
+    </window>
+    <window class="worksheet" name="Timely Response Rate">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{D26F8B2D-E187-4790-9C53-756E11DA18A2}" />
+    </window>
+    <window class="worksheet" name="Unknown Timeliness">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{1AD26E3C-7FF2-4F98-8ECE-106ACA99CCBA}" />
+    </window>
+    <window class="worksheet" name="Narrative Coverage">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{1174FDF8-1A81-4DE4-8C40-760C72910BE1}" />
+    </window>
+    <window class="worksheet" name="No Public Narrative">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{BB61007B-4E89-4940-8027-5EC0C69F7BD4}" />
+    </window>
+    <window class="worksheet" name="Complaints by Product">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{E067625E-7B57-47CB-942A-A228C1763680}" />
+    </window>
+    <window class="worksheet" name="Daily Complaints">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{E46AA7D6-C3BA-478D-A91B-E6FBFE7DFAF8}" />
+    </window>
+    <window class="worksheet" name="Issues - scroll to explore">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="fit-width" />
+      </viewpoint>
+      <simple-id uuid="{5A6AF4FE-418F-4B1F-A929-59B178A1B496}" />
+    </window>
+    <window class="worksheet" name="Company Responses">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{CD3E48E2-9E24-4881-9A17-0AD90A4F442E}" />
+    </window>
+    <window class="worksheet" name="Simulated Team Workload">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{795A4818-F281-4AE3-99D3-7427F6BFEAC3}" />
+    </window>
+    <window class="worksheet" name="Narrative Coverage by Product">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{3DDC3B65-9BF6-4158-AFDA-EAD298359889}" />
+    </window>
+    <window class="worksheet" name="Public Narrative Availability">
+      <cards>
+        <edge name="left">
+          <strip size="160">
+            <card type="pages" />
+            <card type="filters" />
+            <card type="marks" />
+          </strip>
+        </edge>
+        <edge name="top">
+          <strip size="2147483647">
+            <card type="columns" />
+          </strip>
+          <strip size="2147483647">
+            <card type="rows" />
+          </strip>
+          <strip size="31">
+            <card type="title" />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{3E1E0387-0222-4A28-B640-9CC3505FCC1C}" />
+    </window>
+    <window class="dashboard" maximized="true" name="Text Coverage and AI Readiness">
+      <viewpoints>
+        <viewpoint name="Complaints">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Narrative Coverage">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Narrative Coverage by Product">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="No Public Narrative">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Public Narrative Availability">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Public Narratives">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Simulated Team Workload">
+          <zoom type="entire-view" />
+        </viewpoint>
+      </viewpoints>
+      <active id="-1" />
+      <simple-id uuid="{BD29C3AD-0F91-4F43-B892-71BC81ADA0C2}" />
+    </window>
+    <window class="dashboard" name="Complaint Overview">
+      <viewpoints>
+        <viewpoint name="Company Responses">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Complaints">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Complaints by Product">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Daily Complaints">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Issues - scroll to explore">
+          <zoom type="fit-width" />
+        </viewpoint>
+        <viewpoint name="Public Narratives">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Timely Response Rate">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Unknown Timeliness">
+          <zoom type="entire-view" />
+        </viewpoint>
+      </viewpoints>
+      <active id="-1" />
+      <simple-id uuid="{C44D543B-EDC0-4997-A0A0-9A1124BD50E4}" />
+    </window>
+  </windows>
+</workbook>

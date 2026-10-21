@@ -1,0 +1,220 @@
+{
+  "generated_at": "2026-10-21T05:46:27.367935+00:00",
+  "source": "CFPB July 2026 archive, seven-product routing scope, public narratives only",
+  "contains_text_or_ids": false,
+  "records_with_text": 6409,
+  "normalized_duplicate_excess_removed": 14,
+  "development_records": 4492,
+  "holdout_records": 1903,
+  "holdout_by_product": {
+    "Checking or savings account": 600,
+    "Credit card": 527,
+    "Money transfer, virtual currency, or money service": 227,
+    "Mortgage": 225,
+    "Payday loan, title loan, personal loan, or advance loan": 121,
+    "Prepaid card": 44,
+    "Vehicle loan or lease": 159
+  },
+  "majority_baseline": {
+    "label": "Checking or savings account",
+    "product_accuracy": 0.3153,
+    "product_macro_f1": 0.0685,
+    "team_accuracy": 0.3153
+  },
+  "tfidf_logistic_regression": {
+    "cross_validation_on_development": {
+      "product_accuracy": {
+        "mean": 0.7921,
+        "std": 0.0138
+      },
+      "product_macro_f1": {
+        "mean": 0.7272,
+        "std": 0.0235
+      },
+      "team_accuracy": {
+        "mean": 0.8043,
+        "std": 0.0109
+      }
+    },
+    "holdout": {
+      "product_accuracy": 0.8035,
+      "product_macro_f1": 0.7563,
+      "team_accuracy": 0.8166
+    },
+    "holdout_per_product": [
+      {
+        "product": "Checking or savings account",
+        "precision": 0.7896,
+        "recall": 0.7817,
+        "f1": 0.7856,
+        "support": 600
+      },
+      {
+        "product": "Credit card",
+        "precision": 0.833,
+        "recall": 0.852,
+        "f1": 0.8424,
+        "support": 527
+      },
+      {
+        "product": "Money transfer, virtual currency, or money service",
+        "precision": 0.6199,
+        "recall": 0.7401,
+        "f1": 0.6747,
+        "support": 227
+      },
+      {
+        "product": "Mortgage",
+        "precision": 0.9767,
+        "recall": 0.9333,
+        "f1": 0.9545,
+        "support": 225
+      },
+      {
+        "product": "Vehicle loan or lease",
+        "precision": 0.9007,
+        "recall": 0.8553,
+        "f1": 0.8774,
+        "support": 159
+      },
+      {
+        "product": "Payday loan, title loan, personal loan, or advance loan",
+        "precision": 0.7155,
+        "recall": 0.686,
+        "f1": 0.7004,
+        "support": 121
+      },
+      {
+        "product": "Prepaid card",
+        "precision": 0.8235,
+        "recall": 0.3182,
+        "f1": 0.459,
+        "support": 44
+      }
+    ],
+    "holdout_confusion": {
+      "Checking or savings account": {
+        "Checking or savings account": 469,
+        "Credit card": 49,
+        "Money transfer, virtual currency, or money service": 71,
+        "Mortgage": 0,
+        "Payday loan, title loan, personal loan, or advance loan": 5,
+        "Prepaid card": 1,
+        "Vehicle loan or lease": 5
+      },
+      "Credit card": {
+        "Checking or savings account": 42,
+        "Credit card": 449,
+        "Money transfer, virtual currency, or money service": 20,
+        "Mortgage": 3,
+        "Payday loan, title loan, personal loan, or advance loan": 7,
+        "Prepaid card": 1,
+        "Vehicle loan or lease": 5
+      },
+      "Money transfer, virtual currency, or money service": {
+        "Checking or savings account": 51,
+        "Credit card": 5,
+        "Money transfer, virtual currency, or money service": 168,
+        "Mortgage": 0,
+        "Payday loan, title loan, personal loan, or advance loan": 1,
+        "Prepaid card": 1,
+        "Vehicle loan or lease": 1
+      },
+      "Mortgage": {
+        "Checking or savings account": 3,
+        "Credit card": 2,
+        "Money transfer, virtual currency, or money service": 1,
+        "Mortgage": 210,
+        "Payday loan, title loan, personal loan, or advance loan": 9,
+        "Prepaid card": 0,
+        "Vehicle loan or lease": 0
+      },
+      "Payday loan, title loan, personal loan, or advance loan": {
+        "Checking or savings account": 14,
+        "Credit card": 15,
+        "Money transfer, virtual currency, or money service": 3,
+        "Mortgage": 2,
+        "Payday loan, title loan, personal loan, or advance loan": 83,
+        "Prepaid card": 0,
+        "Vehicle loan or lease": 4
+      },
+      "Prepaid card": {
+        "Checking or savings account": 13,
+        "Credit card": 9,
+        "Money transfer, virtual currency, or money service": 8,
+        "Mortgage": 0,
+        "Payday loan, title loan, personal loan, or advance loan": 0,
+        "Prepaid card": 14,
+        "Vehicle loan or lease": 0
+      },
+      "Vehicle loan or lease": {
+        "Checking or savings account": 2,
+        "Credit card": 10,
+        "Money transfer, virtual currency, or money service": 0,
+        "Mortgage": 0,
+        "Payday loan, title loan, personal loan, or advance loan": 11,
+        "Prepaid card": 0,
+        "Vehicle loan or lease": 136
+      }
+    },
+    "threshold_curve_development_out_of_fold": [
+      {
+        "threshold": 0.5,
+        "auto_route_share": 0.2398,
+        "team_accuracy_on_auto_routed": 0.9443
+      },
+      {
+        "threshold": 0.6,
+        "auto_route_share": 0.1113,
+        "team_accuracy_on_auto_routed": 0.97
+      },
+      {
+        "threshold": 0.7,
+        "auto_route_share": 0.045,
+        "team_accuracy_on_auto_routed": 0.995
+      },
+      {
+        "threshold": 0.8,
+        "auto_route_share": 0.0167,
+        "team_accuracy_on_auto_routed": 1.0
+      },
+      {
+        "threshold": 0.9,
+        "auto_route_share": 0.0007,
+        "team_accuracy_on_auto_routed": 1.0
+      }
+    ],
+    "threshold_curve_holdout_confirmation": [
+      {
+        "threshold": 0.5,
+        "auto_route_share": 0.31,
+        "team_accuracy_on_auto_routed": 0.9644
+      },
+      {
+        "threshold": 0.6,
+        "auto_route_share": 0.176,
+        "team_accuracy_on_auto_routed": 0.9791
+      },
+      {
+        "threshold": 0.7,
+        "auto_route_share": 0.0751,
+        "team_accuracy_on_auto_routed": 0.986
+      },
+      {
+        "threshold": 0.8,
+        "auto_route_share": 0.0347,
+        "team_accuracy_on_auto_routed": 1.0
+      },
+      {
+        "threshold": 0.9,
+        "auto_route_share": 0.0058,
+        "team_accuracy_on_auto_routed": 1.0
+      }
+    ]
+  },
+  "environment": {
+    "python": "3.12.14",
+    "duckdb": "1.4.4",
+    "scikit_learn": "1.7.2"
+  }
+}

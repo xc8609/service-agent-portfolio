@@ -36,6 +36,9 @@ cost savings and production outcomes are not yet claimed.
   adapters, persisted runs, source citations and human approval boundaries.
 - **Data and delivery evidence:** reconciled SQL exports, a Tableau workbook,
   automated tests, CI and a reproducible local deployment.
+- **Real-data analytics:** [complaint operations analytics](projects/complaint-analytics/README.md)
+  on 27,011 public CFPB complaints — SQL profiling, Tableau, findings and a
+  frozen-split routing baseline (81.7% team accuracy vs 31.5% majority).
 
 **Stack:** React/TypeScript · FastAPI/Python · PostgreSQL · SQL/Tableau · Docker Compose.
 
@@ -51,6 +54,7 @@ apps/web/                         React/TypeScript workspace + browser tests
 services/api/                     FastAPI, PostgreSQL migrations + API tests
   bank_api/agent/                 Bounded runtime, provider adapters + server selection
   bank_api/integrations/          Offline source-mapping validation
+projects/complaint-analytics/     Real public complaint data: SQL, Tableau, results
 projects/bank-service-assist/
   docs/                          Business analysis, decisions + Sprint evidence
   specs/<STORY-ID>/               spec, design, tasks, acceptance
