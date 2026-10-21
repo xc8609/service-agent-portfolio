@@ -1,0 +1,59 @@
+{
+  "status": "reconciled",
+  "aggregate_rows": 5228,
+  "totals": {
+    "complaint_count": 27011,
+    "narrative_count": 6409,
+    "timely_yes_count": 26620,
+    "timely_no_count": 391,
+    "timely_unknown_count": 0
+  },
+  "by_product": [
+    {
+      "routing_team": "Cards",
+      "product": "Credit card",
+      "complaints": 8027,
+      "narratives": 1822
+    },
+    {
+      "routing_team": "Cards",
+      "product": "Prepaid card",
+      "complaints": 530,
+      "narratives": 134
+    },
+    {
+      "routing_team": "Consumer Lending",
+      "product": "Payday loan, title loan, personal loan, or advance loan",
+      "complaints": 1793,
+      "narratives": 410
+    },
+    {
+      "routing_team": "Consumer Lending",
+      "product": "Vehicle loan or lease",
+      "complaints": 2158,
+      "narratives": 509
+    },
+    {
+      "routing_team": "Everyday Banking",
+      "product": "Checking or savings account",
+      "complaints": 7963,
+      "narratives": 2025
+    },
+    {
+      "routing_team": "Home Lending",
+      "product": "Mortgage",
+      "complaints": 3066,
+      "narratives": 728
+    },
+    {
+      "routing_team": "Payments",
+      "product": "Money transfer, virtual currency, or money service",
+      "complaints": 3474,
+      "narratives": 781
+    }
+  ],
+  "source_manifest": "data/source-manifest.json",
+  "source_window": "2026-07-01 through 2026-07-31",
+  "scope": "sql/03_routing_scope.sql",
+  "contains_narratives_or_complaint_ids": false
+}

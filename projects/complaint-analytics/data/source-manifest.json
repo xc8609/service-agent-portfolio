@@ -1,0 +1,32 @@
+{
+  "source_page": "https://www.consumerfinance.gov/foia-requests/foia-electronic-reading-room/cfpb-consumer-complaint-database-narratives-archive/",
+  "url": "https://files.consumerfinance.gov/f/documents/CCDB_Export_20_July_2026.zip",
+  "retrieved_at_utc": "2026-09-28T16:30:57.154501+00:00",
+  "retrieval_time_basis": "Local archive file modification time at initial download",
+  "archive_bytes": 16958404,
+  "archive_sha256": "aafebbaaf0962c3d29532411ac2133c01bae830b7ea6ed1931a6e42278437d18",
+  "csv_file": "CCDB_Export_20_July_2026.csv",
+  "csv_bytes": 216250982,
+  "csv_sha256": "beb05a0a61e1ccfe186ad1f7c6ab062bc7a089f7bda28adfe7e6c4c9ccefa57c",
+  "header": [
+    "Date received",
+    "Product",
+    "Sub-product",
+    "Issue",
+    "Sub-issue",
+    "Consumer complaint narrative",
+    "Company public response",
+    "Company",
+    "State",
+    "ZIP code",
+    "Tags",
+    "Submitted via",
+    "Date sent to company",
+    "Company response to consumer",
+    "Timely response?",
+    "Complaint ID"
+  ],
+  "selection": "Entire official July 2026 archive member, no row filter",
+  "terms_url": "https://www.consumerfinance.gov/privacy/website-privacy-policy/",
+  "use_statement_url": "https://www.consumerfinance.gov/data-research/consumer-complaints/"
+}
