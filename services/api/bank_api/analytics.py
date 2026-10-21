@@ -84,16 +84,23 @@ def snapshot(conn, cutoff):
     add("Proposals", "All proposals", "all", len(proposals))
     for state in ("accepted_unchanged", "accepted_edited", "rejected", "pending"):
         add("Proposals", "Disposition", state, sum(r["disposition"] == state for r in proposals))
-    decided = sum(r["disposition"] != "pending" for r in proposals)
-    accepted = sum(r["status"] == "committed" for r in proposals)
-    add("Proposals", "Decided denominator", "all", decided)
-    add(
-        "Proposals",
-        "Accepted proportion",
-        "decided only",
-        accepted / decided if decided else None,
-        "observed_synthetic" if decided else "unavailable",
-    )
+    for segment, subset in (
+        ("all", proposals),
+        ("agent", [r for r in proposals if r["origin"] == "agent"]),
+        ("staff", [r for r in proposals if r["origin"] == "staff"]),
+    ):
+        decided = sum(r["disposition"] != "pending" for r in subset)
+        accepted = sum(r["status"] == "committed" for r in subset)
+        if segment != "all":
+            add("Proposals", "Origin", segment, len(subset))
+        add("Proposals", "Decided denominator", segment, decided)
+        add(
+            "Proposals",
+            "Accepted proportion",
+            "decided only" if segment == "all" else segment + " drafts, decided only",
+            accepted / decided if decided else None,
+            "observed_synthetic" if decided else "unavailable",
+        )
     add("Contact history", "Lifetime recorded outcomes", "all", oracle["attempts"])
     for kind in ("initial", "lead_approved"):
         subset = [r for r in plans if r["kind"] == kind]
