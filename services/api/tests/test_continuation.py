@@ -8,7 +8,16 @@ from bank_api.config import Settings
 from bank_api.fixtures import uid
 from conftest import NOW, session
 from fastapi.testclient import TestClient
-from test_workflow import attempt, call, detail, pair, review, setup_feedback
+from test_workflow import (
+    attempt,
+    call,
+    detail,
+    find_work,
+    pair,
+    publish,
+    review,
+    setup_feedback,
+)
 
 
 def test_holiday_dst_and_boundary_calendar():
@@ -280,3 +289,149 @@ def test_three_daily_attempts_exhaust_without_closing(environment):
             c.execute("SELECT closed_at FROM cases WHERE id=%s", (w["case_id"],)).fetchone()[0]
             is None
         )
+
+
+def verified_callback(client, h, w, opened):
+    review(client, h, w, opened["contact_id"])
+    call(
+        client,
+        h,
+        "demo_callback_verification",
+        {
+            "callback_contact_id": opened["contact_id"],
+            "scenario": "verified",
+            "operation_key": str(uuid4()),
+        },
+    )
+    r = call(
+        client,
+        h,
+        "record_callback_attempt",
+        attempt(client, h, w, opened, "connected_verified", "connected"),
+    )
+    assert r.status_code == 200, r.text
+
+
+def close_case(client, h, w):
+    d = detail(client, h, w)
+    return call(
+        client,
+        h,
+        "close_case",
+        {
+            **pair(w),
+            "expected_case_version": d["work"]["case_version"],
+            "expected_work_version": d["work"]["version"],
+            "reason": "All required work checked and feedback delivered.",
+            "operation_key": str(uuid4()),
+        },
+    )
+
+
+def complete_unrelated_seed_work(admin, case_id):
+    # Test setup only: seeded external work/actions are outside this scenario.
+    with psycopg.connect(admin) as c:
+        c.execute(
+            "UPDATE work_items SET status='completed' WHERE case_id=%s AND kind NOT IN ('material_followup','customer_feedback') AND status NOT IN ('completed','cancelled')",
+            (case_id,),
+        )
+        c.execute(
+            "UPDATE required_actions SET status='completed',receipt_ref='synthetic-independent-receipt' WHERE case_id=%s",
+            (case_id,),
+        )
+
+
+def test_closed_case_rejects_a_new_result_without_objection(environment):
+    client, admin, *_ = environment
+    sh, sw, h, w, opened = setup_feedback(client)
+    verified_callback(client, h, w, opened)
+    complete_unrelated_seed_work(admin, w["case_id"])
+    assert close_case(client, h, w).status_code == 200
+    again, _ = publish(client, sh, sw)
+    assert again.status_code == 409
+    with psycopg.connect(admin) as c:
+        status, closed_at = c.execute(
+            "SELECT status,closed_at FROM cases WHERE id=%s", (w["case_id"],)
+        ).fetchone()
+        assert status == "closed" and closed_at == NOW
+        assert (
+            c.execute(
+                "SELECT count(*) FROM investigation_results WHERE case_id=%s", (w["case_id"],)
+            ).fetchone()[0]
+            == 1
+        )
+
+
+def request_material(client, sh, sw):
+    d = detail(client, sh, sw)
+    r = call(
+        client,
+        sh,
+        "request_material",
+        {
+            **pair(sw),
+            "expected_case_version": d["work"]["case_version"],
+            "question": "Please provide the purchase receipt if available.",
+            "operation_key": str(uuid4()),
+        },
+    )
+    assert r.status_code == 200, r.text
+    return r.json()["data"]["domain_ref"]
+
+
+def test_material_answer_returns_work_to_specialist_and_finding_supersedes_open_requests(
+    environment,
+):
+    client, admin, *_ = environment
+    sh, _ = session(client, "specialist")
+    sw = find_work(client, sh, "specialist_investigation", uid("duplicate_case"))
+    original = detail(client, sh, sw)["work"]["original_due_at"]
+    answered = request_material(client, sh, sw)
+    assert detail(client, sh, sw)["work"]["status"] == "awaiting_documents"
+    fh, _ = session(client, "feedback_other")
+    mw = {"id": answered, "case_id": sw["case_id"]}
+    claim = call(
+        client,
+        fh,
+        "claim_feedback_task",
+        {**pair(mw), "expected_work_version": 1, "operation_key": str(uuid4())},
+    )
+    assert claim.status_code == 200, claim.text
+    declined = call(
+        client,
+        fh,
+        "record_followup",
+        {
+            **pair(mw),
+            "expected_work_version": detail(client, fh, mw)["work"]["version"],
+            "state": "declined",
+            "statement": "Customer declined to provide a receipt.",
+            "evidence_refs": [],
+            "method_ref": None,
+            "operation_key": str(uuid4()),
+        },
+    )
+    assert declined.status_code == 200, declined.text
+    d = detail(client, sh, sw)
+    assert d["work"]["status"] == "investigating"
+    assert d["work"]["original_due_at"] == original
+    assert [f["state"] for f in d["followup"]] == ["declined"]
+    unanswered = request_material(client, sh, sw)
+    _, _, h, w, opened = setup_feedback(client)
+    verified_callback(client, h, w, opened)
+    complete_unrelated_seed_work(admin, w["case_id"])
+    with psycopg.connect(admin) as c:
+        states = dict(
+            c.execute(
+                "SELECT id::text,status FROM work_items WHERE id IN (%s,%s)", (answered, unanswered)
+            ).fetchall()
+        )
+        assert states == {answered: "completed", unanswered: "cancelled"}
+        assert (
+            c.execute(
+                "SELECT count(*) FROM evidence_requests WHERE case_id=%s", (w["case_id"],)
+            ).fetchone()[0]
+            == 2
+        )
+    closed = close_case(client, h, w)
+    assert closed.status_code == 200, closed.text

@@ -91,13 +91,59 @@ def test_proposal_multiple_edits_are_one_decision(environment, tmp_path):
     _, unchanged = draft(client, h, contact)
     assert post(client, h, "approve_and_commit_proposal", approve(unchanged)).status_code == 200
     draft(client, h, contact)
+    _, declined = draft(client, h, contact)
+    rejected = post(client, h, "reject_proposal", reject(declined))
+    assert rejected.status_code == 200, rejected.text
     _, _, values = read(environment, tmp_path)
-    assert values[("All proposals", "all")] == "3"
+    assert values[("All proposals", "all")] == "4"
     assert values[("Disposition", "accepted_edited")] == "1"
     assert values[("Disposition", "accepted_unchanged")] == "1"
+    assert values[("Disposition", "rejected")] == "1"
     assert values[("Disposition", "pending")] == "1"
-    assert values[("Decided denominator", "all")] == "2"
-    assert values[("Accepted proportion", "decided only")] == "1.0"
+    assert values[("Decided denominator", "all")] == "3"
+    assert float(values[("Accepted proportion", "decided only")]) == 2 / 3
+    assert values[("Origin", "staff")] == "4" and values[("Origin", "agent")] == "0"
+    assert values[("Accepted proportion", "agent drafts, decided only")] == ""
+
+
+def reject(data, **changes):
+    return {
+        "proposal_id": data["proposal_id"],
+        "expected_proposal_version": int(data["proposal_version"]),
+        "reason": "Draft does not reflect the customer's recognition; not committed.",
+        "operation_key": str(uuid4()),
+        **changes,
+    }
+
+
+def test_agent_draft_rejection_is_a_separate_human_decision(environment, tmp_path):
+    client, h, p, runtime = initial(environment)
+    r = client.post("/v1/assistant/run", headers=h, json=p)
+    assert r.status_code == 200, r.text
+    proposal = r.json()["output"]["proposal_id"]
+    other, _ = session(client, "unverified")
+    command = reject({"proposal_id": proposal, "proposal_version": "1"})
+    assert post(client, other, "reject_proposal", command).status_code in (401, 404)
+    # Evidence drift blocks approval but never prevents a human from declining the draft.
+    with psycopg.connect(environment[1]) as conn:
+        conn.execute(
+            "UPDATE card_transactions SET version=version+1 WHERE id=%s",
+            (p["transaction_ids"][0],),
+        )
+    declined = post(client, h, "reject_proposal", command)
+    assert declined.status_code == 200, declined.text
+    assert post(client, h, "reject_proposal", command).json() == declined.json()
+    assert (
+        post(client, h, "reject_proposal", {**command, "operation_key": str(uuid4())}).status_code
+        == 409
+    )
+    with psycopg.connect(environment[1]) as conn:
+        assert conn.execute("SELECT count(*) FROM contact_notes").fetchone()[0] == 0
+    # The run stamps its draft after elapsed runtime, so the cutoff follows the run.
+    _, _, values = read(environment, tmp_path, NOW + timedelta(minutes=1))
+    assert values[("Origin", "agent")] == "1"
+    assert values[("Decided denominator", "agent")] == "1"
+    assert values[("Accepted proportion", "agent drafts, decided only")] == "0.0"
 
 
 def test_never_dialed_fault_and_replayed_actual_attempt(environment, tmp_path):
