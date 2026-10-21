@@ -3,7 +3,7 @@
 Current S02 forecast: **S03**. Updated effort: Dev 3, BA 0.5, QA 0.5 person-days (4 total); dependencies DEV-02, BA-06. This supersedes older forecast/estimate lines below. Contract version 0.4; runtime implementation pending.
 
 BANK-SDD-v0.2 · 19 October 2026
-Status: Detailed specification candidate; implementation not started. Business decisions accepted only as listed; technical design/Ready gates pending.
+Status: Read slice implemented in PR #1; full story acceptance pending. Business decisions accepted only as listed; technical design/Ready gates pending.
 Forecast: S03 | Release: B0 manual path / B1 assisted path.
 Estimate: Dev 3, BA 0.5, QA 0.5 person-days; total 4 (3–6), confidence medium. Not actual effort.
 
@@ -43,3 +43,18 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 ## Traceability
 
 [Design](design.md) · [Tasks](tasks.md) · [Acceptance record](acceptance.md) · [Tool contracts](../contracts/agent-tools.md) · [Review increment](../../docs/sprint-01/workflow-increment.md).
+
+## Current implementation slice — 20 October 2026
+
+[Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md). Only the explicitly mapped read-path cases have executed evidence. The historical contract/forecast above remains the full-story scope; no owner UAT, worker, write-effect or model acceptance is implied.
+
+## Accepted intake continuation — 20 October 2026
+
+D-23–D-25 are accepted simulated rules. See the [DEV-07 intake card](../DEV-07/referral-intake-review.md)
+and [readiness review](../DEV-07/referral-readiness.md). Paired unresolved
+recognition must remain explicit; missing material may follow at specialist
+request through customer service; unusable contact details do not block enquiry.
+Customer service owns contact resolution. Preserve original deadlines and
+separate investigation completion from feedback delivery; no automatic closure
+for undelivered feedback. These rules do not accept implementation or extend
+existing call quotas; supplementation-call accounting still needs a scoped review.

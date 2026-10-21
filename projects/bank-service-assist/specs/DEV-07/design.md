@@ -23,3 +23,11 @@ Use explicit foreign keys among contact, case, work item, result, attempt and pr
 ## Deployment
 
 Ship through existing API/worker/UI release, with migration and fixture updates. Verify permissions, pending-event replay and rollback/restore in staging before acceptance. This story does not provision infrastructure or contact real customers.
+
+## Intake refinement design gate
+
+D-23–D-25 are accepted; [readiness review](referral-readiness.md) identifies
+missing typed fields, append-only evidence, customer-service contact-gap work,
+independent feedback state and migration/permission tests. Proposed engineering
+shape is not a deployed contract. Extend shared schemas and persistence together
+before accepting referral writes; keep commands outside model tools.

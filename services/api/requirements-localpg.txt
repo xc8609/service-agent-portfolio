@@ -1,0 +1,5 @@
+# Optional local test runner only; not used in containers or deployment.
+pgserver==0.1.4
+fasteners==0.20
+platformdirs==4.13.5
+psutil==7.2.2

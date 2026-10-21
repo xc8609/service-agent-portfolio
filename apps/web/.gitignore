@@ -1,0 +1,5 @@
+# App verification output and local PostgreSQL runner
+.ruff_cache/
+test-results/
+playwright-report/
+*.log

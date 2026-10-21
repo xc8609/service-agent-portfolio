@@ -23,3 +23,13 @@ Use explicit foreign keys among contact, case, work item, result, attempt and pr
 ## Deployment
 
 Ship through existing API/worker/UI release, with migration and fixture updates. Verify permissions, pending-event replay and rollback/restore in staging before acceptance. This story does not provision infrastructure or contact real customers.
+
+## First core increment — D-26
+
+Start with one bounded evidence-and-draft path over working domain services,
+with manual fallback and one qualified provider. No multi-agent architecture or
+additional live providers are required to demonstrate the first value hypothesis.
+Use the [runtime module boundary](../../../../services/api/bank_api/agent/README.md)
+and [architecture map](../../../../docs/architecture.md). Durable continuation
+is later work within this story; do not mark the full story Done from an initial
+assistant demo. Provider-neutral design does not prove provider compatibility.

@@ -15,7 +15,7 @@ Owner relevance: representative desktop, customer-information lookup and process
 
 ## Scope and authority
 
-Requirements: FR-09, FR-10, FR-13, FR-16. Decisions: D-12, D-13. Dependencies: DEV-03, DEV-05, DEV-06, BA-09.
+Requirements: FR-09, FR-10, FR-13, FR-16. Decisions: D-12, D-13, D-23–D-25. Dependencies: DEV-03, DEV-05, DEV-06, BA-09.
 Synthetic records and policies only. Financial execution, real outbound calls, App messaging and a full specialist adjudication platform are excluded.
 
 ## Main flow
@@ -24,6 +24,20 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 2. Draft the concern, transaction references, checked facts, missing evidence and requested review.
 3. Person approves; backend rechecks scope, versions, queue eligibility and duplicate keys.
 4. Commit Case, WorkItem, Audit and Outbox atomically; display the real operation receipt.
+
+## Accepted intake rules — D-23–D-25
+
+- One recognized purchase with indistinguishable entries: submit the pair with
+  unresolved mapping; neither representative nor agent invents the duplicate.
+- Missing supporting material: enquiry may proceed; specialist requests needed
+  supplementation, customer service follows up; preserve processing deadlines.
+- Unusable contact details: enquiry may proceed with customer-service contact
+  resolution; preserve deadlines; undelivered feedback never automatically closes
+  the case. Investigation and feedback states remain separate.
+
+These are accepted simulated business rules. The [detailed intake card](referral-intake-review.md)
+and [readiness gaps](referral-readiness.md) define implementation follow-through;
+v0.4 payloads and the running read-only demo do not yet implement this workflow.
 
 ## Acceptance criteria
 
@@ -35,6 +49,13 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 - **DEV-07-AC06** — Given The model states a request was submitted without a receipt; when the UI renders the result; then show a draft or unknown operation state, never a false submitted status. Evidence: DEV-07-T06 (planned, not executed).
 
 ## Ready gates
+
+- Review the [one-purchase/two-posted-entries intake refinement](referral-intake-review.md):
+  mandatory information, deferred evidence, paired ambiguity and contact gaps.
+  RI-AC02 is supported by accepted D-23; evidence deferral and deadline
+  preservation in RI-AC04/10 by D-24; contact-gap continuation in RI-AC05/15/16/17 by D-25.
+  Detailed technical representations remain proposed.
+  None is implemented v0.4 contract behavior.
 
 - Queue routing configuration and permitted referral reasons need BA-06 sign-off.
 - Review data/permission contracts, exact fixtures, dependencies and observable results before moving to Ready.

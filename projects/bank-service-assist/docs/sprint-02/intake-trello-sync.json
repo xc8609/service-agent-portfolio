@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-20",
+  "marker": "BANK-INTAKE-D23-D25-v1",
+  "board": "https://trello.com/b/wtNhuN0q/ai-agent",
+  "decisions": [
+    "D-23",
+    "D-24",
+    "D-25"
+  ],
+  "method": "Read existing Markdown using Trello UI; prepend accepted decisions and card-specific impact; save; verify rendered description. Existing text retained.",
+  "cards": [
+    {
+      "id": "DEV-07",
+      "url": "https://trello.com/c/Mjwlq4sb/18-dev-07-create-justified-follow-up-work-with-ownership-and-reliable-delivery",
+      "saved_and_verified": true,
+      "marked_done": false,
+      "reopened_and_verified": true
+    },
+    {
+      "id": "DEV-03",
+      "url": "https://trello.com/c/N5Y4v779/14-dev-03-investigate-a-possible-duplicate-charge-from-transaction-evidence",
+      "saved_and_verified": true,
+      "marked_done": false,
+      "reopened_and_verified": true
+    },
+    {
+      "id": "DEV-11",
+      "url": "https://trello.com/c/e0Hg2a8s/52-dev-11-receive-specialist-findings-and-complete-a-verified-customer-callback",
+      "saved_and_verified": true,
+      "marked_done": false,
+      "reopened_and_verified": true
+    },
+    {
+      "id": "DEV-12",
+      "url": "https://trello.com/c/kymdAvg6/53-dev-12-retry-unanswered-callbacks-and-guard-normal-closure",
+      "saved_and_verified": true,
+      "marked_done": false,
+      "reopened_and_verified": true
+    },
+    {
+      "id": "BA-06",
+      "url": "https://trello.com/c/CQj4rKaR/8-ba-06-business-rules-decision-tables-and-case-state-model",
+      "saved_and_verified": true,
+      "marked_done": false,
+      "reopened_and_verified": true
+    },
+    {
+      "id": "BA-07",
+      "url": "https://trello.com/c/S77lT3Se/9-ba-07-data-contracts-provenance-quality-and-privacy-requirements",
+      "saved_and_verified": true,
+      "marked_done": false,
+      "reopened_and_verified": true
+    },
+    {
+      "id": "BA-09",
+      "url": "https://trello.com/c/1xqnJCOn/11-ba-09-baseline-specifications-api-contracts-and-change-impact-review",
+      "saved_and_verified": true,
+      "marked_done": false,
+      "reopened_and_verified": true
+    },
+    {
+      "id": "S02",
+      "url": "https://trello.com/c/CBFn48oC/41-s02-w3-4-rules-data-contracts-and-executable-foundation",
+      "saved_and_verified": true,
+      "marked_done": false,
+      "reopened_and_verified": true
+    }
+  ],
+  "runtime_tests_executed": false,
+  "owner_acceptance": "RI-01\u201303 business decisions only; implementation and UAT pending.",
+  "persistence_verification": "Reopened all eight cards after saving; DEV-07 explicitly refreshed and original DEV-07-AC06 plus RI-AC17 verified.",
+  "baseline_preservation": "DEV-07 historical spec/design/tasks restored from the matching committed baseline after clipboard readback mismatch; verified correct card content after reload. Other seven original Markdown descriptions retained.",
+  "github_publication_at_sync": "Local documentation edits pending commit/push; no remote publication asserted.",
+  "publication_pr": "https://github.com/xc8609/service-agent-portfolio/pull/1"
+}

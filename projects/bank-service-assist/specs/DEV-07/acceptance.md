@@ -14,3 +14,14 @@ Implementation: not started. Runtime tests: not executed. Actual reviewer: not y
 | DEV-07-AC06 | DEV-07-T06 | show a draft or unknown operation state, never a false submitted status | Pending implementation | Not executed |
 
 Structural validation of specifications is reported separately in workflow-validation.json and does not pass these tests. Record environment, fixture/calendar/policy/provider versions, commands, actual output, defects and review decision when run.
+
+## Intake refinement — business decisions accepted; runtime pending
+
+[RI-AC01–17 and planned RI-T01–17](referral-intake-review.md) cover required
+information, deferred evidence, paired ambiguity, contact gaps and review
+continuation. RI-01 is owner-accepted as D-23, supporting RI-AC02; RI-02 is
+accepted as D-24, supporting evidence deferral and deadline preservation in
+RI-AC04/10. RI-03 is accepted as D-25, supporting RI-AC05/15/16/17.
+All runtime tests remain not executed. Technical controls still require contract
+review. This does
+not change the status of DEV-07-AC01–06 above.

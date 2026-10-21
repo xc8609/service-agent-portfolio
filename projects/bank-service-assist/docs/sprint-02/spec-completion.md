@@ -17,4 +17,4 @@
 
 ## Remaining decisions and evidence
 
-The six rules need no repeat approval. Proposed 15% lookup improvement and model budgets require experiment/spike review before evaluation/B1. Dependency versions require compatibility installation, not a speculative version pin. GitHub URL/setup and portfolio-only export remain open. SQL/runtime/UI/model/cloud checks have not run in this specification pass. Keep role estimates provisional; re-estimate if implementation reveals added scope.
+The six rules need no repeat approval. Proposed 15% lookup improvement and model budgets require experiment/spike review before evaluation/B1. Dependency versions require compatibility installation, not a speculative version pin. The public MIT repository is initialized; see [current runtime increment](implementation/lookup-slice.md) for first-PR scope and remaining contribution gates. SQL/runtime/UI/model/cloud checks have not run in this specification pass. Keep role estimates provisional; re-estimate if implementation reveals added scope.

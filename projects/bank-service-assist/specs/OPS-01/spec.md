@@ -1,6 +1,6 @@
 # OPS-01 — Package the application and establish CI release artifacts
 
-BANK-S02-v0.4 · Detailed specification candidate; implementation not started.
+BANK-S02-v0.4 · Read slice implemented in PR #1; full story acceptance pending.
 Forecast: S02 | Release: B0/B1 | Estimate: Dev 2, BA 0, QA 0.5 person-days. Provisional until technical review.
 
 ## Business purpose and scope
@@ -33,3 +33,7 @@ Requirements: OR-01. Dependencies: DEV-01, QA-01.
 Ready requires versioned technical contract/fixtures, validated dependencies and a story walkthrough. Business rules D-17–D-22 are accepted; proposed business-benefit targets and model budgets are not silently approved. Platform stories can proceed against explicitly frozen draft contracts; dependent workflow acceptance requires those contracts implemented. Done requires the listed tests and review evidence, not merely this document.
 
 [Design](design.md) · [Tasks](tasks.md) · [Acceptance](acceptance.md) · [Current contracts](../contracts/interface-notes.md)
+
+## Current implementation slice — 20 October 2026
+
+[Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md). Only the explicitly mapped read-path cases have executed evidence. The historical contract/forecast above remains the full-story scope; no owner UAT, worker, write-effect or model acceptance is implied.

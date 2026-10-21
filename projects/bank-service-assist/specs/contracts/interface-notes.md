@@ -34,3 +34,13 @@ Timers and source events persist durable work before any model run. Claims/appro
 ## Limits and release gates
 
 Proposed engineering limits remain 8 tool calls, 4 model turns, 10 seconds per read and 60 seconds per run; validate in the provider spike before B1. The proposed 15% business lookup improvement is a review hypothesis, not an accepted result or requirement already met. Readiness depends on reviewed fixtures/configuration and runtime evidence at the appropriate stage. Contract schema checks do not test PostgreSQL, actual permissions, live providers, UI, UAT or deployment.
+
+## Accepted intake extension pending contract revision
+
+D-23–D-25 are accepted simulated business rules: paired unresolved recognition,
+deferred supporting material with specialist-requested/customer-service follow-up,
+and enquiry with customer-service-owned contact resolution. Preserve original
+deadlines and never automatically close undelivered feedback. See the
+[readiness gap review](../DEV-07/referral-readiness.md). Current v0.4 schemas do
+not yet implement this full extension; field/state changes must be propagated
+together through schemas, OpenAPI, persistence, permissions and tests.

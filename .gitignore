@@ -26,3 +26,8 @@ coverage/
 *.twb~
 # Local export proof
 .publication-report.json
+# Local app test outputs
+.ruff_cache/
+test-results/
+playwright-report/
+*.log
