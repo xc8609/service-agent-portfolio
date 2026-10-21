@@ -462,3 +462,113 @@ def test_inbound_objection_requires_a_communicated_finding(environment):
     unverified, unverified_contact = session(client, "unverified")
     r = inbound_objection(client, unverified, unverified_contact, case_id, 2)
     assert r.status_code in (401, 404)
+
+
+def complaint_receipt(client, h, w, outcome, **changes):
+    return client.post(
+        "/v1/demo/complaint-receipt",
+        headers=h,
+        json={
+            **pair(w),
+            "expected_work_version": w["version"],
+            "outcome": outcome,
+            "external_receipt_ref": "SYN-COMPLAINT-1" if outcome == "acknowledged" else None,
+            "reason": None if outcome == "acknowledged" else "Complaint unit unavailable.",
+            "operation_key": str(uuid4()),
+            **changes,
+        },
+    )
+
+
+def test_complaint_delivery_is_requested_by_worker_and_acknowledged_by_receipt(environment):
+    client, admin, runtime, _ = environment
+    _, _, h, w, opened = setup_feedback(client)
+    call(
+        client,
+        h,
+        "demo_callback_verification",
+        {
+            "callback_contact_id": opened["contact_id"],
+            "scenario": "verified",
+            "operation_key": str(uuid4()),
+        },
+    )
+    captured = command(
+        client,
+        h,
+        "capture_customer_objection",
+        {
+            "case_id": w["case_id"],
+            "contact_id": opened["contact_id"],
+            "expected_case_version": detail(client, h, w)["work"]["case_version"],
+            "customer_statement": "I want this handled as a formal complaint.",
+            "evidence_refs": [],
+            "complaint_requested": True,
+            "operation_key": str(uuid4()),
+        },
+    )
+    assert captured.status_code == 200, captured.text
+    coordinator, _ = session(client, "complaints")
+    with psycopg.connect(admin) as c:
+        intake_work = str(
+            c.execute(
+                "SELECT work_item_id FROM complaint_intakes WHERE case_id=%s", (w["case_id"],)
+            ).fetchone()[0]
+        )
+
+    def current_intake():
+        r = call(client, coordinator, "list_work", {})
+        return next(i for i in r.json()["items"] if str(i["id"]) == intake_work)
+
+    intake = current_intake()
+    # Nothing has been sent yet, so there is nothing to acknowledge.
+    assert complaint_receipt(client, coordinator, intake, "acknowledged").status_code == 409
+    # Other roles cannot act for the complaint unit.
+    assert complaint_receipt(client, h, intake, "acknowledged").status_code == 404
+    tick(Settings(runtime), NOW)
+    intake = current_intake()
+    failed = complaint_receipt(client, coordinator, intake, "delivery_failed")
+    assert failed.status_code == 200, failed.text
+    assert (
+        complaint_receipt(
+            client,
+            coordinator,
+            find_work(client, coordinator, "complaint_intake", w["case_id"]),
+            "acknowledged",
+        ).status_code
+        == 409
+    )
+    tick(Settings(runtime), NOW)
+    intake = current_intake()
+    assert (
+        complaint_receipt(
+            client, coordinator, intake, "acknowledged", external_receipt_ref=None
+        ).status_code
+        == 422
+    )
+    acknowledged = complaint_receipt(client, coordinator, intake, "acknowledged")
+    assert acknowledged.status_code == 200, acknowledged.text
+    with psycopg.connect(admin) as c:
+        status, receipt, version = c.execute(
+            "SELECT status,external_receipt_ref,version FROM complaint_intakes WHERE case_id=%s",
+            (w["case_id"],),
+        ).fetchone()
+        assert (status, receipt, version) == ("acknowledged", "SYN-COMPLAINT-1", 5)
+        assert (
+            c.execute("SELECT status FROM work_items WHERE id=%s", (intake["id"],)).fetchone()[0]
+            == "completed"
+        )
+        assert (
+            c.execute(
+                "SELECT count(*) FROM outbox_events WHERE event_type='complaint.delivery_requested'"
+            ).fetchone()[0]
+            == 2
+        )
+    tick(Settings(runtime), NOW)
+    with psycopg.connect(admin) as c:
+        assert (
+            c.execute(
+                "SELECT count(*) FROM outbox_events WHERE event_type='complaint.delivery_requested'"
+            ).fetchone()[0]
+            == 2
+        )

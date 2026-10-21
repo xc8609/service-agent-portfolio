@@ -87,6 +87,25 @@ def tick(settings, now):
                 "Original deadline missed; responsible queue lead notified. Recorded blocker reason may be unknown.",
             )
             processed += 1
+        # ST-22: request (or retry) complaint delivery independently of re-review.
+        for c in conn.execute(
+            "SELECT * FROM complaint_intakes WHERE status IN ('recorded','delivery_failed') ORDER BY id"
+        ).fetchall():
+            conn.execute(
+                "UPDATE complaint_intakes SET status='pending_delivery',version=version+1 WHERE id=%s",
+                (c["id"],),
+            )
+            conn.execute(
+                "INSERT INTO outbox_events VALUES (%s,%s,%s,%s,'complaint.delivery_requested',%s,'pending',NULL,0)",
+                (
+                    uuid4(),
+                    "complaint-delivery:" + str(c["id"]) + ":" + str(c["version"] + 1),
+                    str(c["case_id"]),
+                    c["version"] + 1,
+                    Jsonb({"intake_id": str(c["id"]), "case_id": str(c["case_id"])}),
+                ),
+            )
+            processed += 1
         events = conn.execute(
             "SELECT id,payload FROM outbox_events WHERE status='pending' ORDER BY id LIMIT 100 FOR UPDATE SKIP LOCKED"
         ).fetchall()

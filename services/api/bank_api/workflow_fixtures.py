@@ -11,6 +11,7 @@ def seed_workflow_roles(conn):
         ("feedback_other", "feedback_queue", "feedback_representative"),
         ("lead", "specialist_queue", "queue_lead"),
         ("lead", "feedback_queue", "queue_lead"),
+        ("Demo complaint Casey", "complaint_queue", "complaint_coordinator"),
     ]:
         insert(
             conn,
