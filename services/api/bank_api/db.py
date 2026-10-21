@@ -9,7 +9,7 @@ from psycopg.rows import dict_row
 
 ROOT = Path(__file__).resolve().parents[3]
 MIGRATIONS = ROOT / "services/api/migrations"
-SCHEMA_VERSION = "011_bounded_agent.sql"
+SCHEMA_VERSION = "012_objection_reopen.sql"
 MARKER = "service-agent-disposable-v1"
 
 
@@ -97,6 +97,7 @@ def provision_runtime(dsn, password):
             "lead_review_decisions",
             "callback_anomalies",
             "case_closures",
+            "case_reopenings",
             "customer_objections",
             "complaint_intakes",
             "due_events",
@@ -138,7 +139,7 @@ def provision_runtime(dsn, password):
         )
         conn.execute("GRANT UPDATE (status,version) ON feedback_reviews TO bank_app")
         conn.execute(
-            "GRANT INSERT ON contact_reservations,lead_review_decisions,callback_anomalies,case_closures TO bank_app"
+            "GRANT INSERT ON contact_reservations,lead_review_decisions,callback_anomalies,case_closures,case_reopenings TO bank_app"
         )
         conn.execute("GRANT UPDATE (state,version) ON contact_reservations TO bank_app")
         conn.execute("GRANT UPDATE (closed_at) ON cases TO bank_app")

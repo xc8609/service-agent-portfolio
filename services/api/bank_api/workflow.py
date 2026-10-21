@@ -347,6 +347,7 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                             "notice": "Masked queue summary only; claim before details.",
                         }
                     else:
+                        w = None
                         if name in ("demo_callback_verification", "capture_customer_objection"):
                             link = conn.execute(
                                 "SELECT x.work_item_id,w.case_id FROM callback_contexts x JOIN work_items w ON w.id=x.work_item_id WHERE x.contact_id=%s",
@@ -358,9 +359,18 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                                     ),
                                 ),
                             ).fetchone()
-                            if not link:
+                            if link and name == "capture_customer_objection":
+                                if as_uuid(payload["case_id"]) != str(link["case_id"]):
+                                    fail("FORBIDDEN_OR_NOT_FOUND")
+                            elif not link and name == "capture_customer_objection":
+                                # A customer may call in to dispute an outcome (ST-13).
+                                from .exceptions import inbound_objection_scope
+
+                                w = inbound_objection_scope(conn, session, payload, now)
+                            elif not link:
                                 fail("FORBIDDEN_OR_NOT_FOUND")
-                            wid, cid = link["work_item_id"], link["case_id"]
+                            if link:
+                                wid, cid = link["work_item_id"], link["case_id"]
                         else:
                             wid, cid = payload["work_item_id"], payload["case_id"]
                         claiming = name in ("accept_specialist_work", "claim_feedback_task")
@@ -380,7 +390,7 @@ def dispatch_workflow(settings, name, payload, authorization, request_id, now):
                             if name not in ("get_work_detail",)
                             else ("specialist", "feedback_representative", "queue_lead")
                         )
-                        w = work_scope(
+                        w = w or work_scope(
                             conn,
                             actor,
                             str(wid),

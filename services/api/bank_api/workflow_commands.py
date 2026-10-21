@@ -134,6 +134,17 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
         conn.execute(
             "UPDATE work_items SET status='completed',version=version+1 WHERE id=%s", (w["id"],)
         )
+        # A published finding replaces this investigation's interim progress task.
+        # Preserve the old obligation/deadline rows, but do not leave unfinishable
+        # work blocking closure or allow an already-open progress contact to disclose it.
+        conn.execute(
+            "UPDATE work_items SET status='cancelled',version=version+1 WHERE parent_work_id=%s AND kind='progress_callback' AND status NOT IN ('completed','cancelled')",
+            (w["id"],),
+        )
+        conn.execute(
+            "UPDATE update_commitments SET status='superseded',version=version+1,decided_by=coalesce(decided_by,%s),decided_at=coalesce(decided_at,%s),decision_reason=coalesce(decision_reason,'Superseded by published finding; not an approval') WHERE work_item_id=%s AND status IN ('pending_approval','approved')",
+            (actor, now, w["id"]),
+        )
         # The specialist decided on the available evidence. Outstanding material requests
         # are superseded, not deleted: requests and follow-up entries remain in history.
         conn.execute(

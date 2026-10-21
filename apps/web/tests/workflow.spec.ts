@@ -29,3 +29,14 @@ test('WF-02: a declined material request returns the work to the specialist',asy
  await login(page,'specialist');await page.getByRole('listitem').filter({hasText:reference}).filter({hasText:'specialist_investigation'}).getByRole('button',{name:/Open work/}).click();
  await expect(page.getByText(/investigating · case v/)).toBeVisible();await expect(page.getByText('declined: Customer declined to provide a receipt.',{exact:true})).toBeVisible();
 });
+test('WF-03: a customer who calls in can dispute a published finding',async({page})=>{
+ const reference=await newReferral(page);await page.goto('/');await login(page,'specialist');
+ await page.getByRole('listitem').filter({hasText:reference}).filter({hasText:'specialist_investigation'}).getByRole('button',{name:/Claim work/}).click();await expect(page.getByRole('heading',{name:'Assigned work · specialist_investigation'})).toBeVisible();
+ await page.getByRole('textbox',{name:'Approved customer explanation',exact:true}).fill('The two entries were reviewed; one is a separate valid purchase.');await page.getByRole('button',{name:'Publish specialist finding'}).click();await expect(page.getByText(/Saved record_specialist_result · receipt/)).toBeVisible();
+ await page.goto('/');await page.getByRole('button',{name:'Start demo contact',exact:true}).click();await expect(page.getByRole('status')).toContainText('Verified contact');
+ await page.getByLabel('Merchant (optional)').fill('DEMO STORE');await page.getByRole('button',{name:'Search transactions',exact:true}).click();await expect(page.getByRole('table')).toBeVisible();
+ for(const checkbox of await page.getByRole('checkbox').all())await checkbox.check();await page.getByRole('button',{name:/Inspect selected evidence \([1-9]/}).click();
+ const card=page.getByRole('article',{name:`Case ${reference}`});await expect(card.getByText(/one is a separate valid purchase/)).toBeVisible();
+ await card.getByLabel('Customer statement (verbatim)').fill('I only made one purchase; I disagree with this finding.');await card.getByRole('button',{name:'Record disagreement for re-review'}).click();
+ await expect(page.getByRole('article',{name:`Case ${reference}`}).getByRole('heading',{name:`${reference} · under review`})).toBeVisible();
+});

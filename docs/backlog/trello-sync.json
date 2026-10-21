@@ -483,7 +483,10 @@
       "deliveryStatus": "Offline implementation under PR review; owner UAT pending",
       "listVerifiedDate": "2026-10-20",
       "deliveryCommentVerified": true,
-      "deliveryCommentMarker": "BANK-DEV13-DELIVERY-2026-10-20"
+      "deliveryCommentMarker": "BANK-DEV13-DELIVERY-2026-10-20",
+      "integrationFixPR": "https://github.com/xc8609/service-agent-portfolio/pull/13",
+      "integrationFixCommentVerified": true,
+      "integrationFixMarker": "BANK-DEV13-HANDOFF-FIX-2026-10-20"
     },
     {
       "id": "S04A",
