@@ -83,3 +83,12 @@ closure accept the action as completed. Nothing is executed here.
 Evidence: `test_complaint_delivery_is_requested_by_worker_and_acknowledged_by_receipt`,
 `test_external_action_receipt_completes_required_action_and_unblocks_closure`.
 
+
+## REV-01 receipt history and coordinator controls
+
+See [review correction specification](../../../../docs/backlog/review-fixes.md).
+Migration 013 adds append-only delivery receipts with failure reasons, acknowledgement
+references, actor/time and idempotency keys. Assigned staff see history under the existing
+work-detail gate. The complaint coordinator keeps queue-level receipt commands and cannot
+open full work details; its UI no longer offers that action. Prior unrecorded reasons
+remain unknown. Owner UAT is pending.

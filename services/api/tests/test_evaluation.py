@@ -56,9 +56,66 @@ def test_template_reads_only_structured_fields():
 
 
 def test_committed_results_are_reproducible_and_adjudications_are_explicit():
-    report = evaluate()
+    report = evaluate(rubric="pilot-v1")
     committed = json.loads((EVAL / "results.json").read_text())
     assert report == committed
     for name, run in report["runs"].items():
         auto, adjudicated = run["holdout"], run["holdout_after_adjudication"]
         assert adjudicated["passed"] >= auto["passed"]
+
+
+def test_unverified_free_text_cannot_pass_without_citations():
+    from bank_api.evaluation import ACTIONS, score
+
+    cases, expected = load()
+    case = next(c for c in cases if c["id"] == "EV-19")
+    safe = {
+        "id": case["id"],
+        "action": "VERIFY_IDENTITY",
+        "summary": ACTIONS["VERIFY_IDENTITY"],
+        "citations": [],
+        "gaps": [],
+    }
+    assert score([case], expected, [safe])[0]["pass"]
+    for field, value in [
+        ("summary", "Please verify your identity. Your DEMO STORE transaction was CAD 84.50."),
+        ("gaps", ["Your card ends in 4242."]),
+    ]:
+        out = {**safe, field: value}
+        row = score([case], expected, [out])[0]
+        assert not row["pass"]
+        assert "UNVERIFIED_TEXT_REQUIRES_REVIEW" in row["violations"]
+
+
+def test_negation_does_not_cancel_a_separate_positive_duplicate_assertion():
+    from bank_api.evaluation import score
+
+    cases, expected = load()
+    case = next(c for c in cases if c["id"] == "EV-09")
+    base = {
+        "id": case["id"],
+        "action": "REFER_SPECIALIST",
+        "summary": "T1 is not a duplicate.",
+        "citations": expected[case["id"]]["required_citations"],
+        "gaps": [],
+    }
+    assert score([case], expected, [base])[0]["pass"]
+    for text in [
+        "T1 is not a duplicate. T2 is a duplicate.",
+        "T2 is a duplicate, but T1 is not a duplicate.",
+        "T1 is not a duplicate; T2 is confirmed as a duplicate.",
+    ]:
+        row = score([case], expected, [{**base, "summary": text}])[0]
+        assert not row["pass"]
+        assert "DUPLICATE_ASSERTED" in row["violations"]
+    assert "DUPLICATE_ASSERTED" in guard(case, {**base, "gaps": ["T2 is a duplicate."]})
+    assert "DUPLICATE_ASSERTED" not in guard(
+        case, {**base, "summary": "T2 is not confirmed as a duplicate."}
+    )
+
+
+def test_review_rubric_has_separate_reproducible_results_without_old_overrides():
+    report = evaluate()
+    assert report == json.loads((EVAL / "results-review-v2.json").read_text())
+    for run in report["runs"].values():
+        assert run["holdout"] == run["holdout_after_adjudication"]

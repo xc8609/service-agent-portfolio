@@ -527,7 +527,14 @@ def test_complaint_delivery_is_requested_by_worker_and_acknowledged_by_receipt(e
     assert complaint_receipt(client, h, intake, "acknowledged").status_code == 404
     tick(Settings(runtime), NOW)
     intake = current_intake()
-    failed = complaint_receipt(client, coordinator, intake, "delivery_failed")
+    failure_key = str(uuid4())
+    failed = complaint_receipt(
+        client, coordinator, intake, "delivery_failed", operation_key=failure_key
+    )
+    replay = complaint_receipt(
+        client, coordinator, intake, "delivery_failed", operation_key=failure_key
+    )
+    assert replay.json()["data"] == failed.json()["data"]
     assert failed.status_code == 200, failed.text
     assert (
         complaint_receipt(
@@ -546,7 +553,18 @@ def test_complaint_delivery_is_requested_by_worker_and_acknowledged_by_receipt(e
         ).status_code
         == 422
     )
-    acknowledged = complaint_receipt(client, coordinator, intake, "acknowledged")
+    # Coordinator can acknowledge from the masked queue, not read full account details.
+    assert call(client, coordinator, "get_work_detail", pair(intake)).status_code == 404
+    ack_key = str(uuid4())
+    acknowledged = complaint_receipt(
+        client, coordinator, intake, "acknowledged", operation_key=ack_key
+    )
+    assert (
+        complaint_receipt(
+            client, coordinator, intake, "acknowledged", operation_key=ack_key
+        ).json()["data"]
+        == acknowledged.json()["data"]
+    )
     assert acknowledged.status_code == 200, acknowledged.text
     with psycopg.connect(admin) as c:
         status, receipt, version = c.execute(
@@ -572,3 +590,36 @@ def test_complaint_delivery_is_requested_by_worker_and_acknowledged_by_receipt(e
             ).fetchone()[0]
             == 2
         )
+
+
+def test_receipt_history_survives_retry_and_is_append_only(environment):
+    import pytest
+    from bank_api.db import runtime_connection
+
+    test_complaint_delivery_is_requested_by_worker_and_acknowledged_by_receipt(environment)
+    client, admin, runtime, _ = environment
+    coordinator, _ = session(client, "complaints")
+    intake = call(client, coordinator, "list_work", {}).json()["items"][0]
+    with psycopg.connect(admin) as c:
+        rows = c.execute(
+            "SELECT outcome,reason,external_receipt_ref,intake_version,recorded_at,actor_id FROM complaint_delivery_receipts ORDER BY intake_version"
+        ).fetchall()
+        assert len(rows) == 2
+        assert rows[0][:4] == ("delivery_failed", "Complaint unit unavailable.", None, 3)
+        assert rows[1][:4] == ("acknowledged", None, "SYN-COMPLAINT-1", 5)
+        assert all(r[4] == NOW and r[5] for r in rows)
+    for statement in [
+        "UPDATE complaint_delivery_receipts SET reason=NULL",
+        "DELETE FROM complaint_delivery_receipts",
+    ]:
+        with pytest.raises(psycopg.errors.InsufficientPrivilege):
+            with runtime_connection(runtime) as c:
+                c.execute(statement)
+    # Assigned feedback staff can inspect the retained failure; unassigned staff cannot.
+    h, _ = session(client, "feedback_unclaimed")
+    w = find_work(client, h, "customer_feedback", intake["case_id"])
+    history = detail(client, h, w)["complaint_receipts"]
+    assert len(history) == 2
+    assert history[0]["reason"] == "Complaint unit unavailable."
+    other, _ = session(client, "feedback_other")
+    assert call(client, other, "get_work_detail", pair(w)).status_code == 404
