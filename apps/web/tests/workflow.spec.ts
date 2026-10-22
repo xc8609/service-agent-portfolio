@@ -1,5 +1,5 @@
 import {test,expect,Page} from '@playwright/test';
-import browserTime from '../../../services/api/tests/browser-clock.json';
+import browserTime from '../../../services/api/tests/browser-clock.json' with {type:'json'};
 // Match ci_serve.py: callback outcomes must not depend on the runner's wall clock.
 test.beforeEach(async({page})=>{await page.clock.setFixedTime(new Date(browserTime));});
 async function login(page:Page,role:string){await page.getByLabel('Operations role').selectOption(role);await page.getByRole('button',{name:'Start operations session'}).click();await expect(page.getByText('Synthetic operations session. Claim work before viewing details.',{exact:true})).toBeVisible();}
