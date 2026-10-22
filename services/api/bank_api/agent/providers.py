@@ -394,7 +394,7 @@ class FakeProvider:
 def safe_context(evidence):
     """Positive DTO projection; do not pass the workspace response wholesale."""
     allowed = {
-        "facts": ("id", "version", "status", "amount_minor", "currency"),
+        "facts": ("id", "version", "status", "amount_minor", "currency", "merchant_description"),
         "rules": ("id", "version", "text"),
         "findings": ("id", "version", "approved_customer_explanation"),
         "work": ("id", "version", "status", "original_due_at"),
