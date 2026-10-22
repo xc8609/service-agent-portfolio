@@ -1,5 +1,7 @@
 # R2 acceptance
 
+**22 October scope update:** the [portfolio plan](../../evaluation/r2/portfolio-scope.md) now governs the next milestone. Existing completed work and tests remain; independent collection/freeze and full qualification requirements below are deferred. Codex performs delegated engineering review, not fabricated human acceptance.
+
 | ID | Given / when | Expected outcome |
 |---|---|---|
 | R2-AC01 | Current observations show a correct clarification with preserved recognition | Turn passes; awaiting_customer remains separate from resolved and needs_review |

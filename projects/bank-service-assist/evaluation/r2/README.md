@@ -1,5 +1,7 @@
 # R2 development scoring — not a new hold-out evaluation
 
+**Current scope (22 October):** follow the [small portfolio plan](portfolio-scope.md): 12 business checks and 8 engineering checks. Codex handles routine review under owner delegation; four-packet owner approval and independent holdout are no longer portfolio prerequisites. The historical workflow below is retained for reference.
+
 21 October 2026. Parent story QA-02; [SDD package](../../specs/QA-02-R2/spec.md).
 All examples are authored synthetic portfolio fixtures, AI-assisted and publicly
 visible. Their families and paraphrases must be excluded from any future hidden

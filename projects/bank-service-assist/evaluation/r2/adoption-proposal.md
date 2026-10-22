@@ -1,5 +1,7 @@
 # R2 evaluation and advancement gates — owner-approved candidate baseline
 
+**Deferred qualification protocol (22 October):** these previously accepted gates remain unchanged but are not prerequisites for the current [portfolio milestone](portfolio-scope.md). The smaller exercise does not qualify as passing this protocol.
+
 21 October 2026 · **R2-G01 accepted by the owner on 21 October 2026; corpus/run manifest not frozen and evaluation not executed.**
 [Answer packet](owner-review.md) · [QA-02 story](../../../../docs/backlog/story-cards.md#qa-02).
 These numbers are owner-approved portfolio experiment choices, not industry standards or

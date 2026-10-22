@@ -1,5 +1,7 @@
 # R2 delivery tasks
 
+**22 October scope update:** the [portfolio plan](../../evaluation/r2/portfolio-scope.md) now governs the next milestone. Existing completed work and tests remain; independent collection/freeze and full qualification requirements below are deferred. Codex performs delegated engineering review, not fabricated human acceptance.
+
 - [x] Record confirmed business rules and R2-S01 scoring decision.
 - [x] Author ten public synthetic development cases with family and criteria trace.
 - [x] Add offline scoring, case accounting, hash-bound review and separate business states.

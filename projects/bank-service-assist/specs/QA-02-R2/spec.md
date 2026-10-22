@@ -1,5 +1,7 @@
 # QA-02-R2 — score confirmed narrative rules without hiding uncertainty
 
+**22 October scope update:** the [portfolio plan](../../evaluation/r2/portfolio-scope.md) now governs the next milestone. Existing completed work and tests remain; independent collection/freeze and full qualification requirements below are deferred. Codex performs delegated engineering review, not fabricated human acceptance.
+
 Increment of QA-02, not a new independent product. Trace: BR-01 lookup pain,
 DEV-03 recognition, DEV-08 evidence/draft boundary and QA-02 fair evaluation.
 Role evidence: BA decision/rubric design and developer reproducible offline validation,

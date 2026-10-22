@@ -1,5 +1,7 @@
 # R2 experiment preparation and runtime evidence
 
+**Current delivery override (22 October):** use the [small portfolio plan](portfolio-scope.md) first. This strict experiment workflow remains available for later qualification; do not block portfolio progress on its independent holdout requirements.
+
 21 October 2026 · QA-02 / R2-G01. Engineering implementation; **no independent
 hold-out or live-model result exists in this increment**. The accepted rules remain
 unchanged. [Gates](adoption-proposal.md) · [SDD](../../specs/QA-02-R2/spec.md).

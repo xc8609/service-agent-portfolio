@@ -1,5 +1,7 @@
 # Private holdout: author, review in batches, then freeze
 
+**Deferred for the portfolio milestone (22 October):** the owner selected a simpler, Codex-managed [portfolio evaluation](portfolio-scope.md). The independent-human and four-packet freeze process below is historical/optional; do not ask the owner to complete it before core delivery.
+
 21 October 2026 · QA-02 / R2-A01 / R2-G01. **Preparation delivered; no new case,
 answer approval or freeze has occurred.** [Operating guide](experiment-guide.md) ·
 [Accepted gates](adoption-proposal.md) · [Claude handoff](claude-handoff.md).

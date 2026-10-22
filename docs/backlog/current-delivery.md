@@ -64,8 +64,7 @@ original Sprint forecast as planning history, not actual elapsed person-days.
 
 1. Complete [REV-01](review-fixes.md) and the [REV-02 UAT corrections](uat-corrections.md), then retest the manual workflow and exceptions — [UAT pack](../uat/README.md). The delegated 21 October assessment found changes required; do not replace that historical result with an unobserved pass.
 2. Tableau refresh/layout acceptance for both workbooks; Desktop open is verified for the bank workbook.
-3. QA-02 pilot executed (D-27); next: independent fresh hold-out and a negation-aware
-   promise guard. API-based provider qualification only when the owner enables an API route.
+3. QA-02 pilot executed (D-27); next: the [small portfolio evaluation](../../projects/bank-service-assist/evaluation/r2/portfolio-scope.md) adopted on 22 October: 12 business checks, 8 engineering checks and a working single-model demonstration. Codex handles routine case review; independent holdout and four-batch owner approval are deferred. Actual API execution still needs an available route and budget.
 4. Staging recovery (OPS-02) needs an owner-chosen hosting account.
 
 No automatic phone execution, financial action or bulk architecture rewrite. Voice

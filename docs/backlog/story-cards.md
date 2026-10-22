@@ -1039,6 +1039,8 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## QA-02 — Freeze agent evaluation and compare against simpler baselines
 
+**22 October delivery override:** the owner delegated case decisions to Codex and requested a lightweight portfolio. Follow the [12+8 check plan](../../projects/bank-service-assist/evaluation/r2/portfolio-scope.md); independent holdout, four-packet owner review and the full R2-G01 protocol below are deferred, not passed. Keep historical evidence and implemented controls.
+
 Status: Pilot executed (D-27) — 24 frozen cases, decision table vs three subscription-run models; API qualification and full 100-family evaluation pending — [pilot report](../../projects/bank-service-assist/evaluation/README.md). R2-S01–04 grading rules and [R2-A01/R2-G01 answer intent and candidate gates](../../projects/bank-service-assist/evaluation/r2/owner-review.md) accepted by the owner on 21 October 2026 (PR #24); independent corpus freeze, evaluation and model qualification remain pending.
 Release: B1 | Priority: P0 | Forecast sprint: S05
 Role owner: QA with BA/PO (simulated team allocation, not actual staffing)
