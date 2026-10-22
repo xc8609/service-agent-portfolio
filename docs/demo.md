@@ -89,12 +89,12 @@ start **Demo specialist Alex** and open the `specialist_investigation` work.
 ### 4:15–5:00 — Show completion boundaries and evidence
 
 **Show:** prepared feedback view or [closure screenshot](images/closure-checklist.png).
-Finish on [runtime CI](https://github.com/xc8609/service-agent-portfolio/actions/runs/39859494492).
+Finish on [current PR checks](https://github.com/xc8609/service-agent-portfolio/pull/27/checks).
 
 > The specialist's approved explanation is separated from private notes. Disclosure
 > requires a fresh identity check. Even after feedback is delivered, the case stays
 > open if required actions or other work remain. The checklist tells staff what to
-> follow up. The merged baseline passed 286 API and 44 browser tests, plus container
+> follow up. The verification suite covers 287 API and 44 browser tests, plus container
 > and offline checks. Next, I will compare search effort, omissions and corrections
 > on a few tasks, so the business-value claim can be based on observations.
 
@@ -142,6 +142,11 @@ out-of-window attempt. The final screenshot reopens the separate, persisted 15:5
 verified-feedback state from the [core-clarity retest](uat/2026-10-22-core-clarity.md).
 These are stages from two instances, not one uninterrupted successful call.
 No clock, source data or workflow rows were edited to obtain the ending.
+
+The PR's first CI run also exposed WF-06's dependence on the real wall clock. The
+disposable test server and workflow browser tests now share a fixed in-hours instant;
+an API regression verifies that an actual 17:00 callback still requires lead review.
+This test-only setup does not change the interactive demo or these captures.
 
 The presentation duration has not been measured. Owner UAT is recorded separately in
 the [acceptance pack](uat/README.md); the script does not fill in its sign-off.

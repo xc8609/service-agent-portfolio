@@ -47,9 +47,10 @@ Actual synthetic app captures; [rules view and capture notes](docs/demo.md#scree
   reached 81.7% team accuracy vs 31.5% majority. These public complaints are separate
   from the bank app's synthetic operational records.
 
-**Verified baseline — 22 October 2026, `761aeaf`:**
-[286 API tests, 44 browser tests and container smoke passed](https://github.com/xc8609/service-agent-portfolio/actions/runs/39859494492);
-[offline checks passed on Python 3.9 and 3.12](https://github.com/xc8609/service-agent-portfolio/actions/runs/39859494440).
+**Verification suite — 22 October 2026:** **287 API tests and 44 browser tests**, plus
+container smoke and offline Python 3.9/3.12 checks. [Current PR results](https://github.com/xc8609/service-agent-portfolio/pull/27/checks).
+The disposable browser-test server and workflow tests share a fixed clock; the
+interactive demo retains real service hours, covered by an out-of-hours regression.
 [38 requirements trace to tests](docs/backlog/traceability-matrix.md).
 Owner UAT, human effort measurement, Tableau refresh acceptance and public deployment
 remain separate gates. Historical reports retain their original counts and limitations.

@@ -47,10 +47,11 @@ React/TypeScript → FastAPI/Python → PostgreSQL. One small application with d
 [source/model extension points](architecture.md). Permissions, approval and receipts
 stay outside model control.
 
-At merged `761aeaf` (22 October 2026), [runtime CI](https://github.com/xc8609/service-agent-portfolio/actions/runs/39859494492)
-passed **286 API tests, 44 browser tests and container smoke**;
-[offline CI](https://github.com/xc8609/service-agent-portfolio/actions/runs/39859494440)
-passed on Python 3.9/3.12. [Delegated UAT](uat/2026-10-22-core-clarity.md) observed guarded
+The [verification suite](https://github.com/xc8609/service-agent-portfolio/pull/27/checks)
+contains **287 API tests and 44 browser tests**, plus container smoke and offline
+Python 3.9/3.12 checks (22 October 2026). A shared browser-test clock avoids dependence
+on run time; an API regression preserves the real service-hours rule.
+[Delegated UAT](uat/2026-10-22-core-clarity.md) observed guarded
 disclosure and closure. Owner acceptance, live-model qualification and measured human
 benefits remain separate.
 

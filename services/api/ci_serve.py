@@ -1,7 +1,10 @@
 """Start API against explicitly supplied disposable CI PostgreSQL for browser tests."""
 
+import json
 import os
 import secrets
+from datetime import datetime
+from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
 import uvicorn
@@ -11,15 +14,25 @@ from bank_api.db import migrate, provision_runtime
 from bank_api.fixtures import reset, seed
 
 admin = os.environ["BANK_TEST_ADMIN_URL"]
+# Only this disposable browser-test server freezes time. The interactive demo and
+# container retain the real clock and their normal service-window restrictions.
+now = datetime.fromisoformat(
+    json.loads((Path(__file__).parent / "tests/browser-clock.json").read_text())
+)
 parts = urlsplit(admin)
 target = parts.path.lstrip("/")
 migrate(admin)
-seed(admin, target, initialize=True)
+seed(admin, target, initialize=True, now=now)
 reset(admin, target)
-seed(admin, target)
+seed(admin, target, now=now)
 password = secrets.token_urlsafe(32)
 provision_runtime(admin, password)
 runtime = urlunsplit(
     parts._replace(netloc="bank_app:" + password + "@" + parts.netloc.split("@")[-1])
 )
-uvicorn.run(create_app(Settings(runtime)), host="127.0.0.1", port=8000, access_log=False)
+uvicorn.run(
+    create_app(Settings(runtime), clock=lambda: now),
+    host="127.0.0.1",
+    port=8000,
+    access_log=False,
+)

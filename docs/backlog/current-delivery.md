@@ -77,6 +77,10 @@ The [five-minute presentation](../demo.md) and [one-page case study](../case-stu
 package the existing core for reviewers. Current screenshots and dated CI counts are
 linked; historical evaluation records are not rewritten. This is presentation evidence,
 not owner acceptance, a recorded video or measured handling time.
+PR [#27](https://github.com/xc8609/service-agent-portfolio/pull/27) also corrects a
+wall-clock-dependent browser test: a shared test-only clock and one service-close
+regression bring the API suite to 287 tests; the browser suite remains 44. The
+interactive service-hours rule is unchanged. Check the PR for current CI results.
 
 Next, use 3–5 identical tasks to compare a simulated separate-source lookup with the
 integrated workspace. Record the baseline setup, participant/assessor, task order,
