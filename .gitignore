@@ -30,6 +30,7 @@ coverage/
 .ruff_cache/
 test-results/
 playwright-report/
+**/evaluation/local-recordings/**
 *.log
 # Hidden evaluation keys, local runtime exports and human adjudications
 projects/bank-service-assist/evaluation/r2/private/
