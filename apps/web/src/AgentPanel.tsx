@@ -66,9 +66,11 @@ function ScopedAgentPanel({token,context,disabled=false,onSuggestion}:AgentProps
       <p>Run {result.run_id} · {result.status} · usage {result.usage?JSON.stringify(result.usage):'unavailable'}</p>
       {result.error_code&&<p role="alert">{result.error_code}; refresh evidence and start a new bounded run.</p>}
       {result.output&&<>
-        <p>{result.output.summary}</p>
-        <ul>{result.output.citations.map((citation:string)=><li key={citation}>{citation}</li>)}</ul>
-        <ul>{result.output.gaps.map((gap:string)=><li key={gap}>{gap}</li>)}</ul>
+        <div aria-label="Assistant summary" style={{whiteSpace:'pre-wrap'}}>{result.output.summary}</div>
+        <details><summary>Sources and review checks</summary>
+          <ul>{result.output.citations.map((citation:string)=><li key={citation}>{citation}</li>)}</ul>
+          <ul>{result.output.gaps.map((gap:string)=><li key={gap}>{gap}</li>)}</ul>
+        </details>
         {result.output.proposal_id&&<p>Uncommitted note draft {result.output.proposal_id}. Load note history below, review the saved draft, and approve only after checking evidence.</p>}
         {onSuggestion&&<button disabled={busy||!canRun} onClick={()=>onSuggestion(result.output.summary)}>Use as editable review text</button>}
       </>}

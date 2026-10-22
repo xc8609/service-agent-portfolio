@@ -1,5 +1,8 @@
 # DEV-12 acceptance record
 
+[Core-flow clarity CF-01–05](../DEV-08/core-flow-clarity.md) refines AC05/06 with
+visible blockers, a specific business-error code and delivered-but-open wording.
+
 [Current implementation and qualification limits](runtime-contract.md). Historical forecasts are not actual effort; owner UAT remains pending.
 
 BANK-SDD-v0.2

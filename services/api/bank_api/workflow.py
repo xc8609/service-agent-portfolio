@@ -232,6 +232,7 @@ def result_refs(conn, w, refs):
 
 def detail(conn, w):
     from .app import projection
+    from .continuation import closure_check
 
     tx = conn.execute(
         "SELECT t.* FROM card_transactions t JOIN case_transactions ct ON ct.transaction_id=t.id WHERE ct.case_id=%s ORDER BY t.id",
@@ -286,6 +287,9 @@ def detail(conn, w):
         "material_requests": requests,
         "followup": followup,
         "required_actions": actions,
+        "closure_blockers": closure_check(conn, w)[0]
+        if w["kind"] == "customer_feedback" and w["case_status"] != "closed"
+        else [],
         "plans": conn.execute(
             "SELECT * FROM contact_plans WHERE work_item_id=%s ORDER BY created_at,id", (w["id"],)
         ).fetchall(),

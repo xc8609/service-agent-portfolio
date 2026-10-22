@@ -7,7 +7,7 @@
   "human_system_commands": 12,
   "requirements": 38,
   "scenarios": 29,
-  "local_links": 205,
+  "local_links": 207,
   "trello_payloads": 23,
   "limitations": "Not a full JSON Schema meta-validation, runtime/security test, rendered-diagram review, model evaluation or UAT. Trello save verification is separate."
 }

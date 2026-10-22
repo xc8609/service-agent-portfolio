@@ -79,3 +79,39 @@ test('WF-05: publishing a finding never promotes an unapproved update into inbou
  await expect(page.getByText(/section 6 submits an enquiry only after explicit approval/)).toBeVisible();
  await page.getByRole('button',{name:'Refresh related cases'}).click();await expect(card).not.toContainText('UNAPPROVED PRIVATE UPDATE');
 });
+
+test('WF-06: delivered feedback shows its closure blocker until a specialist records completion',async({page})=>{
+ const reference=await newReferral(page);await page.goto('/');await login(page,'specialist');
+ const work=(kind:string)=>page.getByRole('listitem').filter({hasText:reference}).filter({hasText:kind});
+ await work('specialist_investigation').getByRole('button',{name:/Claim work/}).click();
+ await page.getByRole('combobox',{name:'Finding',exact:true}).selectOption('further_action_required');
+ await page.getByRole('textbox',{name:'Approved customer explanation',exact:true}).fill('The enquiry has been reviewed. A required action remains outstanding.');
+ await page.getByRole('button',{name:'Publish specialist finding'}).click();await expect(page.getByText(/Saved record_specialist_result/)).toBeVisible();
+ await login(page,'feedback_unclaimed');await work('customer_feedback').getByRole('button',{name:/Claim work/}).click();
+ await page.getByRole('button',{name:'Open synthetic callback context'}).click();
+ await page.getByRole('button',{name:'Save feedback review draft'}).click();await expect(page.getByRole('button',{name:'Approve current feedback review'})).toBeEnabled();
+ await page.getByRole('button',{name:'Approve current feedback review'}).click();await expect(page.getByText(/Saved approve_feedback_review/)).toBeVisible();
+ await page.getByRole('button',{name:'Simulate verified callback identity'}).click();await expect(page.getByText('Saved demo_callback_verification',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Retrieve verified customer disclosure'}).click();await expect(page.getByText(/Customer disclosure: The enquiry has been reviewed/)).toBeVisible();
+ await page.getByLabel('Actual callback outcome').selectOption('connected_verified');await page.getByRole('button',{name:'Record actual callback outcome'}).click();await expect(page.getByText(/Saved record_callback_attempt/)).toBeVisible();
+ const checklist=page.getByRole('region',{name:'Closure checklist'});
+ await expect(checklist).toContainText('Feedback delivered · case remains open');await expect(checklist).toContainText('Required actions are incomplete or missing a completion receipt');
+ await page.getByLabel('Closure confirmation reason').fill('Reviewed the remaining work.');await expect(page.getByRole('button',{name:'Confirm closure if all checks pass'})).toBeDisabled();
+ // The inbound overview also distinguishes delivery from closure.
+ await page.getByRole('button',{name:'Start demo contact',exact:true}).click();await expect(page.getByRole('status')).toContainText('Verified contact');
+ await page.getByLabel('Merchant (optional)').fill('DEMO STORE');await page.getByRole('button',{name:'Search transactions',exact:true}).click();
+ const boxes=page.getByRole('table').getByRole('checkbox');await expect(boxes).toHaveCount(2);
+ for(const box of await boxes.all())await box.check();
+ await page.getByRole('button',{name:'Inspect selected evidence (2)'}).click();
+ const card=page.getByRole('article',{name:`Case ${reference}`});await expect(card.getByRole('heading',{level:3})).toHaveText(`${reference} · Feedback delivered · case remains open`);
+ // Only the specialist records the external action receipt; feedback staff cannot bypass it.
+ await expect(page.getByRole('button',{name:'Record external system receipt'})).toHaveCount(0);
+ await login(page,'specialist');await work('specialist_investigation').getByRole('button',{name:/Open work/}).click();
+ await page.getByRole('button',{name:'Record external system receipt'}).click();await expect(page.getByText(/Saved record_action_receipt/)).toBeVisible();
+ await login(page,'feedback_unclaimed');await work('customer_feedback').getByRole('button',{name:/Open work/}).click();
+ await expect(checklist).toContainText('Closure checks are satisfied');
+ await page.getByLabel('Closure confirmation reason').fill('Verified feedback delivered and required action receipt checked.');await page.getByRole('button',{name:'Confirm closure if all checks pass'}).click();
+ await expect(page.getByText(/Saved close_case · receipt/)).toBeVisible();await expect(checklist.getByText('closed',{exact:true})).toBeVisible();
+ await expect(page.getByRole('button',{name:'Confirm closure if all checks pass'})).toHaveCount(0);
+ await page.getByRole('button',{name:'Refresh related cases'}).click();await expect(card.getByRole('heading',{level:3})).toHaveText(`${reference} · closed`);
+});

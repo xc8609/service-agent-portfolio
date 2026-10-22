@@ -32,6 +32,10 @@ CONTRACTS = json.loads(
 TOOLS = {t["name"]: t for t in CONTRACTS["tools"]}
 READ_TOOLS = ("get_contact_context", "search_transactions", "get_transaction_evidence")
 MESSAGES = {
+    "CLOSURE_BLOCKED": (
+        "Closure requirements are not met. Refresh assigned work and follow the closure checklist; the case remains open.",
+        409,
+    ),
     "CONTACT_GAP": (
         "Customer-service contact resolution is still outstanding. Investigation deadlines remain unchanged.",
         409,

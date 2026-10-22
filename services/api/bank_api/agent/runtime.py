@@ -185,6 +185,7 @@ def current(conn, authorization, p, now):
 def fixture(evidence, refs, stage):
     citations = [r["kind"] + ":" + r["id"] + ":" + r["version"] for r in refs]
     gaps = ["Human review and current identity/scope checks remain required."]
+    facts, uncertain, next_steps = [], [], []
     if stage == "inbound":
         entries = "; ".join(
             f"{t.get('merchant_description') or 'Merchant unavailable'} — "
@@ -193,43 +194,107 @@ def fixture(evidence, refs, stage):
             f"(source version {t['version']})"
             for t in evidence["facts"]
         )
-        text = "Two posted entries were retrieved: " + entries + ". "
-        text += (
-            "A source relationship is recorded; review it before explaining the pair. "
+        facts.append("Two posted entries were retrieved: " + entries + ".")
+        facts.append(
+            "A source relationship is recorded."
             if evidence["relationships"]
-            else "No source relationship is recorded; similar entries do not establish a duplicate. "
+            else "No source relationship is recorded."
+        )
+        uncertain.append(
+            "Similar entries do not establish a duplicate; confirm the purchase context and any recorded relationship."
         )
         matching = [c for c in evidence["related_work"] if c["covers_selected_concern"]]
         if matching:
             case = matching[0]
-            text += f"Existing enquiry {case['reference']} is {case['status']}; follow up with {case['owner_queue']} rather than submit a duplicate. "
+            feedback_done = any(
+                w["kind"] == "customer_feedback" and w["status"] == "completed"
+                for w in case["work_items"]
+            )
+            status = (
+                "feedback delivered; case remains open"
+                if case["status"] == "awaiting_feedback" and feedback_done
+                else case["status"].replace("_", " ")
+            )
+            facts.append(f"Existing enquiry {case['reference']}: {status}.")
+            next_steps.append(
+                f"Follow up with {case['owner_queue']} on the existing enquiry rather than submit a duplicate."
+            )
             for work in case["work_items"]:
                 if work["status"] not in ("completed", "cancelled"):
-                    text += f"{work['kind']}: {work['status']}; {work['assignee_name'] or 'unassigned'} in {work['queue_name']}. "
+                    facts.append(
+                        f"{work['kind'].replace('_', ' ')}: {work['status'].replace('_', ' ')}; {work['assignee_name'] or 'unassigned'} in {work['queue_name']}."
+                    )
         else:
-            text += "No matching enquiry was returned by this scoped lookup. "
+            facts.append("No matching enquiry was returned by this scoped lookup.")
         recognition = evidence["customer_allegation"]["recognition"]
         if recognition == "both":
-            text += "The saved report recognizes both entries. Explain the recorded facts and clarify any remaining concern; do not prepare a duplicate-charge enquiry on the earlier scope. "
+            facts.append("The saved report recognizes both entries.")
+            next_steps.append(
+                "Explain the recorded facts and clarify any remaining concern; do not prepare a duplicate-charge enquiry on the earlier scope."
+            )
         elif recognition == "neither":
-            text += "The saved report recognizes neither entry. Request authorized manual risk review; this does not establish fraud. "
-        elif not matching and evidence["policy_state"] == "applicable":
-            text += "Review the applicable rule and prepare a grouped enquiry if still unresolved. "
+            facts.append("The saved report recognizes neither entry.")
+            next_steps.append(
+                "Request authorized manual risk review; this does not establish fraud."
+            )
+        else:
+            facts.append(
+                "The saved customer report recognizes one purchase; this is a customer statement, not an adjudicated outcome."
+            )
+            uncertain.append(
+                "Confirm which entry is disputed, or retain the pair as unresolved if the customer cannot distinguish them."
+            )
+            if not matching and evidence["policy_state"] == "applicable":
+                next_steps.append(
+                    "Review the applicable rule and prepare a grouped enquiry if still unresolved."
+                )
         if evidence["policy_state"] != "applicable":
-            text += "Handling rules are missing or conflicting; request manual policy review before relying on an instruction. "
+            uncertain.append("Handling rules are missing or conflicting.")
+            next_steps.append("Request manual policy review before relying on an instruction.")
             gaps.extend(evidence["policy_gaps"])
         if any(not t.get("merchant_description", "").strip() for t in evidence["facts"]):
-            gaps.append(
-                "Original merchant description is missing; clarify the purchase without inventing a merchant identity."
-            )
-        text += "No financial execution is confirmed."
+            missing = "Original merchant description is missing; clarify the purchase without inventing a merchant identity."
+            gaps.append(missing)
+            uncertain.append(missing)
+        uncertain.append("No financial execution is confirmed.")
     elif evidence["findings"]:
-        text = evidence["findings"][0]["approved_customer_explanation"]
+        facts.append(
+            "Approved customer explanation: "
+            + evidence["findings"][0]["approved_customer_explanation"]
+        )
+        delivered = stage == "customer_feedback" and evidence["work"][0]["status"] == "completed"
+        if delivered:
+            facts.append("Feedback delivery is recorded; this does not establish case closure.")
+            uncertain.append(
+                "Check the current closure checklist for outstanding work and completion receipts."
+            )
+            next_steps.append(
+                "Follow up on any blockers. Only authorized staff may confirm closure after all checks pass."
+            )
+        else:
+            uncertain.append(
+                "Current callback identity verification and staff review are required before customer disclosure."
+            )
+            next_steps.append(
+                "Review the approved explanation, verify the customer, then record the actual callback outcome. Do not infer delivery or closure from this draft."
+            )
         gaps.append(
             "Before customer disclosure, complete current callback identity verification and staff review; this draft is not a contact or closure receipt."
         )
     else:
-        text = "Investigation is still pending. The blocker reason is not confirmed. Do not promise an update time without a current approved commitment."
+        facts.append("Investigation is still pending.")
+        uncertain.append("The blocker reason is not confirmed.")
+        next_steps.append(
+            "Follow up with the assigned team. Do not promise an update time without a current approved commitment."
+        )
+    text = (
+        "Facts\n"
+        + " ".join(facts)
+        + "\n\nTo confirm\n"
+        + " ".join(uncertain)
+        + "\n\nNext step\n"
+        + " ".join(next_steps)
+    )
     return FakeProvider(
         [
             Reply(calls=[Call("evidence", "read_evidence", {})]),
@@ -333,7 +398,8 @@ def run(
                 "staff must verify current callback identity and review before customer disclosure. "
                 "Check related work before suggesting a new enquiry. Cite the provided source "
                 "ID and version for factual claims. Answer the staff question with a concise "
-                "explanation, missing information and a permitted next step. "
+                "three-part summary headed Facts, To confirm, and Next step. Keep source facts "
+                "and attributed customer statements separate from uncertainty and permitted actions. "
                 "Return a cited draft for human review; never claim a business action occurred."
             ),
         },

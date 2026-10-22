@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from 'react';
+import {caseStatus} from './caseStatus';
 
 type Work={id:string;version:string;kind:string;status:string;queue_name:string;queue_active:boolean;assignee_name:string|null;assignee_active:boolean|null;original_due_at:string|null;due_at:string|null};
 type Snapshot={case_id:string;case_version:string;case_status:string;investigation_status:string;feedback_status:string;approved_customer_explanation:string|null;unresolved_items:string[];timeline:{event_id:string;sequence:number;occurred_at:string;recorded_at:string;customer_safe_summary:string;source_ref:{section:string}}[];progress_commitments:{id:string;status:string;approved_update_at:string|null;customer_safe_progress:string}[]};
@@ -46,7 +47,7 @@ export function RelatedCases({auth,transactionIds}:{auth:{token:string;contact:s
     {error&&<div role="alert" className="error"><p>{error}</p><p>Duplicate check incomplete. Use manual case review; do not treat this as no existing case.</p>{lastSuccess&&<p>Last successful lookup (stale): {time(lastSuccess)}. Details cleared.</p>}</div>}
     {data&&<><p className="muted">Case lookup as of {time(data.as_of)}</p>{data.cases.length===0?<p>No linked case found for the selected transactions. This is not an authorization to submit; recheck at referral time.</p>:<p className="notice">Existing related work found. Confirm the concern and coverage before opening another enquiry.</p>}
       {data.cases.map(c=><article key={c.snapshot.case_id} aria-label={`Case ${c.reference}`}>
-        <h3>{c.reference} · {label(c.snapshot.case_status)}</h3><p>{c.concern}</p><p className="notice">{hints[c.review_hint]}</p>
+        <h3>{c.reference} · {caseStatus(c.snapshot.case_status,c.snapshot.feedback_status)}</h3><p>{c.concern}</p><p className="notice">{hints[c.review_hint]}</p>
         <p>Selection coverage: {label(c.coverage)} · {c.matched_transaction_ids.length} selected entries linked.</p>
         <p>Accountable queue: <b>{c.owner_queue_name}</b>{!c.owner_queue_active?' (inactive — manual reassignment review needed)':''}</p>
         <p>Status recorded: {time(c.status_as_of)} · Case version {c.snapshot.case_version}</p>

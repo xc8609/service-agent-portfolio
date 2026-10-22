@@ -6,7 +6,7 @@ from uuid import uuid4
 from psycopg.types.json import Jsonb
 
 from .calendar import HOLIDAYS, VERSION, ZONE, service_date
-from .workflow import bump_case, command_result, latest_result
+from .workflow import bump_case, command_result
 
 # Explicit synthetic fixture, not a statutory Canadian holiday calendar.
 
@@ -18,6 +18,40 @@ def instant(value):
 def permitted_slot(value):
     local = value.astimezone(ZONE)
     return service_date(local.date(), HOLIDAYS) and 9 <= local.hour < 17
+
+
+def closure_check(conn, w):
+    """Shared read/command checklist, called only after assigned-work authorization."""
+    blockers = []
+    result = conn.execute(
+        "SELECT id FROM investigation_results WHERE case_id=%s ORDER BY version DESC LIMIT 1",
+        (w["case_id"],),
+    ).fetchone()
+    attempt = None
+    if result:
+        attempt = conn.execute(
+            "SELECT a.id FROM callback_attempts a JOIN callback_details d ON d.attempt_id=a.id WHERE a.case_id=%s AND a.outcome='connected_verified' AND d.result_id=%s ORDER BY a.occurred_at DESC LIMIT 1",
+            (w["case_id"], result["id"]),
+        ).fetchone()
+    if not attempt or w["status"] != "completed":
+        blockers.append(
+            "Verified feedback for the latest finding is not complete. The feedback owner must record the actual outcome."
+        )
+    if conn.execute(
+        "SELECT 1 FROM required_actions WHERE case_id=%s AND (status<>'completed' OR receipt_ref IS NULL)",
+        (w["case_id"],),
+    ).fetchone():
+        blockers.append(
+            "Required actions are incomplete or missing a completion receipt. Ask the specialist to confirm the external outcome and record its receipt."
+        )
+    for work in conn.execute(
+        "SELECT w.kind,w.status,q.name AS queue_name FROM work_items w JOIN service_queues q ON q.id=w.queue_id WHERE w.case_id=%s AND w.status NOT IN ('completed','cancelled') ORDER BY w.id",
+        (w["case_id"],),
+    ).fetchall():
+        blockers.append(
+            f"Open work: {work['kind'].replace('_', ' ')} — {work['status'].replace('_', ' ')}. Follow up with {work['queue_name']}."
+        )
+    return blockers, result, attempt
 
 
 def latest_plan(conn, w):
@@ -85,29 +119,11 @@ def execute(conn, name, p, w, actor, operation, request_id, now):
     from .app import as_uuid, fail
 
     if name == "close_case":
-        if (
-            w["kind"] != "customer_feedback"
-            or w["status"] != "completed"
-            or w["case_status"] == "closed"
-        ):
+        if w["kind"] != "customer_feedback" or w["case_status"] == "closed":
             fail("CONFLICT")
-        result = latest_result(conn, w)
-        attempt = conn.execute(
-            "SELECT a.id FROM callback_attempts a JOIN callback_details d ON d.attempt_id=a.id WHERE a.case_id=%s AND a.outcome='connected_verified' AND d.result_id=%s ORDER BY a.occurred_at DESC LIMIT 1",
-            (w["case_id"], result["id"]),
-        ).fetchone()
-        if (
-            not attempt
-            or conn.execute(
-                "SELECT 1 FROM required_actions WHERE case_id=%s AND (status<>'completed' OR receipt_ref IS NULL)",
-                (w["case_id"],),
-            ).fetchone()
-            or conn.execute(
-                "SELECT 1 FROM work_items WHERE case_id=%s AND status NOT IN ('completed','cancelled')",
-                (w["case_id"],),
-            ).fetchone()
-        ):
-            fail("CONFLICT")
+        blockers, result, attempt = closure_check(conn, w)
+        if blockers:
+            fail("CLOSURE_BLOCKED")
         cid = uuid4()
         conn.execute(
             "INSERT INTO case_closures VALUES (%s,%s,%s,%s,%s,%s,%s,%s)",

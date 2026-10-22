@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {caseStatus} from './caseStatus';
 export function ContinuationControls({detail,lead,locked,perform,refresh}:{detail:any;lead:boolean;locked:boolean;perform:(name:string,payload:any,apply:(data:any)=>Promise<void>)=>Promise<void>;refresh:()=>Promise<void>}){
  const [slot,setSlot]=useState(''),[reason,setReason]=useState(''),[owner,setOwner]=useState(''),[until,setUntil]=useState('');
  const w=detail.work,plan=detail.plan;
@@ -9,6 +10,10 @@ export function ContinuationControls({detail,lead,locked,perform,refresh}:{detai
  {!lead&&<><label>Requested callback slot (ISO)<input value={slot} onChange={e=>setSlot(e.target.value)} placeholder="2026-10-22T10:00:00-05:00"/></label><button disabled={!slot} onClick={()=>submit('reserve_callback',{...base(),contact_plan_id:plan.id,scheduled_at:slot})}>Reserve permitted callback slot</button><button onClick={()=>submit('evaluate_contact_window',base())}>Check contact window</button></>}
  {lead&&['lead_review','review_hold'].includes(w.status)&&<><label>Responsible continuation owner<select value={owner} onChange={e=>setOwner(e.target.value)}><option value="">Choose an eligible owner</option>{detail.eligible_owners.map((o:any)=><option key={o.id} value={o.id}>{o.role} · {o.id}</option>)}</select></label><label>Lead decision reason<textarea value={reason} onChange={e=>setReason(e.target.value)}/></label><label>Review date or single approved slot (ISO)<input value={slot} onChange={e=>setSlot(e.target.value)}/></label><label>New plan end (ISO)<input value={until} onChange={e=>setUntil(e.target.value)}/></label><button disabled={!owner||!reason||!slot} onClick={()=>submit('decide_contact_continuation',{...base(),expected_case_version:w.case_version,exhausted_plan_id:plan.id,reason,decision:{kind:'review_hold',payload:{owner_id:owner,review_at:slot}}})}>Approve owned review hold</button><button disabled={!owner||!reason||!slot||!until} onClick={()=>submit('decide_contact_continuation',{...base(),expected_case_version:w.case_version,exhausted_plan_id:plan.id,reason,decision:{kind:'new_plan',payload:{owner_id:owner,valid_from:slot,valid_until:until,max_attempts:1,approved_slots:[slot]}}})}>Approve one explicit additional contact</button></>}
  <ul>{detail.lead_decisions.map((d:any)=><li key={d.id}>{d.kind}: {d.reason} · owner {d.owner_id} · review {d.review_at??'see approved plan'}</li>)}</ul></>}
- {!lead&&w.status==='completed'&&<><label>Closure confirmation reason<textarea value={reason} onChange={e=>setReason(e.target.value)}/></label><button disabled={!reason} onClick={()=>submit('close_case',{...base(),expected_case_version:w.case_version,reason})}>Confirm closure if all checks pass</button></>}
+ <section aria-label="Closure checklist"><p>{caseStatus(w.case_status,w.status)}</p>
+ {w.case_status!=='closed'&&<>{detail.closure_blockers.length>0?<><strong>Not ready to close</strong><ul>{detail.closure_blockers.map((b:string)=><li key={b}>{b}</li>)}</ul></>:<p>Closure checks are satisfied. A staff member must still confirm closure; feedback delivery alone does not close the case.</p>}
+ <button onClick={refresh}>Refresh closure checklist</button>
+ {!lead&&w.status==='completed'&&<><label>Closure confirmation reason<textarea value={reason} onChange={e=>setReason(e.target.value)}/></label><button disabled={!reason.trim()||detail.closure_blockers.length>0} onClick={()=>submit('close_case',{...base(),expected_case_version:w.case_version,reason})}>Confirm closure if all checks pass</button></>}
+ </>}</section>
  </fieldset>;
 }

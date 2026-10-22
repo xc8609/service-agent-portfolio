@@ -69,3 +69,6 @@ requirement ID; failed rules are not silently changed in the specification.
 [REV-02 observed retest](2026-10-21-retest.md) records the three defect corrections
 and the post-CI query-to-feedback walkthrough. It supplements the original findings;
 owner sign-off and broader release gates are still separate.
+
+[22 October core-clarity retest](2026-10-22-core-clarity.md) covers closure
+blockers, feedback-delivery wording and the three-part staff summary.
