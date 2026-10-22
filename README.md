@@ -59,6 +59,8 @@ real bank integrations are deliberately not qualified. Owner UAT ([pack](docs/ua
 Tableau refresh acceptance and a human benefit study remain pending. Voice service and
 retail clienteling are later releases.
 
+**Next delivery:** [a focused bank demo and 20 practical checks](projects/bank-service-assist/evaluation/r2/portfolio-scope.md): scoped lookup, useful drafts, staff confirmation and one model route. Evaluation uses labelled AI-assisted synthetic cases; independent benchmarking is deferred.
+
 ## Repository map
 
 ```text
