@@ -16,10 +16,11 @@ export function AgentPanel(props:AgentProps){
 
 function ScopedAgentPanel({token,context,disabled=false,onSuggestion}:AgentProps){
   const [result,setResult]=useState<any>(null);
+  const [question,setQuestion]=useState('Explain these charges and suggest the next step for staff review.');
   const [busy,setBusy]=useState(false),[error,setError]=useState('');
   const active=useRef(true),trigger=useRef<string|null>(null);
   useEffect(()=>{active.current=true;return()=>{active.current=false;};},[]);
-  const canRun=!disabled&&(!!context.work_item_id||context.transaction_ids.length===2);
+  const canRun=!!question.trim()&&!disabled&&(!!context.work_item_id||context.transaction_ids.length===2);
 
   async function call(action:string,payload:unknown){
     const response=await fetch('/v1/assistant/'+action,{
@@ -34,7 +35,7 @@ function ScopedAgentPanel({token,context,disabled=false,onSuggestion}:AgentProps
     if(!canRun||busy)return;
     setBusy(true);setError('');trigger.current??=crypto.randomUUID();
     try{
-      const data=await call('run',{...context,trigger_key:trigger.current});
+      const data=await call('run',{...context,trigger_key:trigger.current,staff_question:question});
       if(active.current)setResult(data);
     }catch(e){if(active.current)setError(String(e));}
     finally{if(active.current)setBusy(false);}
@@ -52,6 +53,12 @@ function ScopedAgentPanel({token,context,disabled=false,onSuggestion}:AgentProps
   return <section aria-label="Bounded evidence assistant">
     <h3>Offline evidence assistant</h3>
     <p>Scripted provider fixture — demonstrates scoped tools and durable workflow, not live AI quality. Maximum four steps and 20 seconds. Business actions still require staff approval.</p>
+    <label>Question for the assistant
+      <textarea value={question} maxLength={1000} disabled={busy||disabled} onChange={e=>{
+        setQuestion(e.target.value);setResult(null);setError('');trigger.current=null;
+      }}/>
+    </label>
+    <p>The offline fixture demonstrates evidence flow only; a configured model receives your question. Changing it starts a new run.</p>
     <button disabled={busy||!canRun} onClick={start}>{busy?'Gathering permitted evidence…':'Run scoped offline assistant'}</button>
     {disabled&&<p>Inspect the current evidence and finish any report save before starting the assistant.</p>}
     {error&&<p role="alert">{error}. Manual controls remain available. Retry uses the same trigger.</p>}

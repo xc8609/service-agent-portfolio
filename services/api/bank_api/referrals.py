@@ -20,7 +20,7 @@ def route_config(conn):
 
 
 def pair_context(conn, contact, cards, ids):
-    from .app import as_uuid, fail, source
+    from .app import as_uuid, fail, recorded_relationships, source
     from .case_lookup import read_case
     from .policy_lookup import permitted
 
@@ -60,6 +60,8 @@ def pair_context(conn, contact, cards, ids):
                 "version": detail["snapshot"]["case_version"],
                 "status": detail["snapshot"]["case_status"],
                 "reference": detail["reference"],
+                "concern_code": detail["concern_code"],
+                "owner_queue_name": detail["owner_queue_name"],
                 "same_issue": set(ids).issubset(linked)
                 and detail["concern_code"] == "duplicate_charge"
                 and detail["snapshot"]["case_status"] != "closed",
@@ -84,6 +86,7 @@ def pair_context(conn, contact, cards, ids):
     refs += [source("policy", r["id"], r["version"], r["section"]) for r in rules]
     return {
         "transactions": txs,
+        "relationships": recorded_relationships(conn, ids),
         "report": report,
         "cases": cases,
         "rules": rules,

@@ -47,3 +47,8 @@ Run and reload displays belong to one identity/query context; late success or
 failure cannot restore the old context. [Regression design and executed evidence](ui-state-regression.md)
 connect this correction to DEV-03-AC04 and DEV-08-AC03/04. Authority and human
 approval remain server-enforced; this UI guard does not grant new permissions.
+
+## Core context increment — 22 October
+
+[Staff question and scoped transaction context](core-context.md) defines CC-01–06,
+implementation boundaries and actual verification evidence for the simplified portfolio.

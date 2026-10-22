@@ -51,3 +51,8 @@ Synthetic records and policies only. Financial execution, real outbound calls, A
 ## Current offline delivery
 
 See [implemented runtime, executed tests and remaining gates](runtime-contract.md). Historical live-provider/streaming/effort-study acceptance is not marked complete.
+
+## Core context increment — 22 October
+
+[Staff question and scoped transaction context](core-context.md) defines CC-01–06,
+implementation boundaries and actual verification evidence for the simplified portfolio.

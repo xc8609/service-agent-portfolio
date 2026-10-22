@@ -74,7 +74,7 @@ def unsupported_claims(body):
 
 
 def current_sources(conn, contact, cards, refs):
-    from .app import as_uuid, fail
+    from .app import as_uuid, fail, recorded_relationships
     from .case_lookup import read_case
     from .policy_lookup import permitted
 
@@ -113,7 +113,14 @@ def current_sources(conn, contact, cards, refs):
         "SELECT revision,statement,recognition,transaction_versions,recognized_transaction_id FROM investigation_revisions WHERE contact_id=%s ORDER BY revision DESC LIMIT 1",
         (contact["id"],),
     ).fetchone()
-    return {"records": snapshots, "report": report, "context_version": contact["version"]}
+    return {
+        "records": snapshots,
+        "relationships": recorded_relationships(
+            conn, [r["id"] for r in refs if r["kind"] == "transaction"]
+        ),
+        "report": report,
+        "context_version": contact["version"],
+    }
 
 
 def snapshot_hash(value):
