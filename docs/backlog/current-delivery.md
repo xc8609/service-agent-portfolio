@@ -1,6 +1,6 @@
 # Current delivery — finish the bank core first
 
-20 October 2026 · Owner-directed simplification (D-26). Status updated 21 October 2026.
+20 October 2026 · Owner-directed simplification (D-26). Delivery route updated 22 October 2026.
 
 Build a small, explainable service workflow before expanding its automation.
 Keep the existing application initialization and story IDs. Preserve accepted
@@ -64,7 +64,7 @@ original Sprint forecast as planning history, not actual elapsed person-days.
 
 1. Complete [REV-01](review-fixes.md) and the [REV-02 UAT corrections](uat-corrections.md), then retest the manual workflow and exceptions — [UAT pack](../uat/README.md). The delegated 21 October assessment found changes required; do not replace that historical result with an unobserved pass.
 2. Tableau refresh/layout acceptance for both workbooks; Desktop open is verified for the bank workbook.
-3. QA-02 pilot executed (D-27); next: the [small portfolio evaluation](../../projects/bank-service-assist/evaluation/r2/portfolio-scope.md) adopted on 22 October: 12 business checks, 8 engineering checks and a working single-model demonstration. Codex handles routine case review; independent holdout and four-batch owner approval are deferred. Actual API execution still needs an available route and budget.
+3. QA-02 pilot executed (D-27); next: the [small portfolio evaluation](../../projects/bank-service-assist/evaluation/r2/portfolio-scope.md) adopted on 22 October: 12 business checks in a [Codex subscription simulation](../../projects/bank-service-assist/evaluation/r2/subscription-simulation.md) and 8 engineering checks in the actual app. The owner explicitly deferred API use. Codex handles routine case review; independent holdout and four-batch owner approval are deferred. Session answers and app execution have separate evidence; neither is labelled a live provider integration.
 4. Staging recovery (OPS-02) needs an owner-chosen hosting account.
 
 No automatic phone execution, financial action or bulk architecture rewrite. Voice
