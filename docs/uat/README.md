@@ -4,6 +4,10 @@ Purpose: the business owner decides whether the merged workflow does what the ac
 rules say, using the running synthetic demo. Automated tests prove behaviour; this pack
 records a person's acceptance. Nothing here is pre-filled as passed.
 
+For a short introduction before formal acceptance, use the [five-minute presentation](../demo.md)
+and [case study](../case-study.md). Presentation screenshots and Codex's delegated
+rehearsal do not complete this sign-off.
+
 The owner delegated a browser-based assessment on 21 October 2026:
 [executed results, defects and reference practices](2026-10-21-delegated-assessment.md).
 Its decision is **changes required**; it does not fill in the owner's personal sign-off below.

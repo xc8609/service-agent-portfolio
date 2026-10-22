@@ -36,6 +36,43 @@ def test_holiday_dst_and_boundary_calendar():
     )
 
 
+def test_verified_call_at_service_close_requires_lead_review(environment):
+    _, admin, runtime, _ = environment
+    after_hours = NOW.astimezone(ZONE).replace(hour=17, minute=0)
+    with TestClient(create_app(Settings(runtime), clock=lambda: after_hours)) as client:
+        _, _, h, w, opened = setup_feedback(client)
+        review(client, h, w, opened["contact_id"])
+        verified = call(
+            client,
+            h,
+            "demo_callback_verification",
+            {
+                "callback_contact_id": opened["contact_id"],
+                "scenario": "verified",
+                "operation_key": str(uuid4()),
+            },
+        )
+        assert verified.status_code == 200, verified.text
+        command = attempt(client, h, w, opened, "connected_verified", "connected")
+        command["actual_attempt_at"] = after_hours.isoformat()
+        result = call(client, h, "record_callback_attempt", command)
+        assert result.status_code == 200, result.text
+        d = detail(client, h, w)
+        assert d["work"]["status"] == "lead_review"
+        assert d["plan"]["status"] == "exhausted"
+        assert any("Verified feedback" in b for b in d["closure_blockers"])
+        with psycopg.connect(admin) as conn:
+            assert conn.execute("SELECT reasons FROM callback_anomalies").fetchone()[0] == [
+                "outside_service_window"
+            ]
+            assert (
+                conn.execute("SELECT closed_at FROM cases WHERE id=%s", (w["case_id"],)).fetchone()[
+                    0
+                ]
+                is None
+            )
+
+
 def test_one_reserved_date_and_actual_duplicate_retained(environment):
     client, admin, *_ = environment
     _, _, h, w, opened = setup_feedback(client)

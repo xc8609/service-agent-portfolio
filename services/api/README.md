@@ -48,7 +48,20 @@ PYTHONPATH=services/api .venv-app/bin/python -m pytest -c services/api/pytest.in
 
 Tests refuse to substitute SQLite or silently skip database coverage. They reset only the supplied explicitly marked disposable database. Never use shared/application data for test URLs.
 
-With the app running, browser verification is:
+Browser verification uses its own disposable database and fixed clock, not an
+interactive demo with a live wall clock. Start `ci_serve.py` in a separate terminal
+with `BANK_TEST_ADMIN_URL` set as above (port 8000 must be free):
+
+```bash
+PYTHONPATH=services/api .venv-app/bin/python services/api/ci_serve.py
+```
+
+The browser-test server resets only that disposable database. It and the workflow
+browser tests share `tests/browser-clock.json` (10:00 Winnipeg on a configured
+service day), so the happy path also runs at night or on weekends. The normal
+demo/container do **not** use this clock. API regression tests still verify that
+a verified call at 17:00 enters lead review rather than completing feedback.
+Then run:
 
 ```bash
 cd apps/web

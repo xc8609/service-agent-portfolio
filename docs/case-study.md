@@ -1,54 +1,62 @@
-# Case study — from a "charged twice" call to a governed service workflow
+# Case study — “I bought once. Why are there two charges?”
 
-A one-page reading guide for reviewers. Scenario, data and rules are simulated; every
-number below links to the evidence that produced it.
+**Business analysis → working service workflow → bounded Agent assistance.**
+Independent portfolio, informed by banking service-desktop and product/BA experience.
+All operational records and handling rules are simulated. [Five-minute demo](demo.md).
 
-## 1. Problem
+## Business problem
 
-A customer calls: *"I bought once — why do I see two charges?"* A representative must
-find permitted transactions, existing cases and the right procedure across several
-screens, explain what is actually known, and — when the answer is unclear — hand the
-case to a specialist without losing ownership, deadlines or the customer's own words.
-The design draws on banking customer-service desktop and BA experience; no employer
-data or sponsorship is involved.
+A representative moves between customer records, transactions, case history and a
+knowledge base. Access varies by role; learning which procedure applies adds effort.
+The customer needs an explanation or an owned investigation, without repeated
+questions, duplicate work or an unsupported refund promise.
 
-## 2. Approach
+**Target outcome:** less information-search effort and more consistent handoffs.
+Time/cost savings remain hypotheses; no bank deployment or measured ROI is claimed.
 
-| Stage | What was produced | Evidence |
+## BA decisions made concrete
+
+| Business question | Design choice | Working evidence |
 |---|---|---|
-| Discovery | Current process, pain points, stakeholders and decision rights | [BA-01](../projects/bank-service-assist/specs/BA-01/spec.md) – [BA-03](../projects/bank-service-assist/specs/BA-03/spec.md) |
-| Rules | 28 dated owner decisions, e.g. paired enquiry when the customer cannot tell which entry is extra (D-23), callbacks capped at three attempts without automatic closure (D-16) | [Decision log](../projects/bank-service-assist/docs/sprint-01/decision-log.md) |
-| Requirements | 38 requirements with acceptance criteria and a generated requirement → test matrix | [Requirements](../projects/bank-service-assist/docs/sprint-01/requirements.json) · [Traceability](backlog/traceability-matrix.md) |
-| Design | Target lifecycle with every exception path; 33 state transitions; permissions per role | [BA-04 lifecycle](../projects/bank-service-assist/specs/BA-04/spec.md#target-lifecycle-v02) · [Transitions](../projects/bank-service-assist/specs/contracts/state-transitions.md) |
-| Build | React workspace, FastAPI trusted commands, PostgreSQL workflow store, bounded Agent | [Architecture](architecture.md) |
-| Verify | API, browser and offline tests in CI; owner UAT pack | [Ledger](backlog/dev-execution-ledger.md) · [UAT](uat/README.md) |
-| Evaluate | Frozen comparison of a decision table and three models | [QA-02 pilot](../projects/bank-service-assist/evaluation/README.md) |
+| What happened, and what does the customer recognize? | Separate source facts from statements; allow one purchase with unresolved entry mapping. | [DEV-03](../projects/bank-service-assist/specs/DEV-03/acceptance.md): versioned recognition; changed evidence invalidates drafts. |
+| Is someone already handling this? | Show existing work, progress and ownership before another enquiry. | [DEV-04](../projects/bank-service-assist/specs/DEV-04/acceptance.md): scoped lookup and linked intake. |
+| Which rule applies, and who may act? | Cited applicability; server-enforced identity, role and assignment. | [DEV-05](../projects/bank-service-assist/specs/DEV-05/acceptance.md): ordinary staff inspect; financial execution stays outside the demo. |
+| When can the case close? | Record missing material and its owner; preserve deadlines; distinguish delivery from closure. | [DEV-07](../projects/bank-service-assist/specs/DEV-07/acceptance.md), [DEV-12](../projects/bank-service-assist/specs/DEV-12/acceptance.md): reviewed handoff, callback evidence and closure blockers. |
 
-## 3. Decisions that shaped the system
+[Decisions](../projects/bank-service-assist/docs/sprint-01/decision-log.md),
+[stories](backlog/story-cards.md) and the [requirement-to-test matrix](backlog/traceability-matrix.md)
+connect business intent to implementation and acceptance.
 
-- **Authority stays server-side.** Every read and write rechecks identity, customer scope
-  and evidence versions; the Agent can read and draft, never approve or execute.
-- **Uncertainty is a state, not a guess.** Two equal charges are not a duplicate; a pending
-  authorization is not a refund; an unanswered call is not resolution.
-- **Exceptions keep an owner.** Missing material, unusable contact details, overdue work,
-  objections after closure and complaints each have an accountable queue and keep the
-  original deadline.
-- **Small, swappable edges.** One app, one API, one database; model APIs and bank data
-  connect through server-owned profiles and validated source mappings.
+## Agent contribution
 
-## 4. What the evidence shows
+The bounded runtime assembles authorized transaction, rule and case evidence into an
+editable **Facts → To confirm → Next step** draft with source references. Staff approve
+business writes; the manual path remains available.
 
-| Claim | Status |
-|---|---|
-| The whole workflow runs end to end with permissions and exception paths | Automated: 221 API and 40 browser tests pass in CI |
-| A model chooses the right next step more often than rules | **Only for free-text statements**: models 4/5 vs decision table 2/5; equal on structured cases (QA-02 pilot) |
-| Assistance stays safe under prompt injection and missing verification | The pilot used 48 hold-out model answers; review found scorer false negatives. Versioned regression checks are published; independent safety assessment remains pending |
-| Complaint data analysis supports assisted, not automatic, routing | 81.7% team accuracy vs 31.5% baseline on real CFPB data ([analytics](../projects/complaint-analytics/README.md)) |
-| Representatives save time | **Not measured** — requires the owner UAT and an effort study |
+The **app uses a scripted offline provider** to demonstrate tool access, evidence
+freshness and review, not arbitrary language understanding. A separate
+[12-case Codex subscription exercise](../projects/bank-service-assist/evaluation/r2/subscription-results-20261022.md)
+explored tentative recognition, unfamiliar merchants and missing receipts. Answers
+addressed distinctions the template missed; same-session AI review judged 11 usable
+and one needing a grammar edit. This is development evidence, not independent accuracy
+or proof of deployed model benefit. No API integration is claimed.
 
-## 5. What I would do next
+## Engineering and evidence
 
-1. Run the owner UAT and a timed comparison with the manual path (QA-03).
-2. Repeat the evaluation with an independently written hold-out and a negation-aware
-   promise guard; qualify one API route when budget allows.
-3. Deploy a read-only synthetic demo for reviewers (OPS-02).
+React/TypeScript → FastAPI/Python → PostgreSQL. One small application with documented
+[source/model extension points](architecture.md). Permissions, approval and receipts
+stay outside model control.
+
+The [verification suite](https://github.com/xc8609/service-agent-portfolio/pull/27/checks)
+contains **287 API tests and 44 browser tests**, plus container smoke and offline
+Python 3.9/3.12 checks (22 October 2026). A shared browser-test clock avoids dependence
+on run time; an API regression preserves the real service-hours rule.
+[Delegated UAT](uat/2026-10-22-core-clarity.md) observed guarded
+disclosure and closure. Owner acceptance, live-model qualification and measured human
+benefits remain separate.
+
+## Next useful evidence
+
+Compare 3–5 identical tasks in a simulated separate-source lookup and the integrated
+workspace: steps, time, omissions and corrections. Publish the assessor and actual
+observations, even if there is no gain. Model API, voice and retail expansion stay deferred.

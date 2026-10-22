@@ -64,12 +64,36 @@ original Sprint forecast as planning history, not actual elapsed person-days.
 
 1. [REV-01](review-fixes.md) and [REV-02](uat-corrections.md) merged in #21/#22; the [delegated core retest](../uat/2026-10-21-retest.md) passed its observed scope. Retain the original failed assessment and pending owner sign-off — [UAT pack](../uat/README.md).
 2. Tableau refresh/layout acceptance for both workbooks; Desktop open is verified for the bank workbook.
-3. QA-02 pilot executed (D-27); next: the [small portfolio evaluation](../../projects/bank-service-assist/evaluation/r2/portfolio-scope.md) adopted on 22 October: 12 business checks in a [Codex subscription simulation](../../projects/bank-service-assist/evaluation/r2/subscription-simulation.md) and 8 engineering checks in the actual app. The owner explicitly deferred API use. Codex handles routine case review; independent holdout and four-batch owner approval are deferred. Session answers and app execution have separate evidence; neither is labelled a live provider integration.
+3. QA-02's [12-case subscription exercise](../../projects/bank-service-assist/evaluation/r2/subscription-results-20261022.md) is recorded, with the eight engineering checks mapped to regressions. #25 connected context/questions and fixed recognition/policy gaps; #26 clarified closure and summaries. At `761aeaf`, [CI passed 286 API and 44 browser tests plus container smoke](https://github.com/xc8609/service-agent-portfolio/actions/runs/39859494492). Session answers and scripted runtime evidence remain separate; API use and independent model qualification are deferred.
 4. OPS-02 now distinguishes a bounded synthetic public demo (3a) from identity-backed
    staging/recovery (3b); both need explicit hosting/access decisions before deployment.
 
 No automatic phone execution, financial action or bulk architecture rewrite. Voice
 and retail remain later releases. Do not equate offline tests with real model quality.
+
+## Next small portfolio increment — QA-03 / OPS-03
+
+The [five-minute presentation](../demo.md) and [one-page case study](../case-study.md)
+package the existing core for reviewers. Current screenshots and dated CI counts are
+linked; historical evaluation records are not rewritten. This is presentation evidence,
+not owner acceptance, a recorded video or measured handling time.
+PR [#27](https://github.com/xc8609/service-agent-portfolio/pull/27) also corrects a
+wall-clock-dependent browser test: a shared test-only clock and one service-close
+regression bring the API suite to 287 tests; the browser suite remains 44. The
+interactive service-hours rule is unchanged. Check the PR for current CI results.
+
+Next, use 3–5 identical tasks to compare a simulated separate-source lookup with the
+integrated workspace. Record the baseline setup, participant/assessor, task order,
+elapsed time, lookups, omissions and corrections. Counterbalance order when people
+try both paths. A Codex-only rehearsal may report observed steps, but cannot establish
+human time savings. If there is no improvement, report that and refine the workflow.
+Assess incremental model benefit later; the current app provider is scripted.
+
+Done for the presentation slice means: readable entry points, reproducible setup,
+actual synthetic screenshots, verified links/counts and passing publication/CI checks.
+Keep QA-03 owner UAT and OPS-03 release acceptance separate. Public hosting requires
+a host/access decision; API, voice, retail and the larger R2 protocol stay deferred.
+Existing Sprint estimates remain planning history; this packaging is not a new platform Sprint.
 
 ## Adaptability within the small core
 

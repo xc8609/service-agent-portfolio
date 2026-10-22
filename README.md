@@ -1,171 +1,120 @@
 # Service Agent Portfolio
 
 [![Checks](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml)
+[![Bank runtime](https://github.com/xc8609/service-agent-portfolio/actions/workflows/bank-runtime.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/bank-runtime.yml)
 
-**From customer-service problems to working, human-reviewed AI workflows.**
+**Turn a customer-service problem into requirements, a working workflow and reviewable Agent assistance.**
 
-Service Agent Portfolio is a lightweight, open-source application portfolio that
-connects **business analysis, specification-driven development and Agent engineering**.
-It starts with a simulated banking service desk and demonstrates how requirements,
-process decisions and acceptance criteria become working software and test evidence.
+The first case: **“I bought once — why do I see two credit-card charges?”**
+Representatives need to find customer information across screens, work within access
+restrictions and learn the right handling procedure. This project brings permitted
+transactions, existing cases, rules and accountable follow-up into one workspace.
 
-## Why this project
+**Start here:** [one-page case study](docs/case-study.md) ·
+[five-minute demo script and screenshots](docs/demo.md) ·
+[run locally](#run-the-demo) · [Trello](https://trello.com/b/wtNhuN0q/ai-agent)
 
-Customer-service representatives often need to navigate several screens to find
-customer information, work within different access permissions and learn which
-handling rules apply. This project brings permitted information, relevant rules and
-accountable follow-up into one workflow.
+## What the portfolio demonstrates
 
-The first case is **“I bought once — why do I see two credit-card charges?”**
-The representative inspects transactions and existing cases, records what the
-customer recognizes, checks handling rules, and submits a reviewed specialist enquiry
-when needed. The Agent helps assemble evidence and draft the next step; authorized
-staff retain responsibility for decisions and customer communication.
-
-**The intended value:** less information-search effort, more consistent handling and
-clearer handoffs. These are hypotheses to test against the manual workflow; measured
-cost savings and production outcomes are not yet claimed.
-
-**Start here:** the one-page [case study](docs/case-study.md) — problem, approach,
-decisions and what the evidence does and does not show.
-
-| Evidence, not a guess | Rules before advice | A draft, never a decision |
+| Business need | BA design | Working software |
 |---|---|---|
-| ![Selected entries with no recorded relationship: equal amounts do not establish a duplicate](docs/images/evidence.png) | ![Cited simulated procedure with applicability conditions and reviewed next steps](docs/images/handling-rules.png) | ![Bounded assistant run awaiting human review, with citations and an uncommitted draft](docs/images/assistant-draft.png) |
+| Find information without losing context | Current/target process, role matrix, source evidence | Authorized transaction, case and rule lookup |
+| Handle an uncertain complaint consistently | Customer statement vs source fact; paired unresolved enquiry; missing-material ownership | Reviewed intake, linked existing work, specialist handoff |
+| Give staff useful assistance | Facts / To confirm / Next step; explicit human decision rights | Bounded read/draft tools, cited editable notes, stale-evidence checks |
+| Keep follow-up accountable | Approved customer wording, fresh verification, closure conditions | Specialist findings, manual callback records, visible closure blockers |
 
-## What you can explore
+**Intended value:** less search effort, fewer avoidable handoff omissions and more
+consistent handling. Measured savings and production outcomes are not yet claimed.
 
-- **Business analysis:** problem definition, current/target processes, permissions,
-  exceptions, story cards, Sprint planning and traceable acceptance criteria.
-- **Working service workflow:** scoped transaction/rule lookup, reviewed notes and
-  referrals, specialist findings, manual feedback and contact/exception handling.
-- **Agent engineering:** a bounded evidence assistant, server-selected model API
-  adapters, persisted runs, source citations and human approval boundaries.
-- **Honest evaluation:** a [frozen pilot](projects/bank-service-assist/evaluation/README.md)
-  comparing a decision table with three models on a small synthetic case set.
-  Review found gaps in the original safety scorer; versioned regression checks and
-  limitations are published alongside the historical pilot.
-- **Data and delivery evidence:** reconciled SQL exports, a Tableau workbook,
-  automated tests, CI and a reproducible local deployment.
-- **Real-data analytics:** [complaint operations analytics](projects/complaint-analytics/README.md)
-  on 27,011 public CFPB complaints — SQL profiling, Tableau, findings and a
-  frozen-split routing baseline (81.7% team accuracy vs 31.5% majority).
+| Inspect the evidence | Review the Agent draft | Keep unfinished work visible |
+|---|---|---|
+| ![Two posted transactions; equal amounts do not establish a duplicate](docs/images/evidence.png) | ![Offline Agent separates facts, uncertainty and next step; draft awaits staff review](docs/images/assistant-draft.png) | ![Feedback delivered, case still open, with explicit closure blockers](docs/images/closure-checklist.png) |
 
-**Stack:** React/TypeScript · FastAPI/Python · PostgreSQL · SQL/Tableau · Docker Compose.
+Actual synthetic app captures; [rules view and capture notes](docs/demo.md#screenshots-and-provenance).
 
-**Current status:** the bank core runs end to end on synthetic data with an offline,
-scripted assistant; 38 requirements trace to the tests that verify them. Live models and
-real bank integrations are deliberately not qualified. Owner UAT ([pack](docs/uat/README.md)),
-Tableau refresh acceptance and a human benefit study remain pending. Voice service and
-retail clienteling are later releases.
+## What runs today
 
-**Next delivery:** [a focused bank demo and 20 practical checks](projects/bank-service-assist/evaluation/r2/portfolio-scope.md): scoped lookup, useful drafts and staff confirmation. Model answers are explored through [Codex subscription-session simulation](projects/bank-service-assist/evaluation/r2/subscription-simulation.md); the app uses its offline provider. API integration is deferred. Cases and review are AI-assisted, not an independent benchmark.
+- **Bank workflow:** lookup → rules → reviewed enquiry → specialist finding → verified
+  customer feedback. Existing-case checks and human-confirmed closure are implemented.
+- **Agent runtime:** authorized evidence, allowlisted read/draft tools, bounded runs,
+  citations and manual fallback. **The app uses a scripted offline provider.** It does
+  not interpret arbitrary questions; live model APIs are deferred.
+- **Model exploration:** [12 Codex subscription scenarios](projects/bank-service-assist/evaluation/r2/subscription-results-20261022.md)
+  record actual answers and corrections separately from application execution.
+  Cases and review are AI-assisted, not an independent benchmark.
+- **Data analysis:** [complaint operations analytics](projects/complaint-analytics/README.md)
+  uses 27,011 public CFPB complaints, SQL and Tableau; its frozen routing baseline
+  reached 81.7% team accuracy vs 31.5% majority. These public complaints are separate
+  from the bank app's synthetic operational records.
 
-The first [12-scenario exercise](projects/bank-service-assist/evaluation/r2/subscription-results-20261022.md)
-records actual session answers, review findings and fixes to recognition/policy handling.
+**Verification suite — 22 October 2026:** **287 API tests and 44 browser tests**, plus
+container smoke and offline Python 3.9/3.12 checks. [Current PR results](https://github.com/xc8609/service-agent-portfolio/pull/27/checks).
+The disposable browser-test server and workflow tests share a fixed clock; the
+interactive demo retains real service hours, covered by an out-of-hours regression.
+[38 requirements trace to tests](docs/backlog/traceability-matrix.md).
+Owner UAT, human effort measurement, Tableau refresh acceptance and public deployment
+remain separate gates. Historical reports retain their original counts and limitations.
 
 ## Repository map
 
 ```text
-apps/web/                         React/TypeScript workspace + browser tests
-services/api/                     FastAPI, PostgreSQL migrations + API tests
-  bank_api/agent/                 Bounded runtime, provider adapters + server selection
-  bank_api/integrations/          Offline source-mapping validation
-projects/complaint-analytics/     Real public complaint data: SQL, Tableau, results
+docs/case-study.md + demo.md      Reviewer introduction and five-minute presentation
+docs/backlog/                    Story cards, Sprint forecast and current scope
 projects/bank-service-assist/
-  docs/                          Business analysis, decisions + Sprint evidence
-  specs/<STORY-ID>/               spec, design, tasks, acceptance
-  specs/contracts/               Permissions, data model, tool/API schemas
-  data/                          Source/terms notes; datasets excluded from Git
-  scripts/                       Offline data/specification checks
-  sql/ + dashboard/              Operational marts + Tableau workbook candidate
-docs/backlog/                     Story catalogue, Sprint forecast + current scope
-docs/decisions/ + architecture/   Repository decisions + architecture ADRs
-examples/                        Synthetic source mappings + disabled model profiles
-.github/workflows/               Offline, API/browser and container CI
+  docs/                          BA discovery, processes, rules and decisions
+  specs/<STORY-ID>/               Requirements, design, tasks and acceptance
+  specs/contracts/               Permissions, data model and tool/API contracts
+  evaluation/                    Model exercises, results and limitations
+apps/web/                        React/TypeScript workspace and browser tests
+services/api/bank_api/
+  agent/                         Bounded runtime and provider adapters
+  integrations/                  Source-mapping validation
+services/api/tests/              PostgreSQL-backed API regressions
+projects/complaint-analytics/    Public-data SQL, Tableau and routing evidence
+docs/uat/ + .github/workflows/   Acceptance records and CI
 ```
-
-[Business analysis](projects/bank-service-assist/docs/README.md) ·
-[Stories & current delivery](docs/backlog/README.md) ·
-[Detailed design](projects/bank-service-assist/specs/README.md) ·
-[Architecture & Agent boundary](docs/architecture.md) ·
-[Trello](https://trello.com/b/wtNhuN0q/ai-agent)
 
 ## Run the demo
 
-Requires Docker Compose. From the repository root:
+Requires Docker Compose. No model key is needed:
 
 ```bash
 python3 scripts/configure_demo.py
 docker compose up --build --wait
 ```
 
-Open **http://127.0.0.1:8000**. No model key is needed. Keep this synthetic demo on
-localhost; the persona selector is a local identity simulation, not production sign-in.
-
-[Mac setup without Docker, tests and recovery](services/api/README.md) ·
-[Executed evidence and limits](projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md)
-
-## Walk through the core flow
-
-The page follows the case from the first call to the final callback. Each write is a
-trusted command that rechecks identity, scope and versions and returns a receipt.
-
-| Step | Where (role) | What it demonstrates |
-|---|---|---|
-| 1 | Sections 1–3 · *Verified inbound representative* | Search `DEMO STORE`, select both entries, inspect evidence: pending vs posted, and no inferred duplicate |
-| 2 | Section 4, rules, related cases | Record what the customer recognizes, kept separate from source facts; cited simulated rules; existing work shown before any new enquiry |
-| 3 | Offline assistant, section 5 | A bounded run drafts a cited note; a person edits and approves it, or returns it with a reason |
-| 4 | Section 6 | A reviewed specialist enquiry, including an unresolved pair, missing material or a contact gap, with a receipt and the accountable queue |
-| 5 | Section 7 · *Demo specialist Alex* | Claim, request material through customer service, publish a finding with a customer-approved explanation and separate private notes |
-| 6 | Section 7 · *Feedback representative* | Claim feedback, open a synthetic callback, approve the explanation, verify identity, record the actual outcome. No answer means a retry or lead review, never closure |
-| 7 | Section 7, then related cases | Close only after verified feedback and completed work. A customer who later disputes it can call in; the disagreement reopens the case for re-review with history kept |
-| 8 | Section 7 · *Complaint intake coordinator* | A requested complaint is delivered by the worker and acknowledged with the complaint unit's reference, independently of the re-review |
+Open **http://127.0.0.1:8000** and follow the [demo preparation and walkthrough](docs/demo.md).
+Keep this synthetic demo on localhost; its persona selector is a local identity
+simulation. [Mac setup without Docker, tests and recovery](services/api/README.md).
 
 ## Architecture and extension points
 
-One UI, one API and one workflow database keep the application small and explainable:
+**React/TypeScript → FastAPI/Python → PostgreSQL**, packaged with Docker Compose.
+The Agent runs inside the API. Trusted commands enforce permissions, evidence versions,
+human approval, receipts and audit history.
 
-```text
-React workspace ──► FastAPI trusted commands ──► PostgreSQL workflow store
-                      │  identity · scope · versions · receipts · audit · outbox
-                      ├─ Bounded Agent runtime (read/draft tools only)
-                      │    └─ server-selected model route ─► Responses | Messages | compatible chat
-                      └─ Canonical read model ◄── source mapping preview (export / API shapes)
-```
-
-- **Model APIs:** a deployment profile selects the protocol, endpoint allowlist and
-  credential *reference*. A route runs live only when its qualification cites the
-  route's own fingerprint; changing the model or credential reference invalidates it.
-  Health and every Agent run record which route was used.
-- **Bank data:** institution-specific exports or APIs map into the canonical read model.
-  Mappings declare where source keys are unique and reject ambiguous money, time,
-  status or ownership facts for the whole batch, instead of guessing.
-- **Business rules stay put:** permissions, evidence versions, deadlines and human
-  approval live in shared services, so swapping a model or a data source leaves the
-  customer-service process unchanged.
-
-Two source formats and three model protocols have offline test coverage. Real bank
-connectors, SDK runtime adoption and live model qualification remain separate work.
-[Adaptation examples](examples/README.md) ·
-[Decisions, references and limits](docs/architecture/ADR-004-lightweight-enterprise-adaptation.md).
-
-## Open-source references
+Institution-specific sources map into a canonical read model; server-owned profiles
+select the model protocol. Two source formats and three model protocols have offline
+tests. Real bank ingestion and live route qualification remain future integration work.
+[Architecture](docs/architecture.md) · [Adaptation examples](examples/README.md).
 
 The [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) and
-[Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) inform our
-separation of model access, tools and orchestration. This project currently uses its
-own small bounded runtime and HTTP protocol adapters; it does not claim to integrate
-those SDKs. [Architecture decisions](docs/architecture/ADR-004-lightweight-enterprise-adaptation.md)
-explain what we adopted, what remains optional and how a concrete institution's
-requirements would change the implementation.
+[Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) are design
+references, not claimed dependencies. [ADR-004](docs/architecture/ADR-004-lightweight-enterprise-adaptation.md)
+explains the small custom runtime and what can change for an actual institution.
 
-## Delivery
+## Next delivery
 
-Bank core first: **lookup → rules → reviewed enquiry → specialist finding →
-customer feedback**. Agent assistance builds on that manual path. Voice and retail
-are later releases. See the [current scope and Sprint sequence](docs/backlog/current-delivery.md).
+Use this demo and case study for owner review, then run a **3–5-task effort comparison**
+of separate-source lookup and the integrated workspace. Record steps, time, omissions
+and edits; publish observed results rather than estimated savings. A hosted synthetic
+demo can follow an explicit hosting decision. API integration, voice and retail stay
+later. [Current delivery and Sprint context](docs/backlog/current-delivery.md).
 
-[Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [MIT](LICENSE) ·
-[Third-party notices](THIRD_PARTY_NOTICES.md). Independent portfolio work; all
-operational records and business rules are explicitly simulated.
+[Business analysis](projects/bank-service-assist/docs/README.md) ·
+[Detailed design](projects/bank-service-assist/specs/README.md) ·
+[UAT](docs/uat/README.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) ·
+[MIT](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md).
+
+Independent portfolio work. Bank operational records and business rules are simulated;
+public analytics data has its own provenance and terms.

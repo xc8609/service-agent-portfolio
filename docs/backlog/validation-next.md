@@ -1,5 +1,14 @@
 # Next validation increments — revised after independent review
 
+**Current scope notice — 22 October 2026:** the later owner-directed portfolio
+simplification takes precedence over this historical qualification plan. Use
+[current delivery](current-delivery.md) and the
+[small evaluation scope](../../projects/bank-service-assist/evaluation/r2/portfolio-scope.md).
+The 12 subscription scenarios and core regressions are recorded; the next practical
+step is the demo/case study and a small workspace-effort comparison. API integration,
+independent holdout qualification and production-like staging below remain deferred,
+not newly required or retrospectively passed.
+
 21 October 2026. Planning revision, not owner acceptance or executed model evaluation.
 Parents: QA-02, QA-03, DEV-08/09, QA-01 and OPS-02. Keep the existing small application.
 REV-01/#21 and REV-02/#22 are merged; main `283a33b` passed all four checks.
