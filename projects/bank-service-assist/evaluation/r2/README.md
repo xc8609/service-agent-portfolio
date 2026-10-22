@@ -2,6 +2,10 @@
 
 **Current scope (22 October):** follow the [small portfolio plan](portfolio-scope.md): 12 business checks and 8 engineering checks. Codex handles routine review under owner delegation; four-packet owner approval and independent holdout are no longer portfolio prerequisites. The historical workflow below is retained for reference.
 
+**Current model route:** the owner selected [Codex subscription-session simulation](subscription-simulation.md), with no API for now. Keep the application's offline provider and test its controls separately. The guide includes a reusable prompt and one synthetic starter case; it records no new model result.
+
+**Executed exercise:** [12 first responses, AI review and core-flow fixes](subscription-results-20261022.md). This uses the existing conversation, not a fresh or independent model evaluation. API integration stays deferred.
+
 21 October 2026. Parent story QA-02; [SDD package](../../specs/QA-02-R2/spec.md).
 All examples are authored synthetic portfolio fixtures, AI-assisted and publicly
 visible. Their families and paraphrases must be excluded from any future hidden

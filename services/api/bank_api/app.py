@@ -111,6 +111,17 @@ def source(kind, ident, version, section=None):
     return {"kind": kind, "id": str(ident), "version": str(version), "section": section}
 
 
+def recorded_relationships(conn, ids):
+    """Only source links wholly inside an already authorized transaction selection."""
+    return conn.execute(
+        """SELECT id,left_transaction_id,right_transaction_id,relation,version
+        FROM transaction_relationships
+        WHERE left_transaction_id=ANY(%s::uuid[]) AND right_transaction_id=ANY(%s::uuid[])
+        ORDER BY id""",
+        (ids, ids),
+    ).fetchall()
+
+
 def projection(row):
     return {
         key: (

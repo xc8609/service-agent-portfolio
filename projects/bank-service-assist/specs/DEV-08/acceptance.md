@@ -25,3 +25,12 @@ Structural validation of specifications is reported separately in workflow-valid
 ## Current offline delivery
 
 See [implemented runtime, executed tests and remaining gates](runtime-contract.md). Historical live-provider/streaming/effort-study acceptance is not marked complete.
+
+## Core context increment — 22 October
+
+[Staff question and scoped transaction context](core-context.md) defines CC-01–09,
+implementation boundaries and actual verification evidence for the simplified portfolio.
+
+CC-07–09: 15 added API cases and browser AG-02 passed in the final 262-API/43-browser
+suite. The [subscription exercise](../../evaluation/r2/subscription-results-20261022.md)
+records the separate 12 answer simulations and AI review; owner UAT remains pending.

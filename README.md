@@ -59,7 +59,10 @@ real bank integrations are deliberately not qualified. Owner UAT ([pack](docs/ua
 Tableau refresh acceptance and a human benefit study remain pending. Voice service and
 retail clienteling are later releases.
 
-**Next delivery:** [a focused bank demo and 20 practical checks](projects/bank-service-assist/evaluation/r2/portfolio-scope.md): scoped lookup, useful drafts, staff confirmation and one model route. Evaluation uses labelled AI-assisted synthetic cases; independent benchmarking is deferred.
+**Next delivery:** [a focused bank demo and 20 practical checks](projects/bank-service-assist/evaluation/r2/portfolio-scope.md): scoped lookup, useful drafts and staff confirmation. Model answers are explored through [Codex subscription-session simulation](projects/bank-service-assist/evaluation/r2/subscription-simulation.md); the app uses its offline provider. API integration is deferred. Cases and review are AI-assisted, not an independent benchmark.
+
+The first [12-scenario exercise](projects/bank-service-assist/evaluation/r2/subscription-results-20261022.md)
+records actual session answers, review findings and fixes to recognition/policy handling.
 
 ## Repository map
 

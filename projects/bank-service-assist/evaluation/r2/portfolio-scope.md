@@ -5,6 +5,11 @@ Codex and requested a practical portfolio rather than a production evaluation pr
 This supersedes the independent-holdout and four-packet owner-review requirements
 **for the portfolio milestone**. It does not mark historical gates as passed.
 
+**Model route confirmed later on 22 October:** use the existing Codex subscription
+conversation for assisted simulation; no API is needed for this milestone. Follow the
+[short session guide](subscription-simulation.md). The application remains on its
+offline provider, with session-answer quality and runtime behaviour reported separately.
+
 ## Business value and demonstration
 
 Help a representative answer: **“I bought once; why are there two card charges?”**
@@ -30,9 +35,10 @@ telephony platform or service split is needed for this increment.
    keep identity, selected transactions and allowed tools server-controlled.
 3. Reuse read-evidence, read-rules and draft tools. Show sources, missing information
    and a staff-review action in the UI. Preserve the working manual fallback.
-4. Demonstrate one model route end to end when credentials and a test budget are
-   available. Keep other adapters configurable; do not require a provider tournament.
-   Offline/replay evidence remains separately labelled until then.
+4. Use one Codex subscription session to simulate the assistant on the permitted
+   synthetic evidence and representative's question. Preserve the actual replies and
+   corrections. Demonstrate the app's read/draft/review flow separately with its offline
+   provider. API integration and provider qualification are later work.
 
 Do not expand the inbound two-posted-entry contract just to accommodate every
 candidate. Single-entry, pending/reversed and detailed callback scenarios remain
@@ -61,9 +67,10 @@ existing fixtures/tests wherever possible; do not write a second testing platfor
 | P12 | Approved specialist finding is ready | Staff-reviewed explanation through the existing feedback path |
 
 P12 may use the assigned-work Agent path and existing manual callback flow; it does
-not require a new inbound-to-callback cancellation feature. Each fixture must actually
-reach its intended path before it is reported as a model trial. Keep any remaining
-unmapped check visible as not run, rather than widening permissions or inventing data.
+not require a new inbound-to-callback cancellation feature. Label each input as an
+authorized app capture or an authored synthetic packet. A packet-only session response
+does not establish that the app reached that path. Keep unavailable paths visible as
+not run, rather than widening permissions or inventing execution evidence.
 
 **Eight engineering checks** retain the essential safeguards:
 
@@ -89,7 +96,9 @@ For each business check, record the actual output and mark **usable / needs edit
 wrong**, with one short reason. Check facts, next step and unsupported claims. Accept
 paraphrases; no exact answer matching, grader model or elaborate scoring taxonomy.
 Codex performs the delegated engineering review and identifies itself as AI, never as
-a human business signatory. One full initial run is enough to start; rerun affected
+a human business signatory. Using the same conversation for generation and review is
+acceptable for this exercise; disclose its prior exposure and non-independent review.
+One full initial run is enough to start; rerun affected
 checks after changes and keep earlier failures. Investigate variable behaviour when
 observed, rather than requiring three complete runs in advance.
 
@@ -116,8 +125,9 @@ would need appropriate new evidence; current application live-route protections 
 ## Delivery order
 
 1. Finish scoped evidence and staff-question plumbing with focused regressions.
-2. Exercise one model route through the app, retaining manual fallback; keep any
-   unavailable API execution explicitly pending.
+2. Run the 12 business scenarios through a Codex subscription conversation using the
+   short guide; exercise the 8 engineering checks through the actual app/tests. No
+   subscription bridge, new provider service or API budget is required.
 3. Run the small suite and fix core failures; publish a concise evidence report,
    architecture explanation and 3–5 minute walkthrough.
 

@@ -19,3 +19,14 @@ Each implementation slice must be at most five developer-days; DEV-08 now totals
 ## Current offline delivery
 
 See [implemented runtime, executed tests and remaining gates](runtime-contract.md). Historical live-provider/streaming/effort-study acceptance is not marked complete.
+
+## Core context increment — 22 October
+
+[Staff question and scoped transaction context](core-context.md) defines CC-01–09,
+implementation boundaries and actual verification evidence for the simplified portfolio.
+
+- [x] Capture 12 authorized synthetic scenario inputs and retain first subscription answers.
+- [x] Review answers as disclosed same-session AI assistance; preserve corrections separately.
+- [x] Fix read-assistance recognition conditions and reuse workspace policy-state handling.
+- [x] Verify active-work/missing-description/feedback reminders and add transition regressions.
+- [ ] Owner UAT / live provider qualification remain separate, not inferred from this exercise.

@@ -859,6 +859,11 @@ SDD: spec → design → task slices → code/PR → executed tests/UAT → rele
 
 ## DEV-08 — Add a bounded assistant that proposes evidence-backed next steps
 
+22 October increment: [scoped facts and staff question](../../projects/bank-service-assist/specs/DEV-08/core-context.md), implementing the simplified core demonstration without new orchestration services.
+
+22 October follow-up: [12 subscription scenarios and core fixes](../../projects/bank-service-assist/evaluation/r2/subscription-results-20261022.md); CC-07–09 cover recognition changes, policy state and practical draft gaps. Same-session AI review is disclosed; no live provider qualification or owner UAT is claimed.
+
+
 Status: Merged to main (offline bounded runtime) — real-model route unqualified; owner UAT pending
 Release: B1 | Priority: P0 | Forecast sprint: S05
 Role owner: Developer A + B (vertical slice) (simulated team allocation, not actual staffing)
