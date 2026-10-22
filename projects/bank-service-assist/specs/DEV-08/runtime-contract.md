@@ -33,6 +33,10 @@ unsupervised event-triggered Agent runs and live streaming are not enabled.
 
 ## Verification
 
+The [merchant descriptor increment](merchant-evidence.md) adds one owner-approved
+read-only source field and traces its additional boundary checks. This does not
+replace the historical execution record below or qualify a live model.
+
 174 PostgreSQL 16.2 API tests passed, including 12 Agent tests for draft-only effects,
 replay/restart, revoked/foreign scope, stale versions, typed tool failures, budgets,
 cancellation and fabricated citations. Provider tests are offline. 32 Chromium tests passed. Browser evidence

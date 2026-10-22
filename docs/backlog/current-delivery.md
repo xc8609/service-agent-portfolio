@@ -62,10 +62,11 @@ All bank DEV increments are merged to `main` with automated evidence in the
 [execution ledger](dev-execution-ledger.md). Merged is not owner-accepted. Keep the
 original Sprint forecast as planning history, not actual elapsed person-days.
 
-1. Complete [REV-01](review-fixes.md) and the [REV-02 UAT corrections](uat-corrections.md), then retest the manual workflow and exceptions — [UAT pack](../uat/README.md). The delegated 21 October assessment found changes required; do not replace that historical result with an unobserved pass.
+1. [REV-01](review-fixes.md) and [REV-02](uat-corrections.md) merged in #21/#22; the [delegated core retest](../uat/2026-10-21-retest.md) passed its observed scope. Retain the original failed assessment and pending owner sign-off — [UAT pack](../uat/README.md).
 2. Tableau refresh/layout acceptance for both workbooks; Desktop open is verified for the bank workbook.
 3. QA-02 pilot executed (D-27); next: the [small portfolio evaluation](../../projects/bank-service-assist/evaluation/r2/portfolio-scope.md) adopted on 22 October: 12 business checks, 8 engineering checks and a working single-model demonstration. Codex handles routine case review; independent holdout and four-batch owner approval are deferred. Actual API execution still needs an available route and budget.
-4. Staging recovery (OPS-02) needs an owner-chosen hosting account.
+4. OPS-02 now distinguishes a bounded synthetic public demo (3a) from identity-backed
+   staging/recovery (3b); both need explicit hosting/access decisions before deployment.
 
 No automatic phone execution, financial action or bulk architecture rewrite. Voice
 and retail remain later releases. Do not equate offline tests with real model quality.
