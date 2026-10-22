@@ -26,3 +26,18 @@ test('AG-01: scoped offline run creates a reviewable draft and clears on query c
  await expect(page.getByText(/Two posted entries were retrieved:/).first()).toContainText('DEMO STORE');
  await page.getByLabel('Merchant (optional)').fill('changed query');await expect(page.getByText(/Uncommitted note draft/)).toHaveCount(0);await expect(page.getByRole('button',{name:'Approve and commit note'})).toBeDisabled();
 });
+
+test('AG-02: staff-confirmed recognition still permits read assistance',async({page})=>{
+ await page.goto('/');await page.getByRole('button',{name:'Start demo contact',exact:true}).click();await expect(page.getByRole('status')).toContainText('Verified contact');
+ await page.getByLabel('Merchant (optional)').fill('DEMO STORE');await page.getByRole('button',{name:'Search transactions',exact:true}).click();await expect(page.getByRole('table')).toBeVisible();
+ for(const c of await page.getByRole('table').getByRole('checkbox').all())await c.check();
+ await page.getByLabel('Customer statement').fill('I confirm both selected entries are mine: one purchase and one gift card.');
+ await page.getByRole('button',{name:'Inspect selected evidence (2)'}).click();await page.getByLabel('Customer recognition').selectOption('both');
+ await page.getByRole('button',{name:'Save customer report',exact:true}).click();await expect(page.getByText(/Saved customer report revision/)).toBeVisible();
+ await page.getByRole('button',{name:'Inspect selected evidence (2)'}).click();
+ await page.getByLabel('Question for the assistant').fill('Explain the current recognition and next step.');
+ await page.getByRole('button',{name:'Run scoped offline assistant',exact:true}).click();
+ await expect(page.getByText(/· awaiting_human · usage unavailable/)).toBeVisible();
+ await expect(page.getByText(/The saved report recognizes both entries/)).toBeVisible();
+ await expect(page.getByText(/Uncommitted note draft/)).toBeVisible();
+});

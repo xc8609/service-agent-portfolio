@@ -19,10 +19,10 @@ def route_config(conn):
     return row
 
 
-def pair_context(conn, contact, cards, ids):
+def pair_context(conn, contact, cards, ids, *, for_referral=True):
     from .app import as_uuid, fail, recorded_relationships, source
     from .case_lookup import read_case
-    from .policy_lookup import permitted
+    from .policy_lookup import pair_rules, permitted
 
     ids = sorted(as_uuid(x) for x in ids)
     if len(ids) != 2 or len(set(ids)) != 2:
@@ -39,7 +39,10 @@ def pair_context(conn, contact, cards, ids):
         "SELECT * FROM investigation_revisions WHERE contact_id=%s ORDER BY revision DESC LIMIT 1",
         (contact["id"],),
     ).fetchone()
-    if not report or report["recognition"] not in ("one_purchase_unresolved", "specific_entry"):
+    allowed_recognition = {"one_purchase_unresolved", "specific_entry"}
+    if not for_referral:
+        allowed_recognition.update(("both", "neither"))
+    if not report or report["recognition"] not in allowed_recognition:
         fail("VALIDATION_ERROR")
     if {r["id"]: r["version"] for r in report["transaction_versions"]} != {
         str(t["id"]): str(t["version"]) for t in txs
@@ -68,17 +71,20 @@ def pair_context(conn, contact, cards, ids):
                 "work_items": detail["work_items"],
             }
         )
-    account = next(c for c in cards if c["id"] == txs[0]["account_id"])
     permitted_rules = permitted(conn, contact, cards)
     if len(permitted_rules) > 100:
         fail("LIMIT_EXCEEDED")
-    rules = [
-        r
-        for r in permitted_rules
-        if r["product"] == account["product"] and r["jurisdiction"] == account["jurisdiction"]
-    ]
-    # Exact applicable posted-pair section; uncertainty never invents a policy.
-    rules = [r for r in rules if r["transaction_pattern"] == "two_posted"]
+    # Share the workspace's applicability/conflict logic with the Agent and intake.
+    policy, rules = pair_rules(
+        conn,
+        {
+            "transaction_ids": ids,
+            "expected_versions": {str(t["id"]): str(t["version"]) for t in txs},
+        },
+        contact,
+        cards,
+        permitted_rules,
+    )
     refs = [source("contact", contact["id"], contact["version"])] + [
         source("transaction", r["id"], r["version"]) for r in txs
     ]
@@ -90,6 +96,7 @@ def pair_context(conn, contact, cards, ids):
         "report": report,
         "cases": cases,
         "rules": rules,
+        "policy": policy,
         "refs": refs,
         "route": route_config(conn),
     }

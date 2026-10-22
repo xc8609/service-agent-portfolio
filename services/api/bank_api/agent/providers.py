@@ -404,7 +404,7 @@ def safe_context(evidence):
             "occurred_at",
             "posted_at",
         ),
-        "rules": ("id", "version", "text"),
+        "rules": ("id", "version", "text", "applicability", "next_steps"),
         "findings": ("id", "version", "approved_customer_explanation"),
         "work": ("id", "version", "status", "original_due_at"),
     }

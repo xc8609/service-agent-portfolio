@@ -30,6 +30,15 @@ without assembling the facts again. All operational records remain synthetic.
 - **CC-06:** A question requesting a refund or increased access cannot add a tool or
   permission. Provider failures retain the manual workflow. These are engineering
   checks, not proof of a live model's semantic robustness.
+- **CC-07:** After staff saves `both` or `neither` for the current posted pair, the
+  old run is stale and fresh read assistance remains available. Preparing a
+  duplicate-charge referral under that recognition is still rejected.
+- **CC-08:** The rules tool exposes the same applicability, gap/conflict state and
+  next-step suppression as the manual workspace. Missing/conflicting rules result
+  in manual policy-review guidance, not an implied applicable rule.
+- **CC-09:** The offline demonstration includes active related-work progress/owner,
+  a missing merchant-description gap and the callback verification/review reminder.
+  It remains labelled scripted and does not infer arbitrary questions' meaning.
 
 ## Design and compatibility
 
@@ -60,6 +69,13 @@ PR #24 supplies the current plan/evidence foundation; this incremental PR is sta
 on that branch to keep its review focused. No parent PR is merged by this work.
 
 ## Verification record
+
+Follow-up: the [12-case subscription exercise](../../evaluation/r2/subscription-results-20261022.md)
+records actual same-conversation answers, limitations and the defects behind CC-07–09.
+The final local suite passed 262 API tests and 43 browser tests. `pair_context` keeps
+strict referral recognition by default; only the Agent read path uses its broader
+read option. Policy applicability reuses `pair_rules`; no new workflow or migration.
+The earlier verification below remains historical evidence for CC-01–06.
 
 - API: 247 tests passed on disposable PostgreSQL 16.2 / Python 3.12, including nine
   new context/question cases (parameterized validation included).

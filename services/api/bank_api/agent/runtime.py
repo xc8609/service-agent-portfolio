@@ -65,18 +65,20 @@ def current(conn, authorization, p, now):
         contact, cards = scope(conn, s, p["contact_id"], now)
         from ..referrals import pair_context
 
-        ctx = pair_context(conn, contact, cards, p["transaction_ids"])
+        ctx = pair_context(conn, contact, cards, p["transaction_ids"], for_referral=False)
         refs = ctx["refs"]
         evidence = safe_context(
             {
                 "facts": ctx["transactions"],
                 "rules": [
                     {
-                        "id": str(r["id"]),
-                        "version": r["version"],
-                        "text": r.get("body", r.get("guidance", "")),
+                        "id": r["policy_ref"]["id"],
+                        "version": r["policy_ref"]["version"],
+                        "text": r["text"],
+                        "applicability": r["applicability"],
+                        "next_steps": r["next_steps"],
                     }
-                    for r in ctx["rules"]
+                    for r in ctx["policy"]["rules"]
                 ],
             }
         )
@@ -84,7 +86,10 @@ def current(conn, authorization, p, now):
             "statement": ctx["report"]["statement"],
             "recognition": ctx["report"]["recognition"],
             "revision": ctx["report"]["revision"],
+            "recognized_transaction_id": ctx["report"]["recognized_transaction_id"],
         }
+        evidence["policy_state"] = ctx["policy"]["state"]
+        evidence["policy_gaps"] = ctx["policy"]["gaps"]
         evidence["relationships"] = ctx["relationships"]
         evidence["related_work"] = [
             {
@@ -179,6 +184,7 @@ def current(conn, authorization, p, now):
 
 def fixture(evidence, refs, stage):
     citations = [r["kind"] + ":" + r["id"] + ":" + r["version"] for r in refs]
+    gaps = ["Human review and current identity/scope checks remain required."]
     if stage == "inbound":
         entries = "; ".join(
             f"{t.get('merchant_description') or 'Merchant unavailable'} — "
@@ -194,20 +200,34 @@ def fixture(evidence, refs, stage):
             else "No source relationship is recorded; similar entries do not establish a duplicate. "
         )
         matching = [c for c in evidence["related_work"] if c["covers_selected_concern"]]
-        text += (
-            "Existing enquiry "
-            + matching[0]["reference"]
-            + " is "
-            + matching[0]["status"]
-            + "; follow up with "
-            + matching[0]["owner_queue"]
-            + " rather than submit a duplicate. "
-            if matching
-            else "Review the applicable rule and prepare a grouped enquiry if still unresolved. "
-        )
+        if matching:
+            case = matching[0]
+            text += f"Existing enquiry {case['reference']} is {case['status']}; follow up with {case['owner_queue']} rather than submit a duplicate. "
+            for work in case["work_items"]:
+                if work["status"] not in ("completed", "cancelled"):
+                    text += f"{work['kind']}: {work['status']}; {work['assignee_name'] or 'unassigned'} in {work['queue_name']}. "
+        else:
+            text += "No matching enquiry was returned by this scoped lookup. "
+        recognition = evidence["customer_allegation"]["recognition"]
+        if recognition == "both":
+            text += "The saved report recognizes both entries. Explain the recorded facts and clarify any remaining concern; do not prepare a duplicate-charge enquiry on the earlier scope. "
+        elif recognition == "neither":
+            text += "The saved report recognizes neither entry. Request authorized manual risk review; this does not establish fraud. "
+        elif not matching and evidence["policy_state"] == "applicable":
+            text += "Review the applicable rule and prepare a grouped enquiry if still unresolved. "
+        if evidence["policy_state"] != "applicable":
+            text += "Handling rules are missing or conflicting; request manual policy review before relying on an instruction. "
+            gaps.extend(evidence["policy_gaps"])
+        if any(not t.get("merchant_description", "").strip() for t in evidence["facts"]):
+            gaps.append(
+                "Original merchant description is missing; clarify the purchase without inventing a merchant identity."
+            )
         text += "No financial execution is confirmed."
     elif evidence["findings"]:
         text = evidence["findings"][0]["approved_customer_explanation"]
+        gaps.append(
+            "Before customer disclosure, complete current callback identity verification and staff review; this draft is not a contact or closure receipt."
+        )
     else:
         text = "Investigation is still pending. The blocker reason is not confirmed. Do not promise an update time without a current approved commitment."
     return FakeProvider(
@@ -222,9 +242,7 @@ def fixture(evidence, refs, stage):
                         {
                             "summary": text,
                             "citations": citations,
-                            "gaps": [
-                                "Human review and current identity/scope checks remain required."
-                            ],
+                            "gaps": gaps,
                         },
                     )
                 ]
@@ -306,6 +324,13 @@ def run(
                 "Dates and similar amounts do not establish duplicate charges. Use only recorded "
                 "relationships. Ask for explicit clarification when recognition is uncertain; "
                 "preserve saved recognition until staff reviews an explicit confirmation. "
+                "Report any mismatch between a new statement and saved recognition without changing it. "
+                "Use the rule applicability and state; missing or conflicting rules require manual policy review. "
+                "An empty related-work lookup is limited to this scope, not proof no case exists anywhere. "
+                "Missing supporting documents do not alone prevent intake; follow the supplied procedure. "
+                "For feedback, keep the approved explanation separate from internal deadlines; "
+                "do not disclose internal deadlines as customer commitments. "
+                "staff must verify current callback identity and review before customer disclosure. "
                 "Check related work before suggesting a new enquiry. Cite the provided source "
                 "ID and version for factual claims. Answer the staff question with a concise "
                 "explanation, missing information and a permitted next step. "
@@ -374,6 +399,8 @@ def run(
                     raise ProviderFailure("TOOL_ORDER")
                 result = {
                     "rules": fresh.get("rules", []),
+                    "state": fresh.get("policy_state", "not_applicable"),
+                    "gaps": fresh.get("policy_gaps", []),
                     "notice": "No inferred rule. Missing/conflicting policy requires manual review.",
                 }
             else:

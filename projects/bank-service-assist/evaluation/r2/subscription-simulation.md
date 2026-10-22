@@ -6,6 +6,10 @@ Use the existing Codex conversation to explore useful bank-assistant answers. Ke
 the local application on its labelled offline provider. This is a practical assisted
 simulation, not a new provider adapter or an independent model benchmark.
 
+First execution: [22 October results and limitations](subscription-results-20261022.md).
+The original starter packet below remains an example; the executed run used separately
+captured synthetic runtime evidence with its actual source references and amounts.
+
 ## Small workflow
 
 1. Choose the next P01–P12 scenario from the [portfolio plan](portfolio-scope.md).

@@ -22,5 +22,11 @@ See [implemented runtime, executed tests and remaining gates](runtime-contract.m
 
 ## Core context increment — 22 October
 
-[Staff question and scoped transaction context](core-context.md) defines CC-01–06,
+[Staff question and scoped transaction context](core-context.md) defines CC-01–09,
 implementation boundaries and actual verification evidence for the simplified portfolio.
+
+- [x] Capture 12 authorized synthetic scenario inputs and retain first subscription answers.
+- [x] Review answers as disclosed same-session AI assistance; preserve corrections separately.
+- [x] Fix read-assistance recognition conditions and reuse workspace policy-state handling.
+- [x] Verify active-work/missing-description/feedback reminders and add transition regressions.
+- [ ] Owner UAT / live provider qualification remain separate, not inferred from this exercise.
