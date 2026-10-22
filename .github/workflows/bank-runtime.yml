@@ -34,6 +34,18 @@ jobs:
       - run: python -m pip install -r services/api/requirements.lock
       - run: ruff check services/api && ruff format --check services/api
       - run: python -m pytest -c services/api/pytest.ini services/api/tests -q
+      - name: Bound Ubuntu dependency downloads
+        run: |
+          # The hosted runner's Azure mirror stalled on two independent runs.
+          # Keep Ubuntu signature verification; use its official archive instead.
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            sudo sed -i 's|http://azure.archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' /etc/apt/apt-mirrors.txt
+          fi
+          sudo tee /etc/apt/apt.conf.d/99-bank-ci-downloads >/dev/null <<'EOF'
+          Acquire::Retries "2";
+          Acquire::http::Timeout "30";
+          Acquire::https::Timeout "30";
+          EOF
       - run: npm ci && npm run build && npx playwright install --with-deps chromium
         working-directory: apps/web
       - name: Start isolated demo API

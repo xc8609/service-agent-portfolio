@@ -16,6 +16,11 @@ Synthetic records only; this is not owner sign-off or live-model qualification.
 - Ruff, format, workflow/contracts, public-file/link checks and whitespace passed.
   Initial WF-06 authoring runs failed on ambiguous/missing test locators and an
   unawaited search result; the corrected complete suite passed (no retries).
+- CI follow-up: two hosted runners stalled downloading Playwright dependencies
+  from the Azure Ubuntu mirror after API tests passed. The workflow substitutes
+  the [official Ubuntu archive](https://archive.ubuntu.com/ubuntu/) in the runner's
+  mirror list and bounds download timeouts/retries. Package signature validation,
+  all tests and required checks remain unchanged. Final CI evidence is on the PR.
 
 ## Interactive review
 
