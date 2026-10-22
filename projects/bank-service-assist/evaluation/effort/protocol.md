@@ -21,8 +21,8 @@ latency or end-to-end handling time.
 
 Shared fixture: DEMO-4242, two DEMO STORE CAD 85 posted entries; customer statement:
 “I bought once, but I see two charges for CAD 85. I cannot tell which entry is extra.
-I do not have the receipt.” Recognition: one_purchase_unresolved. Fresh, matched
-verified contacts in one disposable database; no financial action or real customer.
+I do not have the receipt.” Recognition: one_purchase_unresolved. Matched verified
+sessions for the same seeded contact in one disposable database; no financial action or real customer.
 Prepare both conditions before timing. Start A at its source index and B at its
 workspace entry. Reset that view between tasks; do not carry a completed answer into
 the next recorded attempt. Prior knowledge cannot be removed and must be reported.

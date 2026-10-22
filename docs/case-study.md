@@ -55,8 +55,13 @@ on run time; an API regression preserves the real service-hours rule.
 disclosure and closure. Owner acceptance, live-model qualification and measured human
 benefits remain separate.
 
-## Next useful evidence
+## What the first lookup rehearsal found
 
-Compare 3–5 identical tasks in a simulated separate-source lookup and the integrated
-workspace: steps, time, omissions and corrections. Publish the assessor and actual
-observations, even if there is no gain. Model API, voice and retail expansion stay deferred.
+[Four matched tasks](../projects/bank-service-assist/evaluation/effort/results-20261022.md)
+compared separated source pages with the workspace. Both paths covered case ownership
+and handling rules. Manual lookup omitted explicit currency/posting dates; the scripted
+draft omitted the unavailable receipt and treated an already-unresolved mapping as a
+conditional question. These are actionable gaps, not evidence of better accuracy.
+Codex operated and scored the rehearsal; no human time saving was established.
+Next: fix those two small presentation/draft gaps and retest. Model API, voice and
+retail expansion stay deferred.
