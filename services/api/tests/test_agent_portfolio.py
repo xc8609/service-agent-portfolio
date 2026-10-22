@@ -150,7 +150,7 @@ def test_portfolio_scenario_evidence_and_offline_draft(environment, case_id):
         matching = [w for w in evidence["related_work"] if w["covers_selected_concern"]]
         assert matching and matching[0]["owner_queue"]
         assert matching[0]["reference"] in result["output"]["summary"]
-        assert "awaiting_documents" in result["output"]["summary"]
+        assert "awaiting documents" in result["output"]["summary"]
         assert "Demo specialist Alex" in result["output"]["summary"]
     if case_id == "P05":
         assert "merchant description is missing" in " ".join(result["output"]["gaps"])

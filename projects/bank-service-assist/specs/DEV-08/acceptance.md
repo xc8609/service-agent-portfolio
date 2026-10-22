@@ -1,5 +1,8 @@
 # DEV-08 acceptance record
 
+[Core-flow clarity CF-01–05](core-flow-clarity.md) adds the three-part staff summary
+and delivered-feedback wording, with the shared DEV-12 closure-checklist follow-up.
+
 [Current implementation and qualification limits](runtime-contract.md). Historical forecasts are not actual effort; owner UAT remains pending.
 
 [Merchant descriptor change and MD-01–05 acceptance](merchant-evidence.md) extend

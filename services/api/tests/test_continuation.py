@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from uuid import uuid4
 
 import psycopg
+import pytest
 from bank_api.app import create_app
 from bank_api.calendar import ZONE, contact_window
 from bank_api.config import Settings
@@ -224,14 +225,25 @@ def test_closure_denies_pending_work_then_requires_current_verified_result(envir
             },
         )
 
-    assert close().status_code == 409
+    checklist = detail(client, h, w)["closure_blockers"]
+    assert any("Required actions" in b for b in checklist)
+    assert any("complaint intake" in b for b in checklist)
+    assert not any("Verified feedback" in b for b in checklist)
+    rejected = close()
+    assert rejected.status_code == 409
+    assert rejected.json()["error"]["code"] == "CLOSURE_BLOCKED"
     # Test setup only: simulate independent required-work completion, not a runtime financial command.
     with psycopg.connect(admin) as c:
         c.execute("UPDATE work_items SET status='completed' WHERE case_id=%s", (w["case_id"],))
+    # Completing other work does not hide a missing action receipt.
+    assert len(detail(client, h, w)["closure_blockers"]) == 1
+    assert close().json()["error"]["code"] == "CLOSURE_BLOCKED"
+    with psycopg.connect(admin) as c:
         c.execute(
             "UPDATE required_actions SET status='completed',receipt_ref='synthetic-independent-receipt' WHERE case_id=%s",
             (w["case_id"],),
         )
+    assert detail(client, h, w)["closure_blockers"] == []
     r = close()
     assert r.status_code == 200, r.text
     with psycopg.connect(admin) as c:
@@ -339,6 +351,60 @@ def complete_unrelated_seed_work(admin, case_id):
             "UPDATE required_actions SET status='completed',receipt_ref='synthetic-independent-receipt' WHERE case_id=%s",
             (case_id,),
         )
+
+
+@pytest.mark.parametrize("missing", ["feedback_receipt", "action_receipt"])
+def test_completed_labels_cannot_hide_missing_closure_evidence(environment, missing):
+    client, admin, *_ = environment
+    _, _, h, w, opened = setup_feedback(client)
+    verified_callback(client, h, w, opened)
+    complete_unrelated_seed_work(admin, w["case_id"])
+    with psycopg.connect(admin) as c:
+        if missing == "feedback_receipt":
+            c.execute(
+                "DELETE FROM callback_details WHERE attempt_id IN (SELECT id FROM callback_attempts WHERE case_id=%s)",
+                (w["case_id"],),
+            )
+        else:
+            c.execute(
+                "UPDATE required_actions SET receipt_ref=NULL WHERE case_id=%s", (w["case_id"],)
+            )
+    blockers = detail(client, h, w)["closure_blockers"]
+    assert len(blockers) == 1
+    assert (
+        "Verified feedback" if missing == "feedback_receipt" else "Required actions"
+    ) in blockers[0]
+    rejected = close_case(client, h, w)
+    assert rejected.status_code == 409
+    assert rejected.json()["error"]["code"] == "CLOSURE_BLOCKED"
+    other, _ = session(client, "feedback_other")
+    denied = call(client, other, "get_work_detail", pair(w))
+    assert denied.status_code == 404 and "closure_blockers" not in denied.text
+    with psycopg.connect(admin) as c:
+        assert (
+            c.execute("SELECT closed_at FROM cases WHERE id=%s", (w["case_id"],)).fetchone()[0]
+            is None
+        )
+
+
+def test_closure_still_distinguishes_stale_versions_from_business_blockers(environment):
+    client, _, *_ = environment
+    _, _, h, w, opened = setup_feedback(client)
+    before = detail(client, h, w)["work"]
+    verified_callback(client, h, w, opened)
+    rejected = call(
+        client,
+        h,
+        "close_case",
+        {
+            **pair(w),
+            "expected_case_version": before["case_version"],
+            "expected_work_version": before["version"],
+            "reason": "Old review.",
+            "operation_key": str(uuid4()),
+        },
+    )
+    assert rejected.status_code == 409 and rejected.json()["error"]["code"] == "CONFLICT"
 
 
 def test_closed_case_rejects_a_new_result_without_objection(environment):

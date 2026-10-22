@@ -13,6 +13,11 @@ test('AG-01: scoped offline run creates a reviewable draft and clears on query c
  await page.getByRole('button',{name:'Run scoped offline assistant',exact:true}).click();
  expect((await requestPromise).postDataJSON().staff_question).toBe('Why are there two charges, and is there already an enquiry?');await expect(page.getByText(/· awaiting_human · usage unavailable/)).toBeVisible();await expect(page.getByText(/Uncommitted note draft/)).toBeVisible();
  await page.getByRole('button',{name:'Reload durable run'}).click();await expect(page.getByText(/· awaiting_human · usage unavailable/)).toBeVisible();
+ const summary=page.getByLabel('Assistant summary');
+ await expect(summary).toContainText('Facts');await expect(summary).toContainText('To confirm');await expect(summary).toContainText('Next step');
+ await expect(summary).toContainText('do not establish a duplicate');
+ await page.getByText('Sources and review checks',{exact:true}).click();
+ await expect(page.getByText('Human review and current identity/scope checks remain required.',{exact:true})).toBeVisible();
  await page.getByRole('button',{name:'Load note history'}).click();await page.getByRole('button',{name:/Review saved note draft/}).last().click();await expect(page.getByRole('textbox',{name:'Reviewed note',exact:true})).toHaveValue(/Two posted entries/);await expect(page.getByRole('button',{name:'Approve and commit note'})).toBeEnabled();
  // A changed question cannot reuse the previous run or preview.
  const firstRun=await page.getByText(/· awaiting_human · usage unavailable/).textContent();
