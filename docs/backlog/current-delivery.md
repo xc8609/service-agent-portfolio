@@ -80,14 +80,31 @@ not owner acceptance, a recorded video or measured handling time.
 PR [#27](https://github.com/xc8609/service-agent-portfolio/pull/27) also corrects a
 wall-clock-dependent browser test: a shared test-only clock and one service-close
 regression bring the API suite to 287 tests; the browser suite remains 44. The
-interactive service-hours rule is unchanged. Check the PR for current CI results.
+interactive service-hours rule is unchanged. #27 was reviewed and squash-merged as
+`81ae6f1`; all four required checks passed on its reviewed head. Both post-merge main
+workflows also passed: [runtime](https://github.com/xc8609/service-agent-portfolio/actions/runs/39867907394)
+and [offline](https://github.com/xc8609/service-agent-portfolio/actions/runs/39867907380).
 
-Next, use 3–5 identical tasks to compare a simulated separate-source lookup with the
-integrated workspace. Record the baseline setup, participant/assessor, task order,
-elapsed time, lookups, omissions and corrections. Counterbalance order when people
-try both paths. A Codex-only rehearsal may report observed steps, but cannot establish
-human time savings. If there is no improvement, report that and refine the workflow.
-Assess incremental model benefit later; the current app provider is scripted.
+The [four-task rehearsal](../../projects/bank-service-assist/evaluation/effort/results-20261022.md)
+now records the actual first answers, navigation, elapsed operator time and omissions.
+The prepared workspace used zero page changes versus ten in the simulated source pack,
+but required within-page movement and did not establish a speed gain. Case/rule lookup
+was complete; transaction display and the scripted handoff each missed two checklist
+items. This is a Codex-operated rehearsal, not independent human measurement or model
+qualification. QA-03 owner acceptance remains pending.
+
+Next bounded follow-up (DEV-02/DEV-08, within existing QA-03):
+
+1. Display explicit currency and posting date in the manual transaction view; verify
+   both against source values, with an honest missing-date state.
+2. Carry the saved unresolved recognition and unavailable receipt into the draft as
+   customer-reported information. Keep missing-material ownership and review; do not
+   infer a disputed entry or invent a receipt.
+3. Retest T1/T4 with focused regressions. Preserve this first report; log improvements
+   separately. A human walkthrough can follow, using the same tasks.
+
+These are the next small implementation slice, not changes already delivered by this
+report. Assess incremental model benefit later; the current app provider is scripted.
 
 Done for the presentation slice means: readable entry points, reproducible setup,
 actual synthetic screenshots, verified links/counts and passing publication/CI checks.
