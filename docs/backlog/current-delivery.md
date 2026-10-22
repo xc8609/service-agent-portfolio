@@ -93,18 +93,18 @@ was complete; transaction display and the scripted handoff each missed two check
 items. This is a Codex-operated rehearsal, not independent human measurement or model
 qualification. QA-03 owner acceptance remains pending.
 
-Next bounded follow-up (DEV-02/DEV-08, within existing QA-03):
+PR #28 was reviewed and merged as `5943b51` with all four required checks green.
+The bounded DEV-02/DEV-08 follow-up now implements
+[LG-01–04](../../projects/bank-service-assist/specs/DEV-08/lookup-gap-follow-up.md):
+explicit currency/posting dates and a server-owned customer-statement block alongside
+the corrected recognition wording. No new service or model route was added.
 
-1. Display explicit currency and posting date in the manual transaction view; verify
-   both against source values, with an honest missing-date state.
-2. Carry the saved unresolved recognition and unavailable receipt into the draft as
-   customer-reported information. Keep missing-material ownership and review; do not
-   infer a disputed entry or invent a receipt.
-3. Retest T1/T4 with focused regressions. Preserve this first report; log improvements
-   separately. A human walkthrough can follow, using the same tasks.
-
-These are the next small implementation slice, not changes already delivered by this
-report. Assess incremental model benefit later; the current app provider is scripted.
+[Targeted T1/T4 retest](../uat/2026-10-22-lookup-gap-retest.md): 5/5 and 7/7 required
+items, with actual screenshots and first preview text. Local verification passed
+293 API tests, 45 browser tests and 109 offline tests (two optional SQL modules
+skipped). The first comparison remains unchanged; no human speed gain is inferred.
+Next: owner walkthrough using the corrected demo. Model API, public hosting, voice
+and retail remain separate later decisions.
 
 Done for the presentation slice means: readable entry points, reproducible setup,
 actual synthetic screenshots, verified links/counts and passing publication/CI checks.

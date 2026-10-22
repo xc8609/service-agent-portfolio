@@ -1,5 +1,9 @@
 # Owner UAT pack — bank service core
 
+[Latest targeted lookup/Agent retest — 22 October](2026-10-22-lookup-gap-retest.md):
+T1/T4 gaps corrected; delegated Codex assessment, owner sign-off pending.
+
+
 Purpose: the business owner decides whether the merged workflow does what the accepted
 rules say, using the running synthetic demo. Automated tests prove behaviour; this pack
 records a person's acceptance. Nothing here is pre-filled as passed.

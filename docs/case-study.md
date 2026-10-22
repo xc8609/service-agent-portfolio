@@ -47,8 +47,8 @@ React/TypeScript → FastAPI/Python → PostgreSQL. One small application with d
 [source/model extension points](architecture.md). Permissions, approval and receipts
 stay outside model control.
 
-The [verification suite](https://github.com/xc8609/service-agent-portfolio/pull/27/checks)
-contains **287 API tests and 44 browser tests**, plus container smoke and offline
+The [verification suite](uat/2026-10-22-lookup-gap-retest.md)
+contains **293 API tests and 45 browser tests**, plus container smoke and offline
 Python 3.9/3.12 checks (22 October 2026). A shared browser-test clock avoids dependence
 on run time; an API regression preserves the real service-hours rule.
 [Delegated UAT](uat/2026-10-22-core-clarity.md) observed guarded
@@ -63,5 +63,6 @@ and handling rules. Manual lookup omitted explicit currency/posting dates; the s
 draft omitted the unavailable receipt and treated an already-unresolved mapping as a
 conditional question. These are actionable gaps, not evidence of better accuracy.
 Codex operated and scored the rehearsal; no human time saving was established.
-Next: fix those two small presentation/draft gaps and retest. Model API, voice and
-retail expansion stay deferred.
+The [targeted retest](uat/2026-10-22-lookup-gap-retest.md) now verifies explicit currency
+and posting dates, plus the exact saved customer statement beside a corrected draft.
+Next: owner walkthrough. Model API, voice and retail expansion stay deferred.

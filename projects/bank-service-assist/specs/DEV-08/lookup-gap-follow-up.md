@@ -49,6 +49,7 @@ this additive field; a fresh run is needed to get the new preview block.
 | LG-03 | Default and deliberately terse provider retain exact statement, including a 2,000-character claim/instruction sample; AG-01 renders and loads the allegation separately |
 | LG-04 | Report-correction stale run/new revision, durable reload, no committed note and no raw statement in safe trace; existing unauthorized/financial-claim regressions |
 
-Execution results and screenshots are recorded separately in the dated retest record.
+Execution results and screenshots: [dated delegated retest](../../../../docs/uat/2026-10-22-lookup-gap-retest.md),
+293 API tests, 45 browser tests, T1 5/5 and T4 7/7.
 The original comparison remains unchanged. A passed regression does not prove lower
 handling time, production readiness, live-model quality or owner acceptance.
