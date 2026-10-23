@@ -237,17 +237,36 @@ def fixture(evidence, refs, stage):
             next_steps.append(
                 "Request authorized manual risk review; this does not establish fraud."
             )
-        else:
+        elif recognition == "one_purchase_unresolved":
             facts.append(
-                "The saved customer report recognizes one purchase; this is a customer statement, not an adjudicated outcome."
+                "The saved customer report recognizes one purchase, but which entry is additional remains unresolved; "
+                "this is a customer statement, not an adjudicated outcome."
             )
             uncertain.append(
-                "Confirm which entry is disputed, or retain the pair as unresolved if the customer cannot distinguish them."
+                "Keep both entries grouped for verification; do not infer which entry is disputed."
             )
             if not matching and evidence["policy_state"] == "applicable":
                 next_steps.append(
                     "Review the applicable rule and prepare a grouped enquiry if still unresolved."
                 )
+        else:
+            # Staff read the entry the way the lookup table shows it; the short ID
+            # matches the visible reference when merchant, amount and dates coincide.
+            recognized = str(evidence["customer_allegation"]["recognized_transaction_id"])
+            entry = next((t for t in evidence["facts"] if str(t["id"]) == recognized), None)
+            label = (
+                f"{entry.get('merchant_description') or 'Merchant unavailable'} — "
+                f"{entry['currency']} {Decimal(entry['amount_minor']) / 100:.2f}, "
+                f"occurred {str(entry.get('occurred_at'))[:10]} (entry {recognized[:8]})"
+                if entry
+                else f"entry {recognized[:8]}"
+            )
+            facts.append(
+                f"The saved customer report recognizes {label}; "
+                "this is a customer statement, not an adjudicated outcome."
+            )
+            if not matching and evidence["policy_state"] == "applicable":
+                next_steps.append("Review the applicable rule before preparing an enquiry.")
         if evidence["policy_state"] != "applicable":
             uncertain.append("Handling rules are missing or conflicting.")
             next_steps.append("Request manual policy review before relying on an instruction.")
@@ -483,6 +502,11 @@ def run(
                     "proposal_id": None,
                     "notice": "Uncommitted draft; review current evidence. " + route.notice,
                 }
+                if stage == "inbound":
+                    # Preserve the full saved statement beside the draft, independently
+                    # of provider wording. It remains an allegation, not a ledger fact
+                    # or an instruction; note persistence already has a separate field.
+                    output["customer_report"] = fresh["customer_allegation"]
                 result = {"status": "draft_only"}
             completed_tools.add(c.name)
             with runtime_connection(settings.database_url) as conn:

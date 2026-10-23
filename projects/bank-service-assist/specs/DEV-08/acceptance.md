@@ -37,3 +37,9 @@ implementation boundaries and actual verification evidence for the simplified po
 CC-07–09: 15 added API cases and browser AG-02 passed in the final 262-API/43-browser
 suite. The [subscription exercise](../../evaluation/r2/subscription-results-20261022.md)
 records the separate 12 answer simulations and AI review; owner UAT remains pending.
+
+## QA-03 lookup follow-up — 22 October 2026
+
+[LG-01–04 acceptance and regression map](lookup-gap-follow-up.md) addresses the observed
+transaction display and customer-context gaps. Historical results above remain unchanged;
+owner acceptance and human effort measurement remain pending.

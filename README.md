@@ -27,11 +27,12 @@ transactions, existing cases, rules and accountable follow-up into one workspace
 consistent handling. Measured savings and production outcomes are not yet claimed.
 The [four-task rehearsal](projects/bank-service-assist/evaluation/effort/results-20261022.md)
 found fewer page changes, but missing transaction fields and handoff details;
-it does not establish a time saving.
+it does not establish a time saving. The [targeted retest](docs/uat/2026-10-22-lookup-gap-retest.md)
+now verifies complete transaction fields and preserved customer context.
 
 | Inspect the evidence | Review the Agent draft | Keep unfinished work visible |
 |---|---|---|
-| ![Two posted transactions; equal amounts do not establish a duplicate](docs/images/evidence.png) | ![Offline Agent separates facts, uncertainty and next step; draft awaits staff review](docs/images/assistant-draft.png) | ![Feedback delivered, case still open, with explicit closure blockers](docs/images/closure-checklist.png) |
+| ![Two posted transactions; equal amounts do not establish a duplicate](docs/images/lookup-fixed-manual.png) | ![Offline Agent separates facts, uncertainty and next step; draft awaits staff review](docs/images/lookup-fixed-handoff.png) | ![Feedback delivered, case still open, with explicit closure blockers](docs/images/closure-checklist.png) |
 
 Actual synthetic app captures; [rules view and capture notes](docs/demo.md#screenshots-and-provenance).
 
@@ -50,8 +51,8 @@ Actual synthetic app captures; [rules view and capture notes](docs/demo.md#scree
   reached 81.7% team accuracy vs 31.5% majority. These public complaints are separate
   from the bank app's synthetic operational records.
 
-**Verification suite — 22 October 2026:** **287 API tests and 44 browser tests**, plus
-container smoke and offline Python 3.9/3.12 checks. [Merged-main runtime results](https://github.com/xc8609/service-agent-portfolio/actions/runs/39867907394).
+**Verification suite — 22 October 2026:** **293 API tests and 45 browser tests**, plus
+container smoke and offline Python 3.9/3.12 checks. [Dated regression and retest evidence](docs/uat/2026-10-22-lookup-gap-retest.md).
 The disposable browser-test server and workflow tests share a fixed clock; the
 interactive demo retains real service hours, covered by an out-of-hours regression.
 [38 requirements trace to tests](docs/backlog/traceability-matrix.md).
@@ -108,11 +109,10 @@ explains the small custom runtime and what can change for an actual institution.
 
 ## Next delivery
 
-Use the demo and case study for owner review. The completed four-task rehearsal points
-to two small improvements: show explicit currency and posting dates in manual lookup,
-and preserve the customer's unresolved mapping and missing receipt in the draft.
-Retest those tasks before any human effort study. A hosted synthetic demo can follow
-an explicit hosting decision. API integration, voice and retail stay later.
+Use the corrected demo for owner review. The targeted T1/T4 retest now covers all
+required items; human effort measurement remains unproven. Keep the next step small:
+a human walkthrough and feedback on clarity. A hosted synthetic demo can follow an
+explicit hosting decision. API integration, voice and retail stay later.
 [Current delivery and Sprint context](docs/backlog/current-delivery.md).
 
 [Business analysis](projects/bank-service-assist/docs/README.md) ·

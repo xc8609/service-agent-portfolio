@@ -17,3 +17,9 @@ Structural validation of specifications is reported separately in workflow-valid
 ## Current implementation slice — 20 October 2026
 
 [Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md). Only the explicitly mapped read-path cases have executed evidence. The historical contract/forecast above remains the full-story scope; no owner UAT, worker, write-effect or model acceptance is implied.
+
+## QA-03 lookup follow-up — 22 October 2026
+
+[LG-01–04 acceptance and regression map](../DEV-08/lookup-gap-follow-up.md) addresses the observed
+transaction display and customer-context gaps. Historical results above remain unchanged;
+owner acceptance and human effort measurement remain pending.
