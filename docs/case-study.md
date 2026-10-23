@@ -1,69 +1,70 @@
 # Case study — “I bought once. Why are there two charges?”
 
-**Business analysis → working service workflow → bounded Agent assistance.**
-Independent portfolio, informed by banking service-desktop and product/BA experience.
-All operational records and handling rules are simulated. [Five-minute demo](demo.md).
+**From fragmented lookups to an owned customer-service workflow.**
+A banking portfolio case connecting business analysis, Agent assistance and full-stack
+engineering. [Five-minute demo](demo.md) · [Run locally](../README.md#run-the-demo).
 
-## Business problem
+## Business problem and goal
 
-A representative moves between customer records, transactions, case history and a
-knowledge base. Access varies by role; learning which procedure applies adds effort.
-The customer needs an explanation or an owned investigation, without repeated
-questions, duplicate work or an unsupported refund promise.
+A representative moves between customer records, transaction screens, case history
+and a knowledge base to understand a disputed charge. Different access permissions
+and handling procedures add complexity, while incomplete handoffs make follow-up harder.
 
-**Target outcome:** less information-search effort and more consistent handoffs.
-Time/cost savings remain hypotheses; no bank deployment or measured ROI is claimed.
+The goal is to bring the relevant information and next steps into one workspace:
+help staff investigate the enquiry, apply the right procedure and keep responsibility
+clear through specialist review and customer feedback.
 
-## BA decisions made concrete
+## The working journey
 
-| Business question | Design choice | Working evidence |
+1. **Understand the enquiry.** Find the two transactions and record what the customer
+   recognizes. Keep their statement alongside the transaction facts.
+2. **Find the right next step.** Check existing work, its progress and owner; retrieve
+   the applicable procedure and its source version.
+3. **Prepare the response.** The Agent assembles **Facts / To confirm / Next step**
+   and an editable note. Staff review and approve the saved version.
+4. **Hand off with context.** Link the existing investigation or submit a reviewed
+   enquiry with the selected entries, customer statement and missing-material needs.
+5. **Complete the follow-up.** The specialist records findings; customer service
+   verifies identity, delivers the approved explanation and checks remaining work.
+
+## BA decisions translated into features
+
+| Business question | Design choice | Implementation |
 |---|---|---|
-| What happened, and what does the customer recognize? | Separate source facts from statements; allow one purchase with unresolved entry mapping. | [DEV-03](../projects/bank-service-assist/specs/DEV-03/acceptance.md): versioned recognition; changed evidence invalidates drafts. |
-| Is someone already handling this? | Show existing work, progress and ownership before another enquiry. | [DEV-04](../projects/bank-service-assist/specs/DEV-04/acceptance.md): scoped lookup and linked intake. |
-| Which rule applies, and who may act? | Cited applicability; server-enforced identity, role and assignment. | [DEV-05](../projects/bank-service-assist/specs/DEV-05/acceptance.md): ordinary staff inspect; financial execution stays outside the demo. |
-| When can the case close? | Record missing material and its owner; preserve deadlines; distinguish delivery from closure. | [DEV-07](../projects/bank-service-assist/specs/DEV-07/acceptance.md), [DEV-12](../projects/bank-service-assist/specs/DEV-12/acceptance.md): reviewed handoff, callback evidence and closure blockers. |
+| What does the customer recognize? | Keep customer statements separate from source facts; allow one purchase with unresolved entry mapping. | [DEV-03](../projects/bank-service-assist/specs/DEV-03/acceptance.md): versioned statements and recognition. |
+| Is someone already handling this? | Show existing work and responsibility before another enquiry is created. | [DEV-04](../projects/bank-service-assist/specs/DEV-04/acceptance.md): related cases, progress and linked intake. |
+| Which procedure applies? | Match the selected evidence to a versioned rule, with explicit role permissions. | [DEV-05](../projects/bank-service-assist/specs/DEV-05/acceptance.md): cited rules and suggested next steps. |
+| What happens when information is missing? | Record the gap, its owner and follow-up responsibility while investigation continues. | [DEV-07](../projects/bank-service-assist/specs/DEV-07/acceptance.md): complete handoff context and preserved deadlines. |
+| When is the work finished? | Distinguish delivered feedback from case closure; show remaining actions. | [DEV-12](../projects/bank-service-assist/specs/DEV-12/acceptance.md): callback evidence and closure checklist. |
 
 [Decisions](../projects/bank-service-assist/docs/sprint-01/decision-log.md),
-[stories](backlog/story-cards.md) and the [requirement-to-test matrix](backlog/traceability-matrix.md)
-connect business intent to implementation and acceptance.
+[story cards](backlog/story-cards.md) and [requirement-to-test traceability](backlog/traceability-matrix.md)
+connect the analysis to working software.
 
-## Agent contribution
+## Agent and engineering design
 
-The bounded runtime assembles authorized transaction, rule and case evidence into an
-editable **Facts → To confirm → Next step** draft with source references. Staff approve
-business writes; the manual path remains available.
+The Agent gathers permitted transaction, case and procedure evidence through defined
+tools. Its draft carries source references and the saved customer context into human
+review. The application handles approval, permissions, evidence freshness and receipts.
+Staff can also complete the same workflow manually.
 
-The **app uses a scripted offline provider** to demonstrate tool access, evidence
-freshness and review, not arbitrary language understanding. A separate
-[12-case Codex subscription exercise](../projects/bank-service-assist/evaluation/r2/subscription-results-20261022.md)
-explored tentative recognition, unfamiliar merchants and missing receipts. Answers
-addressed distinctions the template missed; same-session AI review judged 11 usable
-and one needing a grammar edit. This is development evidence, not independent accuracy
-or proof of deployed model benefit. No API integration is claimed.
+**React/TypeScript → FastAPI/Python → PostgreSQL.** The Agent runs inside the API,
+with separate provider adapters and transaction-source mapping interfaces.
+[Architecture and extension points](architecture.md) keep institution-specific
+integration separate from the service workflow.
 
-## Engineering and evidence
+The local demonstration uses synthetic records and a scripted offline Agent provider.
 
-React/TypeScript → FastAPI/Python → PostgreSQL. One small application with documented
-[source/model extension points](architecture.md). Permissions, approval and receipts
-stay outside model control.
+## Validation and improvement
 
-The [verification suite](uat/2026-10-23-utc-date-retest.md)
-contains **294 API tests and 45 browser tests**, plus container smoke and offline
-Python 3.9/3.12 checks (23 October 2026). A shared browser-test clock avoids dependence
-on run time; an API regression preserves the real service-hours rule.
-[Delegated core acceptance](uat/bank-core-closeout.md) passed for the local synthetic
-demo, including guarded disclosure and closure. Personal owner sign-off, broader
-nonfunctional gates, live-model qualification and measured human benefits remain separate.
+The core passed [delegated workflow assessment](uat/bank-core-closeout.md), supported by
+**294 API tests and 45 browser tests**, container smoke and offline checks
+(23 October 2026).
 
-## What the first lookup rehearsal found
+A [four-task lookup rehearsal](../projects/bank-service-assist/evaluation/effort/results-20261022.md)
+identified missing currency/posting dates and customer context in the first version.
+Those findings became focused changes and a [targeted retest](uat/2026-10-22-lookup-gap-retest.md).
+The result is a clearer transaction comparison and an Agent handoff that retains the
+customer's exact statement and material gaps.
 
-[Four matched tasks](../projects/bank-service-assist/evaluation/effort/results-20261022.md)
-compared separated source pages with the workspace. Both paths covered case ownership
-and handling rules. Manual lookup omitted explicit currency/posting dates; the scripted
-draft omitted the unavailable receipt and treated an already-unresolved mapping as a
-conditional question. These are actionable gaps, not evidence of better accuracy.
-Codex operated and scored the rehearsal; no human time saving was established.
-The [targeted retest](uat/2026-10-22-lookup-gap-retest.md) now verifies explicit currency
-and posting dates, plus the exact saved customer statement beside a corrected draft.
-Ready to present: the bounded offline core. Gather reviewer feedback; model API,
-hosting, voice and retail expansion remain later increments.
+Next: hosted demonstration and live-model integration, then voice handoff and retail.

@@ -3,127 +3,109 @@
 [![Checks](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml)
 [![Bank runtime](https://github.com/xc8609/service-agent-portfolio/actions/workflows/bank-runtime.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/bank-runtime.yml)
 
-**Turn a customer-service problem into requirements, a working workflow and reviewable Agent assistance.**
+**A bank service workspace that brings transaction investigation, Agent assistance
+and customer follow-up into one workflow.**
 
-The first case: **“I bought once — why do I see two credit-card charges?”**
-Representatives need to find customer information across screens, work within access
-restrictions and learn the right handling procedure. This project brings permitted
-transactions, existing cases, rules and accountable follow-up into one workspace.
+A customer asks: **“I bought once — why do I see two credit-card charges?”**
+The representative needs transaction details, the right handling procedure and a
+clear next step. This project connects those tasks from the first enquiry through
+specialist review and customer feedback.
 
-**Start here:** [one-page case study](docs/case-study.md) ·
-[five-minute demo script and screenshots](docs/demo.md) ·
-[run locally](#run-the-demo) · [Trello](https://trello.com/b/wtNhuN0q/ai-agent)
+It combines banking product and business-analysis experience with full-stack
+engineering: business problem → requirements → story cards → implementation → acceptance.
 
-**Delivery status — 23 October 2026:** the local synthetic bank core is implemented
-and has passed delegated workflow assessment. [Completion and acceptance record](docs/uat/bank-core-closeout.md)
-maps analysis → specs → code → tests → observed outcomes and names the remaining gates.
+[Case study](docs/case-study.md) · [Five-minute demo](docs/demo.md) ·
+[Run locally](#run-the-demo) · [Trello](https://trello.com/b/wtNhuN0q/ai-agent)
 
-## What the portfolio demonstrates
+## Core features
 
-| Business need | BA design | Working software |
+| Feature | What staff can do |
+|---|---|
+| Transaction investigation | Find charges by card, date, amount and merchant; compare status, currency and posting dates. |
+| Customer context | Record the customer's statement and which entries they recognize; retain missing information for follow-up. |
+| Case and procedure lookup | See related enquiries, progress, owners and applicable handling rules with source references. |
+| Agent assistance | Assemble permitted evidence into **Facts / To confirm / Next step** and an editable service-note draft. |
+| Specialist handoff | Review and submit an enquiry, link existing work, and pass along transaction evidence and material gaps. |
+| Feedback and closure | Publish specialist findings, record verified customer feedback, and see outstanding actions before closing a case. |
+
+| Investigate the charges | Review the Agent draft | Follow through to resolution |
 |---|---|---|
-| Find information without losing context | Current/target process, role matrix, source evidence | Authorized transaction, case and rule lookup |
-| Handle an uncertain complaint consistently | Customer statement vs source fact; paired unresolved enquiry; missing-material ownership | Reviewed intake, linked existing work, specialist handoff |
-| Give staff useful assistance | Facts / To confirm / Next step; explicit human decision rights | Bounded read/draft tools, cited editable notes, stale-evidence checks |
-| Keep follow-up accountable | Approved customer wording, fresh verification, closure conditions | Specialist findings, manual callback records, visible closure blockers |
+| ![Transaction comparison with currency and posting dates](docs/images/lookup-fixed-manual.png) | ![Customer statement and three-part Agent summary](docs/images/lookup-fixed-handoff.png) | ![Customer feedback and remaining follow-up actions](docs/images/closure-checklist.png) |
 
-**Intended value:** less search effort, fewer avoidable handoff omissions and more
-consistent handling. Measured savings and production outcomes are not yet claimed.
-The [four-task rehearsal](projects/bank-service-assist/evaluation/effort/results-20261022.md)
-found fewer page changes, but missing transaction fields and handoff details;
-it does not establish a time saving. The [targeted retest](docs/uat/2026-10-22-lookup-gap-retest.md)
-now verifies complete transaction fields and preserved customer context.
+## How the Agent fits
 
-| Inspect the evidence | Review the Agent draft | Keep unfinished work visible |
-|---|---|---|
-| ![Two posted transactions; equal amounts do not establish a duplicate](docs/images/lookup-fixed-manual.png) | ![Offline Agent separates facts, uncertainty and next step; draft awaits staff review](docs/images/lookup-fixed-handoff.png) | ![Feedback delivered, case still open, with explicit closure blockers](docs/images/closure-checklist.png) |
+The Agent gathers transaction, case and procedure evidence through scoped tools,
+keeps source references with its draft, and saves the result for staff review.
+Staff can edit, approve or return a draft. Evidence changes trigger a fresh review;
+permissions and business actions are enforced by the application.
 
-Actual synthetic app captures; [rules view and capture notes](docs/demo.md#screenshots-and-provenance).
+The design separates **model providers**, **tool contracts** and **business workflow**.
+This keeps model integration adaptable while retaining the same review and handoff process.
+[Agent and application architecture](docs/architecture.md).
 
-## What runs today
+## Technology and structure
 
-- **Bank workflow:** lookup → rules → reviewed enquiry → specialist finding → verified
-  customer feedback. Existing-case checks and human-confirmed closure are implemented.
-- **Agent runtime:** authorized evidence, allowlisted read/draft tools, bounded runs,
-  citations and manual fallback. **The app uses a scripted offline provider.** It does
-  not interpret arbitrary questions; live model APIs are deferred.
-- **Model exploration:** [12 Codex subscription scenarios](projects/bank-service-assist/evaluation/r2/subscription-results-20261022.md)
-  record actual answers and corrections separately from application execution.
-  Cases and review are AI-assisted, not an independent benchmark.
-- **Data analysis:** [complaint operations analytics](projects/complaint-analytics/README.md)
-  uses 27,011 public CFPB complaints, SQL and Tableau; its frozen routing baseline
-  reached 81.7% team accuracy vs 31.5% majority. These public complaints are separate
-  from the bank app's synthetic operational records.
+**React / TypeScript → FastAPI / Python → PostgreSQL**, packaged with Docker Compose
+and tested with pytest, Playwright and GitHub Actions.
 
-**Verification suite — 23 October 2026:** **294 API tests and 45 browser tests**, plus
-container smoke and offline Python 3.9/3.12 checks. [Dated regression and retest evidence](docs/uat/2026-10-23-utc-date-retest.md).
-The disposable browser-test server and workflow tests share a fixed clock; the
-interactive demo retains real service hours, covered by an out-of-hours regression.
-[38 requirements trace to tests](docs/backlog/traceability-matrix.md).
-Personal owner sign-off, human effort measurement, Tableau refresh acceptance and
-public deployment remain separate gates. Historical reports retain their original counts and limitations.
-
-## Repository map
+Transaction-source mapping examples and model-provider adapters sit behind small,
+defined interfaces. Provider adapters cover OpenAI Responses, Claude Messages and
+compatible-chat protocols. [Adaptation examples](examples/README.md) and
+[design decisions](docs/architecture/ADR-004-lightweight-enterprise-adaptation.md)
+explain how to extend the project for an institution's data and processes.
 
 ```text
-docs/case-study.md + demo.md      Reviewer introduction and five-minute presentation
-docs/backlog/                    Story cards, Sprint forecast and current scope
+docs/case-study.md + demo.md      Project overview and walkthrough
+docs/backlog/                    Story cards, Sprint planning and traceability
 projects/bank-service-assist/
-  docs/                          BA discovery, processes, rules and decisions
+  docs/                          Business analysis, processes and decisions
   specs/<STORY-ID>/               Requirements, design, tasks and acceptance
   specs/contracts/               Permissions, data model and tool/API contracts
-  evaluation/                    Model exercises, results and limitations
-apps/web/                        React/TypeScript workspace and browser tests
+  evaluation/                    Evaluation cases and results
+apps/web/                        React workspace and browser tests
 services/api/bank_api/
-  agent/                         Bounded runtime and provider adapters
-  integrations/                  Source-mapping validation
-services/api/tests/              PostgreSQL-backed API regressions
-projects/complaint-analytics/    Public-data SQL, Tableau and routing evidence
-docs/uat/ + .github/workflows/   Acceptance records and CI
+  agent/                         Agent runtime and provider adapters
+  integrations/                  Transaction-source mapping
+services/api/tests/              API and workflow regression tests
+projects/complaint-analytics/    SQL, Tableau and complaint-routing analysis
+docs/uat/ + .github/workflows/   Acceptance evidence and CI
 ```
+
+## From BA design to working software
+
+The repository connects process maps, decision rights, business rules and story
+acceptance criteria to implementation and tests. [38 requirements](docs/backlog/traceability-matrix.md)
+trace across the delivery lifecycle.
+
+The bank core has passed its [delegated workflow assessment](docs/uat/bank-core-closeout.md).
+As of 23 October 2026, verification includes **294 API tests, 45 browser tests**,
+container smoke and offline Python 3.9/3.12 checks.
+
+The companion [complaint analytics case](projects/complaint-analytics/README.md) uses
+27,011 public CFPB complaints, SQL and Tableau to explore service operations. Its
+frozen routing baseline reached 81.7% team accuracy versus 31.5% for the majority baseline.
 
 ## Run the demo
 
-Requires Docker Compose. No model key is needed:
+Requires Docker Compose:
 
 ```bash
 python3 scripts/configure_demo.py
 docker compose up --build --wait
 ```
 
-Open **http://127.0.0.1:8000** and follow the [demo preparation and walkthrough](docs/demo.md).
-Keep this synthetic demo on localhost; its persona selector is a local identity
-simulation. [Mac setup without Docker, tests and recovery](services/api/README.md).
+Open **http://127.0.0.1:8000** and follow the [five-minute walkthrough](docs/demo.md).
+The local demo uses synthetic bank records, simulated roles and an offline scripted
+Agent provider; no model key is needed.
+[Mac setup, tests and recovery](services/api/README.md).
 
-## Architecture and extension points
+## Roadmap
 
-**React/TypeScript → FastAPI/Python → PostgreSQL**, packaged with Docker Compose.
-The Agent runs inside the API. Trusted commands enforce permissions, evidence versions,
-human approval, receipts and audit history.
-
-Institution-specific sources map into a canonical read model; server-owned profiles
-select the model protocol. Two source formats and three model protocols have offline
-tests. Real bank ingestion and live route qualification remain future integration work.
-[Architecture](docs/architecture.md) · [Adaptation examples](examples/README.md).
-
-The [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) and
-[Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) are design
-references, not claimed dependencies. [ADR-004](docs/architecture/ADR-004-lightweight-enterprise-adaptation.md)
-explains the small custom runtime and what can change for an actual institution.
-
-## Next delivery
-
-The bounded offline core is ready to present; the delegated assessment is complete.
-Gather reviewer feedback using the five-minute script. Human benefit measurement and
-broader nonfunctional/release gates remain open; do not treat this as full B1 or
-production acceptance. A hosted synthetic demo can follow an explicit hosting decision.
-API integration, voice and retail stay later.
-[Current delivery and Sprint context](docs/backlog/current-delivery.md).
+Next increments: hosted demonstration and live-model integration, followed by
+telephone self-service with human handoff and a retail clienteling case.
+[Delivery plan](docs/backlog/current-delivery.md).
 
 [Business analysis](projects/bank-service-assist/docs/README.md) ·
 [Detailed design](projects/bank-service-assist/specs/README.md) ·
-[UAT](docs/uat/README.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) ·
-[MIT](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md).
-
-Independent portfolio work. Bank operational records and business rules are simulated;
-public analytics data has its own provenance and terms.
+[Acceptance](docs/uat/bank-core-closeout.md) · [Contributing](CONTRIBUTING.md) ·
+[Security](SECURITY.md) · [MIT](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md)
