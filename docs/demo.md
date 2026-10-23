@@ -16,6 +16,9 @@ Start with the customer's statement:
 
 The screenshots below show stages captured from the working application. Follow
 the decisions and handoffs here; the local presentation script is available below.
+This example needs investigation. If the evidence supports an answer and no further
+work is needed, the representative can explain and save a contact note instead.
+Agent assistance is optional in either path.
 
 ### 1. Establish what is known
 

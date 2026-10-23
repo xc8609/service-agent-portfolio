@@ -9,7 +9,7 @@ and customer follow-up into one workflow.**
 A customer asks: **“I bought once — why do I see two credit-card charges?”**
 The representative needs transaction details, the right handling procedure and a
 clear next step. This project connects those tasks from the first enquiry through
-specialist review and customer feedback.
+a supported answer, or specialist review and customer feedback when needed.
 
 It combines banking product and business-analysis experience with full-stack
 engineering: business problem → requirements → story cards → implementation → acceptance.
@@ -25,12 +25,11 @@ workspace that supports the enquiry and keeps each next step owned.
 
 ```mermaid
 flowchart LR
-    A["Representative<br/>Facts and rules"] --> B["Agent draft<br/>Staff review"]
-    B --> C["Specialist<br/>Investigation"]
-    C --> D["Customer service<br/>Feedback"]
-    D --> E{"Work<br/>complete?"}
-    E -->|Yes| F[Staff close case]
-    E -->|No| G[Owned follow-up]
+    A["Facts and rules<br/>Optional Agent draft"] --> B{"Staff review:<br/>further work?"}
+    B -->|No| C["Explain and<br/>record contact"]
+    B -->|Yes| D["Link or create<br/>owned investigation"]
+    D --> E["Specialist finding<br/>Customer feedback"]
+    E --> F["Check remaining work<br/>before case closure"]
 ```
 
 | Stage | Business decision supported |
@@ -38,12 +37,13 @@ flowchart LR
 | Establish customer context | Which account can this representative access, and which purchase does the customer recognize? |
 | Compare transactions | What do the amount, currency, dates and status actually establish? |
 | Check cases and procedures | Is someone already investigating, and which handling rule applies? |
-| Review the Agent draft | Are the facts, missing information and proposed next step supported by the evidence? |
-| Hand off to a specialist | What needs investigation, who owns it, and what can be supplied later? |
+| Review an optional Agent draft | Are the facts, missing information and proposed next step supported by the evidence? |
+| Hand off when needed | What needs investigation, who owns it, and what can be supplied later? |
 | Follow up and close | Has the customer received the explanation, and what work still needs completion? |
 
 Read the [five-minute walkthrough](docs/demo.md) directly on GitHub; screenshots
-and decision points show the flow without installing the application.
+show the unresolved enquiry that needs specialist follow-up. A supported answer
+with no further work can end with a saved contact note.
 
 | Investigate the charges | Review the Agent draft | Follow through to resolution |
 |---|---|---|
@@ -51,10 +51,14 @@ and decision points show the flow without installing the application.
 
 ## How the Agent fits
 
-The Agent gathers transaction, case and procedure evidence through scoped tools,
-keeps source references with its draft, and saves the result for staff review.
-Staff can edit, approve or return a draft. Evidence changes trigger a fresh review;
-permissions and business actions are enforced by the application.
+The **workspace** brings permitted records and rules together. The **Agent** organizes
+those sources around the representative's question into **Facts / To confirm / Next
+step**, with references for review. It helps staff prepare an explanation or handoff;
+the representative decides what to communicate and whether further work is needed.
+
+Staff can edit, approve or return the draft and complete the workflow manually.
+Evidence changes trigger a fresh review. The [case study](docs/case-study.md#agent-and-engineering-design)
+shows the example and the alternatives considered before adding assistance.
 
 The design separates **model providers**, **tool contracts** and **business workflow**.
 This keeps model integration adaptable while retaining the same review and handoff process.
@@ -66,6 +70,10 @@ The [case study](docs/case-study.md) explains the current process, target workfl
 responsibilities and intended business value. Process maps, decision rights and
 story acceptance criteria connect to implementation and tests through
 [38 requirements](docs/backlog/traceability-matrix.md).
+
+For example: a customer recognizes one purchase but cannot distinguish two entries.
+The BA decision preserves both as an unresolved pair; the UI, intake contract and
+regression tests enforce it. [Follow this decision into implementation](projects/bank-service-assist/docs/README.md#one-decision-from-discovery-to-verification).
 
 The bank core has passed its [delegated workflow assessment](docs/uat/bank-core-closeout.md).
 As of 23 October 2026, verification includes **294 API tests, 45 browser tests**,
