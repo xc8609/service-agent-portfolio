@@ -1,5 +1,14 @@
 # Bank DEV execution ledger
 
+**Current status — 23 October:** the core implementation, review corrections and
+UTC follow-up are merged through PR #30 (`0799865`). The
+[delegated acceptance record](../uat/bank-core-closeout.md) is the current completion
+reference: 294 API and 45 browser tests, container smoke and offline checks pass.
+The sections below retain dated execution history; their then-pending PRs are not
+the current queue. Full parent-story and later release gates remain distinct.
+
+## Initial implementation record
+
 20 October 2026. Owner requested implementation of the designed bank DEV stories
 with one reviewable PR per story. Voice and retail remain later releases. PRs are
 stacked in dependency order; do not merge a child before its prerequisite. A passing

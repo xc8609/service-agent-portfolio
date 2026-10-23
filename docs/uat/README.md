@@ -1,5 +1,11 @@
 # Owner UAT pack — bank service core
 
+**Current delegated outcome:** [bank-core closeout, 23 October](bank-core-closeout.md)
+passes the bounded local synthetic demonstration. It consolidates U1–U15 evidence,
+distinguishes interactive from automated checks and lists remaining wider gates.
+The blank record below is reserved for the owner's personal review; it is not a
+claim that no acceptance work has been performed.
+
 [UTC date correction and core regression — 23 October](2026-10-23-utc-date-retest.md):
 cross-midnight label agrees with the UTC table; 294 API and 45 browser tests passed.
 
@@ -17,7 +23,9 @@ rehearsal do not complete this sign-off.
 
 The owner delegated a browser-based assessment on 21 October 2026:
 [executed results, defects and reference practices](2026-10-21-delegated-assessment.md).
-Its decision is **changes required**; it does not fill in the owner's personal sign-off below.
+Its historical decision was **changes required**. Corrections passed subsequent
+retests; the closeout above is the current delegated outcome. Neither report fills
+in the owner's personal sign-off below.
 
 ## Setup
 

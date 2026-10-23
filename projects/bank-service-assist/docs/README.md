@@ -12,7 +12,8 @@ produced. They are not separate applications or copies of the current runtime.
 | Requirements and traceability | [Requirements](sprint-01/requirements.json), [workflow traceability](sprint-01/workflow-traceability.md) |
 | Accepted decisions vs proposals | [Decision log](sprint-01/decision-log.md) |
 | Detailed intake review | [DEV-07 intake](../specs/DEV-07/referral-intake-review.md) |
-| Current implementation evidence | [Lookup execution record](sprint-02/implementation/lookup-evidence.md) |
+| Current completion and acceptance evidence | [Bank-core closeout](../../../docs/uat/bank-core-closeout.md) |
+| First implementation increment (historical) | [Lookup execution record](sprint-02/implementation/lookup-evidence.md) |
 | Technical readiness | [Intake readiness](../specs/DEV-07/referral-readiness.md) |
 
 For work order use the [delivery plan](../../../docs/backlog/current-delivery.md).
