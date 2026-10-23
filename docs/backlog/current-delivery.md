@@ -7,9 +7,16 @@ required checks and both post-merge workflows passed. No blocking defect was fou
 in the assessed offline core. Personal owner sign-off and broader release gates
 remain explicit; this does not mark all original Sprint or QA/OPS stories Done.
 
-Next: use the finished core demonstration and collect feedback. Do not add further
-micro-features absent a concrete defect. API, hosting, voice and retail are separate
-increments; the original forecast is planning history.
+**Presentation direction — 23 October 2026:** the owner deferred public deployment.
+Use GitHub as the review surface: business problem, current/target process, decision
+rights, Agent contribution, screenshots and acceptance evidence. The
+[case study](../case-study.md) and [workflow walkthrough](../demo.md) are the entry points;
+local setup remains available for technical reviewers.
+
+Next: collect feedback on this business walkthrough. No hosting resources or model
+API integration are planned in the current increment. Do not add further
+micro-features absent a concrete defect. Hosting, API, voice and retail remain
+future options; the original forecast below is planning history.
 
 ## Dated delivery history
 

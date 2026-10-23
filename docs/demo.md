@@ -1,4 +1,4 @@
-# Five-minute bank service demonstration
+# Bank service workflow — a five-minute walkthrough
 
 **Audience:** BA/BSA and developer reviewers. **Question:** “I bought once — why are
 there two charges?” Show how a business problem became rules, software and test evidence.
@@ -6,6 +6,74 @@ there two charges?” Show how a business problem became rules, software and tes
 
 **Demo setup:** synthetic records and business rules, with a scripted offline Agent
 provider. The walkthrough shows the working integration and review flow.
+
+## Read the case on GitHub
+
+Start with the customer's statement:
+
+> I bought once, but I see two charges for CAD 85. I cannot tell which entry is
+> extra. I do not have the receipt.
+
+The screenshots below show stages captured from the working application. Follow
+the decisions and handoffs here; the local presentation script is available below.
+
+### 1. Establish what is known
+
+The **representative** checks the authorized account and compares the two entries.
+Both show CAD 85 at DEMO STORE. Matching values alone do not establish why both
+entries exist. The customer's statement is saved separately, with recognition set
+to **one purchase; entry mapping unresolved**. Staff can keep the pair together
+for investigation without asking the customer to guess which entry is extra.
+
+![Transaction comparison with currency, status and UTC dates](images/lookup-fixed-manual.png)
+
+### 2. Find the applicable procedure and current owner
+
+The **representative** checks existing work and handling rules in the same workspace.
+The seeded case already has an investigation, so this contact can be linked to it.
+The procedure provides its applicable conditions, source and version. These give
+staff a basis for the next step and preserve a clear owner for the enquiry.
+
+[See the handling-rule view](images/handling-rules.png).
+
+### 3. Turn evidence into a reviewed handoff
+
+The **Agent** organizes the selected evidence into **Facts / To confirm / Next step**
+and prepares a note. The **representative** checks the sources, edits as needed and
+approves the saved note and enquiry. The handoff carries the customer's statement,
+the transaction pair and the missing-receipt gap. The **specialist** decides whether
+additional material is needed; customer service owns contacting the customer.
+
+![Saved customer statement alongside the Agent summary](images/lookup-fixed-handoff.png)
+
+### 4. Investigate and prepare the explanation
+
+The **specialist** reviews the enquiry, records findings and publishes the approved
+customer explanation. Internal notes remain separate. In this example, further
+action is still required, so the response explains the current position without
+presenting the case as resolved.
+
+### 5. Deliver feedback and check what remains
+
+The **feedback representative** claims the task, verifies the customer's identity,
+delivers the approved explanation and records the contact outcome. The screen then
+shows **Feedback delivered · case remains open** with the outstanding work. Staff
+can see what to follow up before confirming closure.
+
+![Delivered feedback with outstanding work before closure](images/closure-checklist.png)
+
+## What this demonstrates
+
+- **Business analysis:** separate customer claims from source facts, define decision
+  rights, allow missing material to follow, and make ownership and closure explicit.
+- **Agent assistance:** bring evidence and a reviewable draft into the representative's
+  workflow, keeping the original customer context visible.
+- **Delivery and acceptance:** connect those choices to story criteria, implemented
+  controls, observed issues and retests in the [case study](case-study.md) and
+  [core acceptance record](uat/bank-core-closeout.md).
+
+<details>
+<summary>Optional local presenter script, timing and exact inputs</summary>
 
 ## Prepare before presenting
 
@@ -119,9 +187,13 @@ Optional checks for a longer discussion: unclaimed feedback detail is denied; an
 approved review without fresh callback verification still returns `AUTH_REQUIRED`.
 Both were observed in the screenshot rehearsal.
 
+</details>
+
 ## Screenshots and provenance
 
-Captured from the actual local app on 22 October 2026, application code equivalent to
+The updated transaction and Agent views above come from the
+[lookup-gap retest](uat/2026-10-22-lookup-gap-retest.md). The earlier views listed below
+were captured from the actual local app on 22 October 2026, application code equivalent to
 merged `761aeaf` (PR #26). These historical captures use synthetic fixtures and retain
 the visible offline provider label. They are exported as small palette PNGs, with
 the original UI unchanged.
@@ -132,8 +204,6 @@ the original UI unchanged.
 | [Handling rules](images/handling-rules.png) | Applicability, procedure version and staff-reviewed steps. |
 | [Agent draft](images/assistant-draft.png) | Three-part summary, source/review control and uncommitted draft. |
 | [Feedback and closure](images/closure-checklist.png) | Delivered is distinct from closed; follow-up stays visible. |
-
-![Applicable procedure and staff-reviewed next steps](images/handling-rules.png)
 
 <details>
 <summary>Capture and test notes</summary>
