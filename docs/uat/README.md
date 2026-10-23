@@ -1,6 +1,9 @@
 # Owner UAT pack — bank service core
 
-[Latest targeted lookup/Agent retest — 22 October](2026-10-22-lookup-gap-retest.md):
+[UTC date correction and core regression — 23 October](2026-10-23-utc-date-retest.md):
+cross-midnight label agrees with the UTC table; 294 API and 45 browser tests passed.
+
+[Targeted lookup/Agent retest — 22 October](2026-10-22-lookup-gap-retest.md):
 T1/T4 gaps corrected; delegated Codex assessment, owner sign-off pending.
 
 

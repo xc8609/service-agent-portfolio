@@ -20,6 +20,8 @@ reopening another section or silently losing a material gap.
   to infer the additional entry. Specific/both/neither recognition remains distinct.
   A specific-entry recognition names the entry by merchant, amount, occurrence date
   and short ID, not a full UUID (review follow-up).
+  The label converts the source timestamp to UTC before taking its date and marks
+  it `UTC`, matching the transaction table even across midnight (23 October correction).
 - **LG-03 / DEV-08:** the assistant preview includes the full saved customer statement
   and report revision in a visibly separate customer-reported block. This retains
   missing receipts or other context even when a provider omits them from its prose.
@@ -48,11 +50,13 @@ this additive field; a fresh run is needed to get the new preview block.
 | Acceptance | Regression / retest |
 |---|---|
 | LG-01 | `lookup.spec.ts` UI-01 actual CAD pair; UI-02 USD/CAD, UTC day rollover and missing posting date (rendering-boundary response variation); delegated T1 |
-| LG-02 | `test_agent_handoff.py` unresolved and specified entry; existing both/neither regressions; browser AG-01/AG-02; delegated T4 |
+| LG-02 | `test_agent_handoff.py` unresolved and specified entry, including a non-UTC PostgreSQL session crossing midnight; existing both/neither regressions; browser AG-01/AG-02; delegated T4 |
 | LG-03 | Default and deliberately terse provider retain exact statement, including a 2,000-character claim/instruction sample; AG-01 renders and loads the allegation separately |
 | LG-04 | Report-correction stale run/new revision, durable reload, no committed note and no raw statement in safe trace; existing unauthorized/financial-claim regressions |
 
 Execution results and screenshots: [dated delegated retest](../../../../docs/uat/2026-10-22-lookup-gap-retest.md),
 293 API tests, 45 browser tests, T1 5/5 and T4 7/7.
+The [23 October UTC correction](../../../../docs/uat/2026-10-23-utc-date-retest.md)
+adds one API regression (294 total) and rechecks the inbound preview; all 45 browser tests pass.
 The original comparison remains unchanged. A passed regression does not prove lower
 handling time, production readiness, live-model quality or owner acceptance.

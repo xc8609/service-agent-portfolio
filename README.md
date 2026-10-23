@@ -51,8 +51,8 @@ Actual synthetic app captures; [rules view and capture notes](docs/demo.md#scree
   reached 81.7% team accuracy vs 31.5% majority. These public complaints are separate
   from the bank app's synthetic operational records.
 
-**Verification suite — 22 October 2026:** **293 API tests and 45 browser tests**, plus
-container smoke and offline Python 3.9/3.12 checks. [Dated regression and retest evidence](docs/uat/2026-10-22-lookup-gap-retest.md).
+**Verification suite — 23 October 2026:** **294 API tests and 45 browser tests**, plus
+container smoke and offline Python 3.9/3.12 checks. [Dated regression and retest evidence](docs/uat/2026-10-23-utc-date-retest.md).
 The disposable browser-test server and workflow tests share a fixed clock; the
 interactive demo retains real service hours, covered by an out-of-hours regression.
 [38 requirements trace to tests](docs/backlog/traceability-matrix.md).

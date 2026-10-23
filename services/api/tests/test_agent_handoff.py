@@ -1,9 +1,11 @@
 """QA-03 T4: preserve saved customer context without turning it into a source fact."""
 
+from contextlib import contextmanager
 from uuid import uuid4
 
 import psycopg
 import pytest
+from bank_api.agent import runtime as agent_runtime
 from bank_api.agent.runtime import run
 from bank_api.config import Settings
 from bank_api.fixtures import uid
@@ -105,7 +107,47 @@ def test_specified_recognition_is_not_relabelled_as_unresolved(environment):
     result = client.post("/v1/assistant/run", headers=headers, json=request).json()
     assert result["status"] == "awaiting_human", result
     summary = result["output"]["summary"]
-    assert "recognizes DEMO STORE — CAD 85.00, occurred 2026-10-18 (entry " in summary
+    assert "recognizes DEMO STORE — CAD 85.00, occurred 2026-10-18 UTC (entry " in summary
     assert "(entry " + uid("tx_equal_2")[:8] + ")" in summary
     assert uid("tx_equal_2") not in summary  # readable label, not a raw UUID
     assert "remains unresolved" not in summary
+
+
+def test_specified_recognition_uses_utc_date_across_midnight(environment, monkeypatch):
+    # PostgreSQL renders timestamptz in the connection's zone. Exercise a real
+    # non-UTC connection so this catches the bug even on a UTC-configured CI host.
+    with psycopg.connect(environment[1]) as conn:
+        conn.execute(
+            "UPDATE card_transactions SET occurred_at=%s WHERE id=%s",
+            ("2026-10-18T23:30:00-05:00", uid("tx_equal_2")),
+        )
+    client, headers, request, _ = initial(environment)
+    assert (
+        save(
+            client,
+            headers,
+            payload(
+                request["contact_id"],
+                expected_revision=1,
+                statement="I recognize the second entry.",
+                recognition="specific_entry",
+                recognized_transaction_id=uid("tx_equal_2"),
+            ),
+        ).status_code
+        == 200
+    )
+    connect = agent_runtime.runtime_connection
+
+    @contextmanager
+    def winnipeg_connection(dsn):
+        with connect(dsn) as conn:
+            conn.execute("SET LOCAL TIME ZONE 'America/Winnipeg'")
+            yield conn
+
+    monkeypatch.setattr(agent_runtime, "runtime_connection", winnipeg_connection)
+    result = client.post("/v1/assistant/run", headers=headers, json=request).json()
+    assert result["status"] == "awaiting_human", result
+    summary = result["output"]["summary"]
+    assert "2026-10-18T23:30:00-05:00" in summary  # original timestamp keeps its offset
+    assert "recognizes DEMO STORE — CAD 85.00, occurred 2026-10-19 UTC (entry " in summary
+    assert "occurred 2026-10-18 (entry " not in summary
