@@ -14,19 +14,36 @@ specialist review and customer feedback.
 It combines banking product and business-analysis experience with full-stack
 engineering: business problem → requirements → story cards → implementation → acceptance.
 
-[Case study](docs/case-study.md) · [Five-minute demo](docs/demo.md) ·
+[Case study](docs/case-study.md) · [Workflow and screenshots](docs/demo.md) ·
 [Run locally](#run-the-demo) · [Trello](https://trello.com/b/wtNhuN0q/ai-agent)
 
-## Core features
+## The business workflow
 
-| Feature | What staff can do |
+The starting pain is fragmented information: staff move between customer records,
+transaction screens, case history and handling procedures. The target is one
+workspace that supports the enquiry and keeps each next step owned.
+
+```mermaid
+flowchart LR
+    A["Representative<br/>Facts and rules"] --> B["Agent draft<br/>Staff review"]
+    B --> C["Specialist<br/>Investigation"]
+    C --> D["Customer service<br/>Feedback"]
+    D --> E{"Work<br/>complete?"}
+    E -->|Yes| F[Staff close case]
+    E -->|No| G[Owned follow-up]
+```
+
+| Stage | Business decision supported |
 |---|---|
-| Transaction investigation | Find charges by card, date, amount and merchant; compare status, currency and posting dates. |
-| Customer context | Record the customer's statement and which entries they recognize; retain missing information for follow-up. |
-| Case and procedure lookup | See related enquiries, progress, owners and applicable handling rules with source references. |
-| Agent assistance | Assemble permitted evidence into **Facts / To confirm / Next step** and an editable service-note draft. |
-| Specialist handoff | Review and submit an enquiry, link existing work, and pass along transaction evidence and material gaps. |
-| Feedback and closure | Publish specialist findings, record verified customer feedback, and see outstanding actions before closing a case. |
+| Establish customer context | Which account can this representative access, and which purchase does the customer recognize? |
+| Compare transactions | What do the amount, currency, dates and status actually establish? |
+| Check cases and procedures | Is someone already investigating, and which handling rule applies? |
+| Review the Agent draft | Are the facts, missing information and proposed next step supported by the evidence? |
+| Hand off to a specialist | What needs investigation, who owns it, and what can be supplied later? |
+| Follow up and close | Has the customer received the explanation, and what work still needs completion? |
+
+Read the [five-minute walkthrough](docs/demo.md) directly on GitHub; screenshots
+and decision points show the flow without installing the application.
 
 | Investigate the charges | Review the Agent draft | Follow through to resolution |
 |---|---|---|
@@ -42,6 +59,23 @@ permissions and business actions are enforced by the application.
 The design separates **model providers**, **tool contracts** and **business workflow**.
 This keeps model integration adaptable while retaining the same review and handoff process.
 [Agent and application architecture](docs/architecture.md).
+
+## From BA design to working software
+
+The [case study](docs/case-study.md) explains the current process, target workflow,
+responsibilities and intended business value. Process maps, decision rights and
+story acceptance criteria connect to implementation and tests through
+[38 requirements](docs/backlog/traceability-matrix.md).
+
+The bank core has passed its [delegated workflow assessment](docs/uat/bank-core-closeout.md).
+As of 23 October 2026, verification includes **294 API tests, 45 browser tests**,
+container smoke and offline Python 3.9/3.12 checks. A lookup rehearsal led to
+specific improvements in transaction details and handoff completeness;
+[findings and retest](docs/uat/2026-10-22-lookup-gap-retest.md) show that feedback loop.
+
+The companion [complaint analytics case](projects/complaint-analytics/README.md) uses
+27,011 public CFPB complaints, SQL and Tableau to explore service operations. Its
+frozen routing baseline reached 81.7% team accuracy versus 31.5% for the majority baseline.
 
 ## Technology and structure
 
@@ -71,20 +105,6 @@ projects/complaint-analytics/    SQL, Tableau and complaint-routing analysis
 docs/uat/ + .github/workflows/   Acceptance evidence and CI
 ```
 
-## From BA design to working software
-
-The repository connects process maps, decision rights, business rules and story
-acceptance criteria to implementation and tests. [38 requirements](docs/backlog/traceability-matrix.md)
-trace across the delivery lifecycle.
-
-The bank core has passed its [delegated workflow assessment](docs/uat/bank-core-closeout.md).
-As of 23 October 2026, verification includes **294 API tests, 45 browser tests**,
-container smoke and offline Python 3.9/3.12 checks.
-
-The companion [complaint analytics case](projects/complaint-analytics/README.md) uses
-27,011 public CFPB complaints, SQL and Tableau to explore service operations. Its
-frozen routing baseline reached 81.7% team accuracy versus 31.5% for the majority baseline.
-
 ## Run the demo
 
 Requires Docker Compose:
@@ -101,8 +121,9 @@ Agent provider; no model key is needed.
 
 ## Roadmap
 
-Next increments: hosted demonstration and live-model integration, followed by
-telephone self-service with human handoff and a retail clienteling case.
+Current focus: present the business workflow, BA decisions and acceptance evidence
+directly on GitHub. Public hosting and live-model integration are deferred.
+Future extensions include telephone self-service with human handoff and retail clienteling.
 [Delivery plan](docs/backlog/current-delivery.md).
 
 [Business analysis](projects/bank-service-assist/docs/README.md) ·

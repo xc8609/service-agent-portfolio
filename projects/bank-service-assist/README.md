@@ -5,6 +5,11 @@ entries?”** It brings customer context, transaction evidence, handling rules a
 follow-up into one flow, helping representatives find information and prepare a
 clear handoff.
 
+Start with the [business case](../../docs/case-study.md) and
+[workflow with screenshots](../../docs/demo.md), both readable directly on GitHub.
+Follow the customer enquiry through representative review, specialist investigation,
+customer feedback and the decision to close or keep work open.
+
 ## Working features
 
 - **Customer and transaction lookup:** role-based access, transaction status,
@@ -34,11 +39,12 @@ for different institutions.
 
 | Explore | Contents |
 |---|---|
-| [Five-minute demo](../../docs/demo.md) · [Case study](../../docs/case-study.md) | Scenario, workflow and screenshots |
+| [Five-minute walkthrough](../../docs/demo.md) · [Case study](../../docs/case-study.md) | Business problem, responsibilities, decisions and screenshots |
 | [Run and test](../../services/api/README.md) | Local setup, verification and reset instructions |
 | [Business analysis](docs/README.md) | Problem, target process, rules and decisions |
 | [Stories and Sprints](../../docs/backlog/README.md) · [Specifications](specs/README.md) | Requirements, design, tasks and acceptance criteria |
 | [Architecture](../../docs/architecture.md) | Agent tools, commands and integration boundaries |
 | [Acceptance evidence](../../docs/uat/bank-core-closeout.md) · [Data sources](data/README.md) | Executed checks and dataset provenance |
 
-Next increments: hosted demo, live-model integration, then voice and retail cases.
+Current focus: business workflow and acceptance evidence on GitHub. Public hosting
+and live-model integration are deferred; voice and retail remain future extensions.
