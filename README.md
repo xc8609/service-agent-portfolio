@@ -14,6 +14,10 @@ transactions, existing cases, rules and accountable follow-up into one workspace
 [five-minute demo script and screenshots](docs/demo.md) ·
 [run locally](#run-the-demo) · [Trello](https://trello.com/b/wtNhuN0q/ai-agent)
 
+**Delivery status — 23 October 2026:** the local synthetic bank core is implemented
+and has passed delegated workflow assessment. [Completion and acceptance record](docs/uat/bank-core-closeout.md)
+maps analysis → specs → code → tests → observed outcomes and names the remaining gates.
+
 ## What the portfolio demonstrates
 
 | Business need | BA design | Working software |
@@ -56,8 +60,8 @@ container smoke and offline Python 3.9/3.12 checks. [Dated regression and retest
 The disposable browser-test server and workflow tests share a fixed clock; the
 interactive demo retains real service hours, covered by an out-of-hours regression.
 [38 requirements trace to tests](docs/backlog/traceability-matrix.md).
-Owner UAT, human effort measurement, Tableau refresh acceptance and public deployment
-remain separate gates. Historical reports retain their original counts and limitations.
+Personal owner sign-off, human effort measurement, Tableau refresh acceptance and
+public deployment remain separate gates. Historical reports retain their original counts and limitations.
 
 ## Repository map
 
@@ -109,10 +113,11 @@ explains the small custom runtime and what can change for an actual institution.
 
 ## Next delivery
 
-Use the corrected demo for owner review. The targeted T1/T4 retest now covers all
-required items; human effort measurement remains unproven. Keep the next step small:
-a human walkthrough and feedback on clarity. A hosted synthetic demo can follow an
-explicit hosting decision. API integration, voice and retail stay later.
+The bounded offline core is ready to present; the delegated assessment is complete.
+Gather reviewer feedback using the five-minute script. Human benefit measurement and
+broader nonfunctional/release gates remain open; do not treat this as full B1 or
+production acceptance. A hosted synthetic demo can follow an explicit hosting decision.
+API integration, voice and retail stay later.
 [Current delivery and Sprint context](docs/backlog/current-delivery.md).
 
 [Business analysis](projects/bank-service-assist/docs/README.md) ·

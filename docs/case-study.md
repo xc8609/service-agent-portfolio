@@ -51,9 +51,9 @@ The [verification suite](uat/2026-10-23-utc-date-retest.md)
 contains **294 API tests and 45 browser tests**, plus container smoke and offline
 Python 3.9/3.12 checks (23 October 2026). A shared browser-test clock avoids dependence
 on run time; an API regression preserves the real service-hours rule.
-[Delegated UAT](uat/2026-10-22-core-clarity.md) observed guarded
-disclosure and closure. Owner acceptance, live-model qualification and measured human
-benefits remain separate.
+[Delegated core acceptance](uat/bank-core-closeout.md) passed for the local synthetic
+demo, including guarded disclosure and closure. Personal owner sign-off, broader
+nonfunctional gates, live-model qualification and measured human benefits remain separate.
 
 ## What the first lookup rehearsal found
 
@@ -65,4 +65,5 @@ conditional question. These are actionable gaps, not evidence of better accuracy
 Codex operated and scored the rehearsal; no human time saving was established.
 The [targeted retest](uat/2026-10-22-lookup-gap-retest.md) now verifies explicit currency
 and posting dates, plus the exact saved customer statement beside a corrected draft.
-Next: owner walkthrough. Model API, voice and retail expansion stay deferred.
+Ready to present: the bounded offline core. Gather reviewer feedback; model API,
+hosting, voice and retail expansion remain later increments.

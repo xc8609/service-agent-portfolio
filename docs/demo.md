@@ -89,14 +89,15 @@ start **Demo specialist Alex** and open the `specialist_investigation` work.
 ### 4:15–5:00 — Show completion boundaries and evidence
 
 **Show:** prepared feedback view or [closure screenshot](images/closure-checklist.png).
-Finish on [current PR checks](https://github.com/xc8609/service-agent-portfolio/pull/27/checks).
+Finish on the [acceptance record and current CI](uat/bank-core-closeout.md).
 
 > The specialist's approved explanation is separated from private notes. Disclosure
 > requires a fresh identity check. Even after feedback is delivered, the case stays
 > open if required actions or other work remain. The checklist tells staff what to
-> follow up. The verification suite covers 287 API and 44 browser tests, plus container
-> and offline checks. Next, I will compare search effort, omissions and corrections
-> on a few tasks, so the business-value claim can be based on observations.
+> follow up. The verification suite covers 294 API and 45 browser tests, plus container
+> and offline checks. A four-task rehearsal found missing fields and handoff details;
+> these were corrected and retested. Delegated core assessment passed. Human time
+> savings and live-model quality remain unproven.
 
 ## Copy-ready synthetic inputs
 

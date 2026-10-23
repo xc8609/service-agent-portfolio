@@ -1,10 +1,17 @@
 # SDD story cards
 
-Current runtime increment (20 October 2026): DEV-01/02/03, QA-01 and OPS-01 have a bounded read slice in [PR #1](https://github.com/xc8609/service-agent-portfolio/pull/1). [Executed evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md) and [Trello sync](s02-runtime-sync.json) supersede the older not-started wording for this slice only. GIT-01 now has a real PR and verified branch protection. Parent-story acceptance remains open.
+**Current delivery — 23 October:** [bank-core completion and delegated acceptance](../uat/bank-core-closeout.md).
+The offline bank core is implemented and assessed. This catalogue preserves original
+story scope, estimates and dated planning states; use the closeout for executed
+evidence and remaining gates. Later voice/retail work is still planned.
+
+## Historical planning baseline
+
+Runtime increment (20 October 2026): DEV-01/02/03, QA-01 and OPS-01 had a bounded read slice in [PR #1](https://github.com/xc8609/service-agent-portfolio/pull/1). [Executed evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/lookup-evidence.md) and [Trello sync](s02-runtime-sync.json) superseded the older not-started wording for this slice only. GIT-01 had a real PR and verified branch protection. Parent-story acceptance remained open.
 
 Current metadata source: [S02 Sprint forecast](sprint-forecast.json) and trello-cards.json v3. Older sprint/estimate text below is historical where superseded. See [S02 contracts](../../projects/bank-service-assist/docs/sprint-02/README.md).
 
-Current refinement: [bank workflow v0.2](../../projects/bank-service-assist/docs/sprint-01/workflow-increment.md). Detailed selected-story specs supersede older generic wording; new DEV-11/12/13 add explicit scope. No implementation is Done.
+19 October refinement: [bank workflow v0.2](../../projects/bank-service-assist/docs/sprint-01/workflow-increment.md). Detailed selected-story specs supersede older generic wording; new DEV-11/12/13 add explicit scope. No implementation was Done at that planning baseline.
 
 Planning baseline: 19 October 2026. S01 started on 19 October; BA-01–05 and GOV-01–03 are review candidates, while GIT-01 bootstrap is published with offline CI passed; contribution/release gates remain. Other stories remain Planned. No application implementation is claimed. Simulated team: two developers, BA/PO and QA; no staffing claim. [Delivery plan](../sdd-portfolio-delivery-plan.md) · [Sprints](sprints.md) · [Trello](https://trello.com/b/wtNhuN0q/ai-agent).
 

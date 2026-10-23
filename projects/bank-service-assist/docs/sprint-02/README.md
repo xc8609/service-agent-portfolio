@@ -1,6 +1,15 @@
 # Sprint 02 — authority, data and agent contracts
 
-BANK-S02-v0.4 · Started specification refinement on 19 October 2026 at the owner's request, before its illustrative calendar slot. S01 remains open for repository/acceptance work. The first inbound lookup slice is under implementation/PR review; see the current scope and evidence below.
+**Current delivery, 23 October:** the bank core is implemented through PR #30 and
+has passed [delegated local-demo assessment](../../../../docs/uat/bank-core-closeout.md).
+The dated S02 specification record below is retained for provenance. Statements such
+as “not executed” describe that historical pass, not the current application.
+Full parent-story acceptance, live-model qualification and broader release gates
+remain separate.
+
+## Historical specification baseline — 19 October
+
+BANK-S02-v0.4 · Specification refinement started on 19 October 2026 at the owner's request, before its illustrative calendar slot. S01 remained open for repository/acceptance work. The first inbound lookup slice subsequently entered implementation/PR review; dated evidence follows below.
 
 ## Deliverables
 
@@ -44,7 +53,7 @@ The [continuation specification](../../specs/contracts/continuation-addendum.md)
 
 Detailed four-file packages now cover BA-01–09, DEV-01–13, QA-01 and OPS-01: **24 packages**. [Seven newly detailed stories](delivery-specs.json) add 43 planned acceptance cases alongside the existing eight workflow stories' 49 cases. These are specification counts, not passed application tests. Later QA/release/voice/retail stories retain planning-level cards.
 
-| Gate | Current state | Next evidence |
+| Gate | State at specification handoff | Evidence still needed at that time |
 |---|---|---|
 | RB-01–RB-06 business rules | Accepted D-17–D-22 | No repeat approval needed |
 | Continuation data/permissions/interfaces | Authored v0.4, offline checks | Walkthrough of typed payloads and story fixtures |

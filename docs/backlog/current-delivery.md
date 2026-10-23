@@ -1,5 +1,18 @@
 # Current delivery — finish the bank core first
 
+**23 October 2026 status:** the bank core has reached delegated acceptance and local
+demo handover. [Completion/evidence matrix](../uat/bank-core-closeout.md) is the current
+status, superseding the dated snapshots below. PR #30 is merged as `0799865`; all four
+required checks and both post-merge workflows passed. No blocking defect was found
+in the assessed offline core. Personal owner sign-off and broader release gates
+remain explicit; this does not mark all original Sprint or QA/OPS stories Done.
+
+Next: use the finished core demonstration and collect feedback. Do not add further
+micro-features absent a concrete defect. API, hosting, voice and retail are separate
+increments; the original forecast is planning history.
+
+## Dated delivery history
+
 20 October 2026 · Owner-directed simplification (D-26). Delivery route updated 22 October 2026.
 
 Build a small, explainable service workflow before expanding its automation.
@@ -31,7 +44,7 @@ The existing [capacity/calendar forecast](sprints.md) remains indicative. This i
 an execution-priority overlay, not a recalculated delivery promise or permission
 to mark entire stories complete from a partial slice.
 
-| Existing Sprint | Increment / stories | Exit evidence | Status (21 October 2026) |
+| Existing Sprint | Increment / stories | Exit evidence | Historical status (21 October 2026) |
 |---|---|---|---|
 | S02 | Initialization, contracts, CI; DEV-01/QA-01/OPS-01 plus DEV-02/03 reads | Runnable demo, authorization failures and CI/PR evidence | Merged (#1–#2); owner UAT pending |
 | S03 | Manual investigation: DEV-02/03/04/05 | Statement/selection, current case and policy evidence, stale-query fix, negative permission tests | Merged (#2–#4); owner UAT pending |
@@ -56,7 +69,7 @@ accepted until their specified automation is implemented and tested. The earlier
 question about allocating supplementary calls to plans is deferred with that
 scheduler, not an invitation to invent a new quota or block unrelated core work.
 
-## Current review and release gates
+## Review and release snapshot — 22 October
 
 All bank DEV increments are merged to `main` with automated evidence in the
 [execution ledger](dev-execution-ledger.md). Merged is not owner-accepted. Keep the
@@ -71,7 +84,7 @@ original Sprint forecast as planning history, not actual elapsed person-days.
 No automatic phone execution, financial action or bulk architecture rewrite. Voice
 and retail remain later releases. Do not equate offline tests with real model quality.
 
-## Next small portfolio increment — QA-03 / OPS-03
+## Presentation and correction history — QA-03 / OPS-03
 
 The [five-minute presentation](../demo.md) and [one-page case study](../case-study.md)
 package the existing core for reviewers. Current screenshots and dated CI counts are
