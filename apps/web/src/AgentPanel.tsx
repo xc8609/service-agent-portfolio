@@ -66,14 +66,12 @@ function ScopedAgentPanel({token,context,disabled=false,onSuggestion}:AgentProps
       <p>Run {result.run_id} · {result.status} · usage {result.usage?JSON.stringify(result.usage):'unavailable'}</p>
       {result.error_code&&<p role="alert">{result.error_code}; refresh evidence and start a new bounded run.</p>}
       {result.output&&<>
-        <div aria-label="Assistant summary" style={{whiteSpace:'pre-wrap'}}>
-          {result.output.customer_report&&<div className="notice" aria-label="Saved customer statement">
-            <b>Customer-reported · report v{result.output.customer_report.revision}</b>
-            <p>{result.output.customer_report.statement}</p>
-            <p>Customer statement, not a verified outcome. Retain reported material gaps for customer-service follow-up; review before committing.</p>
-          </div>}
-          {result.output.summary}
-        </div>
+        {result.output.customer_report&&<div className="notice" aria-label="Saved customer statement">
+          <b>Customer-reported · report v{result.output.customer_report.revision}</b>
+          <p>{result.output.customer_report.statement}</p>
+          <p>Customer statement, not a verified outcome. Retain reported material gaps for customer-service follow-up; review before committing.</p>
+        </div>}
+        <div aria-label="Assistant summary" style={{whiteSpace:'pre-wrap'}}>{result.output.summary}</div>
         <details><summary>Sources and review checks</summary>
           <ul>{result.output.citations.map((citation:string)=><li key={citation}>{citation}</li>)}</ul>
           <ul>{result.output.gaps.map((gap:string)=><li key={gap}>{gap}</li>)}</ul>

@@ -105,5 +105,7 @@ def test_specified_recognition_is_not_relabelled_as_unresolved(environment):
     result = client.post("/v1/assistant/run", headers=headers, json=request).json()
     assert result["status"] == "awaiting_human", result
     summary = result["output"]["summary"]
-    assert "recognizes the specified entry " + uid("tx_equal_2") in summary
+    assert "recognizes DEMO STORE — CAD 85.00, occurred 2026-10-18 (entry " in summary
+    assert "(entry " + uid("tx_equal_2")[:8] + ")" in summary
+    assert uid("tx_equal_2") not in summary  # readable label, not a raw UUID
     assert "remains unresolved" not in summary

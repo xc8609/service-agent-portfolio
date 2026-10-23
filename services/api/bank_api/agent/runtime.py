@@ -250,9 +250,19 @@ def fixture(evidence, refs, stage):
                     "Review the applicable rule and prepare a grouped enquiry if still unresolved."
                 )
         else:
+            # Staff read the entry the way the lookup table shows it; the short ID
+            # matches the visible reference when merchant, amount and dates coincide.
+            recognized = str(evidence["customer_allegation"]["recognized_transaction_id"])
+            entry = next((t for t in evidence["facts"] if str(t["id"]) == recognized), None)
+            label = (
+                f"{entry.get('merchant_description') or 'Merchant unavailable'} — "
+                f"{entry['currency']} {Decimal(entry['amount_minor']) / 100:.2f}, "
+                f"occurred {str(entry.get('occurred_at'))[:10]} (entry {recognized[:8]})"
+                if entry
+                else f"entry {recognized[:8]}"
+            )
             facts.append(
-                "The saved customer report recognizes the specified entry "
-                f"{evidence['customer_allegation']['recognized_transaction_id']}; "
+                f"The saved customer report recognizes {label}; "
                 "this is a customer statement, not an adjudicated outcome."
             )
             if not matching and evidence["policy_state"] == "applicable":

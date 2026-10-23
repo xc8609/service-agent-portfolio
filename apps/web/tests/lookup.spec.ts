@@ -67,5 +67,6 @@ test('UI-02: source currency, UTC dates and unknown posting date stay explicit',
   await expect(rows.nth(2).getByRole('cell').nth(2)).toHaveText(/CAD\s+85\.00/);
   await expect(rows.nth(1).getByRole('cell').nth(4)).toHaveText('2026-10-19');
   await expect(rows.nth(1).getByRole('cell').nth(5)).toHaveText('2026-10-20');
-  await expect(rows.nth(2).getByRole('cell').nth(5)).toHaveText('Not recorded');
+  await expect(rows.nth(2).getByRole('cell').nth(5)).toHaveText('—');
+  await expect(rows.nth(2).getByRole('cell').nth(5).getByLabel('No posting date recorded')).toBeVisible();
 });

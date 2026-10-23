@@ -13,10 +13,13 @@ reopening another section or silently losing a material gap.
 - **LG-01 / DEV-02:** manual search shows each record's explicit currency code and
   amount, occurrence date and posting date. Date headings specify UTC and offsets
   are converted to UTC before selecting the date. A missing posting date displays
-  `Not recorded`; it is not inferred from the occurrence date or status.
+  a neutral dash labelled “No posting date recorded” (review follow-up; originally
+  `Not recorded`); it is not inferred from the occurrence date or status.
 - **LG-02 / DEV-08:** the offline summary describes `one_purchase_unresolved` as the
   current reported state and retains the pair for verification. It does not ask staff
   to infer the additional entry. Specific/both/neither recognition remains distinct.
+  A specific-entry recognition names the entry by merchant, amount, occurrence date
+  and short ID, not a full UUID (review follow-up).
 - **LG-03 / DEV-08:** the assistant preview includes the full saved customer statement
   and report revision in a visibly separate customer-reported block. This retains
   missing receipts or other context even when a provider omits them from its prose.

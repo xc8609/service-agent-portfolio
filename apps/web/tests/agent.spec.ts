@@ -18,7 +18,9 @@ test('AG-01: scoped offline run creates a reviewable draft and clears on query c
  await expect(summary).toContainText('do not establish a duplicate');
  await expect(summary).toContainText('which entry is additional remains unresolved');
  await expect(summary).not.toContainText('if the customer cannot distinguish');
- const customerReport=summary.getByLabel('Saved customer statement');
+ // The saved statement sits beside, not inside, the assistant's own summary.
+ const customerReport=page.getByLabel('Saved customer statement');
+ await expect(summary.getByLabel('Saved customer statement')).toHaveCount(0);
  await expect(customerReport).toContainText('I made one purchase, cannot identify the extra entry, and do not have the receipt.');
  await expect(customerReport).toContainText('Customer statement, not a verified outcome');
  await expect(customerReport).toContainText('customer-service follow-up');

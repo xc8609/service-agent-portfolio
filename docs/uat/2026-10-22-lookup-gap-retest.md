@@ -23,7 +23,13 @@ CAD 85. I cannot tell which entry is extra. I do not have the receipt.”
 | T4, original seven required items | Same preview includes one purchase, unresolved entry mapping, unavailable receipt, two posted CAD 85 records, no duplicate finding, existing investigation/queue and an uncommitted draft. No manual addition needed. | 7/7, previously 5/7 |
 | Reload and review | Durable run reload keeps report v1 and its text. Loading the saved note shows the exact original in Customer allegations, separately from the reviewed body. | Passed; no approval clicked |
 | Changed query | Clearing the merchant filter removes the old Agent preview and disables note approval. | Passed |
-| Missing posting date | Unfiltered lookup shows pending DEMO NORTH CAFE and reversed DEMO PARKING with `Not recorded`; it does not invent an entry date. | Passed |
+| Missing posting date | Unfiltered lookup shows pending DEMO NORTH CAFE and reversed DEMO PARKING with `Not recorded`; it does not invent an entry date. | Passed (wording later changed, see note) |
+
+Review follow-up (same day, after this retest): the missing posting date now shows a
+neutral dash labelled “No posting date recorded”, the saved customer statement sits
+outside the assistant summary region, and a specific-entry recognition names the entry
+by merchant, amount, date and short ID instead of a full UUID. Covered by browser and
+API regressions; the observations above were not re-run.
 
 Actual run: `bc7835c8-5e56-4784-a144-defc4e19f6d9`; uncommitted draft:
 `61390177-e77d-4974-be9d-fc39cb6ee800`. Transaction versions 1; related case version 2.
