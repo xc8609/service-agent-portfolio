@@ -3,7 +3,7 @@
 import json
 import time
 from dataclasses import asdict
-from datetime import timedelta
+from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from uuid import uuid4
 
@@ -257,7 +257,8 @@ def fixture(evidence, refs, stage):
             label = (
                 f"{entry.get('merchant_description') or 'Merchant unavailable'} — "
                 f"{entry['currency']} {Decimal(entry['amount_minor']) / 100:.2f}, "
-                f"occurred {str(entry.get('occurred_at'))[:10]} (entry {recognized[:8]})"
+                f"occurred {datetime.fromisoformat(entry['occurred_at']).astimezone(UTC).date()} UTC "
+                f"(entry {recognized[:8]})"
                 if entry
                 else f"entry {recognized[:8]}"
             )

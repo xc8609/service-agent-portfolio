@@ -47,9 +47,9 @@ React/TypeScript → FastAPI/Python → PostgreSQL. One small application with d
 [source/model extension points](architecture.md). Permissions, approval and receipts
 stay outside model control.
 
-The [verification suite](uat/2026-10-22-lookup-gap-retest.md)
-contains **293 API tests and 45 browser tests**, plus container smoke and offline
-Python 3.9/3.12 checks (22 October 2026). A shared browser-test clock avoids dependence
+The [verification suite](uat/2026-10-23-utc-date-retest.md)
+contains **294 API tests and 45 browser tests**, plus container smoke and offline
+Python 3.9/3.12 checks (23 October 2026). A shared browser-test clock avoids dependence
 on run time; an API regression preserves the real service-hours rule.
 [Delegated UAT](uat/2026-10-22-core-clarity.md) observed guarded
 disclosure and closure. Owner acceptance, live-model qualification and measured human

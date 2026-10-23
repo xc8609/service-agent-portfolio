@@ -106,6 +106,11 @@ skipped). The first comparison remains unchanged; no human speed gain is inferre
 Next: owner walkthrough using the corrected demo. Model API, public hosting, voice
 and retail remain separate later decisions.
 
+23 October follow-up: the Agent's specified-entry label now uses the same UTC date
+as the transaction table. [Regression and observed retest](../uat/2026-10-23-utc-date-retest.md)
+cover a cross-midnight transaction, saved statement, reload and stale-query denial;
+294 API and 45 browser tests passed. No additional workflow or model integration.
+
 Done for the presentation slice means: readable entry points, reproducible setup,
 actual synthetic screenshots, verified links/counts and passing publication/CI checks.
 Keep QA-03 owner UAT and OPS-03 release acceptance separate. Public hosting requires
