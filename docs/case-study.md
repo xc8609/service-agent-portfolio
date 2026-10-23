@@ -9,35 +9,46 @@ A customer recognizes one purchase but sees two similar credit-card charges. The
 representative needs transaction facts, the customer's account of events, existing
 investigations and the applicable procedure.
 
-The starting problem is fragmented lookup: moving between customer records,
-transaction screens, case history and a knowledge base. Access permissions and
-learning procedures add work. Lost handoff context means asking the customer again.
+The project owner's customer-service workstation experience identified page-by-page
+information collection, access restrictions and knowledge-base learning as the main
+pain points. This simulated card enquiry turns those observations into a concrete
+workflow and acceptance criteria.
 
 The goal is one workspace that makes the enquiry easier to understand, the next
 action clearer and responsibility visible through investigation and customer feedback.
 
+## Current process → target process
+
+| Current process in this scenario | Target design | Intended business improvement |
+|---|---|---|
+| Gather customer, transaction and case information across separate views. | Compare permitted facts and existing work in one customer context. | Less navigation and repeated searching. |
+| Search the knowledge base and work out which procedure applies. | Show the matching procedure, conditions and source version beside the evidence. | Less effort finding and checking the handling rule. |
+| Reconstruct the customer's account and facts for a note or referral. | Preserve the statement and selected entries; optionally use an Agent draft. | More complete handoffs with fewer missing facts. |
+| Decide whether more work is needed, then track the handoff and callback. | Save a contact note, or link/create owned work; separate feedback from closure. | Avoid unnecessary cases and keep unresolved work visible. |
+
+The [detailed current process](../projects/bank-service-assist/specs/BA-03/spec.md#common-service-flow)
+and [target lifecycle](../projects/bank-service-assist/specs/BA-04/spec.md#target-lifecycle-v02)
+show the decisions and roles behind this comparison.
+
 ## The working journey
 
-1. **Customer and representative — establish the enquiry.** Verify identity, compare
-   the two entries and record what the customer recognizes. Keep their statement
-   separate from ledger facts; similar charges still need investigation.
-2. **Representative — find the next step.** Check existing work, its progress and
-   owner; retrieve the applicable procedure and its source version.
-3. **Representative and Agent — prepare the handoff.** Review
-   **Facts / To confirm / Next step**, edit the note and approve it. Continue an
-   existing investigation or submit a new, reviewed enquiry.
-4. **Specialist — investigate.** Take ownership, review the evidence and record
-   findings with a customer-facing explanation. Request additional material through
-   customer service where needed.
-5. **Feedback representative — contact the customer.** Claim the shared-queue task,
-   verify identity, deliver the approved explanation and record the contact outcome.
-6. **Feedback representative — check completion.** Feedback delivered is a separate
-   milestone from case closure. Check outstanding work and required action receipts
-   before closing; unresolved contact attempts remain owned follow-up work.
+When the evidence supports an explanation and no further action is needed, staff
+can answer and save a contact note. The example below follows an **unresolved
+enquiry** that requires specialist review.
 
-Staff retain their decision rights: representatives approve notes and referrals,
-specialists own findings, and feedback representatives own eligible closure. A queue
-lead decides contact continuation when the normal plan expires.
+1. **Representative — establish the enquiry.** Verify identity, compare entries and
+   record recognition, keeping the customer's statement separate from ledger facts.
+2. **Representative — find the next step.** Check existing work, progress and owner;
+   retrieve the applicable procedure and source version.
+3. **Representative — approve the handoff.** Review the note, optionally using the
+   Agent draft; continue existing work or submit a new enquiry.
+4. **Specialist — investigate.** Take ownership, record findings and publish the
+   customer explanation. Request additional material through customer service.
+5. **Feedback representative — contact the customer.** Claim the task, verify identity,
+   deliver the approved explanation and record the outcome.
+6. **Feedback representative — confirm closure.** Check outstanding work and required
+   receipts. Delivered feedback alone does not close the case; expired contact plans
+   go to a queue lead for a continuation decision.
 
 ## BA decisions translated into features
 
@@ -52,15 +63,27 @@ lead decides contact continuation when the normal plan expires.
 
 [Decisions](../projects/bank-service-assist/docs/sprint-01/decision-log.md),
 [story cards](backlog/story-cards.md) and [requirement-to-test traceability](backlog/traceability-matrix.md)
-connect the analysis to working software.
+connect the analysis to working software. The
+[worked evidence chain](../projects/bank-service-assist/docs/README.md#one-decision-from-discovery-to-verification)
+follows one ambiguous-recognition decision through its requirement, implementation and tests.
 
 ## Agent and engineering design
 
-The Agent's contribution is evidence assembly: bring the selected transactions,
-customer statement, related work and procedure into a structured draft for review.
-Source references help the representative check the answer. The application handles
-approval, permissions, evidence freshness and action receipts. Staff can complete
-the same workflow manually.
+The workspace reduces navigation; the Agent adds a **reviewable synthesis** of the
+selected evidence and the representative's question. For this enquiry, the summary
+structure makes three things visible:
+
+- **Facts:** two CAD 85 entries are posted; the customer reports one purchase.
+- **To confirm:** why there are two entries; which entry maps to the purchase remains unresolved.
+- **Next step:** continue the existing investigation with the statement, transaction pair and missing-receipt gap.
+
+Source references let staff check the draft. Staff approve the note and next action;
+the application enforces permissions, evidence freshness and action receipts.
+
+The [options analysis](../projects/bank-service-assist/specs/BA-01/spec.md#alternatives-and-recommendation)
+compares manual lookup, a unified workspace, guided rules and Agent assistance.
+The manual workspace already addresses the main lookup pain. Agent value should
+be judged by draft completeness and total review effort against that same manual path.
 
 **React/TypeScript → FastAPI/Python → PostgreSQL.** The Agent runs inside the API.
 [Provider adapters and data-mapping interfaces](architecture.md) separate institution
@@ -70,21 +93,19 @@ The local demonstration uses synthetic records and a scripted offline Agent prov
 
 ## How value is assessed
 
-The business goals are fewer lookup steps, more complete handoffs and clear ownership
-of unresolved work. Review measures are page changes, required facts present in a
-handoff, clarification/rework needed and whether the next action has an owner.
+Measure value through lookup steps, handoff completeness, clarification/rework and
+whether unresolved actions have an owner.
 
 The core passed [delegated workflow assessment](uat/bank-core-closeout.md), supported by
 **294 API tests and 45 browser tests**, container smoke and offline checks
 (23 October 2026).
 
-A Codex-operated [four-task lookup rehearsal](../projects/bank-service-assist/evaluation/effort/results-20261022.md)
-found zero page changes in the prepared workspace versus ten across separated source
-pages, while total recorded actions were ten in each. It identified missing
-currency/posting dates and customer context. After focused corrections, a
-[targeted retest](uat/2026-10-22-lookup-gap-retest.md) covered all five transaction
-checklist items and all seven handoff items. These observations support the design
-improvements; handling-time savings remain a goal to measure.
+A [four-task lookup rehearsal](../projects/bank-service-assist/evaluation/effort/results-20261022.md)
+recorded zero page changes in the prepared workspace versus ten across simulated
+source pages, with ten actions in each. It exposed missing transaction details and
+customer context. After correction, the [targeted retest](uat/2026-10-22-lookup-gap-retest.md)
+covered 5/5 transaction and 7/7 handoff checklist items. Handling-time savings remain
+a goal to measure.
 
 The immediate portfolio focus is the GitHub walkthrough, business decisions and
 acceptance evidence. Hosting, live-model integration, voice and retail remain later

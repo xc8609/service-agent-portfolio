@@ -1,6 +1,11 @@
 # Sprint 1 bank service discovery
 
-Current review increment: [v0.2 stories, contracts and scope change](workflow-increment.md). D-09–D-16 record the reviewed transaction/feedback workflow. Eight detailed development specs and three incremental stories are prepared; old 22-example counts describe v0.1 only. See workflow validation for current counts.
+> **Historical discovery snapshot — 19–21 October 2026.** The pending setup and
+> implementation statements below describe that stage. For the current project,
+> use the [BA evidence guide](../README.md), [delivery status](../../../../docs/backlog/current-delivery.md)
+> and [bank-core acceptance record](../../../../docs/uat/bank-core-closeout.md).
+
+Review increment at this snapshot: [v0.2 stories, contracts and scope change](workflow-increment.md). D-09–D-16 record the reviewed transaction/feedback workflow. Eight detailed development specs and three incremental stories are prepared; old 22-example counts describe v0.1 only. See workflow validation for current counts.
 
 Started **19 October 2026** at the owner's request. Forecast end: **1 November 2026**, subject to capacity and review. Status: **In progress — v0.2 workflow stories and tool contracts prepared; implementation pending**. This is actual portfolio work, not a claim of a staffed bank project.
 
