@@ -24,15 +24,13 @@ transaction screens, case history and handling procedures. The target is one
 workspace that supports the enquiry and keeps each next step owned.
 
 ```mermaid
-flowchart TD
-    A[Customer questions two charges] --> B[Representative checks facts and rules]
-    B --> C[Agent organizes evidence and drafts a note]
-    C --> D[Representative reviews and submits enquiry]
-    D --> E[Specialist investigates and publishes findings]
-    E --> F[Customer service delivers approved feedback]
-    F --> G{Outstanding work?}
-    G -->|Yes| H[Keep open with an owner]
-    G -->|No| I[Staff confirm closure]
+flowchart LR
+    A["Representative<br/>Facts and rules"] --> B["Agent draft<br/>Staff review"]
+    B --> C["Specialist<br/>Investigation"]
+    C --> D["Customer service<br/>Feedback"]
+    D --> E{"Work<br/>complete?"}
+    E -->|Yes| F[Staff close case]
+    E -->|No| G[Owned follow-up]
 ```
 
 | Stage | Business decision supported |
