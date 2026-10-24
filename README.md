@@ -89,9 +89,10 @@ frozen routing baseline reached 81.7% team accuracy versus 31.5% for the majorit
 
 The second case, [Investment Research Brief](projects/investment-research/README.md),
 is an independent Agent application for financial-report changes and research briefs.
-Its manual workbench brings real financial facts, comparisons, sources and notes
-together. It runs separately from the bank application; Agent drafting and saved
-briefs follow in its [two-Sprint plan](docs/backlog/investment-research.md).
+Its workbench brings real financial facts, comparisons and sources together; its
+Agent workflow prepares a cited draft for the analyst's notes. It runs separately
+from the bank application; saved briefs follow in its
+[two-Sprint plan](docs/backlog/investment-research.md).
 
 **React / TypeScript → FastAPI / Python → PostgreSQL**, packaged with Docker Compose
 and tested with pytest, Playwright and GitHub Actions.

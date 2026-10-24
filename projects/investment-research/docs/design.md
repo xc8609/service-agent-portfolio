@@ -79,24 +79,27 @@ margin change is the current margin minus the prior margin, in **percentage poin
 Keep full Decimal precision until the final two-decimal display. Missing inputs
 remain gaps. Reject duplicate facts, invalid references and incompatible periods/units.
 
-Future explanatory passages have `evidence_id`, `source_id`, section locator and
-text with an explicit `verbatim` or `analyst_summary` kind. They are source material,
-not instructions to the Agent. The current six-number pack contains no explanation
-passages, so it cannot establish causes of the financial changes.
+Explanatory records have an evidence ID, source ID, section locator, topic tags and
+text labelled `analyst_summary`. The [commentary pack](../examples/msft-fy2025-passages.json)
+holds three original paraphrases checked against the same report hash. They are
+source material, not instructions to the Agent. The six numbers alone do not
+establish causes; the draft distinguishes reported explanations and open questions.
 
 ## Four Agent tools — INV-04
 
 | Tool | Input | Output |
 |---|---|---|
-| `list_sources` | Registered issuer ID | Available report IDs, dates, titles and URLs. |
-| `read_facts` | Source and period IDs; supported metric IDs | Facts with units, dates and locators; explicit missing items. |
-| `compare_periods` | Selected fact IDs | Validated calculations with formula, input IDs and any gaps. |
+| `list_sources` | No arguments; bound to the selected report | Registered report, company, periods and URL. |
+| `read_facts` | Selected source ID | Facts with units, dates and locators. |
+| `compare_periods` | Selected source ID | Validated calculations with input IDs and any gaps. |
 | `read_passages` | Registered source ID and research query | Relevant passages/section references from the selected report; empty if unavailable. |
 
-The model may choose and repeat reads within a proposed limit of eight tool calls
-per run. Tools accept registered IDs, not arbitrary URLs, SQL or Python. An invalid
-tool result or exhausted budget leaves a recoverable draft/gap state. No model tool
-marks a document reviewed or publishes it.
+The provider may choose and repeat reads within eight tool calls per run. Tools
+accept the registered report scope, not arbitrary URLs, SQL or Python. An invalid
+tool result or exhausted budget leaves a recoverable incomplete state. No tool
+marks a document reviewed or publishes it. The executable adapter is currently
+`offline-scripted-v1`; the [INV-04 runtime design](agent-design.md) specifies the
+provider boundary, checked citations, API contract and UI behavior.
 
 ## Manual workbench — INV-03
 
@@ -132,6 +135,10 @@ Planned endpoints are `POST /v1/research/tasks`, `GET /v1/research/tasks/{id}`,
 Task states stay small: preparing → draft → reviewed, with needs-review on changed
 source selection. A failed Agent run leaves manual editing available. Save uses the
 expected selection and brief version to prevent accepting an outdated draft.
+
+Before persistent tasks, INV-04 uses the smaller `POST /v1/research/runs` with an
+explicit source ID, question and expected source hash. It returns a draft to the
+current page; it does not create a saved task or brief-version record.
 
 There is no scheduler or deployment expansion in this increment. Normal request/run
 status is enough; add streaming only if observed task latency warrants it.

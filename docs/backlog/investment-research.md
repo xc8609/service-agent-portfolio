@@ -13,7 +13,8 @@ income and operating cash flow. Broader company coverage follows this working ex
 
 The foundation slice contains a reviewed six-fact source pack and original Python
 3.9 standard-library validation/calculation CLI. INV-03 connects a standalone manual
-workbench and read-only API; Agent drafting and persistence remain INV-04/05.
+workbench and read-only API; INV-04 adds evidence retrieval and a cited draft.
+Persistence remains INV-05.
 The owner confirmed this research scenario and an independent Agent application on
 24 October. Its own UI, API, tools and build run without the bank service or database.
 ValueFocus informs architectural boundaries; its code, prompts and private content
@@ -86,7 +87,8 @@ choices in an independent project-local application, with its own startup and CI
 
 ## INV-04 — Produce a bounded, evidence-backed Agent draft
 
-**Status:** Planned. **Dependencies:** INV-01–03 and the reviewed tool/output contract.
+**Status:** Implemented with an offline scripted provider; [executed acceptance](../../projects/investment-research/docs/agent-acceptance.md).
+**Dependencies:** INV-01–03 and the reviewed tool/output contract.
 **Estimate:** Dev 4, BA 0.5, QA 1 person-days · INV-S02.
 
 As an analyst, I want assistance that connects the question, calculations and report
@@ -95,6 +97,11 @@ evidence so that I spend less effort assembling a reviewable first draft.
 **Deliverables:** one research Agent; tools for approved sources, facts, comparisons
 and relevant report passages; a provider boundary; a structured brief with changes,
 supporting evidence and open questions. Start without multi-agent orchestration.
+
+Implementation: independent Python runtime, four read-only tools, three attributed
+report summaries, a strict run API and an explicit draft-to-notes action. The
+[INV-04 design](../../projects/investment-research/docs/agent-design.md) records
+the provider, citation and stale-context boundaries. Live-model API use remains deferred.
 
 - **INV-04-AC1:** Numeric claims use calculation-tool results and references; company explanations are tied to report evidence and separated from analyst interpretation.
 - **INV-04-AC2:** Missing evidence yields a specific open question. Retrieved text cannot change tool permissions, and the Agent cannot approve a brief or execute trades.

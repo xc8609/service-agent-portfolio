@@ -6,9 +6,10 @@
 !api/research_api/*.py
 !src/
 !src/research_brief/
-!src/research_brief/*.py
+!src/research_brief/**
 !examples/
 !examples/msft-fy2025.json
+!examples/msft-fy2025-passages.json
 !web/
 !web/package.json
 !web/package-lock.json
@@ -17,3 +18,5 @@
 !web/vite.config.ts
 !web/src/
 !web/src/**
+**/__pycache__/
+**/*.pyc

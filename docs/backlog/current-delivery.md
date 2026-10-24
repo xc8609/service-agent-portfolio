@@ -12,7 +12,9 @@ API integration, voice and retail stay deferred. Earlier priorities below are da
 **Owner confirmation — 24 October:** the investment scenario is financial-report
 changes and a research brief. It is an independent Agent application with its own
 web/API entry points, tools and build under `projects/investment-research/`, not a
-bank-workspace feature. INV-03 connects the manual research workbench next.
+bank-workspace feature. INV-03's independent manual workbench is merged in #36.
+INV-04 adds scoped evidence tools and cited draft generation; saved/reviewed brief
+versions remain INV-05. [Agent verification](../../projects/investment-research/docs/agent-acceptance.md).
 
 **23 October 2026 status:** the bank core has reached delegated acceptance and local
 demo handover. [Completion/evidence matrix](../uat/bank-core-closeout.md) is the current

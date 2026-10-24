@@ -10,7 +10,10 @@ from .router import PROJECT, create_router, error_response
 
 
 def create_app(
-    sources: Mapping[str, Path] | None = None, static_dir: Path | None = None
+    sources: Mapping[str, Path] | None = None,
+    static_dir: Path | None = None,
+    passages: Mapping[str, Path] | None = None,
+    provider=None,
 ) -> FastAPI:
     app = FastAPI(title="Investment Research Brief", version="0.1.0")
 
@@ -18,7 +21,7 @@ def create_app(
     def health():
         return {"status": "alive"}
 
-    app.include_router(create_router(sources))
+    app.include_router(create_router(sources, passages, provider))
 
     @app.api_route("/v1/{unsupported:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE"])
     def unsupported_api(unsupported: str):

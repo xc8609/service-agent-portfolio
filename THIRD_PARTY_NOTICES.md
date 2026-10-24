@@ -7,4 +7,4 @@ The MIT License applies only to eligible original project material. It does not 
 - Benchmark sources: references inform evaluation design; no benchmark data/model assets are bundled by this initial import.
 - Synthetic payload/calendar fixtures: authored specification examples, not real financial records or observed business outcomes.
 - GitHub Actions and Python dependencies: fetched from their publishers during checks, retain their own licenses.
-- Microsoft Annual Report 2025: the investment example retains six public reported numeric facts and source metadata. The full report is not bundled or relicensed. [Source and mapping](projects/investment-research/data/README.md).
+- Microsoft Annual Report 2025: the investment example retains six public reported numeric facts, source metadata and three short original commentary summaries labelled `analyst_summary`. The full report is not bundled or relicensed. [Source and mapping](projects/investment-research/data/README.md).

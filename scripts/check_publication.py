@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BLOCKED_PARTS = {'.venv', '__pycache__', 'node_modules', '.pytest_cache', 'raw', 'processed'}
 REVIEWED_SCREENSHOTS = {
     'projects/investment-research/docs/images/workbench-comparison.png',
+    'projects/investment-research/docs/images/agent-draft.png',
 }
 SECRET_PATTERNS = [
     re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),

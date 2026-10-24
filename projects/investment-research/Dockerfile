@@ -14,6 +14,7 @@ RUN pip install --no-cache-dir -r requirements-api.txt && useradd --uid 10001 --
 COPY api/research_api ./api/research_api
 COPY src/research_brief ./src/research_brief
 COPY examples/msft-fy2025.json ./examples/msft-fy2025.json
+COPY examples/msft-fy2025-passages.json ./examples/msft-fy2025-passages.json
 COPY --from=web /build/dist ./web/dist
 USER 10001
 EXPOSE 8010
