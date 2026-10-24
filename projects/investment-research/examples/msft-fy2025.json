@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "issuer": {
+    "id": "msft",
+    "name": "Microsoft Corporation",
+    "cik": "0000789019"
+  },
+  "source": {
+    "id": "msft-ar2025",
+    "title": "Microsoft Annual Report 2025",
+    "url": "https://www.microsoft.com/investor/reports/ar25/index.html",
+    "retrieved_at": "2026-10-24T17:35:11.214248+00:00",
+    "sha256": "564154a15ac28c0f7f72f304ae26b74c29cfca9f3eafe8d59595776769d621ca"
+  },
+  "periods": [
+    {
+      "id": "FY2024",
+      "start": "2023-07-01",
+      "end": "2024-06-30"
+    },
+    {
+      "id": "FY2025",
+      "start": "2024-07-01",
+      "end": "2025-06-30"
+    }
+  ],
+  "facts": [
+    {
+      "id": "revenue-fy2024",
+      "metric": "revenue",
+      "period_id": "FY2024",
+      "value": "245122",
+      "currency": "USD",
+      "unit": "million",
+      "source_id": "msft-ar2025",
+      "locator": "Income Statements / Total revenue / 2024"
+    },
+    {
+      "id": "revenue-fy2025",
+      "metric": "revenue",
+      "period_id": "FY2025",
+      "value": "281724",
+      "currency": "USD",
+      "unit": "million",
+      "source_id": "msft-ar2025",
+      "locator": "Income Statements / Total revenue / 2025"
+    },
+    {
+      "id": "operating_income-fy2024",
+      "metric": "operating_income",
+      "period_id": "FY2024",
+      "value": "109433",
+      "currency": "USD",
+      "unit": "million",
+      "source_id": "msft-ar2025",
+      "locator": "Income Statements / Operating income / 2024"
+    },
+    {
+      "id": "operating_income-fy2025",
+      "metric": "operating_income",
+      "period_id": "FY2025",
+      "value": "128528",
+      "currency": "USD",
+      "unit": "million",
+      "source_id": "msft-ar2025",
+      "locator": "Income Statements / Operating income / 2025"
+    },
+    {
+      "id": "operating_cash_flow-fy2024",
+      "metric": "operating_cash_flow",
+      "period_id": "FY2024",
+      "value": "118548",
+      "currency": "USD",
+      "unit": "million",
+      "source_id": "msft-ar2025",
+      "locator": "Cash Flows Statements / Net cash from operations / 2024"
+    },
+    {
+      "id": "operating_cash_flow-fy2025",
+      "metric": "operating_cash_flow",
+      "period_id": "FY2025",
+      "value": "136162",
+      "currency": "USD",
+      "unit": "million",
+      "source_id": "msft-ar2025",
+      "locator": "Cash Flows Statements / Net cash from operations / 2025"
+    }
+  ]
+}

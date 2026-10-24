@@ -18,3 +18,14 @@ Structure: docs/backlog owns story catalogue and scheduling; project docs own BA
 evidence and decisions; specs/<ID> owns requirement/design/tasks/acceptance;
 services/api and apps/web own runtime code. The Agent module now contains a bounded offline runtime and provider adapters; live providers remain disabled/unqualified. Preserve existing links and stable story IDs; do not create
 additional services or placeholder provider implementations solely for structure.
+
+## Investment research case
+
+The owner selected investment research next on 24 October 2026. Read
+`projects/investment-research/README.md` and `docs/backlog/investment-research.md`.
+Keep the bank core stable. ValueFocus is an architectural reference only; do not copy
+its code, prompts, private data or configuration. Start with one report, two annual
+periods and three comparable metrics; Python owns arithmetic, the Agent drafts and
+the analyst reviews. The first implemented slice is the offline calculation package;
+UI, model loop and brief persistence remain planned. Keep source metadata with the
+curated public facts, raw reports excluded, and paid API/deployment deferred.

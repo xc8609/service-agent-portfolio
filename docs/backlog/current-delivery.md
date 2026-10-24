@@ -1,5 +1,14 @@
 # Current delivery — finish the bank core first
 
+**24 October 2026 direction:** the owner selected an investment Agent as the next
+case, with architecture inspiration from ValueFocus rather than a product copy.
+Start [Investment Research Brief](../../projects/investment-research/README.md):
+real annual-report facts and a deterministic comparison, followed by a manual
+research workspace, one Agent and reviewed briefs. The
+[two-Sprint plan and INV-01–06 cards](investment-research.md) govern this work.
+Bank core remains the completed delegated-assessment baseline; hosting, paid model
+API integration, voice and retail stay deferred. Earlier priorities below are dated history.
+
 **23 October 2026 status:** the bank core has reached delegated acceptance and local
 demo handover. [Completion/evidence matrix](../uat/bank-core-closeout.md) is the current
 status, superseding the dated snapshots below. PR #30 is merged as `0799865`; all four
@@ -13,7 +22,7 @@ rights, Agent contribution, screenshots and acceptance evidence. The
 [case study](../case-study.md) and [workflow walkthrough](../demo.md) are the entry points;
 local setup remains available for technical reviewers.
 
-Next: collect feedback on this business walkthrough. No hosting resources or model
+At that stage, next was to collect feedback on this business walkthrough. No hosting resources or model
 API integration are planned in the current increment. Do not add further
 micro-features absent a concrete defect. Hosting, API, voice and retail remain
 future options; the original forecast below is planning history.
