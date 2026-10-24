@@ -21,6 +21,12 @@ additional services or placeholder provider implementations solely for structure
 
 ## Investment research case
 
+Latest direction (24 October 2026): the owner paused investment work and selected
+retail customer/sales analytics. Use `projects/retail-customer-analytics/README.md`
+and `docs/backlog/retail-analytics.md` for current work. Preserve investment PR #37
+without merging or expanding it. Retail uses real UCI transactions, DuckDB SQL,
+Tableau and portable charts; no Agent is required for this analysis.
+
 The owner selected investment research next on 24 October 2026. Read
 `projects/investment-research/README.md` and `docs/backlog/investment-research.md`.
 Keep the bank core stable. ValueFocus is an architectural reference only; do not copy

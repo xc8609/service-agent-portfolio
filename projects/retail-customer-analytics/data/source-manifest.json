@@ -1,0 +1,34 @@
+{
+  "dataset": "Online Retail II",
+  "publisher": "UCI Machine Learning Repository",
+  "creator": "Daqing Chen",
+  "doi": "10.24432/C5CG6D",
+  "license": "CC BY 4.0",
+  "source_page": "https://archive.ics.uci.edu/dataset/502/online+retail+ii",
+  "download_url": "https://archive.ics.uci.edu/static/public/502/online%2Bretail%2Bii.zip",
+  "downloaded_at_utc": "2026-10-24T20:04:58.041379+00:00",
+  "archive_sha256": "572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb",
+  "workbook_sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+  "archive_bytes": 45622418,
+  "sheets": [
+    {
+      "sheet": "Year 2009-2010",
+      "rows": 525461
+    },
+    {
+      "sheet": "Year 2010-2011",
+      "rows": 541910
+    }
+  ],
+  "rows": 1067371,
+  "headers": [
+    "Invoice",
+    "StockCode",
+    "Description",
+    "Quantity",
+    "InvoiceDate",
+    "Price",
+    "Customer ID",
+    "Country"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "sales_value": 19513678.427,
+  "sales_orders": 38870,
+  "cancellation_value": 567307.46,
+  "cancellation_documents": 7457,
+  "known_customer_value_coverage": 0.8587058441946518,
+  "known_customer_order_coverage": 0.9247234370980191,
+  "average_order_value": 502.02414270645744,
+  "customers": 5826,
+  "repeat_customers": 4186,
+  "repeat_customer_share": 0.7185032612427051,
+  "eligible_90d": 5229,
+  "repeated_90d": 2454,
+  "repeat_90d_rate": 0.46930579460699945,
+  "year_comparison": [
+    {
+      "year": 2010,
+      "sales_value": 8765001.064,
+      "sales_orders": 18159,
+      "average_order_value": 482.6808229528057
+    },
+    {
+      "year": 2011,
+      "sales_value": 9117534.443,
+      "sales_orders": 17483,
+      "average_order_value": 521.5085765028886
+    }
+  ],
+  "window_start": "2009-12-01",
+  "window_end": "2011-11-30",
+  "as_of": "2011-12-01",
+  "currency": "GBP"
+}

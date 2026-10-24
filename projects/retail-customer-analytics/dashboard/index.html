@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retail customer and sales analysis</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #183247; background: #eef3f5; }
+    body { margin: 0; }
+    header, main, footer { max-width: 1440px; margin: auto; padding: 22px 26px; }
+    header { padding-bottom: 8px; }
+    h1 { font-size: 24px; margin: 0 0 8px; }
+    p { line-height: 1.6; margin: 8px 0; }
+    .lead { color: #526673; max-width: 900px; }
+    nav { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 16px; }
+    button { cursor: pointer; border: 1px solid #b5c5cd; border-radius: 7px; padding: 12px 18px; background: white; color: #183247; font: inherit; }
+    button[aria-selected="true"] { background: #183247; color: white; border-color: #183247; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #b67425; outline-offset: 3px; }
+    main { padding-top: 12px; }
+    .report { background: white; border: 1px solid #dde6eb; border-radius: 10px; overflow: hidden; }
+    .report img { display: block; width: 100%; height: auto; }
+    .context { padding: 0 24px 18px; }
+    .context p { color: #526673; font-size: 14px; }
+    a { color: #116d77; text-underline-offset: 3px; }
+    footer { font-size: 14px; color: #526673; padding-top: 0; }
+    [hidden] { display: none !important; }
+    @media (max-width: 760px) { header, main, footer { padding-left: 12px; padding-right: 12px; } nav button { flex-grow: 1; } .report { overflow-x: auto; } .report img { min-width: 1000px; } .context { min-width: 600px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Retail customer and sales analysis</h1>
+    <p class="lead">Where did recorded sales change, how do customers purchase again, and which groups merit a closer business review? Explore three views of the same reconciled transaction data.</p>
+    <nav role="tablist" aria-label="Analysis views">
+      <button id="tab-sales" role="tab" aria-selected="true" aria-controls="sales" tabindex="0">1. Sales overview</button>
+      <button id="tab-repeat" role="tab" aria-selected="false" aria-controls="repeat" tabindex="-1">2. Customer repeat purchasing</button>
+      <button id="tab-priorities" role="tab" aria-selected="false" aria-controls="priorities" tabindex="-1">3. Customer priorities</button>
+    </nav>
+  </header>
+  <main>
+    <section id="sales" class="report" role="tabpanel" aria-labelledby="tab-sales">
+      <img src="sales-overview.svg" alt="Sales overview: monthly sales and cancellation trends, January to November year comparison, and largest country markets.">
+      <div class="context"><p>Recorded sales use eligible positive purchase lines. Cancellation amounts are shown separately. Overlapping sheets are reconciled; remaining identical rows are retained. See the methodology and sensitivity analysis.</p><a href="sales-overview.svg" target="_blank" rel="noopener">Open full-size sales chart</a></div>
+    </section>
+    <section id="repeat" class="report" role="tabpanel" aria-labelledby="tab-repeat" hidden>
+      <img src="customer-repeat.svg" alt="Customer repeat purchasing: separate 90-day and 24-month measures, identified-customer value coverage, and a monthly purchasing heatmap with unavailable future cells left blank.">
+      <div class="context"><p>The first purchase is the first observed in this dataset. The 90-day measure includes only buyers with a complete observation window. Each heatmap cell measures purchasing in that month, not uninterrupted retention.</p><a href="customer-repeat.svg" target="_blank" rel="noopener">Open full-size repeat-purchasing chart</a></div>
+    </section>
+    <section id="priorities" class="report" role="tabpanel" aria-labelledby="tab-priorities" hidden>
+      <img src="customer-priorities.svg" alt="Customer priorities: five mutually exclusive recency and purchase-frequency groups, customer counts, shares of sales in the last twelve months, and proposed investigation questions.">
+      <div class="context"><p>Segments use a fixed 1 December 2011 snapshot. Customer counts cover identified buyers observed over 24 months; sales shares use their last 12 months of purchases. The proposed investigations are not measured campaign results.</p><a href="customer-priorities.svg" target="_blank" rel="noopener">Open full-size customer-priorities chart</a></div>
+    </section>
+  </main>
+  <footer>
+    <p>Real transaction data from a UK online gift retailer, including wholesale customers. Analysis covers December 2009–November 2011; the partial December 2011 period is excluded. Values are GBP.</p>
+    <p>Source: Chen, D. (2012), <a href="https://archive.ics.uci.edu/dataset/502/online+retail+ii">UCI Online Retail II</a>, <a href="https://doi.org/10.24432/C5CG6D">DOI 10.24432/C5CG6D</a>, CC BY 4.0. <a href="../README.md">Project and methodology</a>.</p>
+  </footer>
+  <script>
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    function activate(tab) {
+      tabs.forEach(item => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+      });
+    }
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activate(tab));
+      tab.addEventListener('keydown', event => {
+        let next;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next !== undefined) {
+          event.preventDefault();
+          activate(tabs[next]);
+          tabs[next].focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
