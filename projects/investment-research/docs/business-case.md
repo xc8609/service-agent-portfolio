@@ -2,6 +2,10 @@
 
 24 October 2026 · Design baseline for INV-01–06.
 
+**Owner-confirmed direction:** financial-report changes and investment research
+briefs, delivered as an independent Agent application. This records the selected
+business scenario and application boundary; workflow acceptance follows executed tests.
+
 ## User, problem and intended value
 
 **User:** an analyst preparing a company update for review. **Trigger:** a new
@@ -46,6 +50,7 @@ and the analyst's interpretation.
 | I-D03 | Calculate in Python; use the Agent for evidence selection and synthesis. | Separate reproducible arithmetic from language interpretation. INV-02/04. |
 | I-D04 | Support the same brief manually. | Compare assistance against a useful workspace, including review effort. INV-03/06. |
 | I-D05 | A reviewer saves the final version; changes to source selection require renewed review. | Make research ownership and evidence changes visible. INV-05. |
+| I-D06 | Ship an independent investment application in the portfolio repository. | Own UI, API, tools and research context; run without the bank service or database. Owner-confirmed, INV-03/04. |
 
 A spreadsheet and manual report are the baseline. A structured workspace already
 improves reuse and calculation consistency. Add one Agent to answer variable

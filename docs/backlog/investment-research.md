@@ -12,8 +12,10 @@ comparative figures **within the same FY2025 annual report**: revenue, operating
 income and operating cash flow. Broader company coverage follows this working example.
 
 The foundation slice contains a reviewed six-fact source pack and original Python
-3.9 standard-library validation/calculation CLI. API, UI and Agent integration are
-later story work. No paid-model or API integration is included in this increment.
+3.9 standard-library validation/calculation CLI. INV-03 connects a standalone manual
+workbench and read-only API; Agent drafting and persistence remain INV-04/05.
+The owner confirmed this research scenario and an independent Agent application on
+24 October. Its own UI, API, tools and build run without the bank service or database.
 ValueFocus informs architectural boundaries; its code, prompts and private content
 are not copied. Acceptance records distinguish implemented slices from full stories.
 
@@ -35,7 +37,7 @@ without blocking the source, calculator, manual workbench or review features.
 
 ## INV-01 — Establish the research question and source pack
 
-**Status:** Partial foundation slice; source pack prepared, full selection workflow pending.
+**Status:** Source pack merged in #35; report selection integrated in INV-03, verification below.
 **Dependencies:** None. **Estimate:** Dev 4, BA 1.5, QA 1 person-days · INV-S01.
 
 As an analyst, I want a defined question and a traceable report selection so that
@@ -51,7 +53,7 @@ download succeeded. Record those outcomes separately and retain the usable issue
 
 ## INV-02 — Validate comparable facts and calculate changes
 
-**Status:** Partial calculation foundation; API/UI integration and full acceptance pending.
+**Status:** Calculation foundation merged in #35; API/UI integration delivered with INV-03.
 **Dependencies:** INV-01 fact/source contract. **Estimate:** Dev 4, BA 1, QA 1 person-days · INV-S01.
 
 As an analyst, I want reproducible comparisons so that I can verify the numbers
@@ -67,15 +69,16 @@ Keep formulas outside the model and reuse them in the later manual and Agent pat
 
 ## INV-03 — Complete the research manually in one workbench
 
-**Status:** Planned. **Dependencies:** INV-01–02 contracts; completed calculations for integration.
+**Status:** Implemented; execution and review recorded in the [workbench acceptance](../../projects/investment-research/docs/workbench-acceptance.md).
+**Dependencies:** INV-01–02 contracts; completed calculations for integration.
 **Estimate:** Dev 5, BA 1, QA 1 person-days · INV-S01.
 
 As an analyst, I want the question, comparison and evidence together so that I can
 prepare a brief without repeatedly rebuilding context across documents.
 
 **Deliverables:** a small research view, facts/comparison table, source links or
-excerpts, and editable notes. Reuse the portfolio's web/API stack and keep this
-investment workflow separate from bank customer and case records.
+excerpts, and editable notes. Use the same React/TypeScript and FastAPI technology
+choices in an independent project-local application, with its own startup and CI.
 
 - **INV-03-AC1:** An analyst can select the prepared company/periods, inspect all three metrics and calculations, open the cited evidence and write a manual note.
 - **INV-03-AC2:** Loading, missing evidence and source failure remain distinguishable; current edits survive a failed source refresh. Durable saved versions follow in INV-05.

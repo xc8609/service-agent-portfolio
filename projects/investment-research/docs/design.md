@@ -1,7 +1,7 @@
 # Design — one researcher, checked evidence, reviewed output
 
-24 October 2026 · Planned application design; the calculation package is implemented
-first. UI, HTTP endpoints, persistence and model orchestration below are planned.
+24 October 2026 · Independent investment Agent application. The calculation core
+and manual workbench form INV-S01; Agent drafting and saved briefs follow in INV-S02.
 
 ## Architecture and ownership
 
@@ -19,12 +19,13 @@ flowchart TD
     SAVE --> DB[(PostgreSQL tasks and brief versions)]
 ```
 
-- **React/TypeScript:** a research page in the existing web application; company,
+- **React/TypeScript:** its own research application under `web/`; company,
   periods, metric comparison, source evidence and brief editor.
-- **FastAPI/Python:** a separate investment domain alongside the bank domain in
-  the same deployment. Keep the existing bank endpoints and tables unchanged.
-- **PostgreSQL:** task, source snapshot, research run and brief-version records.
-  One database is enough; domain-specific table names prevent accidental mixing.
+- **FastAPI/Python:** its own `research_api.app:create_app` entry point under `api/`,
+  served on port 8010. It does not import or start the bank service.
+- **Storage:** source packs are read-only files in this increment. Task, research-run
+  and brief-version persistence belongs to INV-05, in investment-owned storage;
+  neither bank credentials nor bank tables are dependencies.
 - **Research core:** `projects/investment-research/src/research_brief/` currently owns
   pure calculation/validation code. Future API tools call this code directly.
 - **Runtime:** one Agent owns evidence gathering and the final draft. The application
@@ -38,9 +39,10 @@ can be added without changing facts or review semantics. OpenAI, Claude and comp
 API profiles are future choices; there is no new SDK dependency or paid call now.
 Do not promise that changing an endpoint makes different providers equivalent.
 
-Reuse the portfolio's CI, Docker setup and UI conventions. Do not import the bank
-Agent runtime: its customer permissions, transaction pair and work-order state are
-specific to service operations. Extract shared code only after duplication exists.
+Use the portfolio's engineering conventions with this application's own Dockerfile,
+web build, dependency files and CI job. The same Git repository organizes the cases;
+it does not combine their runtimes. The investment Agent owns its prompts, tools,
+research context and outputs. ValueFocus informs these architecture boundaries.
 
 ## Architecture choices
 
@@ -95,6 +97,26 @@ The model may choose and repeat reads within a proposed limit of eight tool call
 per run. Tools accept registered IDs, not arbitrary URLs, SQL or Python. An invalid
 tool result or exhausted budget leaves a recoverable draft/gap state. No model tool
 marks a document reviewed or publishes it.
+
+## Manual workbench — INV-03
+
+The standalone API exposes two read-only routes for the current registered report:
+
+| Route | Result |
+|---|---|
+| `GET /v1/research/sources` | Report ID, company, title, URL and comparable periods. |
+| `GET /v1/research/sources/{id}/comparison` | The original comparison contract: facts, metrics, margins, sources and gaps. |
+
+The source registry owns file paths; the browser sends a report ID. These public
+financial facts need no bank session, database or model. Missing individual facts
+remain a successful response with gaps; an unreadable/invalid pack returns 503,
+and an unregistered report returns 404. Reload revalidates the registered file.
+
+The browser holds the research question, notes and open questions for the current
+visit. Failed refreshes preserve these edits. Selection changes clear the old
+comparison so it cannot appear under a different report. Persistent reviewed
+versions remain INV-05. The page shows the report's actual years and units, exposes
+source facts and formulas, and distinguishes unavailable figures from zero.
 
 ## Brief contract and application flow — INV-03/05
 

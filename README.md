@@ -87,10 +87,11 @@ frozen routing baseline reached 81.7% team accuracy versus 31.5% for the majorit
 
 ## Technology and structure
 
-The next case, [Investment Research Brief](projects/investment-research/README.md),
-compares company reporting periods and develops a source-linked brief for analyst
-review. Its real-data and calculation foundation is runnable; the research workspace
-and Agent workflow follow in the [two-Sprint plan](docs/backlog/investment-research.md).
+The second case, [Investment Research Brief](projects/investment-research/README.md),
+is an independent Agent application for financial-report changes and research briefs.
+Its manual workbench brings real financial facts, comparisons, sources and notes
+together. It runs separately from the bank application; Agent drafting and saved
+briefs follow in its [two-Sprint plan](docs/backlog/investment-research.md).
 
 **React / TypeScript → FastAPI / Python → PostgreSQL**, packaged with Docker Compose
 and tested with pytest, Playwright and GitHub Actions.
@@ -115,7 +116,7 @@ services/api/bank_api/
   integrations/                  Transaction-source mapping
 services/api/tests/              API and workflow regression tests
 projects/complaint-analytics/    SQL, Tableau and complaint-routing analysis
-projects/investment-research/   Research BA design, real-data example and calculator
+projects/investment-research/   Independent research UI/API, calculator and BA design
 docs/uat/ + .github/workflows/   Acceptance evidence and CI
 ```
 

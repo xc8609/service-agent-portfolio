@@ -1,7 +1,8 @@
 # Foundation acceptance — 24 October 2026
 
-Scope: INV-01 source-pack slice and INV-02 calculation slice. The first research
-workspace and Agent run are not implemented by this increment.
+Scope: INV-01 source-pack slice and INV-02 calculation slice as delivered in PR #35.
+The later [independent workbench acceptance](workbench-acceptance.md) records INV-03;
+this foundation record preserves the scope of that first increment.
 
 ## Source verification
 

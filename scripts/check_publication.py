@@ -6,6 +6,9 @@ from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 BLOCKED_PARTS = {'.venv', '__pycache__', 'node_modules', '.pytest_cache', 'raw', 'processed'}
+REVIEWED_SCREENSHOTS = {
+    'projects/investment-research/docs/images/workbench-comparison.png',
+}
 SECRET_PATTERNS = [
     re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
     re.compile(r'gh[pousr]_[A-Za-z0-9]{24,}'),
@@ -29,8 +32,8 @@ def main():
             failures.append((name, 'database, key or packaged data file'))
         if p.stat().st_size > 2_000_000:
             failures.append((name, 'large file requires explicit publication review'))
-        # Reviewed product screenshots of synthetic data only; kept small.
-        if p.suffix == '.png' and p.parent == ROOT / 'docs/images':
+        # Reviewed product screenshots: synthetic bank data or attributed public facts.
+        if p.suffix == '.png' and (p.parent == ROOT / 'docs/images' or name in REVIEWED_SCREENSHOTS):
             if p.stat().st_size > 400_000:
                 failures.append((name, 'screenshot larger than 400 KB'))
             continue

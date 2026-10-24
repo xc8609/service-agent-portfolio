@@ -24,8 +24,10 @@ additional services or placeholder provider implementations solely for structure
 The owner selected investment research next on 24 October 2026. Read
 `projects/investment-research/README.md` and `docs/backlog/investment-research.md`.
 Keep the bank core stable. ValueFocus is an architectural reference only; do not copy
-its code, prompts, private data or configuration. Start with one report, two annual
-periods and three comparable metrics; Python owns arithmetic, the Agent drafts and
-the analyst reviews. The first implemented slice is the offline calculation package;
-UI, model loop and brief persistence remain planned. Keep source metadata with the
-curated public facts, raw reports excluded, and paid API/deployment deferred.
+its code, prompts, private data or configuration. The owner confirmed financial-report
+changes and research briefs, and explicitly requires an independent Agent application:
+own UI, API, tools and startup under that project; no bank runtime/database dependency.
+Start with one report, two annual periods and three comparable metrics; Python owns
+arithmetic, the Agent drafts and the analyst reviews. INV-03 adds the manual workbench;
+the model loop and brief persistence follow. Keep source metadata with curated public
+facts, raw reports excluded, and paid API/deployment deferred.
