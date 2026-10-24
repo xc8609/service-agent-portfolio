@@ -9,6 +9,11 @@ research workspace, one Agent and reviewed briefs. The
 Bank core remains the completed delegated-assessment baseline; hosting, paid model
 API integration, voice and retail stay deferred. Earlier priorities below are dated history.
 
+**Owner confirmation — 24 October:** the investment scenario is financial-report
+changes and a research brief. It is an independent Agent application with its own
+web/API entry points, tools and build under `projects/investment-research/`, not a
+bank-workspace feature. INV-03 connects the manual research workbench next.
+
 **23 October 2026 status:** the bank core has reached delegated acceptance and local
 demo handover. [Completion/evidence matrix](../uat/bank-core-closeout.md) is the current
 status, superseding the dated snapshots below. PR #30 is merged as `0799865`; all four
