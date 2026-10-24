@@ -3,6 +3,7 @@
 | Question | Canonical document |
 |---|---|
 | What are we building next, and what is deferred? | [Current delivery scope](current-delivery.md) |
+| What is the investment Agent scope and Sprint plan? | [Investment Research Brief — INV-01–06](investment-research.md) |
 | Which stories exist? | [Story catalogue](story-cards.md) |
 | What is the detailed requirement/design for a story? | [Specification index](../../projects/bank-service-assist/specs/README.md) |
 | What is the small-team Sprint forecast? | [Sprint sequence and illustrative dates](sprints.md) |
@@ -14,6 +15,10 @@
 Stories have stable IDs across schedule revisions. Detailed story folders hold
 `spec.md`, `design.md`, `tasks.md` and `acceptance.md`; the catalogue and Trello are
 navigation/planning views, not competing copies of runtime acceptance.
+
+The smaller investment case keeps its six cards together in the linked plan, with
+one shared business/design contract and a dated acceptance record. Split cards into
+folders only when their implementation detail warrants it.
 
 The forecast models two developers with BA/QA allocations, not actual staffing or
 personal hours. Dates and effort are estimates, not completed work. Current scope
