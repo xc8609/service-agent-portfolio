@@ -29,6 +29,9 @@ decline, review lapsed-repeat customers' purchasing cadence, then use product an
 market evidence to define the next action. The case study walks through all three
 views and connects the findings to proposed business owners and follow-up evidence.
 
+**Business review accepted — 24 October 2026:** the portfolio owner confirmed the
+three-page findings and recommendation priorities. [Acceptance record](docs/business-case.md#business-acceptance-record).
+
 [Dimensional model](docs/model.md) · [Client-development design](docs/client-development-design.md)
 
 The model preserves invoice-line and order grains, standardizes product labels,

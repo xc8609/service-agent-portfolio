@@ -193,16 +193,19 @@ reviewed against published aggregates and SQL. Technical evidence includes
 **28 retail tests, 29 data reconciliations and completed A12 interaction checks**;
 the owner directly confirmed country selection and customer-group selection/reset.
 
-| A13 review task | Review answer and proposed decision |
+| A13 review task | Owner-accepted finding and priority |
 |---|---|
 | Explain sales growth with fewer orders | Read the three measures together; prioritize the −1,047 orders among continuing customers |
 | Interpret customer repeat behaviour | Separate observation windows; use the 591-customer group for cadence/service review |
 | Connect product results to a business action | Compare value and order presence, keep scopes explicit, and request merchandising context |
 
-**Owner business decision: pending the combined review of these findings and
-priorities.** This is separate from the completed control checks. The value
-demonstrated is a traceable route from transactions to a focused business review
-and testable next action.
+**A13 accepted by the portfolio owner on 24 October 2026.** The owner confirmed
+the findings and priority order: investigate continuing-customer order frequency,
+review the 591 lapsed-repeat customers' cadence and service context, then use
+product and market evidence to refine the next action. This completes business
+acceptance of the case's explanations and recommendations. The value demonstrated
+is a traceable route from transactions to a focused business review and testable
+next action; the proposed interventions remain future work.
 
 Source: Chen, D. (2012), [UCI Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii),
 [DOI 10.24432/C5CG6D](https://doi.org/10.24432/C5CG6D), CC BY 4.0.

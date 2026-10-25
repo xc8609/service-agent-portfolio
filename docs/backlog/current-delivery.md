@@ -8,6 +8,12 @@ sales changes, repeat purchasing and customer-development priorities. Follow the
 merged by this change; memory, live model integration and further investment features
 are paused. The dated investment direction below is superseded for current priority.
 
+**Retail review complete — 24 October 2026:** the recorded Tableau interaction
+checks are complete, and the owner accepted the three-page business findings and
+recommendation priorities (A13). The [retail case study](../../projects/retail-customer-analytics/docs/business-case.md)
+contains the walkthrough, evidence and accepted priorities. Proposed commercial
+interventions have not been executed.
+
 **24 October 2026 direction:** the owner selected an investment Agent as the next
 case, with architecture inspiration from ValueFocus rather than a product copy.
 Start [Investment Research Brief](../../projects/investment-research/README.md):

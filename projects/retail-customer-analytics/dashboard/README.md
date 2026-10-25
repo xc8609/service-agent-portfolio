@@ -94,7 +94,8 @@ The following retest adds actual pointer and keyboard interaction evidence.
 
 Evaluator: Codex, delegated technical review, using Tableau 2026.2 and the local
 regenerated inputs. No calculation or chart-layout defect was found in the tested
-sequence. Owner business acceptance is a separate decision.
+sequence. The separate owner business review was subsequently accepted;
+see the [A13 record](../docs/business-case.md#business-acceptance-record).
 
 | Check | Observed result | Outcome |
 |---|---|---|
