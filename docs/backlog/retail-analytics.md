@@ -154,7 +154,9 @@ pages and representative persisted filter states were inspected against SQL.
 A12 retest passed the three pages' bar selection/clear, date recomputation,
 cross-page scope isolation and scrolling market layout. In a follow-up on
 24 October 2026, the owner confirmed that Trading's Recorded country dropdown
-opens and France can be selected. The Product customer-group dropdown remains
-unverified. A13's three evidence-backed findings are documented; owner
+opens and France can be selected. After the automated customer-group attempt could
+not open the popup, the owner confirmed selection of Lapsed repeat and reset to
+(All), with sales and invoice counts matching SQL in both states. The recorded
+A12 interaction checks are complete. A13's three evidence-backed findings are documented; owner
 business acceptance remains open. See the same
 [verification record](../../projects/retail-customer-analytics/dashboard/README.md).
