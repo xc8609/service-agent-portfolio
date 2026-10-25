@@ -160,3 +160,12 @@ not open the popup, the owner confirmed selection of Lapsed repeat and reset to
 A12 interaction checks are complete. A13's three evidence-backed findings are documented; owner
 business acceptance remains open. See the same
 [verification record](../../projects/retail-customer-analytics/dashboard/README.md).
+
+A13 business walkthrough, 24 October 2026: the
+[case study](../../projects/retail-customer-analytics/docs/business-case.md)
+now connects each page to its scope, evidence, interpretation and proposed action.
+The review prioritizes continuing-customer frequency, then a lapsed-repeat cadence
+review and product/market investigation. Aggregate values and cross-page scope
+differences were checked against SQL. Owner acceptance of the combined business
+findings and priorities is pending; the completed A12 controls are not used as a
+substitute for that decision.
