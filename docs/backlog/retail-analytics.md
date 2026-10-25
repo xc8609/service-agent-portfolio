@@ -155,6 +155,8 @@ A12 retest passed the three pages' bar selection/clear, date recomputation,
 cross-page scope isolation and scrolling market layout. In a follow-up on
 24 October 2026, the owner confirmed that Trading's Recorded country dropdown
 opens and France can be selected. The Product customer-group dropdown remains
-unverified. A13's three evidence-backed findings are documented; owner
+unverified after a further pointer/keyboard attempt: default values were observed
+and SQL selection/reset targets documented, but the popup did not open through
+automation. A13's three evidence-backed findings are documented; owner
 business acceptance remains open. See the same
 [verification record](../../projects/retail-customer-analytics/dashboard/README.md).

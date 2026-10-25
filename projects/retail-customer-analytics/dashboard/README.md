@@ -115,5 +115,21 @@ bar-action checks. The Product customer-group dropdown remains unverified.
 Independent code review and 28 retail tests found no model, aggregation or filter-
 scope blocker. The workbook was not saved with temporary review selections.
 
+Customer-group follow-up, 24 October 2026: after #39 merged, the Product page
+was reopened. Its default KPIs showed £8,878,008 / 17,407 / 100.0%. The control
+received focus, but neither pointer nor keyboard interaction exposed its options
+through the automation. Selection and reset therefore remain pending direct
+confirmation; no workbook defect or fix is established by this result.
+
+Independent SQL provides these comparison targets for all countries,
+1 January–30 November 2011, merchandise only, with no product selected:
+
+| Customer-group selection | Sales (rounded display) | Distinct invoices | Order penetration |
+|---|---:|---:|---:|
+| Lapsed repeat | £559,280 | 1,521 | 100.0% |
+| Reset to (All) | £8,878,008 | 17,407 | 100.0% |
+
+These are SQL targets, not observed dropdown-selection results.
+
 The ignored verification copies can be regenerated with
 `python projects/retail-customer-analytics/scripts/build_tableau.py --smoke-variants`.
