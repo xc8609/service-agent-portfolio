@@ -11,6 +11,8 @@ The source is UCI Online Retail II, a UK online gift retailer's invoice lines.
 The case uses **24 complete months, 38,870 purchase invoices and 5,826 identified
 customers** after reconciling overlapping source sheets.
 
+**Stack:** Python · DuckDB SQL · Tableau · pytest · GitHub Actions.
+
 ## What the analysis shows
 
 - **Sales +4.0%, invoices −3.7%, average invoice value +8.0%:** January–November
@@ -32,11 +34,22 @@ views and connects the findings to proposed business owners and follow-up eviden
 **Business review accepted — 24 October 2026:** the portfolio owner confirmed the
 three-page findings and recommendation priorities. [Acceptance record](docs/business-case.md#business-acceptance-record).
 
-[Dimensional model](docs/model.md) · [Client-development design](docs/client-development-design.md)
+## Skills demonstrated, with evidence
 
-The model preserves invoice-line and order grains, standardizes product labels,
-and keeps customer snapshots separate from transaction facts. The Tableau workbook
-adds page-specific filters and selections for trading, clients and products.
+| Capability | Implemented work | Inspect the evidence |
+|---|---|---|
+| Data cleaning | Reconciled 22,523 overlapping rows with `EXCEPT ALL`, preserved source lineage, separated cancellations and reported missing-customer coverage | [Staging SQL](sql/01_staging.sql) · [Overlap check](scripts/build_analysis.py) · [Quality results](results/quality.json) |
+| Data modelling | Built invoice-line and invoice facts plus date, product, customer and country dimensions; validated keys and joins without multiplying amounts | [Model and grains](docs/model.md) · [Model SQL](sql/03_model.sql) |
+| Analytical SQL | Used fixed observation windows for repeat purchase, a reconciled customer order-change bridge and product contribution/ranking analysis | [Customer marts](sql/02_marts.sql) · [Diagnostics](sql/04_diagnostics.sql) |
+| Tableau analysis | Implemented `COUNTD`, `FIXED` LOD/context filters, linked selections, reset and separate page scopes | [Calculation example](docs/metrics.md#tableau-calculation-example) · [Native interaction results](dashboard/README.md#native-interaction-retest--24-october-2026) |
+
+**Verification:** [28 retail tests](tests/), [11 source/metric reconciliations](results/checks.json)
+and [18 model/diagnostic reconciliations](results/model_checks.json). Tableau
+interaction checks and the owner business review are complete for the recorded scope.
+
+DuckDB owns the dimensional model. Tableau consumes sales-line, customer-snapshot
+and cohort exports at their respective grains and recalculates selected-scope
+measures using the same definitions. [Client-development design](docs/client-development-design.md).
 
 The diagnostic increment explains the **676-invoice decline** through four
 customer groups. Merchandise value grew from **£8.63m to £8.88m** in comparable
@@ -45,11 +58,30 @@ merchandise value. [Diagnostic results](results/diagnostic_summary.json).
 
 ## Three decision views
 
-Open [the portable review](dashboard/index.html) for the three previews below.
-For native filtering and linked selections, generate the local inputs and open
-[the Tableau workbook](dashboard/retail_customers.twb). It uses ignored local
-transaction/customer exports and published cohort aggregates.
-[Workbook setup and verification](dashboard/README.md).
+**Native Tableau workbook — actual Desktop capture, 24 October 2026.**
+Trading is shown at its default January–November 2011 scope; the three page tabs
+are visible along the bottom.
+
+![Native Tableau Trading page with country/date filters, KPIs, trend and market chart](dashboard/images/tableau-trading-native.png)
+
+| Page | Business question | Interactive analysis |
+|---|---|---|
+| Trading performance | Why do sales and order volume move differently? | Filter country/date; select a market to focus KPIs and the monthly trend |
+| Client development | Which customer groups need review? | Select a group to update customer measures and the cohort heatmap |
+| Product preferences | Which products accompany the purchasing pattern? | Filter date/country/group, then select a product; the penetration denominator retains the full filter scope |
+
+For these interactions, follow the [workbook setup](dashboard/README.md) and open
+[retail_customers.twb](dashboard/retail_customers.twb). The verified product example
+shows **1,757 / 17,407 invoices = 10.1% penetration**, rather than becoming 100%
+when one product is selected.
+
+<details>
+<summary>Three comparative chart previews — view directly on GitHub</summary>
+
+These Python-generated analytical charts include the fixed comparable-period
+order bridge and product changes. The local [HTML preview source](dashboard/index.html)
+adds tab navigation; the native Tableau workbook provides data filtering and
+linked selections. [Run the local preview](dashboard/README.md#portable-github-preview).
 
 ![Sales, order volume and invoice value](dashboard/sales-overview.svg)
 
@@ -57,7 +89,7 @@ transaction/customer exports and published cohort aggregates.
 |---|---|
 | ![Customer groups and cohort purchasing](dashboard/client-development.svg) | ![Product contribution to sales change](dashboard/product-preferences.svg) |
 
-[Dashboard instructions and verification](dashboard/README.md).
+</details>
 
 ## Structure and reproduction
 

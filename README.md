@@ -3,6 +3,11 @@
 [![Checks](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml)
 [![Bank runtime](https://github.com/xc8609/service-agent-portfolio/actions/workflows/bank-runtime.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/bank-runtime.yml)
 
+| Portfolio case | What to review |
+|---|---|
+| [Bank Service Assist](docs/case-study.md) | Business requirements, Agent-assisted investigation and customer follow-up in a working application |
+| [Retail Customer & Sales Analysis](projects/retail-customer-analytics/README.md) | Real-data cleaning, DuckDB fact/dimension modelling, analytical SQL and interactive Tableau dashboards |
+
 **A bank service workspace that brings transaction investigation, Agent assistance
 and customer follow-up into one workflow.**
 
@@ -98,8 +103,11 @@ Its manual workbench brings real financial facts, comparisons, sources and notes
 together. It runs separately from the bank application; Agent drafting and saved
 briefs follow in its [two-Sprint plan](docs/backlog/investment-research.md).
 
-**React / TypeScript → FastAPI / Python → PostgreSQL**, packaged with Docker Compose
+**Bank workspace:** React / TypeScript → FastAPI / Python → PostgreSQL, packaged with Docker Compose
 and tested with pytest, Playwright and GitHub Actions.
+
+**Retail analytics:** Python → DuckDB SQL → Tableau, with source reconciliation,
+model/metric tests and a completed business review.
 
 Transaction-source mapping examples and model-provider adapters sit behind small,
 defined interfaces. Provider adapters cover OpenAI Responses, Claude Messages and
