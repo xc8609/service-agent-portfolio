@@ -94,8 +94,8 @@ The following retest adds actual pointer and keyboard interaction evidence.
 
 Evaluator: Codex, delegated technical review, using Tableau 2026.2 and the local
 regenerated inputs. No calculation or chart-layout defect was found in the tested
-sequence. The separate owner business review was subsequently accepted;
-see the [A13 record](../docs/business-case.md#business-acceptance-record).
+sequence. The end-to-end business review was completed afterwards;
+see the [review record](../docs/business-case.md#review-record).
 
 | Check | Observed result | Outcome |
 |---|---|---|
@@ -130,7 +130,7 @@ Independent SQL provides these comparison targets for all countries,
 | Lapsed repeat | £559,280 | 1,521 |
 | Reset to (All) | £8,878,008 | 17,407 |
 
-This closes the remaining direct-control check for the recorded A12 scope.
+This closes the remaining direct-control check for the recorded interaction scope.
 The dropdown evidence is owner-confirmed; the automated popup limitation remains
 part of the test history. No workbook or calculation change was needed.
 

@@ -31,8 +31,9 @@ decline, review lapsed-repeat customers' purchasing cadence, then use product an
 market evidence to define the next action. The case study walks through all three
 views and connects the findings to proposed business owners and follow-up evidence.
 
-**Business review accepted — 24 October 2026:** the portfolio owner confirmed the
-three-page findings and recommendation priorities. [Acceptance record](docs/business-case.md#business-acceptance-record).
+**Reviewed 24 October 2026:** all three pages were walked through against the SQL
+results and the recommendation order was confirmed. The stakeholders are simulated,
+so no external business sign-off is implied. [Review record](docs/business-case.md#review-record).
 
 ## Skills demonstrated, with evidence
 
@@ -45,7 +46,7 @@ three-page findings and recommendation priorities. [Acceptance record](docs/busi
 
 **Verification:** [28 retail tests](tests/), [11 source/metric reconciliations](results/checks.json)
 and [18 model/diagnostic reconciliations](results/model_checks.json). Tableau
-interaction checks and the owner business review are complete for the recorded scope.
+interaction checks and the end-to-end business review are complete for the recorded scope.
 
 DuckDB owns the dimensional model. Tableau consumes sales-line, customer-snapshot
 and cohort exports at their respective grains and recalculates selected-scope

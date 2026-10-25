@@ -120,7 +120,9 @@ operational facts determine whether a product or service intervention is useful.
 
 **Explore:** choose Lapsed repeat in Tableau's customer-group filter; January–
 November merchandise value is **£559,280 across 1,521 invoices**. Resetting to All
-restores **£8,878,008 and 17,407 invoices**. Selecting a product focuses its value,
+restores **£8,878,008 and 17,407 invoices**. That is 76 fewer than the Trading
+page's 17,483 because those invoices contain only non-merchandise entries, such as
+delivery charges. Selecting a product focuses its value,
 orders and trend while keeping the full selected population as the penetration
 denominator.
 
@@ -187,24 +189,25 @@ If the business subsequently chooses an outreach trial, agree its eligible group
 comparison group, contact cost and follow-up period first, then measure repeat
 orders. No campaign uplift has been measured in this case.
 
-## Business acceptance record
+## Review record
 
-Guided analytical review prepared on **24 October 2026**. The three pages were
-reviewed against published aggregates and SQL. Technical evidence includes
-**28 retail tests, 29 data reconciliations and completed A12 interaction checks**;
-the owner directly confirmed country selection and customer-group selection/reset.
+Guided analytical review on **24 October 2026**. The three pages were checked
+against published aggregates and SQL. Technical evidence includes **28 retail
+tests, 29 data reconciliations and the recorded Tableau interaction checks**;
+country selection and customer-group selection/reset were also checked by hand
+in Tableau Desktop.
 
-| A13 review task | Owner-accepted finding and priority |
+| Review question | Confirmed finding and priority |
 |---|---|
 | Explain sales growth with fewer orders | Read the three measures together; prioritize the −1,047 orders among continuing customers |
 | Interpret customer repeat behaviour | Separate observation windows; use the 591-customer group for cadence/service review |
 | Connect product results to a business action | Compare value and order presence, keep scopes explicit, and request merchandising context |
 
-**A13 accepted by the portfolio owner on 24 October 2026.** The owner confirmed
-the findings and priority order: investigate continuing-customer order frequency,
-review the 591 lapsed-repeat customers' cadence and service context, then use
-product and market evidence to refine the next action. This completes business
-acceptance of the case's explanations and recommendations. The value demonstrated
+The review confirmed the findings and priority order: investigate
+continuing-customer order frequency, review the 591 lapsed-repeat customers'
+cadence and service context, then use product and market evidence to refine the
+next action. Because the business stakeholders are simulated, this records the
+author's end-to-end review rather than an external sign-off. The value demonstrated
 is a traceable route from transactions to a focused business review and testable
 next action; the proposed interventions remain future work.
 
