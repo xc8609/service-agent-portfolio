@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="720pt" viewBox="0 0 1152 720" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.7, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 720
+L 1152 720
+L 1152 0
+L 0 0
+z
+" style="fill: #f7f5ef"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 460.8 504
+L 1094.4 504
+L 1094.4 259.2
+L 460.8 259.2
+z
+" style="fill: #f7f5ef"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 465.19615 504
+L 465.19615 259.2
+" clip-path="url(#pa46d49dbda)" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #66665e" x="465.19615" y="517.873594" transform="rotate(-0 465.19615 517.873594)">£-60k</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 543.757612 504
+L 543.757612 259.2
+" clip-path="url(#pa46d49dbda)" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #66665e" x="543.757612" y="517.873594" transform="rotate(-0 543.757612 517.873594)">£-40k</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 622.319074 504
+L 622.319074 259.2
+" clip-path="url(#pa46d49dbda)" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #66665e" x="622.319074" y="517.873594" transform="rotate(-0 622.319074 517.873594)">£-20k</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 700.880536 504
+L 700.880536 259.2
+" clip-path="url(#pa46d49dbda)" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #66665e" x="700.880536" y="517.873594" transform="rotate(-0 700.880536 517.873594)">£0k</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 779.441999 504
+L 779.441999 259.2
+" clip-path="url(#pa46d49dbda)" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #66665e" x="779.441999" y="517.873594" transform="rotate(-0 779.441999 517.873594)">£20k</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 858.003461 504
+L 858.003461 259.2
+" clip-path="url(#pa46d49dbda)" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #66665e" x="858.003461" y="517.873594" transform="rotate(-0 858.003461 517.873594)">£40k</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 936.564923 504
+L 936.564923 259.2
+" clip-path="url(#pa46d49dbda)" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #66665e" x="936.564923" y="517.873594" transform="rotate(-0 936.564923 517.873594)">£60k</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_15">
+      <path d="M 1015.126385 504
+L 1015.126385 259.2
+" clip-path="url(#pa46d49dbda)" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #66665e" x="1015.126385" y="517.873594" transform="rotate(-0 1015.126385 517.873594)">£80k</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_17">
+      <path d="M 1093.687847 504
+L 1093.687847 259.2
+" clip-path="url(#pa46d49dbda)" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18"/>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #66665e" x="1093.687847" y="517.873594" transform="rotate(-0 1093.687847 517.873594)">£100k</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_19"/>
+     <g id="text_10">
+      <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #66665e" x="454.8" y="281.711905" transform="rotate(-0 454.8 281.711905)">MEDIUM CERAMIC TOP STORAGE JAR  [23166]</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_20"/>
+     <g id="text_11">
+      <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #66665e" x="454.8" y="311.185312" transform="rotate(-0 454.8 311.185312)">RABBIT NIGHT LIGHT  [23084]</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_21"/>
+     <g id="text_12">
+      <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #66665e" x="454.8" y="340.661531" transform="rotate(-0 454.8 340.661531)">PARTY BUNTING  [47566]</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_22"/>
+     <g id="text_13">
+      <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #66665e" x="454.8" y="370.140562" transform="rotate(-0 454.8 370.140562)">SPOTTY BUNTING  [23298]</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_23"/>
+     <g id="text_14">
+      <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #66665e" x="454.8" y="399.616781" transform="rotate(-0 454.8 399.616781)">TEA TIME CAKE STAND IN GIFT BOX  [37503]</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_24"/>
+     <g id="text_15">
+      <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #66665e" x="454.8" y="429.093001" transform="rotate(-0 454.8 429.093001)">RED RETROSPOT CAKE STAND  [21843]</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_25"/>
+     <g id="text_16">
+      <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #66665e" x="454.8" y="458.56922" transform="rotate(-0 454.8 458.56922)">ROTATING SILVER ANGELS T-LIGHT HLDR  [84347]</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_26"/>
+     <g id="text_17">
+      <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #66665e" x="454.8" y="488.045439" transform="rotate(-0 454.8 488.045439)">WHITE HANGING HEART T-LIGHT HOLDER  [85123A]</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 700.880536 270.327273
+L 1020.81506 270.327273
+L 1020.81506 286.539193
+L 700.880536 286.539193
+z
+" clip-path="url(#pa46d49dbda)" style="fill: #285f57"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 700.880536 299.803492
+L 926.045425 299.803492
+L 926.045425 316.015412
+L 700.880536 316.015412
+z
+" clip-path="url(#pa46d49dbda)" style="fill: #285f57"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 700.880536 329.279711
+L 893.667065 329.279711
+L 893.667065 345.491632
+L 700.880536 345.491632
+z
+" clip-path="url(#pa46d49dbda)" style="fill: #285f57"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 700.880536 358.75593
+L 867.501424 358.75593
+L 867.501424 374.967851
+L 700.880536 374.967851
+z
+" clip-path="url(#pa46d49dbda)" style="fill: #285f57"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 700.880536 388.232149
+L 619.081831 388.232149
+L 619.081831 404.44407
+L 700.880536 404.44407
+z
+" clip-path="url(#pa46d49dbda)" style="fill: #965448"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 700.880536 417.708368
+L 618.871994 417.708368
+L 618.871994 433.920289
+L 700.880536 433.920289
+z
+" clip-path="url(#pa46d49dbda)" style="fill: #965448"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 700.880536 447.184588
+L 608.493632 447.184588
+L 608.493632 463.396508
+L 700.880536 463.396508
+z
+" clip-path="url(#pa46d49dbda)" style="fill: #965448"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 700.880536 476.660807
+L 524.786905 476.660807
+L 524.786905 492.872727
+L 700.880536 492.872727
+z
+" clip-path="url(#pa46d49dbda)" style="fill: #965448"/>
+   </g>
+   <g id="line2d_27">
+    <path d="M 700.880536 504
+L 700.880536 259.2
+" clip-path="url(#pa46d49dbda)" style="fill: none; stroke: #66665e; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 460.8 504
+L 460.8 259.2
+" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 460.8 504
+L 1094.4 504
+" style="fill: none; stroke: #dedcd3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="1027.21375" y="281.018389" transform="rotate(-0 1027.21375 281.018389)">+81.4k</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="932.444116" y="310.494608" transform="rotate(-0 932.444116 310.494608)">+57.3k</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="900.065755" y="339.970828" transform="rotate(-0 900.065755 339.970828)">+49.1k</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="873.900114" y="369.447047" transform="rotate(-0 873.900114 369.447047)">+42.4k</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #292b29" x="612.683141" y="398.923266" transform="rotate(-0 612.683141 398.923266)">-20.8k</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #292b29" x="612.473303" y="428.399485" transform="rotate(-0 612.473303 428.399485)">-20.9k</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #292b29" x="602.094941" y="457.875704" transform="rotate(-0 602.094941 457.875704)">-23.5k</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #292b29" x="518.388214" y="487.351923" transform="rotate(-0 518.388214 487.351923)">-44.8k</text>
+   </g>
+   <g id="text_26">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="460.8" y="242.2" transform="rotate(-0 460.8 242.2)">Largest product contributions to value change · four increases and four decreases</text>
+   </g>
+  </g>
+  <g id="text_27">
+   <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #876b45" x="51.84" y="30.24" transform="rotate(-0 51.84 30.24)">CLIENT DEVELOPMENT  /  RETAIL INTELLIGENCE                                      03 / 03</text>
+  </g>
+  <g id="text_28">
+   <text style="font-size: 25px; font-family: 'Georgia', 'DejaVu Serif', serif; text-anchor: start; fill: #292b29" x="51.84" y="70.56" transform="rotate(-0 51.84 70.56)">Find the products behind the change in sales</text>
+  </g>
+  <g id="text_29">
+   <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #66665e" x="51.84" y="96.48" transform="rotate(-0 51.84 96.48)">Product preferences · January–November 2011 vs January–November 2010 · Merchandise only · All countries</text>
+  </g>
+  <g id="text_30">
+   <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #66665e" x="51.84" y="140.4" transform="rotate(-0 51.84 140.4)">MERCHANDISE SALES</text>
+  </g>
+  <g id="text_31">
+   <text style="font-size: 29px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="51.84" y="176.4" transform="rotate(-0 51.84 176.4)">£8.88m</text>
+  </g>
+  <g id="text_32">
+   <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #66665e" x="51.84" y="198" transform="rotate(-0 51.84 198)">Delivery and other non-merchandise shown separately</text>
+  </g>
+  <g id="text_33">
+   <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #66665e" x="420.48" y="140.4" transform="rotate(-0 420.48 140.4)">MERCHANDISE INVOICES</text>
+  </g>
+  <g id="text_34">
+   <text style="font-size: 29px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="420.48" y="176.4" transform="rotate(-0 420.48 176.4)">17,407</text>
+  </g>
+  <g id="text_35">
+   <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #66665e" x="420.48" y="198" transform="rotate(-0 420.48 198)">Distinct invoices containing at least one merchandise line</text>
+  </g>
+  <g id="text_36">
+   <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #66665e" x="789.12" y="140.4" transform="rotate(-0 789.12 140.4)">TOP 10 PRODUCT SHARE</text>
+  </g>
+  <g id="text_37">
+   <text style="font-size: 29px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="789.12" y="176.4" transform="rotate(-0 789.12 176.4)">8.5%</text>
+  </g>
+  <g id="text_38">
+   <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #66665e" x="789.12" y="198" transform="rotate(-0 789.12 198)">Top 10 codes by value ÷ all merchandise value</text>
+  </g>
+  <g id="text_39">
+   <text style="font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="51.84" y="558" transform="rotate(-0 51.84 558)">Other products: £+129,373 change. All products reconcile to £+249,590.</text>
+  </g>
+  <g id="text_40">
+   <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #876b45" x="51.84" y="591.84" transform="rotate(-0 51.84 591.84)">NEXT QUESTION</text>
+  </g>
+  <g id="text_41">
+   <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="51.84" y="619.2" transform="rotate(-0 51.84 619.2)">Use Tableau to compare product presence across customer groups and distinguish broad demand from a few large orders.</text>
+  </g>
+  <g id="text_42">
+   <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="51.84" y="675.36" transform="rotate(-0 51.84 675.36)">Product invoice counts overlap across products. Penetration uses all merchandise invoices in the selected date/country scope.</text>
+  </g>
+  <g id="text_43">
+   <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #66665e" x="51.84" y="699.12" transform="rotate(-0 51.84 699.12)">Source: Chen (2012), UCI Online Retail II · CC BY 4.0 · UK online gift retail · GBP. Native filters: Tableau workbook.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa46d49dbda">
+   <rect x="460.8" y="259.2" width="633.6" height="244.8"/>
+  </clipPath>
+ </defs>
+</svg>

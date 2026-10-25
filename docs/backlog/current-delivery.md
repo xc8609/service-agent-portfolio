@@ -1,5 +1,13 @@
 # Current delivery — finish the bank core first
 
+**Latest owner direction — 24 October 2026:** pause investment Agent development
+and build [Retail Customer & Sales Analysis](../../projects/retail-customer-analytics/README.md).
+The selected case uses real transaction records, SQL and visual reporting to explain
+sales changes, repeat purchasing and customer-development priorities. Follow the
+[RA-01–06 plan](retail-analytics.md). Investment PR #37 remains separate and is not
+merged by this change; memory, live model integration and further investment features
+are paused. The dated investment direction below is superseded for current priority.
+
 **24 October 2026 direction:** the owner selected an investment Agent as the next
 case, with architecture inspiration from ValueFocus rather than a product copy.
 Start [Investment Research Brief](../../projects/investment-research/README.md):

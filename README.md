@@ -87,6 +87,11 @@ frozen routing baseline reached 81.7% team accuracy versus 31.5% for the majorit
 
 ## Technology and structure
 
+The [Retail Customer & Sales Analysis](projects/retail-customer-analytics/README.md)
+case adds real transaction analysis: SQL source reconciliation, sales trends,
+repeat-purchase cohorts and customer groups, presented through Tableau and three
+portable visual reports. [Business findings](projects/retail-customer-analytics/docs/findings.md).
+
 The second case, [Investment Research Brief](projects/investment-research/README.md),
 is an independent Agent application for financial-report changes and research briefs.
 Its manual workbench brings real financial facts, comparisons, sources and notes
@@ -116,6 +121,7 @@ services/api/bank_api/
   integrations/                  Transaction-source mapping
 services/api/tests/              API and workflow regression tests
 projects/complaint-analytics/    SQL, Tableau and complaint-routing analysis
+projects/retail-customer-analytics/ SQL, Tableau and retail customer/sales analysis
 projects/investment-research/   Independent research UI/API, calculator and BA design
 docs/uat/ + .github/workflows/   Acceptance evidence and CI
 ```
@@ -136,8 +142,9 @@ Agent provider; no model key is needed.
 
 ## Roadmap
 
-Current focus: retain the bank case's GitHub walkthrough and develop the investment
-research case. Public hosting and live-model integration remain deferred.
+Current focus: retail customer/sales analysis and visualization alongside the bank
+case's GitHub walkthrough. Investment Agent development is paused. Public hosting
+and live-model integration remain deferred.
 Future extensions include telephone self-service with human handoff and retail clienteling.
 [Delivery plan](docs/backlog/current-delivery.md).
 

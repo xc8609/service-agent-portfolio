@@ -1,0 +1,13 @@
+{
+  "row_classification": true,
+  "overlap_verified": true,
+  "source_window_reconciliation": true,
+  "monthly_sales_value": true,
+  "monthly_sales_orders": true,
+  "country_sales_value": true,
+  "cancellation_value": true,
+  "segment_customers": true,
+  "segment_value": true,
+  "customer_orders_unambiguous": true,
+  "monthly_orders_unambiguous": true
+}
