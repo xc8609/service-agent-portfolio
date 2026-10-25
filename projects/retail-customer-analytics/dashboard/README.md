@@ -87,21 +87,30 @@ Open `http://127.0.0.1:8020/dashboard/`.
 | Clients, all identified customers | 5,826; £8,339,723 in the last 12 months; 46.9% eligible 90-day repeat |
 | Clients, Lapsed repeat | 591; £650,317 in the last 12 months; 64.3% eligible 90-day repeat |
 
-These are native render and persisted-filter checks, not a completed mouse-action
-UAT. The final market-chart layout and the select/clear interaction sequence still
-need a manual check; native UI control became unavailable during verification.
-Business owner acceptance is not implied.
+The table above originally recorded native render and persisted-filter checks.
+The following retest adds actual pointer and keyboard interaction evidence.
 
-### Short remaining interaction check
+### Native interaction retest — 24 October 2026
 
-1. In Trading, select France, verify the values above, then clear the selection.
-   Change the date range and confirm that the KPIs and both charts agree.
-2. In Products, select product **22423**, verify **10.1%** rather than 100%, then
-   clear it. Change country/group and confirm the new scope before selecting again.
-3. In Clients, select **Lapsed repeat**; verify **591 / £650,317 / 64.3%** and a
-   changed cohort matrix. Clear it and return to **5,826 / £8,339,723 / 46.9%**.
-4. Confirm that changing Trading's filters does not silently change Products or
-   the fixed Client snapshot. Check readable labels at the working window size.
+Evaluator: Codex, delegated technical review, using Tableau 2026.2 and the local
+regenerated inputs. No calculation or chart-layout defect was found in the tested
+sequence. Owner business acceptance is a separate decision.
+
+| Check | Observed result | Outcome |
+|---|---|---|
+| Select France in the Markets bar chart | KPIs become £183,330 / 349 / £525.3; the monthly line follows France | Pass |
+| Clear the selected market | Original all-country KPIs return | Pass |
+| Change Trading end date to 30 June 2011 | £3,972,627 / 8,059 / £492.9; line ends in June and France's market value becomes £79,172 | Pass |
+| Select product 22423, then clear | £140,608 / 1,757 / 10.1% and product trend; clear restores £8,878,008 / 17,407 / 100.0% | Pass |
+| Select Lapsed repeat, then clear | 591 / £650,317 / 64.3% and filtered cohort matrix; clear restores 5,826 / £8,339,723 / 46.9% and full matrix | Pass |
+| Keep France selected in Trading and open other pages | Product scope remains all countries; Client snapshot remains 5,826 customers | Pass |
+| Scroll the Markets chart | Countries remain readable; scrolling reaches United Kingdom (£7,640,540), USA and the other lower rows without overlap | Pass |
+| Open country/group dropdown options | Native domain query successfully loads the country choices, but popup selection could not be completed through the UI automation | Direct confirmation pending |
+
+Country/group dropdown selection is not inferred from bar actions or the earlier
+persisted-filter results. It is the only remaining direct-control confirmation.
+Independent code review and 28 retail tests found no model, aggregation or filter-
+scope blocker. The workbook was not saved with temporary review selections.
 
 The ignored verification copies can be regenerated with
 `python projects/retail-customer-analytics/scripts/build_tableau.py --smoke-variants`.
