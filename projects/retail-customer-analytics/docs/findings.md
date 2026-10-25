@@ -73,7 +73,10 @@ remain unchanged. [Quality evidence](../results/quality.json).
 
 ## Proposed experiment, after business review
 
-Focus first on understanding the 591-customer lapsed-repeat group. A retail team
+First investigate the order-frequency decline among customers buying in both
+comparable periods. For customer-development planning, review the 591-customer
+lapsed-repeat group as a separate, actionable investigation population; it is not
+assumed to explain the full order decline. A retail team
 would confirm account type, expected ordering cadence, recent service issues and
 permitted contact channels. If an outreach experiment is then appropriate, define
 eligible customers, a comparison group, contact costs, a fixed follow-up window and

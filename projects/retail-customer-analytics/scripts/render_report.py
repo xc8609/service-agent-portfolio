@@ -372,7 +372,7 @@ def product_view(products, diagnostics):
     )
     footer(
         fig,
-        "Product invoice counts overlap across products. Penetration uses all merchandise invoices in the selected date/country scope.",
+        "Product invoice counts overlap. Penetration uses all merchandise invoices in the selected date/country/customer-group scope.",
     )
     save(fig, "product-preferences.svg")
 

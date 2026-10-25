@@ -21,8 +21,16 @@ customers** after reconciling overlapping source sheets.
   previous-12-month recorded sales total £650,317. This is a group to investigate,
   not proven lost revenue or a measured win-back opportunity.
 
-[Findings and proposed actions](docs/findings.md) · [Business case](docs/business-case.md) ·
+[Five-minute business case and review](docs/business-case.md) · [Detailed findings](docs/findings.md) ·
 [Metric definitions](docs/metrics.md) · [Stories and acceptance](../../docs/backlog/retail-analytics.md)
+
+**Recommended business sequence:** investigate the continuing-customer order
+decline, review lapsed-repeat customers' purchasing cadence, then use product and
+market evidence to define the next action. The case study walks through all three
+views and connects the findings to proposed business owners and follow-up evidence.
+
+**Business review accepted — 24 October 2026:** the portfolio owner confirmed the
+three-page findings and recommendation priorities. [Acceptance record](docs/business-case.md#business-acceptance-record).
 
 [Dimensional model](docs/model.md) · [Client-development design](docs/client-development-design.md)
 

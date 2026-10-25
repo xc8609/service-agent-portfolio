@@ -26,8 +26,8 @@ creating additional services.
 | Increment | Stories | Effort estimate | Reviewable result | Current status |
 |---|---|---:|---|---|
 | 1. Trusted data and sales | RA-01, RA-02 | 2–3 person-days | Source manifest, metric definitions, reproducible SQL, reconciled monthly sales and cancellation analysis | Implemented; technical checks passed |
-| 2. Customer decisions and presentation | RA-03, RA-04 | 3–4 person-days | Customer and cohort analysis, three visual views, findings, recommendation and acceptance record | Analysis and portable report implemented; native Tableau and owner review pending |
-| 3. Model and interactive diagnosis | RA-05, RA-06 | 3–4 person-days | Fact/dimensions, reconciled customer/product explanations, interactive workbook and updated report | In development; technical and native acceptance recorded separately |
+| 2. Customer decisions and presentation | RA-03, RA-04 | 3–4 person-days | Customer and cohort analysis, three visual views, findings, recommendation and acceptance record | Implemented; recorded Tableau interactions verified; A13 business review accepted |
+| 3. Model and interactive diagnosis | RA-05, RA-06 | 3–4 person-days | Fact/dimensions, reconciled customer/product explanations, interactive workbook and updated report | Implemented; A7–A11 technical evidence, A12 interaction checks complete and A13 accepted |
 
 ## RA-01 — Establish reliable measures
 
@@ -157,6 +157,16 @@ cross-page scope isolation and scrolling market layout. In a follow-up on
 opens and France can be selected. After the automated customer-group attempt could
 not open the popup, the owner confirmed selection of Lapsed repeat and reset to
 (All), with sales and invoice counts matching SQL in both states. The recorded
-A12 interaction checks are complete. A13's three evidence-backed findings are documented; owner
-business acceptance remains open. See the same
+A12 interaction checks are complete. At this technical checkpoint, A13's findings
+were documented and owner business acceptance was still pending. See the same
 [verification record](../../projects/retail-customer-analytics/dashboard/README.md).
+
+A13 business walkthrough, 24 October 2026: the
+[case study](../../projects/retail-customer-analytics/docs/business-case.md)
+now connects each page to its scope, evidence, interpretation and proposed action.
+The review prioritizes continuing-customer frequency, then a lapsed-repeat cadence
+review and product/market investigation. Aggregate values and cross-page scope
+differences were checked against SQL. The portfolio owner then explicitly accepted
+the combined findings and priority order, completing A13 business acceptance on
+24 October 2026. This decision is recorded separately from A12 control checks and
+does not claim execution or benefits from the proposed interventions.

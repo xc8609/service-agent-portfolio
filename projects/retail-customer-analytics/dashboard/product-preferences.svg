@@ -340,7 +340,7 @@ L 1094.4 504
    <text style="font-size: 12px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="51.84" y="619.2" transform="rotate(-0 51.84 619.2)">Use Tableau to compare product presence across customer groups and distinguish broad demand from a few large orders.</text>
   </g>
   <g id="text_42">
-   <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="51.84" y="675.36" transform="rotate(-0 51.84 675.36)">Product invoice counts overlap across products. Penetration uses all merchandise invoices in the selected date/country scope.</text>
+   <text style="font-size: 10px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #292b29" x="51.84" y="675.36" transform="rotate(-0 51.84 675.36)">Product invoice counts overlap. Penetration uses all merchandise invoices in the selected date/country/customer-group scope.</text>
   </g>
   <g id="text_43">
    <text style="font-size: 9px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #66665e" x="51.84" y="699.12" transform="rotate(-0 51.84 699.12)">Source: Chen (2012), UCI Online Retail II · CC BY 4.0 · UK online gift retail · GBP. Native filters: Tableau workbook.</text>

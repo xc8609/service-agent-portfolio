@@ -90,7 +90,7 @@ frozen routing baseline reached 81.7% team accuracy versus 31.5% for the majorit
 The [Retail Customer & Sales Analysis](projects/retail-customer-analytics/README.md)
 case adds real transaction analysis: SQL source reconciliation, sales trends,
 repeat-purchase cohorts and customer groups, presented through Tableau and three
-portable visual reports. [Business findings](projects/retail-customer-analytics/docs/findings.md).
+portable visual reports. [Business case and three-view walkthrough](projects/retail-customer-analytics/docs/business-case.md).
 
 The second case, [Investment Research Brief](projects/investment-research/README.md),
 is an independent Agent application for financial-report changes and research briefs.
