@@ -1,6 +1,6 @@
 # Retail Customer & Sales Analysis
 
-**Where is sales changing, and which customer groups deserve a closer look?**
+**What is driving sales changes, and which customer groups deserve a closer look?**
 
 This case connects customer-development decisions with real retail transactions,
 SQL and visual analysis. It builds on customer-management, commerce and payment
@@ -24,17 +24,30 @@ customers** after reconciling overlapping source sheets.
 [Findings and proposed actions](docs/findings.md) · [Business case](docs/business-case.md) ·
 [Metric definitions](docs/metrics.md) · [Stories and acceptance](../../docs/backlog/retail-analytics.md)
 
-## Three visual views
+[Dimensional model](docs/model.md) · [Client-development design](docs/client-development-design.md)
 
-Open [the portable report](dashboard/index.html) locally or download the
-[Tableau workbook](dashboard/retail_customers.twb) with the adjacent `results/`
-folder. The SVG views below render directly on GitHub.
+The model preserves invoice-line and order grains, standardizes product labels,
+and keeps customer snapshots separate from transaction facts. The Tableau workbook
+adds page-specific filters and selections for trading, clients and products.
+
+The diagnostic increment explains the **676-invoice decline** through four
+customer groups. Merchandise value grew from **£8.63m to £8.88m** in comparable
+January–November periods; the top ten products contribute **8.49%** of current
+merchandise value. [Diagnostic results](results/diagnostic_summary.json).
+
+## Three decision views
+
+Open [the portable review](dashboard/index.html) for the three previews below.
+For native filtering and linked selections, generate the local inputs and open
+[the Tableau workbook](dashboard/retail_customers.twb). It uses ignored local
+transaction/customer exports and published cohort aggregates.
+[Workbook setup and verification](dashboard/README.md).
 
 ![Sales, order volume and invoice value](dashboard/sales-overview.svg)
 
-| Customer purchasing | Customer priorities |
+| Client development | Product preferences |
 |---|---|
-| ![Repeat purchasing and cohort heatmap](dashboard/customer-repeat.svg) | ![Customer groups and proposed investigation](dashboard/customer-priorities.svg) |
+| ![Customer groups and cohort purchasing](dashboard/client-development.svg) | ![Product contribution to sales change](dashboard/product-preferences.svg) |
 
 [Dashboard instructions and verification](dashboard/README.md).
 
@@ -43,11 +56,11 @@ folder. The SVG views below render directly on GitHub.
 ```text
 docs/             Business case, metric definitions, findings
 data/             Source attribution and checksum manifest
-sql/              Source selection, quality rules and analytical marts
+sql/              Staging, fact/dimension model and analytical marts
 scripts/          Download/extract, analyze, render and build Tableau workbook
 results/          Aggregate CSVs, findings inputs and reconciliation checks
-dashboard/        Tableau workbook, portable HTML report and SVG charts
-tests/            Synthetic business-boundary regression cases
+dashboard/        Interactive Tableau workbook and portable review previews
+tests/            Business-boundary, model and BI contract regressions
 ```
 
 Python 3.12, from the repository root:

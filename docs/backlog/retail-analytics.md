@@ -6,7 +6,15 @@ The bank case remains available. This is an independent analytical project under
 `projects/retail-customer-analytics/`, with no dependency on either Agent runtime.
 
 [Business case](../../projects/retail-customer-analytics/docs/business-case.md) ·
-[Metric definitions](../../projects/retail-customer-analytics/docs/metrics.md)
+[Metric definitions](../../projects/retail-customer-analytics/docs/metrics.md) ·
+[Data model](../../projects/retail-customer-analytics/docs/model.md) ·
+[Dashboard design](../../projects/retail-customer-analytics/docs/client-development-design.md)
+
+**Current increment — 24 October 2026:** deepen the real-data case with a compact
+fact/dimension model, a customer order-change bridge, product analysis and three
+interactive Tableau pages. Preserve the established sales and customer definitions.
+Luxury client-development practice informs the business questions and visual
+style; the source remains the UCI gift-retail dataset.
 
 ## Delivery sequence
 
@@ -19,6 +27,7 @@ creating additional services.
 |---|---|---:|---|---|
 | 1. Trusted data and sales | RA-01, RA-02 | 2–3 person-days | Source manifest, metric definitions, reproducible SQL, reconciled monthly sales and cancellation analysis | Implemented; technical checks passed |
 | 2. Customer decisions and presentation | RA-03, RA-04 | 3–4 person-days | Customer and cohort analysis, three visual views, findings, recommendation and acceptance record | Analysis and portable report implemented; native Tableau and owner review pending |
+| 3. Model and interactive diagnosis | RA-05, RA-06 | 3–4 person-days | Fact/dimensions, reconciled customer/product explanations, interactive workbook and updated report | In development; technical and native acceptance recorded separately |
 
 ## RA-01 — Establish reliable measures
 
@@ -80,6 +89,41 @@ README, findings and dated acceptance evidence.
 
 **Acceptance:** A6 plus the recorded outcomes of A1–A5. Depends on RA-02 and RA-03.
 
+## RA-05 — Preserve meaning across analytical grains
+
+**Story:** As an analyst, I want reusable transaction, product, customer and date
+structures so that filtering or joining data does not inflate sales or order counts.
+
+**Build:** one invoice-line fact with source-row lineage; date, product, customer
+and country dimensions; an invoice summary with one customer per invoice. Retain
+original product descriptions, select one deterministic display label per code,
+and expose description variants. Separate delivery/service codes for merchandise
+analysis while preserving the existing recorded-sales total. Resolve a sole
+known customer on an invoice with partially missing IDs; fail on conflicting IDs.
+
+**Deliverables:** SQL model, grain/key diagram, product-quality profile, local
+Tableau extracts and focused synthetic/reconciliation tests.
+
+**Acceptance:** A7–A9. Depends on RA-01. Estimated effort: 1–2 person-days.
+
+## RA-06 — Investigate customers and products interactively
+
+**Story:** As a trading and client-development manager, I want to connect sales
+changes to customer purchasing and products so that I can choose a specific next
+investigation instead of reacting only to headline sales.
+
+**Build:** a comparable January–November order-change bridge for customers present
+in both periods, only the current period, only the prior period, and unidentified
+orders; product value changes and order penetration; three Tableau pages for
+trading performance, client development and product preferences. Make filter scope,
+comparison period, currency and customer snapshot visible. Keep merchandise and
+recorded-sales totals distinct and support clearing selections.
+
+**Deliverables:** diagnostic SQL and aggregate results, interactive Tableau
+workbook, professional visual report, updated findings and dated verification.
+
+**Acceptance:** A10–A13 plus A6. Depends on RA-05. Estimated effort: 2 person-days.
+
 ## Acceptance cases
 
 | ID | Check | Expected result |
@@ -90,9 +134,24 @@ README, findings and dated acceptance evidence.
 | A4 | Exercise cohort maturity and repeated invoice lines | Multiple lines in one invoice count as one purchase order. Future cohort cells are blank/unavailable, not zero. Fixed-window repeat rates include only customers observed for the full window; a customer with two orders qualifies only under the documented interval rule. |
 | A5 | Exercise segment boundaries | Every eligible identified customer belongs to exactly one segment. Counts sum to the customer population at the fixed analysis date. Boundary examples match the published recency/frequency rules. |
 | A6 | Compare visuals with the SQL output | Headline values and representative chart points match the aggregate files; axes show units, period and population. Published screenshots are legible. Any Tableau filter/refresh checks state their actual tested scope; unavailable data is not shown as a valid zero. |
+| A7 | Join each dimension to invoice-line facts | Dimension keys are unique. Fact row count and amount are unchanged after joins; retained repeat rows remain distinct through source lineage. |
+| A8 | Resolve an invoice with one known and one missing customer ID, then one with conflicting known IDs, dates or countries | The first invoice has one resolved customer and is counted once. Conflicting attributes fail validation rather than being assigned arbitrarily. An entirely unidentified invoice stays outside identified-customer measures. |
+| A9 | Exercise changed product descriptions and service lines | The chosen display description is deterministic, original labels remain traceable, and variant counts are available. Merchandise plus retained service value equals recorded sales; service quantities do not enter merchandise measures. |
+| A10 | Reconcile customer order-change components | Both-period change + current-only orders − prior-only orders + unidentified-order change equals the overall comparable-period order change. Same-invoice lines do not increase frequency. |
+| A11 | Reconcile product changes and penetration | Product value changes sum to the merchandise value change. Selecting a product does not shrink the penetration denominator to that product's invoices. Product invoice counts are never summed to claim total invoices. |
+| A12 | Open and interact with the native Tableau workbook | Open against regenerated local extracts, inspect all three pages, exercise the actual filters/actions and reset, and compare representative filtered values to SQL. Trading selections do not silently recalculate the fixed customer snapshot. Record actual scope and any remaining native limitation. |
+| A13 | Complete three business review tasks | Explain the sales/order divergence, inspect the lapsed-repeat group, and identify products contributing to value changes. The reviewer can see the population and evidence behind each finding and propose a next investigation. Record delegated technical review separately from owner business acceptance. |
 
-Technical assessment, 24 October 2026: A1–A5 passed through 10 synthetic regressions
+First-increment technical assessment, 24 October 2026: A1–A5 passed through 10 synthetic regressions
 and 11 real-data reconciliations. A6's portable charts and browser navigation were
 inspected; native Tableau rendering/interaction and owner business review remain
 pending. See [verification](../../projects/retail-customer-analytics/dashboard/README.md).
 Passing calculations does not establish a campaign benefit.
+
+RA-05/06 technical increment, 24 October 2026: 28 retail tests and 29 real-data
+reconciliations passed. A7–A11 have model/BI regression evidence. All three native
+pages and representative persisted filter states were inspected against SQL.
+A12 remains partial: pointer-driven selection/reset and the final market-chart
+layout still need native confirmation. A13's three evidence-backed findings are
+documented; owner business acceptance remains open. See the same
+[verification record](../../projects/retail-customer-analytics/dashboard/README.md).

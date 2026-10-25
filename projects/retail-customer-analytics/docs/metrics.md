@@ -2,7 +2,8 @@
 
 The unit of observation is an **invoice line**, not an order or a customer.
 SQL owns the calculations: [staging](../sql/01_staging.sql) and
-[marts](../sql/02_marts.sql). All amounts remain GBP.
+[marts](../sql/02_marts.sql), extended by the [model contract](model.md) and the
+customer/product diagnostics. All amounts remain GBP.
 
 ## Source preparation
 
@@ -45,7 +46,11 @@ SQL owns the calculations: [staging](../sql/01_staging.sql) and
 | Monthly cohort purchasing | Customers purchasing in month N / customers whose first observed purchase is in that cohort month |
 
 Two invoices on the same day count as two orders; multiple lines on one invoice
-count once. A cohort is a **first observed purchase** cohort, not verified acquisition.
+count once. The invoice-level model resolves one known customer across partially
+missing source lines before computing customer orders. Conflicting known IDs,
+dates or countries on a sales invoice fail validation. Source-ID coverage still
+uses the original source fields rather than silently treating inferred IDs as
+collected data. A cohort is a **first observed purchase** cohort, not verified acquisition.
 Month 0 is 100% by construction. Later cells describe purchasing in that month,
 not continuous retention. Unobserved future months are blank; observed months
 without repeat buyers are zero. Customer IDs are never replaced with a shared
@@ -77,18 +82,49 @@ Group totals are published; customer-level records stay local. Monetary value
 helps compare groups, but is not a customer lifetime-value prediction. Proposed
 follow-up is an investigation plan, not an instruction to contact real customers.
 
-## Tableau data model
+## Customer and product diagnostics
 
-Four independent aggregates avoid joining facts with incompatible grains:
+Comparisons use **January–November 2011 against January–November 2010**. These are
+matched complete months. The four order-bridge components are mutually exclusive:
 
-| File | One row per | Use |
+| Component | Contribution to current minus prior invoices |
+|---|---|
+| Customers purchasing in both periods | Their current invoices minus their prior invoices |
+| Customers purchasing only in the current period | Their current invoices |
+| Customers purchasing only in the prior period | Minus their prior invoices |
+| Unidentified orders | Current unidentified invoices minus prior unidentified invoices |
+
+Sum all four to the total invoice change. Period membership is observed behaviour,
+not an acquisition or churn label. The bridge is an arithmetic explanation; it
+does not establish why a customer purchased differently.
+
+| Product measure | Definition |
+|---|---|
+| Merchandise sales | Eligible recorded sales after separating POST/DOT/C2 delivery, GIFT_0001_* vouchers, S samples and TEST001/TEST002 test items |
+| Product value change | Current-period merchandise value minus prior-period merchandise value, per stock code |
+| Product purchase invoices | Distinct merchandise invoices containing the product; counts across products are not additive |
+| Product order penetration | Product purchase invoices / all merchandise invoices in the same period, market and customer-group scope, before product selection |
+| Top 10 product share | Merchandise value of the ten highest-value stock codes / all merchandise value in that scope |
+| Group product preferences | Merchandise value and distinct buying invoices by product within a fixed customer group; ranked top 20 per group |
+
+`Service` is the short export label for all retained non-merchandise records in the
+mapping above. PADS remains merchandise. The mapping is a documented case decision;
+it does not change recorded-sales or cancellation definitions. Merchandise plus
+retained non-merchandise value reconciles to recorded sales. Product descriptions
+use the deterministic label in the product dimension; amounts remain grouped by
+stock code, so a description change does not create another product.
+
+## Visualization scope
+
+| Page | Population and controls | Calculation rule |
 |---|---|---|
-| `monthly.csv` | Complete month | Sales, purchase invoices and cancellation totals |
-| `countries.csv` | Country over the main window | Recorded sales contribution |
-| `cohorts.csv` | First-observed month × month index | Purchasing heatmap; includes explicit future blanks |
-| `segments.csv` | Customer group at the snapshot | Customer counts and last-12-month recorded sales |
+| Trading performance | Eligible sales lines; default January–November 2011; date and country scope | `SUM(recorded_value)`, distinct invoice count, and their ratio for average invoice value. Country selection applies to that page's linked views |
+| Client development | Identified customers at 1 December 2011; customer-group selection | Count one customer per snapshot row. Sum cohort numerators and denominators within a cohort/index; never average group rates. Trading filters do not redefine recency or membership |
+| Product preferences | Merchandise lines; visible date/country/customer-group scope and product selection | Date/country/customer-group context defines the full invoice population. Product selection changes the product numerator/detail, while the penetration denominator retains that full population |
 
-These files are not joined in the workbook. The first release has three navigation
-pages; it does not promise a global country/date filter that recalculates cohorts
-or recency. Such interactive cohort analysis would need a customer/order-level
-semantic model and another acceptance pass.
+The legacy `monthly.csv`, `countries.csv`, `cohorts.csv` and `segments.csv` remain
+reconciliation outputs. Local line/customer exports support interactive Tableau
+without joining customer snapshots onto sales as additive measures. The
+[data model](model.md) describes their grains. The
+[verification record](../dashboard/README.md) states which native filter actions
+and refresh checks were actually exercised.

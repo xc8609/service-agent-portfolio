@@ -4,7 +4,7 @@
 and build [Retail Customer & Sales Analysis](../../projects/retail-customer-analytics/README.md).
 The selected case uses real transaction records, SQL and visual reporting to explain
 sales changes, repeat purchasing and customer-development priorities. Follow the
-[RA-01–04 plan](retail-analytics.md). Investment PR #37 remains separate and is not
+[RA-01–06 plan](retail-analytics.md). Investment PR #37 remains separate and is not
 merged by this change; memory, live model integration and further investment features
 are paused. The dated investment direction below is superseded for current priority.
 

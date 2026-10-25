@@ -3,52 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Retail customer and sales analysis</title>
+  <title>Client development & retail intelligence</title>
   <style>
-    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #183247; background: #eef3f5; }
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #292b29; background: #f1eee5; }
     body { margin: 0; }
     header, main, footer { max-width: 1440px; margin: auto; padding: 22px 26px; }
     header { padding-bottom: 8px; }
     h1 { font-size: 24px; margin: 0 0 8px; }
     p { line-height: 1.6; margin: 8px 0; }
-    .lead { color: #526673; max-width: 900px; }
+    .lead { color: #66665e; max-width: 900px; }
     nav { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 16px; }
-    button { cursor: pointer; border: 1px solid #b5c5cd; border-radius: 7px; padding: 12px 18px; background: white; color: #183247; font: inherit; }
-    button[aria-selected="true"] { background: #183247; color: white; border-color: #183247; }
-    button:focus-visible, a:focus-visible { outline: 3px solid #b67425; outline-offset: 3px; }
+    button { cursor: pointer; border: 1px solid #c4bcae; border-radius: 7px; padding: 12px 18px; background: white; color: #292b29; font: inherit; }
+    button[aria-selected="true"] { background: #292b29; color: white; border-color: #292b29; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #876b45; outline-offset: 3px; }
     main { padding-top: 12px; }
-    .report { background: white; border: 1px solid #dde6eb; border-radius: 10px; overflow: hidden; }
+    .report { background: white; border: 1px solid #dedcd3; border-radius: 10px; overflow: hidden; }
     .report img { display: block; width: 100%; height: auto; }
     .context { padding: 0 24px 18px; }
-    .context p { color: #526673; font-size: 14px; }
-    a { color: #116d77; text-underline-offset: 3px; }
-    footer { font-size: 14px; color: #526673; padding-top: 0; }
+    .context p { color: #66665e; font-size: 14px; }
+    a { color: #285f57; text-underline-offset: 3px; }
+    footer { font-size: 14px; color: #66665e; padding-top: 0; }
     [hidden] { display: none !important; }
     @media (max-width: 760px) { header, main, footer { padding-left: 12px; padding-right: 12px; } nav button { flex-grow: 1; } .report { overflow-x: auto; } .report img { min-width: 1000px; } .context { min-width: 600px; } }
   </style>
 </head>
 <body>
   <header>
-    <h1>Retail customer and sales analysis</h1>
-    <p class="lead">Where did recorded sales change, how do customers purchase again, and which groups merit a closer business review? Explore three views of the same reconciled transaction data.</p>
+    <h1>Client development & retail intelligence</h1>
+    <p class="lead">Understand changes in sales, the customers behind them, and the products worth a closer review.</p>
+    <p class="lead">Review previews below. Open the <a href="retail_customers.twb">Tableau workbook</a> for date, country, customer-group and product interactions. <a href="README.md">Setup and metric scope</a>.</p>
     <nav role="tablist" aria-label="Analysis views">
-      <button id="tab-sales" role="tab" aria-selected="true" aria-controls="sales" tabindex="0">1. Sales overview</button>
-      <button id="tab-repeat" role="tab" aria-selected="false" aria-controls="repeat" tabindex="-1">2. Customer repeat purchasing</button>
-      <button id="tab-priorities" role="tab" aria-selected="false" aria-controls="priorities" tabindex="-1">3. Customer priorities</button>
+      <button id="tab-sales" role="tab" aria-selected="true" aria-controls="sales" tabindex="0">1. Trading performance</button>
+      <button id="tab-repeat" role="tab" aria-selected="false" aria-controls="repeat" tabindex="-1">2. Client development</button>
+      <button id="tab-priorities" role="tab" aria-selected="false" aria-controls="priorities" tabindex="-1">3. Product preferences</button>
     </nav>
   </header>
   <main>
     <section id="sales" class="report" role="tabpanel" aria-labelledby="tab-sales">
-      <img src="sales-overview.svg" alt="Sales overview: monthly sales and cancellation trends, January to November year comparison, and largest country markets.">
+      <img src="sales-overview.svg" alt="Trading performance: comparable monthly sales, order volume and average invoice value, and a reconciled customer-group order-change bridge.">
       <div class="context"><p>Recorded sales use eligible positive purchase lines. Cancellation amounts are shown separately. Overlapping sheets are reconciled; remaining identical rows are retained. See the methodology and sensitivity analysis.</p><a href="sales-overview.svg" target="_blank" rel="noopener">Open full-size sales chart</a></div>
     </section>
     <section id="repeat" class="report" role="tabpanel" aria-labelledby="tab-repeat" hidden>
-      <img src="customer-repeat.svg" alt="Customer repeat purchasing: separate 90-day and 24-month measures, identified-customer value coverage, and a monthly purchasing heatmap with unavailable future cells left blank.">
-      <div class="context"><p>The first purchase is the first observed in this dataset. The 90-day measure includes only buyers with a complete observation window. Each heatmap cell measures purchasing in that month, not uninterrupted retention.</p><a href="customer-repeat.svg" target="_blank" rel="noopener">Open full-size repeat-purchasing chart</a></div>
+      <img src="client-development.svg" alt="Client development: identified-customer coverage, eligible 90-day repeat, five customer segments, and monthly cohort purchasing.">
+      <div class="context"><p>Customer groups use the fixed 1 December 2011 snapshot. The 90-day repeat measure includes only buyers with a complete observation window. The preview shows six repeat months for the first twelve cohorts; Tableau includes the full cohort history.</p><a href="client-development.svg" target="_blank" rel="noopener">Open full-size client-development chart</a></div>
     </section>
     <section id="priorities" class="report" role="tabpanel" aria-labelledby="tab-priorities" hidden>
-      <img src="customer-priorities.svg" alt="Customer priorities: five mutually exclusive recency and purchase-frequency groups, customer counts, shares of sales in the last twelve months, and proposed investigation questions.">
-      <div class="context"><p>Segments use a fixed 1 December 2011 snapshot. Customer counts cover identified buyers observed over 24 months; sales shares use their last 12 months of purchases. The proposed investigations are not measured campaign results.</p><a href="customer-priorities.svg" target="_blank" rel="noopener">Open full-size customer-priorities chart</a></div>
+      <img src="product-preferences.svg" alt="Product preferences: merchandise sales and invoices, top ten product share, and the largest product value increases and decreases with the remainder reconciled.">
+      <div class="context"><p>Product comparisons use January–November in both years. Merchandise excludes delivery and other non-merchandise entries. Product invoice counts overlap, so they cannot be added across products.</p><a href="product-preferences.svg" target="_blank" rel="noopener">Open full-size product-preferences chart</a></div>
     </section>
   </main>
   <footer>

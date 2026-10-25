@@ -17,15 +17,21 @@ questions, with different definitions of an order, an active customer and a
 cancellation. This makes it difficult to explain a change or agree which customer
 group to investigate next.
 
-The target process uses one documented set of measures and three connected views.
-A reviewer starts with sales, examines customer purchasing patterns, and records a
-specific next action with its evidence and remaining questions.
+The target process uses one documented set of measures and three complementary
+views. A reviewer starts with sales, examines customer and product purchasing
+patterns, and records a specific next action with its evidence and remaining
+questions. This draws on the owner's sales-associate-system experience: turning
+customer records into useful priorities for a business team.
 
 | Business question | Analysis and visual | Decision supported |
 |---|---|---|
-| Where did sales change? | Complete-month sales and order trends, country contributions, cancellation amounts shown separately | Choose the period or market to investigate; product mix is a follow-up question |
-| Are customers purchasing again? | Repeat-buyer counts and rates, monthly cohort purchasing heatmap, eligible observation windows | Identify cohorts whose purchasing patterns merit review |
-| Which groups deserve attention? | Customer counts and sales by explicit recency/frequency segments | Prioritize a group for investigation and propose a follow-up experiment |
+| What explains the difference between sales growth and order decline? | Comparable-month trends, distinct-order/average-value measures and a customer order-change bridge | Identify which observed customer components contribute to the change |
+| Which customer groups deserve attention? | Counts and sales by explicit recency/frequency groups, repeat measures and cohort activity | Prioritize a group for investigation and inspect the strength of its evidence |
+| Which products contribute to the purchasing pattern? | Product value changes, purchase-invoice penetration and customer-group product preferences | Choose a product or mix change to review with merchandising and customer-development colleagues |
+
+The [industry/design review](client-development-design.md) connects this workflow
+with luxury retail client development: client-portfolio review, repeat business
+and data quality. The actual observations remain those of the source retailer.
 
 ## Data and analytical scope
 
@@ -42,11 +48,11 @@ identified-customer subset and reports its coverage. A first purchase means the
 first purchase observed in this dataset, not the customer's lifetime first order.
 The [metric definitions](metrics.md) own the calculation and exclusion rules.
 
-The first release covers transaction quality, monthly sales, repeat purchasing,
-cohorts and transparent customer segments. It does not require a model or an Agent.
-Customer visits, assigned sales staff, follow-up tasks and contact permissions are
-not present, so this analysis does not measure store conversion or staff performance.
-It also does not estimate profit, lifetime value or the effect of an outreach campaign.
+The scope covers transaction quality, a fact/dimension analytical model, sales,
+customer purchasing and product preferences. Customer visits, assigned sales staff,
+follow-up tasks and costs are not present. The case therefore uses observed
+purchasing to support review priorities, rather than estimating store conversion,
+staff performance, profit or outreach effects.
 
 ## Target decision workflow
 
@@ -54,8 +60,9 @@ It also does not estimate profit, lifetime value or the effect of an outreach ca
    duplicates, missing customer IDs and cancellation records affect each measure.
 2. **Locate a change.** The manager selects a complete period and reads sales,
    orders and cancellation figures together.
-3. **Investigate purchasing patterns.** The analyst checks the relevant customer
-   cohorts and segments, including their sizes and available observation windows.
+3. **Investigate purchasing patterns.** The analyst reconciles customer components
+   of the order change, checks cohorts/groups and their observation windows, and
+   examines associated product value and purchase patterns.
 4. **Propose an action.** The analyst records a finding, the supporting measure,
    an explanation to investigate, and the information needed before acting.
 5. **Review the proposal.** A business owner chooses the next investigation or
@@ -68,16 +75,18 @@ it does not send messages or create customer tasks.
 
 ## Success and delivery evidence
 
-The first release succeeds when a reviewer can answer the three business questions,
+The case succeeds when a reviewer can answer the three business questions,
 trace a displayed value to SQL, and understand which next decision the result
 supports. The case study should include actual findings and an example action
 proposal, without presenting the proposed action as a measured improvement.
 
-Implementation uses **Python → DuckDB SQL → aggregate CSV → visual reporting**,
-with Tableau as the selected BI delivery tool. Source files and local databases
-stay local; public results contain aggregate analysis. Stories, estimated effort
-and six acceptance cases are in the [delivery plan](../../../docs/backlog/retail-analytics.md).
+Implementation uses **Python → DuckDB staging/facts/dimensions → diagnostic marts
+and Tableau exports → visual reporting**. Source files, local databases and
+customer-level exports stay local; public results contain aggregate analysis.
+Stories, estimated effort and acceptance cases are in the
+[delivery plan](../../../docs/backlog/retail-analytics.md).
 
-Current status: the reproducible analysis and portable three-page report are
-implemented and technically verified. Native Tableau acceptance and owner review
-of the findings/actions remain pending. See the [verification record](../dashboard/README.md).
+The baseline reproducible analysis and portable report have technical evidence.
+The model and interactive diagnosis increment is tracked as RA-05/06; native
+Tableau acceptance and owner review are recorded separately in the
+[verification record](../dashboard/README.md).
