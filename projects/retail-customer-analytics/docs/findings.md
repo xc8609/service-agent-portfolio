@@ -52,8 +52,8 @@ counts overlap when an order contains several products; do not add these rows to
 explain total order loss.
 
 Recorded sales retains eligible non-merchandise entries. Across the full 24-month
-window, **£19,085,461.187 merchandise + £428,217.240 non-merchandise =
-£19,513,678.427 recorded sales**. Keeping both definitions visible makes a product
+window, **£19,085,461.19 merchandise + £428,217.24 non-merchandise =
+£19,513,678.43 recorded sales** (rounded to the penny). Keeping both definitions visible makes a product
 analysis reconcile with the trading overview.
 
 ## A data-quality decision that changes the report

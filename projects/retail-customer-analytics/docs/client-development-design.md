@@ -1,6 +1,6 @@
 # Client development analytics — design and rationale
 
-Research and design review · 24 October 2026 · **Owner-authorized implementation**
+Research and design review · 24 October 2026 · **Implemented**
 
 Delivery is tracked as [RA-05/06](../../../docs/backlog/retail-analytics.md).
 This document explains the design; the [verification record](../dashboard/README.md)
