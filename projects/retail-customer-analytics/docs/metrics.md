@@ -1,9 +1,10 @@
 # Metrics and source decisions
 
 The unit of observation is an **invoice line**, not an order or a customer.
-SQL owns the calculations: [staging](../sql/01_staging.sql) and
-[marts](../sql/02_marts.sql), extended by the [model contract](model.md) and the
-customer/product diagnostics. All amounts remain GBP.
+SQL prepares and reconciles the measures in [staging](../sql/01_staging.sql),
+[marts](../sql/02_marts.sql) and customer/product diagnostics. Tableau recalculates
+filtered measures using these same definitions. The [model contract](model.md)
+owns analytical grains and joins. All amounts remain GBP.
 
 ## Source preparation
 
@@ -121,6 +122,30 @@ stock code, so a description change does not create another product.
 | Trading performance | Eligible sales lines; default January–November 2011; date and country scope | `SUM(recorded_value)`, distinct invoice count, and their ratio for average invoice value. Country selection applies to that page's linked views |
 | Client development | Identified customers at 1 December 2011; customer-group selection | Count one customer per snapshot row. Sum cohort numerators and denominators within a cohort/index; never average group rates. Trading filters do not redefine recency or membership |
 | Product preferences | Merchandise lines; visible date/country/customer-group scope and product selection | Date/country/customer-group context defines the full invoice population. Product selection changes the product numerator/detail, while the penetration denominator retains that full population |
+
+## Tableau calculation example
+
+The workbook implements these calculated fields:
+
+```text
+scope_invoices = { FIXED : COUNTD([invoice_key]) }
+penetration = COUNTD([invoice_key]) / MIN([scope_invoices])
+```
+
+Date, country, customer group and merchandise scope are context filters. Product
+selection is an ordinary filter, so it changes the numerator without shrinking
+the full-scope denominator. At the all-country/all-group January–November 2011
+scope, selecting product 22423 displays **1,757 / 17,407 = 10.1%**; clearing the
+selection restores the full scope. This was exercised in native Tableau.
+
+The customer page combines customer-snapshot and cohort sources through linked
+filter actions. Cohort percentages use summed numerators and denominators, not
+an average of group percentages. Separate Trading and Product source definitions
+keep their controls from leaking across pages.
+
+[Workbook calculations and actions](../scripts/build_tableau.py) ·
+[Filter/denominator regression tests](../tests/test_tableau.py) ·
+[Observed native results](../dashboard/README.md#native-interaction-retest--24-october-2026)
 
 The legacy `monthly.csv`, `countries.csv`, `cohorts.csv` and `segments.csv` remain
 reconciliation outputs. Local line/customer exports support interactive Tableau

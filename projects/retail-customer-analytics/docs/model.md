@@ -62,8 +62,9 @@ but never becomes one synthetic customer shared with other unknown shoppers.
 
 ## Tableau delivery model
 
-The dimensional model is built locally in DuckDB using `03_model.sql`; diagnostic
-marts follow in `04_diagnostics.sql`. Tableau consumes purpose-built
+The [analysis runner](../scripts/build_analysis.py) executes SQL in dependency
+order: **01_staging → 03_model → 02_marts → 04_diagnostics**. The dimensional model
+is built locally in DuckDB, then the customer and diagnostic marts. Tableau consumes purpose-built
 flat exports at two explicit grains: eligible sales lines and customer snapshots.
 This keeps a small workbook straightforward while preserving a traceable warehouse
 model. The two grains are not joined into one table.

@@ -15,7 +15,7 @@ dimensions, reconciled analytical results, and three interactive Tableau pages.
 The analysis covers 24 complete months, 38,870 purchase invoices and 5,826
 identified customers. Amounts are GBP.
 
-[Three visual previews](../dashboard/index.html) ·
+[Dashboard and chart previews](../README.md#three-decision-views) ·
 [Tableau setup and verified interactions](../dashboard/README.md) ·
 [Detailed findings](findings.md) · [Source and licence](../data/README.md)
 
@@ -166,8 +166,9 @@ default January–November merchandise scope.
 | Keep sales and merchandise scopes explicit | Classify non-merchandise records, reconcile totals and preserve filter denominators | Explain differences across pages without changing the definition to fit a chart |
 
 Pipeline: **Python → DuckDB staging → facts/dimensions → analytical marts →
-Tableau and portable visuals**. SQL owns the measures. Raw data and customer-level
-exports stay local; aggregate results and reproducible code are published.
+Tableau and portable visuals**. SQL builds and reconciles the marts; Tableau
+recalculates selected-scope measures using the same definitions. Raw data and
+customer-level exports stay local; aggregate results and reproducible code are published.
 
 [Data model](model.md) · [Metric contract](metrics.md) ·
 [Stories and acceptance](../../../docs/backlog/retail-analytics.md)
