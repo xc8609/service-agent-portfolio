@@ -105,10 +105,13 @@ sequence. Owner business acceptance is a separate decision.
 | Select Lapsed repeat, then clear | 591 / £650,317 / 64.3% and filtered cohort matrix; clear restores 5,826 / £8,339,723 / 46.9% and full matrix | Pass |
 | Keep France selected in Trading and open other pages | Product scope remains all countries; Client snapshot remains 5,826 customers | Pass |
 | Scroll the Markets chart | Countries remain readable; scrolling reaches United Kingdom (£7,640,540), USA and the other lower rows without overlap | Pass |
-| Open country/group dropdown options | Native domain query successfully loads the country choices, but popup selection could not be completed through the UI automation | Direct confirmation pending |
+| Open Trading's Recorded country dropdown and select France | After the automated retest, the owner confirmed that the dropdown opens and France can be selected | Pass — owner confirmation |
+| Open Product's customer-group dropdown options | Popup selection could not be completed through the UI automation | Direct confirmation pending |
 
-Country/group dropdown selection is not inferred from bar actions or the earlier
-persisted-filter results. It is the only remaining direct-control confirmation.
+Owner follow-up, 24 October 2026: the Trading country-control check above is based
+on the owner's direct confirmation, not an automated pass. It confirms opening
+the dropdown and selecting France; the KPI values above come from the separate
+bar-action checks. The Product customer-group dropdown remains unverified.
 Independent code review and 28 retail tests found no model, aggregation or filter-
 scope blocker. The workbook was not saved with temporary review selections.
 
