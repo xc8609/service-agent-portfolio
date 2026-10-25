@@ -106,30 +106,32 @@ sequence. Owner business acceptance is a separate decision.
 | Keep France selected in Trading and open other pages | Product scope remains all countries; Client snapshot remains 5,826 customers | Pass |
 | Scroll the Markets chart | Countries remain readable; scrolling reaches United Kingdom (£7,640,540), USA and the other lower rows without overlap | Pass |
 | Open Trading's Recorded country dropdown and select France | After the automated retest, the owner confirmed that the dropdown opens and France can be selected | Pass — owner confirmation |
-| Open Product's customer-group dropdown options | Popup selection could not be completed through the UI automation | Direct confirmation pending |
+| Select Lapsed repeat in Product's customer-group dropdown, then reset to (All) | Owner confirmed £559,280 / 1,521 invoices after selection and £8,878,008 / 17,407 after reset, matching SQL | Pass — owner confirmation |
 
 Owner follow-up, 24 October 2026: the Trading country-control check above is based
 on the owner's direct confirmation, not an automated pass. It confirms opening
 the dropdown and selecting France; the KPI values above come from the separate
-bar-action checks. The Product customer-group dropdown remains unverified.
+bar-action checks. The customer-group confirmation is recorded below.
 Independent code review and 28 retail tests found no model, aggregation or filter-
 scope blocker. The workbook was not saved with temporary review selections.
 
 Customer-group follow-up, 24 October 2026: after #39 merged, the Product page
 was reopened. Its default KPIs showed £8,878,008 / 17,407 / 100.0%. The control
 received focus, but neither pointer nor keyboard interaction exposed its options
-through the automation. Selection and reset therefore remain pending direct
-confirmation; no workbook defect or fix is established by this result.
+through the automation. The owner then performed the selection and reset directly
+and confirmed that both sales and invoice counts matched the SQL targets below.
 
 Independent SQL provides these comparison targets for all countries,
 1 January–30 November 2011, merchandise only, with no product selected:
 
-| Customer-group selection | Sales (rounded display) | Distinct invoices | Order penetration |
-|---|---:|---:|---:|
-| Lapsed repeat | £559,280 | 1,521 | 100.0% |
-| Reset to (All) | £8,878,008 | 17,407 | 100.0% |
+| Customer-group selection | Sales (rounded display) | Distinct invoices |
+|---|---:|---:|
+| Lapsed repeat | £559,280 | 1,521 |
+| Reset to (All) | £8,878,008 | 17,407 |
 
-These are SQL targets, not observed dropdown-selection results.
+This closes the remaining direct-control check for the recorded A12 scope.
+The dropdown evidence is owner-confirmed; the automated popup limitation remains
+part of the test history. No workbook or calculation change was needed.
 
 The ignored verification copies can be regenerated with
 `python projects/retail-customer-analytics/scripts/build_tableau.py --smoke-variants`.
