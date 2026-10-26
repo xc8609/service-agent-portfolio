@@ -73,5 +73,6 @@ outputs. Unit and SQL tests run in the repository's offline CI.
 
 No classifier is deployed, no analyst used the suggestion and no time saving is measured.
 The Tableau workbook's two pages were inspected locally; filter interaction testing and
-the relative data path (`../results`) are not yet verified in Tableau Desktop. The 70-row
-discovery sample is not yet annotated. No LLM was evaluated.
+the relative data path (`../results`) are not yet verified in Tableau Desktop. The model is
+scored against consumer-selected product labels; manually annotating the 70-row
+discovery sample is an optional pre-pilot step outside this case. No LLM was evaluated.

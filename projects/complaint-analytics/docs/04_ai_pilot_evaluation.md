@@ -88,13 +88,15 @@ Assisted routing saves reading time rather than routing steps and needs its own 
 - Only complaints with public narratives (23.7% of the scope) are scored; complaints
   without text follow the manual path and have no measured accuracy.
 - One month of US data; no seasonality, no Canadian product taxonomy (OBSI, FCAC context).
-- The 70-row discovery sample has not been human-annotated; no inter-rater agreement.
+- Labels are consumer-selected; no human annotation or inter-rater agreement is measured.
+  Annotating the 70-row discovery sample is an optional pre-pilot step (§7), not part of this case.
 - No LLM was evaluated. An LLM comparison remains optional and must use the same split
   rules on a fresh hold-out, with cost and data-handling approval.
 
 ## 7. Next steps for a real pilot
 
-1. Annotate the discovery sample; decide whether prepaid needs a merged label or rules.
+1. Optional: annotate the discovery sample and measure agreement; decide whether prepaid
+   needs a merged label or rules.
 2. Pre-register targets — proposed: team accuracy ≥ 80% on a fresh hold-out with
    no product below 0.6 F1 — and the threshold policy.
 3. Pilot assisted routing with logged suggestions, overrides and reasons (US-1, US-3).
