@@ -57,6 +57,11 @@ both product classification and simulated-team errors. Define handling-time and
 misroute-cost assumptions before estimating savings; measure them in a future
 pilot rather than presenting calculated savings as observed benefits.
 
+Update, 21 October 2026: the split, majority and TF-IDF baselines and the error
+analysis are complete ([evaluation](../docs/04_ai_pilot_evaluation.md)). Reviewing
+the 70-row discovery sample is now an optional step before a real pilot, not a
+prerequisite for this case's recommendation.
+
 Portfolio connection: banking product and consulting BA experience inform the
 problem framing, exception handling and metric definitions. Reviewable evidence
 is the SQL-to-CSV reconciliation, native Tableau workbook, recorded limitations,
