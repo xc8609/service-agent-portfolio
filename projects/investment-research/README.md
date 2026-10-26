@@ -18,19 +18,22 @@ flowchart LR
     Q[Research question] --> S[Select report and periods]
     S --> F[Check facts and calculate changes]
     F --> A[Agent draft with sources]
-    A --> R[Analyst review and saved brief]
+    A --> R[Analyst review and notes]
 ```
 
-The Agent will connect the question to relevant facts and explanations. Python
+The Agent connects the question to relevant facts and explanations. Python
 owns the arithmetic; the analyst owns the interpretation and final brief.
 
 ## Current increment
 
-The **manual research workbench** brings the question, report selection, three-metric
-comparison, source locators and analyst notes into one page. Its API uses the reviewed
-six-fact pack and deterministic calculator. Refresh failures preserve current edits;
-missing figures remain visible gaps. Agent drafting and saved/reviewed brief versions
-follow in the second Sprint.
+The workbench brings the question, report selection, three-metric comparison and
+analyst notes into one page. **Generate a research draft** retrieves relevant facts
+and company commentary, then presents **Facts / Company explanations / Open questions**
+with sources. The analyst can append the draft to existing notes and edit it.
+
+The included demo uses a scripted planner through four real read-only tools; Python
+owns the calculations and citation checks. [Agent implementation](docs/agent-design.md).
+Saved/reviewed brief versions follow in INV-05.
 
 ## Run the independent application
 
@@ -42,11 +45,11 @@ docker run --rm -p 127.0.0.1:8010:8010 investment-research
 ```
 
 Open **http://127.0.0.1:8010**. Select the prepared report, load the comparison,
-inspect the source evidence, then write findings and follow-up questions. No bank
+generate a research draft, inspect its sources, then append and edit your findings. No bank
 service or database is needed. Notes currently remain in the page until it closes;
 saved versions are the next review-workflow increment.
 
-![Research comparison and source evidence](docs/images/workbench-comparison.png)
+![Research draft with facts, explanations, sources and analyst notes](docs/images/agent-draft.png)
 
 For local development, with Python 3.12 and Node.js 24:
 
@@ -79,6 +82,7 @@ docs/                  Business case, architecture and acceptance
 api/research_api/       Independent FastAPI application and report registry
 api/tests/             API and source-failure regressions
 src/research_brief/     Pure Python validation and calculations
+  agent/               Tools, provider boundary, bounded loop and cited drafts
 web/                   Independent React application and browser tests
 examples/              Reviewed public facts with source references
 Dockerfile             Build and run this application on its own
@@ -94,10 +98,10 @@ the portfolio's Python 3.9/3.12 offline checks.
 | Question | Evidence |
 |---|---|
 | Who uses it, and why? | [Business problem, current/target process and BA decisions](docs/business-case.md) |
-| How will the Agent work? | [Architecture, tools and data contract](docs/design.md) |
+| How does the Agent work? | [Architecture](docs/design.md) · [Runtime and evidence tools](docs/agent-design.md) |
 | What will be delivered, and when? | [Six story cards and two Sprint plan](../../docs/backlog/investment-research.md) |
 | Are these real data? | [Source, mapping and actual retrieval record](data/README.md) |
-| What has been verified? | [Calculation foundation](docs/acceptance.md) · [Workbench acceptance](docs/workbench-acceptance.md) |
+| What has been verified? | [Calculation foundation](docs/acceptance.md) · [Workbench](docs/workbench-acceptance.md) · [Agent acceptance](docs/agent-acceptance.md) |
 
 Keep the first release small: one company, two annual periods, three operating
 metrics and one reviewed brief. Live prices, portfolio trading and multi-agent

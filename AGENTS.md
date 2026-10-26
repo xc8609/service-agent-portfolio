@@ -34,6 +34,8 @@ its code, prompts, private data or configuration. The owner confirmed financial-
 changes and research briefs, and explicitly requires an independent Agent application:
 own UI, API, tools and startup under that project; no bank runtime/database dependency.
 Start with one report, two annual periods and three comparable metrics; Python owns
-arithmetic, the Agent drafts and the analyst reviews. INV-03 adds the manual workbench;
-the model loop and brief persistence follow. Keep source metadata with curated public
-facts, raw reports excluded, and paid API/deployment deferred.
+arithmetic, the Agent drafts and the analyst reviews. INV-03 provides the manual
+workbench; INV-04 adds a bounded tool loop, scripted provider and cited draft. Read
+the investment docs/agent-design.md and docs/agent-acceptance.md for its current
+scope. Brief persistence follows in INV-05. Keep source metadata with curated
+public facts, raw reports excluded, and paid API/deployment deferred.

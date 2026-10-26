@@ -21,3 +21,15 @@ export type Comparison = {
   operating_margin_change_pp: Derived;
   gaps: {metric: string; period_id: string; reason: string}[];
 };
+
+export type ResearchDraft = {
+  status: 'draft' | 'incomplete';
+  question: string;
+  source_id: string;
+  source_hash: string;
+  provider: string;
+  findings: {kind: 'calculated_fact' | 'reported_explanation'; text: string; citations: {id: string; label: string; url: string; locator: string}[]}[];
+  open_questions: string[];
+  trace: {tool: string; status: 'ok' | 'error'}[];
+  issues: {code: string; message: string}[];
+};

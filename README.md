@@ -10,7 +10,7 @@ Four cases connect business analysis with working data and software:
 | [Bank Service Assist](docs/case-study.md) | Requirements, Agent-assisted transaction investigation and customer follow-up in a working full-stack application | Core workflow delivered; walkthrough below |
 | [Retail Customer & Sales Analysis](projects/retail-customer-analytics/README.md) | Real transaction cleaning, DuckDB fact/dimension model, analytical SQL and interactive Tableau views | Complete; findings reconciled to SQL |
 | [Complaint Routing Analysis](projects/complaint-analytics/README.md) | 27,011 public CFPB consumer-finance complaints: volume and timeliness analysis, plus a text-routing baseline (81.7% vs 31.5% team accuracy) | Analysis complete; Tableau dashboard in draft |
-| [Investment Research Brief](projects/investment-research/README.md) | A separate research workbench for financial-report facts, comparisons and sources | Manual workbench delivered; Agent drafting paused |
+| [Investment Research Brief](projects/investment-research/README.md) | A separate research workbench for financial-report facts, comparisons and sources, with cited Agent drafts | Workbench and cited Agent drafts delivered; saved briefs paused |
 
 The rest of this page walks through the bank case.
 
@@ -103,8 +103,9 @@ and model/metric tests.
 **Complaint analytics:** Python → DuckDB SQL → scikit-learn baseline → Tableau,
 with SQL-to-export reconciliation and a fixed hold-out evaluation.
 
-**Investment research:** a separate UI/API with source-backed calculations; its
-Agent drafting and saved briefs follow the [two-Sprint plan](docs/backlog/investment-research.md).
+**Investment research:** a separate UI/API with source-backed calculations and an
+Agent that prepares cited drafts through read-only tools; saved briefs follow the
+[two-Sprint plan](docs/backlog/investment-research.md).
 
 Transaction-source mapping examples and model-provider adapters sit behind small,
 defined interfaces. Provider adapters cover OpenAI Responses, Claude Messages and
@@ -148,8 +149,9 @@ Agent provider; no model key is needed.
 ## Roadmap
 
 Retail analysis is complete. Next: finish the complaint dashboard's Tableau
-interaction checks and screenshots. Investment Agent development is paused. Public
-hosting and live-model integration remain deferred.
+interaction checks and screenshots. Investment research has cited Agent drafts;
+saved briefs (INV-05) are planned but paused. Public hosting and live-model
+integration remain deferred.
 Future extensions include telephone self-service with human handoff and retail clienteling.
 [Delivery plan](docs/backlog/current-delivery.md).
 

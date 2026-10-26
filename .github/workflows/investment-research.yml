@@ -48,6 +48,18 @@ jobs:
           curl --fail --silent http://127.0.0.1:8011/ | grep -q '<div id="root"></div>'
           curl --fail --silent http://127.0.0.1:8011/v1/research/sources/msft-ar2025/comparison > /tmp/research-container.json
           python -c "import json; r=json.load(open('/tmp/research-container.json')); assert r['metrics']['revenue']['growth_pct']['value']=='14.93'; assert len(r['facts'])==6; assert not r['gaps']"
+          python - <<'PY'
+          import json
+          from urllib.request import Request, urlopen
+          comparison = json.load(open('/tmp/research-container.json'))
+          body = json.dumps({'source_id': 'msft-ar2025', 'question': 'What changed in operating cash flow?', 'expected_source_hash': comparison['source']['sha256']}).encode()
+          request = Request('http://127.0.0.1:8011/v1/research/runs', data=body, headers={'Content-Type': 'application/json'})
+          with urlopen(request) as response:
+              draft = json.load(response)
+          assert draft['status'] == 'draft', draft
+          assert any(item['kind'] == 'reported_explanation' for item in draft['findings']), draft
+          assert len(draft['trace']) == 4, draft
+          PY
       - name: Preserve failed browser evidence
         if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

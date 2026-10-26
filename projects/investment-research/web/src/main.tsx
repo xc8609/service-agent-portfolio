@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import type {Comparison, Derived, Source} from './types';
+import {AgentDraft} from './AgentDraft';
 import './style.css';
 
 const labels: Record<string, string> = {revenue: 'Revenue', operating_income: 'Operating income', operating_cash_flow: 'Operating cash flow'};
@@ -75,7 +76,7 @@ function App() {
   return <div className="app-shell">
     <header className="topbar"><a href="/" className="wordmark" aria-label="Investment Research Brief home"><span className="mark" aria-hidden="true">IR</span><span>Investment Research Brief</span></a><span className="topbar-note">Evidence before interpretation</span></header>
     <main>
-      <div className="intro"><div><p className="eyebrow">RESEARCH WORKSPACE / ANNUAL COMPARISON</p><h1>Understand what changed.</h1><p className="lead">Check the numbers, follow the sources, and build your research view.</p></div><span className="stage">01 <span>Facts &amp; analyst notes</span></span></div>
+      <div className="intro"><div><p className="eyebrow">RESEARCH WORKSPACE / ANNUAL COMPARISON</p><h1>Understand what changed.</h1><p className="lead">Check the numbers, follow the sources, and build your research view.</p></div><span className="stage">02 <span>Evidence &amp; research draft</span></span></div>
       <div className="workspace-grid">
         <div className="research-content">
           <section className="panel" aria-labelledby="scope-heading">
@@ -86,7 +87,7 @@ function App() {
             {!!sources.length && <>
               <label>Company &amp; report<select value={sourceId} onChange={event => changeSource(event.target.value)}>{sources.map(source => <option key={source.id} value={source.id}>{source.issuer.name} · {source.title}</option>)}</select></label>
               {selected && <p className="period-line">{selected.periods.map(period => `${period.id} · ${period.start} to ${period.end}`).join('  /  ')}</p>}
-              <label>Research question<textarea aria-label="Research question" rows={2} value={draft.question} onChange={event => edit('question', event.target.value)} /></label>
+              <label>Research question<textarea aria-label="Research question" rows={2} maxLength={1000} value={draft.question} onChange={event => edit('question', event.target.value)} /></label>
               <div className="action-row"><button onClick={compare} disabled={busy || !sourceId}>{busy ? 'Loading comparison…' : result ? 'Refresh comparison' : 'Load comparison'}</button><span className="muted">Figures from the selected annual report.</span></div>
             </>}
           </section>
@@ -111,9 +112,10 @@ function App() {
             {!result ? <p className="muted">Source references appear with the loaded comparison.</p> : <>
               <div className="source-heading"><div><b>{result.source.title}</b><p className="muted">Retrieved {result.source.retrieved_at.slice(0,10)} · {result.facts.length} source facts</p></div><a className="source-link" href={result.source.url} target="_blank" rel="noreferrer">Open annual report ↗</a></div>
               <ul className="fact-list">{result.facts.map(fact => <li id={fact.id} key={fact.id} tabIndex={-1}><span>{labels[fact.metric]} · {fact.period_id}<small>{fact.locator}</small></span><b>{number(fact.value)} <small>{fact.currency} {fact.unit}</small></b></li>)}</ul>
-              <p className="notice quiet">The reviewed source pack contains financial figures. Add report commentary to your notes when investigating why they changed.</p>
+              <p className="notice quiet">Use the research draft below to connect these figures to report explanations, then check the cited sections.</p>
             </>}
           </section>
+          <AgentDraft key={JSON.stringify([sourceId, draft.question, requestVersion.current])} comparison={result} question={draft.question} onAppend={text => edit('notes', draft.notes ? `${draft.notes}\n\n${text}` : text)}/>
         </div>
         <aside className="notes-panel" aria-labelledby="notes-heading"><p className="eyebrow">YOUR RESEARCH</p><h2 id="notes-heading">Build the brief</h2><p>Separate what the figures show from what still needs an explanation.</p><label>Analyst notes<textarea aria-label="Analyst notes" rows={9} value={draft.notes} disabled={!sourceId} onChange={event => edit('notes', event.target.value)} placeholder="What changed? Which figures support your interpretation?"/></label><label>Open questions<textarea aria-label="Open questions" rows={5} value={draft.questions} disabled={!sourceId} onChange={event => edit('questions', event.target.value)} placeholder="What evidence would explain the change?"/></label><p className="local-note">Notes stay in this open page. Copy them before leaving.</p></aside>
       </div>

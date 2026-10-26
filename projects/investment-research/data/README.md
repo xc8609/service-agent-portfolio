@@ -25,6 +25,23 @@ All values are **USD millions**. FY2024 is 1 July 2023–30 June 2024; FY2025 is
 1 July 2024–30 June 2025. Both columns are from the same FY2025 report edition.
 This is a reproducible historical example, not a latest-data service.
 
+## Explanatory evidence — INV-04
+
+[Reviewed commentary pack](../examples/msft-fy2025-passages.json) contains three
+short original paraphrases, labelled `analyst_summary`, with the same report ID
+and SHA-256 as the numeric pack. Checked on 24 October against both the downloaded
+HTML and the publisher's report:
+
+| Evidence | Report section | Research use |
+|---|---|---|
+| Revenue drivers | Discussion & Analysis / Summary Results of Operations / FY2025 compared with FY2024 | Company-reported revenue-growth context. |
+| Operating-income context | Same section / operating expenses and operating income | Profit and spending context; does not quantify the cause of the margin change. |
+| Cash-flow drivers | Discussion & Analysis / Liquidity and Capital Resources / Cash Flows | Company-reported explanation of operating cash generation. |
+
+These are 69 words of attributed paraphrase, not verbatim report passages. The
+Agent retrieves this small registered evidence set by topic; it does not search
+the entire internet or infer a quantified causal explanation from six figures.
+
 ## Structured-source feasibility
 
 The [SEC data API](https://www.sec.gov/search-filings/edgar-application-programming-interfaces)
@@ -43,5 +60,6 @@ values for missing/invalid scenarios; they do not alter the real example.
 
 Public access does not transfer the publisher's rights. The repository MIT license
 covers original code and documentation; Microsoft retains its report content.
-Link the source and retain attribution. The full report and narrative text are not
-redistributed. Generated calculation outputs remain local under `data/processed/`.
+Link the source and retain attribution. The full report and publisher's narrative
+are not redistributed; only the six facts and short original commentary summaries
+are included. Generated calculation outputs remain local under `data/processed/`.

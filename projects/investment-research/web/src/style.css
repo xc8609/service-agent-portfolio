@@ -547,3 +547,20 @@ footer span {
     font-size:13px;
   }
 }
+
+/* Research drafting stays visually separate from the analyst's editable notes. */
+.agent-panel .section-title {flex-wrap:wrap;}
+.draft-badge {margin-left:auto;background:#edf3ed;color:#416c57;border:1px solid #d6e3d6;border-radius:4px;padding:3px 7px;font-size:10px;white-space:nowrap;}
+.research-draft {margin-top:22px;}
+.draft-question {padding:14px 16px;background:#f4f6f0;border-radius:5px;}
+.draft-section {border-top:1px solid #e1e9e0;margin-top:20px;padding-top:16px;}
+.draft-section h3 {font-size:13px;font-weight:650;margin:0 0 12px;color:#315949;}
+.draft-section>ul,.draft-issues {padding-left:20px;font-size:12px;line-height:1.7;}
+.draft-finding {padding:0 0 12px;}
+.draft-finding p {font-size:12px;line-height:1.8;}
+.draft-citations {list-style:none;display:flex;flex-wrap:wrap;gap:9px 18px;padding:0;margin:10px 0 0;}
+.draft-citations li {font-size:10px;flex:1 1 170px;}
+.draft-citations small {font-size:9px;line-height:1.7;}
+.draft-issues {color:#795d3d;}
+.agent-panel .formulas ol {padding-left:20px;line-height:1.9;}
+.agent-panel button:disabled {cursor:not-allowed;}
