@@ -34,7 +34,8 @@ export function AgentDraft({comparison, question, onAppend}: {comparison: Compar
         method: 'POST', headers: {'Content-Type': 'application/json'}, signal: controller.signal,
         body: JSON.stringify({source_id: comparison.source.id, question: asked, expected_source_hash: comparison.source.sha256}),
       });
-      const data = await response.json();
+      // A proxy or server error page is not JSON; keep the user-facing message plain.
+      const data = await response.json().catch(() => ({}));
       if (controller.signal.aborted) return;
       if (!response.ok) throw new Error(data.error?.safe_message || 'The research draft could not be generated. Try again.');
       if (data.source_id !== comparison.source.id || data.source_hash !== comparison.source.sha256 || data.question !== asked)

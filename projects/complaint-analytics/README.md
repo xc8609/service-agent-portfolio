@@ -24,6 +24,10 @@ simulated teams ([SQL](sql/03_routing_scope.sql)).
 | Unattended routing is not justified | Only 24% of cases clear 0.5 confidence (94.4% accurate there) |
 | One product needs taxonomy work | Prepaid-card recall 0.32; confused with checking, cards and transfers |
 
+**Status:** analysis and routing baseline complete. The Tableau workbook is a
+draft: both pages render with reconciled totals, but filter checks and screenshots
+are still pending (see [Limits](#limits)).
+
 **Recommendation:** pilot *assisted* routing (suggest, analyst confirms) with a manual
 path for complaints without text; do not automate routing. Details:
 [findings](dashboard/findings.md) · [model evaluation](docs/04_ai_pilot_evaluation.md) ·
@@ -69,5 +73,6 @@ outputs. Unit and SQL tests run in the repository's offline CI.
 
 No classifier is deployed, no analyst used the suggestion and no time saving is measured.
 The Tableau workbook's two pages were inspected locally; filter interaction testing and
-the relative data path (`../results`) are not yet verified in Tableau Desktop. The 70-row
-discovery sample is not yet annotated. No LLM was evaluated.
+the relative data path (`../results`) are not yet verified in Tableau Desktop. The model is
+scored against consumer-selected product labels; manually annotating the 70-row
+discovery sample is an optional pre-pilot step outside this case. No LLM was evaluated.

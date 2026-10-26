@@ -49,8 +49,8 @@ assertion about all bank complaints. Some in-scope sub-products (e.g. payday loa
 virtual currency) are not typical Canadian bank offerings; product labels are kept whole.
 
 A reproducible review file selects 10 records per product by hashed complaint ID.
-Its 70 rows have blank annotation columns. They are **not yet reviewed**, and must
-not later be treated as an untouched evaluation set. Fourteen excess rows share
+Its 70 rows have blank annotation columns. They are **unreviewed by design**: annotation is an optional pre-pilot step,
+and the rows must not later be treated as an untouched evaluation set. Fourteen excess rows share
 normalized text within the scope; duplicate handling precedes any model split.
 
 ## Local files (excluded from Git)

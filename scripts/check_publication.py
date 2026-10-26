@@ -9,6 +9,7 @@ BLOCKED_PARTS = {'.venv', '__pycache__', 'node_modules', '.pytest_cache', 'raw',
 REVIEWED_SCREENSHOTS = {
     'projects/investment-research/docs/images/workbench-comparison.png',
     'projects/investment-research/docs/images/agent-draft.png',
+    'projects/retail-customer-analytics/dashboard/images/tableau-trading-native.png',
 }
 SECRET_PATTERNS = [
     re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),

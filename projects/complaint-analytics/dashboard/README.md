@@ -6,9 +6,8 @@ now exists (13 worksheets). Both pages rendered at 1200 × 740, confirming 27,01
 6,409 narratives, 23.7% coverage and 98.6% timely response. Final layout, filter interaction UAT and
 publication are **not complete**. See [verification notes](verification.md).
 
-Role link: reporting/data validation in R01/R06/R11 of the
-[role register](../../../docs/target-role-evidence.md). This supports the simulated
-operations lead's US-2 in the [requirements](../docs/01_business_requirements.md).
+This supports the simulated operations lead's US-2 in the
+[requirements](../docs/01_business_requirements.md).
 Tableau is our delivery choice; it does not demonstrate Power BI/DAX proficiency.
 
 ## First-release data flow

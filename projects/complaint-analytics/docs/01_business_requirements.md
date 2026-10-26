@@ -1,12 +1,12 @@
 # Business Requirements — Complaint Operations & Assisted Routing
 
-*Simulated scenario; draft. Bracketed items are open decisions, not findings.*
+*Simulated scenario. Updated after the 21 October 2026 baseline evaluation.*
 
 ## 1. Problem statement
 In the simulated bank, intake analysts read every complaint and forward it to the
 owning product team. A complaint sent to the wrong team is handled late and then
-re-forwarded. [Current volume, triage minutes and misroute rate: to be assumed and
-labelled as such. No real bank data is available.]
+re-forwarded. Public data provide complaint volume but not triage minutes or
+misroute rates; any savings estimate must use labelled assumptions.
 
 ## 2. Objective
 Decide whether a product suggestion, which an analyst accepts or overrides, is accurate
@@ -43,9 +43,9 @@ enough to pilot. Automated routing without review is out of scope for the first 
 ## 6. Success metrics
 | Metric | Baseline | Pilot target | How measured |
 |---|---|---|---|
-| Team-level accuracy (misroute avoidance) | Majority class, TF-IDF | [set before evaluation] | Untouched holdout vs. CFPB product mapped to team |
-| Product accuracy / macro F1 | Majority class, TF-IDF | [set before evaluation] | Same holdout, per-class table |
-| Share of complaints above confidence threshold | — | [set before evaluation] | Threshold chosen on validation data, not the holdout |
+| Team-level accuracy (misroute avoidance) | Majority class, TF-IDF | Proposed: ≥ 80% on a fresh hold-out ([evaluation §7](04_ai_pilot_evaluation.md#7-next-steps-for-a-real-pilot)) | Untouched holdout vs. CFPB product mapped to team |
+| Product accuracy / macro F1 | Majority class, TF-IDF | Proposed: no product below 0.6 F1 | Same holdout, per-class table |
+| Share of complaints above confidence threshold | — | No threshold selected yet ([evaluation §4](04_ai_pilot_evaluation.md#4-confidence-threshold-and-human-review)) | Threshold chosen on validation data, not the holdout |
 | Analyst override rate | — | Monitored during the pilot | Audit log (synthetic in demo) |
 | Net analyst hours saved / month | — | Estimate only | `estimate_hours_saved()` with labelled assumptions |
 

@@ -1,0 +1,43 @@
+{
+  "source_rows": 1067371,
+  "overlap_rows_excluded": 22523,
+  "overlap_rows_unmatched_in_later_sheet": 0,
+  "record_classes": [
+    {
+      "record_class": "cancellation",
+      "rows": 18631
+    },
+    {
+      "record_class": "manual_or_accounting_entry",
+      "rows": 1840
+    },
+    {
+      "record_class": "sale",
+      "rows": 1040705
+    },
+    {
+      "record_class": "zero_or_negative_price_or_zero_quantity",
+      "rows": 6195
+    }
+  ],
+  "window_rows": 1019322,
+  "partial_december_rows": 25526,
+  "exact_repeated_rows": 34335,
+  "exact_repeated_rows_after_overlap_removal": 11812,
+  "missing_customer_sales_rows": 220621,
+  "invoice_customer_conflicts": 0,
+  "invoice_month_conflicts": 0,
+  "window_positive_duplicate_value": 56090.47,
+  "jan_nov_duplicate_sensitivity": [
+    {
+      "year": 2010,
+      "retained_value": 8765001.064,
+      "deduplicated_value": 8735323.794
+    },
+    {
+      "year": 2011,
+      "retained_value": 9117534.443,
+      "deduplicated_value": 9096616.463
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+sort_order,customer_group,identified_customers,prior_orders,current_orders,order_change
+1,Both periods,2596,13498,12451,-1047
+2,Current period only,1572,0,3832,3832
+3,Prior period only,1532,3261,0,-3261
+4,Unidentified customer,0,1400,1200,-200

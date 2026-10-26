@@ -1,0 +1,52 @@
+{
+  "model_counts": {
+    "fact_invoice_line": 1019322,
+    "fact_invoice": 38870,
+    "dim_date": 730,
+    "dim_product": 5130,
+    "dim_customer": 5914,
+    "dim_country": 43,
+    "tableau_sales": 993608,
+    "tableau_customers": 5826
+  },
+  "source_profile": {
+    "sales_stock_codes": 4737,
+    "sales_codes_with_multiple_labels": 598,
+    "multiple_product_invoices": 35624,
+    "partially_missing_customer_invoices": 0
+  },
+  "full_window": {
+    "merchandise_value": 19085461.187,
+    "service_value": 428217.24
+  },
+  "comparison": {
+    "prior_merchandise_value": 8628418.424,
+    "current_merchandise_value": 8878008.023,
+    "prior_merchandise_orders": 18077,
+    "current_merchandise_orders": 17407,
+    "top10_current_value": 753769.27,
+    "top10_current_share": 0.08490297238380858
+  },
+  "service_breakdown": [
+    {
+      "product_scope": "Delivery",
+      "lines": 3462,
+      "recorded_value": 426106.55
+    },
+    {
+      "product_scope": "Gift voucher",
+      "lines": 76,
+      "recorded_value": 1747.84
+    },
+    {
+      "product_scope": "Sample",
+      "lines": 3,
+      "recorded_value": 136.85
+    },
+    {
+      "product_scope": "Test item",
+      "lines": 10,
+      "recorded_value": 226.0
+    }
+  ]
+}

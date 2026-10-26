@@ -1,0 +1,6 @@
+segment,customers,sales_value_12m,orders_12m,median_recency_days
+Active repeat,2161,7052489.43100000,14347,21.0
+Lapsed repeat,591,650316.70100000,1792,161.0
+Lapsed single-order,866,365675.98000000,866,239.0
+Recent single-order,675,271241.17100000,675,41.0
+No orders in last 12 months,1533,0E-8,0,466.0

@@ -3,6 +3,17 @@
 [![Checks](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml)
 [![Bank runtime](https://github.com/xc8609/service-agent-portfolio/actions/workflows/bank-runtime.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/bank-runtime.yml)
 
+Four cases connect business analysis with working data and software:
+
+| Case | What it shows | Status |
+|---|---|---|
+| [Bank Service Assist](docs/case-study.md) | Requirements, Agent-assisted transaction investigation and customer follow-up in a working full-stack application | Core workflow delivered; walkthrough below |
+| [Retail Customer & Sales Analysis](projects/retail-customer-analytics/README.md) | Real transaction cleaning, DuckDB fact/dimension model, analytical SQL and interactive Tableau views | Complete; findings reconciled to SQL |
+| [Complaint Routing Analysis](projects/complaint-analytics/README.md) | 27,011 public CFPB consumer-finance complaints: volume and timeliness analysis, plus a text-routing baseline (81.7% vs 31.5% team accuracy) | Analysis complete; Tableau dashboard in draft |
+| [Investment Research Brief](projects/investment-research/README.md) | A separate research workbench for financial-report facts, comparisons and sources, with cited Agent drafts | Workbench and cited Agent drafts delivered; saved briefs paused |
+
+The rest of this page walks through the bank case.
+
 **A bank service workspace that brings transaction investigation, Agent assistance
 and customer follow-up into one workflow.**
 
@@ -81,21 +92,20 @@ container smoke and offline Python 3.9/3.12 checks. A lookup rehearsal led to
 specific improvements in transaction details and handoff completeness;
 [findings and retest](docs/uat/2026-10-22-lookup-gap-retest.md) show that feedback loop.
 
-The companion [complaint analytics case](projects/complaint-analytics/README.md) uses
-27,011 public CFPB complaints, SQL and Tableau to explore service operations. Its
-frozen routing baseline reached 81.7% team accuracy versus 31.5% for the majority baseline.
-
 ## Technology and structure
 
-The second case, [Investment Research Brief](projects/investment-research/README.md),
-is an independent Agent application for financial-report changes and research briefs.
-Its workbench brings real financial facts, comparisons and sources together; its
-Agent workflow prepares a cited draft for the analyst's notes. It runs separately
-from the bank application; saved briefs follow in its
-[two-Sprint plan](docs/backlog/investment-research.md).
-
-**React / TypeScript → FastAPI / Python → PostgreSQL**, packaged with Docker Compose
+**Bank workspace:** React / TypeScript → FastAPI / Python → PostgreSQL, packaged with Docker Compose
 and tested with pytest, Playwright and GitHub Actions.
+
+**Retail analytics:** Python → DuckDB SQL → Tableau, with source reconciliation
+and model/metric tests.
+
+**Complaint analytics:** Python → DuckDB SQL → scikit-learn baseline → Tableau,
+with SQL-to-export reconciliation and a fixed hold-out evaluation.
+
+**Investment research:** a separate UI/API with source-backed calculations and an
+Agent that prepares cited drafts through read-only tools; saved briefs follow the
+[two-Sprint plan](docs/backlog/investment-research.md).
 
 Transaction-source mapping examples and model-provider adapters sit behind small,
 defined interfaces. Provider adapters cover OpenAI Responses, Claude Messages and
@@ -117,6 +127,7 @@ services/api/bank_api/
   integrations/                  Transaction-source mapping
 services/api/tests/              API and workflow regression tests
 projects/complaint-analytics/    SQL, Tableau and complaint-routing analysis
+projects/retail-customer-analytics/ SQL, Tableau and retail customer/sales analysis
 projects/investment-research/   Independent research UI/API, calculator and BA design
 docs/uat/ + .github/workflows/   Acceptance evidence and CI
 ```
@@ -137,8 +148,10 @@ Agent provider; no model key is needed.
 
 ## Roadmap
 
-Current focus: retain the bank case's GitHub walkthrough and develop the investment
-research case. Public hosting and live-model integration remain deferred.
+Retail analysis is complete. Next: finish the complaint dashboard's Tableau
+interaction checks and screenshots. Investment research has cited Agent drafts;
+saved briefs (INV-05) are planned but paused. Public hosting and live-model
+integration remain deferred.
 Future extensions include telephone self-service with human handoff and retail clienteling.
 [Delivery plan](docs/backlog/current-delivery.md).
 

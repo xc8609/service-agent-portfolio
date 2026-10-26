@@ -1,0 +1,20 @@
+{
+  "dim_date_unique_key": true,
+  "dim_country_unique_key": true,
+  "dim_product_unique_key": true,
+  "dim_customer_unique_key": true,
+  "fact_invoice_unique_key": true,
+  "fact_invoice_line_unique_key": true,
+  "fact_source_reconciliation": true,
+  "dimension_join_preserves_grain_and_value": true,
+  "identified_customer_foreign_keys": true,
+  "invoice_fact_reconciles": true,
+  "tableau_sales_reconciles": true,
+  "merchandise_and_service_reconcile": true,
+  "country_date_filter_reconciles": true,
+  "tableau_customers_reconciles": true,
+  "order_bridge_reconciles": true,
+  "product_value_bridge_reconciles": true,
+  "product_penetration_bounds": true,
+  "cohorts_by_segment_reconcile": true
+}

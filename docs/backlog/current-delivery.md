@@ -1,5 +1,23 @@
 # Current delivery — finish the bank core first
 
+**26 October 2026:** the owner asked to finish and merge investment PR #37, so
+INV-04 (cited Agent drafts) is delivered. INV-05 saved briefs, memory and live model
+integration remain paused; the retail and complaint cases are unchanged.
+
+**Latest owner direction — 24 October 2026:** pause investment Agent development
+and build [Retail Customer & Sales Analysis](../../projects/retail-customer-analytics/README.md).
+The selected case uses real transaction records, SQL and visual reporting to explain
+sales changes, repeat purchasing and customer-development priorities. Follow the
+[RA-01–06 plan](retail-analytics.md). Investment PR #37 remains separate and is not
+merged by this change; memory, live model integration and further investment features
+are paused. The dated investment direction below is superseded for current priority.
+
+**Retail review complete — 24 October 2026:** the recorded Tableau interaction
+checks are complete, and the owner accepted the three-page business findings and
+recommendation priorities (A13). The [retail case study](../../projects/retail-customer-analytics/docs/business-case.md)
+contains the walkthrough, evidence and accepted priorities. Proposed commercial
+interventions have not been executed.
+
 **24 October 2026 direction:** the owner selected an investment Agent as the next
 case, with architecture inspiration from ValueFocus rather than a product copy.
 Start [Investment Research Brief](../../projects/investment-research/README.md):
