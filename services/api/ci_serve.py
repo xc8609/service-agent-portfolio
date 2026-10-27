@@ -33,6 +33,7 @@ runtime = urlunsplit(
 uvicorn.run(
     create_app(Settings(runtime), clock=lambda: now),
     host="127.0.0.1",
-    port=8000,
+    # A spare port keeps local browser runs away from an already running demo.
+    port=int(os.environ.get("BANK_DEMO_PORT", "8000")),
     access_log=False,
 )

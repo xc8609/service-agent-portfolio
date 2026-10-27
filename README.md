@@ -52,6 +52,12 @@ flowchart LR
 | Hand off when needed | What needs investigation, who owns it, and what can be supplied later? |
 | Follow up and close | Has the customer received the explanation, and what work still needs completion? |
 
+**Watch it run (96 seconds, captioned, no sound):** one synthetic enquiry from the
+first contact through the Agent draft, specialist review and customer callback to the
+closure check. [MP4 version](docs/media/bank-walkthrough.mp4).
+
+![Captioned walkthrough of the bank workspace from first contact to closure check](docs/media/bank-walkthrough.gif)
+
 Read the [five-minute walkthrough](docs/demo.md) directly on GitHub; screenshots
 show the unresolved enquiry that needs specialist follow-up. A supported answer
 with no further work can end with a saved contact note.

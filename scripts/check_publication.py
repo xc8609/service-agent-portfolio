@@ -11,6 +11,11 @@ REVIEWED_SCREENSHOTS = {
     'projects/investment-research/docs/images/agent-draft.png',
     'projects/retail-customer-analytics/dashboard/images/tableau-trading-native.png',
 }
+# Reviewed walkthrough media: synthetic demo data only; regenerate via apps/web/demo.
+REVIEWED_MEDIA = {
+    'docs/media/bank-walkthrough.gif': 7_000_000,
+    'docs/media/bank-walkthrough.mp4': 3_000_000,
+}
 SECRET_PATTERNS = [
     re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
     re.compile(r'gh[pousr]_[A-Za-z0-9]{24,}'),
@@ -32,6 +37,10 @@ def main():
             failures.append((name, 'excluded file or directory'))
         if p.suffix in {'.db', '.duckdb', '.sqlite', '.pem', '.key', '.twbx'}:
             failures.append((name, 'database, key or packaged data file'))
+        if name in REVIEWED_MEDIA:
+            if p.stat().st_size > REVIEWED_MEDIA[name]:
+                failures.append((name, 'reviewed media exceeds its size limit'))
+            continue
         if p.stat().st_size > 2_000_000:
             failures.append((name, 'large file requires explicit publication review'))
         # Reviewed product screenshots: synthetic bank data or attributed public facts.
