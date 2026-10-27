@@ -3,6 +3,9 @@
 [![Checks](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/portfolio-checks.yml)
 [![Bank runtime](https://github.com/xc8609/service-agent-portfolio/actions/workflows/bank-runtime.yml/badge.svg)](https://github.com/xc8609/service-agent-portfolio/actions/workflows/bank-runtime.yml)
 
+**New here? [Start here](START_HERE.md)** — a five-minute guide with routes for BA,
+development and data reviewers.
+
 Four cases connect business analysis with working data and software:
 
 | Case | What it shows | Status |
