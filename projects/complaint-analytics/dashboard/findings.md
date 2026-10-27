@@ -8,8 +8,9 @@ Canadian-market estimates, stakeholder approvals or measured AI outcomes.
 Evidence: `data/processed/tableau/complaint_daily.csv`, reconciled to the local
 DuckDB source by `scripts/export_tableau.py`. Each row is an aggregate; volume
 is the sum of `complaint_count`, not the CSV row count. Tableau screenshot
-inspection corroborated both pages' unfiltered headline indicators; filter UAT
-is still pending in [verification.md](verification.md).
+inspection corroborated both pages' unfiltered headline indicators. Update,
+27 October 2026: native filter checks passed after two workbook fixes
+([verification](verification.md#native-filter-retest--27-october-2026)).
 
 ## Findings and proposed operational responses
 

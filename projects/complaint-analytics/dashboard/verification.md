@@ -7,7 +7,8 @@ Complaint Overview; Text Coverage and AI Readiness. The workbook references the
 local aggregate CSV without embedding records. The final canvas is authored at
 1200 × 740. The installed app is Tableau Desktop Free Edition 2026.2.3 on macOS.
 
-This is a **draft, not an accepted dashboard release**. BA trace: simulated
+Superseded by the [native filter retest, 27 October 2026](#native-filter-retest--27-october-2026);
+the notes below are the original draft record. At the time this was a **draft, not an accepted dashboard release**. BA trace: simulated
 operations lead US-2, requirements/data validation/reporting evidence. No user or
 stakeholder acceptance is implied.
 
@@ -83,3 +84,40 @@ Outstanding issues found during this inspection:
 
 The initial business interpretation and additional product-level timeliness checks
 are recorded in [findings.md](findings.md). No stakeholder UAT approval is implied.
+
+
+## Native filter retest — 27 October 2026
+
+Delegated technical check by Claude in Tableau Desktop 2026.2 (computer use), in
+presentation mode against the committed `../results/complaint_daily.csv`. This is
+not stakeholder acceptance.
+
+**Defects found and fixed in the workbook XML:**
+
+1. Opening the workbook warned for all 13 worksheets that
+   `[none:channel:nk]`, used for filtering, did not exist: the channel filter lacked
+   its data-source prefix, so the Channel control filtered nothing. The prefix is now
+   present.
+2. Selecting a product changed only the Complaints card: the product filter had no
+   shared filter group. It now shares group 5 across all worksheets.
+
+Bar labels were also forced left (over the bar start) by a cell `text-align` rule;
+removing it restores end-of-bar labels. The AI-readiness note and footnote now cite
+the completed offline baseline instead of saying no model results exist. No measure,
+calculation or data changed. The edited file reopened repeatedly without load warnings.
+
+| Check (both pages unless stated) | Tableau result | Expected from CSV | Outcome |
+|---|---|---|---|
+| Unfiltered | 27,011 · 6,409 · 23.7% · 20,602 · 98.6% timely · 0 unknown | Same | Pass |
+| Product = Prepaid card | 530 · 134 · 25.3% · 396; timely 92.1% | 530 · 134 · 25.3%; 42 No / 530 | Pass |
+| Team = Cards | 8,557 · 1,956 · 22.9%; only Credit and Prepaid bars | 8,027 + 530; 1,822 + 134 | Pass |
+| Prepaid card + Channel = Phone | 63 · 0 · 90.5% · 0 unknown | 63 · 0 · 90.5% | Pass |
+| + Team = Home Lending (no matching rows) | Cards and charts empty; no 0% or invented rate | No rows | Pass |
+| Mortgage, all channels/teams | 3,066 · 728 · 96.2% | 3,066 · 728 · 118 No | Pass |
+| Mortgage, 1–15 July 2026 | 1,498 · 579 · 93.7% | 1,498 · 579 · 93.7% | Pass |
+| Reset lists to (All) and dates to 1–31 July | Unfiltered totals return | Same | Pass |
+
+All public narratives in this scope arrive through the Web channel, so phone,
+referral and postal-mail selections show zero narrative coverage by construction.
+Screenshots: [Complaint Overview](images/tableau-overview.png) ·
+[Text Coverage and AI Readiness](images/tableau-text-coverage.png).
