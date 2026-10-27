@@ -1,5 +1,9 @@
 # Current delivery — finish the bank core first
 
+**27 October 2026:** native Tableau checks completed for both analytics cases: three
+retail page screenshots, and the complaint dashboard's shared filters verified after
+fixing a broken channel filter and an unshared product filter.
+
 **26 October 2026:** the owner asked to finish and merge investment PR #37, so
 INV-04 (cited Agent drafts) is delivered. INV-05 saved briefs, memory and live model
 integration remain paused; the retail and complaint cases are unchanged.

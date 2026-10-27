@@ -28,5 +28,5 @@ The July archive has 16 source columns and no consent-status column. Source ZIP
 codes remain in raw data but are excluded from staging. Original source rows are
 retained; invalid IDs/dates become visible nulls and are counted in profiling.
 The aggregate mart, Tableau CSV export, workbook draft and baseline model evaluation
-are implemented; workbook acceptance remains open. An annotated evaluation set is an
+are implemented; native workbook filter checks passed on 27 October 2026. An annotated evaluation set is an
 optional pre-pilot step, outside this case.

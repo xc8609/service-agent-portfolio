@@ -10,6 +10,10 @@ REVIEWED_SCREENSHOTS = {
     'projects/investment-research/docs/images/workbench-comparison.png',
     'projects/investment-research/docs/images/agent-draft.png',
     'projects/retail-customer-analytics/dashboard/images/tableau-trading-native.png',
+    'projects/retail-customer-analytics/dashboard/images/tableau-client-native.png',
+    'projects/retail-customer-analytics/dashboard/images/tableau-product-native.png',
+    'projects/complaint-analytics/dashboard/images/tableau-overview.png',
+    'projects/complaint-analytics/dashboard/images/tableau-text-coverage.png',
 }
 # Reviewed walkthrough media: synthetic demo data only; regenerate via apps/web/demo.
 REVIEWED_MEDIA = {

@@ -59,11 +59,14 @@ merchandise value. [Diagnostic results](results/diagnostic_summary.json).
 
 ## Three decision views
 
-**Native Tableau workbook — actual Desktop capture, 24 October 2026.**
-Trading is shown at its default January–November 2011 scope; the three page tabs
-are visible along the bottom.
+**Native Tableau workbook — Desktop captures in presentation mode, 27 October 2026,**
+each page at its default scope with regenerated local extracts.
 
 ![Native Tableau Trading page with country/date filters, KPIs, trend and market chart](dashboard/images/tableau-trading-native.png)
+
+| Client development | Product preferences |
+|---|---|
+| ![Native Tableau Client development page with customer groups and cohort heatmap](dashboard/images/tableau-client-native.png) | ![Native Tableau Product preferences page with filters, top products and trend](dashboard/images/tableau-product-native.png) |
 
 | Page | Business question | Interactive analysis |
 |---|---|---|

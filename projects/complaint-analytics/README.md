@@ -24,9 +24,12 @@ simulated teams ([SQL](sql/03_routing_scope.sql)).
 | Unattended routing is not justified | Only 24% of cases clear 0.5 confidence (94.4% accurate there) |
 | One product needs taxonomy work | Prepaid-card recall 0.32; confused with checking, cards and transfers |
 
-**Status:** analysis and routing baseline complete. The Tableau workbook is a
-draft: both pages render with reconciled totals, but filter checks and screenshots
-are still pending (see [Limits](#limits)).
+**Status:** analysis, routing baseline and two-page Tableau dashboard complete. On
+27 October 2026 the native workbook's shared filters, intersections, an empty
+selection and reset were checked against the published CSV; two filter defects found
+in that check were fixed ([verification](dashboard/verification.md#native-filter-retest--27-october-2026)).
+
+![Native Tableau Complaint Overview page with product, team, channel and date filters](dashboard/images/tableau-overview.png)
 
 **Recommendation:** pilot *assisted* routing (suggest, analyst confirms) with a manual
 path for complaints without text; do not automate routing. Details:
@@ -72,7 +75,7 @@ outputs. Unit and SQL tests run in the repository's offline CI.
 ## Limits
 
 No classifier is deployed, no analyst used the suggestion and no time saving is measured.
-The Tableau workbook's two pages were inspected locally; filter interaction testing and
-the relative data path (`../results`) are not yet verified in Tableau Desktop. The model is
+The Tableau workbook opens from the committed aggregate CSV through its relative path;
+it is not published to a Tableau site (Free Edition). The model is
 scored against consumer-selected product labels; manually annotating the 70-row
 discovery sample is an optional pre-pilot step outside this case. No LLM was evaluated.

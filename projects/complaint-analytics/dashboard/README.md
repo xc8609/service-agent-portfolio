@@ -1,10 +1,15 @@
 # Complaint Operations Dashboard — Tableau
 
 Decision: Tableau selected by the owner on 2026-09-28 for the Mac workflow.
-**Status:** SQL mart/export reconciled. A local two-page [workbook draft](complaint_operations.twb)
-now exists (13 worksheets). Both pages rendered at 1200 × 740, confirming 27,011 complaints,
-6,409 narratives, 23.7% coverage and 98.6% timely response. Final layout, filter interaction UAT and
-publication are **not complete**. See [verification notes](verification.md).
+**Status:** SQL mart/export reconciled and the two-page [workbook](complaint_operations.twb)
+(13 worksheets) checked natively in Tableau Desktop on 27 October 2026: shared product,
+team, channel and date filters, intersections, an empty selection and reset match the
+published CSV. Publication to a Tableau site is out of scope for the Free Edition.
+[Verification notes](verification.md#native-filter-retest--27-october-2026).
+
+| Complaint Overview | Text Coverage and AI Readiness |
+|---|---|
+| ![Native Tableau Complaint Overview page](images/tableau-overview.png) | ![Native Tableau Text Coverage and AI Readiness page](images/tableau-text-coverage.png) |
 
 This supports the simulated operations lead's US-2 in the
 [requirements](../docs/01_business_requirements.md).
@@ -98,18 +103,18 @@ A timely-response flag is not a final-resolution or customer-satisfaction measur
 | Complaint Overview | Which products and issues warrant further investigation? | Volume/timeliness KPI cards; daily volume line; product bars; issue bars; response-type distribution |
 | Text Coverage & AI Readiness | Where is usable text available, and what limits classification? | Narrative count/coverage cards; coverage by product; text present/absent stacked bars; limitations note |
 
-The draft includes date, product, channel and simulated-team controls with shared
-filter groups. Their cross-sheet behavior still needs UI verification. A visible
+Date, product, channel and simulated-team controls share filter groups across all
+13 worksheets, so each control applies to both pages (verified 27 October 2026). A visible
 reset instruction describes restoring all values and the full date range. Start with all
 teams and products selected. Avoid top-N issue filtering in global KPI denominators unless
 explicitly labelled. Label the window July 1–31, 2026, US CFPB published complaints.
 The source snapshot date is September 28, 2026. One month supports daily distribution,
-not annual trends or seasonality. No model quality or savings charts until evaluated.
+not annual trends or seasonality. The offline routing baseline appears only as a cited text note; there is no savings chart.
 
 ## Acceptance / UAT checklist
 
-SQL-to-CSV reconciliation below passed again on 2026-09-28. Initial rendering was
-inspected; full filter and final-layout UAT remain **not run**.
+SQL-to-CSV reconciliation below passed again on 2026-09-28. Native filter and layout
+checks passed on 27 October 2026; results are in the verification notes.
 The exporter also refuses missing/duplicate IDs or invalid received dates in scope.
 
 | Unfiltered measure | SQL / CSV expected |
@@ -130,13 +135,15 @@ The exporter also refuses missing/duplicate IDs or invalid received dates in sco
 | Home Lending | Mortgage | 3,066 | 728 |
 | Payments | Money transfer, virtual currency, or money service | 3,474 | 781 |
 
-- [ ] Match all unfiltered KPI counts above in Tableau.
-- [ ] Apply each product filter and match its two counts.
-- [ ] Verify date/channel filters affect every intended sheet; reset restores totals.
-- [ ] Empty selections show no data, not invented rates or zero accuracy.
-- [ ] Narrative and timeliness rates use weighted sums; unknowns remain visible.
-- [ ] Titles/tooltips explain scope, denominators and US/simulated-scenario boundaries.
-- [ ] Verify layout on Mac and inspect exported screenshots before claiming completion.
+- [x] Match all unfiltered KPI counts above in Tableau.
+- [x] Apply a product filter and match its counts on both pages (Prepaid card and
+  Mortgage checked; the other rows reconcile in SQL/CSV).
+- [x] Verify team, channel and date filters affect every sheet; reset restores totals.
+- [x] Empty selections show no data, not invented rates or zero accuracy.
+- [x] Narrative and timeliness rates use weighted sums; unknowns remain visible.
+- [x] Titles and notes explain scope, denominators and US/simulated-scenario boundaries.
+  Tooltips were not re-inspected in this check.
+- [x] Verify layout on Mac and inspect exported screenshots before claiming completion.
 
 The detailed local check output is `data/processed/tableau_export_checks.json`.
 Re-run profiling then the exporter after a source update; refresh the Tableau data
