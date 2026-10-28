@@ -23,9 +23,13 @@ additional services or placeholder provider implementations solely for structure
 
 Latest direction (24 October 2026): the owner paused investment work and selected
 retail customer/sales analytics. Use `projects/retail-customer-analytics/README.md`
-and `docs/backlog/retail-analytics.md` for current work. Preserve investment PR #37
-without merging or expanding it. Retail uses real UCI transactions, DuckDB SQL,
+and `docs/backlog/retail-analytics.md` for current work. Retail uses real UCI transactions, DuckDB SQL,
 Tableau and portable charts; no Agent is required for this analysis.
+
+Current state (26 October 2026): investment PR #37 is merged, so INV-01–04 (including
+cited Agent drafts from the scripted offline provider) are delivered. INV-05 saved
+briefs/memory and live model integration remain paused; do not start them without a
+new owner request.
 
 The owner selected investment research next on 24 October 2026. Read
 `projects/investment-research/README.md` and `docs/backlog/investment-research.md`.
