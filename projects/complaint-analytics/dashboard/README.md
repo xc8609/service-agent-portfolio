@@ -27,7 +27,7 @@ The installed application is **Tableau Desktop Free Edition 2026.2.3**. Its UI
 allows local workbook editing/saving and says an upgrade is required for sharing
 and publishing. No trial, purchase or publication was initiated. Public Edition
 is a separate possible route for later public sharing; publishing is not part of
-this draft. Only the prepared aggregate source is used; the real-text review
+this release. Only the prepared aggregate source is used; the real-text review
 worksheet is a separate local artifact.
 
 ## Generate and connect
@@ -45,11 +45,12 @@ From the repository root, after profiling:
 4. Preserve the CSV field names for the calculations below (or adapt them if Tableau
    presents renamed fields). Use UTF-8 and a comma delimiter.
 5. Open `complaint_operations.twb` in this directory. It points to `../results/complaint_daily.csv`
-   relative to the workbook (not yet verified in Desktop). If Tableau cannot find it, use
+   relative to the workbook; this path opened without load warnings in Tableau Desktop
+   on 27 October 2026. If Tableau cannot find it, use
    **Data → complaint_daily → Edit Connection**. No dataset is bundled in the `.twb`.
-6. The draft contains **Complaint Overview** and **Text Coverage and AI Readiness**.
-   Hide Show Me for more canvas space. Verify the checklist before presenting it as
-   an accepted portfolio deliverable.
+6. The workbook contains **Complaint Overview** and **Text Coverage and AI Readiness**.
+   Hide Show Me for more canvas space. After regenerating the CSV, rerun the
+   checklist below before presenting new figures.
 
 ## Grain and scope
 
