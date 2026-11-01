@@ -1,0 +1,145 @@
+open_year,analysis_group,request_type,cases,open_at_snapshot,median_days,p90_days
+2023,Bulky and special pickup,Abandoned Pick Up Request - Regular Bulky,174,22,9.6,
+2023,Bulky and special pickup,Request for Bulky Pick Up - 10 Items,11911,1207,8.8,
+2023,Bulky and special pickup,Request for Large Appliance Pick Up - 10 Items,450,80,30.5,
+2023,Bulky and special pickup,Request for Ozone Depleting Substance Collection,252,40,27.9,
+2023,Bulky and special pickup,Request for Surplus Waste Pick Up,507,6,0.8,3.0
+2023,Cart damaged in collection,Carts Damaged By Collection Crews GARBAGE 240L,11719,221,16.9,32.2
+2023,Cart damaged in collection,Carts Damaged By Collection Crews GARBAGE 360L,316,15,11.7,34.0
+2023,Cart damaged in collection,Carts Damaged By Collection Crews RECYCLING 240L,9178,152,17.0,32.1
+2023,Cart damaged in collection,Carts Damaged By Collection Crews RECYCLING 360L,284,5,15.5,33.2
+2023,Cart damaged in collection,Carts Damaged By Collection Crews RECYCLYING 360L,167,6,16.0,35.0
+2023,Cart damaged in collection,Carts Damaged By Third Party,336,77,63.9,
+2023,Cart damaged in collection,Roll Out Cart Damaged By City Equipment,102,25,63.1,
+2023,Cart repair or supply,Request Garbage & Recycling Carts for New Builds,1617,34,56.9,127.1
+2023,Cart repair or supply,"Request a Garbage Cart, an Upgrade, an Extra Cart",725,26,52.0,133.9
+2023,Cart repair or supply,"Request a Recycle Cart, an Upgrade, an Extra Cart",524,16,49.2,124.9
+2023,Cart repair or supply,Roll Out Cart Found,339,41,21.8,
+2023,Cart repair or supply,Roll Out Cart Repair/Replacement - Garbage,1114,78,47.0,161.2
+2023,Cart repair or supply,Roll Out Cart Repair/Replacement - Recycling,1001,51,41.0,134.3
+2023,Cart repair or supply,Supervisor Alert for Cart Deliveries,117,0,5.9,60.9
+2023,Crew conduct or property damage,Additional Inquiry for a Contractor Concern,117,5,2.4,14.1
+2023,Crew conduct or property damage,"Breached Damage, Theft, Operator Standards",1053,94,3.2,79.0
+2023,Crew conduct or property damage,Cart Tagged by Contractor Concern,637,25,0.9,5.6
+2023,Crew conduct or property damage,Damage or Theft by Collection Crews - Garbage,330,15,7.1,44.3
+2023,Crew conduct or property damage,Damage or Theft by Collection Crews - Recycling,192,11,13.9,68.1
+2023,Crew conduct or property damage,Escalated Operator Standards - Garbage,117,3,3.1,56.9
+2023,Crew conduct or property damage,Operator Standards - Garbage,424,22,2.5,7.1
+2023,Crew conduct or property damage,Operator Standards - Recycling,203,6,2.1,6.5
+2023,Escalated missed collection,Breached Missed Collection Garbage Deficiency,187,11,2.1,13.8
+2023,General collection concern,Request City Collection for Garbage,311,24,22.1,127.1
+2023,General collection concern,Solid Waste General Concern,3916,280,3.7,75.1
+2023,Missed collection,Missed Bulky Waste Collection Deficiency,169,15,3.0,13.6
+2023,Missed collection,Missed Garbage Collection Deficiency,11759,525,3.0,6.7
+2023,Missed collection,Missed Garbage Collection Same Day Miss,1417,10,0.8,2.9
+2023,Missed collection,Missed Garbage Excess Due To Previous Miss,277,19,4.6,15.8
+2023,Missed collection,Missed Recycling Collection Deficiency,6283,302,2.9,7.1
+2023,Missed collection,Missed Recycling Collection Same Day Miss,534,2,0.8,2.6
+2023,Missed collection,Missed Yard Waste Collection Deficiency,1682,43,3.6,7.6
+2024,Bulky and special pickup,Abandoned Pick Up Request - Regular Bulky,170,10,8.9,13.6
+2024,Bulky and special pickup,Request for Bulky Pick Up - 10 Items,12645,1212,8.8,28.7
+2024,Bulky and special pickup,Request for Large Appliance Pick Up - 10 Items,412,90,33.9,
+2024,Bulky and special pickup,Request for Ozone Depleting Substance Collection,238,44,34.2,
+2024,Bulky and special pickup,Request for Surplus Waste Pick Up,532,19,0.7,2.7
+2024,Cart damaged in collection,Carts Damaged By Collection Crews GARBAGE 240L,9334,278,14.9,29.1
+2024,Cart damaged in collection,Carts Damaged By Collection Crews GARBAGE 360L,625,24,13.8,28.8
+2024,Cart damaged in collection,Carts Damaged By Collection Crews RECYCLING 240L,8312,242,13.9,28.7
+2024,Cart damaged in collection,Carts Damaged By Collection Crews RECYCLING 360L,557,16,12.7,28.9
+2024,Cart damaged in collection,Carts Damaged By Third Party,497,119,27.8,
+2024,Cart damaged in collection,Roll Out Cart Damaged By City Equipment,142,33,37.0,
+2024,Cart repair or supply,Request Garbage & Recycling Carts for New Builds,1673,110,27.3,59.3
+2024,Cart repair or supply,"Request a Garbage Cart, an Upgrade, an Extra Cart",812,66,36.8,111.8
+2024,Cart repair or supply,"Request a Recycle Cart, an Upgrade, an Extra Cart",541,44,35.1,111.0
+2024,Cart repair or supply,Roll Out Cart Found,412,33,14.0,52.0
+2024,Cart repair or supply,Roll Out Cart Repair/Replacement - Garbage,1093,139,34.1,
+2024,Cart repair or supply,Roll Out Cart Repair/Replacement - Recycling,1031,118,34.7,
+2024,Cart repair or supply,Supervisor Alert for Cart Deliveries,288,15,14.0,49.3
+2024,Crew conduct or property damage,"Breached Damage, Theft, Operator Standards",440,17,11.0,50.6
+2024,Crew conduct or property damage,Cart Tagged by Contractor Concern,1402,26,0.9,2.9
+2024,Crew conduct or property damage,Damage or Theft by Collection Crews - Garbage,320,27,8.7,46.8
+2024,Crew conduct or property damage,Damage or Theft by Collection Crews - Recycling,222,17,18.0,44.8
+2024,Crew conduct or property damage,Operator Standards - Garbage,416,14,2.5,8.0
+2024,Crew conduct or property damage,Operator Standards - Recycling,203,2,1.8,5.7
+2024,Crew conduct or property damage,Solid Waste Staff Complaint / Commendation,186,20,2.8,
+2024,Escalated missed collection,Breached Missed Collection Garbage Deficiency,121,5,1.7,7.5
+2024,General collection concern,Request City Collection for Garbage,185,9,22.9,59.7
+2024,General collection concern,Request to Investigate Loose Garbage in a Lane,192,13,2.9,10.8
+2024,General collection concern,Solid Waste General Concern,3251,332,4.0,
+2024,Missed collection,Missed Bulky Waste Collection Deficiency,151,17,4.1,
+2024,Missed collection,Missed Garbage Collection Deficiency,9731,296,3.5,7.8
+2024,Missed collection,Missed Garbage Collection Same Day Miss,1386,26,0.9,2.9
+2024,Missed collection,Missed Garbage Excess Due To Previous Miss,165,3,4.5,9.8
+2024,Missed collection,Missed Recycling Collection Deficiency,5611,161,2.9,6.3
+2024,Missed collection,Missed Recycling Collection Same Day Miss,631,14,0.9,2.9
+2024,Missed collection,Missed Yard Waste Collection Deficiency,2334,45,2.6,5.5
+2024,Missed collection,Missed Yard Waste Collection Same Day Miss,119,3,0.9,3.0
+2025,Bulky and special pickup,Abandoned Pick Up Request - Regular Bulky,758,27,9.8,14.4
+2025,Bulky and special pickup,Request for Bulky Pick Up - 10 Items,11993,935,9.0,18.9
+2025,Bulky and special pickup,Request for Large Appliance Pick Up - 10 Items,390,86,32.5,
+2025,Bulky and special pickup,Request for Ozone Depleting Substance Collection,255,46,32.0,
+2025,Bulky and special pickup,Request for Surplus Waste Pick Up,556,21,0.7,2.8
+2025,Cart damaged in collection,Carts Damaged By Collection Crews GARBAGE 240L,12615,265,15.9,31.3
+2025,Cart damaged in collection,Carts Damaged By Collection Crews GARBAGE 360L,890,36,14.2,32.3
+2025,Cart damaged in collection,Carts Damaged By Collection Crews RECYCLING 240L,10531,187,15.1,31.1
+2025,Cart damaged in collection,Carts Damaged By Collection Crews RECYCLING 360L,806,16,12.0,31.0
+2025,Cart damaged in collection,Carts Damaged By Third Party,565,24,50.7,97.0
+2025,Cart damaged in collection,Roll Out Cart Damaged By City Equipment,122,12,60.0,220.2
+2025,Cart repair or supply,Request Garbage & Recycling Carts for New Builds,1673,73,27.0,87.0
+2025,Cart repair or supply,"Request a Garbage Cart, an Upgrade, an Extra Cart",859,35,48.1,117.2
+2025,Cart repair or supply,"Request a Recycle Cart, an Upgrade, an Extra Cart",536,19,53.1,117.0
+2025,Cart repair or supply,Roll Out Cart Found,352,22,14.9,50.7
+2025,Cart repair or supply,Roll Out Cart Repair/Replacement - Garbage,284,15,16.9,87.0
+2025,Cart repair or supply,Roll Out Cart Repair/Replacement - Garbage_2025,1456,52,53.9,105.0
+2025,Cart repair or supply,Roll Out Cart Repair/Replacement - Recycling,249,9,27.4,95.1
+2025,Cart repair or supply,Roll Out Cart Repair/Replacement - Recycling_2025,1404,49,53.8,111.0
+2025,Cart repair or supply,Supervisor Alert for Cart Deliveries,592,10,2.8,13.9
+2025,Crew conduct or property damage,"Breached Damage, Theft, Operator Standards",1092,11,2.8,11.1
+2025,Crew conduct or property damage,Cart Tagged by Contractor Concern,4029,41,0.9,2.9
+2025,Crew conduct or property damage,Damage or Theft by Collection Crews - Garbage,276,26,11.1,182.2
+2025,Crew conduct or property damage,Damage or Theft by Collection Crews - Recycling,200,15,17.9,96.2
+2025,Crew conduct or property damage,Escalated Operator Standards - Garbage,109,12,2.2,
+2025,Crew conduct or property damage,Operator Standards - Garbage,478,24,2.8,7.9
+2025,Crew conduct or property damage,Operator Standards - Recycling,184,5,2.0,6.6
+2025,Crew conduct or property damage,Solid Waste Staff Complaint / Commendation,149,37,2.9,
+2025,Escalated missed collection,Breached Missed Collection Garbage Deficiency,169,5,1.9,7.0
+2025,General collection concern,Request City Collection for Garbage,310,19,13.7,73.2
+2025,General collection concern,Solid Waste General Concern,3098,238,3.0,84.2
+2025,Missed collection,Missed Bulky Waste Collection Deficiency,203,24,3.7,
+2025,Missed collection,Missed Garbage Collection Deficiency,10367,91,4.0,16.2
+2025,Missed collection,Missed Garbage Collection Same Day Miss,1336,11,1.0,3.0
+2025,Missed collection,Missed Recycling Collection Deficiency,5677,62,3.9,14.4
+2025,Missed collection,Missed Recycling Collection Same Day Miss,557,5,1.0,3.0
+2025,Missed collection,Missed Yard Waste Collection Deficiency,1525,16,3.7,11.8
+2026,Bulky and special pickup,Abandoned Pick Up Request - Regular Bulky,543,11,8.8,12.8
+2026,Bulky and special pickup,Request for Bulky Pick Up - 10 Items,8838,712,8.8,16.8
+2026,Bulky and special pickup,Request for Large Appliance Pick Up - 10 Items,244,66,,
+2026,Bulky and special pickup,Request for Ozone Depleting Substance Collection,189,30,,
+2026,Bulky and special pickup,Request for Surplus Waste Pick Up,492,16,0.9,2.8
+2026,Cart damaged in collection,Carts Damaged By Collection Crews GARBAGE 240L,9887,157,20.0,
+2026,Cart damaged in collection,Carts Damaged By Collection Crews GARBAGE 360L,735,14,16.9,32.0
+2026,Cart damaged in collection,Carts Damaged By Collection Crews RECYCLING 240L,7882,107,19.2,
+2026,Cart damaged in collection,Carts Damaged By Collection Crews RECYCLING 360L,619,12,17.0,33.1
+2026,Cart damaged in collection,Carts Damaged By Third Party,539,178,,
+2026,Cart damaged in collection,Roll Out Cart Damaged By City Equipment,157,28,,
+2026,Cart repair or supply,Request Garbage & Recycling Carts for New Builds,1258,292,,
+2026,Cart repair or supply,"Request a Garbage Cart, an Upgrade, an Extra Cart",684,205,,
+2026,Cart repair or supply,"Request a Recycle Cart, an Upgrade, an Extra Cart",448,118,,
+2026,Cart repair or supply,Roll Out Cart Found,326,17,19.0,36.6
+2026,Cart repair or supply,Roll Out Cart Repair/Replacement - Garbage_2025,1589,569,,
+2026,Cart repair or supply,Roll Out Cart Repair/Replacement - Recycling_2025,1508,553,,
+2026,Cart repair or supply,Supervisor Alert for Cart Deliveries,629,9,7.0,24.1
+2026,Crew conduct or property damage,"Breached Damage, Theft, Operator Standards",1269,11,6.0,21.0
+2026,Crew conduct or property damage,Cart Tagged by Contractor Concern,3491,39,0.8,2.8
+2026,Crew conduct or property damage,Damage or Theft by Collection Crews - Garbage,205,29,7.7,
+2026,Crew conduct or property damage,Damage or Theft by Collection Crews - Recycling,164,47,28.7,
+2026,Crew conduct or property damage,Operator Standards - Garbage,345,11,2.5,6.0
+2026,Crew conduct or property damage,Operator Standards - Recycling,148,4,2.6,6.6
+2026,Escalated missed collection,Breached Missed Collection Garbage Deficiency,150,3,1.1,4.8
+2026,General collection concern,Request City Collection for Garbage,213,21,15.0,
+2026,General collection concern,Solid Waste General Concern,3129,209,3.0,
+2026,Missed collection,Missed Bulky Waste Collection Deficiency,104,4,2.7,7.8
+2026,Missed collection,Missed Garbage Collection Deficiency,8527,48,3.1,12.1
+2026,Missed collection,Missed Garbage Collection Same Day Miss,1153,4,1.0,3.2
+2026,Missed collection,Missed Recycling Collection Deficiency,4711,15,2.8,7.8
+2026,Missed collection,Missed Recycling Collection Same Day Miss,490,0,1.1,3.1
+2026,Missed collection,Missed Yard Waste Collection Deficiency,1523,5,3.4,7.1

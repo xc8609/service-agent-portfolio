@@ -1,0 +1,12 @@
+{
+  "extract_rows_match_manifest": true,
+  "extract_rows_by_type_match_api": true,
+  "staging_keeps_every_row": true,
+  "case_key_unique": true,
+  "mapped_types_all_present": true,
+  "interactions_reconcile_to_rows": true,
+  "monthly_mart_reconciles_to_cases": true,
+  "open_ageing_reconciles_to_open_cases": true,
+  "closed_within_bands_are_monotonic": true,
+  "follow_up_rows_match_manifest": true
+}

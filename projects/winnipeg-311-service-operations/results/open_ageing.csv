@@ -1,0 +1,210 @@
+analysis_group,waste_stream,request_type,age_band,open_cases
+Bulky and special pickup,Bulky and special,Abandoned Pick Up Request - Large Appliance,2. 7-29 days,1
+Bulky and special pickup,Bulky and special,Abandoned Pick Up Request - Large Appliance,4. 90-364 days,2
+Bulky and special pickup,Bulky and special,Abandoned Pick Up Request - Large Appliance,5. 365 days or more,2
+Bulky and special pickup,Bulky and special,Abandoned Pick Up Request - Regular Bulky,1. Under 7 days,11
+Bulky and special pickup,Bulky and special,Abandoned Pick Up Request - Regular Bulky,2. 7-29 days,7
+Bulky and special pickup,Bulky and special,Abandoned Pick Up Request - Regular Bulky,3. 30-89 days,2
+Bulky and special pickup,Bulky and special,Abandoned Pick Up Request - Regular Bulky,4. 90-364 days,13
+Bulky and special pickup,Bulky and special,Abandoned Pick Up Request - Regular Bulky,5. 365 days or more,55
+Bulky and special pickup,Bulky and special,Request for Bulky Pick Up - 10 Items,1. Under 7 days,263
+Bulky and special pickup,Bulky and special,Request for Bulky Pick Up - 10 Items,2. 7-29 days,136
+Bulky and special pickup,Bulky and special,Request for Bulky Pick Up - 10 Items,3. 30-89 days,190
+Bulky and special pickup,Bulky and special,Request for Bulky Pick Up - 10 Items,4. 90-364 days,655
+Bulky and special pickup,Bulky and special,Request for Bulky Pick Up - 10 Items,5. 365 days or more,3221
+Bulky and special pickup,Bulky and special,Request for Large Appliance Pick Up - 10 Items,1. Under 7 days,7
+Bulky and special pickup,Bulky and special,Request for Large Appliance Pick Up - 10 Items,2. 7-29 days,30
+Bulky and special pickup,Bulky and special,Request for Large Appliance Pick Up - 10 Items,3. 30-89 days,21
+Bulky and special pickup,Bulky and special,Request for Large Appliance Pick Up - 10 Items,4. 90-364 days,56
+Bulky and special pickup,Bulky and special,Request for Large Appliance Pick Up - 10 Items,5. 365 days or more,245
+Bulky and special pickup,Bulky and special,Request for Ozone Depleting Substance Collection,1. Under 7 days,4
+Bulky and special pickup,Bulky and special,Request for Ozone Depleting Substance Collection,2. 7-29 days,25
+Bulky and special pickup,Bulky and special,Request for Ozone Depleting Substance Collection,3. 30-89 days,13
+Bulky and special pickup,Bulky and special,Request for Ozone Depleting Substance Collection,4. 90-364 days,22
+Bulky and special pickup,Bulky and special,Request for Ozone Depleting Substance Collection,5. 365 days or more,125
+Bulky and special pickup,Bulky and special,Request for Surplus Waste Pick Up,1. Under 7 days,1
+Bulky and special pickup,Bulky and special,Request for Surplus Waste Pick Up,3. 30-89 days,1
+Bulky and special pickup,Bulky and special,Request for Surplus Waste Pick Up,4. 90-364 days,15
+Bulky and special pickup,Bulky and special,Request for Surplus Waste Pick Up,5. 365 days or more,46
+Cart damaged in collection,Garbage,Carts Damaged By Collection Crews GARBAGE 240L,1. Under 7 days,166
+Cart damaged in collection,Garbage,Carts Damaged By Collection Crews GARBAGE 240L,2. 7-29 days,646
+Cart damaged in collection,Garbage,Carts Damaged By Collection Crews GARBAGE 240L,3. 30-89 days,29
+Cart damaged in collection,Garbage,Carts Damaged By Collection Crews GARBAGE 240L,4. 90-364 days,165
+Cart damaged in collection,Garbage,Carts Damaged By Collection Crews GARBAGE 240L,5. 365 days or more,727
+Cart damaged in collection,Garbage,Carts Damaged By Collection Crews GARBAGE 360L,1. Under 7 days,12
+Cart damaged in collection,Garbage,Carts Damaged By Collection Crews GARBAGE 360L,2. 7-29 days,49
+Cart damaged in collection,Garbage,Carts Damaged By Collection Crews GARBAGE 360L,3. 30-89 days,1
+Cart damaged in collection,Garbage,Carts Damaged By Collection Crews GARBAGE 360L,4. 90-364 days,17
+Cart damaged in collection,Garbage,Carts Damaged By Collection Crews GARBAGE 360L,5. 365 days or more,71
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLING 240L,1. Under 7 days,113
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLING 240L,2. 7-29 days,486
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLING 240L,3. 30-89 days,16
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLING 240L,4. 90-364 days,120
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLING 240L,5. 365 days or more,552
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLING 360L,1. Under 7 days,9
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLING 360L,2. 7-29 days,39
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLING 360L,3. 30-89 days,2
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLING 360L,4. 90-364 days,11
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLING 360L,5. 365 days or more,36
+Cart damaged in collection,Recycling,Carts Damaged By Collection Crews RECYCLYING 360L,5. 365 days or more,6
+Cart damaged in collection,Mixed or unspecified,Carts Damaged By Third Party,1. Under 7 days,8
+Cart damaged in collection,Mixed or unspecified,Carts Damaged By Third Party,2. 7-29 days,42
+Cart damaged in collection,Mixed or unspecified,Carts Damaged By Third Party,3. 30-89 days,131
+Cart damaged in collection,Mixed or unspecified,Carts Damaged By Third Party,4. 90-364 days,50
+Cart damaged in collection,Mixed or unspecified,Carts Damaged By Third Party,5. 365 days or more,217
+Cart damaged in collection,Mixed or unspecified,Roll Out Cart Damaged By City Equipment,2. 7-29 days,4
+Cart damaged in collection,Mixed or unspecified,Roll Out Cart Damaged By City Equipment,3. 30-89 days,12
+Cart damaged in collection,Mixed or unspecified,Roll Out Cart Damaged By City Equipment,4. 90-364 days,16
+Cart damaged in collection,Mixed or unspecified,Roll Out Cart Damaged By City Equipment,5. 365 days or more,70
+Cart repair or supply,Mixed or unspecified,Request Garbage & Recycling Carts for New Builds,1. Under 7 days,33
+Cart repair or supply,Mixed or unspecified,Request Garbage & Recycling Carts for New Builds,2. 7-29 days,81
+Cart repair or supply,Mixed or unspecified,Request Garbage & Recycling Carts for New Builds,3. 30-89 days,236
+Cart repair or supply,Mixed or unspecified,Request Garbage & Recycling Carts for New Builds,4. 90-364 days,65
+Cart repair or supply,Mixed or unspecified,Request Garbage & Recycling Carts for New Builds,5. 365 days or more,208
+Cart repair or supply,Garbage,"Request a Garbage Cart, an Upgrade, an Extra Cart",1. Under 7 days,11
+Cart repair or supply,Garbage,"Request a Garbage Cart, an Upgrade, an Extra Cart",2. 7-29 days,44
+Cart repair or supply,Garbage,"Request a Garbage Cart, an Upgrade, an Extra Cart",3. 30-89 days,109
+Cart repair or supply,Garbage,"Request a Garbage Cart, an Upgrade, an Extra Cart",4. 90-364 days,98
+Cart repair or supply,Garbage,"Request a Garbage Cart, an Upgrade, an Extra Cart",5. 365 days or more,125
+Cart repair or supply,Recycling,"Request a Recycle Cart, an Upgrade, an Extra Cart",1. Under 7 days,7
+Cart repair or supply,Recycling,"Request a Recycle Cart, an Upgrade, an Extra Cart",2. 7-29 days,25
+Cart repair or supply,Recycling,"Request a Recycle Cart, an Upgrade, an Extra Cart",3. 30-89 days,55
+Cart repair or supply,Recycling,"Request a Recycle Cart, an Upgrade, an Extra Cart",4. 90-364 days,66
+Cart repair or supply,Recycling,"Request a Recycle Cart, an Upgrade, an Extra Cart",5. 365 days or more,76
+Cart repair or supply,Mixed or unspecified,Roll Out Cart Delivery - Damaged Cart,3. 30-89 days,1
+Cart repair or supply,Mixed or unspecified,Roll Out Cart Delivery - Damaged Cart,5. 365 days or more,3
+Cart repair or supply,Mixed or unspecified,Roll Out Cart Delivery - Too Many Carts,2. 7-29 days,1
+Cart repair or supply,Mixed or unspecified,Roll Out Cart Delivery - Too Many Carts,5. 365 days or more,1
+Cart repair or supply,Mixed or unspecified,Roll Out Cart Found,1. Under 7 days,2
+Cart repair or supply,Mixed or unspecified,Roll Out Cart Found,2. 7-29 days,1
+Cart repair or supply,Mixed or unspecified,Roll Out Cart Found,3. 30-89 days,2
+Cart repair or supply,Mixed or unspecified,Roll Out Cart Found,4. 90-364 days,21
+Cart repair or supply,Mixed or unspecified,Roll Out Cart Found,5. 365 days or more,90
+Cart repair or supply,Garbage,Roll Out Cart Repair/Replacement - Garbage,5. 365 days or more,232
+Cart repair or supply,Garbage,Roll Out Cart Repair/Replacement - Garbage_2025,1. Under 7 days,46
+Cart repair or supply,Garbage,Roll Out Cart Repair/Replacement - Garbage_2025,2. 7-29 days,98
+Cart repair or supply,Garbage,Roll Out Cart Repair/Replacement - Garbage_2025,3. 30-89 days,327
+Cart repair or supply,Garbage,Roll Out Cart Repair/Replacement - Garbage_2025,4. 90-364 days,258
+Cart repair or supply,Garbage,Roll Out Cart Repair/Replacement - Garbage_2025,5. 365 days or more,36
+Cart repair or supply,Recycling,Roll Out Cart Repair/Replacement - Recycling,5. 365 days or more,178
+Cart repair or supply,Recycling,Roll Out Cart Repair/Replacement - Recycling_2025,1. Under 7 days,40
+Cart repair or supply,Recycling,Roll Out Cart Repair/Replacement - Recycling_2025,2. 7-29 days,111
+Cart repair or supply,Recycling,Roll Out Cart Repair/Replacement - Recycling_2025,3. 30-89 days,352
+Cart repair or supply,Recycling,Roll Out Cart Repair/Replacement - Recycling_2025,4. 90-364 days,215
+Cart repair or supply,Recycling,Roll Out Cart Repair/Replacement - Recycling_2025,5. 365 days or more,35
+Cart repair or supply,Mixed or unspecified,Supervisor Alert for Cart Deliveries,1. Under 7 days,2
+Cart repair or supply,Mixed or unspecified,Supervisor Alert for Cart Deliveries,2. 7-29 days,8
+Cart repair or supply,Mixed or unspecified,Supervisor Alert for Cart Deliveries,3. 30-89 days,4
+Cart repair or supply,Mixed or unspecified,Supervisor Alert for Cart Deliveries,4. 90-364 days,9
+Cart repair or supply,Mixed or unspecified,Supervisor Alert for Cart Deliveries,5. 365 days or more,21
+Crew conduct or property damage,Mixed or unspecified,Additional Inquiry for a Contractor Concern,4. 90-364 days,10
+Crew conduct or property damage,Mixed or unspecified,Additional Inquiry for a Contractor Concern,5. 365 days or more,18
+Crew conduct or property damage,Mixed or unspecified,"Breached Damage, Theft, Operator Standards",1. Under 7 days,9
+Crew conduct or property damage,Mixed or unspecified,"Breached Damage, Theft, Operator Standards",2. 7-29 days,1
+Crew conduct or property damage,Mixed or unspecified,"Breached Damage, Theft, Operator Standards",3. 30-89 days,3
+Crew conduct or property damage,Mixed or unspecified,"Breached Damage, Theft, Operator Standards",4. 90-364 days,13
+Crew conduct or property damage,Mixed or unspecified,"Breached Damage, Theft, Operator Standards",5. 365 days or more,117
+Crew conduct or property damage,Mixed or unspecified,Cart Tagged by Contractor Concern,1. Under 7 days,1
+Crew conduct or property damage,Mixed or unspecified,Cart Tagged by Contractor Concern,2. 7-29 days,1
+Crew conduct or property damage,Mixed or unspecified,Cart Tagged by Contractor Concern,3. 30-89 days,2
+Crew conduct or property damage,Mixed or unspecified,Cart Tagged by Contractor Concern,4. 90-364 days,41
+Crew conduct or property damage,Mixed or unspecified,Cart Tagged by Contractor Concern,5. 365 days or more,88
+Crew conduct or property damage,Garbage,Damage or Theft by Collection Crews - Garbage,1. Under 7 days,3
+Crew conduct or property damage,Garbage,Damage or Theft by Collection Crews - Garbage,2. 7-29 days,10
+Crew conduct or property damage,Garbage,Damage or Theft by Collection Crews - Garbage,3. 30-89 days,18
+Crew conduct or property damage,Garbage,Damage or Theft by Collection Crews - Garbage,4. 90-364 days,15
+Crew conduct or property damage,Garbage,Damage or Theft by Collection Crews - Garbage,5. 365 days or more,64
+Crew conduct or property damage,Recycling,Damage or Theft by Collection Crews - Recycling,1. Under 7 days,4
+Crew conduct or property damage,Recycling,Damage or Theft by Collection Crews - Recycling,2. 7-29 days,12
+Crew conduct or property damage,Recycling,Damage or Theft by Collection Crews - Recycling,3. 30-89 days,32
+Crew conduct or property damage,Recycling,Damage or Theft by Collection Crews - Recycling,4. 90-364 days,18
+Crew conduct or property damage,Recycling,Damage or Theft by Collection Crews - Recycling,5. 365 days or more,40
+Crew conduct or property damage,Yard waste,Damage or Theft by Collection Crews - Yard Waste,5. 365 days or more,3
+Crew conduct or property damage,Garbage,Escalated Operator Standards - Garbage,1. Under 7 days,1
+Crew conduct or property damage,Garbage,Escalated Operator Standards - Garbage,3. 30-89 days,1
+Crew conduct or property damage,Garbage,Escalated Operator Standards - Garbage,4. 90-364 days,6
+Crew conduct or property damage,Garbage,Escalated Operator Standards - Garbage,5. 365 days or more,15
+Crew conduct or property damage,Recycling,Escalated Operator Standards - Recycling,1. Under 7 days,1
+Crew conduct or property damage,Recycling,Escalated Operator Standards - Recycling,4. 90-364 days,1
+Crew conduct or property damage,Recycling,Escalated Operator Standards - Recycling,5. 365 days or more,3
+Crew conduct or property damage,Yard waste,Escalated Operator Standards - Yard Waste,4. 90-364 days,1
+Crew conduct or property damage,Yard waste,Escalated Operator Standards - Yard Waste,5. 365 days or more,1
+Crew conduct or property damage,Garbage,Operator Standards - Garbage,1. Under 7 days,7
+Crew conduct or property damage,Garbage,Operator Standards - Garbage,2. 7-29 days,2
+Crew conduct or property damage,Garbage,Operator Standards - Garbage,3. 30-89 days,2
+Crew conduct or property damage,Garbage,Operator Standards - Garbage,4. 90-364 days,10
+Crew conduct or property damage,Garbage,Operator Standards - Garbage,5. 365 days or more,59
+Crew conduct or property damage,Recycling,Operator Standards - Recycling,1. Under 7 days,2
+Crew conduct or property damage,Recycling,Operator Standards - Recycling,2. 7-29 days,1
+Crew conduct or property damage,Recycling,Operator Standards - Recycling,3. 30-89 days,1
+Crew conduct or property damage,Recycling,Operator Standards - Recycling,4. 90-364 days,4
+Crew conduct or property damage,Recycling,Operator Standards - Recycling,5. 365 days or more,12
+Crew conduct or property damage,Yard waste,Operator Standards - Yard Waste,5. 365 days or more,1
+Crew conduct or property damage,Mixed or unspecified,Solid Waste Staff Complaint / Commendation,1. Under 7 days,2
+Crew conduct or property damage,Mixed or unspecified,Solid Waste Staff Complaint / Commendation,3. 30-89 days,1
+Crew conduct or property damage,Mixed or unspecified,Solid Waste Staff Complaint / Commendation,4. 90-364 days,28
+Crew conduct or property damage,Mixed or unspecified,Solid Waste Staff Complaint / Commendation,5. 365 days or more,58
+Escalated missed collection,Bulky and special,Breached Missed Collection Bulky Deficiency,4. 90-364 days,1
+Escalated missed collection,Bulky and special,Breached Missed Collection Bulky Deficiency,5. 365 days or more,26
+Escalated missed collection,Garbage,Breached Missed Collection Garbage Deficiency,1. Under 7 days,1
+Escalated missed collection,Garbage,Breached Missed Collection Garbage Deficiency,3. 30-89 days,1
+Escalated missed collection,Garbage,Breached Missed Collection Garbage Deficiency,4. 90-364 days,3
+Escalated missed collection,Garbage,Breached Missed Collection Garbage Deficiency,5. 365 days or more,20
+Escalated missed collection,Bulky and special,Breached Missed Collection Large Appl Deficiency,5. 365 days or more,4
+Escalated missed collection,Recycling,Breached Missed Collection Recycling Deficiency,5. 365 days or more,11
+Escalated missed collection,Bulky and special,Breached Missed Collection Surp Waste Deficiency,5. 365 days or more,7
+Escalated missed collection,Yard waste,Breached Missed Collection Yard Waste Deficiency,1. Under 7 days,1
+Escalated missed collection,Yard waste,Breached Missed Collection Yard Waste Deficiency,5. 365 days or more,2
+General collection concern,Garbage,Request City Collection for Garbage,1. Under 7 days,8
+General collection concern,Garbage,Request City Collection for Garbage,2. 7-29 days,3
+General collection concern,Garbage,Request City Collection for Garbage,3. 30-89 days,9
+General collection concern,Garbage,Request City Collection for Garbage,4. 90-364 days,19
+General collection concern,Garbage,Request City Collection for Garbage,5. 365 days or more,45
+General collection concern,Recycling,Request City Collection for Recycling,3. 30-89 days,1
+General collection concern,Recycling,Request City Collection for Recycling,4. 90-364 days,2
+General collection concern,Recycling,Request City Collection for Recycling,5. 365 days or more,3
+General collection concern,Garbage,Request to Investigate Loose Garbage in a Lane,4. 90-364 days,1
+General collection concern,Garbage,Request to Investigate Loose Garbage in a Lane,5. 365 days or more,19
+General collection concern,Mixed or unspecified,Solid Waste General Concern,1. Under 7 days,16
+General collection concern,Mixed or unspecified,Solid Waste General Concern,2. 7-29 days,41
+General collection concern,Mixed or unspecified,Solid Waste General Concern,3. 30-89 days,37
+General collection concern,Mixed or unspecified,Solid Waste General Concern,4. 90-364 days,192
+General collection concern,Mixed or unspecified,Solid Waste General Concern,5. 365 days or more,830
+Missed collection,Bulky and special,Missed Bulky Waste Collection Deficiency,1. Under 7 days,3
+Missed collection,Bulky and special,Missed Bulky Waste Collection Deficiency,2. 7-29 days,2
+Missed collection,Bulky and special,Missed Bulky Waste Collection Deficiency,3. 30-89 days,2
+Missed collection,Bulky and special,Missed Bulky Waste Collection Deficiency,4. 90-364 days,3
+Missed collection,Bulky and special,Missed Bulky Waste Collection Deficiency,5. 365 days or more,55
+Missed collection,Garbage,Missed Garbage Collection Deficiency,1. Under 7 days,82
+Missed collection,Garbage,Missed Garbage Collection Deficiency,2. 7-29 days,6
+Missed collection,Garbage,Missed Garbage Collection Deficiency,3. 30-89 days,8
+Missed collection,Garbage,Missed Garbage Collection Deficiency,4. 90-364 days,54
+Missed collection,Garbage,Missed Garbage Collection Deficiency,5. 365 days or more,898
+Missed collection,Garbage,Missed Garbage Collection Same Day Miss,1. Under 7 days,5
+Missed collection,Garbage,Missed Garbage Collection Same Day Miss,3. 30-89 days,1
+Missed collection,Garbage,Missed Garbage Collection Same Day Miss,4. 90-364 days,6
+Missed collection,Garbage,Missed Garbage Collection Same Day Miss,5. 365 days or more,44
+Missed collection,Garbage,Missed Garbage Excess Due To Previous Miss,5. 365 days or more,22
+Missed collection,Bulky and special,Missed Large Appliance Collection Deficiency,2. 7-29 days,1
+Missed collection,Bulky and special,Missed Large Appliance Collection Deficiency,4. 90-364 days,2
+Missed collection,Bulky and special,Missed Large Appliance Collection Deficiency,5. 365 days or more,3
+Missed collection,Recycling,Missed Recycling Collection Deficiency,1. Under 7 days,59
+Missed collection,Recycling,Missed Recycling Collection Deficiency,2. 7-29 days,2
+Missed collection,Recycling,Missed Recycling Collection Deficiency,3. 30-89 days,1
+Missed collection,Recycling,Missed Recycling Collection Deficiency,4. 90-364 days,20
+Missed collection,Recycling,Missed Recycling Collection Deficiency,5. 365 days or more,519
+Missed collection,Recycling,Missed Recycling Collection Same Day Miss,1. Under 7 days,1
+Missed collection,Recycling,Missed Recycling Collection Same Day Miss,5. 365 days or more,21
+Missed collection,Recycling,Missed Recycling Excess Due To Previous Miss,5. 365 days or more,8
+Missed collection,Bulky and special,Missed Surplus Waste Collection Deficiency,4. 90-364 days,3
+Missed collection,Bulky and special,Missed Surplus Waste Collection Deficiency,5. 365 days or more,26
+Missed collection,Bulky and special,Missed Surplus Waste Collection Same Day Miss,4. 90-364 days,1
+Missed collection,Yard waste,Missed Yard Waste Collection Deficiency,1. Under 7 days,198
+Missed collection,Yard waste,Missed Yard Waste Collection Deficiency,2. 7-29 days,1
+Missed collection,Yard waste,Missed Yard Waste Collection Deficiency,3. 30-89 days,1
+Missed collection,Yard waste,Missed Yard Waste Collection Deficiency,4. 90-364 days,5
+Missed collection,Yard waste,Missed Yard Waste Collection Deficiency,5. 365 days or more,103
+Missed collection,Yard waste,Missed Yard Waste Collection Same Day Miss,1. Under 7 days,1
+Missed collection,Yard waste,Missed Yard Waste Collection Same Day Miss,3. 30-89 days,1
+Missed collection,Yard waste,Missed Yard Waste Collection Same Day Miss,4. 90-364 days,1
+Missed collection,Yard waste,Missed Yard Waste Collection Same Day Miss,5. 365 days or more,5

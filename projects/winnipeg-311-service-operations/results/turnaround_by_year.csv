@@ -1,0 +1,29 @@
+open_year,analysis_group,cases,open_at_snapshot,median_days,p90_days
+2023,Bulky and special pickup,13297,1356,8.8,
+2023,Cart damaged in collection,22102,501,17.0,33.0
+2023,Cart repair or supply,5462,248,47.1,133.3
+2023,Crew conduct or property damage,3256,194,2.8,33.8
+2023,Escalated missed collection,293,32,2.2,
+2023,General collection concern,4283,305,3.9,80.6
+2023,Missed collection,22346,933,2.8,6.7
+2024,Bulky and special pickup,13999,1375,8.8,54.9
+2024,Cart damaged in collection,19467,712,14.4,29.8
+2024,Cart repair or supply,5870,525,29.9,139.5
+2024,Crew conduct or property damage,3395,132,1.9,26.8
+2024,Escalated missed collection,225,18,1.9,14.7
+2024,General collection concern,3668,356,4.6,173.9
+2024,Missed collection,20277,576,2.8,6.8
+2025,Bulky and special pickup,13960,1116,9.2,31.2
+2025,Cart damaged in collection,25529,540,15.7,32.1
+2025,Cart repair or supply,7428,286,35.9,101.0
+2025,Crew conduct or property damage,6655,183,1.0,7.9
+2025,Escalated missed collection,261,22,2.0,16.9
+2025,General collection concern,3520,263,3.8,82.2
+2025,Missed collection,19852,221,3.7,14.6
+2026,Bulky and special pickup,10313,837,8.8,
+2026,Cart damaged in collection,19819,496,20.1,
+2026,Cart repair or supply,6456,1764,,
+2026,Crew conduct or property damage,5879,177,1.2,13.2
+2026,Escalated missed collection,244,3,1.0,5.9
+2026,General collection concern,3401,234,3.1,
+2026,Missed collection,16694,83,2.8,8.8
