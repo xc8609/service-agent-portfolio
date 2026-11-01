@@ -1,5 +1,9 @@
 # Current delivery — finish the bank core first
 
+**1 November 2026:** the owner approved a local case. [Winnipeg 311 Service
+Operations](../../projects/winnipeg-311-service-operations/README.md) has a reconciled
+extract, case-level SQL model, aggregate results and findings; a Tableau workbook is next.
+
 **27 October 2026:** native Tableau checks completed for both analytics cases: three
 retail page screenshots, and the complaint dashboard's shared filters verified after
 fixing a broken channel filter and an unshared product filter.

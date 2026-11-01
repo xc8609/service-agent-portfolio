@@ -1,0 +1,64 @@
+request_type,analysis_group,waste_stream
+Missed Garbage Collection Deficiency,Missed collection,Garbage
+Missed Garbage Collection Same Day Miss,Missed collection,Garbage
+Missed Garbage Excess Due To Previous Miss,Missed collection,Garbage
+Missed Recycling Collection Deficiency,Missed collection,Recycling
+Missed Recycling Collection Same Day Miss,Missed collection,Recycling
+Missed Recycling Excess Due To Previous Miss,Missed collection,Recycling
+Missed Yard Waste Collection Deficiency,Missed collection,Yard waste
+Missed Yard Waste Collection Same Day Miss,Missed collection,Yard waste
+Missed Bulky Waste Collection Deficiency,Missed collection,Bulky and special
+Missed Large Appliance Collection Deficiency,Missed collection,Bulky and special
+Missed Surplus Waste Collection Deficiency,Missed collection,Bulky and special
+Missed Surplus Waste Collection Same Day Miss,Missed collection,Bulky and special
+Missed ODS Collection Deficiency,Missed collection,Bulky and special
+Breached Missed Collection Garbage Deficiency,Escalated missed collection,Garbage
+Breached Missed Collection Recycling Deficiency,Escalated missed collection,Recycling
+Breached Missed Collection Yard Waste Deficiency,Escalated missed collection,Yard waste
+Breached Missed Collection Bulky Deficiency,Escalated missed collection,Bulky and special
+Breached Missed Collection Surp Waste Deficiency,Escalated missed collection,Bulky and special
+Breached Missed Collection Large Appl Deficiency,Escalated missed collection,Bulky and special
+Breached Missed Collection ODS Deficiency,Escalated missed collection,Bulky and special
+Request for Bulky Pick Up - 10 Items,Bulky and special pickup,Bulky and special
+Request for Large Appliance Pick Up - 10 Items,Bulky and special pickup,Bulky and special
+Request for Surplus Waste Pick Up,Bulky and special pickup,Bulky and special
+Request for Surplus Waste Pick Up - Adding Items,Bulky and special pickup,Bulky and special
+Request for Ozone Depleting Substance Collection,Bulky and special pickup,Bulky and special
+Abandoned Pick Up Request - Regular Bulky,Bulky and special pickup,Bulky and special
+Abandoned Pick Up Request - Large Appliance,Bulky and special pickup,Bulky and special
+Carts Damaged By Collection Crews GARBAGE 240L,Cart damaged in collection,Garbage
+Carts Damaged By Collection Crews GARBAGE 360L,Cart damaged in collection,Garbage
+Carts Damaged By Collection Crews RECYCLING 240L,Cart damaged in collection,Recycling
+Carts Damaged By Collection Crews RECYCLING 360L,Cart damaged in collection,Recycling
+Carts Damaged By Collection Crews RECYCLYING 360L,Cart damaged in collection,Recycling
+Roll Out Cart Damaged By City Equipment,Cart damaged in collection,Mixed or unspecified
+Carts Damaged By Third Party,Cart damaged in collection,Mixed or unspecified
+Roll Out Cart Repair/Replacement - Garbage,Cart repair or supply,Garbage
+Roll Out Cart Repair/Replacement - Garbage_2025,Cart repair or supply,Garbage
+Roll Out Cart Repair/Replacement - Recycling,Cart repair or supply,Recycling
+Roll Out Cart Repair/Replacement - Recycling_2025,Cart repair or supply,Recycling
+"Request a Garbage Cart, an Upgrade, an Extra Cart",Cart repair or supply,Garbage
+"Request a Recycle Cart, an Upgrade, an Extra Cart",Cart repair or supply,Recycling
+Request Garbage & Recycling Carts for New Builds,Cart repair or supply,Mixed or unspecified
+Roll Out Cart Delivery - Damaged Cart,Cart repair or supply,Mixed or unspecified
+Roll Out Cart Delivery - Not Enough Carts,Cart repair or supply,Mixed or unspecified
+Roll Out Cart Delivery - Too Many Carts,Cart repair or supply,Mixed or unspecified
+Supervisor Alert for Cart Deliveries,Cart repair or supply,Mixed or unspecified
+Roll Out Cart Found,Cart repair or supply,Mixed or unspecified
+Operator Standards - Garbage,Crew conduct or property damage,Garbage
+Operator Standards - Recycling,Crew conduct or property damage,Recycling
+Operator Standards - Yard Waste,Crew conduct or property damage,Yard waste
+Escalated Operator Standards - Garbage,Crew conduct or property damage,Garbage
+Escalated Operator Standards - Recycling,Crew conduct or property damage,Recycling
+Escalated Operator Standards - Yard Waste,Crew conduct or property damage,Yard waste
+Damage or Theft by Collection Crews - Garbage,Crew conduct or property damage,Garbage
+Damage or Theft by Collection Crews - Recycling,Crew conduct or property damage,Recycling
+Damage or Theft by Collection Crews - Yard Waste,Crew conduct or property damage,Yard waste
+"Breached Damage, Theft, Operator Standards",Crew conduct or property damage,Mixed or unspecified
+Cart Tagged by Contractor Concern,Crew conduct or property damage,Mixed or unspecified
+Additional Inquiry for a Contractor Concern,Crew conduct or property damage,Mixed or unspecified
+Solid Waste Staff Complaint / Commendation,Crew conduct or property damage,Mixed or unspecified
+Solid Waste General Concern,General collection concern,Mixed or unspecified
+Request to Investigate Loose Garbage in a Lane,General collection concern,Garbage
+Request City Collection for Garbage,General collection concern,Garbage
+Request City Collection for Recycling,General collection concern,Recycling

@@ -1,0 +1,35 @@
+{
+  "monthly_window": "January 2023 - September 2026 (opened)",
+  "snapshot_at_local": "2026-10-31 00:00:00",
+  "cases": 277951,
+  "interactions": 278199,
+  "cases_with_repeat_contact": 240,
+  "cases_by_group": {
+    "Cart damaged in collection": 86917,
+    "Missed collection": 79169,
+    "Bulky and special pickup": 51569,
+    "Cart repair or supply": 25216,
+    "Crew conduct or property damage": 19185,
+    "General collection concern": 14872,
+    "Escalated missed collection": 1023
+  },
+  "average_cases_by_calendar_month": {
+    "1": 5406.0,
+    "2": 4653.0,
+    "3": 5315.0,
+    "4": 6294.0,
+    "5": 7263.0,
+    "6": 7044.0,
+    "7": 7225.0,
+    "8": 6959.0,
+    "9": 6500.0,
+    "10": 6630.0,
+    "11": 5419.0,
+    "12": 5057.0
+  },
+  "open_at_snapshot": 16545,
+  "open_30_days_or_more": 13488,
+  "open_365_days_or_more": 9528,
+  "city_follow_up_calls": 90365,
+  "city_follow_up_breached": 19278
+}

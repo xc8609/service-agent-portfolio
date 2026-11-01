@@ -4,7 +4,7 @@ A five-minute guide to this portfolio. It shows how business problems in banking
 retail and financial services become requirements, data analysis and working software.
 All data is public or labelled synthetic; scenarios and stakeholders are simulated.
 
-## The four cases in one minute
+## The five cases in one minute
 
 | Case | Business question | What was built | Result you can check |
 |---|---|---|---|
@@ -12,6 +12,7 @@ All data is public or labelled synthetic; scenarios and stakeholders are simulat
 | [Retail Customer & Sales Analysis](projects/retail-customer-analytics/README.md) | Sales rose 4.0% while orders fell 3.7% — which customers and products should the business investigate first? | Data cleaning, a DuckDB fact/dimension model, analytical SQL and a three-page Tableau workbook | Order decline reconciled to four customer groups; 591 lapsed repeat buyers defined for review |
 | [Complaint Routing Analysis](projects/complaint-analytics/README.md) | Could a text suggestion help analysts route 27,011 public consumer-finance complaints? | SQL analysis, a two-page Tableau dashboard and a fixed hold-out model evaluation | 81.7% team accuracy vs 31.5% baseline — recommended analyst-confirmed suggestions, not automation |
 | [Investment Research Brief](projects/investment-research/README.md) | Did a company's revenue growth carry through to profit and cash flow? | A separate research app: source-checked calculations and an Agent that drafts with citations | Every figure and explanation in the draft links to its report section |
+| [Winnipeg 311 Service Operations](projects/winnipeg-311-service-operations/README.md) | Which garbage and recycling requests drive 311 demand, how long do they take, and is the open queue live work? | A reconciled API extract, case-level DuckDB model and censored turnaround measures | 58% of 16,545 open records are a year old or more — a records question before a backlog one |
 
 <p>
 <img src="docs/media/bank-walkthrough.gif" width="49%" alt="Bank workspace walkthrough from first contact to closure check">
@@ -28,6 +29,8 @@ All data is public or labelled synthetic; scenarios and stakeholders are simulat
    an unresolved pair of charges stays together instead of forcing a guess.
 3. [Retail business case](projects/retail-customer-analytics/docs/business-case.md):
    turning “improve retention” into measures, a review group and a testable next step.
+   The [Winnipeg 311 findings](projects/winnipeg-311-service-operations/docs/findings.md)
+   apply the same discipline to a local public service.
 4. [Complaint requirements](projects/complaint-analytics/docs/01_business_requirements.md)
    and [evaluation](projects/complaint-analytics/docs/04_ai_pilot_evaluation.md):
    when a model is good enough to assist, and why it should not route on its own.
