@@ -363,8 +363,8 @@
       <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
       <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
       <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
-      <column name="[median_days]" caption="Median days to close" datatype="real" role="measure" type="quantitative" default-format="#,##0.0" />
-      <column name="[p90_days]" caption="90th percentile days to close" datatype="real" role="measure" type="quantitative" default-format="#,##0.0" />
+      <column name="[median_days]" caption="Median days to close" datatype="real" role="measure" type="quantitative" default-format="n#,##0.0;-#,##0.0" />
+      <column name="[p90_days]" caption="90th percentile days to close" datatype="real" role="measure" type="quantitative" default-format="n#,##0.0;-#,##0.0" />
       <layout dim-ordering="alphabetic" measure-ordering="alphabetic" show-structure="true" />
       <object-graph>
         <objects>
@@ -1237,8 +1237,8 @@
             <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
             <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
             <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
-            <column name="[median_days]" caption="Median days to close" datatype="real" role="measure" type="quantitative" default-format="#,##0.0" />
-            <column name="[p90_days]" caption="90th percentile days to close" datatype="real" role="measure" type="quantitative" default-format="#,##0.0" />
+            <column name="[median_days]" caption="Median days to close" datatype="real" role="measure" type="quantitative" default-format="n#,##0.0;-#,##0.0" />
+            <column name="[p90_days]" caption="90th percentile days to close" datatype="real" role="measure" type="quantitative" default-format="n#,##0.0;-#,##0.0" />
             <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
             <column-instance column="[cases]" derivation="Sum" name="[sum:cases:qk]" pivot="key" type="quantitative" />
             <column-instance column="[median_days]" derivation="Avg" name="[avg:median_days:qk]" pivot="key" type="quantitative" />
@@ -1262,6 +1262,9 @@
           </style-rule>
           <style-rule element="header">
             <format attr="width" field="[federated.turnaround].[none:analysis_group:nk]" value="200" />
+          </style-rule>
+          <style-rule element="cell">
+            <format attr="text-format" field="[federated.turnaround].[avg:median_days:qk]" value="n#,##0.0;-#,##0.0" />
           </style-rule>
         </style>
         <panes>
@@ -1892,7 +1895,7 @@
               <format attr="background-color" value="#f5f1e8" />
             </zone-style>
           </zone>
-          <zone id="2" x="1800" y="7400" w="96000" h="6500" type-v2="text">
+          <zone id="2" x="1800" y="7400" w="96000" h="8200" type-v2="text">
             <formatted-text>
               <run fontsize="11" bold="false" fontcolor="#242424">WINNIPEG 311 | Garbage and recycling service requests | Cases opened Jan 2023 – Sep 2026
 Demand by month and request group, and how quickly cases close. Bands are descriptive, not City service standards.</run>
@@ -1904,7 +1907,7 @@ Demand by month and request group, and how quickly cases close. Bands are descri
               <format attr="background-color" value="#f5f1e8" />
             </zone-style>
           </zone>
-          <zone id="3" x="1800" y="14300" w="45000" h="7000" type-v2="filter" name="Cases" param="[federated.requests].[none:month:qk]" mode="range">
+          <zone id="3" x="1800" y="16000" w="45000" h="7000" type-v2="filter" name="Cases" param="[federated.requests].[none:month:qk]" mode="range">
             <zone-style>
               <format attr="border-style" value="none" />
               <format attr="border-width" value="0" />
@@ -1912,7 +1915,7 @@ Demand by month and request group, and how quickly cases close. Bands are descri
               <format attr="background-color" value="#f5f1e8" />
             </zone-style>
           </zone>
-          <zone id="4" x="49000" y="14300" w="30000" h="7000" type-v2="filter" name="Cases" param="[federated.requests].[none:waste_stream:nk]" mode="checkdropdown">
+          <zone id="4" x="49000" y="16000" w="30000" h="7000" type-v2="filter" name="Cases" param="[federated.requests].[none:waste_stream:nk]" mode="checkdropdown">
             <zone-style>
               <format attr="border-style" value="none" />
               <format attr="border-width" value="0" />
@@ -2015,7 +2018,7 @@ Demand by month and request group, and how quickly cases close. Bands are descri
               <format attr="background-color" value="#f5f1e8" />
             </zone-style>
           </zone>
-          <zone id="2" x="1800" y="7400" w="96000" h="6500" type-v2="text">
+          <zone id="2" x="1800" y="7400" w="96000" h="8200" type-v2="text">
             <formatted-text>
               <run fontsize="11" bold="false" fontcolor="#242424">WINNIPEG 311 | Open records at 31 Oct 2026 00:00 | City-wide follow-up calls Jan 2023 – Sep 2026
 Open records include many that are likely not live work. Follow-up calls cannot be linked to a request type.</run>
@@ -2027,7 +2030,7 @@ Open records include many that are likely not live work. Follow-up calls cannot 
               <format attr="background-color" value="#f5f1e8" />
             </zone-style>
           </zone>
-          <zone id="3" x="1800" y="14300" w="30000" h="7000" type-v2="filter" name="Open records" param="[federated.ageing].[none:waste_stream:nk]" mode="checkdropdown">
+          <zone id="3" x="1800" y="16000" w="30000" h="7000" type-v2="filter" name="Open records" param="[federated.ageing].[none:waste_stream:nk]" mode="checkdropdown">
             <zone-style>
               <format attr="border-style" value="none" />
               <format attr="border-width" value="0" />

@@ -137,7 +137,7 @@ def column_definition(field, dtype, formula=None):
     if not dimension:
         column.set(
             "default-format",
-            "p0.0%" if field in PERCENT_FIELDS else "#,##0.0" if field in DAY_FIELDS else "#,##0",
+            "p0.0%" if field in PERCENT_FIELDS else "n#,##0.0;-#,##0.0" if field in DAY_FIELDS else "#,##0",
         )
     if formula:
         node(column, "calculation", **{"class": "tableau", "formula": formula})
@@ -319,6 +319,10 @@ def worksheet(
     if dimension and not line:
         header = node(style, "style-rule", element="header")
         node(header, "format", attr="width", field=reference(source, dimension), value="200")
+    if mark == "Table":
+        cell = node(style, "style-rule", element="cell")
+        field = reference(source, measure, derivation, "quantitative")
+        node(cell, "format", attr="text-format", field=field, value="n#,##0.0;-#,##0.0")
     pane = node(
         node(table, "panes"), "pane", selection_relaxation_option="selection-relaxation-allow"
     )
@@ -454,9 +458,9 @@ def dashboard(parent, name, subtitle, sources, sheets, controls, note):
             node(zs, "format", attr=attr, value=value)
 
     zone(1, 1800, 1200, 96000, 6000, text=name, size=24)
-    zone(2, 1800, 7400, 96000, 6500, text=subtitle)
+    zone(2, 1800, 7400, 96000, 8200, text=subtitle)
     for i, (source, field, mode, sheet, x, w) in enumerate(controls, 3):
-        zone(i, x, 14300, w, 7000, sheet=sheet, control=(source, field, mode))
+        zone(i, x, 16000, w, 7000, sheet=sheet, control=(source, field, mode))
     for i, (sheet, x, y, w, h) in enumerate(sheets, 20):
         zone(i, x, y, w, h, sheet=sheet)
     zone(90, 1800, 92500, 96000, 6500, text=note, size=10)

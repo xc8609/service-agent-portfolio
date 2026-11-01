@@ -12,7 +12,7 @@ All data is public or labelled synthetic; scenarios and stakeholders are simulat
 | [Retail Customer & Sales Analysis](projects/retail-customer-analytics/README.md) | Sales rose 4.0% while orders fell 3.7% — which customers and products should the business investigate first? | Data cleaning, a DuckDB fact/dimension model, analytical SQL and a three-page Tableau workbook | Order decline reconciled to four customer groups; 591 lapsed repeat buyers defined for review |
 | [Complaint Routing Analysis](projects/complaint-analytics/README.md) | Could a text suggestion help analysts route 27,011 public consumer-finance complaints? | SQL analysis, a two-page Tableau dashboard and a fixed hold-out model evaluation | 81.7% team accuracy vs 31.5% baseline — recommended analyst-confirmed suggestions, not automation |
 | [Investment Research Brief](projects/investment-research/README.md) | Did a company's revenue growth carry through to profit and cash flow? | A separate research app: source-checked calculations and an Agent that drafts with citations | Every figure and explanation in the draft links to its report section |
-| [Winnipeg 311 Service Operations](projects/winnipeg-311-service-operations/README.md) | Which garbage and recycling requests drive 311 demand, how long do they take, and is the open queue live work? | A reconciled API extract, case-level DuckDB model and censored turnaround measures | 58% of 16,545 open records are a year old or more — a records question before a backlog one |
+| [Winnipeg 311 Service Operations](projects/winnipeg-311-service-operations/README.md) | Which garbage and recycling requests drive 311 demand, how long do they take, and is the open queue live work? | A reconciled API extract, case-level DuckDB model, censored turnaround measures and a two-page Tableau workbook | 58% of 16,545 open records are a year old or more — a records question before a backlog one |
 
 <p>
 <img src="docs/media/bank-walkthrough.gif" width="49%" alt="Bank workspace walkthrough from first contact to closure check">
@@ -49,8 +49,9 @@ All data is public or labelled synthetic; scenarios and stakeholders are simulat
 
 **Data and BI (about 3 minutes)**
 
-- [Retail Tableau pages](projects/retail-customer-analytics/README.md#three-decision-views)
-  and [complaint dashboard](projects/complaint-analytics/dashboard/README.md), each
+- [Retail Tableau pages](projects/retail-customer-analytics/README.md#three-decision-views),
+  [complaint dashboard](projects/complaint-analytics/dashboard/README.md) and
+  [Winnipeg 311 dashboard](projects/winnipeg-311-service-operations/dashboard/README.md), each
   checked against SQL results, with the definitions in their metric documents.
 
 ## What is and is not claimed

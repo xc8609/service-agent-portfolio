@@ -14,6 +14,8 @@ REVIEWED_SCREENSHOTS = {
     'projects/retail-customer-analytics/dashboard/images/tableau-product-native.png',
     'projects/complaint-analytics/dashboard/images/tableau-overview.png',
     'projects/complaint-analytics/dashboard/images/tableau-text-coverage.png',
+    'projects/winnipeg-311-service-operations/dashboard/images/tableau-demand-turnaround.png',
+    'projects/winnipeg-311-service-operations/dashboard/images/tableau-open-records.png',
 }
 # Reviewed walkthrough media: synthetic demo data only; regenerate via apps/web/demo.
 REVIEWED_MEDIA = {
