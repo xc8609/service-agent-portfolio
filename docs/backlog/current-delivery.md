@@ -2,7 +2,8 @@
 
 **1 November 2026:** the owner approved a local case. [Winnipeg 311 Service
 Operations](../../projects/winnipeg-311-service-operations/README.md) has a reconciled
-extract, case-level SQL model, aggregate results and findings; a Tableau workbook is next.
+extract, case-level SQL model, aggregate results, findings and a two-page Tableau
+workbook whose filters and selections were checked natively against SQL.
 
 **27 October 2026:** native Tableau checks completed for both analytics cases: three
 retail page screenshots, and the complaint dashboard's shared filters verified after

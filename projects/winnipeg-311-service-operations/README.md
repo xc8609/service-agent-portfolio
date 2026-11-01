@@ -4,10 +4,16 @@
 > department review residential garbage and recycling service requests: what drives
 > demand, how long requests take to close, and whether the open queue is live work.
 
-**Status:** data extract, SQL model, aggregate results and findings complete
-(1 November 2026). A Tableau workbook is the next step. Source: the City of
+**Status:** complete (1 November 2026): reconciled extract, SQL model, findings and
+a two-page Tableau workbook checked natively against SQL. Source: the City of
 Winnipeg's public [311 Requests dataset](data/README.md); the stakeholders and
 review are simulated.
+
+| Demand and turnaround | Open records and follow-ups |
+|---|---|
+| ![Tableau page: demand and turnaround](dashboard/images/tableau-demand-turnaround.png) | ![Tableau page: open records and follow-ups](dashboard/images/tableau-open-records.png) |
+
+[Dashboard guide](dashboard/README.md) · [native check](dashboard/verification.md)
 
 ## Questions and answers
 
@@ -29,9 +35,12 @@ Full results and caveats: [findings](docs/findings.md).
   interaction-to-case modelling, a request-type map across a March 2025 rename, and
   a censoring rule so still-open cases cannot distort turnaround
   ([model and metrics](docs/metrics.md)).
+- **BI:** a generated two-page Tableau workbook with weighted rates, cross-source
+  selection and non-additive medians kept precomputed ([dashboard](dashboard/README.md)).
 - **Testing:** regression tests for deduplication, snapshot status, scope and
-  censored quantiles ([tests](tests/test_service_model.py)); build checks in
-  [checks.json](results/checks.json).
+  censored quantiles ([model tests](tests/test_service_model.py)), workbook structure
+  tests ([Tableau tests](tests/test_service_tableau.py)), build checks in
+  [checks.json](results/checks.json) and a [native filter check](dashboard/verification.md).
 
 ## Limits
 
@@ -49,4 +58,6 @@ Full results and caveats: [findings](docs/findings.md).
 | [sql/](sql/) | Staging, case model and marts (DuckDB) |
 | [scripts/build_analysis.py](scripts/build_analysis.py) | Build, reconciliation checks, aggregate export |
 | [reference/request_type_map.csv](reference/request_type_map.csv) | 63 request types → seven groups |
+| [scripts/build_tableau.py](scripts/build_tableau.py) | Generates the Tableau workbook from the results |
+| [dashboard/](dashboard/) | Workbook, screenshots and native verification |
 | [results/](results/) | Published aggregates only; no request records |

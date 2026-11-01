@@ -1,0 +1,2273 @@
+<?xml version='1.0' encoding='utf-8'?>
+<workbook original-version="18.1" source-build="2026.2.3 (20262.26.0912.1023)" source-platform="mac" version="18.1">
+  <document-format-change-manifest>
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <datasources>
+    <datasource caption="Requests" inline="true" name="federated.requests" version="18.1">
+      <connection class="federated">
+        <named-connections>
+          <named-connection caption="requests" name="textscan.requests">
+            <connection class="textscan" directory="../results" filename="monthly_requests.csv" password="" server="" />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.requests" name="monthly_requests.csv" table="[monthly_requests#csv]" type="table">
+          <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+            <column datatype="date" name="month" ordinal="0" />
+            <column datatype="string" name="analysis_group" ordinal="1" />
+            <column datatype="string" name="waste_stream" ordinal="2" />
+            <column datatype="string" name="request_type" ordinal="3" />
+            <column datatype="integer" name="cases" ordinal="4" />
+            <column datatype="integer" name="interactions" ordinal="5" />
+            <column datatype="integer" name="repeat_contact_cases" ordinal="6" />
+            <column datatype="integer" name="closed_cases" ordinal="7" />
+            <column datatype="integer" name="closed_within_1_day" ordinal="8" />
+            <column datatype="integer" name="closed_within_3_days" ordinal="9" />
+            <column datatype="integer" name="closed_within_7_days" ordinal="10" />
+            <column datatype="integer" name="closed_within_14_days" ordinal="11" />
+            <column datatype="integer" name="closed_within_30_days" ordinal="12" />
+            <column datatype="integer" name="open_at_snapshot" ordinal="13" />
+            <column datatype="integer" name="cases_with_ward" ordinal="14" />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class="column">
+            <remote-name>month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[month]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>month</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>analysis_group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[analysis_group]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>analysis_group</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>waste_stream</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[waste_stream]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>waste_stream</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>request_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[request_type]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>request_type</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cases]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>cases</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>interactions</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[interactions]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>interactions</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>repeat_contact_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[repeat_contact_cases]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>repeat_contact_cases</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>closed_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[closed_cases]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>closed_cases</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>closed_within_1_day</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[closed_within_1_day]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>closed_within_1_day</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>closed_within_3_days</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[closed_within_3_days]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>closed_within_3_days</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>closed_within_7_days</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[closed_within_7_days]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>closed_within_7_days</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>closed_within_14_days</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[closed_within_14_days]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>closed_within_14_days</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>closed_within_30_days</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[closed_within_30_days]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>closed_within_30_days</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>open_at_snapshot</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[open_at_snapshot]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>open_at_snapshot</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>cases_with_ward</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cases_with_ward]</local-name>
+            <parent-name>[monthly_requests.csv]</parent-name>
+            <remote-alias>cases_with_ward</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[monthly_requests.csv_REQUESTS]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+      <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+      <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+      <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+      <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[interactions]" caption="Interactions" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[repeat_contact_cases]" caption="Repeat contact cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[closed_cases]" caption="Closed cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[closed_within_1_day]" caption="Closed within 1 day" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[closed_within_3_days]" caption="Closed within 3 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[closed_within_7_days]" caption="Closed within 7 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[closed_within_14_days]" caption="Closed within 14 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[closed_within_30_days]" caption="Closed within 30 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[cases_with_ward]" caption="Cases with ward" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[within_7_share]" caption="Closed within 7 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+        <calculation class="tableau" formula="SUM([closed_within_7_days]) / SUM([cases])" />
+      </column>
+      <column name="[within_30_share]" caption="Closed within 30 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+        <calculation class="tableau" formula="SUM([closed_within_30_days]) / SUM([cases])" />
+      </column>
+      <layout dim-ordering="alphabetic" measure-ordering="alphabetic" show-structure="true" />
+      <object-graph>
+        <objects>
+          <object caption="monthly_requests.csv" id="monthly_requests.csv_REQUESTS">
+            <properties context="">
+              <relation connection="textscan.requests" name="monthly_requests.csv" table="[monthly_requests#csv]" type="table">
+                <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+                  <column datatype="date" name="month" ordinal="0" />
+                  <column datatype="string" name="analysis_group" ordinal="1" />
+                  <column datatype="string" name="waste_stream" ordinal="2" />
+                  <column datatype="string" name="request_type" ordinal="3" />
+                  <column datatype="integer" name="cases" ordinal="4" />
+                  <column datatype="integer" name="interactions" ordinal="5" />
+                  <column datatype="integer" name="repeat_contact_cases" ordinal="6" />
+                  <column datatype="integer" name="closed_cases" ordinal="7" />
+                  <column datatype="integer" name="closed_within_1_day" ordinal="8" />
+                  <column datatype="integer" name="closed_within_3_days" ordinal="9" />
+                  <column datatype="integer" name="closed_within_7_days" ordinal="10" />
+                  <column datatype="integer" name="closed_within_14_days" ordinal="11" />
+                  <column datatype="integer" name="closed_within_30_days" ordinal="12" />
+                  <column datatype="integer" name="open_at_snapshot" ordinal="13" />
+                  <column datatype="integer" name="cases_with_ward" ordinal="14" />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption="Turnaround" inline="true" name="federated.turnaround" version="18.1">
+      <connection class="federated">
+        <named-connections>
+          <named-connection caption="turnaround" name="textscan.turnaround">
+            <connection class="textscan" directory="../results" filename="turnaround_by_year.csv" password="" server="" />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.turnaround" name="turnaround_by_year.csv" table="[turnaround_by_year#csv]" type="table">
+          <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+            <column datatype="string" name="open_year" ordinal="0" />
+            <column datatype="string" name="analysis_group" ordinal="1" />
+            <column datatype="integer" name="cases" ordinal="2" />
+            <column datatype="integer" name="open_at_snapshot" ordinal="3" />
+            <column datatype="real" name="median_days" ordinal="4" />
+            <column datatype="real" name="p90_days" ordinal="5" />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class="column">
+            <remote-name>open_year</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[open_year]</local-name>
+            <parent-name>[turnaround_by_year.csv]</parent-name>
+            <remote-alias>open_year</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[turnaround_by_year.csv_TURNAROUND]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>analysis_group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[analysis_group]</local-name>
+            <parent-name>[turnaround_by_year.csv]</parent-name>
+            <remote-alias>analysis_group</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[turnaround_by_year.csv_TURNAROUND]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cases]</local-name>
+            <parent-name>[turnaround_by_year.csv]</parent-name>
+            <remote-alias>cases</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[turnaround_by_year.csv_TURNAROUND]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>open_at_snapshot</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[open_at_snapshot]</local-name>
+            <parent-name>[turnaround_by_year.csv]</parent-name>
+            <remote-alias>open_at_snapshot</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[turnaround_by_year.csv_TURNAROUND]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>median_days</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[median_days]</local-name>
+            <parent-name>[turnaround_by_year.csv]</parent-name>
+            <remote-alias>median_days</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[turnaround_by_year.csv_TURNAROUND]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>p90_days</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[p90_days]</local-name>
+            <parent-name>[turnaround_by_year.csv]</parent-name>
+            <remote-alias>p90_days</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[turnaround_by_year.csv_TURNAROUND]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column name="[open_year]" caption="Year opened" datatype="string" role="dimension" type="nominal" />
+      <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+      <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[median_days]" caption="Median days to close" datatype="real" role="measure" type="quantitative" default-format="n#,##0.0;-#,##0.0" />
+      <column name="[p90_days]" caption="90th percentile days to close" datatype="real" role="measure" type="quantitative" default-format="n#,##0.0;-#,##0.0" />
+      <layout dim-ordering="alphabetic" measure-ordering="alphabetic" show-structure="true" />
+      <object-graph>
+        <objects>
+          <object caption="turnaround_by_year.csv" id="turnaround_by_year.csv_TURNAROUND">
+            <properties context="">
+              <relation connection="textscan.turnaround" name="turnaround_by_year.csv" table="[turnaround_by_year#csv]" type="table">
+                <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+                  <column datatype="string" name="open_year" ordinal="0" />
+                  <column datatype="string" name="analysis_group" ordinal="1" />
+                  <column datatype="integer" name="cases" ordinal="2" />
+                  <column datatype="integer" name="open_at_snapshot" ordinal="3" />
+                  <column datatype="real" name="median_days" ordinal="4" />
+                  <column datatype="real" name="p90_days" ordinal="5" />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption="Ageing" inline="true" name="federated.ageing" version="18.1">
+      <connection class="federated">
+        <named-connections>
+          <named-connection caption="ageing" name="textscan.ageing">
+            <connection class="textscan" directory="../results" filename="open_ageing.csv" password="" server="" />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.ageing" name="open_ageing.csv" table="[open_ageing#csv]" type="table">
+          <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+            <column datatype="string" name="analysis_group" ordinal="0" />
+            <column datatype="string" name="waste_stream" ordinal="1" />
+            <column datatype="string" name="request_type" ordinal="2" />
+            <column datatype="string" name="age_band" ordinal="3" />
+            <column datatype="integer" name="open_cases" ordinal="4" />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class="column">
+            <remote-name>analysis_group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[analysis_group]</local-name>
+            <parent-name>[open_ageing.csv]</parent-name>
+            <remote-alias>analysis_group</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[open_ageing.csv_AGEING]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>waste_stream</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[waste_stream]</local-name>
+            <parent-name>[open_ageing.csv]</parent-name>
+            <remote-alias>waste_stream</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[open_ageing.csv_AGEING]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>request_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[request_type]</local-name>
+            <parent-name>[open_ageing.csv]</parent-name>
+            <remote-alias>request_type</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[open_ageing.csv_AGEING]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>age_band</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[age_band]</local-name>
+            <parent-name>[open_ageing.csv]</parent-name>
+            <remote-alias>age_band</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[open_ageing.csv_AGEING]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>open_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[open_cases]</local-name>
+            <parent-name>[open_ageing.csv]</parent-name>
+            <remote-alias>open_cases</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[open_ageing.csv_AGEING]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+      <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+      <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+      <column name="[age_band]" caption="Age at 31 Oct 2026" datatype="string" role="dimension" type="nominal" />
+      <column name="[open_cases]" caption="Open records" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[year_or_more_share]" caption="Open a year or more" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+        <calculation class="tableau" formula="SUM(IF [age_band] = '5. 365 days or more' THEN [open_cases] ELSE 0 END) / SUM([open_cases])" />
+      </column>
+      <layout dim-ordering="alphabetic" measure-ordering="alphabetic" show-structure="true" />
+      <object-graph>
+        <objects>
+          <object caption="open_ageing.csv" id="open_ageing.csv_AGEING">
+            <properties context="">
+              <relation connection="textscan.ageing" name="open_ageing.csv" table="[open_ageing#csv]" type="table">
+                <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+                  <column datatype="string" name="analysis_group" ordinal="0" />
+                  <column datatype="string" name="waste_stream" ordinal="1" />
+                  <column datatype="string" name="request_type" ordinal="2" />
+                  <column datatype="string" name="age_band" ordinal="3" />
+                  <column datatype="integer" name="open_cases" ordinal="4" />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption="Followups" inline="true" name="federated.followups" version="18.1">
+      <connection class="federated">
+        <named-connections>
+          <named-connection caption="followups" name="textscan.followups">
+            <connection class="textscan" directory="../results" filename="follow_up_monthly.csv" password="" server="" />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.followups" name="follow_up_monthly.csv" table="[follow_up_monthly#csv]" type="table">
+          <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+            <column datatype="date" name="month" ordinal="0" />
+            <column datatype="integer" name="breached_calls" ordinal="1" />
+            <column datatype="integer" name="not_breached_calls" ordinal="2" />
+            <column datatype="integer" name="follow_up_calls" ordinal="3" />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class="column">
+            <remote-name>month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[month]</local-name>
+            <parent-name>[follow_up_monthly.csv]</parent-name>
+            <remote-alias>month</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[follow_up_monthly.csv_FOLLOWUPS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>breached_calls</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[breached_calls]</local-name>
+            <parent-name>[follow_up_monthly.csv]</parent-name>
+            <remote-alias>breached_calls</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[follow_up_monthly.csv_FOLLOWUPS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>not_breached_calls</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[not_breached_calls]</local-name>
+            <parent-name>[follow_up_monthly.csv]</parent-name>
+            <remote-alias>not_breached_calls</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[follow_up_monthly.csv_FOLLOWUPS]</object-id>
+          </metadata-record>
+          <metadata-record class="column">
+            <remote-name>follow_up_calls</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[follow_up_calls]</local-name>
+            <parent-name>[follow_up_monthly.csv]</parent-name>
+            <remote-alias>follow_up_calls</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[follow_up_monthly.csv_FOLLOWUPS]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+      <column name="[breached_calls]" caption="Recorded as SLA breached" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[not_breached_calls]" caption="Not breached calls" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[follow_up_calls]" caption="Follow-up calls" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+      <column name="[breached_share]" caption="Share recorded as SLA breached" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+        <calculation class="tableau" formula="SUM([breached_calls]) / SUM([follow_up_calls])" />
+      </column>
+      <layout dim-ordering="alphabetic" measure-ordering="alphabetic" show-structure="true" />
+      <object-graph>
+        <objects>
+          <object caption="follow_up_monthly.csv" id="follow_up_monthly.csv_FOLLOWUPS">
+            <properties context="">
+              <relation connection="textscan.followups" name="follow_up_monthly.csv" table="[follow_up_monthly#csv]" type="table">
+                <columns character-set="UTF-8" header="yes" locale="en_CA" separator=",">
+                  <column datatype="date" name="month" ordinal="0" />
+                  <column datatype="integer" name="breached_calls" ordinal="1" />
+                  <column datatype="integer" name="not_breached_calls" ordinal="2" />
+                  <column datatype="integer" name="follow_up_calls" ordinal="3" />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <actions>
+    <action caption="Select request group" name="[Select request group]">
+      <activation auto-clear="true" type="on-select" />
+      <source dashboard="01 Demand and turnaround" type="sheet" worksheet="Cases by request group" />
+      <link caption="Select request group" delimiter="," escape="\" expression="tsl:01%20Demand%20and%20turnaround?%5Bfederated.requests%5D.%5Banalysis_group%5D~s0=&lt;[analysis_group]~na&gt;" include-null="true" multi-select="true" url-escape="true" />
+      <command command="tsc:tsl-filter">
+        <param name="exclude" value="Cases by request group,Median days to close by year opened" />
+        <param name="target" value="01 Demand and turnaround" />
+      </command>
+    </action>
+    <action caption="Select request group for turnaround" name="[Select request group for turnaround]">
+      <activation auto-clear="true" type="on-select" />
+      <source dashboard="01 Demand and turnaround" type="sheet" worksheet="Cases by request group" />
+      <link caption="Select request group for turnaround" delimiter="," escape="\" expression="tsl:01%20Demand%20and%20turnaround?%5Bfederated.turnaround%5D.%5Banalysis_group%5D~s0=&lt;[analysis_group]~na&gt;" include-null="true" multi-select="true" url-escape="true" />
+      <command command="tsc:tsl-filter">
+        <param name="exclude" value="Cases by request group,Cases,Closed within 7 days,Closed within 30 days,Cases by month,Closed within 7 days by month" />
+        <param name="target" value="01 Demand and turnaround" />
+      </command>
+    </action>
+    <action caption="Select open-record group" name="[Select open-record group]">
+      <activation auto-clear="true" type="on-select" />
+      <source dashboard="02 Open records and follow-ups" type="sheet" worksheet="Open records by request group" />
+      <link caption="Select open-record group" delimiter="," escape="\" expression="tsl:02%20Open%20records%20and%20follow-ups?%5Bfederated.ageing%5D.%5Banalysis_group%5D~s0=&lt;[analysis_group]~na&gt;" include-null="true" multi-select="true" url-escape="true" />
+      <command command="tsc:tsl-filter">
+        <param name="exclude" value="Open records by request group,Follow-ups recorded as breached,Follow-up calls by month · city-wide,Share recorded as SLA breached · city-wide" />
+        <param name="target" value="02 Open records and follow-ups" />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name="Cases">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Cases</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Requests" name="federated.requests" />
+          </datasources>
+          <datasource-dependencies datasource="federated.requests">
+            <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+            <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+            <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[interactions]" caption="Interactions" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[repeat_contact_cases]" caption="Repeat contact cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_cases]" caption="Closed cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_1_day]" caption="Closed within 1 day" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_3_days]" caption="Closed within 3 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_7_days]" caption="Closed within 7 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_14_days]" caption="Closed within 14 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_30_days]" caption="Closed within 30 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[cases_with_ward]" caption="Cases with ward" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[within_7_share]" caption="Closed within 7 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_7_days]) / SUM([cases])" />
+            </column>
+            <column name="[within_30_share]" caption="Closed within 30 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_30_days]) / SUM([cases])" />
+            </column>
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[cases]" derivation="Sum" name="[sum:cases:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[month]" derivation="None" name="[none:month:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[waste_stream]" derivation="None" name="[none:waste_stream:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="quantitative" column="[federated.requests].[none:month:qk]" filter-group="11" included-values="in-range">
+            <min>#2023-01-01#</min>
+            <max>#2026-09-01#</max>
+          </filter>
+          <filter class="categorical" column="[federated.requests].[none:waste_stream:nk]" filter-group="12">
+            <groupfilter function="level-members" level="[none:waste_stream:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.requests].[none:month:qk]</column>
+            <column>[federated.requests].[none:waste_stream:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <tooltip column="[federated.requests].[sum:cases:qk]" />
+              <text column="[federated.requests].[sum:cases:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Cases: &lt;[federated.requests].[sum:cases:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#242424" fontsize="26">&lt;[federated.requests].[sum:cases:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{DDACECBE-D832-53B5-BCC5-77FA40F35593}" />
+    </worksheet>
+    <worksheet name="Closed within 7 days">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Closed within 7 days</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Requests" name="federated.requests" />
+          </datasources>
+          <datasource-dependencies datasource="federated.requests">
+            <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+            <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+            <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[interactions]" caption="Interactions" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[repeat_contact_cases]" caption="Repeat contact cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_cases]" caption="Closed cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_1_day]" caption="Closed within 1 day" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_3_days]" caption="Closed within 3 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_7_days]" caption="Closed within 7 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_14_days]" caption="Closed within 14 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_30_days]" caption="Closed within 30 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[cases_with_ward]" caption="Cases with ward" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[within_7_share]" caption="Closed within 7 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_7_days]) / SUM([cases])" />
+            </column>
+            <column name="[within_30_share]" caption="Closed within 30 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_30_days]) / SUM([cases])" />
+            </column>
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[month]" derivation="None" name="[none:month:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[waste_stream]" derivation="None" name="[none:waste_stream:nk]" pivot="key" type="nominal" />
+            <column-instance column="[within_7_share]" derivation="User" name="[usr:within_7_share:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="quantitative" column="[federated.requests].[none:month:qk]" filter-group="11" included-values="in-range">
+            <min>#2023-01-01#</min>
+            <max>#2026-09-01#</max>
+          </filter>
+          <filter class="categorical" column="[federated.requests].[none:waste_stream:nk]" filter-group="12">
+            <groupfilter function="level-members" level="[none:waste_stream:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.requests].[none:month:qk]</column>
+            <column>[federated.requests].[none:waste_stream:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <tooltip column="[federated.requests].[usr:within_7_share:qk]" />
+              <text column="[federated.requests].[usr:within_7_share:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Closed within 7 days: &lt;[federated.requests].[usr:within_7_share:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#242424" fontsize="26">&lt;[federated.requests].[usr:within_7_share:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{B5F2C138-7BAF-5CB7-B58A-FCA1F3442769}" />
+    </worksheet>
+    <worksheet name="Closed within 30 days">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Closed within 30 days</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Requests" name="federated.requests" />
+          </datasources>
+          <datasource-dependencies datasource="federated.requests">
+            <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+            <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+            <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[interactions]" caption="Interactions" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[repeat_contact_cases]" caption="Repeat contact cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_cases]" caption="Closed cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_1_day]" caption="Closed within 1 day" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_3_days]" caption="Closed within 3 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_7_days]" caption="Closed within 7 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_14_days]" caption="Closed within 14 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_30_days]" caption="Closed within 30 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[cases_with_ward]" caption="Cases with ward" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[within_7_share]" caption="Closed within 7 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_7_days]) / SUM([cases])" />
+            </column>
+            <column name="[within_30_share]" caption="Closed within 30 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_30_days]) / SUM([cases])" />
+            </column>
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[month]" derivation="None" name="[none:month:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[waste_stream]" derivation="None" name="[none:waste_stream:nk]" pivot="key" type="nominal" />
+            <column-instance column="[within_30_share]" derivation="User" name="[usr:within_30_share:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="quantitative" column="[federated.requests].[none:month:qk]" filter-group="11" included-values="in-range">
+            <min>#2023-01-01#</min>
+            <max>#2026-09-01#</max>
+          </filter>
+          <filter class="categorical" column="[federated.requests].[none:waste_stream:nk]" filter-group="12">
+            <groupfilter function="level-members" level="[none:waste_stream:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.requests].[none:month:qk]</column>
+            <column>[federated.requests].[none:waste_stream:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <tooltip column="[federated.requests].[usr:within_30_share:qk]" />
+              <text column="[federated.requests].[usr:within_30_share:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Closed within 30 days: &lt;[federated.requests].[usr:within_30_share:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#242424" fontsize="26">&lt;[federated.requests].[usr:within_30_share:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{E501F08A-489C-5E43-9654-5D18D21DDEEE}" />
+    </worksheet>
+    <worksheet name="Cases by month">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Cases by month</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Requests" name="federated.requests" />
+          </datasources>
+          <datasource-dependencies datasource="federated.requests">
+            <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+            <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+            <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[interactions]" caption="Interactions" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[repeat_contact_cases]" caption="Repeat contact cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_cases]" caption="Closed cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_1_day]" caption="Closed within 1 day" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_3_days]" caption="Closed within 3 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_7_days]" caption="Closed within 7 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_14_days]" caption="Closed within 14 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_30_days]" caption="Closed within 30 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[cases_with_ward]" caption="Cases with ward" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[within_7_share]" caption="Closed within 7 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_7_days]) / SUM([cases])" />
+            </column>
+            <column name="[within_30_share]" caption="Closed within 30 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_30_days]) / SUM([cases])" />
+            </column>
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[cases]" derivation="Sum" name="[sum:cases:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[month]" derivation="None" name="[none:month:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[waste_stream]" derivation="None" name="[none:waste_stream:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="quantitative" column="[federated.requests].[none:month:qk]" filter-group="11" included-values="in-range">
+            <min>#2023-01-01#</min>
+            <max>#2026-09-01#</max>
+          </filter>
+          <filter class="categorical" column="[federated.requests].[none:waste_stream:nk]" filter-group="12">
+            <groupfilter function="level-members" level="[none:waste_stream:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.requests].[none:month:qk]</column>
+            <column>[federated.requests].[none:waste_stream:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Line" />
+            <encodings>
+              <tooltip column="[federated.requests].[sum:cases:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.requests].[none:month:qk]&gt;
+</run>
+                <run>Cases: &lt;[federated.requests].[sum:cases:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="false" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.requests].[sum:cases:qk]</rows>
+        <cols>[federated.requests].[none:month:qk]</cols>
+      </table>
+      <simple-id uuid="{04A257DB-642A-5DFA-874D-0628A007F9F0}" />
+    </worksheet>
+    <worksheet name="Cases by request group">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Cases by request group</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Requests" name="federated.requests" />
+          </datasources>
+          <datasource-dependencies datasource="federated.requests">
+            <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+            <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+            <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[interactions]" caption="Interactions" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[repeat_contact_cases]" caption="Repeat contact cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_cases]" caption="Closed cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_1_day]" caption="Closed within 1 day" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_3_days]" caption="Closed within 3 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_7_days]" caption="Closed within 7 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_14_days]" caption="Closed within 14 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_30_days]" caption="Closed within 30 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[cases_with_ward]" caption="Cases with ward" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[within_7_share]" caption="Closed within 7 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_7_days]) / SUM([cases])" />
+            </column>
+            <column name="[within_30_share]" caption="Closed within 30 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_30_days]) / SUM([cases])" />
+            </column>
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[cases]" derivation="Sum" name="[sum:cases:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[month]" derivation="None" name="[none:month:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[waste_stream]" derivation="None" name="[none:waste_stream:nk]" pivot="key" type="nominal" />
+            <column-instance column="[within_7_share]" derivation="User" name="[usr:within_7_share:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="quantitative" column="[federated.requests].[none:month:qk]" filter-group="11" included-values="in-range">
+            <min>#2023-01-01#</min>
+            <max>#2026-09-01#</max>
+          </filter>
+          <filter class="categorical" column="[federated.requests].[none:waste_stream:nk]" filter-group="12">
+            <groupfilter function="level-members" level="[none:waste_stream:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.requests].[none:month:qk]</column>
+            <column>[federated.requests].[none:waste_stream:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="header">
+            <format attr="width" field="[federated.requests].[none:analysis_group:nk]" value="200" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings>
+              <tooltip column="[federated.requests].[sum:cases:qk]" />
+              <text column="[federated.requests].[sum:cases:qk]" />
+              <tooltip column="[federated.requests].[usr:within_7_share:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.requests].[none:analysis_group:nk]&gt;
+</run>
+                <run>Cases: &lt;[federated.requests].[sum:cases:qk]&gt;
+</run>
+                <run>Closed within 7 days: &lt;[federated.requests].[usr:within_7_share:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.requests].[none:analysis_group:nk]</rows>
+        <cols>[federated.requests].[sum:cases:qk]</cols>
+      </table>
+      <simple-id uuid="{1F184AD6-EE58-51F7-8DDF-4D356C97A205}" />
+    </worksheet>
+    <worksheet name="Closed within 7 days by month">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Closed within 7 days by month</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Requests" name="federated.requests" />
+          </datasources>
+          <datasource-dependencies datasource="federated.requests">
+            <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+            <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+            <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[interactions]" caption="Interactions" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[repeat_contact_cases]" caption="Repeat contact cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_cases]" caption="Closed cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_1_day]" caption="Closed within 1 day" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_3_days]" caption="Closed within 3 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_7_days]" caption="Closed within 7 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_14_days]" caption="Closed within 14 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[closed_within_30_days]" caption="Closed within 30 days" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[cases_with_ward]" caption="Cases with ward" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[within_7_share]" caption="Closed within 7 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_7_days]) / SUM([cases])" />
+            </column>
+            <column name="[within_30_share]" caption="Closed within 30 days" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([closed_within_30_days]) / SUM([cases])" />
+            </column>
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[cases]" derivation="Sum" name="[sum:cases:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[month]" derivation="None" name="[none:month:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[waste_stream]" derivation="None" name="[none:waste_stream:nk]" pivot="key" type="nominal" />
+            <column-instance column="[within_7_share]" derivation="User" name="[usr:within_7_share:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="quantitative" column="[federated.requests].[none:month:qk]" filter-group="11" included-values="in-range">
+            <min>#2023-01-01#</min>
+            <max>#2026-09-01#</max>
+          </filter>
+          <filter class="categorical" column="[federated.requests].[none:waste_stream:nk]" filter-group="12">
+            <groupfilter function="level-members" level="[none:waste_stream:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.requests].[none:month:qk]</column>
+            <column>[federated.requests].[none:waste_stream:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Line" />
+            <encodings>
+              <tooltip column="[federated.requests].[usr:within_7_share:qk]" />
+              <tooltip column="[federated.requests].[sum:cases:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.requests].[none:month:qk]&gt;
+</run>
+                <run>Closed within 7 days: &lt;[federated.requests].[usr:within_7_share:qk]&gt;
+</run>
+                <run>Cases: &lt;[federated.requests].[sum:cases:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="false" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.requests].[usr:within_7_share:qk]</rows>
+        <cols>[federated.requests].[none:month:qk]</cols>
+      </table>
+      <simple-id uuid="{A43C6256-3918-546E-AFF6-EAEA625B6C5B}" />
+    </worksheet>
+    <worksheet name="Median days to close by year opened">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Median days to close by year opened</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Turnaround" name="federated.turnaround" />
+          </datasources>
+          <datasource-dependencies datasource="federated.turnaround">
+            <column name="[open_year]" caption="Year opened" datatype="string" role="dimension" type="nominal" />
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[cases]" caption="Cases" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[open_at_snapshot]" caption="Open at snapshot" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[median_days]" caption="Median days to close" datatype="real" role="measure" type="quantitative" default-format="n#,##0.0;-#,##0.0" />
+            <column name="[p90_days]" caption="90th percentile days to close" datatype="real" role="measure" type="quantitative" default-format="n#,##0.0;-#,##0.0" />
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[cases]" derivation="Sum" name="[sum:cases:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[median_days]" derivation="Avg" name="[avg:median_days:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[open_at_snapshot]" derivation="Sum" name="[sum:open_at_snapshot:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[open_year]" derivation="None" name="[none:open_year:nk]" pivot="key" type="nominal" />
+            <column-instance column="[p90_days]" derivation="Avg" name="[avg:p90_days:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="header">
+            <format attr="width" field="[federated.turnaround].[none:analysis_group:nk]" value="200" />
+          </style-rule>
+          <style-rule element="cell">
+            <format attr="text-format" field="[federated.turnaround].[avg:median_days:qk]" value="n#,##0.0;-#,##0.0" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <tooltip column="[federated.turnaround].[avg:median_days:qk]" />
+              <text column="[federated.turnaround].[avg:median_days:qk]" />
+              <tooltip column="[federated.turnaround].[avg:p90_days:qk]" />
+              <tooltip column="[federated.turnaround].[sum:cases:qk]" />
+              <tooltip column="[federated.turnaround].[sum:open_at_snapshot:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.turnaround].[none:analysis_group:nk]&gt;
+</run>
+                <run>&lt;[federated.turnaround].[none:open_year:nk]&gt;
+</run>
+                <run>Median days to close: &lt;[federated.turnaround].[avg:median_days:qk]&gt;
+</run>
+                <run>90th percentile days to close: &lt;[federated.turnaround].[avg:p90_days:qk]&gt;
+</run>
+                <run>Cases: &lt;[federated.turnaround].[sum:cases:qk]&gt;
+</run>
+                <run>open_at_snapshot: &lt;[federated.turnaround].[sum:open_at_snapshot:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#242424" fontsize="11">&lt;[federated.turnaround].[avg:median_days:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.turnaround].[none:analysis_group:nk]</rows>
+        <cols>[federated.turnaround].[none:open_year:nk]</cols>
+      </table>
+      <simple-id uuid="{807F8D3F-7ECC-5497-B9C1-1AD8B5ABA0D8}" />
+    </worksheet>
+    <worksheet name="Open records">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Open records</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Ageing" name="federated.ageing" />
+          </datasources>
+          <datasource-dependencies datasource="federated.ageing">
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+            <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+            <column name="[age_band]" caption="Age at 31 Oct 2026" datatype="string" role="dimension" type="nominal" />
+            <column name="[open_cases]" caption="Open records" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[year_or_more_share]" caption="Open a year or more" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM(IF [age_band] = '5. 365 days or more' THEN [open_cases] ELSE 0 END) / SUM([open_cases])" />
+            </column>
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[open_cases]" derivation="Sum" name="[sum:open_cases:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[waste_stream]" derivation="None" name="[none:waste_stream:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[federated.ageing].[none:waste_stream:nk]" filter-group="21">
+            <groupfilter function="level-members" level="[none:waste_stream:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.ageing].[none:waste_stream:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <tooltip column="[federated.ageing].[sum:open_cases:qk]" />
+              <text column="[federated.ageing].[sum:open_cases:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Open records: &lt;[federated.ageing].[sum:open_cases:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#242424" fontsize="26">&lt;[federated.ageing].[sum:open_cases:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{5D29AF25-7743-5003-9A15-53F28DF4F6C2}" />
+    </worksheet>
+    <worksheet name="Open a year or more">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Open a year or more</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Ageing" name="federated.ageing" />
+          </datasources>
+          <datasource-dependencies datasource="federated.ageing">
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+            <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+            <column name="[age_band]" caption="Age at 31 Oct 2026" datatype="string" role="dimension" type="nominal" />
+            <column name="[open_cases]" caption="Open records" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[year_or_more_share]" caption="Open a year or more" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM(IF [age_band] = '5. 365 days or more' THEN [open_cases] ELSE 0 END) / SUM([open_cases])" />
+            </column>
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[waste_stream]" derivation="None" name="[none:waste_stream:nk]" pivot="key" type="nominal" />
+            <column-instance column="[year_or_more_share]" derivation="User" name="[usr:year_or_more_share:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[federated.ageing].[none:waste_stream:nk]" filter-group="21">
+            <groupfilter function="level-members" level="[none:waste_stream:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.ageing].[none:waste_stream:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <tooltip column="[federated.ageing].[usr:year_or_more_share:qk]" />
+              <text column="[federated.ageing].[usr:year_or_more_share:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Open a year or more: &lt;[federated.ageing].[usr:year_or_more_share:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#242424" fontsize="26">&lt;[federated.ageing].[usr:year_or_more_share:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{AFB895F6-6815-5495-8D37-B97E4BF8D4E3}" />
+    </worksheet>
+    <worksheet name="Follow-ups recorded as breached">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Follow-ups recorded as breached</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Followups" name="federated.followups" />
+          </datasources>
+          <datasource-dependencies datasource="federated.followups">
+            <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+            <column name="[breached_calls]" caption="Recorded as SLA breached" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[not_breached_calls]" caption="Not breached calls" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[follow_up_calls]" caption="Follow-up calls" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[breached_share]" caption="Share recorded as SLA breached" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([breached_calls]) / SUM([follow_up_calls])" />
+            </column>
+            <column-instance column="[breached_share]" derivation="User" name="[usr:breached_share:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Text" />
+            <encodings>
+              <tooltip column="[federated.followups].[usr:breached_share:qk]" />
+              <text column="[federated.followups].[usr:breached_share:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run>Share recorded as SLA breached: &lt;[federated.followups].[usr:breached_share:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run bold="true" fontcolor="#242424" fontsize="26">&lt;[federated.followups].[usr:breached_share:qk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid="{E3D07B8C-5C38-5FB1-9A5F-E8B152260866}" />
+    </worksheet>
+    <worksheet name="Open records by request group">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Open records by request group</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Ageing" name="federated.ageing" />
+          </datasources>
+          <datasource-dependencies datasource="federated.ageing">
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+            <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+            <column name="[age_band]" caption="Age at 31 Oct 2026" datatype="string" role="dimension" type="nominal" />
+            <column name="[open_cases]" caption="Open records" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[year_or_more_share]" caption="Open a year or more" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM(IF [age_band] = '5. 365 days or more' THEN [open_cases] ELSE 0 END) / SUM([open_cases])" />
+            </column>
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[open_cases]" derivation="Sum" name="[sum:open_cases:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[waste_stream]" derivation="None" name="[none:waste_stream:nk]" pivot="key" type="nominal" />
+            <column-instance column="[year_or_more_share]" derivation="User" name="[usr:year_or_more_share:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[federated.ageing].[none:waste_stream:nk]" filter-group="21">
+            <groupfilter function="level-members" level="[none:waste_stream:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.ageing].[none:waste_stream:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="header">
+            <format attr="width" field="[federated.ageing].[none:analysis_group:nk]" value="200" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings>
+              <tooltip column="[federated.ageing].[sum:open_cases:qk]" />
+              <text column="[federated.ageing].[sum:open_cases:qk]" />
+              <tooltip column="[federated.ageing].[usr:year_or_more_share:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.ageing].[none:analysis_group:nk]&gt;
+</run>
+                <run>Open records: &lt;[federated.ageing].[sum:open_cases:qk]&gt;
+</run>
+                <run>Open a year or more: &lt;[federated.ageing].[usr:year_or_more_share:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.ageing].[none:analysis_group:nk]</rows>
+        <cols>[federated.ageing].[sum:open_cases:qk]</cols>
+      </table>
+      <simple-id uuid="{B4B3EFA0-1F34-50BE-97F7-62FF05EBBF2B}" />
+    </worksheet>
+    <worksheet name="Open records by age">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Open records by age</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Ageing" name="federated.ageing" />
+          </datasources>
+          <datasource-dependencies datasource="federated.ageing">
+            <column name="[analysis_group]" caption="Request group" datatype="string" role="dimension" type="nominal" />
+            <column name="[waste_stream]" caption="Waste stream" datatype="string" role="dimension" type="nominal" />
+            <column name="[request_type]" caption="Request type" datatype="string" role="dimension" type="nominal" />
+            <column name="[age_band]" caption="Age at 31 Oct 2026" datatype="string" role="dimension" type="nominal" />
+            <column name="[open_cases]" caption="Open records" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[year_or_more_share]" caption="Open a year or more" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM(IF [age_band] = '5. 365 days or more' THEN [open_cases] ELSE 0 END) / SUM([open_cases])" />
+            </column>
+            <column-instance column="[age_band]" derivation="None" name="[none:age_band:nk]" pivot="key" type="nominal" />
+            <column-instance column="[analysis_group]" derivation="None" name="[none:analysis_group:nk]" pivot="key" type="nominal" />
+            <column-instance column="[open_cases]" derivation="Sum" name="[sum:open_cases:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[waste_stream]" derivation="None" name="[none:waste_stream:nk]" pivot="key" type="nominal" />
+          </datasource-dependencies>
+          <filter class="categorical" column="[federated.ageing].[none:waste_stream:nk]" filter-group="21">
+            <groupfilter function="level-members" level="[none:waste_stream:nk]" />
+          </filter>
+          <slices>
+            <column>[federated.ageing].[none:waste_stream:nk]</column>
+          </slices>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+          <style-rule element="header">
+            <format attr="width" field="[federated.ageing].[none:age_band:nk]" value="200" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Bar" />
+            <encodings>
+              <tooltip column="[federated.ageing].[sum:open_cases:qk]" />
+              <text column="[federated.ageing].[sum:open_cases:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.ageing].[none:age_band:nk]&gt;
+</run>
+                <run>Open records: &lt;[federated.ageing].[sum:open_cases:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="true" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.ageing].[none:age_band:nk]</rows>
+        <cols>[federated.ageing].[sum:open_cases:qk]</cols>
+      </table>
+      <simple-id uuid="{0875A90E-4F12-5586-9D57-646C548E4A7B}" />
+    </worksheet>
+    <worksheet name="Follow-up calls by month · city-wide">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Follow-up calls by month · city-wide</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Followups" name="federated.followups" />
+          </datasources>
+          <datasource-dependencies datasource="federated.followups">
+            <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+            <column name="[breached_calls]" caption="Recorded as SLA breached" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[not_breached_calls]" caption="Not breached calls" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[follow_up_calls]" caption="Follow-up calls" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[breached_share]" caption="Share recorded as SLA breached" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([breached_calls]) / SUM([follow_up_calls])" />
+            </column>
+            <column-instance column="[breached_calls]" derivation="Sum" name="[sum:breached_calls:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[follow_up_calls]" derivation="Sum" name="[sum:follow_up_calls:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[month]" derivation="None" name="[none:month:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Line" />
+            <encodings>
+              <tooltip column="[federated.followups].[sum:follow_up_calls:qk]" />
+              <tooltip column="[federated.followups].[sum:breached_calls:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.followups].[none:month:qk]&gt;
+</run>
+                <run>Follow-up calls: &lt;[federated.followups].[sum:follow_up_calls:qk]&gt;
+</run>
+                <run>Recorded as SLA breached: &lt;[federated.followups].[sum:breached_calls:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="false" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.followups].[sum:follow_up_calls:qk]</rows>
+        <cols>[federated.followups].[none:month:qk]</cols>
+      </table>
+      <simple-id uuid="{9A3B3599-603F-5F4C-BBCA-389D5908DED3}" />
+    </worksheet>
+    <worksheet name="Share recorded as SLA breached · city-wide">
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold="true" fontcolor="#242424" fontsize="12">Share recorded as SLA breached · city-wide</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption="Followups" name="federated.followups" />
+          </datasources>
+          <datasource-dependencies datasource="federated.followups">
+            <column name="[month]" caption="Month opened" datatype="date" role="dimension" type="ordinal" />
+            <column name="[breached_calls]" caption="Recorded as SLA breached" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[not_breached_calls]" caption="Not breached calls" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[follow_up_calls]" caption="Follow-up calls" datatype="integer" role="measure" type="quantitative" default-format="#,##0" />
+            <column name="[breached_share]" caption="Share recorded as SLA breached" datatype="real" role="measure" type="quantitative" default-format="p0.0%">
+              <calculation class="tableau" formula="SUM([breached_calls]) / SUM([follow_up_calls])" />
+            </column>
+            <column-instance column="[breached_share]" derivation="User" name="[usr:breached_share:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[follow_up_calls]" derivation="Sum" name="[sum:follow_up_calls:qk]" pivot="key" type="quantitative" />
+            <column-instance column="[month]" derivation="None" name="[none:month:qk]" pivot="key" type="quantitative" />
+          </datasource-dependencies>
+          <aggregation value="true" />
+        </view>
+        <style>
+          <style-rule element="cell">
+            <format attr="font-family" value="Arial" />
+            <format attr="font-size" value="10" />
+          </style-rule>
+          <style-rule element="worksheet">
+            <format attr="display-field-labels" value="false" />
+            <format attr="background-color" value="#f5f1e8" />
+          </style-rule>
+          <style-rule element="gridline">
+            <format attr="line-visibility" value="off" />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option="selection-relaxation-allow">
+            <view>
+              <breakdown value="auto" />
+            </view>
+            <mark class="Line" />
+            <encodings>
+              <tooltip column="[federated.followups].[usr:breached_share:qk]" />
+              <tooltip column="[federated.followups].[sum:follow_up_calls:qk]" />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run bold="true">&lt;[federated.followups].[none:month:qk]&gt;
+</run>
+                <run>Share recorded as SLA breached: &lt;[federated.followups].[usr:breached_share:qk]&gt;
+</run>
+                <run>Follow-up calls: &lt;[federated.followups].[sum:follow_up_calls:qk]&gt;
+</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element="mark">
+                <format attr="mark-color" value="#245f58" />
+                <format attr="mark-labels-show" value="false" />
+                <format attr="size" value="0.65" />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.followups].[usr:breached_share:qk]</rows>
+        <cols>[federated.followups].[none:month:qk]</cols>
+      </table>
+      <simple-id uuid="{0270EE92-A21D-5415-89B5-6DD64E5CBB53}" />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name="01 Demand and turnaround">
+      <style>
+        <style-rule element="dashboard">
+          <format attr="background-color" value="#f5f1e8" />
+        </style-rule>
+      </style>
+      <size maxheight="820" maxwidth="1200" minheight="680" minwidth="960" />
+      <datasources>
+        <datasource caption="Requests" name="federated.requests" />
+        <datasource caption="Turnaround" name="federated.turnaround" />
+      </datasources>
+      <zones>
+        <zone h="100000" id="100" type-v2="layout-basic" w="100000" x="0" y="0">
+          <zone id="1" x="1800" y="1200" w="96000" h="6000" type-v2="text">
+            <formatted-text>
+              <run fontsize="24" bold="true" fontcolor="#242424">01 Demand and turnaround</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="2" x="1800" y="7400" w="96000" h="8200" type-v2="text">
+            <formatted-text>
+              <run fontsize="11" bold="false" fontcolor="#242424">WINNIPEG 311 | Garbage and recycling service requests | Cases opened Jan 2023 – Sep 2026
+Demand by month and request group, and how quickly cases close. Bands are descriptive, not City service standards.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="3" x="1800" y="16000" w="45000" h="7000" type-v2="filter" name="Cases" param="[federated.requests].[none:month:qk]" mode="range">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="4" x="49000" y="16000" w="30000" h="7000" type-v2="filter" name="Cases" param="[federated.requests].[none:waste_stream:nk]" mode="checkdropdown">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="20" x="1800" y="24000" w="31000" h="12000" name="Cases">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="21" x="34500" y="24000" w="31000" h="12000" name="Closed within 7 days">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="22" x="67200" y="24000" w="31000" h="12000" name="Closed within 30 days">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="23" x="1800" y="38000" w="59000" h="27000" name="Cases by month">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="24" x="62500" y="38000" w="35700" h="27000" name="Cases by request group">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="25" x="1800" y="66000" w="47000" h="26000" name="Closed within 7 days by month">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="26" x="50500" y="66000" w="47700" h="26000" name="Median days to close by year opened">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="90" x="1800" y="92500" w="96000" h="6500" type-v2="text">
+            <formatted-text>
+              <run fontsize="10" bold="false" fontcolor="#242424">Select a request-group bar to focus the page; click again to clear. Month and stream controls do not change the median table (precomputed by year and group; blank = not yet determinable because open cases could still change it). Source: City of Winnipeg 311 Requests, retrieved 1 Nov 2026. Contains information licensed under the Open Government Licence – Winnipeg.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+        </zone>
+      </zones>
+      <simple-id uuid="{CB9BED52-0163-5040-B986-DDBB3A8370D8}" />
+    </dashboard>
+    <dashboard name="02 Open records and follow-ups">
+      <style>
+        <style-rule element="dashboard">
+          <format attr="background-color" value="#f5f1e8" />
+        </style-rule>
+      </style>
+      <size maxheight="820" maxwidth="1200" minheight="680" minwidth="960" />
+      <datasources>
+        <datasource caption="Ageing" name="federated.ageing" />
+        <datasource caption="Followups" name="federated.followups" />
+      </datasources>
+      <zones>
+        <zone h="100000" id="100" type-v2="layout-basic" w="100000" x="0" y="0">
+          <zone id="1" x="1800" y="1200" w="96000" h="6000" type-v2="text">
+            <formatted-text>
+              <run fontsize="24" bold="true" fontcolor="#242424">02 Open records and follow-ups</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="2" x="1800" y="7400" w="96000" h="8200" type-v2="text">
+            <formatted-text>
+              <run fontsize="11" bold="false" fontcolor="#242424">WINNIPEG 311 | Open records at 31 Oct 2026 00:00 | City-wide follow-up calls Jan 2023 – Sep 2026
+Open records include many that are likely not live work. Follow-up calls cannot be linked to a request type.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="3" x="1800" y="16000" w="30000" h="7000" type-v2="filter" name="Open records" param="[federated.ageing].[none:waste_stream:nk]" mode="checkdropdown">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="20" x="1800" y="24000" w="31000" h="12000" name="Open records">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="21" x="34500" y="24000" w="31000" h="12000" name="Open a year or more">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="22" x="67200" y="24000" w="31000" h="12000" name="Follow-ups recorded as breached">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="23" x="1800" y="38000" w="47000" h="27000" name="Open records by request group">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="24" x="50500" y="38000" w="47700" h="27000" name="Open records by age">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="25" x="1800" y="66000" w="47000" h="26000" name="Follow-up calls by month · city-wide">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="26" x="50500" y="66000" w="47700" h="26000" name="Share recorded as SLA breached · city-wide">
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+          <zone id="90" x="1800" y="92500" w="96000" h="6500" type-v2="text">
+            <formatted-text>
+              <run fontsize="10" bold="false" fontcolor="#242424">Select a request-group bar to focus the open-record views; click again to clear. The stream control applies to open records only. Follow-up figures cover all City departments. Source: City of Winnipeg 311 Requests, retrieved 1 Nov 2026. Contains information licensed under the Open Government Licence – Winnipeg.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr="border-style" value="none" />
+              <format attr="border-width" value="0" />
+              <format attr="margin" value="8" />
+              <format attr="background-color" value="#f5f1e8" />
+            </zone-style>
+          </zone>
+        </zone>
+      </zones>
+      <simple-id uuid="{E5C35B18-B561-5461-B71C-B77C84389FBB}" />
+    </dashboard>
+  </dashboards>
+  <windows source-height="30">
+    <window class="worksheet" name="Cases" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{3F62D3C2-AA6F-5C2B-BE6D-C887048BA8B9}" />
+    </window>
+    <window class="worksheet" name="Closed within 7 days" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{A836C384-58BB-567F-82E5-4D880BE2B0A1}" />
+    </window>
+    <window class="worksheet" name="Closed within 30 days" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{FD4ABB54-172A-5262-A06B-3B74C7168D4E}" />
+    </window>
+    <window class="worksheet" name="Cases by month" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{7E98CF33-CC56-511A-ABFD-6F0D8FDBE980}" />
+    </window>
+    <window class="worksheet" name="Cases by request group" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{159601A9-11E8-5931-B199-37AC030CA635}" />
+    </window>
+    <window class="worksheet" name="Closed within 7 days by month" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{05D24175-F620-5922-8874-03BD237327DC}" />
+    </window>
+    <window class="worksheet" name="Median days to close by year opened" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{F3EFEF60-4E1D-57A4-8785-79295337CE09}" />
+    </window>
+    <window class="worksheet" name="Open records" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{E055CD2E-8098-5A3E-A269-F6F12EFA202A}" />
+    </window>
+    <window class="worksheet" name="Open a year or more" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{E6F61D9E-C524-5C49-9ACB-C2D656A6D6A6}" />
+    </window>
+    <window class="worksheet" name="Follow-ups recorded as breached" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{F606DB5D-EAA9-510A-9AE3-B3022B117F58}" />
+    </window>
+    <window class="worksheet" name="Open records by request group" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{B65E60CF-AC3B-5E05-9C3C-E647EF4A8E7F}" />
+    </window>
+    <window class="worksheet" name="Open records by age" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{C71908AE-33F1-51DC-A610-2D3FDAD83A6C}" />
+    </window>
+    <window class="worksheet" name="Follow-up calls by month · city-wide" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{CA683033-F9AB-5BAD-88CD-6F00C56D5829}" />
+    </window>
+    <window class="worksheet" name="Share recorded as SLA breached · city-wide" hidden="true">
+      <cards />
+      <viewpoint>
+        <zoom type="entire-view" />
+      </viewpoint>
+      <simple-id uuid="{AA1A0B24-8542-5284-A038-0C63BC8D81EC}" />
+    </window>
+    <window class="dashboard" name="02 Open records and follow-ups" maximized="true">
+      <viewpoints>
+        <viewpoint name="Open records">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Open a year or more">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Follow-ups recorded as breached">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Open records by request group">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Open records by age">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Follow-up calls by month · city-wide">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Share recorded as SLA breached · city-wide">
+          <zoom type="entire-view" />
+        </viewpoint>
+      </viewpoints>
+      <active id="-1" />
+      <device-preview>
+        <device is-portrait="true" name="Generic Phone" type="Phone" />
+      </device-preview>
+      <simple-id uuid="{5F14650B-7774-530B-8EFB-A171B0CBEA3F}" />
+    </window>
+    <window class="dashboard" name="01 Demand and turnaround" maximized="true">
+      <viewpoints>
+        <viewpoint name="Cases">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Closed within 7 days">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Closed within 30 days">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Cases by month">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Cases by request group">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Closed within 7 days by month">
+          <zoom type="entire-view" />
+        </viewpoint>
+        <viewpoint name="Median days to close by year opened">
+          <zoom type="entire-view" />
+        </viewpoint>
+      </viewpoints>
+      <active id="-1" />
+      <device-preview>
+        <device is-portrait="true" name="Generic Phone" type="Phone" />
+      </device-preview>
+      <simple-id uuid="{91AC5730-EDBA-5DAE-8FDE-89E50258C527}" />
+    </window>
+  </windows>
+</workbook>
