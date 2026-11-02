@@ -1,5 +1,10 @@
 # Current delivery — finish the bank core first
 
+**1 November 2026 (later):** the Winnipeg 311 case gained a
+[conclusions and improvement plan](../../projects/winnipeg-311-service-operations/docs/02_conclusions_and_improvements.md)
+with tested baselines: collection failures, summer missed-collection turnaround, open-record
+clean-up and a follow-up linking change request. Recommendations are untested proposals.
+
 **1 November 2026:** the owner approved a local case. [Winnipeg 311 Service
 Operations](../../projects/winnipeg-311-service-operations/README.md) has a reconciled
 extract, case-level SQL model, aggregate results, findings and a two-page Tableau

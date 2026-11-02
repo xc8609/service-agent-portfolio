@@ -14,7 +14,7 @@ Five cases connect business analysis with working data and software:
 | [Retail Customer & Sales Analysis](projects/retail-customer-analytics/README.md) | Real transaction cleaning, DuckDB fact/dimension model, analytical SQL and interactive Tableau views | Complete; findings reconciled to SQL |
 | [Complaint Routing Analysis](projects/complaint-analytics/README.md) | 27,011 public CFPB consumer-finance complaints: volume and timeliness analysis, plus a text-routing baseline (81.7% vs 31.5% team accuracy) | Complete; Tableau filters checked |
 | [Investment Research Brief](projects/investment-research/README.md) | A separate research workbench for financial-report facts, comparisons and sources, with cited Agent drafts | Workbench and cited Agent drafts delivered; saved briefs paused |
-| [Winnipeg 311 Service Operations](projects/winnipeg-311-service-operations/README.md) | 277,951 public City of Winnipeg garbage and recycling requests: seasonal demand, turnaround and whether the open queue is live work | Complete; Tableau filters checked |
+| [Winnipeg 311 Service Operations](projects/winnipeg-311-service-operations/README.md) | 277,951 public City of Winnipeg garbage and recycling requests: where demand comes from, why summers are slow, and a prioritized improvement plan | Complete; Tableau filters checked |
 
 The rest of this page walks through the bank case.
 

@@ -32,6 +32,9 @@ lead wants to understand how much residents chase existing requests.
   share recorded as breached, so that I can size chasing demand.
 - **US-5** As the records owner, I want the data limits stated beside each measure,
   so that nobody reads elapsed time as a missed standard.
+- **US-6** As the operations lead, I want conclusions with proposed improvements,
+  baselines and targets, so that I can decide what to change before summer 2027
+  ([plan](02_conclusions_and_improvements.md)).
 
 ## Acceptance criteria
 
@@ -45,6 +48,8 @@ lead wants to understand how much residents chase existing requests.
 5. No result calls a case late or in breach of a standard; no current public standard
    per request type was found.
 6. Follow-up calls are reported city-wide and never attributed to a request type.
+7. Each recommendation names a measured baseline; targets and sizes are labelled as
+   proposals or illustrations, not forecasts or results.
 
 ## Out of scope
 
