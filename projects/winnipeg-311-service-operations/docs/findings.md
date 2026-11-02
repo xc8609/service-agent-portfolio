@@ -41,8 +41,10 @@ Median days to close, by year opened (blank: not yet determinable under the
 | Cart repair or supply | 47.1 | 29.9 | 35.9 | — |
 
 Missed collections closed within seven days fell from 90.9% (2023 and 2024) to 74.1%
-in 2025, then recovered to 86.9% in 2026. In July and August 2025 only 50.0% and
-40.9% closed within seven days. These are elapsed times, not breaches of a standard.
+in 2025, then rose to 86.9% in 2026. In July and August 2025 only 50.0% and
+40.9% closed within seven days. The 2026 recovery is outside summer: June–August
+2026 reached 77.2%, against 92.9% in the other months and 89.6% and 88.9% in the
+summers of 2023 and 2024. These are elapsed times, not breaches of a standard.
 
 ## 3. The open queue is mostly old records
 
@@ -69,6 +71,14 @@ in 2025, then recovered to 86.9% in 2026. In July and August 2025 only 50.0% and
 - First contact: voice 66.2%, online form code `VOF` 26.9%, email 6.0%.
 - Ward is present on all in-scope 2023 cases but about 70% from 2024.
 - Cart repair types were renamed in March 2025; the analysis maps both names.
+
+## 6. Most demand reports a collection that went wrong
+
+174,086 cases (63%) report a missed pickup, a cart damaged by crews or City
+equipment, or a crew-conduct or damage complaint (the author's classification by
+request-type name, [map](../reference/demand_type_map.csv)). Crew-damaged carts
+alone are 84,457 cases. Conclusions and proposed improvements:
+[conclusions and improvement plan](02_conclusions_and_improvements.md).
 
 ## Questions for the (simulated) stakeholders
 

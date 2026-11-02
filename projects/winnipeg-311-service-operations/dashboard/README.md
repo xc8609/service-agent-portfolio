@@ -8,6 +8,9 @@ and reset match SQL over the published results ([verification](verification.md))
 |---|---|
 | ![Native Tableau page: demand and turnaround](images/tableau-demand-turnaround.png) | ![Native Tableau page: open records and follow-ups](images/tableau-open-records.png) |
 
+The [improvement plan](../docs/02_conclusions_and_improvements.md#how-the-dashboard-supports-the-plan)
+maps each recommendation to the view that tracks it.
+
 ## Open it
 
 1. Run the [build](../data/README.md#reproduce) or use the committed `../results` CSVs.

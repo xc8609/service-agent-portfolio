@@ -1,0 +1,141 @@
+{
+  "source": "Published results in this folder; months use the open date",
+  "collection_failure": {
+    "cases": 277951,
+    "collection_failure_cases": 174086,
+    "collection_failure_share": 62.6,
+    "crew_damaged_cart_cases": 84457,
+    "january_september": {
+      "2023": {
+        "cases": 55182,
+        "collection_failure": 36902,
+        "crew_damaged_carts": 17401,
+        "share": 66.9
+      },
+      "2024": {
+        "cases": 50434,
+        "collection_failure": 30933,
+        "crew_damaged_carts": 14844,
+        "share": 61.3
+      },
+      "2025": {
+        "cases": 58210,
+        "collection_failure": 35970,
+        "crew_damaged_carts": 19983,
+        "share": 61.8
+      },
+      "2026": {
+        "cases": 62806,
+        "collection_failure": 38492,
+        "crew_damaged_carts": 19123,
+        "share": 61.3
+      }
+    }
+  },
+  "summer_missed_collections": {
+    "by_year": {
+      "2023": {
+        "summer_cases": 5885,
+        "summer_over_7_days": 614,
+        "summer_within_7_share": 89.6,
+        "other_months_within_7_share": 91.4
+      },
+      "2024": {
+        "summer_cases": 5615,
+        "summer_over_7_days": 625,
+        "summer_within_7_share": 88.9,
+        "other_months_within_7_share": 91.7
+      },
+      "2025": {
+        "summer_cases": 5104,
+        "summer_over_7_days": 2070,
+        "summer_within_7_share": 59.4,
+        "other_months_within_7_share": 79.2
+      },
+      "2026": {
+        "summer_cases": 6441,
+        "summer_over_7_days": 1466,
+        "summer_within_7_share": 77.2,
+        "other_months_within_7_share": 92.9
+      }
+    },
+    "reference_summers": [
+      2023,
+      2024
+    ],
+    "reference_over_7_days_rate": 10.8,
+    "illustration": {
+      "year": 2026,
+      "over_7_days_at_reference_rate": 694,
+      "fewer_cases_over_7_days": 772
+    }
+  },
+  "open_records": {
+    "open": 16545,
+    "open_365_days_or_more": 9528,
+    "open_365_share": 57.6,
+    "by_group": {
+      "Bulky and special pickup": {
+        "open": 5169,
+        "open_90_days_or_more": 4457,
+        "open_365_days_or_more": 3694
+      },
+      "Cart damaged in collection": {
+        "open": 3823,
+        "open_90_days_or_more": 2058,
+        "open_365_days_or_more": 1679
+      },
+      "Cart repair or supply": {
+        "open": 3333,
+        "open_90_days_or_more": 1737,
+        "open_365_days_or_more": 1005
+      },
+      "Missed collection": {
+        "open": 2174,
+        "open_90_days_or_more": 1799,
+        "open_365_days_or_more": 1704
+      },
+      "General collection concern": {
+        "open": 1226,
+        "open_90_days_or_more": 1111,
+        "open_365_days_or_more": 897
+      },
+      "Crew conduct or property damage": {
+        "open": 743,
+        "open_90_days_or_more": 626,
+        "open_365_days_or_more": 479
+      },
+      "Escalated missed collection": {
+        "open": 77,
+        "open_90_days_or_more": 74,
+        "open_365_days_or_more": 70
+      }
+    }
+  },
+  "city_follow_up_calls": {
+    "2023": {
+      "calls": 25700,
+      "breached": 3888,
+      "summer_calls": 7504,
+      "breached_share": 15.1
+    },
+    "2024": {
+      "calls": 23708,
+      "breached": 4638,
+      "summer_calls": 7247,
+      "breached_share": 19.6
+    },
+    "2025": {
+      "calls": 20764,
+      "breached": 5232,
+      "summer_calls": 5460,
+      "breached_share": 25.2
+    },
+    "2026": {
+      "calls": 20193,
+      "breached": 5520,
+      "summer_calls": 9091,
+      "breached_share": 27.3
+    }
+  }
+}

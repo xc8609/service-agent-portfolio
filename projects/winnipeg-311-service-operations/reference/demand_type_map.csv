@@ -1,0 +1,64 @@
+request_type,demand_type
+Missed Garbage Collection Deficiency,Collection failure
+Missed Garbage Collection Same Day Miss,Collection failure
+Missed Garbage Excess Due To Previous Miss,Collection failure
+Missed Recycling Collection Deficiency,Collection failure
+Missed Recycling Collection Same Day Miss,Collection failure
+Missed Recycling Excess Due To Previous Miss,Collection failure
+Missed Yard Waste Collection Deficiency,Collection failure
+Missed Yard Waste Collection Same Day Miss,Collection failure
+Missed Bulky Waste Collection Deficiency,Collection failure
+Missed Large Appliance Collection Deficiency,Collection failure
+Missed Surplus Waste Collection Deficiency,Collection failure
+Missed Surplus Waste Collection Same Day Miss,Collection failure
+Missed ODS Collection Deficiency,Collection failure
+Breached Missed Collection Garbage Deficiency,Collection failure
+Breached Missed Collection Recycling Deficiency,Collection failure
+Breached Missed Collection Yard Waste Deficiency,Collection failure
+Breached Missed Collection Bulky Deficiency,Collection failure
+Breached Missed Collection Surp Waste Deficiency,Collection failure
+Breached Missed Collection Large Appl Deficiency,Collection failure
+Breached Missed Collection ODS Deficiency,Collection failure
+Request for Bulky Pick Up - 10 Items,Other request
+Request for Large Appliance Pick Up - 10 Items,Other request
+Request for Surplus Waste Pick Up,Other request
+Request for Surplus Waste Pick Up - Adding Items,Other request
+Request for Ozone Depleting Substance Collection,Other request
+Abandoned Pick Up Request - Regular Bulky,Other request
+Abandoned Pick Up Request - Large Appliance,Other request
+Carts Damaged By Collection Crews GARBAGE 240L,Collection failure
+Carts Damaged By Collection Crews GARBAGE 360L,Collection failure
+Carts Damaged By Collection Crews RECYCLING 240L,Collection failure
+Carts Damaged By Collection Crews RECYCLING 360L,Collection failure
+Carts Damaged By Collection Crews RECYCLYING 360L,Collection failure
+Roll Out Cart Damaged By City Equipment,Collection failure
+Carts Damaged By Third Party,Other request
+Roll Out Cart Repair/Replacement - Garbage,Other request
+Roll Out Cart Repair/Replacement - Garbage_2025,Other request
+Roll Out Cart Repair/Replacement - Recycling,Other request
+Roll Out Cart Repair/Replacement - Recycling_2025,Other request
+"Request a Garbage Cart, an Upgrade, an Extra Cart",Other request
+"Request a Recycle Cart, an Upgrade, an Extra Cart",Other request
+Request Garbage & Recycling Carts for New Builds,Other request
+Roll Out Cart Delivery - Damaged Cart,Other request
+Roll Out Cart Delivery - Not Enough Carts,Other request
+Roll Out Cart Delivery - Too Many Carts,Other request
+Supervisor Alert for Cart Deliveries,Other request
+Roll Out Cart Found,Other request
+Operator Standards - Garbage,Collection failure
+Operator Standards - Recycling,Collection failure
+Operator Standards - Yard Waste,Collection failure
+Escalated Operator Standards - Garbage,Collection failure
+Escalated Operator Standards - Recycling,Collection failure
+Escalated Operator Standards - Yard Waste,Collection failure
+Damage or Theft by Collection Crews - Garbage,Collection failure
+Damage or Theft by Collection Crews - Recycling,Collection failure
+Damage or Theft by Collection Crews - Yard Waste,Collection failure
+"Breached Damage, Theft, Operator Standards",Collection failure
+Cart Tagged by Contractor Concern,Other request
+Additional Inquiry for a Contractor Concern,Other request
+Solid Waste Staff Complaint / Commendation,Other request
+Solid Waste General Concern,Other request
+Request to Investigate Loose Garbage in a Lane,Other request
+Request City Collection for Garbage,Other request
+Request City Collection for Recycling,Other request

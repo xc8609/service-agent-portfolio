@@ -54,9 +54,11 @@ From the repository root (the extract needs network access; the build does not):
 ```bash
 python3 projects/winnipeg-311-service-operations/scripts/extract_requests.py
 python projects/winnipeg-311-service-operations/scripts/build_analysis.py
+python projects/winnipeg-311-service-operations/scripts/build_improvement_baselines.py
 ```
 
-The extract uses only the Python standard library. The build needs DuckDB
+The extract and the improvement baselines use only the Python standard library; the
+baselines read the published results. The build needs DuckDB
 ([requirements.txt](../requirements.txt)). Because the source updates daily, a new
 extract will differ from the recorded snapshot. Compare its manifest before replacing
 published results.
