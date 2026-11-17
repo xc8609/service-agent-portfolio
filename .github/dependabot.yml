@@ -1,0 +1,51 @@
+version: 2
+updates:
+  # Offline tooling and analytics stay Python 3.9 compatible, so pytest stays on 8.x
+  # for Python 3.9 by environment marker; do not propose major pytest upgrades here.
+  - package-ecosystem: pip
+    directories:
+      - /
+      - /projects/bank-service-assist
+      - /projects/complaint-analytics
+      - /projects/retail-customer-analytics
+      - /projects/winnipeg-311-service-operations
+    schedule: {interval: weekly, day: monday}
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: pytest
+        update-types: [version-update:semver-major]
+    groups:
+      offline-tooling:
+        update-types: [minor, patch]
+  # Application runtimes run on Python 3.12.
+  - package-ecosystem: pip
+    directories:
+      - /services/api
+      - /projects/investment-research
+    schedule: {interval: weekly, day: monday}
+    open-pull-requests-limit: 5
+    groups:
+      application-runtime:
+        update-types: [minor, patch]
+  - package-ecosystem: npm
+    directories:
+      - /apps/web
+      - /projects/investment-research/web
+    schedule: {interval: weekly, day: monday}
+    open-pull-requests-limit: 5
+    groups:
+      web:
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: {interval: weekly, day: monday}
+    open-pull-requests-limit: 5
+    groups:
+      actions:
+        update-types: [minor, patch]
+  - package-ecosystem: docker
+    directories:
+      - /
+      - /projects/investment-research
+    schedule: {interval: weekly, day: monday}
+    open-pull-requests-limit: 5

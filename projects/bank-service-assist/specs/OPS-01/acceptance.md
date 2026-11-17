@@ -17,3 +17,7 @@ Record environment, commit, fixture/calendar/provider versions, command, actual 
 ## Current implementation slice — 20 October 2026
 
 [Lookup execution evidence](../../docs/sprint-02/implementation/lookup-evidence.md). Only the explicitly mapped read-path cases have executed evidence. The historical contract/forecast above remains the full-story scope; no owner UAT, worker, write-effect or model acceptance is implied.
+
+## Supply-chain scanning slice — 17 November 2026
+
+[Supply-chain scanning evidence](../../docs/sprint-02/implementation/supply-chain-evidence.md): CodeQL, dependency audit and Dependabot configuration; two advisories remediated and two recorded as accepted exceptions. Supports OPS-01-T02 and OPS-01-AC04 (dependency and secret exclusion). Dependabot alerts and required-check changes remain owner repository settings; no parent-story acceptance is implied.

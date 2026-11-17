@@ -1,0 +1,64 @@
+name: Dependency audit
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '41 6 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python:
+    name: Python advisories (pip-audit)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with: {python-version: '3.12'}
+      - run: python -m pip install pip-audit==2.10.1
+      # Every file is fully pinned, so packages are audited as listed without resolving.
+      # Included files are listed explicitly so nested requirements are always covered.
+      - name: Audit pinned requirement files
+        run: |
+          status=0
+          for file in \
+            services/api/requirements.lock \
+            services/api/requirements-localpg.txt \
+            requirements-test.txt \
+            projects/bank-service-assist/requirements-contract.txt \
+            projects/investment-research/requirements-api.txt \
+            projects/investment-research/requirements-test.txt \
+            projects/complaint-analytics/requirements.txt \
+            projects/retail-customer-analytics/requirements.txt \
+            projects/winnipeg-311-service-operations/requirements.txt
+          do
+            echo "::group::$file"
+            pip-audit --requirement "$file" --no-deps --disable-pip --progress-spinner off || status=1
+            echo "::endgroup::"
+          done
+          exit $status
+  node:
+    name: Node advisories (npm audit)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [apps/web, projects/investment-research/web]
+    defaults:
+      run:
+        working-directory: ${{ matrix.app }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with: {node-version: '24.19.0'}
+      # Shipped browser dependencies must have no known high or critical advisory.
+      - name: Gate runtime dependencies
+        run: npm audit --package-lock-only --omit=dev --audit-level=high
+      # Build-only tooling is reported for review; accepted exceptions are listed in SECURITY.md.
+      - name: Report build tooling advisories
+        run: npm audit --package-lock-only || echo "::warning::Build-tooling advisories found; see SECURITY.md accepted exceptions."
