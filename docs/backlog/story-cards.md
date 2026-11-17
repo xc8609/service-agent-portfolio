@@ -1183,6 +1183,9 @@ Local checks and actual cloud CI results are distinguished; only executed CI is 
 ## Boundaries
 No cloud resource purchase or public publication is performed by creating this plan.
 
+### Supply-chain scanning increment — 17 November 2026
+CodeQL, a pinned-requirement and npm dependency audit, and Dependabot version updates were added; `opentelemetry-api` and `pytest` (Python 3.10+) were upgraded for published advisories, and two remaining advisories are recorded as accepted exceptions in SECURITY.md. [Evidence](../../projects/bank-service-assist/docs/sprint-02/implementation/supply-chain-evidence.md). Dependabot alerts and required-check changes are pending owner repository settings.
+
 Canonical story: docs/backlog/story-cards.md#ops-01
 SDD: spec → design → task slices → code/PR → executed tests/UAT → release/support. GitHub: https://github.com/xc8609/service-agent-portfolio; no application implementation/evaluation is claimed by this planning card.
 
