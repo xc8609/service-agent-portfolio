@@ -1,5 +1,5 @@
 # Analytics environment (Python 3.12 recommended); raw data is downloaded locally.
-duckdb==1.4.4
+duckdb==2.0.0
 scikit-learn==1.7.2
 pytest==8.4.2; python_version < "3.10"
 pytest==9.0.3; python_version >= "3.10"
