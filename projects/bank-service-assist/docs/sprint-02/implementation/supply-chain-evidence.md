@@ -48,8 +48,21 @@ penetration test or runtime security assessment.
 | Investment research `pytest`, Ruff | Python 3.12.14, opentelemetry-api 1.45.2 | 93 passed; lint and format clean |
 | YAML parse of the three new files | PyYAML | Pass |
 
-CodeQL and the cloud dependency audit can only run on GitHub; their results belong to
-the pull request checks, not to this local record.
+## Cloud execution — pull request #52, commit `cc72535`
+
+All 12 checks passed on GitHub-hosted `ubuntu-24.04` runners, including the four
+existing required checks.
+
+| Workflow | Result |
+|---|---|
+| [CodeQL](https://github.com/xc8609/service-agent-portfolio/actions/runs/44165813958) | Python 50 rules, JavaScript/TypeScript 103 rules, Actions 23 rules; **0 results** in each analysis |
+| [Dependency audit](https://github.com/xc8609/service-agent-portfolio/actions/runs/44165813962) | pip-audit: no known vulnerabilities in all nine files. npm runtime gate: 0 vulnerabilities in both apps. Build tooling: 4 high (picomatch via Vite) reported as a warning, matching the accepted exception |
+| [Portfolio checks](https://github.com/xc8609/service-agent-portfolio/actions/runs/44165813511) | Python 3.9 and 3.12 passed |
+| [Bank runtime](https://github.com/xc8609/service-agent-portfolio/actions/runs/44165813572) | API + browser and container smoke passed |
+| [Investment research](https://github.com/xc8609/service-agent-portfolio/actions/runs/44165813653) | API + browser + container passed |
+
+Zero CodeQL results means no matches for the configured queries; it is not proof that
+the code has no vulnerabilities.
 
 ## Not done in this slice
 
