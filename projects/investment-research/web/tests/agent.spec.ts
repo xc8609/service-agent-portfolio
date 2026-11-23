@@ -26,7 +26,7 @@ test('generate a cited research brief through the actual tools and explicitly ap
   await page.getByRole('button', {name: 'Append draft to notes', exact: true}).click();
   await expect(page.getByLabel('Analyst notes', {exact: true})).toHaveValue(/^My independent observation\.\n\nResearch draft/);
   await expect(page.getByLabel('Analyst notes', {exact: true})).toHaveValue(/Company explanations \(summarized\)/);
-  await expect(page.getByLabel('Analyst notes', {exact: true})).toHaveValue(/https:\/\/www\.microsoft\.com\/investor\/reports\/ar25\/index\.html/);
+  await expect.poll(() => page.getByLabel('Analyst notes', {exact: true}).inputValue()).toContain('https://www.microsoft.com/investor/reports/ar25/index.html');
   await expect(page.getByRole('button', {name: 'Appended to notes', exact: true})).toBeDisabled();
 });
 
