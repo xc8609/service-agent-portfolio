@@ -70,5 +70,29 @@ the code has no vulnerabilities.
   until the owner enables them.
 - The new checks are not added to the required checks on `main` (repository setting).
 - Dependabot's pip support for `services/api/requirements.lock` (non-`.txt` name) is
-  unverified; `pip-audit` covers that file regardless.
+  unverified; `pip-audit` covers that file regardless. *(Resolved 23 November: confirmed
+  not covered — see below.)*
 - No SBOM, container image scan or signed release artifacts yet.
+
+## Follow-up triage — 23 November 2026
+
+The first Dependabot run after the merge opened 17 pull requests (#53–#69); the first
+`main` CodeQL analysis raised one alert.
+
+| Item | Finding | Action |
+|---|---|---|
+| Actions #56, #58, #59, #60; web group #61; runtime group #63 | CI passed | Applied in this branch (commits cherry-picked with `-x`) |
+| Offline group #62, duckdb #64 | Python 3.9 job failed: jsonschema 4.26 and duckdb 2.0 require Python 3.10+/3.11+ | Closed; ignored for the 3.9-compatible tooling |
+| tzdata #65, #66 | Contract validator failed: tzdata is pinned to `calendar-fixtures.json` | Closed; ignored; change with the fixture by hand |
+| duckdb 2.0 in analytics #67–#69 | Green only because CI does not install analytics dependencies | Closed; completed analytics cases removed from version updates (pip-audit still covers them) |
+| Base images #53–#55, #57 (Python 3.12→3.15, Node 24→26) | Runtime version is an architecture decision | Closed; Docker updates limited to patch versions |
+| CodeQL `js/regex/missing-regexp-anchor` (high), `projects/investment-research/web/tests/agent.spec.ts` | Unanchored URL regex in a browser test assertion; test code, not shipped | Replaced with a polled substring assertion |
+| `services/api/requirements.lock` | Dependabot does not parse this file (#63 updated only the investment API and `requirements-localpg.txt`) | Bank runtime lock aligned by hand to the same versions (fastapi 0.163.0, pydantic 2.14.3 / core 2.50.4, starlette 1.10.0 and others) |
+
+`dependabot.yml` now opens one grouped pull request per ecosystem per week.
+
+Local checks on this branch (macOS arm64): API suite in disposable PostgreSQL 294 passed
+(fastapi 0.163.0, `pip check` clean, Ruff clean); root pytest 232 passed on Python 3.9 and
+3.12; both validators, publication check and traceability check pass; pip-audit clean on
+all nine files; investment research 93 passed and Ruff clean; both web apps build;
+investment Playwright suite 11 passed against an API on a spare port.

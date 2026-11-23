@@ -1,51 +1,68 @@
 version: 2
+# One grouped pull request per ecosystem per week. Updates that CI cannot validate, or
+# that change an architectural or fixture decision, are ignored here and made by hand.
+# Completed analytics cases (complaint, retail, Winnipeg 311) are not version-updated:
+# CI does not install their dependencies, so a green check would not prove their
+# results are unchanged. The weekly pip-audit still covers them for advisories.
 updates:
-  # Offline tooling and analytics stay Python 3.9 compatible, so pytest stays on 8.x
-  # for Python 3.9 by environment marker; do not propose major pytest upgrades here.
+  # Offline tooling stays Python 3.9 compatible.
   - package-ecosystem: pip
     directories:
       - /
       - /projects/bank-service-assist
-      - /projects/complaint-analytics
-      - /projects/retail-customer-analytics
-      - /projects/winnipeg-311-service-operations
     schedule: {interval: weekly, day: monday}
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
     ignore:
+      # Releases that dropped Python 3.9.
       - dependency-name: pytest
         update-types: [version-update:semver-major]
+      - dependency-name: jsonschema
+        versions: ['>=4.26']
+      - dependency-name: duckdb
+        update-types: [version-update:semver-major]
+      # Pinned to the business-calendar fixture; change both together by hand.
+      - dependency-name: tzdata
     groups:
       offline-tooling:
-        update-types: [minor, patch]
+        patterns: ['*']
   # Application runtimes run on Python 3.12.
   - package-ecosystem: pip
     directories:
       - /services/api
       - /projects/investment-research
     schedule: {interval: weekly, day: monday}
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
     groups:
       application-runtime:
-        update-types: [minor, patch]
+        patterns: ['*']
   - package-ecosystem: npm
     directories:
       - /apps/web
       - /projects/investment-research/web
     schedule: {interval: weekly, day: monday}
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
     groups:
       web:
-        update-types: [minor, patch]
+        patterns: ['*']
   - package-ecosystem: github-actions
     directory: /
     schedule: {interval: weekly, day: monday}
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
     groups:
       actions:
-        update-types: [minor, patch]
+        patterns: ['*']
+  # Runtime versions are architecture decisions: patch updates only.
   - package-ecosystem: docker
     directories:
       - /
       - /projects/investment-research
     schedule: {interval: weekly, day: monday}
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
+    ignore:
+      - dependency-name: python
+        update-types: [version-update:semver-major, version-update:semver-minor]
+      - dependency-name: node
+        update-types: [version-update:semver-major, version-update:semver-minor]
+    groups:
+      base-images:
+        patterns: ['*']
